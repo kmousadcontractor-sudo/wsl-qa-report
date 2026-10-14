@@ -1,0 +1,61 @@
+# Main registration and Tour Manager flows — 14 October 2026
+
+Environment: app.dev.worldsurfleague.com and api.dev.worldsurfleague.com. These are visible browser runs; their windows remain open. Browser zoom, forced window dimensions and maximization are not applied. Recordings capture browser content and preserve its aspect ratio; they do not include the operating system or browser toolbar.
+
+| Existing flow | Latest recorded result | Evidence / limit |
+| --- | --- | --- |
+| Adult registration, membership, event entry, manager closure and confirmation | PASS; 22 checks passed, 0 failed | Fresh complete run. Both athlete and manager recordings are attached. |
+| Age 13–17 registration and guardian approval | SKIPPED / blocked | Registration and guardian request were driven in the UI. Mailosaur cannot retrieve the approval link from Gmail; no inbox receipt or guardian approval is claimed. |
+| Under-13 parent registration | FAIL / outdated script expectation | The visible dev app reached “Check your email to verify consent for Junior.” The existing script expects the older inline consent screen. This does not establish an email-service failure. |
+| Age-boundary checks: 12, 13, 15, 17 and 18 | Existing result reused | Existing record and its labelled diagnostic recording are grouped under Main flows without another test method. This boundary test was not rerun in this visible batch. |
+
+## Adult journey
+
+The original adult test drives registration, legal documents, membership payment through Stripe test UI, membership confirmation, event selection, insurance and event entry. With mainFlows enabled, it creates a separate QA event from the selected eligible event, in the same season and with its tour/location/format/fees, then opens that event for entries. This avoids closing the source event or confirming unrelated athletes.
+
+The entry response's entryId identifies the exact roster row. The flow verifies Waitlisted before closing entries, closes entries through the manager UI, verifies that the same entry remains in the roster, and uses Confirm & charge. It verifies the persisted confirmation and Collected payment state. The intermediate Pending status after closure is not treated as a product defect.
+
+Observed final event: 01a139e9-d260-751f-9760-9cd2b159240e; status closed-for-entries.
+Observed populated roster rows: [{"id":"01a139ea-197a-726d-b379-99dd2298516b","status":"confirmed","payment":"collected"}].
+
+Adult check outcomes:
+
+- PASS: Account creation appears (expected true; actual true).
+- PASS: Athlete details appears (expected true; actual true).
+- PASS: Membership selection appears (expected true; actual true).
+- PASS: Athlete Registration phase succeeds (expected PASSED; actual PASSED).
+- PASS: Stripe card form appears within 90 s (expected true; actual true).
+- PASS: Membership Payment phase succeeds (expected PASSED; actual PASSED).
+- PASS: Membership Confirmation phase succeeds (expected PASSED; actual PASSED).
+- PASS: Membership is confirmed within 60 s (expected true; actual true).
+- PASS: See Events reaches the Events list within 15 s (expected true; actual true).
+- PASS: An eligible event exposes an Enter or Register action (expected true; actual true).
+- PASS: Event entry appears within 15 s after the entry action (expected true; actual true).
+- PASS: Insurance phase succeeds (expected PASSED; actual PASSED).
+- PASS: Event Registration phase succeeds (expected PASSED; actual PASSED).
+- PASS: Event payment reaches the confirmation route within 30 s (expected true; actual true).
+- PASS: Confirmation has no error-only state (expected true; actual true).
+- PASS: Event Payment phase succeeds (expected PASSED; actual PASSED).
+- PASS: The registered athlete appears in the event roster (expected true; actual true).
+- PASS: Athlete entry is waitlisted before confirmation (expected waitlisted; actual waitlisted).
+- PASS: Manager closes event registration (expected true; actual true).
+- PASS: The same registered entry remains in the roster after closure (expected 01a139ea-197a-726d-b379-99dd2298516b; actual 01a139ea-197a-726d-b379-99dd2298516b).
+- PASS: Manager confirmation persists for the registered athlete (expected true; actual true).
+- PASS: Entry payment is collected after manager confirmation (expected true; actual true).
+
+## Report and recordings
+
+The report replaces each existing main-flow record by matching testId; there are still 80 unique methods across the combined suite report. It does not represent a fresh rerun of all 80 methods. Earlier diagnostic attempts remain in artifacts; their results are not duplicated in the displayed report.
+
+Use the Main flows filter and expand “Watch main flow and recorded steps.” Playback speeds range from 0.25× to 2×. Failed and blocked check investigations retain expected/actual or the blocking reason, flow logs and available request/console metadata. Other tests keep their original or separately labelled diagnostic evidence.
+
+Main browser tabs left open:
+
+- https://app.dev.worldsurfleague.com/athlete-registration/register — Select WSL Pro Membership; Beach Marshal
+- https://app.dev.worldsurfleague.com/athlete-registration/register — Check your email to verify consent for Junior; Beach Marshal
+- https://app.dev.worldsurfleague.com/athlete-registration/events/01a139e9-d260-751f-9760-9cd2b159240e/entry/QS-2026-M-065-001 — Your entry; What happens next; Beach Marshal
+- https://app.dev.worldsurfleague.com/tour-manager/events/01a139e9-d260-751f-9760-9cd2b159240e — QA Main Flow 6e301a29; Beach Marshal
+
+Raw latest adult execution: artifacts/main-flows-2026-10-14/adult-complete/test-results.json.
+Raw minor executions: artifacts/main-flows-2026-10-14/test-results.json.
+Read-only final roster evidence: artifacts/main-flows-2026-10-14/roster-state.json.

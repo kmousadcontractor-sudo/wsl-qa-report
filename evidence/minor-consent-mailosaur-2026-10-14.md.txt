@@ -1,0 +1,90 @@
+# Minor consent policy and Mailosaur run — 14 October 2026
+
+Environment: dev. This reruns the two existing minor methods in isolated browser sessions, replacing their latest report entries without adding duplicate tests. Browsers remain open. Earlier two-tab recordings are historical because those tabs share authentication.
+
+## Confirmed requirements
+
+- Under 13: Back returns to saved athlete details. Name, DOB and primary email/phone/WhatsApp remain locked. Address and emergency contacts remain editable. No events, event details or entry forms are exposed before real COPPA email consent.
+- Ages 13–17: membership progression and payment are allowed before guardian approval, but no events, details or entry forms are exposed until consent.
+- A paid membership awaiting approval is not active consent. The tests read saved membership and athlete state separately. No approval tokens or database consent flags are fabricated.
+
+## Latest execution
+
+| Existing flow | Passed checks | Failed checks | Blocked checks |
+|---|---:|---:|---:|
+| Age 13–17: membership progression, hidden events until guardian consent, and Mailosaur approval | 8 | 3 | 1 |
+| Under 13: locked identity, permitted corrections, COPPA email and event access gates | 20 | 5 | 1 |
+
+Expected/actual and request/console observations are in the expandable HTML details. Direct-route checks inspect exposed pages/forms; no final event registration is submitted in the pre-consent probe. Full-page images supplement viewport recordings; videos support captions and slow playback.
+
+### Age 13–17: membership progression, hidden events until guardian consent, and Mailosaur approval
+
+| Check | Result | Observed / blocking reason |
+|---|---|---|
+| A 13–17 athlete can continue to membership before guardian consent | PASS | Headings: [Select WSL Pro Membership, Beach Marshal] |
+| The real saved minor athlete ID is available | PASS | true |
+| Membership payment is persisted independently of consent | PASS | Read the real membership status: awaiting_approval is a paid membership waiting for consent, and active follows completion. Current headings: [Membership Checkout, Beach Marshal] |
+| No event cards appear before consent | FAIL | Observed 26 event cards after the Events request completed. Headings: [Events Pay Can Enter, Taiwan Open of Surfing· INTL QS 6,000Upgrade your membership plan to access this event., Central Coast Open· QS 2,000, North Shore Open· QS 2,000Upgrade your membership plan to access this event., Central Coast Pro Junior· JR 1,000, Tahara Pacific Open· QS 2,000Upgrade your membership plan to access this event., Mid-Atlantic Pro· QS 4,000, Lexus Pipe Masters· Championship TourUpgrade your membership plan to access this event., Mid-Atlantic Longboard Classic· LQS 1,000Upgrade your membership plan to access this event., Lacanau Atlantic Pro· QS 2,000Upgrade your membership plan to access this event., QA Main Flow 6e301a29· QS 2,000, Surf City Open· QS 1,000, Saquarema International Pro· INTL QS 6,000Upgrade your membership plan to access this event., Edommo Pro Razo· QS 2,000, MEO Rip Curl Pro Portugal· Championship Tour, Siargao International Surfing Cup· INTL QS 6,000, Sunset Pro· QS 2,000, Philippines Pro· Championship Tour, Orange County Classic· QS 2,000, HTA Haleiwa Pro· QS 2,000, Miyazaki Pro· QS 2,000, Costa da Caparica Pro· QS 1,000, QA Main Flow 93ae6bbc· QS 2,000, QA Main Flow d4207e61· INTL QS 6,000, QA Main Flow 2722138a· INTL QS 6,000, QA Main Flow b145bd93· QS 2,000, QA Main Flow df3398fa· QS 2,000, Beach Marshal] |
+| Events API does not expose events before consent | FAIL | HTTP 200, event count 26, reason  |
+| Direct event details are hidden until consent | BLOCKED | This candidate detail route returns 404. It does not establish a consent gate; the actual Events list and valid entry form are checked separately. |
+| Direct event registration is blocked until consent | FAIL | Observed headings: [Register: Central Coast Open, Current membership & insurance, Choose your coverage for Central Coast Open, Attending Parent or Guardian, Event reminders, Confirm your entry, Beach Marshal]; alerts: [] |
+| Consent email is received in Mailosaur | PASS | true |
+| Email contains the correct secure consent action | PASS | Matched the dev application host and the intended guardian/COPPA route; private query tokens are omitted from evidence. |
+| Guardian completes consent using the real email link | PASS | Headings: [Pay’s documents are signed, What happens next] |
+| Consent is persisted as active | PASS | Read the actual saved athlete status after the guardian UI completed. |
+| Eligible events become available after consent | PASS | Membership was paid; current headings: [Events Pay Can Enter, Taiwan Open of Surfing· INTL QS 6,000Upgrade your membership plan to access this event., Central Coast Open· QS 2,000, North Shore Open· QS 2,000Upgrade your membership plan to access this event., Central Coast Pro Junior· JR 1,000, Tahara Pacific Open· QS 2,000Upgrade your membership plan to access this event., Mid-Atlantic Pro· QS 4,000, Lexus Pipe Masters· Championship TourUpgrade your membership plan to access this event., Mid-Atlantic Longboard Classic· LQS 1,000Upgrade your membership plan to access this event., Lacanau Atlantic Pro· QS 2,000Upgrade your membership plan to access this event., QA Main Flow 6e301a29· QS 2,000, Surf City Open· QS 1,000, Saquarema International Pro· INTL QS 6,000Upgrade your membership plan to access this event., Edommo Pro Razo· QS 2,000, MEO Rip Curl Pro Portugal· Championship Tour, Siargao International Surfing Cup· INTL QS 6,000, Sunset Pro· QS 2,000, Philippines Pro· Championship Tour, Orange County Classic· QS 2,000, HTA Haleiwa Pro· QS 2,000, Miyazaki Pro· QS 2,000, Costa da Caparica Pro· QS 1,000, QA Main Flow 93ae6bbc· QS 2,000, QA Main Flow d4207e61· INTL QS 6,000, QA Main Flow 2722138a· INTL QS 6,000, QA Main Flow b145bd93· QS 2,000, QA Main Flow df3398fa· QS 2,000, Beach Marshal] |
+
+### Under 13: locked identity, permitted corrections, COPPA email and event access gates
+
+| Check | Result | Observed / blocking reason |
+|---|---|---|
+| Saving child details shows the COPPA email-verification screen | PASS | Headings: [Check your email to verify consent for Junior, Beach Marshal] |
+| Back opens the saved athlete details | PASS | Used the available Back to Athlete Details control or browser history; no record was recreated. |
+| First Name* stays locked after saving | PASS | Actual disabled=true, readonly=null |
+| Last Name* stays locked after saving | PASS | Actual disabled=true, readonly=null |
+| Date of Birth* stays locked after saving | PASS | Actual disabled=true, readonly=null |
+| Primary contact field remains locked: Enter Athlete Email | PASS | Primary email/phone/WhatsApp must not be edited; address and [name redacted] are separate. |
+| Primary contact field remains locked: _r_1l_ | FAIL | Primary email/phone/WhatsApp must not be edited; address and [name redacted] are separate. |
+| Primary contact field remains locked: _r_1m_ | FAIL | Primary email/phone/WhatsApp must not be edited; address and [name redacted] are separate. |
+| Street Address* remains editable | PASS | Only permitted address/emergency data is changed. |
+| Relationship to Athlete remains editable | PASS | Only permitted address/emergency data is changed. |
+| City* remains editable | PASS | Only permitted address/emergency data is changed. |
+| Full Name remains editable | PASS | Only permitted address/emergency data is changed. |
+| Emergency email remains editable | PASS | Emergency email is distinct from the guardian's email. |
+| Permitted address correction is saved | PASS | Read back addressLine1 from the real athlete API. |
+| Permitted emergency correction is saved | PASS | Read back the real [name redacted] name. |
+| The real saved minor athlete ID is available | PASS | true |
+| Membership payment is persisted independently of consent | PASS | Read the real membership status: awaiting_approval is a paid membership waiting for consent, and active follows completion. Current headings: [Membership Checkout, Beach Marshal] |
+| No event cards appear before consent | FAIL | Observed 26 event cards after the Events request completed. Headings: [Events Junior Can Enter, Taiwan Open of Surfing· INTL QS 6,000Upgrade your membership plan to access this event., Central Coast Open· QS 2,000, North Shore Open· QS 2,000Upgrade your membership plan to access this event., Central Coast Pro Junior· JR 1,000, Tahara Pacific Open· QS 2,000Upgrade your membership plan to access this event., Mid-Atlantic Pro· QS 4,000, Lexus Pipe Masters· Championship TourUpgrade your membership plan to access this event., Mid-Atlantic Longboard Classic· LQS 1,000Upgrade your membership plan to access this event., Lacanau Atlantic Pro· QS 2,000Upgrade your membership plan to access this event., QA Main Flow 6e301a29· QS 2,000, Surf City Open· QS 1,000, Saquarema International Pro· INTL QS 6,000Upgrade your membership plan to access this event., Edommo Pro Razo· QS 2,000, MEO Rip Curl Pro Portugal· Championship Tour, Siargao International Surfing Cup· INTL QS 6,000, Sunset Pro· QS 2,000, Philippines Pro· Championship Tour, Orange County Classic· QS 2,000, HTA Haleiwa Pro· QS 2,000, Miyazaki Pro· QS 2,000, Costa da Caparica Pro· QS 1,000, QA Main Flow 93ae6bbc· QS 2,000, QA Main Flow d4207e61· INTL QS 6,000, QA Main Flow 2722138a· INTL QS 6,000, QA Main Flow b145bd93· QS 2,000, QA Main Flow df3398fa· QS 2,000, Beach Marshal] |
+| Events API does not expose events before consent | FAIL | HTTP 200, event count 26, reason  |
+| Direct event details are hidden until consent | BLOCKED | This candidate detail route returns 404. It does not establish a consent gate; the actual Events list and valid entry form are checked separately. |
+| Direct event registration is blocked until consent | FAIL | Observed headings: [Register: Central Coast Open, Current membership & insurance, Choose your coverage for Central Coast Open, Attending Parent or Guardian, Event reminders, Confirm your entry, Beach Marshal]; alerts: [] |
+| Consent email is received in Mailosaur | PASS | true |
+| Email contains the correct secure consent action | PASS | Matched the dev application host and the intended guardian/COPPA route; private query tokens are omitted from evidence. |
+| Guardian completes consent using the real email link | PASS | Headings: [Consent has been recorded for Junior, What happens next] |
+| Consent is persisted as active | PASS | Read the actual saved athlete status after the guardian UI completed. |
+| Eligible events become available after consent | PASS | Membership was paid; current headings: [Events Junior Can Enter, Taiwan Open of Surfing· INTL QS 6,000Upgrade your membership plan to access this event., Central Coast Open· QS 2,000, North Shore Open· QS 2,000Upgrade your membership plan to access this event., Central Coast Pro Junior· JR 1,000, Tahara Pacific Open· QS 2,000Upgrade your membership plan to access this event., Mid-Atlantic Pro· QS 4,000, Lexus Pipe Masters· Championship TourUpgrade your membership plan to access this event., Mid-Atlantic Longboard Classic· LQS 1,000Upgrade your membership plan to access this event., Lacanau Atlantic Pro· QS 2,000Upgrade your membership plan to access this event., QA Main Flow 6e301a29· QS 2,000, Surf City Open· QS 1,000, Saquarema International Pro· INTL QS 6,000Upgrade your membership plan to access this event., Edommo Pro Razo· QS 2,000, MEO Rip Curl Pro Portugal· Championship Tour, Siargao International Surfing Cup· INTL QS 6,000, Sunset Pro· QS 2,000, Philippines Pro· Championship Tour, Orange County Classic· QS 2,000, HTA Haleiwa Pro· QS 2,000, Miyazaki Pro· QS 2,000, Costa da Caparica Pro· QS 1,000, QA Main Flow 93ae6bbc· QS 2,000, QA Main Flow d4207e61· INTL QS 6,000, QA Main Flow 2722138a· INTL QS 6,000, QA Main Flow b145bd93· QS 2,000, QA Main Flow df3398fa· QS 2,000, Beach Marshal] |
+
+## Real email delivery audit
+
+Independent Mailosaur search at 2026-10-14T14:12:11.266Z across all message subjects, starting from the fresh recipient creation time. Successful inbox access does not prove that the application sent email.
+
+| Purpose | Exact test recipient | Mailosaur HTTP | Messages returned |
+|---|---|---:|---:|
+| under13Parent | qa.coppa.20261014140022725@btj5keea.mailosaur.net | 200 | 5 |
+| teenAthlete | qa.teen.20261014140751134@btj5keea.mailosaur.net | 200 | 3 |
+| teenGuardian | qa.guardian.20261014140751134@btj5keea.mailosaur.net | 200 | 3 |
+
+The intended consent action is matched by dev application host and COPPA/guardian route, independently of email subject. The wait is bounded to 90 seconds. Approval and post-consent event checks remain blocked when the real consent link is unavailable. Private link tokens are excluded from the report.
+
+## AWS runtime investigation
+
+The user completed the mandatory console password reset. Dev SES in us-west-2 is confirmed in sandbox mode (200 messages/day, 1/second). The test addresses were absent from the verified identities before setup. Exact recipients were added and verified using the real AWS verification emails; the console then showed Verified. Fresh application retries received COPPA, guardian document requests, pending-verification notices, payment receipts and active-membership messages. Recipient verification removed the observed delivery obstacle for these retries; earlier individual SES rejection errors were not recovered.
+
+CloudShell provided read access to CloudWatch log groups, including `/wsl/wsl-dev/pods`. Runtime BFF consumer logs show `email staged` during the fresh flows. A search by the complete guardian address returned no log records; this is not proof of no send, since the consent email was received. Pod log timestamps can be compared with Mailosaur received timestamps. No IAM policy or service source was changed. Sanitised console/CLI artifacts are in `artifacts/aws-email-trace-2026-10-14`.
+
+## Execution history and report scope
+
+The combined report retains the full earlier suite plus the latest adult, regional and minor main flows. It is a combined set of executions with individual timestamps, not a claim that every test was rerun together today. The original minor diagnostic attempt remains in `artifacts/minor-consent-mailosaur-2026-10-14/test-results.json`; its literal payment-confirmation heading assertion was corrected to read the saved membership state. The latest source compiled and was executed again with fresh accounts. Latest minor evidence: `artifacts/minor-consent-mailosaur-2026-10-14/final`. Previous adult live-status and repeat-entry findings remain in `docs/live-status-repeat-entry-2026-10-14.md`.
+
+Latest teen evidence: `artifacts/minor-consent-mailosaur-2026-10-14/teen-corrected`. The previous teen signing attempt hit an automation race while the document list loaded. Waiting for all four controls fixed the automation, and the fresh rerun completed approval. The two blocked checks are candidate direct-detail routes returning 404; they do not establish a consent gate. Primary-contact failures refer to phone and WhatsApp. BFF also logs `email skipped` for some unclassified notifications; those lines do not negate the independently delivered messages.

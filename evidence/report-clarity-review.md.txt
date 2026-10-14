@@ -1,0 +1,43 @@
+# Reporting and ADD-07 evidence review
+
+The report retains 81 unique test methods and combines timestamped executions. Only 19 affected test methods/groups were selected for this reporting change; the full suite was not run. Existing user browsers were preserved. No application or backend behavior was changed.
+
+## ADD-07: Junior membership offer at age 30
+
+The selective API run used DOB **1996-10-14**. Age at execution was **30**. `GET /membership/offer` returned HTTP 200 with Regional Membership, **Junior Membership**, Longboard Membership and Single Event.
+
+The existing assertion expects Junior not to be offered for this age-band fixture. Its failure is retained. This is evidence about an offered product, not proof that Junior membership was assigned, purchased or accepted for event registration.
+
+The response did not return the applicable season-end cutoff. The report explicitly marks the cutoff date and age at cutoff unavailable; it does not substitute a calendar-year date or invent a calculation. A precise cutoff-boundary test still needs that confirmed date.
+
+The displayed steps are the actual helper/API actions: create the account using its DOB, save the athlete, retrieve its membership offer, and compare the returned product codes. There is no browser video for this API-only check. The selected response fields and relevant data appear under its single check result. Spreadsheet references and execution provenance are in collapsed Technical details.
+
+## Marketing consent
+
+The adult test now waits for the optional control or the explicit “Marketing communications are unavailable right now.” notice. It skips only the confirmed unavailable state, with a clear explanation. The age-routing run finished with **9 passed checks, 0 failed and 1 skipped**.
+
+The check remains in the source. If the optional control is present, the normal assertion runs. If neither the control nor the disabled notice appears after the bounded wait, it still fails. `-DadultMarketingConsentEnabled=true` also prevents the temporary-disable exception from suppressing a missing enabled feature.
+
+## Presentation and evidence
+
+- Every check has a stable identity. Exact duplicate check results are removed; distinct inputs/outcomes remain separate.
+- Every test has a descriptive summary and passed/failed/skipped counts. Overall status reflects its recorded failures, superseding the earlier any-pass group badge.
+- Expected and actual observations replace boolean-only presentation. Raw assertions remain in Technical details; missing observations are identified rather than invented.
+- The updated report publishes **19 reviewed focused clips** for individual failures. Captured API/assertion evidence is used for **12 API-only failures**. The other **20 failed checks** retain screenshots/observations and explain why no suitable focused video is published.
+- Full recordings remain only for the **four main journeys**. Age-boundary validation is no longer classified as a full main journey.
+- Captions are off initially. The viewer can enable action captions below the video, leaving the UI unobscured, and choose playback speeds from 0.25× to 2×.
+- Original source recordings and older outcomes remain in artifacts. Selective rerun results carry their own timestamps and earlier-execution provenance; they are not presented as original full-suite footage or counted as duplicate failures.
+
+Visual review rejected excerpts that showed an unrelated later page, an off-screen target, or distorted frames during historical full-page capture. In particular, the already-open athlete-card status videos do not show the target event below the viewport; their full-page screenshots and actual recorded labels remain available. The two under-13 lock assertions read DOM state without attempting an edit, so no demonstration of an edit was fabricated.
+
+The earlier ADD-10 failure “One partial signature persists after reload” did not reproduce in the selective rerun: one signature was returned, and that check passed. The other ADD-10 failures remain recorded separately. A diagnostic failure is not reused to contradict this newer passing observation.
+
+The Settings text selector failed while the recording visibly showed a gear icon. That selector failure remains recorded, but is not described as proof that Settings functionality is unavailable. Some missing-label checks ran while content was still loading; their root cause remains uncertain.
+
+## Validation
+
+The ADD-07 age-30 check appears once and shows its DOB, returned tiers, missing cutoff, actual API steps and response evidence. Its Technical details start collapsed and it has no unrelated video.
+
+Browser checks passed at 1440, 1024 and 390 pixels: unique check IDs, failure/blocked filters, expanded layout without document overflow, optional captions and slowdown. Full-flow recordings are restricted to the four main flows. Focused clips were decoded and representative frames reviewed; no cropping or zoom was added during clipping. Native Allure uses one canonical step per check and attaches focused evidence to that step.
+
+Evidence: `artifacts/report-clarity-2026-10-14`, including selection files, Maven/checklist logs, captured results, review decisions and report validation. Full FFmpeg is required for accurate VP8/VP9 trimming; the pinned local tool was unpacked without install scripts. Raw sources are not substituted for missing focused evidence.
