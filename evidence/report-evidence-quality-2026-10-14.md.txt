@@ -1,0 +1,39 @@
+# Failure details and recording update - 14 October 2026
+
+Only 11 affected scenarios were rerun: two persistence checks, five checklist groups and four main journeys. The full suite was not run. Earlier unaffected results remain timestamped in the combined report.
+
+## Report format
+
+Failed checks show Expected result, Actual result, recorded scenario/request steps, evidence and collapsed technical details. No illustrative steps or true/false outcome labels are used as the failure description. User-reported reproduction steps are distinguished from executed steps.
+
+The consumed Single Event credit issue is now a FAILED check in the adult Single Event flow and appears in the Failed filter. Its source remains user-reported: some cards still offer Register and open registration instead of Upgrade membership after the credit is consumed. No second completed registration/payment is claimed.
+
+## Recording changes
+
+Removed the fixed seven-second/0.3-second trim. New clips retain the relevant action through the observed state, normal viewport pixels and aspect ratio. Browser layout is not zoomed or assigned a fixed viewport. Native maximized capture is used for the refreshed main recordings. Players have slowdown, optional captions, original-size links and a jump-to-result control where aligned evidence is available. Recordings show the browser content viewport, not toolbar/tabs or an impossible simultaneous view of a long page. Normal scrolling exposes lower fields.
+
+Viewport screenshots avoid temporary full-page capture distortion during filming. A separate CDP full-page capture helper is compiled for future full-page evidence without changing the live viewport. Original source recordings are retained in artifacts.
+
+Twenty-five browser failure checks have reviewed clips, including two explicitly labelled later read-only diagnostics of retained event cards. Two Waitlisted checks and two under-13 contact-lock checks still lack a clean focused clip; their assertions/screenshots remain and the report explains the limitation. The attempted retained minor-tab diagnostic could not start capture and is not published as evidence. API and email-inbox failures use response/search observations, not unrelated browser videos. Full recordings are only for the four main journeys.
+
+## Latest results and limits
+
+Signing-screen restoration, loaded event status labels and the Payment rules tab now passed after waiting for the correct loaded page/season. The remaining grouped PDF/email, multi-user/filter and retry-cadence scope stays blocked. Both latest minor runs did not find the intended real dev consent action in Mailosaur within 90 seconds; post-consent completion was not executed. Older successful approvals remain historical, not substitutes for these failures.
+
+| Scenario | Result | Passed | Failed | Blocked/Skipped |
+|---|---|---:|---:|---:|
+| Adult: membership, event entry and Tour Manager confirmation | FAIL | 25 | 4 | 0 |
+| Back and Continue preserve all entered account details | FAIL | 4 | 5 | 0 |
+| Refresh preserves the entered date of birth and account details | FAIL | 3 | 6 | 0 |
+| ADD-10 · Document buttons and signing persistence | BLOCKED | 6 | 0 | 1 |
+| ADD-18 · Event list filters, stars, sorting and rows | BLOCKED | 5 | 0 | 1 |
+| ADD-41 · Payment rules and retry stopping | BLOCKED | 1 | 0 | 1 |
+| ADD-45 · Google address, ZIP, timezone and WhatsApp | FAIL | 8 | 2 | 0 |
+| ADD-54 · Configured event time in venue, Pacific and local zones | FAIL | 2 | 2 | 0 |
+| Age 13–17: membership progression, hidden events until guardian consent, and Mailosaur approval | FAIL | 3 | 4 | 2 |
+| Under 13: locked identity, permitted corrections, COPPA email and event access gates | FAIL | 15 | 6 | 2 |
+| Regional membership: edited repeat registration and live status | FAIL | 26 | 4 | 0 |
+
+Combined report: 2041 automated checks, 1647 passed, 43 failed, 351 skipped/blocked; one separate execution error and one user-reported failed check. These totals combine runs.
+
+Sources: artifacts/evidence-quality-2026-10-14/, review/review-index.json and retained-card-diagnostics.json. Public report: https://kmousadcontractor-sudo.github.io/wsl-qa-report/

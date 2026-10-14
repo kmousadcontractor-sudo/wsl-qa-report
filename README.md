@@ -1,5 +1,5 @@
 # WSL QA automation report
 
-Open https://kmousadcontractor-sudo.github.io/wsl-qa-report/ to view the HTML report.
+Public HTML page: https://kmousadcontractor-sudo.github.io/wsl-qa-report/?v=recording-quality-v2
 
-Latest affected run: 67 passed checks, 6 failed checks, 3 blocked checks and one separate execution error. Unaffected checks retain previous execution timestamps. The consumed Single Event credit finding is user-reported and is not included in automated totals.
+Revision 2 adds explicit failure descriptions, recorded steps and native-resolution action-to-result evidence. Eleven affected scenarios were rerun; unaffected results retain older timestamps. The consumed Single Event credit issue is a FAILED user-reported check, counted separately from automated failures. See the report for current results and evidence limitations.
