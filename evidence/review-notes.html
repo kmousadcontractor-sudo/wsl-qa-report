@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><title>Local review notes</title><style>body{max-width:1000px;margin:40px auto;padding:20px;font:17px Arial;line-height:1.6}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style><h1>Local review — not published</h1><pre># Remaining failed checks � dev rerun
+
+Reran only 10 selected scenarios on dev. Of 31 previously failed checks, 29 still fail and 2 now pass. All 31 were rechecked; none was left inconclusive.
+
+The selected scenarios produced 141 checks: 108 passed, 29 failed and 4 skipped/blocked, with no execution errors. The combined report retains other scenarios at their original execution dates.
+
+## Now passing
+Under-13 and ages 13�17 consent emails arrived in Mailosaur after fresh recipient verification in AWS SES. Both flows completed real guardian approval.
+Recipients: qa.coppa.20261014210223370@btj5keea.mailosaur.net, qa.teen.20261014210223370@btj5keea.mailosaur.net; guardian: qa.guardian.20261014210223370@btj5keea.mailosaur.net.
+
+## Still failing
+- Back/Continue and Refresh: 11 persistence assertions still fail.
+- Membership eligibility: Junior appears among offered products for ages 21 and 30. The cutoff date is not returned; this establishes an offer/assertion mismatch, not a purchased tier.
+- Europe membership VAT: configured API value is 20%, while the baseline expects 23%. Reconcile configuration and requirement before treating this as a calculation defect.
+- Guardian registration: dependents aged 18 and 19 with certification unchecked still return HTTP 201 instead of 422.
+- Location: Google address fills city/ZIP but leaves the Location timezone selector empty.
+- Event time: dedicated QA event configured at 09:00 America/New_York displays EDT; Pacific and Local displays are absent.
+- Single Event main flow: retained card did not show Waitlisted during the initial observation; manager payment stayed Pending despite API collection.
+- Consumed Single Event credit: 4 other actionable cards still show Register; 6 show Upgrade membership.
+- The literal Confirmed assertion fails although the athlete card now shows Selected / Ready to Compete. This is an automation wording mismatch, not evidence that confirmation failed.
+- Both minor flows expose 31 event cards, API event count 31, and the Taiwan Open of Surfing registration form before guardian consent.
+
+## Setup limitations
+Four skipped/blocked checks remain in the selected scenarios: the remaining eligibility matrix, isolated membership-grid setup returning HTTP 404, and one unavailable event-detail route in each minor flow.
+
+## Evidence and scope
+Fresh recordings and observations are attached per check. Manager evidence was corrected to the actual roster tab; an unrelated Google tab was excluded from the report. The teen probe tab was not captured, so its failure evidence uses actual probe screenshots and API observations rather than a substitute recording. A focused Confirmed clip was also withheld because the relevant target card was not visible in that interval. Full main-flow recordings remain available.
+
+Prior Regional status investigations and the successful parent-creates-under-13 recordings remain unchanged. Removed post-COPPA phone/WhatsApp checks remain excluded.
+
+No application/backend logic was modified. This report is local for review; nothing was pushed or published.
+</pre><a href="coppa-mail-audit.json">Sanitised Mailosaur audit</a>

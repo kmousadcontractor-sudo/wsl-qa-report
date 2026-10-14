@@ -1,0 +1,509 @@
+[
+  {
+    "name": "adult",
+    "eventName": "QA Main Flow dc1df295",
+    "startedAt": "2026-10-14T20:36:05.962Z",
+    "network": [
+      {
+        "at": "2026-10-14T20:36:20.403Z",
+        "page": "athlete",
+        "method": "GET",
+        "path": "/api/session",
+        "status": 200
+      },
+      {
+        "at": "2026-10-14T20:36:21.017Z",
+        "page": "athlete",
+        "method": "GET",
+        "path": "/api/tour-manager/session",
+        "status": 403
+      },
+      {
+        "at": "2026-10-14T20:36:21.081Z",
+        "page": "athlete",
+        "method": "GET",
+        "path": "/api/events",
+        "status": 200,
+        "event": {
+          "id": "01a13bce-bd5f-7339-a30c-80fbc91acc43",
+          "name": "QA Main Flow dc1df295",
+          "tour": "QS 2,000",
+          "tourName": "Qualifying Series",
+          "meta": "Dec 23 · Pismo Beach Pier, CA · Men’s",
+          "entryFee": 150,
+          "currency": "USD",
+          "note": "Entry, payment, documents, and coverage are complete.",
+          "noteTone": "success",
+          "badges": [
+            {
+              "code": "selected",
+              "label": "Selected",
+              "tone": "success"
+            },
+            {
+              "code": "ready_to_compete",
+              "label": "Ready to Compete",
+              "tone": "success"
+            }
+          ],
+          "actions": [],
+          "lock": null
+        }
+      },
+      {
+        "at": "2026-10-14T20:36:23.943Z",
+        "page": "manager",
+        "method": "GET",
+        "path": "/api/session",
+        "status": 200
+      },
+      {
+        "at": "2026-10-14T20:36:23.975Z",
+        "page": "manager",
+        "method": "GET",
+        "path": "/api/tour-manager/session",
+        "status": 200
+      },
+      {
+        "at": "2026-10-14T20:36:24.068Z",
+        "page": "manager",
+        "method": "GET",
+        "path": "/api/tour-manager/events/01a13bce-bd5f-7339-a30c-80fbc91acc43/entries",
+        "status": 200,
+        "row": {
+          "entryId": "01a13bcf-37e7-72fd-b37f-d8190fef1f89",
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          }
+        }
+      },
+      {
+        "at": "2026-10-14T20:36:24.134Z",
+        "page": "manager",
+        "method": "GET",
+        "path": "/api/tour-manager/events/01a13bce-bd5f-7339-a30c-80fbc91acc43/overview",
+        "status": 200
+      }
+    ],
+    "originalManagerWindowAvailable": false,
+    "eventId": "01a13bce-bd5f-7339-a30c-80fbc91acc43",
+    "originalEntryId": "01a13bcf-37e7-72fd-b37f-d8190fef1f89",
+    "originalExecution": "2026-10-14T19:03:21.411115800Z",
+    "rosterReadHttp": 200,
+    "sessionAthleteIds": [
+      "01a13bcc-e928-7135-afa5-cbb347b1f5ab"
+    ],
+    "athleteId": "01a13bcc-e928-7135-afa5-cbb347b1f5ab",
+    "entryId": "01a13bcf-37e7-72fd-b37f-d8190fef1f89",
+    "identityMatch": {
+      "originalEntryMatches": true,
+      "eventNameMatches": true,
+      "athleteIsInRetainedSession": true
+    },
+    "managerApiBefore": {
+      "http": 200,
+      "row": {
+        "entryId": "01a13bcf-37e7-72fd-b37f-d8190fef1f89",
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        }
+      }
+    },
+    "athleteOwnershipHttp": 200,
+    "athleteEventsApiBefore": {
+      "http": 200,
+      "event": {
+        "id": "01a13bce-bd5f-7339-a30c-80fbc91acc43",
+        "name": "QA Main Flow dc1df295",
+        "tour": "QS 2,000",
+        "tourName": "Qualifying Series",
+        "meta": "Dec 23 · Pismo Beach Pier, CA · Men’s",
+        "entryFee": 150,
+        "currency": "USD",
+        "note": "Entry, payment, documents, and coverage are complete.",
+        "noteTone": "success",
+        "badges": [
+          {
+            "code": "selected",
+            "label": "Selected",
+            "tone": "success"
+          },
+          {
+            "code": "ready_to_compete",
+            "label": "Ready to Compete",
+            "tone": "success"
+          }
+        ],
+        "actions": [],
+        "lock": null
+      }
+    },
+    "athleteEntryApiBefore": {
+      "http": 404,
+      "keys": [
+        "title",
+        "message",
+        "reason",
+        "fields",
+        "retryable"
+      ]
+    },
+    "managerComparisonScope": "Original manager window was unavailable; compared original recorded Pending with a fresh load and explicit refresh of the exact event.",
+    "beforeRefresh": {
+      "athleteCard": "QA Main Flow dc1df295\n· QS 2,000\n\nDec 23 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nWaitlisted\nCoverage Confirmed\n\nWSL confirms the final field by 23 Dec 2026.",
+      "managerRow": "1\n\t\nPT\nPay Tester\nUnited States\n\tN. AMERICA\t\n\t\nCollected\n\t\nConfirmed\n\t"
+    },
+    "afterFocusBeforeRefresh": "QA Main Flow dc1df295\n· QS 2,000\n\nDec 23 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nWaitlisted\nCoverage Confirmed\n\nWSL confirms the final field by 23 Dec 2026.",
+    "diagnosticStartedAt": "2026-10-14T20:42:08.946Z",
+    "initialDiagnosticError": "locator.waitFor: Timeout 25000ms exceeded.",
+    "originalWaitlistCheck": {
+      "testId": "com.worldsurfleague.registration.tests.AthleteRegistrationThroughEventEntryE2ETest.athleteRegistration_throughEventEntry",
+      "testName": "Adult registration through membership, Event Entry, Insurance and Event Payment",
+      "stage": "Tour Manager continuation",
+      "checkName": "Athlete entry is waitlisted before confirmation",
+      "status": "PASS",
+      "expected": "waitlisted",
+      "actual": "waitlisted",
+      "message": "",
+      "screenshotPath": "",
+      "timestamp": "2026-10-14T19:07:11.609276600Z",
+      "isNew": false
+    },
+    "originalBackendConfirmation": [
+      {
+        "testId": "com.worldsurfleague.registration.tests.AthleteRegistrationThroughEventEntryE2ETest.athleteRegistration_throughEventEntry",
+        "testName": "Adult registration through membership, Event Entry, Insurance and Event Payment",
+        "stage": "Tour Manager continuation",
+        "checkName": "Manager confirmation persists for the registered athlete",
+        "status": "PASS",
+        "expected": "true",
+        "actual": "true",
+        "message": "Read the real roster status after Confirm & charge; no database status was fabricated.",
+        "screenshotPath": "",
+        "timestamp": "2026-10-14T19:07:22.773148500Z",
+        "isNew": false
+      },
+      {
+        "testId": "com.worldsurfleague.registration.tests.AthleteRegistrationThroughEventEntryE2ETest.athleteRegistration_throughEventEntry",
+        "testName": "Adult registration through membership, Event Entry, Insurance and Event Payment",
+        "stage": "Tour Manager continuation",
+        "checkName": "Entry payment is collected after manager confirmation",
+        "status": "PASS",
+        "expected": "true",
+        "actual": "true",
+        "message": "Read the payment state from the real manager roster after confirmation.",
+        "screenshotPath": "",
+        "timestamp": "2026-10-14T19:07:25.172816100Z",
+        "isNew": false
+      }
+    ],
+    "liveBeforeRefresh": {
+      "athleteCard": "QA Main Flow dc1df295\n· QS 2,000\n\nDec 23 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nSelected\nReady to Compete\n\nEntry, payment, documents, and coverage are complete.",
+      "managerRow": "1\n\t\nPT\nPay Tester\nUnited States\n\tN. AMERICA\t\n\t\nCollected\n\t\nConfirmed\n\t"
+    },
+    "automaticReadsInObservationWindow": [
+      {
+        "at": "2026-10-14T20:42:10.282Z",
+        "page": "manager",
+        "path": "/api/tour-manager/events/01a13bce-bd5f-7339-a30c-80fbc91acc43/entries",
+        "status": 200
+      }
+    ],
+    "refreshedAthleteCard": "QA Main Flow dc1df295\n· QS 2,000\n\nDec 23 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nSelected\nReady to Compete\n\nEntry, payment, documents, and coverage are complete.",
+    "refreshedManagerRow": "1\n\t\nPT\nPay Tester\nUnited States\n\tN. AMERICA\t\n\t\nCollected\n\t\nConfirmed\n\t",
+    "finalManagerApi": {
+      "http": 200,
+      "entryId": "01a13bcf-37e7-72fd-b37f-d8190fef1f89",
+      "entry": {
+        "code": "confirmed",
+        "label": "Confirmed",
+        "tone": "neutral"
+      },
+      "payment": {
+        "code": "collected",
+        "label": "Collected",
+        "tone": "neutral"
+      }
+    },
+    "finalAthleteEventsApi": {
+      "http": 200,
+      "event": {
+        "id": "01a13bce-bd5f-7339-a30c-80fbc91acc43",
+        "name": "QA Main Flow dc1df295",
+        "tour": "QS 2,000",
+        "tourName": "Qualifying Series",
+        "meta": "Dec 23 · Pismo Beach Pier, CA · Men’s",
+        "entryFee": 150,
+        "currency": "USD",
+        "note": "Entry, payment, documents, and coverage are complete.",
+        "noteTone": "success",
+        "badges": [
+          {
+            "code": "selected",
+            "label": "Selected",
+            "tone": "success"
+          },
+          {
+            "code": "ready_to_compete",
+            "label": "Ready to Compete",
+            "tone": "success"
+          }
+        ],
+        "actions": [],
+        "lock": null
+      }
+    },
+    "entryConfirmationApi": {
+      "http": 200,
+      "reference": "QS-2026-M-071-001",
+      "entryStatus": {
+        "label": "Confirmed insured",
+        "tone": "warning"
+      },
+      "keys": [
+        "reference",
+        "eyebrow",
+        "title",
+        "subtitle",
+        "footnote",
+        "status",
+        "banner",
+        "stats",
+        "nextSteps",
+        "actions",
+        "getCoverage",
+        "emailNote",
+        "pending"
+      ]
+    },
+    "refreshVerification": {
+      "paymentCollected": true,
+      "entryConfirmed": true,
+      "cardMatchesApi": true,
+      "registerRemoved": true
+    },
+    "diagnosticFinishedAt": "2026-10-14T20:42:32.095Z"
+  },
+  {
+    "name": "regional",
+    "eventName": "QA Main Flow d762b574",
+    "startedAt": "2026-10-14T20:36:48.656Z",
+    "network": [
+      {
+        "at": "2026-10-14T20:36:51.311Z",
+        "kind": "Diagnostic auth renewal",
+        "status": 200
+      }
+    ],
+    "originalManagerWindowAvailable": true,
+    "eventId": "01a13bd2-4eee-7331-97bf-35b4d7472b46",
+    "originalEntryId": "01a13bd2-a872-703a-a1c4-9e165924358e",
+    "originalExecution": "2026-10-14T19:08:36.033733200Z",
+    "rosterReadHttp": 200,
+    "sessionAthleteIds": [
+      "01a13bd1-3f70-745e-8d25-8ba53d25bff9"
+    ],
+    "athleteId": "01a13bd1-3f70-745e-8d25-8ba53d25bff9",
+    "entryId": "01a13bd2-a872-703a-a1c4-9e165924358e",
+    "identityMatch": {
+      "originalEntryMatches": true,
+      "eventNameMatches": true,
+      "athleteIsInRetainedSession": true
+    },
+    "managerApiBefore": {
+      "http": 200,
+      "row": {
+        "entryId": "01a13bd2-a872-703a-a1c4-9e165924358e",
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        }
+      }
+    },
+    "athleteOwnershipHttp": 200,
+    "athleteEventsApiBefore": {
+      "http": 200,
+      "event": {
+        "id": "01a13bd2-4eee-7331-97bf-35b4d7472b46",
+        "name": "QA Main Flow d762b574",
+        "tour": "INTL QS 6,000",
+        "tourName": "International Qualifying Series",
+        "meta": "Dec 21 · Jinzun Harbor, Taitung · Men’s",
+        "entryFee": 350,
+        "currency": "USD",
+        "note": "Entry, payment, documents, and coverage are complete.",
+        "noteTone": "success",
+        "badges": [
+          {
+            "code": "selected",
+            "label": "Selected",
+            "tone": "success"
+          },
+          {
+            "code": "ready_to_compete",
+            "label": "Ready to Compete",
+            "tone": "success"
+          }
+        ],
+        "actions": [],
+        "lock": null
+      }
+    },
+    "athleteEntryApiBefore": {
+      "http": 404,
+      "keys": [
+        "title",
+        "message",
+        "reason",
+        "fields",
+        "retryable"
+      ]
+    },
+    "beforeRefresh": {
+      "athleteCard": "QA Main Flow d762b574\n· INTL QS 6,000\n\nDec 21 · Jinzun Harbor, Taitung · Men’s\n\nEvent entry fee $350.00\n\nWaitlisted\nCoverage Confirmed\n\nWSL confirms the final field by 21 Dec 2026.",
+      "managerRow": "1\n\t\nPT\nPay Tester\nUnited States\n\tN. AMERICA\t\n\t\nPending\n\t\nConfirmed\n\t"
+    },
+    "diagnosticStartedAt": "2026-10-14T20:42:32.097Z",
+    "initialDiagnosticError": "Refresh recorder did not start",
+    "originalWaitlistCheck": {
+      "testId": "com.worldsurfleague.registration.tests.AthleteRegistrationThroughEventEntryE2ETest.regionalMembershipBackNavigationAndLiveStatus",
+      "testName": "Regional membership: Back returns to Event List and live statuses",
+      "stage": "Tour Manager continuation",
+      "checkName": "Athlete entry is waitlisted before confirmation",
+      "status": "PASS",
+      "expected": "waitlisted",
+      "actual": "waitlisted",
+      "message": "",
+      "screenshotPath": "",
+      "timestamp": "2026-10-14T19:10:55.436407400Z",
+      "isNew": true
+    },
+    "originalBackendConfirmation": [
+      {
+        "testId": "com.worldsurfleague.registration.tests.AthleteRegistrationThroughEventEntryE2ETest.regionalMembershipBackNavigationAndLiveStatus",
+        "testName": "Regional membership: Back returns to Event List and live statuses",
+        "stage": "Tour Manager continuation",
+        "checkName": "Manager confirmation persists for the registered athlete",
+        "status": "PASS",
+        "expected": "true",
+        "actual": "true",
+        "message": "Read the real roster status after Confirm & charge; no database status was fabricated.",
+        "screenshotPath": "",
+        "timestamp": "2026-10-14T19:10:59.963905100Z",
+        "isNew": true
+      },
+      {
+        "testId": "com.worldsurfleague.registration.tests.AthleteRegistrationThroughEventEntryE2ETest.regionalMembershipBackNavigationAndLiveStatus",
+        "testName": "Regional membership: Back returns to Event List and live statuses",
+        "stage": "Tour Manager continuation",
+        "checkName": "Entry payment is collected after manager confirmation",
+        "status": "PASS",
+        "expected": "true",
+        "actual": "true",
+        "message": "Read the payment state from the real manager roster after confirmation.",
+        "screenshotPath": "",
+        "timestamp": "2026-10-14T19:11:02.354873200Z",
+        "isNew": true
+      }
+    ],
+    "liveBeforeRefresh": {
+      "athleteCard": "QA Main Flow d762b574\n· INTL QS 6,000\n\nDec 21 · Jinzun Harbor, Taitung · Men’s\n\nEvent entry fee $350.00\n\nWaitlisted\nCoverage Confirmed\n\nWSL confirms the final field by 21 Dec 2026.",
+      "managerRow": "1\n\t\nPT\nPay Tester\nUnited States\n\tN. AMERICA\t\n\t\nPending\n\t\nConfirmed\n\t"
+    },
+    "automaticReadsInObservationWindow": [],
+    "refreshedAthleteCard": "QA Main Flow d762b574\n· INTL QS 6,000\n\nDec 21 · Jinzun Harbor, Taitung · Men’s\n\nEvent entry fee $350.00\n\nSelected\nReady to Compete\n\nEntry, payment, documents, and coverage are complete.",
+    "refreshedManagerRow": "1\n\t\nPT\nPay Tester\nUnited States\n\tN. AMERICA\t\n\t\nCollected\n\t\nConfirmed\n\t",
+    "finalManagerApi": {
+      "http": 200,
+      "entryId": "01a13bd2-a872-703a-a1c4-9e165924358e",
+      "entry": {
+        "code": "confirmed",
+        "label": "Confirmed",
+        "tone": "neutral"
+      },
+      "payment": {
+        "code": "collected",
+        "label": "Collected",
+        "tone": "neutral"
+      }
+    },
+    "finalAthleteEventsApi": {
+      "http": 200,
+      "event": {
+        "id": "01a13bd2-4eee-7331-97bf-35b4d7472b46",
+        "name": "QA Main Flow d762b574",
+        "tour": "INTL QS 6,000",
+        "tourName": "International Qualifying Series",
+        "meta": "Dec 21 · Jinzun Harbor, Taitung · Men’s",
+        "entryFee": 350,
+        "currency": "USD",
+        "note": "Entry, payment, documents, and coverage are complete.",
+        "noteTone": "success",
+        "badges": [
+          {
+            "code": "selected",
+            "label": "Selected",
+            "tone": "success"
+          },
+          {
+            "code": "ready_to_compete",
+            "label": "Ready to Compete",
+            "tone": "success"
+          }
+        ],
+        "actions": [],
+        "lock": null
+      }
+    },
+    "entryConfirmationApi": {
+      "http": 200,
+      "reference": "QS-2026-M-072-001",
+      "entryStatus": {
+        "label": "Confirmed insured",
+        "tone": "warning"
+      },
+      "keys": [
+        "reference",
+        "eyebrow",
+        "title",
+        "subtitle",
+        "footnote",
+        "status",
+        "banner",
+        "stats",
+        "nextSteps",
+        "actions",
+        "getCoverage",
+        "emailNote",
+        "pending"
+      ]
+    },
+    "refreshVerification": {
+      "paymentCollected": true,
+      "entryConfirmed": true,
+      "cardMatchesApi": true,
+      "registerRemoved": true
+    },
+    "diagnosticFinishedAt": "2026-10-14T20:42:55.716Z"
+  }
+]

@@ -1,0 +1,144 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:16px/1.6 system-ui;max-width:1100px;margin:30px auto;padding:20px;color:#172637}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f8;padding:16px}img,video{max-width:100%;height:auto;object-fit:contain}table{width:100%;border-collapse:collapse}td,th{padding:12px;border-bottom:1px solid #ddd;text-align:left}a{color:#075ca8}</style><title>WSL-BUG-021 Location selection fills timezone automatically</title><a href="index.html">All failed checks</a> � <a href="../results-of-testcases.html#check-4360f2e32d2b4182">Linked failed check</a><h1>WSL-BUG-021 � Location selection fills timezone automatically</h1><p><strong>Test Case ID:</strong> com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD45</p><p><strong>Severity:</strong> Medium � <strong>Priority:</strong> P2 (triage proposal based on observed impact)</p><p><strong>Classification:</strong> Observed application failure; root cause requires developer confirmation</p><h2>Description</h2><p>The location timezone selector remained blank after selecting the Mountain View address.</p><h2>Steps to reproduce</h2><p>Recorded scenario actions from this execution; includes prerequisite setup and other scenario assertions. API reproduction details, where captured, are below.</p><ol><li>POST /age-gate returned HTTP 200.</li><li>POST /auth/register returned HTTP 201.</li><li>POST /auth/login returned HTTP 200.</li></ol><h2>Expected result</h2><p>Selecting the Google address fills the location timezone with America/Los_Angeles (Pacific time).</p><h2>Actual result</h2><p>The location timezone selector remained blank after selecting the Mountain View address.</p><h2>Technical details</h2><p>Logs are from the same scenario, not necessarily a single request attributable to this assertion. Missing payloads, service logs and deployment revision are not inferred.</p><pre>{
+  &quot;environment&quot;: &quot;WSL dev: app.dev.worldsurfleague.com / api.dev.worldsurfleague.com&quot;,
+  &quot;executionStarted&quot;: &quot;2026-10-14T21:04:55.336Z&quot;,
+  &quot;checkTimestamp&quot;: &quot;2026-10-14T21:05:12.333Z&quot;,
+  &quot;checkId&quot;: &quot;4360f2e32d2b4182&quot;,
+  &quot;recordedMessage&quot;: &quot;Observed timezone selector:  &quot;,
+  &quot;requests&quot;: [
+    {
+      &quot;path&quot;: &quot;/age-gate&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 919
+    },
+    {
+      &quot;path&quot;: &quot;/auth/register&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 398
+    },
+    {
+      &quot;path&quot;: &quot;/auth/login&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 382
+    }
+  ],
+  &quot;scenarioHttpAndErrorLog&quot;: [
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:04.853Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:04.857Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:04.858Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:04.868Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/session → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:05.089Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:05.090Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:05.093Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:05.116Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/session → 403&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:05.116Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 403 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:05.154Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/reference/countries → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:05.270Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/registration/draft → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:05.437Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:05.686Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/reference/genders → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:06.243Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/reference/countries/US/states → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:07.037Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.worldsurfleague.com/api/registration/draft → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:07.314Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.worldsurfleague.com/api/registration/draft → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:09.790Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/reference/currencies → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:09.847Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/session → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:09.850Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/seasons → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:09.971Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/session → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:10.192Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/settings/locations → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:10.607Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/reference/countries → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:05:10.631Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/reference/time-zones → 200&quot;
+    }
+  ]
+}</pre><h2>Evidence</h2><h3>Screenshot</h3><a href="../screenshots/4360f2e32d2b4182-ADD-45-observed-8.png"><img loading="lazy" src="../screenshots/4360f2e32d2b4182-ADD-45-observed-8.png"></a><h3>Focused failure recording</h3><video controls preload="metadata" src="../videos/focused-4360f2e32d2b4182-4360f2e32d2b4182-1792011912333-clear-v2-9052-7704.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25�</option><option value="0.5">0.5�</option><option selected value="1">1�</option><option value="1.5">1.5�</option></select></label></p>

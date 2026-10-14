@@ -1,0 +1,115 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:16px/1.6 system-ui;max-width:1100px;margin:30px auto;padding:20px;color:#172637}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f8;padding:16px}img,video{max-width:100%;height:auto;object-fit:contain}table{width:100%;border-collapse:collapse}td,th{padding:12px;border-bottom:1px solid #ddd;text-align:left}a{color:#075ca8}</style><title>WSL-BUG-009 Terms consent remains accepted after Back and Continue</title><a href="index.html">All failed checks</a> � <a href="../results-of-testcases.html#check-89f3b68098e952d3">Linked failed check</a><h1>WSL-BUG-009 � Terms consent remains accepted after Back and Continue</h1><p><strong>Test Case ID:</strong> com.worldsurfleague.registration.tests.BackRefreshE2ETest.backAndContinuePreserveEnteredData</p><p><strong>Severity:</strong> Medium � <strong>Priority:</strong> P2 (triage proposal based on observed impact)</p><p><strong>Classification:</strong> Observed application failure; root cause requires developer confirmation</p><h2>Description</h2><p>Not observed: Terms consent remains accepted after Back and Continue. Expected the previously accepted Terms checkbox to stay selected.</p><h2>Steps to reproduce</h2><p>Recorded scenario actions from this execution; includes prerequisite setup and other scenario assertions. API reproduction details, where captured, are below.</p><ol><li>Cleared cookies and registration browser state for an independent age flow</li><li>Opened Age gate</li><li>Entered date of birth 07/07/2000</li><li>Clicked Continue on Age gate</li><li>Age gate accepted the date of birth and opened Account creation</li><li>Entered account details and accepted the WSL Terms of Use</li><li>Inspected visible FIRST_NAME field for the recording</li><li>Inspected visible LAST_NAME field for the recording</li><li>Inspected visible EMAIL field for the recording</li><li>Inspected visible PASSWORD field for the recording</li><li>Inspected visible TERMS field for the recording</li><li>Used Back from Account creation to Age gate</li></ol><h2>Expected result</h2><p>Terms consent remains accepted after Back and Continue.</p><h2>Actual result</h2><p>Not observed: Terms consent remains accepted after Back and Continue. Expected the previously accepted Terms checkbox to stay selected.</p><h2>Technical details</h2><p>Logs are from the same scenario, not necessarily a single request attributable to this assertion. Missing payloads, service logs and deployment revision are not inferred.</p><pre>{
+  &quot;environment&quot;: &quot;WSL dev: app.dev.worldsurfleague.com / api.dev.worldsurfleague.com&quot;,
+  &quot;executionStarted&quot;: &quot;2026-10-14T21:02:43.884370600Z&quot;,
+  &quot;checkTimestamp&quot;: &quot;2026-10-14T21:03:07.552552500Z&quot;,
+  &quot;checkId&quot;: &quot;89f3b68098e952d3&quot;,
+  &quot;recordedMessage&quot;: &quot;Expected the previously accepted Terms checkbox to stay selected.&quot;,
+  &quot;requests&quot;: [],
+  &quot;scenarioHttpAndErrorLog&quot;: [
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:48.080810400Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:48.082808100Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:48.085807500Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:48.420367600Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:48.422370600Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:48.555845800Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:48.715377700Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;POST https://api.dev.world[redacted]league.com/api/age-gate → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:49.790458400Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/terms-of-use → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:50.113015700Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/marketing-consent → 404&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:50.115015700Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:50.116017300Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/privacy-policy → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:50.118017500Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/terms-of-use → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:50.329109Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/privacy-policy → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:50.371108300Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/marketing-consent → 404&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:51.321570300Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:51.322570500Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;POST https://api.dev.world[redacted]league.com/api/age-gate → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:55.968487600Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/marketing-consent → 404&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:56.235656300Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:56.237653400Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/marketing-consent → 404&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:57.521398Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:02:57.522393500Z&quot;
+    }
+  ]
+}</pre><h2>Evidence</h2><h3>Screenshot</h3><a href="../screenshots/89f3b68098e952d3-0dca1618-aecd-401b-a572-49a7b3c45844-77b5ecef-97d0-4367-ae2f-85504d02872e.png"><img loading="lazy" src="../screenshots/89f3b68098e952d3-0dca1618-aecd-401b-a572-49a7b3c45844-77b5ecef-97d0-4367-ae2f-85504d02872e.png"></a><h3>Focused failure recording</h3><video controls preload="metadata" src="../videos/focused-89f3b68098e952d3-89f3b68098e952d3-1792011787552-clear-v2-0-24972.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25�</option><option value="0.5">0.5�</option><option selected value="1">1�</option><option value="1.5">1.5�</option></select></label></p>
