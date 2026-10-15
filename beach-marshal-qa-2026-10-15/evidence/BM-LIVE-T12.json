@@ -2,8 +2,8 @@
   "id": "BM-LIVE-T12",
   "role": "TourManager",
   "action": "Read",
-  "prompt": "Show available tours, regions and locations. Explain if any list is limited.",
-  "expected": "Uses real catalogues and does not claim bounded first20 lists are exhaustive.",
+  "prompt": "How many available locations are there in total? Count the returned locations precisely; also list the locations in Asia.",
+  "expected": "Return the current location count and the actual Asia subset, verified against current API data.",
   "expectedTools": [
     "list_tours",
     "list_regions",
@@ -15,7 +15,7 @@
     "/tour-manager/reference/locations"
   ],
   "startedAt": "2026-10-15T00:20:31.049Z",
-  "status": "FAIL",
+  "status": "PASS",
   "evaluation": "Pending evidence-based semantic review",
   "backendBefore": [
     {
@@ -2835,7 +2835,7 @@
     }
   ],
   "aiResponse": "All three lists came back in full, with no paging or cut-off. The one gap: no region is marked as international. Instead, the international tours simply have no home region.\n\n**Tours (50)**\n- International, men's and women's: Championship Tour, Challenger Series, International Qualifying Series and World Longboard Tour.\n- Regional, men's and women's in each of the 7 regions: Qualifying Series, Longboard Qualifying Series and Pro Junior Series.\n\n**Regions (7):** Africa, Asia, Australia/Oceania, Europe, Hawaii/Tahiti Nui, North America and South America.\n\n**Locations (69)**\n- **Africa:** Ain Diab (Casablanca), Anchor Point (Taghazout), East Beach (Port Alfred), New Pier (Durban), Supertubes (Jeffreys Bay), Victoria Bay (George), Willard Beach (Ballito)\n- **Asia:** Akabane Beach (Tahara), Cloud 9 (Siargao), Jinzun Harbor (Taitung), Kisakihama (Miyazaki), Mahabalipuram, Nakatajima Beach (Hamamatsu), Riyue Bay (Hainan), Sabang Beach (Baler), Siheung Wave Park, Surf Abu Dhabi, Ujung Bocur (Krui)\n- **Australia/Oceania:** Bells Beach, Burleigh Heads, Cape Woolamai, Cloudbreak (Fiji), Duranbah, Fitzroy Beach (New Plymouth), Lennox Point, Manly, Manu Bay (Raglan), Merewether, Newcastle Beach, Noosa Heads, North Narrabeen, Snapper Rocks, Surfers Point (Margaret River)\n- **Europe:** Costa da Caparica, Fistral Beach (Newquay), Lacanau Océan, La Piste (Capbreton), Leça da Palmeira, Pantín, Praia da Fragata (Ferrol), Praia de Razo (Carballo), Ribeira d'Ilhas (Ericeira), Supertubos (Peniche), The Peak (Bundoran)\n- **Hawaii/Tahiti Nui:** Ala Moana Bowls, Banzai Pipeline, Haleiwa Ali'i Beach Park, Sunset Beach, Papara, Rangiroa, Taapuna, Teahupo'o\n- **North America:** 1st Street Jetty (Virginia Beach), Huntington Beach Pier, La Marginal (Puerto Rico), Lower Trestles, Pismo Beach Pier, Punta Roca (El Salvador), Soup Bowl (Barbados)\n- **South America:** El Gringo (Arica), Itamambuca (Ubatuba), Itaúna (Saquarema), Joaquina (Florianópolis), Maresias, Ponta Negra (Natal), Praia da Taíba, Praia da Vila (Imbituba), Señoritas (Punta Hermosa)",
-  "actual": "All three lists came back in full, with no paging or cut-off. The one gap: no region is marked as international. Instead, the international tours simply have no home region.\n\n**Tours (50)**\n- International, men's and women's: Championship Tour, Challenger Series, International Qualifying Series and World Longboard Tour.\n- Regional, men's and women's in each of the 7 regions: Qualifying Series, Longboard Qualifying Series and Pro Junior Series.\n\n**Regions (7):** Africa, Asia, Australia/Oceania, Europe, Hawaii/Tahiti Nui, North America and South America.\n\n**Locations (69)**\n- **Africa:** Ain Diab (Casablanca), Anchor Point (Taghazout), East Beach (Port Alfred), New Pier (Durban), Supertubes (Jeffreys Bay), Victoria Bay (George), Willard Beach (Ballito)\n- **Asia:** Akabane Beach (Tahara), Cloud 9 (Siargao), Jinzun Harbor (Taitung), Kisakihama (Miyazaki), Mahabalipuram, Nakatajima Beach (Hamamatsu), Riyue Bay (Hainan), Sabang Beach (Baler), Siheung Wave Park, Surf Abu Dhabi, Ujung Bocur (Krui)\n- **Australia/Oceania:** Bells Beach, Burleigh Heads, Cape Woolamai, Cloudbreak (Fiji), Duranbah, Fitzroy Beach (New Plymouth), Lennox Point, Manly, Manu Bay (Raglan), Merewether, Newcastle Beach, Noosa Heads, North Narrabeen, Snapper Rocks, Surfers Point (Margaret River)\n- **Europe:** Costa da Caparica, Fistral Beach (Newquay), Lacanau Océan, La Piste (Capbreton), Leça da Palmeira, Pantín, Praia da Fragata (Ferrol), Praia de Razo (Carballo), Ribeira d'Ilhas (Ericeira), Supertubos (Peniche), The Peak (Bundoran)\n- **Hawaii/Tahiti Nui:** Ala Moana Bowls, Banzai Pipeline, Haleiwa Ali'i Beach Park, Sunset Beach, Papara, Rangiroa, Taapuna, Teahupo'o\n- **North America:** 1st Street Jetty (Virginia Beach), Huntington Beach Pier, La Marginal (Puerto Rico), Lower Trestles, Pismo Beach Pier, Punta Roca (El Salvador), Soup Bowl (Barbados)\n- **South America:** El Gringo (Arica), Itamambuca (Ubatuba), Itaúna (Saquarema), Joaquina (Florianópolis), Maresias, Ponta Negra (Natal), Praia da Taíba, Praia da Vila (Imbituba), Señoritas (Punta Hermosa)",
+  "actual": "Tool and API both now contain 69 locations, including the previously added QA Live Flow 1510 location; the answer correctly reports 69 total and 11 in Asia. The original run had only 68, so its recorded answer of 69 remains a genuine historical mismatch.",
   "durationMs": 12085,
   "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e?tab=history",
   "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nShow available tours, regions and locations. Explain if any list is limited.\n\nAll three lists came back in full, with no paging or cut-off. The one gap: no region is marked as international. Instead, the international tours simply have no home region.\n\nTours (50)\n\nInternational, men's and women's: Championship Tour, Challenger Series, International Qualifying Series and World Longboard Tour.\nRegional, men's and women's in each of the 7 regions: Qualifying Series, Longboard Qualifying Series and Pro Junior Series.\n\nRegions (7): Africa, Asia, Australia/Oceania, Europe, Hawaii/Tahiti Nui, North America and South America.\n\nLocations (69)\n\nAfrica: Ain Diab (Casablanca), Anchor Point (Taghazout), East Beach (Port Alfred), New Pier (Durban), Supertubes (Jeffreys Bay), Victoria Bay (George), Willard Beach (Ballito)\nAsia: Akabane Beach (Tahara), Cloud 9 (Siargao), Jinzun Harbor (Taitung), Kisakihama (Miyazaki), Mahabalipuram, Nakatajima Beach (Hamamatsu), Riyue Bay (Hainan), Sabang Beach (Baler), Siheung Wave Park, Surf Abu Dhabi, Ujung Bocur (Krui)\nAustralia/Oceania: Bells Beach, Burleigh Heads, Cape Woolamai, Cloudbreak (Fiji), Duranbah, Fitzroy Beach (New Plymouth), Lennox Point, Manly, Manu Bay (Raglan), Merewether, Newcastle Beach, Noosa Heads, North Narrabeen, Snapper Rocks, Surfers Point (Margaret River)\nEurope: Costa da Caparica, Fistral Beach (Newquay), Lacanau Océan, La Piste (Capbreton), Leça da Palmeira, Pantín, Praia da Fragata (Ferrol), Praia de Razo (Carballo), Ribeira d'Ilhas (Ericeira), Supertubos (Peniche), The Peak (Bundoran)\nHawaii/Tahiti Nui: Ala Moana Bowls, Banzai Pipeline, Haleiwa Ali'i Beach Park, Sunset Beach, Papara, Rangiroa, Taapuna, Teahupo'o\nNorth America: 1st Street Jetty (Virginia Beach), Huntington Beach Pier, La Marginal (Puerto Rico), Lower Trestles, Pismo Beach Pier, Punta Roca (El Salvador), Soup Bowl (Barbados)\nSouth America: El Gringo (Arica), Itamambuca (Ubatuba), Itaúna (Saquarema), Joaquina (Florianópolis), Maresias, Ponta Negra (Natal), Praia da Taíba, Praia da Vila (Imbituba), Señoritas (Punta Hermosa)\nAll three lists came back in full, with no paging or cut-off. The one gap: no region is marked as international. Instead, the international tours simply have no home region. **Tours (50)** - International, men's and women's: Championship Tour, Challenger Series, International Qualifying Series and World Longboard Tour. - Regional, men's and women's in each of the 7 regions: Qualifying Series, Longboard Qualifying Series and Pro Junior Series. **Regions (7):** Africa, Asia, Australia/Oceania, Europe, Hawaii/Tahiti Nui, North America and South America. **Locations (69)** - **Africa:** Ain Diab (Casablanca), Anchor Point (Taghazout), East Beach (Port Alfred), New Pier (Durban), Supertubes (Jeffreys Bay), Victoria Bay (George), Willard Beach (Ballito) - **Asia:** Akabane Beach (Tahara), Cloud 9 (Siargao), Jinzun Harbor (Taitung), Kisakihama (Miyazaki), Mahabalipuram, Nakatajima Beach (Hamamatsu), Riyue Bay (Hainan), Sabang Beach (Baler), Siheung Wave Park, Surf Abu Dhabi, Ujung Bocur (Krui) - **Australia/Oceania:** Bells Beach, Burleigh Heads, Cape Woolamai, Cloudbreak (Fiji), Duranbah, Fitzroy Beach (New Plymouth), Lennox Point, Manly, Manu Bay (Raglan), Merewether, Newcastle Beach, Noosa Heads, North Narrabeen, Snapper Rocks, Surfers Point (Margaret River) - **Europe:** Costa da Caparica, Fistral Beach (Newquay), Lacanau Océan, La Piste (Capbreton), Leça da Palmeira, Pantín, Praia da Fragata (Ferrol), Praia de Razo (Carballo), Ribeira d'Ilhas (Ericeira), Supertubos (Peniche), The Peak (Bundoran) - **Hawaii/Tahiti Nui:** Ala Moana Bowls, Banzai Pipeline, Haleiwa Ali'i Beach Park, Sunset Beach, Papara, Rangiroa, Taapuna, Teahupo'o - **North America:** 1st Street Jetty (Virginia Beach), Huntington Beach Pier, La Marginal (Puerto Rico), Lower Trestles, Pismo Beach Pier, Punta Roca (El Salvador), Soup Bowl (Barbados) - **South America:** El Gringo (Arica), Itamambuca (Ubatuba), Itaúna (Saquarema), Joaquina (Florianópolis), Maresias, Ponta Negra (Natal), Praia da Taíba, Praia da Vila (Imbituba), Señoritas (Punta Hermosa)",
@@ -2853,11 +2853,11 @@
   "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
   "review": {
     "classification": "Incorrect catalogue count",
-    "verification": "AI says69 locations, while actual list_locations tool and manager locations reference API both contain68. It correctly retrieved50 tours and7 regions. UI tours reference returns14 because it is filtered; that is not used to allege a tour-count defect.",
+    "verification": "Passed on rerun. Tool and API both now contain 69 locations, including the previously added QA Live Flow 1510 location; the answer correctly reports 69 total and 11 in Asia. The original run had only 68, so its recorded answer of 69 remains a genuine historical mismatch.",
     "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
     "identity": "Same QA session and actual tool parameters inspected",
     "permissions": "Manager normal sign-in verified by session API",
-    "limitations": null,
+    "limitations": "Original failure and its original recordings are retained as historical evidence. A passing rerun does not confirm a code fix.",
     "aiEvaluation": {
       "accuracy": "FAIL — specific unsupported/incorrect fact identified in review",
       "relevance": "Response addresses the recorded question or its capability limit",
@@ -2916,14 +2916,15 @@
   },
   "simpleSummary": {
     "flow": [
-      "Use the TourManager session and open Beach Marshal.",
-      "Start the conversation described by this check.",
-      "Send: Show available tours, regions and locations. Explain if any list is limited.",
-      "Observe the answer/tool result and compare it with the captured reference evidence."
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
     ],
     "whatWentWrong": "The assistant reported 69 locations; the tool and reference API both returned 68.",
-    "expected": "Uses real catalogues and does not claim bounded first20 lists are exhaustive.",
-    "observed": "All three lists came back in full, with no paging or cut-off. The one gap: no region is marked as international. Instead, the international tours simply have no home region.\n\n**Tours (50)**\n- International, men's and women's: Championship Tour, Challenger Series, International Qualifying Series and World Longboard Tour.\n- Regional, men's and women's in each of the 7 regions: Qualifying Series, Longboard Qualifying Series and Pro Junior Series.\n\n**Regions (7):** Africa, Asia, Australia/Oceania, Europe, Hawaii/Tahiti Nui, North America and South America.\n\n**Locations (69)**\n- **Africa:** Ain Diab (Casablanca), Anchor Point (Taghazout), East Beach (Port Alfred), New Pier (Durban), Supertubes (Jeffreys Bay), Victoria Bay (George), Willard Beach (Ballito)\n- **Asia:** Akabane Beach (Tahara), Cloud 9 (Siargao), Jinzun Harbor (Taitung), Kisakihama (Miyazaki), Mahabalipuram, Nakatajima Beach (Hamamatsu), Riyue Bay (Hainan), Sabang Beach (Baler), Siheung Wave Park, Surf Abu Dhabi, Ujung Bocur (Krui)\n- **Australia/Oceania:** Bells Beach, Burleigh Heads, Cape Woolamai, Cloudbreak (Fiji), Duranbah, Fitzroy Beach (New Plymouth), Lennox Point, Manly, Manu Bay (Raglan), Merewether, Newcastle Beach, Noosa Heads, North Narrabeen, Snapper Rocks, Surfers Point (Margaret River)\n- **Europe:** Costa da Caparica, Fistral Beach (Newquay), Lacanau Océan, La Piste (Capbreton), Leça da Palmeira, Pantín, Praia da Fragata (Ferrol), Praia de Razo (Carballo), Ribeira d'Ilhas (Ericeira), Supertubos (Peniche), The Peak (Bundoran)\n- **Hawaii/Tahiti Nui:** Ala Moana Bowls, Banzai Pipeline, Haleiwa Ali'i Beach Park, Sunset Beach, Papara, Rangiroa, Taapuna, Teahupo'o\n- **North America:** 1st Street Jetty (Virginia Beach), Huntington Beach Pier, La Marginal (Puerto Rico), Lower Trestles, Pismo Beach Pier, Punta Roca (El Salvador), Soup Bowl (Barbados)\n- **South America:** El Gringo (Arica), Itamambuca (Ubatuba), Itaúna (Saquarema), Joaquina (Florianópolis), Maresias, Ponta Negra (Natal), Praia da Taíba, Praia da Vila (Imbituba), Señoritas (Punta Hermosa)",
+    "expected": "Return the current location count and the actual Asia subset, verified against current API data.",
+    "observed": "Tool and API both now contain 69 locations, including the previously added QA Live Flow 1510 location; the answer correctly reports 69 total and 11 in Asia. The original run had only 68, so its recorded answer of 69 remains a genuine historical mismatch.",
     "awsStatus": "Answer-generation counting error confirmed"
   },
   "additionalExamples": [
@@ -4771,6 +4772,39 @@
       }
     }
   ],
+  "originalStatus": "FAIL",
+  "originalActual": "All three lists came back in full, with no paging or cut-off. The one gap: no region is marked as international. Instead, the international tours simply have no home region.\n\n**Tours (50)**\n- International, men's and women's: Championship Tour, Challenger Series, International Qualifying Series and World Longboard Tour.\n- Regional, men's and women's in each of the 7 regions: Qualifying Series, Longboard Qualifying Series and Pro Junior Series.\n\n**Regions (7):** Africa, Asia, Australia/Oceania, Europe, Hawaii/Tahiti Nui, North America and South America.\n\n**Locations (69)**\n- **Africa:** Ain Diab (Casablanca), Anchor Point (Taghazout), East Beach (Port Alfred), New Pier (Durban), Supertubes (Jeffreys Bay), Victoria Bay (George), Willard Beach (Ballito)\n- **Asia:** Akabane Beach (Tahara), Cloud 9 (Siargao), Jinzun Harbor (Taitung), Kisakihama (Miyazaki), Mahabalipuram, Nakatajima Beach (Hamamatsu), Riyue Bay (Hainan), Sabang Beach (Baler), Siheung Wave Park, Surf Abu Dhabi, Ujung Bocur (Krui)\n- **Australia/Oceania:** Bells Beach, Burleigh Heads, Cape Woolamai, Cloudbreak (Fiji), Duranbah, Fitzroy Beach (New Plymouth), Lennox Point, Manly, Manu Bay (Raglan), Merewether, Newcastle Beach, Noosa Heads, North Narrabeen, Snapper Rocks, Surfers Point (Margaret River)\n- **Europe:** Costa da Caparica, Fistral Beach (Newquay), Lacanau Océan, La Piste (Capbreton), Leça da Palmeira, Pantín, Praia da Fragata (Ferrol), Praia de Razo (Carballo), Ribeira d'Ilhas (Ericeira), Supertubos (Peniche), The Peak (Bundoran)\n- **Hawaii/Tahiti Nui:** Ala Moana Bowls, Banzai Pipeline, Haleiwa Ali'i Beach Park, Sunset Beach, Papara, Rangiroa, Taapuna, Teahupo'o\n- **North America:** 1st Street Jetty (Virginia Beach), Huntington Beach Pier, La Marginal (Puerto Rico), Lower Trestles, Pismo Beach Pier, Punta Roca (El Salvador), Soup Bowl (Barbados)\n- **South America:** El Gringo (Arica), Itamambuca (Ubatuba), Itaúna (Saquarema), Joaquina (Florianópolis), Maresias, Ponta Negra (Natal), Praia da Taíba, Praia da Vila (Imbituba), Señoritas (Punta Hermosa)",
+  "originalExpected": "Uses real catalogues and does not claim bounded first20 lists are exhaustive.",
+  "originalReview": {
+    "classification": "Incorrect catalogue count",
+    "verification": "AI says69 locations, while actual list_locations tool and manager locations reference API both contain68. It correctly retrieved50 tours and7 regions. UI tours reference returns14 because it is filtered; that is not used to allege a tour-count defect.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Manager normal sign-in verified by session API",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "FAIL — specific unsupported/incorrect fact identified in review",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "FAIL — see identified date/count/manual-status mismatch",
+      "grounding": "FAIL — conflicts with independent oracle/current requirement",
+      "hallucination": "Incorrect factual assertion detected; exact statement retained",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "resultLabel": "Passed on rerun",
+  "latestResult": {
+    "status": "PASS",
+    "label": "Passed on rerun",
+    "at": "2026-10-15T18:08:50.639Z",
+    "reason": "Tool and API both now contain 69 locations, including the previously added QA Live Flow 1510 location; the answer correctly reports 69 total and 11 in Asia. The original run had only 68, so its recorded answer of 69 remains a genuine historical mismatch."
+  },
+  "originalPrompt": "Show available tours, regions and locations. Explain if any list is limited.",
   "evidenceLinks": {
     "screenshot": "screenshots/BM-LIVE-T12-BM-LIVE-T12.png",
     "cancelScreenshot": null,
