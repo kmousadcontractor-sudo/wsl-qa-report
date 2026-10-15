@@ -1,0 +1,252 @@
+{
+  "id": "BM-LIVE-P06",
+  "role": "Public",
+  "action": "Read",
+  "prompt": "What are the latest WSL rankings? Use the official source and tell me if you cannot verify them.",
+  "expected": "Verified official source and timestamp or honest unavailability; no fabricated live rankings.",
+  "expectedTools": [
+    "search_web"
+  ],
+  "referencePaths": [],
+  "web": true,
+  "startedAt": "2026-10-15T00:23:30.679Z",
+  "status": "NOT VERIFIED",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:23:36.399Z",
+  "videoStartSeconds": 20.451,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "0f2aea53-6635-4cb2-ab9a-3a376fd12929",
+    "input": {
+      "threadId": "2d84912d-4a37-48a2-9dbc-bdf7c1c39b77",
+      "runId": "e7c01977-b3dd-456a-8684-ae83089ab124",
+      "state": {},
+      "messages": [
+        {
+          "id": "a8931d53-7a36-421e-ab7f-5582f3915115",
+          "role": "user",
+          "content": "What are the latest WSL rankings? Use the official source and tell me if you cannot verify them."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01FyLNVAoh31p7v6YveYCfNF",
+        "name": "read_wsl_page",
+        "result": {
+          "status": "ok",
+          "page": {
+            "url": "https://www.worldsurfleague.com/athletes/tour/mct",
+            "text": "Men's Championship Tour Rankings\n\n1 27,8004,7451,0006,0853,32010,0001,0004,7456,085--- 42,780 2 14,7453,3204,7453,32010,0007,8001,0006,0851,000--- 40,015 3 13,3206,0853,32010,0007,8003,3206,0853,3203,320--- 39,930 4 110,0003,3203,3204,7451,0004,7453,3203,32010,000--- 39,450 5 16,0857,8003,3203,3206,0851,0001,0007,8001,000--- 35,410 6-6,0853,3201,0006,0851,0001,0007,8006,0853,320--- 33,695 7 34,7453,3201,0003,3206,0853,3201,0003,3207,800--- 31,910 8 11,0004,74510,0001,0001,0006,0854,7451,0003,320--- 30,895 9 14,7456,0854,7451,0003,3204,7451,0003,3201,000--- 27,960 10 13,32010,0003,3201,0001,0003,3204,7451,0001,000--- 26,705 11-1,0001,0004,7451,0004,7454,7453,3204,7453,320--- 26,620 12-5003,3206,0853,3203,3203,3203,3201,0003,320--- 26,005 13 41,0001,0001,0004,7451,0001,0001,00010,0006,085--- 24,830 14 11,0003,3203,3203,3203,3203,3204,7451,0003,320--- 24,665 15-3,3201,0003,3203,3204,7453,3201,0001,0004,745--- 23,770 16 35005003,3201,0004,7453,3201,0004,7454,745--- 22,875 17 31,0003,3207,8001,0001,0001,0003,3204,7451,000--- 22,185 18 21,0001,0001,0007,8001,0004,7451,0003,3201,000--- 19,865 19 11,0003,3201,0001,0003,3206,0853,3201,0001,000--- 19,045 20-1,0001,0001,0001,0001,00050010,0003,3201,000--- 18,320 21-3,3201,0006,0854,7451,0001,0001,0001,0001,000--- 18,150 22 33,3201,0003,3201,0001,0001,0001,0003,3204,745--- 17,705\n\nPostseason Qualification Line\n\n23 14,7451,0001,0001,0003,3201,0003,3203,3201,000--- 17,705 24-1,0001,0001,0001,0004,7451,0004,7451,0003,320--- 16,810 25 21,0004,7451,0003,3203,3201,0001,0001,0001,000--- 15,385 26 31,0005004,7451,0001,0001,0001,0001,0004,745--- 14,490 27 13,3201,0001,0003,3201,0001,0003,3201,0001,000--- 13,960 28 13,3201,0001,0004,7451,0001,0001,0001,0001,000--- 13,065 29 15001,0005005001,0001,0006,0851,0001,000--- 11,585 30-1,0004,7451,0001,0001,0001,0001,0001,000500--- 10,745 31-1,0001,0001,0001,0003,3201,0005001,0001,000--- 9,320 32 11,0005001,0001,0001,0005001,0005003,320--- 8,820 33 13,3201,0001,0001,000500500500500500--- 7,820 34-----500*3,320*500*1,000*500*--- 5,820 35-5005005005005005005005001,000--- 4,000",
+            "truncated": false
+          }
+        },
+        "parameters": {
+          "url": "https://www.worldsurfleague.com/athletes/tour/mct"
+        }
+      }
+    ],
+    "answer": "I couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where.\n\nFrom that page, the top of the table is:\n1. 42,780 points\n2. 40,015 points\n3. 39,930 points\n4. 39,450 points\n5. 35,410 points\n\nThe page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "2d84912d-4a37-48a2-9dbc-bdf7c1c39b77",
+        "runId": "e7c01977-b3dd-456a-8684-ae83089ab124"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "2d84912d-4a37-48a2-9dbc-bdf7c1c39b77",
+        "runId": "e7c01977-b3dd-456a-8684-ae83089ab124"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01FyLNVAoh31p7v6YveYCfNF",
+      "name": "read_wsl_page",
+      "result": {
+        "status": "ok",
+        "page": {
+          "url": "https://www.worldsurfleague.com/athletes/tour/mct",
+          "text": "Men's Championship Tour Rankings\n\n1 27,8004,7451,0006,0853,32010,0001,0004,7456,085--- 42,780 2 14,7453,3204,7453,32010,0007,8001,0006,0851,000--- 40,015 3 13,3206,0853,32010,0007,8003,3206,0853,3203,320--- 39,930 4 110,0003,3203,3204,7451,0004,7453,3203,32010,000--- 39,450 5 16,0857,8003,3203,3206,0851,0001,0007,8001,000--- 35,410 6-6,0853,3201,0006,0851,0001,0007,8006,0853,320--- 33,695 7 34,7453,3201,0003,3206,0853,3201,0003,3207,800--- 31,910 8 11,0004,74510,0001,0001,0006,0854,7451,0003,320--- 30,895 9 14,7456,0854,7451,0003,3204,7451,0003,3201,000--- 27,960 10 13,32010,0003,3201,0001,0003,3204,7451,0001,000--- 26,705 11-1,0001,0004,7451,0004,7454,7453,3204,7453,320--- 26,620 12-5003,3206,0853,3203,3203,3203,3201,0003,320--- 26,005 13 41,0001,0001,0004,7451,0001,0001,00010,0006,085--- 24,830 14 11,0003,3203,3203,3203,3203,3204,7451,0003,320--- 24,665 15-3,3201,0003,3203,3204,7453,3201,0001,0004,745--- 23,770 16 35005003,3201,0004,7453,3201,0004,7454,745--- 22,875 17 31,0003,3207,8001,0001,0001,0003,3204,7451,000--- 22,185 18 21,0001,0001,0007,8001,0004,7451,0003,3201,000--- 19,865 19 11,0003,3201,0001,0003,3206,0853,3201,0001,000--- 19,045 20-1,0001,0001,0001,0001,00050010,0003,3201,000--- 18,320 21-3,3201,0006,0854,7451,0001,0001,0001,0001,000--- 18,150 22 33,3201,0003,3201,0001,0001,0001,0003,3204,745--- 17,705\n\nPostseason Qualification Line\n\n23 14,7451,0001,0001,0003,3201,0003,3203,3201,000--- 17,705 24-1,0001,0001,0001,0004,7451,0004,7451,0003,320--- 16,810 25 21,0004,7451,0003,3203,3201,0001,0001,0001,000--- 15,385 26 31,0005004,7451,0001,0001,0001,0001,0004,745--- 14,490 27 13,3201,0001,0003,3201,0001,0003,3201,0001,000--- 13,960 28 13,3201,0001,0004,7451,0001,0001,0001,0001,000--- 13,065 29 15001,0005005001,0001,0006,0851,0001,000--- 11,585 30-1,0004,7451,0001,0001,0001,0001,0001,000500--- 10,745 31-1,0001,0001,0001,0003,3201,0005001,0001,000--- 9,320 32 11,0005001,0001,0001,0005001,0005003,320--- 8,820 33 13,3201,0001,0001,000500500500500500--- 7,820 34-----500*3,320*500*1,000*500*--- 5,820 35-5005005005005005005005001,000--- 4,000",
+          "truncated": false
+        }
+      },
+      "parameters": {
+        "url": "https://www.worldsurfleague.com/athletes/tour/mct"
+      }
+    }
+  ],
+  "aiResponse": "I couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where.\n\nFrom that page, the top of the table is:\n1. 42,780 points\n2. 40,015 points\n3. 39,930 points\n4. 39,450 points\n5. 35,410 points\n\nThe page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.",
+  "actual": "I couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where.\n\nFrom that page, the top of the table is:\n1. 42,780 points\n2. 40,015 points\n3. 39,930 points\n4. 39,450 points\n5. 35,410 points\n\nThe page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.",
+  "durationMs": 6532,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+  "visibleText": "Beach Marshal\nNew conversation\n\nWhat are the latest WSL rankings? Use the official source and tell me if you cannot verify them.\n\nChecking the official WSL rankings…\n\nI couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where.\n\nFrom that page, the top of the table is:\n\n42,780 points\n40,015 points\n39,930 points\n39,450 points\n35,410 points\n\nThe page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.\n\nI couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where. From that page, the top of the table is: 1. 42,780 points 2. 40,015 points 3. 39,930 points 4. 39,450 points 5. 35,410 points The page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P06.png",
+  "videoEndSeconds": 27.882,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:23:36.423Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:23:43.831Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "previousAttempts": [
+    {
+      "id": "BM-LIVE-P06",
+      "role": "Public",
+      "action": "Read",
+      "prompt": "What are the latest WSL rankings? Use the official source and tell me if you cannot verify them.",
+      "expected": "Verified official source and timestamp or honest unavailability; no fabricated live rankings.",
+      "expectedTools": [
+        "search_web"
+      ],
+      "referencePaths": [],
+      "web": true,
+      "startedAt": "2026-10-15T00:15:38.300Z",
+      "status": "FAIL",
+      "evaluation": "Pending evidence-based semantic review",
+      "backendBefore": [],
+      "backendAfter": [],
+      "steps": [
+        "Use normal application role/session.",
+        "Open Beach Marshal.",
+        "Start a new conversation.",
+        "Send the exact recorded prompt.",
+        "Wait for the real stream and capture answer, tools and UI."
+      ],
+      "sentAt": "2026-10-15T00:15:44.091Z",
+      "videoStartSeconds": 45.653,
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "status": 429,
+        "correlationId": "d624dd76-fbb5-46b4-8c97-86d7e47489dd",
+        "input": {
+          "threadId": "cc15c5f5-395c-4763-a74d-a921a50b80e2",
+          "runId": "e7b1b823-d475-4a11-82c9-26e7b349a981",
+          "state": {},
+          "messages": [
+            {
+              "id": "bb1ea6cf-112e-462a-9931-c2a3d3b5fe38",
+              "role": "user",
+              "content": "What are the latest WSL rankings? Use the official source and tell me if you cannot verify them."
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [],
+        "answer": "",
+        "finished": false,
+        "errors": [],
+        "runIds": [],
+        "eventTypes": []
+      },
+      "tools": [],
+      "aiResponse": "",
+      "actual": "No final text answer was captured.",
+      "durationMs": 762,
+      "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+      "visibleText": "Beach Marshal\nNew conversation\n\nWhat are the latest WSL rankings? Use the official source and tell me if you cannot verify them.\n\nYou're sending messages quickly. Try again in a minute.\n\nRetry",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P06.png",
+      "videoEndSeconds": 47.257,
+      "finding": "Assistant request did not complete successfully: HTTP 429, terminal finish false, errors []",
+      "proposal": null,
+      "network": [
+        {
+          "method": "POST",
+          "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+          "at": "2026-10-15T00:15:44.115Z"
+        }
+      ],
+      "finishedAt": "2026-10-15T00:15:45.695Z",
+      "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+      "reviewNote": "Initial public run encountered documented quota refusal. Retained as an automation-pacing observation; retried only after the window reset, without bypassing quotas."
+    }
+  ],
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Official page lookup returned incomplete ranking text without names. Points were grounded in the returned page and the limitation was disclosed, but complete current athlete rankings were not verified.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Public tools only",
+    "limitations": "Official page lookup returned incomplete ranking text without names. Points were grounded in the returned page and the limitation was disclosed, but complete current athlete rankings were not verified.",
+    "aiEvaluation": {
+      "accuracy": "NOT VERIFIED — limitations detailed above",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Not fully verified",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "NOT VERIFIED where source/fixture is missing",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No unsupported-success claim, but full factual verification unavailable",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Verified official source and timestamp or honest unavailability; no fabricated live rankings.",
+    "observed": "I couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where.\n\nFrom that page, the top of the table is:\n1. 42,780 points\n2. 40,015 points\n3. 39,930 points\n4. 39,450 points\n5. 35,410 points\n\nThe page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-P06-BM-LIVE-P06.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

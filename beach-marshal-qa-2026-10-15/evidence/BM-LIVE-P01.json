@@ -1,0 +1,172 @@
+{
+  "id": "BM-LIVE-P01",
+  "role": "Public",
+  "action": "Read",
+  "prompt": "What is Rule 2.15 in the 2026 WSL Rule Book? Give its title, page and the payment-decline rule.",
+  "expected": "Rule 2.15, Event Registration and Entry Procedure, p33; seven-day remedy after declined payment and subsequent removal/re-entry consequences.",
+  "expectedTools": [
+    "get_rule"
+  ],
+  "referencePaths": [],
+  "oracle": "rule2.15",
+  "startedAt": "2026-10-15T00:15:06.804Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:15:07.222Z",
+  "videoStartSeconds": 8.784,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "8cbd6629-d9e2-416e-b94b-d95bd836e691",
+    "input": {
+      "threadId": "1a4c54c2-9008-471f-80b4-6defc490ea6d",
+      "runId": "07de4bf7-2fa5-41b3-8c50-79c833c8b107",
+      "state": {},
+      "messages": [
+        {
+          "id": "27e7827f-2e6f-487b-afed-76bc00a05e96",
+          "role": "user",
+          "content": "What is Rule 2.15 in the 2026 WSL Rule Book? Give its title, page and the payment-decline rule."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01AGvvcFaw3DD2iABmiAnhrN",
+        "name": "get_rule",
+        "result": {
+          "status": "ok",
+          "rule": {
+            "number": "2.15",
+            "title": "Event Registration and Entry Procedure",
+            "page": 33,
+            "text": "(a) Registration for all QS/Challenger Series Events must be done online through MemberPro unless there are extenuating circumstances that do not allow for the Surfer to do so, in which case the Surfer should contact your WSL Regional Office immediately. Regional Office Contact information is available on the Competitor Services page of the WSL website.\n(b) All online QS/Challenger Event registrations must be made by 5:00 pm USA Pacific Coast time on the date the Event entries close (as reflected in MemberPro) to maintain seeding rights.\n(c) If an Entry Fee payment is declined, the Surfer will be sent an email notification and given seven (7) days to rectify the problem. After seven (7) days, if no payment is received, the Surfer will be removed from the entry and seed list for the QS/Challenger Series Event. If the Surfer subsequently re-enters the QS/Challenger Series Event, they will be placed at the bottom of the seed list as any other new entries would be at the time of successful entry to the QS/Challenger Series Event.\n(d) Where a Surfer enters multiple QS/Challenger Series Events whose Event Windows overlap, the Surfer will be entered into the higher rated QS/Challenger Series Event. If the QS/Challenger Series Events have the same rating, the Surfer will be contacted as soon as possible, and the Surfer will have seven (7) days to respond with a choice of which QS/Challenger Series Event to enter. Should the Surfer not respond within seven (7) days, only the entry for the QS/Challenger Series Event that the Surfer entered first as indicated by MemberPro will be confirmed.\n(e) Entry payments received after the closing date and prior to the Event Start Date will be treated on a first come first served basis until the QS/Challenger Series Event is full.\n(f) Event organizers cannot accept any entries and must refer the Surfers to MemberPro.\n(g) Beach entries must be made with the WSL Regional Representative at the Event Site and any Surfers who submit a beach entry will be placed on the Alternate list. For additional information, please refer to Rule 2.23."
+          }
+        },
+        "parameters": {
+          "number": "2.15"
+        }
+      }
+    ],
+    "answer": "Rule 2.15 is called \"Event Registration and Entry Procedure\" and is on page 33 of the 2026 WSL Rule Book. Here's what it says about declined payments in part (c):\n\n- If your Entry Fee payment is declined, you'll get an email and have seven days to fix it.\n- If no payment arrives within those seven days, you're taken off the entry and seed list for that QS or Challenger Series event.\n- If you enter again later, you go to the bottom of the seed list, the same as any other new entry made at that time.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "1a4c54c2-9008-471f-80b4-6defc490ea6d",
+        "runId": "07de4bf7-2fa5-41b3-8c50-79c833c8b107"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "1a4c54c2-9008-471f-80b4-6defc490ea6d",
+        "runId": "07de4bf7-2fa5-41b3-8c50-79c833c8b107"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01AGvvcFaw3DD2iABmiAnhrN",
+      "name": "get_rule",
+      "result": {
+        "status": "ok",
+        "rule": {
+          "number": "2.15",
+          "title": "Event Registration and Entry Procedure",
+          "page": 33,
+          "text": "(a) Registration for all QS/Challenger Series Events must be done online through MemberPro unless there are extenuating circumstances that do not allow for the Surfer to do so, in which case the Surfer should contact your WSL Regional Office immediately. Regional Office Contact information is available on the Competitor Services page of the WSL website.\n(b) All online QS/Challenger Event registrations must be made by 5:00 pm USA Pacific Coast time on the date the Event entries close (as reflected in MemberPro) to maintain seeding rights.\n(c) If an Entry Fee payment is declined, the Surfer will be sent an email notification and given seven (7) days to rectify the problem. After seven (7) days, if no payment is received, the Surfer will be removed from the entry and seed list for the QS/Challenger Series Event. If the Surfer subsequently re-enters the QS/Challenger Series Event, they will be placed at the bottom of the seed list as any other new entries would be at the time of successful entry to the QS/Challenger Series Event.\n(d) Where a Surfer enters multiple QS/Challenger Series Events whose Event Windows overlap, the Surfer will be entered into the higher rated QS/Challenger Series Event. If the QS/Challenger Series Events have the same rating, the Surfer will be contacted as soon as possible, and the Surfer will have seven (7) days to respond with a choice of which QS/Challenger Series Event to enter. Should the Surfer not respond within seven (7) days, only the entry for the QS/Challenger Series Event that the Surfer entered first as indicated by MemberPro will be confirmed.\n(e) Entry payments received after the closing date and prior to the Event Start Date will be treated on a first come first served basis until the QS/Challenger Series Event is full.\n(f) Event organizers cannot accept any entries and must refer the Surfers to MemberPro.\n(g) Beach entries must be made with the WSL Regional Representative at the Event Site and any Surfers who submit a beach entry will be placed on the Alternate list. For additional information, please refer to Rule 2.23."
+        }
+      },
+      "parameters": {
+        "number": "2.15"
+      }
+    }
+  ],
+  "aiResponse": "Rule 2.15 is called \"Event Registration and Entry Procedure\" and is on page 33 of the 2026 WSL Rule Book. Here's what it says about declined payments in part (c):\n\n- If your Entry Fee payment is declined, you'll get an email and have seven days to fix it.\n- If no payment arrives within those seven days, you're taken off the entry and seed list for that QS or Challenger Series event.\n- If you enter again later, you go to the bottom of the seed list, the same as any other new entry made at that time.",
+  "actual": "Rule 2.15 is called \"Event Registration and Entry Procedure\" and is on page 33 of the 2026 WSL Rule Book. Here's what it says about declined payments in part (c):\n\n- If your Entry Fee payment is declined, you'll get an email and have seven days to fix it.\n- If no payment arrives within those seven days, you're taken off the entry and seed list for that QS or Challenger Series event.\n- If you enter again later, you go to the bottom of the seed list, the same as any other new entry made at that time.",
+  "durationMs": 5406,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+  "visibleText": "Beach Marshal\nNew conversation\n\nWhat is Rule 2.15 in the 2026 WSL Rule Book? Give its title, page and the payment-decline rule.\n\nRule 2.15\n\nEvent Registration and Entry Procedure\n\nPage 33\n\n(a) Registration for all QS/Challenger Series Events must be done online through MemberPro unless there are extenuating circumstances that do not allow for the Surfer to do so, in which case the Surfer should contact your WSL Regional Office immediately. Regional Office Contact information is available on the Competitor Services page of the WSL website.\n(b) All online QS/Challenger Event registrations must be made by 5:00 pm USA Pacific Coast time on the date the Event entries close (as reflected in MemberPro) to maintain seeding rights.\n(c) If an Entry Fee payment is declined, the Surfer will be sent an email notification and given seven (7) days to rectify the problem. After seven (7) days, if no payment is received, the Surfer will be removed from the entry and seed list for the QS/Challenger Series Event. If the Surfer subsequently re-enters the QS/Challenger Series Event, they will be placed at the bottom of the seed list as any other new entries would be at the time of successful entry to the QS/Challenger Series Event.\n(d) Where a Surfer enters multiple QS/Challenger Series Events whose Event Windows overlap, the Surfer will be entered into the higher rated QS/Challenger Series Event. If the QS/Challenger Series Events have the same rating, the Surfer will be contacted as soon as possible, and the Surfer will have seven (7) days to respond with a choice of which QS/Challenger Series Event to enter. Should the Surfer not respond within seven (7) days, only the entry for the QS/Challenger Series Event that the Surfer entered first as indicated by MemberPro will be confirmed.\n(e) Entry payments received after the closing date and prior to the Event Start Date will be treated on a first come first served basis until the QS/Challenger Series Event is full.\n(f) Event organizers cannot accept any entries and must refer the Surfers to MemberPro.\n(g) Beach entries must be made with the WSL Regional Representative at the Event Site and any Surfers who submit a beach entry will be placed on the Alternate list. For additional information, please refer to Rule 2.23.\n\nRule 2.15 is called \"Event Registration and Entry Procedure\" and is on page 33 of the 2026 WSL Rule Book. Here's what it says about declined payments in part (c):\n\nIf your Entry Fee payment is declined, you'll get an email and have seven days to fix it.\nIf no payment arrives within those seven days, you're taken off the entry and seed list for that QS or Challenger Series event.\nIf you enter again later, you go to the bottom of the seed list, the same as any other new entry made at that time.\nRule 2.15 is called \"Event Registration and Entry Procedure\" and is on page 33 of the 2026 WSL Rule Book. Here's what it says about declined payments in part (c): - If your Entry Fee payment is declined, you'll get an email and have seven days to fix it. - If no payment arrives within those seven days, you're taken off the entry and seed list for that QS or Challenger Series event. - If you enter again later, you go to the bottom of the seed list, the same as any other new entry made at that time.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P01.png",
+  "videoEndSeconds": 15.194,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:15:07.350Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:15:13.632Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Rule title/page and seven-day declined-payment/re-entry facts match pinned Rule2.15. Correct get_rule lookup; no mutation.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Public tools only",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Rule 2.15, Event Registration and Entry Procedure, p33; seven-day remedy after declined payment and subsequent removal/re-entry consequences.",
+    "observed": "Rule 2.15 is called \"Event Registration and Entry Procedure\" and is on page 33 of the 2026 WSL Rule Book. Here's what it says about declined payments in part (c):\n\n- If your Entry Fee payment is declined, you'll get an email and have seven days to fix it.\n- If no payment arrives within those seven days, you're taken off the entry and seed list for that QS or Challenger Series event.\n- If you enter again later, you go to the bottom of the seed list, the same as any other new entry made at that time.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-P01-BM-LIVE-P01.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

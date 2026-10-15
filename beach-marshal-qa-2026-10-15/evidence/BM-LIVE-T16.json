@@ -1,0 +1,552 @@
+{
+  "id": "BM-LIVE-T16",
+  "role": "TourManager",
+  "action": "Read",
+  "prompt": "Without opening another page, summarize the last three audit-history changes for QA Main Flow 6a41a52a. Read its event history data.",
+  "expected": "Actual history changes are reported, or a lookup failure is disclosed. Navigation alone does not verify history facts.",
+  "expectedTools": [
+    "get_event_history"
+  ],
+  "referencePaths": [
+    "/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/history"
+  ],
+  "startedAt": "2026-10-15T00:24:41.789Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/history",
+      "status": 200,
+      "body": {
+        "entries": [
+          {
+            "id": "01a13c40-d905-7073-9d77-e12a32d8fc6c",
+            "at": "14 Oct 21:10 UTC",
+            "actor": "System · Scheduler",
+            "action": "Charge attempt",
+            "athlete": "Pay Tester"
+          },
+          {
+            "id": "01a13c40-d18e-7399-be1f-1175b85b206b",
+            "at": "14 Oct 21:10 UTC",
+            "actor": "T. Manager 101",
+            "action": "Charge attempt",
+            "athlete": "Pay Tester"
+          },
+          {
+            "id": "01a13c40-ca6b-761c-bd5f-0ce78e3d34c1",
+            "at": "14 Oct 21:10 UTC",
+            "actor": "T. Manager 101",
+            "action": "Status · Ready for entries → Closed for entries · by hand, replacing the scheduled time",
+            "athlete": null
+          },
+          {
+            "id": "01a13c3f-e9db-737f-a313-7878325dd38a",
+            "at": "14 Oct 21:09 UTC",
+            "actor": "T. Manager 101",
+            "action": "Status · Confirmed → Ready for entries · by hand, replacing the scheduled time",
+            "athlete": null
+          },
+          {
+            "id": "01a13c3f-e72c-7410-a361-4ab912452ff0",
+            "at": "14 Oct 21:09 UTC",
+            "actor": "T. Manager 101",
+            "action": "Status · Tentative → Confirmed",
+            "athlete": null
+          },
+          {
+            "id": "01a13c3f-e462-70aa-a156-273b0e1d55a3",
+            "at": "14 Oct 21:09 UTC",
+            "actor": "T. Manager 101",
+            "action": "Status · Draft → Tentative",
+            "athlete": null
+          },
+          {
+            "id": "01a13c3f-e1d8-7037-a219-12498b4d1917",
+            "at": "14 Oct 21:09 UTC",
+            "actor": "T. Manager 101",
+            "action": "Event created as Draft",
+            "athlete": null
+          }
+        ]
+      },
+      "at": "2026-10-15T00:24:42.093Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:24:42.253Z",
+  "videoStartSeconds": 86.305,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "84cc8c11-639d-4087-a91c-3c436efb5ac5",
+    "input": {
+      "threadId": "63cf5a83-9d3f-4446-b994-6ff684bbf622",
+      "runId": "5e0ee610-f274-4f49-b921-9047219af618",
+      "state": {},
+      "messages": [
+        {
+          "id": "817f310f-724f-4911-a9b5-7dd8f6952afb",
+          "role": "user",
+          "content": "Without opening another page, summarize the last three audit-history changes for QA Main Flow 6a41a52a. Read its event history data."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01UDhEwuGaiTTgQE1ob35VEF",
+        "name": "find_events",
+        "result": {
+          "status": "ok",
+          "events": [
+            {
+              "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "name": "QA Main Flow 6a41a52a",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 1
+            },
+            {
+              "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+              "name": "QA Main Flow 93ae6bbc",
+              "startDate": "2026-12-18",
+              "endDate": "2026-12-18",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.8
+            },
+            {
+              "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+              "name": "QA Main Flow 6e301a29",
+              "startDate": "2026-12-20",
+              "endDate": "2026-12-20",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.82
+            },
+            {
+              "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+              "name": "QA Main Flow b145bd93",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.79
+            },
+            {
+              "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+              "name": "QA Checklist 20261014081146624-d9f105 21",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "International Qualifying Series",
+              "division": "mens",
+              "score": 0.73
+            }
+          ],
+          "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+        },
+        "parameters": {
+          "text": "QA Main Flow 6a41a52a"
+        }
+      },
+      {
+        "id": "toolu_bdrk_01F7jnnevH5ovGsjdttax3Vq",
+        "name": "get_event_history",
+        "result": {
+          "status": "ok",
+          "history": [
+            {
+              "occurred_at": "2026-10-14T21:10:45.047617+00:00",
+              "actor": "",
+              "change_type": "charge_attempt",
+              "changes": [],
+              "reason": "succeeded",
+              "athlete_name": "Pay Tester",
+              "channel": null
+            },
+            {
+              "occurred_at": "2026-10-14T21:10:43.303110+00:00",
+              "actor": "T. Manager 101",
+              "change_type": "charge_attempt",
+              "changes": [],
+              "reason": "charge started",
+              "athlete_name": "Pay Tester",
+              "channel": null
+            },
+            {
+              "occurred_at": "2026-10-14T21:10:41.464864+00:00",
+              "actor": "T. Manager 101",
+              "change_type": "status_change",
+              "changes": [
+                {
+                  "field": "status",
+                  "before": "ready_for_entries",
+                  "after": "closed_for_entries"
+                },
+                {
+                  "field": "registration_closes_at",
+                  "before": "2026-10-22T21:00:00+00:00",
+                  "after": "2026-10-14T21:10:41.499942+00:00"
+                }
+              ],
+              "reason": null,
+              "athlete_name": null,
+              "channel": null
+            },
+            {
+              "occurred_at": "2026-10-14T21:09:43.994595+00:00",
+              "actor": "T. Manager 101",
+              "change_type": "status_change",
+              "changes": [
+                {
+                  "field": "status",
+                  "before": "confirmed",
+                  "after": "ready_for_entries"
+                },
+                {
+                  "field": "registration_opens_at",
+                  "before": "2026-10-14T04:00:00+00:00",
+                  "after": "2026-10-14T21:09:44.005141+00:00"
+                }
+              ],
+              "reason": null,
+              "athlete_name": null,
+              "channel": null
+            },
+            {
+              "occurred_at": "2026-10-14T21:09:43.314618+00:00",
+              "actor": "T. Manager 101",
+              "change_type": "status_change",
+              "changes": [
+                {
+                  "field": "status",
+                  "before": "tentative",
+                  "after": "confirmed"
+                }
+              ],
+              "reason": null,
+              "athlete_name": null,
+              "channel": null
+            },
+            {
+              "occurred_at": "2026-10-14T21:09:42.600538+00:00",
+              "actor": "T. Manager 101",
+              "change_type": "status_change",
+              "changes": [
+                {
+                  "field": "status",
+                  "before": "draft",
+                  "after": "tentative"
+                }
+              ],
+              "reason": null,
+              "athlete_name": null,
+              "channel": null
+            },
+            {
+              "occurred_at": "2026-10-14T21:09:41.838396+00:00",
+              "actor": "T. Manager 101",
+              "change_type": "event_created",
+              "changes": [],
+              "reason": null,
+              "athlete_name": null,
+              "channel": null
+            }
+          ],
+          "total": 7
+        },
+        "parameters": {
+          "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+        }
+      }
+    ],
+    "answer": "Here are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step.\n2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester.\n3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "63cf5a83-9d3f-4446-b994-6ff684bbf622",
+        "runId": "5e0ee610-f274-4f49-b921-9047219af618"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "63cf5a83-9d3f-4446-b994-6ff684bbf622",
+        "runId": "5e0ee610-f274-4f49-b921-9047219af618"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01UDhEwuGaiTTgQE1ob35VEF",
+      "name": "find_events",
+      "result": {
+        "status": "ok",
+        "events": [
+          {
+            "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "name": "QA Main Flow 6a41a52a",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 1
+          },
+          {
+            "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+            "name": "QA Main Flow 93ae6bbc",
+            "startDate": "2026-12-18",
+            "endDate": "2026-12-18",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.8
+          },
+          {
+            "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+            "name": "QA Main Flow 6e301a29",
+            "startDate": "2026-12-20",
+            "endDate": "2026-12-20",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.82
+          },
+          {
+            "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+            "name": "QA Main Flow b145bd93",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.79
+          },
+          {
+            "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+            "name": "QA Checklist 20261014081146624-d9f105 21",
+            "startDate": "2026-11-23",
+            "endDate": "2026-11-23",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "International Qualifying Series",
+            "division": "mens",
+            "score": 0.73
+          }
+        ],
+        "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+      },
+      "parameters": {
+        "text": "QA Main Flow 6a41a52a"
+      }
+    },
+    {
+      "id": "toolu_bdrk_01F7jnnevH5ovGsjdttax3Vq",
+      "name": "get_event_history",
+      "result": {
+        "status": "ok",
+        "history": [
+          {
+            "occurred_at": "2026-10-14T21:10:45.047617+00:00",
+            "actor": "",
+            "change_type": "charge_attempt",
+            "changes": [],
+            "reason": "succeeded",
+            "athlete_name": "Pay Tester",
+            "channel": null
+          },
+          {
+            "occurred_at": "2026-10-14T21:10:43.303110+00:00",
+            "actor": "T. Manager 101",
+            "change_type": "charge_attempt",
+            "changes": [],
+            "reason": "charge started",
+            "athlete_name": "Pay Tester",
+            "channel": null
+          },
+          {
+            "occurred_at": "2026-10-14T21:10:41.464864+00:00",
+            "actor": "T. Manager 101",
+            "change_type": "status_change",
+            "changes": [
+              {
+                "field": "status",
+                "before": "ready_for_entries",
+                "after": "closed_for_entries"
+              },
+              {
+                "field": "registration_closes_at",
+                "before": "2026-10-22T21:00:00+00:00",
+                "after": "2026-10-14T21:10:41.499942+00:00"
+              }
+            ],
+            "reason": null,
+            "athlete_name": null,
+            "channel": null
+          },
+          {
+            "occurred_at": "2026-10-14T21:09:43.994595+00:00",
+            "actor": "T. Manager 101",
+            "change_type": "status_change",
+            "changes": [
+              {
+                "field": "status",
+                "before": "confirmed",
+                "after": "ready_for_entries"
+              },
+              {
+                "field": "registration_opens_at",
+                "before": "2026-10-14T04:00:00+00:00",
+                "after": "2026-10-14T21:09:44.005141+00:00"
+              }
+            ],
+            "reason": null,
+            "athlete_name": null,
+            "channel": null
+          },
+          {
+            "occurred_at": "2026-10-14T21:09:43.314618+00:00",
+            "actor": "T. Manager 101",
+            "change_type": "status_change",
+            "changes": [
+              {
+                "field": "status",
+                "before": "tentative",
+                "after": "confirmed"
+              }
+            ],
+            "reason": null,
+            "athlete_name": null,
+            "channel": null
+          },
+          {
+            "occurred_at": "2026-10-14T21:09:42.600538+00:00",
+            "actor": "T. Manager 101",
+            "change_type": "status_change",
+            "changes": [
+              {
+                "field": "status",
+                "before": "draft",
+                "after": "tentative"
+              }
+            ],
+            "reason": null,
+            "athlete_name": null,
+            "channel": null
+          },
+          {
+            "occurred_at": "2026-10-14T21:09:41.838396+00:00",
+            "actor": "T. Manager 101",
+            "change_type": "event_created",
+            "changes": [],
+            "reason": null,
+            "athlete_name": null,
+            "channel": null
+          }
+        ],
+        "total": 7
+      },
+      "parameters": {
+        "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+      }
+    }
+  ],
+  "aiResponse": "Here are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step.\n2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester.\n3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+  "actual": "Here are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step.\n2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester.\n3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+  "durationMs": 7696,
+  "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWithout opening another page, summarize the last three audit-history changes for QA Main Flow 6a41a52a. Read its event history data.\n\nHere are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n12:10:45 am your time: A charge for Pay Tester went through. No user is recorded for this step.\n12:10:43 am your time: T. Manager 101 started that charge for Pay Tester.\n12:10:41 am your time: T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.\nHere are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo). 1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step. 2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester. 3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-T16.png",
+  "videoEndSeconds": 94.68,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:24:42.317Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:24:50.628Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Actual get_event_history returned the charge succeeded, charge started and close-for-entries changes. Latest-three narrative and Cairo conversions match captured source timestamps; this run did not trigger any of those historical actions.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Manager normal sign-in verified by session API",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "Actual returned QA event match inspected",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Actual history changes are reported, or a lookup failure is disclosed. Navigation alone does not verify history facts.",
+    "observed": "Here are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step.\n2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester.\n3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-T16-BM-LIVE-T16.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

@@ -1,0 +1,1321 @@
+{
+  "id": "BM-LIVE-W06",
+  "role": "TourManager",
+  "action": "Write proposal",
+  "prompt": "Prepare an event message proposal to Pay Tester in QA Main Flow 6a41a52a. Subject: QA Beach Marshal test. Body: Proposal inspection only, do not send. Do not execute it.",
+  "expected": "If the current target state supports it, show exactly one event.message card for the matching QA IDs with correct details. No domain write before confirmation; cancellation leaves state unchanged. If state is ineligible, explain it instead of pretending execution.",
+  "expectedTools": [
+    "propose_action"
+  ],
+  "referencePaths": [
+    "/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+    "/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries"
+  ],
+  "proposalKind": "event.message",
+  "cancel": true,
+  "startedAt": "2026-10-15T00:21:40.545Z",
+  "status": "BLOCKED",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+          "status": {
+            "code": "closed-for-entries",
+            "label": "Closed for entries",
+            "tone": "warning"
+          },
+          "statusOptions": [
+            {
+              "code": "ready-for-entries",
+              "label": "Ready for entries",
+              "destructive": false
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true
+            }
+          ],
+          "fields": {
+            "name": "QA Main Flow 6a41a52a",
+            "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+            "rating": "01a136e0-a604-7170-9191-e87921200f63",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+            "prizeMoney": {
+              "amount": 3000000,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "2026-10-14",
+            "registrationOpensTime": "17:09",
+            "registrationClosesDate": "2026-10-14",
+            "registrationClosesTime": "17:10",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 22500,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": false,
+          "version": 5
+        }
+      },
+      "at": "2026-10-15T00:21:40.852Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+      "status": 200,
+      "body": {
+        "stage": "seeding",
+        "field": 96,
+        "cutLine": "Field of 96 ends here. Alternates stay seeded in order and are never charged unless promoted.",
+        "summary": [
+          {
+            "count": 1,
+            "label": "ready to confirm",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "insurance needed",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "payments declined",
+            "tone": "error"
+          },
+          {
+            "count": 0,
+            "label": "wildcard",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "alternates · not charged",
+            "tone": "muted"
+          }
+        ],
+        "primaryAction": null,
+        "publish": null,
+        "filters": [
+          {
+            "code": "entry",
+            "label": "Entry status",
+            "options": [
+              {
+                "value": "confirmed",
+                "label": "Confirmed"
+              }
+            ]
+          },
+          {
+            "code": "region",
+            "label": "All regions",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "N. AMERICA"
+              }
+            ]
+          },
+          {
+            "code": "payment",
+            "label": "Payment",
+            "options": [
+              {
+                "value": "collected",
+                "label": "Collected"
+              }
+            ]
+          },
+          {
+            "code": "insurance",
+            "label": "Insurance",
+            "options": [
+              {
+                "value": "verified",
+                "label": "Verified"
+              }
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "id": "01a13c40-3648-72cb-b13b-396818758d87",
+            "group": "field",
+            "athlete": {
+              "initials": "PT",
+              "name": "Pay Tester",
+              "country": "United States"
+            },
+            "ranking": "N. AMERICA",
+            "region": "north_america",
+            "highlight": null,
+            "insurance": {
+              "state": "ok",
+              "label": "Insurance: verified",
+              "code": "verified"
+            },
+            "payment": {
+              "code": "collected",
+              "label": "Collected",
+              "tone": "neutral"
+            },
+            "entry": {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "tone": "neutral"
+            },
+            "actions": [
+              {
+                "code": "message",
+                "label": "Send message",
+                "destructive": false
+              },
+              {
+                "code": "confirm",
+                "label": "Confirm entry",
+                "destructive": false
+              },
+              {
+                "code": "withdraw",
+                "label": "Withdraw entry",
+                "destructive": true
+              }
+            ],
+            "movable": true,
+            "pinned": false,
+            "hasHistory": true
+          }
+        ],
+        "version": 1
+      },
+      "at": "2026-10-15T00:21:41.132Z"
+    }
+  ],
+  "backendAfter": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+          "status": {
+            "code": "closed-for-entries",
+            "label": "Closed for entries",
+            "tone": "warning"
+          },
+          "statusOptions": [
+            {
+              "code": "ready-for-entries",
+              "label": "Ready for entries",
+              "destructive": false
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true
+            }
+          ],
+          "fields": {
+            "name": "QA Main Flow 6a41a52a",
+            "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+            "rating": "01a136e0-a604-7170-9191-e87921200f63",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+            "prizeMoney": {
+              "amount": 3000000,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "2026-10-14",
+            "registrationOpensTime": "17:09",
+            "registrationClosesDate": "2026-10-14",
+            "registrationClosesTime": "17:10",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 22500,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": false,
+          "version": 5
+        }
+      },
+      "at": "2026-10-15T00:21:52.042Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+      "status": 200,
+      "body": {
+        "stage": "seeding",
+        "field": 96,
+        "cutLine": "Field of 96 ends here. Alternates stay seeded in order and are never charged unless promoted.",
+        "summary": [
+          {
+            "count": 1,
+            "label": "ready to confirm",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "insurance needed",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "payments declined",
+            "tone": "error"
+          },
+          {
+            "count": 0,
+            "label": "wildcard",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "alternates · not charged",
+            "tone": "muted"
+          }
+        ],
+        "primaryAction": null,
+        "publish": null,
+        "filters": [
+          {
+            "code": "entry",
+            "label": "Entry status",
+            "options": [
+              {
+                "value": "confirmed",
+                "label": "Confirmed"
+              }
+            ]
+          },
+          {
+            "code": "region",
+            "label": "All regions",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "N. AMERICA"
+              }
+            ]
+          },
+          {
+            "code": "payment",
+            "label": "Payment",
+            "options": [
+              {
+                "value": "collected",
+                "label": "Collected"
+              }
+            ]
+          },
+          {
+            "code": "insurance",
+            "label": "Insurance",
+            "options": [
+              {
+                "value": "verified",
+                "label": "Verified"
+              }
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "id": "01a13c40-3648-72cb-b13b-396818758d87",
+            "group": "field",
+            "athlete": {
+              "initials": "PT",
+              "name": "Pay Tester",
+              "country": "United States"
+            },
+            "ranking": "N. AMERICA",
+            "region": "north_america",
+            "highlight": null,
+            "insurance": {
+              "state": "ok",
+              "label": "Insurance: verified",
+              "code": "verified"
+            },
+            "payment": {
+              "code": "collected",
+              "label": "Collected",
+              "tone": "neutral"
+            },
+            "entry": {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "tone": "neutral"
+            },
+            "actions": [
+              {
+                "code": "message",
+                "label": "Send message",
+                "destructive": false
+              },
+              {
+                "code": "confirm",
+                "label": "Confirm entry",
+                "destructive": false
+              },
+              {
+                "code": "withdraw",
+                "label": "Withdraw entry",
+                "destructive": true
+              }
+            ],
+            "movable": true,
+            "pinned": false,
+            "hasHistory": true
+          }
+        ],
+        "version": 1
+      },
+      "at": "2026-10-15T00:21:52.321Z"
+    }
+  ],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI.",
+    "Inspect proposal only; never click the mutation confirmation.",
+    "Read unchanged backend state before confirmation and after Cancel where a card is available."
+  ],
+  "sentAt": "2026-10-15T00:21:41.220Z",
+  "videoStartSeconds": 402.782,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "18405ea9-cd08-40b0-a159-d078476e2411",
+    "input": {
+      "threadId": "ca5a1461-ebb8-4263-8360-396055732452",
+      "runId": "41874fdf-20cf-41fa-921d-d54318225d9a",
+      "state": {},
+      "messages": [
+        {
+          "id": "fff0b837-1236-4792-83a8-6e90c000f8fb",
+          "role": "user",
+          "content": "Prepare an event message proposal to Pay Tester in QA Main Flow 6a41a52a. Subject: QA Beach Marshal test. Body: Proposal inspection only, do not send. Do not execute it."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01Dc3U5se86tf6QuuhmYjxnL",
+        "name": "find_events",
+        "result": {
+          "status": "ok",
+          "events": [
+            {
+              "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "name": "QA Main Flow 6a41a52a",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 1
+            },
+            {
+              "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+              "name": "QA Main Flow 93ae6bbc",
+              "startDate": "2026-12-18",
+              "endDate": "2026-12-18",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.8
+            },
+            {
+              "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+              "name": "QA Main Flow 6e301a29",
+              "startDate": "2026-12-20",
+              "endDate": "2026-12-20",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.82
+            },
+            {
+              "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+              "name": "QA Main Flow b145bd93",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.79
+            },
+            {
+              "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+              "name": "QA Checklist 20261014081146624-d9f105 21",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "International Qualifying Series",
+              "division": "mens",
+              "score": 0.73
+            }
+          ],
+          "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+        },
+        "parameters": {
+          "text": "QA Main Flow 6a41a52a"
+        }
+      },
+      {
+        "id": "toolu_bdrk_01NeyiQ2Yw9ozPj8zckNE7yj",
+        "name": "list_event_entries",
+        "result": {
+          "status": "unavailable"
+        },
+        "parameters": {
+          "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "athlete": "Pay Tester"
+        }
+      },
+      {
+        "id": "toolu_bdrk_01VoYrKcfKKyrFD8uALfkM3V",
+        "name": "list_event_entries",
+        "result": {
+          "status": "unavailable"
+        },
+        "parameters": {
+          "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "athlete": "Pay Tester"
+        }
+      }
+    ],
+    "answer": "I couldn't draft the message to Pay Tester. The seed list for QA Main Flow 6a41a52a (December 19, 2026, 1st Street Jetty, Virginia Beach) wouldn't load. I tried twice, and I need it to find Pay Tester's entry before I can set up the message.\n\nNothing has been created or sent. Ask me again in a bit and I'll prepare the proposal with your subject (\"QA Beach Marshal test\") and body (\"Proposal inspection only, do not send.\") so you can review it on the confirmation card. It only goes out if you click to confirm it.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "ca5a1461-ebb8-4263-8360-396055732452",
+        "runId": "41874fdf-20cf-41fa-921d-d54318225d9a"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "ca5a1461-ebb8-4263-8360-396055732452",
+        "runId": "41874fdf-20cf-41fa-921d-d54318225d9a"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01Dc3U5se86tf6QuuhmYjxnL",
+      "name": "find_events",
+      "result": {
+        "status": "ok",
+        "events": [
+          {
+            "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "name": "QA Main Flow 6a41a52a",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 1
+          },
+          {
+            "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+            "name": "QA Main Flow 93ae6bbc",
+            "startDate": "2026-12-18",
+            "endDate": "2026-12-18",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.8
+          },
+          {
+            "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+            "name": "QA Main Flow 6e301a29",
+            "startDate": "2026-12-20",
+            "endDate": "2026-12-20",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.82
+          },
+          {
+            "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+            "name": "QA Main Flow b145bd93",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.79
+          },
+          {
+            "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+            "name": "QA Checklist 20261014081146624-d9f105 21",
+            "startDate": "2026-11-23",
+            "endDate": "2026-11-23",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "International Qualifying Series",
+            "division": "mens",
+            "score": 0.73
+          }
+        ],
+        "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+      },
+      "parameters": {
+        "text": "QA Main Flow 6a41a52a"
+      }
+    },
+    {
+      "id": "toolu_bdrk_01NeyiQ2Yw9ozPj8zckNE7yj",
+      "name": "list_event_entries",
+      "result": {
+        "status": "unavailable"
+      },
+      "parameters": {
+        "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "athlete": "Pay Tester"
+      }
+    },
+    {
+      "id": "toolu_bdrk_01VoYrKcfKKyrFD8uALfkM3V",
+      "name": "list_event_entries",
+      "result": {
+        "status": "unavailable"
+      },
+      "parameters": {
+        "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "athlete": "Pay Tester"
+      }
+    }
+  ],
+  "aiResponse": "I couldn't draft the message to Pay Tester. The seed list for QA Main Flow 6a41a52a (December 19, 2026, 1st Street Jetty, Virginia Beach) wouldn't load. I tried twice, and I need it to find Pay Tester's entry before I can set up the message.\n\nNothing has been created or sent. Ask me again in a bit and I'll prepare the proposal with your subject (\"QA Beach Marshal test\") and body (\"Proposal inspection only, do not send.\") so you can review it on the confirmation card. It only goes out if you click to confirm it.",
+  "actual": "I couldn't draft the message to Pay Tester. The seed list for QA Main Flow 6a41a52a (December 19, 2026, 1st Street Jetty, Virginia Beach) wouldn't load. I tried twice, and I need it to find Pay Tester's entry before I can set up the message.\n\nNothing has been created or sent. Ask me again in a bit and I'll prepare the proposal with your subject (\"QA Beach Marshal test\") and body (\"Proposal inspection only, do not send.\") so you can review it on the confirmation card. It only goes out if you click to confirm it.",
+  "durationMs": 9146,
+  "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e?tab=history",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nPrepare an event message proposal to Pay Tester in QA Main Flow 6a41a52a. Subject: QA Beach Marshal test. Body: Proposal inspection only, do not send. Do not execute it.\n\nI couldn't draft the message to Pay Tester. The seed list for QA Main Flow 6a41a52a (December 19, 2026, 1st Street Jetty, Virginia Beach) wouldn't load. I tried twice, and I need it to find Pay Tester's entry before I can set up the message.\n\nNothing has been created or sent. Ask me again in a bit and I'll prepare the proposal with your subject (\"QA Beach Marshal test\") and body (\"Proposal inspection only, do not send.\") so you can review it on the confirmation card. It only goes out if you click to confirm it.\n\nI couldn't draft the message to Pay Tester. The seed list for QA Main Flow 6a41a52a (December 19, 2026, 1st Street Jetty, Virginia Beach) wouldn't load. I tried twice, and I need it to find Pay Tester's entry before I can set up the message. Nothing has been created or sent. Ask me again in a bit and I'll prepare the proposal with your subject (\"QA Beach Marshal test\") and body (\"Proposal inspection only, do not send.\") so you can review it on the confirmation card. It only goes out if you click to confirm it.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-W06.png",
+  "videoEndSeconds": 412.6,
+  "proposal": null,
+  "beforeConfirmationUnchanged": true,
+  "cancelClicked": false,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:21:41.267Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:21:52.326Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "The assistant could not resolve the QA entry because its roster tool returned unavailable. No proposal/card or confirmation/cancellation execution could be tested. Before/after event and roster state stayed unchanged. The existing target is confirmed/collected, not an alternate or declined-payment fixture.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Manager normal sign-in verified by session API",
+    "limitations": "The assistant could not resolve the QA entry because its roster tool returned unavailable. No proposal/card or confirmation/cancellation execution could be tested. Before/after event and roster state stayed unchanged. The existing target is confirmed/collected, not an alternate or declined-payment fixture.",
+    "aiEvaluation": {
+      "accuracy": "Requested facts unavailable; honesty of fallback checked",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Incomplete requested data; see blocked/failed integration result",
+      "identity": "Actual returned QA event match inspected",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Tool reports unavailable; requested source data not delivered",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "Honest fallback; integration failure remains failed/blocked"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI.",
+      "Inspect proposal only; never click the mutation confirmation.",
+      "Read unchanged backend state before confirmation and after Cancel where a card is available."
+    ],
+    "whatWentWrong": null,
+    "expected": "If the current target state supports it, show exactly one event.message card for the matching QA IDs with correct details. No domain write before confirmation; cancellation leaves state unchanged. If state is ineligible, explain it instead of pretending execution.",
+    "observed": "I couldn't draft the message to Pay Tester. The seed list for QA Main Flow 6a41a52a (December 19, 2026, 1st Street Jetty, Virginia Beach) wouldn't load. I tried twice, and I need it to find Pay Tester's entry before I can set up the message.\n\nNothing has been created or sent. Ask me again in a bit and I'll prepare the proposal with your subject (\"QA Beach Marshal test\") and body (\"Proposal inspection only, do not send.\") so you can review it on the confirmation card. It only goes out if you click to confirm it.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "additionalExamples": [
+    {
+      "id": "BM-LIVE-W06",
+      "example": 2,
+      "role": "TourManager",
+      "prompt": "Prepare an event message proposal to Pay Tester in QA Main Flow 6a41a52a. Subject: QA Beach Marshal test. Body: Proposal inspection only, do not send. Do not execute it.",
+      "expected": "If the current target state supports it, show exactly one event.message card for the matching QA IDs with correct details. No domain write before confirmation; cancellation leaves state unchanged. If state is ineligible, explain it instead of pretending execution.",
+      "startedAt": "2026-10-15T18:38:33.879Z",
+      "backendBefore": [
+        {
+          "method": "GET",
+          "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "status": 200,
+          "body": {
+            "event": {
+              "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+              "status": {
+                "code": "archived",
+                "label": "Archived",
+                "tone": "muted"
+              },
+              "statusOptions": [
+                {
+                  "code": "draft",
+                  "label": "Draft",
+                  "destructive": false
+                }
+              ],
+              "fields": {
+                "name": "QA Main Flow 6a41a52a",
+                "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+                "rating": "01a136e0-a604-7170-9191-e87921200f63",
+                "regions": [
+                  "north_america"
+                ],
+                "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+                "startDate": "2026-12-19",
+                "endDate": "2026-12-19",
+                "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+                "prizeMoney": {
+                  "amount": 3000000,
+                  "currency": "USD"
+                },
+                "registrationOpensDate": "2026-10-14",
+                "registrationOpensTime": "17:09",
+                "registrationClosesDate": "2026-10-14",
+                "registrationClosesTime": "17:10",
+                "currency": "USD",
+                "entryFee": {
+                  "amount": 22500,
+                  "currency": "USD"
+                }
+              },
+              "readOnly": true,
+              "feeFromGrid": false,
+              "version": 6
+            }
+          },
+          "at": "2026-10-15T18:38:34.185Z"
+        },
+        {
+          "method": "GET",
+          "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+          "status": 200,
+          "body": {
+            "stage": "waitlist",
+            "field": 96,
+            "cutLine": "Field of 96 ends here. Nobody is waiting behind it.",
+            "openSeats": [],
+            "summary": [
+              {
+                "count": 1,
+                "label": "ready to confirm",
+                "tone": "default"
+              },
+              {
+                "count": 0,
+                "label": "insurance needed",
+                "tone": "default"
+              },
+              {
+                "count": 0,
+                "label": "payments declined",
+                "tone": "error"
+              },
+              {
+                "count": 0,
+                "label": "wildcard",
+                "tone": "default"
+              },
+              {
+                "count": 0,
+                "label": "alternates · not charged",
+                "tone": "muted"
+              }
+            ],
+            "primaryAction": null,
+            "publish": null,
+            "filters": [
+              {
+                "code": "entry",
+                "label": "Entry status",
+                "options": [
+                  {
+                    "value": "confirmed",
+                    "label": "Confirmed"
+                  }
+                ]
+              },
+              {
+                "code": "region",
+                "label": "All regions",
+                "options": [
+                  {
+                    "value": "north_america",
+                    "label": "N. AMERICA"
+                  }
+                ]
+              },
+              {
+                "code": "payment",
+                "label": "Payment",
+                "options": [
+                  {
+                    "value": "collected",
+                    "label": "Collected"
+                  }
+                ]
+              },
+              {
+                "code": "insurance",
+                "label": "Insurance",
+                "options": [
+                  {
+                    "value": "verified",
+                    "label": "Verified"
+                  }
+                ]
+              }
+            ],
+            "entries": [
+              {
+                "id": "01a13c40-3648-72cb-b13b-396818758d87",
+                "group": "field",
+                "athlete": {
+                  "initials": "PT",
+                  "name": "Pay Tester",
+                  "country": "United States"
+                },
+                "ranking": "N. AMERICA",
+                "region": "north_america",
+                "highlight": null,
+                "insurance": {
+                  "state": "ok",
+                  "label": "Insurance: verified",
+                  "code": "verified"
+                },
+                "payment": {
+                  "code": "collected",
+                  "label": "Collected",
+                  "tone": "neutral"
+                },
+                "entry": {
+                  "code": "confirmed",
+                  "label": "Confirmed",
+                  "tone": "neutral"
+                },
+                "actions": [
+                  {
+                    "code": "message",
+                    "label": "Send message",
+                    "destructive": false
+                  }
+                ],
+                "movable": false,
+                "pinned": false,
+                "hasHistory": true,
+                "seedRank": null,
+                "alternatePosition": null,
+                "moveUpSeat": null,
+                "movedUpFrom": null
+              }
+            ],
+            "version": 1
+          },
+          "at": "2026-10-15T18:38:34.465Z"
+        }
+      ],
+      "status": "BLOCKED",
+      "videoPath": "artifacts/beach-marshal-live-2026-10-15/blocked-recording-TourManager-1792089447105/tab-1.webm",
+      "videoStartSeconds": 64.76,
+      "sentAt": "2026-10-15T18:38:37.617Z",
+      "api": {
+        "status": 200,
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "input": {
+          "threadId": "af1ede85-3764-4746-a5b0-406888b92885",
+          "runId": "fed40038-82fa-4a46-b188-95b1258107f2",
+          "state": {},
+          "messages": [
+            {
+              "id": "265de187-e8cd-4be9-a28a-b05a16c17580",
+              "role": "user",
+              "content": "Prepare an event message proposal to Pay Tester in QA Main Flow 6a41a52a. Subject: QA Beach Marshal test. Body: Proposal inspection only, do not send. Do not execute it."
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [
+          {
+            "id": "toolu_bdrk_01WRgYRq6Fh5rV8UM487FjAm",
+            "name": "find_events",
+            "result": {
+              "status": "ok",
+              "events": [
+                {
+                  "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                  "name": "QA Main Flow 6a41a52a",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 1
+                },
+                {
+                  "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+                  "name": "QA Main Flow 93ae6bbc",
+                  "startDate": "2026-12-18",
+                  "endDate": "2026-12-18",
+                  "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 0.8
+                },
+                {
+                  "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+                  "name": "QA Main Flow 6e301a29",
+                  "startDate": "2026-12-20",
+                  "endDate": "2026-12-20",
+                  "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 0.82
+                },
+                {
+                  "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+                  "name": "QA Main Flow b145bd93",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 0.79
+                },
+                {
+                  "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+                  "name": "QA Checklist 20261014081146624-d9f105 21",
+                  "startDate": "2026-11-23",
+                  "endDate": "2026-11-23",
+                  "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                  "tour": "International Qualifying Series",
+                  "division": "mens",
+                  "score": 0.73
+                }
+              ],
+              "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+            },
+            "parameters": {
+              "text": "QA Main Flow 6a41a52a"
+            }
+          },
+          {
+            "id": "toolu_bdrk_011WcZt9kibWVwQC9NjcYV2u",
+            "name": "list_event_entries",
+            "result": {
+              "status": "unavailable"
+            },
+            "parameters": {
+              "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "athlete": "Pay Tester"
+            }
+          }
+        ],
+        "answer": "I can't look up the seed list for QA Main Flow 6a41a52a right now, so I can't get Pay Tester's entry. I need that entry to set up the message, so I haven't made a proposal and nothing has been sent. If you ask again in a bit, I'll check the seed list and prepare the proposal with your subject and body. You'd get a confirmation card that you can just leave alone.",
+        "finished": true,
+        "errors": [],
+        "runIds": [
+          {
+            "type": "RUN_STARTED",
+            "threadId": "af1ede85-3764-4746-a5b0-406888b92885",
+            "runId": "fed40038-82fa-4a46-b188-95b1258107f2"
+          },
+          {
+            "type": "RUN_FINISHED",
+            "threadId": "af1ede85-3764-4746-a5b0-406888b92885",
+            "runId": "fed40038-82fa-4a46-b188-95b1258107f2"
+          }
+        ],
+        "eventTypes": [
+          "RUN_STARTED",
+          "STEP_STARTED",
+          "STEP_FINISHED",
+          "TOOL_CALL_START",
+          "TOOL_CALL_ARGS",
+          "TOOL_CALL_END",
+          "STATE_SNAPSHOT",
+          "TOOL_CALL_RESULT",
+          "REASONING_START",
+          "REASONING_MESSAGE_START",
+          "REASONING_MESSAGE_CONTENT",
+          "REASONING_MESSAGE_END",
+          "REASONING_END",
+          "TEXT_MESSAGE_START",
+          "TEXT_MESSAGE_CONTENT",
+          "TEXT_MESSAGE_END",
+          "MESSAGES_SNAPSHOT",
+          "RUN_FINISHED"
+        ]
+      },
+      "tools": [
+        {
+          "id": "toolu_bdrk_01WRgYRq6Fh5rV8UM487FjAm",
+          "name": "find_events",
+          "result": {
+            "status": "ok",
+            "events": [
+              {
+                "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "name": "QA Main Flow 6a41a52a",
+                "startDate": "2026-12-19",
+                "endDate": "2026-12-19",
+                "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 1
+              },
+              {
+                "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+                "name": "QA Main Flow 93ae6bbc",
+                "startDate": "2026-12-18",
+                "endDate": "2026-12-18",
+                "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 0.8
+              },
+              {
+                "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+                "name": "QA Main Flow 6e301a29",
+                "startDate": "2026-12-20",
+                "endDate": "2026-12-20",
+                "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 0.82
+              },
+              {
+                "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+                "name": "QA Main Flow b145bd93",
+                "startDate": "2026-12-19",
+                "endDate": "2026-12-19",
+                "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 0.79
+              },
+              {
+                "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+                "name": "QA Checklist 20261014081146624-d9f105 21",
+                "startDate": "2026-11-23",
+                "endDate": "2026-11-23",
+                "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                "tour": "International Qualifying Series",
+                "division": "mens",
+                "score": 0.73
+              }
+            ],
+            "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+          },
+          "parameters": {
+            "text": "QA Main Flow 6a41a52a"
+          }
+        },
+        {
+          "id": "toolu_bdrk_011WcZt9kibWVwQC9NjcYV2u",
+          "name": "list_event_entries",
+          "result": {
+            "status": "unavailable"
+          },
+          "parameters": {
+            "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "athlete": "Pay Tester"
+          }
+        }
+      ],
+      "actual": "I can't look up the seed list for QA Main Flow 6a41a52a right now, so I can't get Pay Tester's entry. I need that entry to set up the message, so I haven't made a proposal and nothing has been sent. If you ask again in a bit, I'll check the seed list and prepare the proposal with your subject and body. You'd get a confirmation card that you can just leave alone.",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-W06-blocked-rerun.png",
+      "videoEndSeconds": 79.758,
+      "visibleText": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nTM\nTour Manager 101\nTour Manager · All regions\nEvents\nSeason · 2026-27 · current\n+ New event\nFilter by\nRegion\nCountry\nTour\nRating\nMen\nWomen\nClear\n44 tours · 253 events\nStarred\nAll events\n253\nReady for entries\n21\nCompleted\n88\nArchived\n1\nSTARRED\n\tEVENT\n\tTOUR\n\tRATING\n\tSTART – END\n↑\n\tREGISTERED\n\tCOUNTRY\n\tSTATUS\n\tACTION\n\n\t\nLa Marginal Surfing Pro\nLa Marginal, Puerto Rico\n\tQualifying Series (QS) · Men\t4,000\tWed 14 – Sun 18 Oct 2026\t\n97/96\n\tPuerto Rico\t\nEvent started\n\t\n\n\n\t\nLa Marginal Surfing Pro\nLa Marginal, Puerto Rico\n\tQualifying Series (QS) · Women\t4,000\tWed 14 – Sun 18 Oct 2026\t\n49/48\n\tPuerto Rico\t\nEvent started\n\t\n\n\n\t\nEdommo Pro Razo\nPraia de Razo, Galicia\n\tQualifying Series (QS) · Men\t2,000\tThu 15 – Sun 18 Oct 2026\t\n96/96\n\tSpain\t\nEvent started\n\t\n\n\n\t\nEdommo Pro Razo\nPraia de Razo, Galicia\n\tQualifying Series (QS) · Women\t2,000\tThu 15 – Sun 18 Oct 2026\t\n49/48\n\tSpain\t\nEvent started\n\t\n\n\n\t\nMEO Rip Curl Pro Portugal\nSupertubos, Portugal\n\tChampionship Tour (CT) · Men\t—\tFri 16 – Sun 25 Oct 2026\t\n35/36\n\tPortugal\t\nClosed for entries\n\t\n\n\n\t\nMEO Rip Curl Pro Portugal\nSupertubos, Portugal\n\tChampionship Tour (CT) · Women\t—\tFri 16 – Sun 25 Oct 2026\t\n25/24\n\tPortugal\t\nClosed for entries\n\t\n\n\n\t\nSiargao International Surfing Cup\nCloud 9, Siargao\n\tInternational Qualifying Series (QS) · Men\t6,000\tFri 16 – Sun 25 Oct 2026\t\n145/144\n\tPhilippines\t\nEvent started\n\t\n\n\n\t\nSiargao International Surfing Cup\nCloud 9, Siargao\n\tInternational Qualifying Series (QS) · Women\t6,000\tFri 16 – Sun 25 Oct 2026\t\n81/80\n\tPhilippines\t\nEvent started\n\t\n\n\n\t\nSunset Pro\nSunset Beach, Oahu\n\tQualifying Series (QS) · Men\t2,000\tMon 26 Oct – Mon 2 Nov 2026\t\n97/96\n\tHawaii\t\nClosed for entries\n\t\n\n\n\t\nSunset Pro\nSunset Beach, Oahu\n\tQualifying Series (QS) · Women\t2,000\tMon 26 Oct – Mon 2 Nov 2026\t\n48/48\n\tHawaii\t\nClosed for entries\n\t\n\n\n\t\nPhilippines Pro\nCloud 9, Siargao\n\tChampionship Tour (CT) · Men\t—\tSat 31 Oct – Tue 10 Nov 2026\t\n37/36\n\tPhilippines\t\nClosed for entries\n\t\n\n\n\t\nPhilippines Pro\nCloud 9, Siargao\n\tChampionship Tour (CT) · Women\t—\tSat 31 Oct – Tue 10 Nov 2026\t\n25/24\n\tPhilippines\t\nClosed for entries\n\t\n\n\n\t\nOrange County Classic\nHuntington Beach Pier, CA\n\tQualifying Series (QS) · Men\t2,000\tMon 2 – Thu 5 Nov 2026\t\n97/96\n\tUnited States\t\nClosed for entries\n\t\n\n\n\t\nOrange County Classic\nHuntington Beach Pier, CA\n\tQualifying Series (QS) · Women\t2,000\tMon 2 – Thu 5 Nov 2026\t\n49/48\n\tUnited States\t\nClosed for entries\n\t\n\n\n\t\nHTA Haleiwa Pro\nHaleiwa Ali'i Beach Park, Oahu\n\tQualifying Series (QS) · Men\t2,000\tThu 5 – Sat 14 Nov 2026\t\n97/96\n\tHawaii\t\nClosed for entries\n\t\n\n\n\t\nHTA Haleiwa Pro\nHaleiwa Ali'i Beach Park, Oahu\n\tQualifying Series (QS) · Women\t2,000\tThu 5 – Sat 14 Nov 2026\t\n49/48\n\tHawaii\t\nClosed for entries\n\t\n\n\n\t\nMiyazaki Pro\nKisakihama, Miyazaki\n\tQualifying Series (QS) · Men\t2,000\tFri 6 – Sun 8 Nov 2026\t\n97/96\n\tJapan\t\nClosed for entries\n\t\n\n\n\t\nMiyazaki Pro\nKisakihama, Miyazaki\n\tQualifying Series (QS) · Women\t2,000\tFri 6 – Sun 8 Nov 2026\t\n46/48\n\tJapan\t\nClosed for entries\n\t\n\n\n\t\nCosta da Caparica Pro\nCosta da Caparica, Portugal\n\tQualifying Series (QS) · Men\t1,000\tSat 7 – Tue 10 Nov 2026\t\n97/96\n\tPortugal\t\nClosed for entries\n\t\n\n\n\t\nCosta da Caparica Pro\nCosta da Caparica, Portugal\n\tQualifying Series (QS) · Women\t1,000\tSat 7 – Tue 10 Nov 2026\t\n48/48\n\tPortugal\t\nClosed for entries\n\t\n\n\n\t\nTaiwan Open of Surfing\nJinzun Harbor, Taitung\n\tInternational Qualifying Series (QS) · Men\t6,000\tSat 14 – Sun 22 Nov 2026\t\n83/144\n\tTaiwan\t\nClosed for entries\n\t\n\n\n\t\nTaiwan Open of Surfing\nJinzun Harbor, Taitung\n\tInternational Qualifying Series (QS) · Women\t6,000\tSat 14 – Sun 22 Nov 2026\t\n64/80\n\tTaiwan\t\nClosed for entries\n\t\n\n\n\t\nCentral Coast Open\nPismo Beach Pier, CA\n\tQualifying Series (QS) · Men\t2,000\tSun 22 – Thu 26 Nov 2026\t\n63/96\n\tUnited States\t\nClosed for entries\n\t\n\n\n\t\nCentral Coast Open\nPismo Beach Pier, CA\n\tQualifying Series (QS) · Women\t2,000\tSun 22 – Thu 26 Nov 2026\t\n39/48\n\tUnited States\t\nReady for entries\n\t\n\n\n\t\nQA Checklist 20261014081146624-d9f105 21\n1st Street Jetty, VA\n\tInternational Qualifying Series (QS) · Men\t—\tMon 23 – Mon 23 Nov 2026\t\n0/48\n\tUnited States\t\nCancelled\n\t\n\n\n\t\nNorth Shore Open\nHaleiwa Ali'i Beach Park, Oahu\n\tQualifying Series (QS) · Men\t2,000\tFri 27 Nov – Wed 2 Dec 2026\t\n78/96\n\tHawaii\t\nReady for entries\n\t\n\n\n\t\nNorth Shore Open\nHaleiwa Ali'i Beach Park, Oahu\n\tQualifying Series (QS) · Women\t2,000\tFri 27 Nov – Wed 2 Dec 2026\t\n43/48\n\tHawaii\t\nReady for entries\n\t\n\n\n\t\nQA Checklist 20261013232959688-1bbfb4 7\n1st Street Jetty, VA\n\tInternational Qualifying Series (QS) · Men\t—\tSat 28 – Sat 28 Nov 2026\t\n0/48\n\tUnited States\t\nCancelled\n\t\n\n\nLoading more events …\n\nShowing 28 of 253 events · the rest load as you scroll\nBeach Marshal\nNew conversation\nConversations\n\nPrepare an event message proposal to Pay Tester in QA Main Flow 6a41a52a. Subject: QA Beach Marshal test. Body: Proposal inspection only, do not send. Do not execute it.\n\nI can't look up the seed list for QA Main Flow 6a41a52a right now, so I can't get Pay Tester's entry. I need that entry to set up the message, so I haven't made a proposal and nothing has been sent. If you ask again in a bit, I'll check the seed list and prepare the proposal with your subject and body. You'd get a confirmation card that you can just leave alone.\n\nRefer to: WSL events data\n\nI can't look up the seed list for QA Main Flow 6a41a52a right now, so I can't get Pay Tester's entry. I need that entry to set up the message, so I haven't made a proposal and nothing has been sent. If you ask again in a bit, I'll check the seed list and prepare the proposal with your subject and body. You'd get a confirmation card that you can just leave alone.",
+      "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events",
+      "backendAfter": [
+        {
+          "method": "GET",
+          "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "status": 200,
+          "body": {
+            "event": {
+              "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+              "status": {
+                "code": "archived",
+                "label": "Archived",
+                "tone": "muted"
+              },
+              "statusOptions": [
+                {
+                  "code": "draft",
+                  "label": "Draft",
+                  "destructive": false
+                }
+              ],
+              "fields": {
+                "name": "QA Main Flow 6a41a52a",
+                "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+                "rating": "01a136e0-a604-7170-9191-e87921200f63",
+                "regions": [
+                  "north_america"
+                ],
+                "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+                "startDate": "2026-12-19",
+                "endDate": "2026-12-19",
+                "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+                "prizeMoney": {
+                  "amount": 3000000,
+                  "currency": "USD"
+                },
+                "registrationOpensDate": "2026-10-14",
+                "registrationOpensTime": "17:09",
+                "registrationClosesDate": "2026-10-14",
+                "registrationClosesTime": "17:10",
+                "currency": "USD",
+                "entryFee": {
+                  "amount": 22500,
+                  "currency": "USD"
+                }
+              },
+              "readOnly": true,
+              "feeFromGrid": false,
+              "version": 6
+            }
+          },
+          "at": "2026-10-15T18:38:53.045Z"
+        },
+        {
+          "method": "GET",
+          "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+          "status": 200,
+          "body": {
+            "stage": "waitlist",
+            "field": 96,
+            "cutLine": "Field of 96 ends here. Nobody is waiting behind it.",
+            "openSeats": [],
+            "summary": [
+              {
+                "count": 1,
+                "label": "ready to confirm",
+                "tone": "default"
+              },
+              {
+                "count": 0,
+                "label": "insurance needed",
+                "tone": "default"
+              },
+              {
+                "count": 0,
+                "label": "payments declined",
+                "tone": "error"
+              },
+              {
+                "count": 0,
+                "label": "wildcard",
+                "tone": "default"
+              },
+              {
+                "count": 0,
+                "label": "alternates · not charged",
+                "tone": "muted"
+              }
+            ],
+            "primaryAction": null,
+            "publish": null,
+            "filters": [
+              {
+                "code": "entry",
+                "label": "Entry status",
+                "options": [
+                  {
+                    "value": "confirmed",
+                    "label": "Confirmed"
+                  }
+                ]
+              },
+              {
+                "code": "region",
+                "label": "All regions",
+                "options": [
+                  {
+                    "value": "north_america",
+                    "label": "N. AMERICA"
+                  }
+                ]
+              },
+              {
+                "code": "payment",
+                "label": "Payment",
+                "options": [
+                  {
+                    "value": "collected",
+                    "label": "Collected"
+                  }
+                ]
+              },
+              {
+                "code": "insurance",
+                "label": "Insurance",
+                "options": [
+                  {
+                    "value": "verified",
+                    "label": "Verified"
+                  }
+                ]
+              }
+            ],
+            "entries": [
+              {
+                "id": "01a13c40-3648-72cb-b13b-396818758d87",
+                "group": "field",
+                "athlete": {
+                  "initials": "PT",
+                  "name": "Pay Tester",
+                  "country": "United States"
+                },
+                "ranking": "N. AMERICA",
+                "region": "north_america",
+                "highlight": null,
+                "insurance": {
+                  "state": "ok",
+                  "label": "Insurance: verified",
+                  "code": "verified"
+                },
+                "payment": {
+                  "code": "collected",
+                  "label": "Collected",
+                  "tone": "neutral"
+                },
+                "entry": {
+                  "code": "confirmed",
+                  "label": "Confirmed",
+                  "tone": "neutral"
+                },
+                "actions": [
+                  {
+                    "code": "message",
+                    "label": "Send message",
+                    "destructive": false
+                  }
+                ],
+                "movable": false,
+                "pinned": false,
+                "hasHistory": true,
+                "seedRank": null,
+                "alternatePosition": null,
+                "moveUpSeat": null,
+                "movedUpFrom": null
+              }
+            ],
+            "version": 1
+          },
+          "at": "2026-10-15T18:38:53.345Z"
+        }
+      ],
+      "stateUnchanged": true,
+      "finishedAt": "2026-10-15T18:38:53.351Z",
+      "runKind": "blocked-rerun",
+      "assessment": "The normal event/roster API returns HTTP 200, but list_event_entries still returns unavailable. No proposal card was produced. Before/after event and roster snapshots are unchanged; no confirmation or send action was executed.",
+      "originalExampleStatus": "BLOCKED",
+      "evidenceLinks": {
+        "screenshot": "screenshots/BM-LIVE-W06-example-2-BM-LIVE-W06-blocked-rerun.png",
+        "videoNote": "Alternate example captured with Chrome DevTools Protocol Page.startScreencast at the native browser viewport; no zoom, scaling or crop. Focused clip of this request and observed result.",
+        "video": "videos/BM-LIVE-W06-example-2.webm",
+        "log": "evidence/BM-LIVE-W06-example-2.json"
+      }
+    }
+  ],
+  "latestResult": {
+    "at": "2026-10-15T18:38:53.351Z",
+    "status": "BLOCKED",
+    "execution": "Rerun executed",
+    "reason": "The normal event/roster API returns HTTP 200, but list_event_entries still returns unavailable. No proposal card was produced. Before/after event and roster snapshots are unchanged; no confirmation or send action was executed."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-W06-BM-LIVE-W06.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

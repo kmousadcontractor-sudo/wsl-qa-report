@@ -1,0 +1,462 @@
+{
+  "id": "BM-LIVE-A10",
+  "example": 2,
+  "role": "Athlete",
+  "prompt": "Show international events for Pay Tester, including entry fees and eligibility.",
+  "expected": "Return verified event eligibility/details for Pay Tester using the available event data.",
+  "startedAt": "2026-10-15T18:05:32.283Z",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/session",
+      "status": 200,
+      "body": {
+        "user": {
+          "id": "01a13c42-7b51-7737-8ee3-a2e63a62a52b",
+          "name": "Pay Tester",
+          "firstName": "Pay",
+          "lastName": "Tester",
+          "email": "[email redacted]",
+          "dateOfBirth": "2011-03-10"
+        },
+        "athletes": [
+          {
+            "id": "01a13c42-9891-71a5-b144-1b5687a5c929",
+            "name": "Pay Tester",
+            "firstName": "Pay",
+            "lastName": "Tester",
+            "initials": "PT",
+            "status": "active",
+            "signedCodes": [
+              "age_and_authority_certification",
+              "guardian_certification",
+              "health_insurance_authorization",
+              "membership_terms_and_conditions",
+              "waiver_release_indemnity"
+            ],
+            "registeredByRole": "self",
+            "membership": {
+              "id": "01a13c42-b280-7579-aa49-a1c403fbb204",
+              "productCode": "junior",
+              "status": {
+                "code": "active",
+                "label": "Membership active",
+                "tone": "success"
+              },
+              "validTo": "2026-12-31"
+            }
+          }
+        ],
+        "athletesUnavailable": false,
+        "activeAthleteId": "01a13c42-9891-71a5-b144-1b5687a5c929",
+        "passwordChangeRequired": false
+      },
+      "at": "2026-10-15T18:05:32.663Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/events?athlete=01a13c42-9891-71a5-b144-1b5687a5c929&scope=international",
+      "status": 200,
+      "body": {
+        "status": {
+          "code": "active",
+          "label": "Membership active",
+          "tone": "success"
+        },
+        "tour": "",
+        "season": "",
+        "tours": [
+          "Challenger Series",
+          "Championship Tour",
+          "International Qualifying Series"
+        ],
+        "empty": null,
+        "banner": null,
+        "events": [
+          {
+            "id": "01a1402d-c449-7115-abe2-6485825de4fd",
+            "name": "fffffffffffffffffffff",
+            "tour": "Challenger Series",
+            "tourName": "Challenger Series",
+            "meta": "Dec 5 · Huntington Beach Pier, CA · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries close 3 Nov 2026 · 17:00 PST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": "Upgrade your membership plan to access this event."
+          },
+          {
+            "id": "01a136e0-ca86-74e5-b293-d3fba5570ee9",
+            "name": "Lexus Pipe Masters",
+            "tour": "Championship Tour",
+            "tourName": "Championship Tour",
+            "meta": "Dec 8–20 · Banzai Pipeline, Oahu · Men’s",
+            "entryFee": 500,
+            "currency": "USD",
+            "note": "Entries close 8 Nov 2026 · 17:00 HST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": "Upgrade your membership plan to access this event."
+          },
+          {
+            "id": "01a136e0-dc04-778c-9019-04713fd16d0a",
+            "name": "Saquarema International Pro",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Jan 1–7 · Itaúna, RJ · Men’s",
+            "entryFee": 1925,
+            "currency": "BRL",
+            "note": "Entries close 2 Dec 2026 · 17:00 -03",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": "Upgrade your membership plan to access this event."
+          },
+          {
+            "id": "01a136e0-ca0b-71e5-84ce-384a1a37cb77",
+            "name": "MEO Rip Curl Pro Portugal",
+            "tour": "Championship Tour",
+            "tourName": "Championship Tour",
+            "meta": "Oct 16–25 · Supertubos, Portugal · Men’s",
+            "entryFee": 450,
+            "currency": "EUR",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a136e0-ca4d-76f1-90a8-e73e107819af",
+            "name": "Philippines Pro",
+            "tour": "Championship Tour",
+            "tourName": "Championship Tour",
+            "meta": "Oct 31–Nov 10 · Cloud 9, Siargao · Men’s",
+            "entryFee": 500,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a136e0-ce4a-70ba-907d-453ccfb5e318",
+            "name": "Taiwan Open of Surfing",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 14–22 · Jinzun Harbor, Taitung · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a13a0f-19cc-72b3-a36f-26b5b2c331f3",
+            "name": "QA Main Flow d4207e61",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 18 · Jinzun Harbor, Taitung · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a13a95-5e25-72ab-a44d-792872f27e57",
+            "name": "QA Main Flow 2722138a",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 19 · Jinzun Harbor, Taitung · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a13b51-b856-7116-aa45-41bf7edf7bde",
+            "name": "QA Main Flow 5b1837d0",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 20 · Jinzun Harbor, Taitung · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a13bd2-4eee-7331-97bf-35b4d7472b46",
+            "name": "QA Main Flow d762b574",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 21 · Jinzun Harbor, Taitung · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          }
+        ]
+      },
+      "at": "2026-10-15T18:05:33.565Z"
+    }
+  ],
+  "status": "FAIL",
+  "videoPath": "artifacts/beach-marshal-live-2026-10-15/alternate-recording-Athlete-1792087500030/tab-0.webm",
+  "videoStartSeconds": 33.483,
+  "sentAt": "2026-10-15T18:05:37.070Z",
+  "api": {
+    "status": 200,
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "input": {
+      "threadId": "533cc7c5-9089-498a-9fb5-69b7c1637869",
+      "runId": "c3c15e22-1866-4db3-b922-8fe126a4c179",
+      "state": {},
+      "messages": [
+        {
+          "id": "f7d38f3c-833c-4e5d-96be-2a092fcb88e5",
+          "role": "user",
+          "content": "Show international events for Pay Tester, including entry fees and eligibility."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01NoLsJTRKTDaaAWPVLbqtKD",
+        "name": "list_my_athletes",
+        "result": {
+          "status": "ok",
+          "athletes": [
+            {
+              "athlete_id": "01a13c42-9891-71a5-b144-1b5687a5c929",
+              "first_name": "Pay",
+              "last_name": "Tester",
+              "status": "active",
+              "registered_by": "self",
+              "membership": {
+                "product_code": "junior",
+                "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+                "status": "active",
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31",
+                "amount": {
+                  "amount_minor": 17500,
+                  "currency": "USD"
+                }
+              }
+            }
+          ]
+        },
+        "parameters": ""
+      },
+      {
+        "id": "toolu_bdrk_01DiztNnMADqzEWgrGzTwDJc",
+        "name": "list_enterable_events",
+        "result": {
+          "status": "unavailable"
+        },
+        "parameters": {
+          "athlete_id": "01a13c42-9891-71a5-b144-1b5687a5c929",
+          "scope": "international"
+        }
+      }
+    ],
+    "answer": "I can't look up international events for Pay Tester right now, so I can't give you their entry fees or eligibility at the moment.\n\nWhat I can tell you is that Pay has an active Junior membership for the 2026 season, running until December 31, 2026.\n\nYou can try again in a bit, or check the Events page on worldsurfleague.com, where you can also register.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "533cc7c5-9089-498a-9fb5-69b7c1637869",
+        "runId": "c3c15e22-1866-4db3-b922-8fe126a4c179"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "533cc7c5-9089-498a-9fb5-69b7c1637869",
+        "runId": "c3c15e22-1866-4db3-b922-8fe126a4c179"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TOOL_CALL_ARGS",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01NoLsJTRKTDaaAWPVLbqtKD",
+      "name": "list_my_athletes",
+      "result": {
+        "status": "ok",
+        "athletes": [
+          {
+            "athlete_id": "01a13c42-9891-71a5-b144-1b5687a5c929",
+            "first_name": "Pay",
+            "last_name": "Tester",
+            "status": "active",
+            "registered_by": "self",
+            "membership": {
+              "product_code": "junior",
+              "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+              "status": "active",
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31",
+              "amount": {
+                "amount_minor": 17500,
+                "currency": "USD"
+              }
+            }
+          }
+        ]
+      },
+      "parameters": ""
+    },
+    {
+      "id": "toolu_bdrk_01DiztNnMADqzEWgrGzTwDJc",
+      "name": "list_enterable_events",
+      "result": {
+        "status": "unavailable"
+      },
+      "parameters": {
+        "athlete_id": "01a13c42-9891-71a5-b144-1b5687a5c929",
+        "scope": "international"
+      }
+    }
+  ],
+  "actual": "I can't look up international events for Pay Tester right now, so I can't give you their entry fees or eligibility at the moment.\n\nWhat I can tell you is that Pay has an active Junior membership for the 2026 season, running until December 31, 2026.\n\nYou can try again in a bit, or check the Events page on worldsurfleague.com, where you can also register.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A10-alternate.png",
+  "videoEndSeconds": 42.92,
+  "visibleText": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nPay T.\nLog Out\nWSL Pro\nPT\nSwitch AS\nPay Tester\n\nAthlete Events\n\nEvents Pay Can Enter\nMembership active\nEvents\nAthlete Details\nAll regions\nHome region\nOther regions\nTour\nAll tours\nNorth Shore Open\n· QS 2,000\nUpgrade your membership plan to access this event.\n\nNov 27–Dec 2 · Haleiwa Ali'i Beach Park, Oahu · Men’s\n\nEvent entry fee $150.00\n\nReady for entries\n\nEntries close 28 Oct 2026 · 17:00 HST\n\nUpgrade Membership\nCentral Coast Pro Junior\n· JR 1,000\n\nNov 30–Dec 1 · Pismo Beach Pier, CA · Junior Men’s\n\nEvent entry fee $90.00\n\nReady for entries\n\nEntries close 31 Oct 2026 · 17:00 PDT\n\nRegister\nTahara Pacific Open\n· QS 2,000\nUpgrade your membership plan to access this event.\n\nDec 4–8 · Akabane Beach, Aichi · Men’s\n\nEvent entry fee $150.00\n\nReady for entries\n\nEntries close 4 Nov 2026 · 17:00 JST\n\nUpgrade Membership\nfffffffffffffffffffff\n· Challenger Series\nUpgrade your membership plan to access this event.\n\nDec 5 · Huntington Beach Pier, CA · Men’s\n\nEvent entry fee $350.00\n\nReady for entries\n\nEntries close 3 Nov 2026 · 17:00 PST\n\nUpgrade Membership\nMid-Atlantic Pro\n· QS 4,000\n\nDec 7–12 · 1st Street Jetty, VA · Men’s\n\nEvent entry fee $225.00\n\nReady for entries\n\nEntries close 7 Nov 2026 · 17:00 EST\n\nRegister\nLexus Pipe Masters\n· Championship Tour\nUpgrade your membership plan to access this event.\n\nDec 8–20 · Banzai Pipeline, Oahu · Men’s\n\nEvent entry fee $500.00\n\nReady for entries\n\nEntries close 8 Nov 2026 · 17:00 HST\n\nUpgrade Membership\nMid-Atlantic Longboard Classic\n· LQS 1,000\nUpgrade your membership plan to access this event.\n\nDec 14–16 · 1st Street Jetty, VA · Men’s\n\nEvent entry fee $90.00\n\nReady for entries\n\nEntries close 14 Nov 2026 · 17:00 EST\n\nUpgrade Membership\nLacanau Atlantic Pro\n· QS 2,000\nUpgrade your membership plan to access this event.\n\nDec 18–22 · Lacanau Océan, Gironde · Men’s\n\nEvent entry fee €135.00\n\nReady for entries\n\nEntries close 18 Nov 2026 · 17:00 CET\n\nUpgrade Membership\nQA Main Flow 6e301a29\n· QS 2,000\n\nDec 20 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nReady for entries\n\nEntries close 1 Nov 2026 · 03:00 PST\n\nRegister\nSurf City Open\n· QS 1,000\n\nDec 22–26 · Huntington Beach Pier, CA · Men’s\n\nEvent entry fee $120.00\n\nReady for entries\n\nEntries close 22 Nov 2026 · 17:00 PST\n\nRegister\nSaquarema International Pro\n· INTL QS 6,000\nUpgrade your membership plan to access this event.\n\nJan 1–7 · Itaúna, RJ · Men’s\n\nEvent entry fee R$1,925.00\n\nReady for entries\n\nEntries close 2 Dec 2026 · 17:00 -03\n\nUpgrade Membership\nMEO Rip Curl Pro Portugal\n· Championship Tour\n\nOct 16–25 · Supertubos, Portugal · Men’s\n\nEvent entry fee €450.00\n\nClosed\n\nEntries are closed.\n\nSunset Pro\n· QS 2,000\n\nOct 26–Nov 2 · Sunset Beach, Oahu · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nPhilippines Pro\n· Championship Tour\n\nOct 31–Nov 10 · Cloud 9, Siargao · Men’s\n\nEvent entry fee $500.00\n\nClosed\n\nEntries are closed.\n\nOrange County Classic\n· QS 2,000\n\nNov 2–5 · Huntington Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nHTA Haleiwa Pro\n· QS 2,000\n\nNov 5–14 · Haleiwa Ali'i Beach Park, Oahu · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nMiyazaki Pro\n· QS 2,000\n\nNov 6–8 · Kisakihama, Miyazaki · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nCosta da Caparica Pro\n· QS 1,000\n\nNov 7–10 · Costa da Caparica, Portugal · Men’s\n\nEvent entry fee €110.00\n\nClosed\n\nEntries are closed.\n\nTaiwan Open of Surfing\n· INTL QS 6,000\n\nNov 14–22 · Jinzun Harbor, Taitung · Men’s\n\nEvent entry fee $350.00\n\nClosed\n\nEntries are closed.\n\nCentral Coast Open\n· QS 2,000\n\nNov 22–26 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Live Flow 1510 Current\n· LQS 1,000\n\nDec 10–12 · QA Live Flow 1510 · Men’s\n\nEvent entry fee $1.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow 93ae6bbc\n· QS 2,000\n\nDec 18 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow d4207e61\n· INTL QS 6,000\n\nDec 18 · Jinzun Harbor, Taitung · Men’s\n\nEvent entry fee $350.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow 2722138a\n· INTL QS 6,000\n\nDec 19 · Jinzun Harbor, Taitung · Men’s\n\nEvent entry fee $350.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow b145bd93\n· QS 2,000\n\nDec 19 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow 5b1837d0\n· INTL QS 6,000\n\nDec 20 · Jinzun Harbor, Taitung · Men’s\n\nEvent entry fee $350.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow d762b574\n· INTL QS 6,000\n\nDec 21 · Jinzun Harbor, Taitung · Men’s\n\nEvent entry fee $350.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow df3398fa\n· QS 2,000\n\nDec 21 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow d86e79d4\n· QS 2,000\n\nDec 22 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow dc1df295\n· QS 2,000\n\nDec 23 · Pismo Beach Pier, CA · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nBeach Marshal\nNew conversation\nConversations\n\nShow international events for Pay Tester, including entry fees and eligibility.\n\nI can't look up international events for Pay Tester right now, so I can't give you their entry fees or eligibility at the moment.\n\nWhat I can tell you is that Pay has an active Junior membership for the 2026 season, running until December 31, 2026.\n\nYou can try again in a bit, or check the Events page on worldsurfleague.com, where you can also register.\n\nRefer to: Your WSL account\n\nI can't look up international events for Pay Tester right now, so I can't give you their entry fees or eligibility at the moment. What I can tell you is that Pay has an active Junior membership for the 2026 season, running until December 31, 2026. You can try again in a bit, or check the Events page on worldsurfleague.com, where you can also register.",
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "finishedAt": "2026-10-15T18:05:46.485Z",
+  "recordingSelection": "Active application capture selected from both recorded tabs; launch blank excluded; decoded frames reviewed.",
+  "assessment": "The second athlete’s normal Events API returns HTTP 200, but list_enterable_events returns unavailable and the requested list is not supplied.",
+  "originalExampleStatus": "FAIL",
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A10-example-2-BM-LIVE-A10-alternate.png",
+    "videoNote": "Alternate example captured with Chrome DevTools Protocol Page.startScreencast at the native browser viewport; no zoom, scaling or crop. Focused clip of this request and observed result.",
+    "video": "videos/BM-LIVE-A10-example-2.webm",
+    "log": "evidence/BM-LIVE-A10-example-2.json"
+  }
+}

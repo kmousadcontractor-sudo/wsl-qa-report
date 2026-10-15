@@ -1,0 +1,412 @@
+{
+  "testId": "BM-LIVE-T12",
+  "type": "Read-only review of the original saved conversation, not a new AI answer or rerun",
+  "threadId": "f1b2533c-1a1d-461c-a523-4e39cf01d362",
+  "savedConversation": {
+    "method": "GET",
+    "url": "https://api.dev.worldsurfleague.com/api/assistant/conversations/f1b2533c-1a1d-461c-a523-4e39cf01d362",
+    "status": 200,
+    "body": {
+      "conversation": {
+        "id": "f1b2533c-1a1d-461c-a523-4e39cf01d362",
+        "title": "Show available tours, regions and locations. Explain if any list is limited.",
+        "persona": "tour_manager",
+        "messageCount": 2,
+        "createdAt": "2026-10-15T00:20:44.041016+00:00",
+        "lastMessageAt": "2026-10-15T00:20:44.013194+00:00"
+      },
+      "messages": [
+        {
+          "id": "01a13cee-c79a-715a-b2c2-182c52c0c306",
+          "seq": 1,
+          "role": "user",
+          "text": "Show available tours, regions and locations. Explain if any list is limited.",
+          "toolCalls": [],
+          "proposals": [],
+          "createdAt": "2026-10-15T00:20:44.041016+00:00"
+        },
+        {
+          "id": "01a13cee-c79a-715a-b2c2-182df410ee7d",
+          "seq": 2,
+          "role": "assistant",
+          "text": "All three lists came back in full, with no paging or cut-off. The one gap: no region is marked as international. Instead, the international tours simply have no home region.\n\n**Tours (50)**\n- International, men's and women's: Championship Tour, Challenger Series, International Qualifying Series and World Longboard Tour.\n- Regional, men's and women's in each of the 7 regions: Qualifying Series, Longboard Qualifying Series and Pro Junior Series.\n\n**Regions (7):** Africa, Asia, Australia/Oceania, Europe, Hawaii/Tahiti Nui, North America and South America.\n\n**Locations (69)**\n- **Africa:** Ain Diab (Casablanca), Anchor Point (Taghazout), East Beach (Port Alfred), New Pier (Durban), Supertubes (Jeffreys Bay), Victoria Bay (George), Willard Beach (Ballito)\n- **Asia:** Akabane Beach (Tahara), Cloud 9 (Siargao), Jinzun Harbor (Taitung), Kisakihama (Miyazaki), Mahabalipuram, Nakatajima Beach (Hamamatsu), Riyue Bay (Hainan), Sabang Beach (Baler), Siheung Wave Park, Surf Abu Dhabi, Ujung Bocur (Krui)\n- **Australia/Oceania:** Bells Beach, Burleigh Heads, Cape Woolamai, Cloudbreak (Fiji), Duranbah, Fitzroy Beach (New Plymouth), Lennox Point, Manly, Manu Bay (Raglan), Merewether, Newcastle Beach, Noosa Heads, North Narrabeen, Snapper Rocks, Surfers Point (Margaret River)\n- **Europe:** Costa da Caparica, Fistral Beach (Newquay), Lacanau Océan, La Piste (Capbreton), Leça da Palmeira, Pantín, Praia da Fragata (Ferrol), Praia de Razo (Carballo), Ribeira d'Ilhas (Ericeira), Supertubos (Peniche), The Peak (Bundoran)\n- **Hawaii/Tahiti Nui:** Ala Moana Bowls, Banzai Pipeline, Haleiwa Ali'i Beach Park, Sunset Beach, Papara, Rangiroa, Taapuna, Teahupo'o\n- **North America:** 1st Street Jetty (Virginia Beach), Huntington Beach Pier, La Marginal (Puerto Rico), Lower Trestles, Pismo Beach Pier, Punta Roca (El Salvador), Soup Bowl (Barbados)\n- **South America:** El Gringo (Arica), Itamambuca (Ubatuba), Itaúna (Saquarema), Joaquina (Florianópolis), Maresias, Ponta Negra (Natal), Praia da Taíba, Praia da Vila (Imbituba), Señoritas (Punta Hermosa)",
+          "toolCalls": [
+            {
+              "name": "list_tours",
+              "status": "ok"
+            },
+            {
+              "name": "list_regions",
+              "status": "ok"
+            },
+            {
+              "name": "list_locations",
+              "status": "ok"
+            }
+          ],
+          "proposals": [],
+          "createdAt": "2026-10-15T00:20:44.041016+00:00"
+        }
+      ]
+    },
+    "at": "2026-10-15T10:58:20.944Z"
+  },
+  "reference": {
+    "method": "GET",
+    "url": "https://api.dev.worldsurfleague.com/api/tour-manager/reference/locations",
+    "status": 200,
+    "body": {
+      "options": [
+        {
+          "value": "01a136e0-a6ef-7081-9e61-c5264418b262",
+          "label": "1st Street Jetty, VA · New York time",
+          "timeZone": "America/New_York"
+        },
+        {
+          "value": "01a136e0-a6e2-7336-a094-e7b8711530ca",
+          "label": "Ain Diab, Morocco · Casablanca time",
+          "timeZone": "Africa/Casablanca"
+        },
+        {
+          "value": "01a136e0-a727-73c2-a703-3d3b8fa0b063",
+          "label": "Akabane Beach, Aichi · Tokyo time",
+          "timeZone": "Asia/Tokyo"
+        },
+        {
+          "value": "01a136e0-a66b-750a-9570-052d6afd4785",
+          "label": "Ala Moana Bowls, Oahu · Honolulu time",
+          "timeZone": "Pacific/Honolulu"
+        },
+        {
+          "value": "01a136e0-a6df-73b1-836d-2a939b356cb5",
+          "label": "Anchor Point, Morocco · Casablanca time",
+          "timeZone": "Africa/Casablanca"
+        },
+        {
+          "value": "01a136e0-a65b-74b1-b317-a77cae6a4afb",
+          "label": "Banzai Pipeline, Oahu · Honolulu time",
+          "timeZone": "Pacific/Honolulu"
+        },
+        {
+          "value": "01a136e0-a67b-71ee-bcba-ae8627cdb6c5",
+          "label": "Bells Beach, VIC · Melbourne time",
+          "timeZone": "Australia/Melbourne"
+        },
+        {
+          "value": "01a136e0-a684-7798-afb2-9a56dce66bce",
+          "label": "Burleigh Heads, QLD · Brisbane time",
+          "timeZone": "Australia/Brisbane"
+        },
+        {
+          "value": "01a136e0-a69f-7113-83a6-098b96b1464f",
+          "label": "Cape Woolamai, VIC · Melbourne time",
+          "timeZone": "Australia/Melbourne"
+        },
+        {
+          "value": "01a136e0-a71b-728e-85f4-98ea33ac94cf",
+          "label": "Cloud 9, Siargao · Manila time",
+          "timeZone": "Asia/Manila"
+        },
+        {
+          "value": "01a136e0-a6a9-75ca-b7a4-fd2ae9ee0762",
+          "label": "Cloudbreak, Fiji · Fiji time",
+          "timeZone": "Pacific/Fiji"
+        },
+        {
+          "value": "01a136e0-a6b3-7043-9f36-0bdd1a20a5c7",
+          "label": "Costa da Caparica, Portugal · Lisbon time",
+          "timeZone": "Europe/Lisbon"
+        },
+        {
+          "value": "01a136e0-a698-7486-a348-2cfce2521aa7",
+          "label": "Duranbah Beach, NSW · Sydney time",
+          "timeZone": "Australia/Sydney"
+        },
+        {
+          "value": "01a136e0-a6d5-729e-9e96-386f5e6c87cc",
+          "label": "East Beach, Eastern Cape · Johannesburg time",
+          "timeZone": "Africa/Johannesburg"
+        },
+        {
+          "value": "01a136e0-a714-759a-845e-32f2d47aa8d1",
+          "label": "El Gringo, Chile · Santiago time",
+          "timeZone": "America/Santiago"
+        },
+        {
+          "value": "01a136e0-a6c9-7261-911d-657c4b569b22",
+          "label": "Fistral Beach, Cornwall · London time",
+          "timeZone": "Europe/London"
+        },
+        {
+          "value": "01a136e0-a6a5-7161-8194-b3d456b5dc8f",
+          "label": "Fitzroy Beach, New Zealand · Auckland time",
+          "timeZone": "Pacific/Auckland"
+        },
+        {
+          "value": "01a136e0-a667-70f7-b581-b81b7247a768",
+          "label": "Haleiwa Ali'i Beach Park, Oahu · Honolulu time",
+          "timeZone": "Pacific/Honolulu"
+        },
+        {
+          "value": "01a136e0-a6e9-725c-8628-d341617aa1b3",
+          "label": "Huntington Beach Pier, CA · Los Angeles time",
+          "timeZone": "America/Los_Angeles"
+        },
+        {
+          "value": "01a136e0-a705-74d2-b7bc-50111ef1b85b",
+          "label": "Itamambuca, SP · Sao Paulo time",
+          "timeZone": "America/Sao_Paulo"
+        },
+        {
+          "value": "01a136e0-a6fb-7413-97df-0978d4d72ea7",
+          "label": "Itaúna, RJ · Sao Paulo time",
+          "timeZone": "America/Sao_Paulo"
+        },
+        {
+          "value": "01a136e0-a738-7169-bd2a-b28fe7ffb2d6",
+          "label": "Jinzun Harbor, Taitung · Taipei time",
+          "timeZone": "Asia/Taipei"
+        },
+        {
+          "value": "01a136e0-a70e-77b6-9819-c747fdf568cf",
+          "label": "Joaquina, SC · Sao Paulo time",
+          "timeZone": "America/Sao_Paulo"
+        },
+        {
+          "value": "01a136e0-a724-70bd-a7c5-9e04bdfe32f6",
+          "label": "Kisakihama, Miyazaki · Tokyo time",
+          "timeZone": "Asia/Tokyo"
+        },
+        {
+          "value": "01a136e0-a6c2-7720-b8a0-07b7b0a6f5c1",
+          "label": "Lacanau Océan, Gironde · Paris time",
+          "timeZone": "Europe/Paris"
+        },
+        {
+          "value": "01a136e0-a6f8-7275-b927-bd53b3b92116",
+          "label": "La Marginal, Puerto Rico · Puerto Rico time",
+          "timeZone": "America/Puerto_Rico"
+        },
+        {
+          "value": "01a136e0-a6c6-72f2-9b6b-6b6c8fecc030",
+          "label": "La Piste, Landes · Paris time",
+          "timeZone": "Europe/Paris"
+        },
+        {
+          "value": "01a136e0-a6b6-7252-b8b9-d9b453655da6",
+          "label": "Leça da Palmeira, Portugal · Lisbon time",
+          "timeZone": "Europe/Lisbon"
+        },
+        {
+          "value": "01a136e0-a695-7112-b2e3-ff04f0f196c2",
+          "label": "Lennox Point, NSW · Sydney time",
+          "timeZone": "Australia/Sydney"
+        },
+        {
+          "value": "01a136e0-a6e5-74d7-9c1d-a1c0309021f2",
+          "label": "Lower Trestles, CA · Los Angeles time",
+          "timeZone": "America/Los_Angeles"
+        },
+        {
+          "value": "01a136e0-a72e-728a-8fb4-6d2e402d6ff2",
+          "label": "Mahabalipuram, Tamil Nadu · Kolkata time",
+          "timeZone": "Asia/Kolkata"
+        },
+        {
+          "value": "01a136e0-a69c-710e-96ae-687bc326b551",
+          "label": "Manly Beach, NSW · Sydney time",
+          "timeZone": "Australia/Sydney"
+        },
+        {
+          "value": "01a136e0-a6a2-735a-83a7-bbfe82a0f3b1",
+          "label": "Manu Bay, New Zealand · Auckland time",
+          "timeZone": "Pacific/Auckland"
+        },
+        {
+          "value": "01a136e0-a6fe-744a-a0c5-0721e1966fd5",
+          "label": "Maresias, SP · Sao Paulo time",
+          "timeZone": "America/Sao_Paulo"
+        },
+        {
+          "value": "01a136e0-a68b-7050-a7d2-5f1d93052093",
+          "label": "Merewether Beach, NSW · Sydney time",
+          "timeZone": "Australia/Sydney"
+        },
+        {
+          "value": "01a136e0-a721-74e0-b2f7-3519626e513e",
+          "label": "Nakatajima Beach, Shizuoka · Tokyo time",
+          "timeZone": "Asia/Tokyo"
+        },
+        {
+          "value": "01a136e0-a68e-7227-a485-769f6fd080c5",
+          "label": "Newcastle Beach, NSW · Sydney time",
+          "timeZone": "Australia/Sydney"
+        },
+        {
+          "value": "01a136e0-a6dc-75d3-99a5-f1bdb16bf6f2",
+          "label": "New Pier, KwaZulu-Natal · Johannesburg time",
+          "timeZone": "Africa/Johannesburg"
+        },
+        {
+          "value": "01a136e0-a688-7354-b450-4634c63f1d60",
+          "label": "Noosa Heads, QLD · Brisbane time",
+          "timeZone": "Australia/Brisbane"
+        },
+        {
+          "value": "01a136e0-a692-71aa-9ab2-5c569121399b",
+          "label": "North Narrabeen, NSW · Sydney time",
+          "timeZone": "Australia/Sydney"
+        },
+        {
+          "value": "01a136e0-a6b9-702e-9a1c-584ab5988a95",
+          "label": "Pantín, Galicia · Madrid time",
+          "timeZone": "Europe/Madrid"
+        },
+        {
+          "value": "01a136e0-a674-727e-bb37-989c28cdfcd7",
+          "label": "Papara, Tahiti · Tahiti time",
+          "timeZone": "Pacific/Tahiti"
+        },
+        {
+          "value": "01a136e0-a6ec-7675-a956-8c68462d7383",
+          "label": "Pismo Beach Pier, CA · Los Angeles time",
+          "timeZone": "America/Los_Angeles"
+        },
+        {
+          "value": "01a136e0-a708-7358-9ec4-8c8b729aada4",
+          "label": "Ponta Negra, RN · Fortaleza time",
+          "timeZone": "America/Fortaleza"
+        },
+        {
+          "value": "01a136e0-a6bf-7326-8e34-4c1e3eaa34b4",
+          "label": "Praia da Fragata, Galicia · Madrid time",
+          "timeZone": "Europe/Madrid"
+        },
+        {
+          "value": "01a136e0-a70b-77c0-8ec5-3d716e38856c",
+          "label": "Praia da Taíba, CE · Fortaleza time",
+          "timeZone": "America/Fortaleza"
+        },
+        {
+          "value": "01a136e0-a701-7418-80cf-d50a2881c063",
+          "label": "Praia da Vila, SC · Sao Paulo time",
+          "timeZone": "America/Sao_Paulo"
+        },
+        {
+          "value": "01a136e0-a6bc-7247-8ad8-b73a47c85c93",
+          "label": "Praia de Razo, Galicia · Madrid time",
+          "timeZone": "Europe/Madrid"
+        },
+        {
+          "value": "01a136e0-a6f2-77f0-93d1-bf6f42456f6f",
+          "label": "Punta Roca, El Salvador · El Salvador time",
+          "timeZone": "America/El_Salvador"
+        },
+        {
+          "value": "01a136e0-a678-737e-bbb2-a032af680041",
+          "label": "Rangiroa, Tuamotu · Tahiti time",
+          "timeZone": "Pacific/Tahiti"
+        },
+        {
+          "value": "01a136e0-a6af-70ed-b9e6-43214fcbfe55",
+          "label": "Ribeira d'Ilhas, Portugal · Lisbon time",
+          "timeZone": "Europe/Lisbon"
+        },
+        {
+          "value": "01a136e0-a734-77a8-baff-1a4e428b72c1",
+          "label": "Riyue Bay, Hainan · Shanghai time",
+          "timeZone": "Asia/Shanghai"
+        },
+        {
+          "value": "01a136e0-a71e-7671-9f55-f5cc296abf9a",
+          "label": "Sabang Beach, Aurora · Manila time",
+          "timeZone": "Asia/Manila"
+        },
+        {
+          "value": "01a136e0-a711-749b-928c-dd92e52cfbc4",
+          "label": "Señoritas, Peru · Lima time",
+          "timeZone": "America/Lima"
+        },
+        {
+          "value": "01a136e0-a72b-759d-9cef-421b419341f9",
+          "label": "Siheung Wave Park, Gyeonggi · Seoul time",
+          "timeZone": "Asia/Seoul"
+        },
+        {
+          "value": "01a136e0-a681-74bd-9d6d-0ecdcdb30d62",
+          "label": "Snapper Rocks, QLD · Brisbane time",
+          "timeZone": "Australia/Brisbane"
+        },
+        {
+          "value": "01a136e0-a6f5-728f-8109-a428b16c081e",
+          "label": "Soup Bowl, Barbados · Barbados time",
+          "timeZone": "America/Barbados"
+        },
+        {
+          "value": "01a136e0-a664-734e-8ca5-68861503a3b1",
+          "label": "Sunset Beach, Oahu · Honolulu time",
+          "timeZone": "Pacific/Honolulu"
+        },
+        {
+          "value": "01a136e0-a6cf-7137-ab02-894bf2ace6d4",
+          "label": "Supertubes, Eastern Cape · Johannesburg time",
+          "timeZone": "Africa/Johannesburg"
+        },
+        {
+          "value": "01a136e0-a6ac-73a0-8fa5-eebf7173de06",
+          "label": "Supertubos, Portugal · Lisbon time",
+          "timeZone": "Europe/Lisbon"
+        },
+        {
+          "value": "01a136e0-a718-70a8-bf3a-02cf9f42935e",
+          "label": "Surf Abu Dhabi, Abu Dhabi · Dubai time",
+          "timeZone": "Asia/Dubai"
+        },
+        {
+          "value": "01a136e0-a67e-7048-8adf-dee3b30cdf11",
+          "label": "Surfers Point, WA · Perth time",
+          "timeZone": "Australia/Perth"
+        },
+        {
+          "value": "01a136e0-a671-76a6-acbb-f0577f0cdd81",
+          "label": "Taapuna, Tahiti · Tahiti time",
+          "timeZone": "Pacific/Tahiti"
+        },
+        {
+          "value": "01a136e0-a66e-7472-b827-5752c6d23584",
+          "label": "Teahupo'o, Tahiti · Tahiti time",
+          "timeZone": "Pacific/Tahiti"
+        },
+        {
+          "value": "01a136e0-a6cc-758c-af34-2c95819e8bfb",
+          "label": "The Peak, Donegal · Dublin time",
+          "timeZone": "Europe/Dublin"
+        },
+        {
+          "value": "01a136e0-a731-70af-919a-dfe4e492f5e9",
+          "label": "Ujung Bocur, Lampung · Jakarta time",
+          "timeZone": "Asia/Jakarta"
+        },
+        {
+          "value": "01a136e0-a6d8-7008-a53a-f6013984cb1f",
+          "label": "Victoria Bay, Western Cape · Johannesburg time",
+          "timeZone": "Africa/Johannesburg"
+        },
+        {
+          "value": "01a136e0-a6d2-7412-b2e9-f0f7a2d14fd4",
+          "label": "Willard Beach, KwaZulu-Natal · Johannesburg time",
+          "timeZone": "Africa/Johannesburg"
+        }
+      ]
+    },
+    "at": "2026-10-15T10:58:21.215Z"
+  },
+  "actualLocationCount": 68,
+  "originalTextPreserved": true,
+  "videoStartSeconds": 7.653,
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-T12-count-review.png",
+  "visibleCount": "Locations (69)",
+  "videoEndSeconds": 11.908,
+  "verified": true,
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\location-count-review\\[email redacted]"
+}

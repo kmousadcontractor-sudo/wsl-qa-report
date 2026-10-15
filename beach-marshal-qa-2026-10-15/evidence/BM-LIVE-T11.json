@@ -1,0 +1,383 @@
+{
+  "id": "BM-LIVE-T11",
+  "role": "TourManager",
+  "action": "Read",
+  "prompt": "Show audit history for QA Main Flow 6a41a52a.",
+  "expected": "Actual history ordering and changes; disclose bounded output.",
+  "expectedTools": [
+    "get_event_history"
+  ],
+  "referencePaths": [
+    "/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/history"
+  ],
+  "startedAt": "2026-10-15T00:20:22.480Z",
+  "status": "NOT VERIFIED",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/history",
+      "status": 200,
+      "body": {
+        "entries": [
+          {
+            "id": "01a13c40-d905-7073-9d77-e12a32d8fc6c",
+            "at": "14 Oct 21:10 UTC",
+            "actor": "System · Scheduler",
+            "action": "Charge attempt",
+            "athlete": "Pay Tester"
+          },
+          {
+            "id": "01a13c40-d18e-7399-be1f-1175b85b206b",
+            "at": "14 Oct 21:10 UTC",
+            "actor": "T. Manager 101",
+            "action": "Charge attempt",
+            "athlete": "Pay Tester"
+          },
+          {
+            "id": "01a13c40-ca6b-761c-bd5f-0ce78e3d34c1",
+            "at": "14 Oct 21:10 UTC",
+            "actor": "T. Manager 101",
+            "action": "Status · Ready for entries → Closed for entries · by hand, replacing the scheduled time",
+            "athlete": null
+          },
+          {
+            "id": "01a13c3f-e9db-737f-a313-7878325dd38a",
+            "at": "14 Oct 21:09 UTC",
+            "actor": "T. Manager 101",
+            "action": "Status · Confirmed → Ready for entries · by hand, replacing the scheduled time",
+            "athlete": null
+          },
+          {
+            "id": "01a13c3f-e72c-7410-a361-4ab912452ff0",
+            "at": "14 Oct 21:09 UTC",
+            "actor": "T. Manager 101",
+            "action": "Status · Tentative → Confirmed",
+            "athlete": null
+          },
+          {
+            "id": "01a13c3f-e462-70aa-a156-273b0e1d55a3",
+            "at": "14 Oct 21:09 UTC",
+            "actor": "T. Manager 101",
+            "action": "Status · Draft → Tentative",
+            "athlete": null
+          },
+          {
+            "id": "01a13c3f-e1d8-7037-a219-12498b4d1917",
+            "at": "14 Oct 21:09 UTC",
+            "actor": "T. Manager 101",
+            "action": "Event created as Draft",
+            "athlete": null
+          }
+        ]
+      },
+      "at": "2026-10-15T00:20:22.763Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:20:22.854Z",
+  "videoStartSeconds": 324.416,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "1f31ed64-a5b9-4b04-801f-171a90145fca",
+    "input": {
+      "threadId": "e43f96a5-11aa-4f56-b831-318167bb7b7e",
+      "runId": "53adba7a-f3fa-4b20-9b6d-44ddff4c832b",
+      "state": {},
+      "messages": [
+        {
+          "id": "ff399662-b07d-4535-bf80-a274313385fb",
+          "role": "user",
+          "content": "Show audit history for QA Main Flow 6a41a52a."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01E8UZEDuQCBEGU9aAeZPN3c",
+        "name": "find_events",
+        "result": {
+          "status": "ok",
+          "events": [
+            {
+              "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "name": "QA Main Flow 6a41a52a",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 1
+            },
+            {
+              "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+              "name": "QA Main Flow 93ae6bbc",
+              "startDate": "2026-12-18",
+              "endDate": "2026-12-18",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.8
+            },
+            {
+              "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+              "name": "QA Main Flow 6e301a29",
+              "startDate": "2026-12-20",
+              "endDate": "2026-12-20",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.82
+            },
+            {
+              "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+              "name": "QA Main Flow b145bd93",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.79
+            },
+            {
+              "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+              "name": "QA Checklist 20261014081146624-d9f105 21",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "International Qualifying Series",
+              "division": "mens",
+              "score": 0.73
+            }
+          ],
+          "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+        },
+        "parameters": {
+          "text": "QA Main Flow 6a41a52a"
+        }
+      },
+      {
+        "id": "toolu_bdrk_0122DsKyD4dpjq4mm8iex8bk",
+        "name": "open_page",
+        "result": {
+          "status": "ok",
+          "navigate": {
+            "page": "tm_event",
+            "params": {
+              "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "tab": "history"
+            },
+            "label": "QA Main Flow 6a41a52a history"
+          }
+        },
+        "parameters": {
+          "page": "tm_event",
+          "label": "QA Main Flow 6a41a52a history",
+          "params": {
+            "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "tab": "history"
+          }
+        }
+      }
+    ],
+    "answer": "I've opened the History tab for QA Main Flow 6a41a52a. It's the men's Qualifying Series event at 1st Street Jetty, Virginia Beach, on December 19, 2026.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "e43f96a5-11aa-4f56-b831-318167bb7b7e",
+        "runId": "53adba7a-f3fa-4b20-9b6d-44ddff4c832b"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "e43f96a5-11aa-4f56-b831-318167bb7b7e",
+        "runId": "53adba7a-f3fa-4b20-9b6d-44ddff4c832b"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01E8UZEDuQCBEGU9aAeZPN3c",
+      "name": "find_events",
+      "result": {
+        "status": "ok",
+        "events": [
+          {
+            "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "name": "QA Main Flow 6a41a52a",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 1
+          },
+          {
+            "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+            "name": "QA Main Flow 93ae6bbc",
+            "startDate": "2026-12-18",
+            "endDate": "2026-12-18",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.8
+          },
+          {
+            "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+            "name": "QA Main Flow 6e301a29",
+            "startDate": "2026-12-20",
+            "endDate": "2026-12-20",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.82
+          },
+          {
+            "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+            "name": "QA Main Flow b145bd93",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.79
+          },
+          {
+            "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+            "name": "QA Checklist 20261014081146624-d9f105 21",
+            "startDate": "2026-11-23",
+            "endDate": "2026-11-23",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "International Qualifying Series",
+            "division": "mens",
+            "score": 0.73
+          }
+        ],
+        "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+      },
+      "parameters": {
+        "text": "QA Main Flow 6a41a52a"
+      }
+    },
+    {
+      "id": "toolu_bdrk_0122DsKyD4dpjq4mm8iex8bk",
+      "name": "open_page",
+      "result": {
+        "status": "ok",
+        "navigate": {
+          "page": "tm_event",
+          "params": {
+            "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "tab": "history"
+          },
+          "label": "QA Main Flow 6a41a52a history"
+        }
+      },
+      "parameters": {
+        "page": "tm_event",
+        "label": "QA Main Flow 6a41a52a history",
+        "params": {
+          "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "tab": "history"
+        }
+      }
+    }
+  ],
+  "aiResponse": "I've opened the History tab for QA Main Flow 6a41a52a. It's the men's Qualifying Series event at 1st Street Jetty, Virginia Beach, on December 19, 2026.",
+  "actual": "I've opened the History tab for QA Main Flow 6a41a52a. It's the men's Qualifying Series event at 1st Street Jetty, Virginia Beach, on December 19, 2026.",
+  "durationMs": 7524,
+  "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e?tab=history",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nShow audit history for QA Main Flow 6a41a52a.\n\nOpened QA Main Flow 6a41a52a history\n\nI've opened the History tab for QA Main Flow 6a41a52a. It's the men's Qualifying Series event at 1st Street Jetty, Virginia Beach, on December 19, 2026.\n\nI've opened the History tab for QA Main Flow 6a41a52a. It's the men's Qualifying Series event at 1st Street Jetty, Virginia Beach, on December 19, 2026.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-T11.png",
+  "videoEndSeconds": 332.588,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:20:22.902Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/history",
+      "at": "2026-10-15T00:20:28.808Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:20:31.026Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Correct event History tab navigation observed, but no audit facts summarized. Explicit follow-up T16 evaluates the history tool.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Manager normal sign-in verified by session API",
+    "limitations": "Correct event History tab navigation observed, but no audit facts summarized. Explicit follow-up T16 evaluates the history tool.",
+    "aiEvaluation": {
+      "accuracy": "NOT VERIFIED — limitations detailed above",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Not fully verified",
+      "identity": "Actual returned QA event match inspected",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "NOT VERIFIED where source/fixture is missing",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No unsupported-success claim, but full factual verification unavailable",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Actual history ordering and changes; disclose bounded output.",
+    "observed": "I've opened the History tab for QA Main Flow 6a41a52a. It's the men's Qualifying Series event at 1st Street Jetty, Virginia Beach, on December 19, 2026.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-T11-BM-LIVE-T11.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

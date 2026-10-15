@@ -1,0 +1,267 @@
+{
+  "id": "BM-LIVE-W08",
+  "role": "TourManager",
+  "action": "Write proposal",
+  "prompt": "Withdraw Pay from the main event.",
+  "expected": "Ambiguous event/athlete request requires clarification; no guessed target or mutation.",
+  "expectedTools": [],
+  "referencePaths": [],
+  "ambiguous": true,
+  "startedAt": "2026-10-15T00:22:00.329Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:22:00.417Z",
+  "videoStartSeconds": 421.979,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "36c0a0b1-da4f-42b3-a948-f2ca429b6946",
+    "input": {
+      "threadId": "52cabd6e-f07f-4d60-9fa7-fb9dd7757f8c",
+      "runId": "1be1b117-cb55-4b2c-825a-b14d604c0abc",
+      "state": {},
+      "messages": [
+        {
+          "id": "47bb5159-bf53-428e-a483-c70048c360de",
+          "role": "user",
+          "content": "Withdraw Pay from the main event."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01Tz9NZBy6DtLrySDp8FiiCb",
+        "name": "find_events",
+        "result": {
+          "status": "ok",
+          "events": [
+            {
+              "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+              "name": "QA Main Flow b145bd93",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.97
+            },
+            {
+              "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+              "name": "QA Main Flow 93ae6bbc",
+              "startDate": "2026-12-18",
+              "endDate": "2026-12-18",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.96
+            },
+            {
+              "eventId": "01a13a0b-27e8-724b-b6c0-dc6ff6598d32",
+              "name": "QA Main Flow df3398fa",
+              "startDate": "2026-12-21",
+              "endDate": "2026-12-21",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.98
+            },
+            {
+              "eventId": "01a13b51-b856-7116-aa45-41bf7edf7bde",
+              "name": "QA Main Flow 5b1837d0",
+              "startDate": "2026-12-20",
+              "endDate": "2026-12-20",
+              "venue": "Jinzun Harbor, Donghe, Taitung, TW",
+              "tour": "International Qualifying Series",
+              "division": "mens",
+              "score": 0.97
+            },
+            {
+              "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+              "name": "QA Main Flow 6e301a29",
+              "startDate": "2026-12-20",
+              "endDate": "2026-12-20",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.97
+            }
+          ]
+        },
+        "parameters": {
+          "text": "the main event"
+        }
+      }
+    ],
+    "answer": "No single event clearly matches \"the main event\". I found five with similar names, all men's events in December 2026:\n\n- QA Main Flow 93ae6bbc: December 18, Pismo Beach Pier, California (Qualifying Series)\n- QA Main Flow b145bd93: December 19, Pismo Beach Pier (Qualifying Series)\n- QA Main Flow 6e301a29: December 20, Pismo Beach Pier (Qualifying Series)\n- QA Main Flow 5b1837d0: December 20, Jinzun Harbor, Taitung, Taiwan (International Qualifying Series)\n- QA Main Flow df3398fa: December 21, Pismo Beach Pier (Qualifying Series)\n\nWhich one should I withdraw Pay from? Please also tell me the reason: injury or illness, the athlete asked, or something else.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "52cabd6e-f07f-4d60-9fa7-fb9dd7757f8c",
+        "runId": "1be1b117-cb55-4b2c-825a-b14d604c0abc"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "52cabd6e-f07f-4d60-9fa7-fb9dd7757f8c",
+        "runId": "1be1b117-cb55-4b2c-825a-b14d604c0abc"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01Tz9NZBy6DtLrySDp8FiiCb",
+      "name": "find_events",
+      "result": {
+        "status": "ok",
+        "events": [
+          {
+            "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+            "name": "QA Main Flow b145bd93",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.97
+          },
+          {
+            "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+            "name": "QA Main Flow 93ae6bbc",
+            "startDate": "2026-12-18",
+            "endDate": "2026-12-18",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.96
+          },
+          {
+            "eventId": "01a13a0b-27e8-724b-b6c0-dc6ff6598d32",
+            "name": "QA Main Flow df3398fa",
+            "startDate": "2026-12-21",
+            "endDate": "2026-12-21",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.98
+          },
+          {
+            "eventId": "01a13b51-b856-7116-aa45-41bf7edf7bde",
+            "name": "QA Main Flow 5b1837d0",
+            "startDate": "2026-12-20",
+            "endDate": "2026-12-20",
+            "venue": "Jinzun Harbor, Donghe, Taitung, TW",
+            "tour": "International Qualifying Series",
+            "division": "mens",
+            "score": 0.97
+          },
+          {
+            "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+            "name": "QA Main Flow 6e301a29",
+            "startDate": "2026-12-20",
+            "endDate": "2026-12-20",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.97
+          }
+        ]
+      },
+      "parameters": {
+        "text": "the main event"
+      }
+    }
+  ],
+  "aiResponse": "No single event clearly matches \"the main event\". I found five with similar names, all men's events in December 2026:\n\n- QA Main Flow 93ae6bbc: December 18, Pismo Beach Pier, California (Qualifying Series)\n- QA Main Flow b145bd93: December 19, Pismo Beach Pier (Qualifying Series)\n- QA Main Flow 6e301a29: December 20, Pismo Beach Pier (Qualifying Series)\n- QA Main Flow 5b1837d0: December 20, Jinzun Harbor, Taitung, Taiwan (International Qualifying Series)\n- QA Main Flow df3398fa: December 21, Pismo Beach Pier (Qualifying Series)\n\nWhich one should I withdraw Pay from? Please also tell me the reason: injury or illness, the athlete asked, or something else.",
+  "actual": "No single event clearly matches \"the main event\". I found five with similar names, all men's events in December 2026:\n\n- QA Main Flow 93ae6bbc: December 18, Pismo Beach Pier, California (Qualifying Series)\n- QA Main Flow b145bd93: December 19, Pismo Beach Pier (Qualifying Series)\n- QA Main Flow 6e301a29: December 20, Pismo Beach Pier (Qualifying Series)\n- QA Main Flow 5b1837d0: December 20, Jinzun Harbor, Taitung, Taiwan (International Qualifying Series)\n- QA Main Flow df3398fa: December 21, Pismo Beach Pier (Qualifying Series)\n\nWhich one should I withdraw Pay from? Please also tell me the reason: injury or illness, the athlete asked, or something else.",
+  "durationMs": 10731,
+  "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e?tab=history",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWithdraw Pay from the main event.\n\nNo single event clearly matches \"the main event\". I found five with similar names, all men's events in December 2026:\n\nQA Main Flow 93ae6bbc: December 18, Pismo Beach Pier, California (Qualifying Series)\nQA Main Flow b145bd93: December 19, Pismo Beach Pier (Qualifying Series)\nQA Main Flow 6e301a29: December 20, Pismo Beach Pier (Qualifying Series)\nQA Main Flow 5b1837d0: December 20, Jinzun Harbor, Taitung, Taiwan (International Qualifying Series)\nQA Main Flow df3398fa: December 21, Pismo Beach Pier (Qualifying Series)\n\nWhich one should I withdraw Pay from? Please also tell me the reason: injury or illness, the athlete asked, or something else.\n\nNo single event clearly matches \"the main event\". I found five with similar names, all men's events in December 2026: - QA Main Flow 93ae6bbc: December 18, Pismo Beach Pier, California (Qualifying Series) - QA Main Flow b145bd93: December 19, Pismo Beach Pier (Qualifying Series) - QA Main Flow 6e301a29: December 20, Pismo Beach Pier (Qualifying Series) - QA Main Flow 5b1837d0: December 20, Jinzun Harbor, Taitung, Taiwan (International Qualifying Series) - QA Main Flow df3398fa: December 21, Pismo Beach Pier (Qualifying Series) Which one should I withdraw Pay from? Please also tell me the reason: injury or illness, the athlete asked, or something else.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-W08.png",
+  "videoEndSeconds": 433.351,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:22:00.457Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:22:11.789Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Ambiguous event/name request produced a clarification with actual candidate events and withdrawal-reason request. No guessed target or mutation.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Manager normal sign-in verified by session API",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "Actual returned QA event match inspected",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Ambiguous event/athlete request requires clarification; no guessed target or mutation.",
+    "observed": "No single event clearly matches \"the main event\". I found five with similar names, all men's events in December 2026:\n\n- QA Main Flow 93ae6bbc: December 18, Pismo Beach Pier, California (Qualifying Series)\n- QA Main Flow b145bd93: December 19, Pismo Beach Pier (Qualifying Series)\n- QA Main Flow 6e301a29: December 20, Pismo Beach Pier (Qualifying Series)\n- QA Main Flow 5b1837d0: December 20, Jinzun Harbor, Taitung, Taiwan (International Qualifying Series)\n- QA Main Flow df3398fa: December 21, Pismo Beach Pier (Qualifying Series)\n\nWhich one should I withdraw Pay from? Please also tell me the reason: injury or illness, the athlete asked, or something else.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-W08-BM-LIVE-W08.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

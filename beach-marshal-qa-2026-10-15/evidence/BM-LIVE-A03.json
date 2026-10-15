@@ -1,0 +1,272 @@
+{
+  "id": "BM-LIVE-A03",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "What is Junior Consent’s membership status and when does it expire?",
+  "expected": "Junior membership active, expiry from current API; do not substitute season-end assumptions.",
+  "expectedTools": [
+    "list_my_athletes"
+  ],
+  "referencePaths": [
+    "/session",
+    "/athletes/01a13c43-c421-74a4-b266-58d419d278a3/holdings"
+  ],
+  "startedAt": "2026-10-15T00:16:14.306Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/session",
+      "status": 200,
+      "body": {
+        "user": {
+          "id": "01a13c43-a97b-7601-928a-4d4652edae0c",
+          "name": "Guardian Consent",
+          "firstName": "Guardian",
+          "lastName": "Consent",
+          "email": "[email redacted]",
+          "dateOfBirth": "1986-10-15"
+        },
+        "athletes": [
+          {
+            "id": "01a13c43-c421-74a4-b266-58d419d278a3",
+            "name": "Junior Consent",
+            "firstName": "Junior",
+            "lastName": "Consent",
+            "initials": "JC",
+            "status": "active",
+            "signedCodes": [
+              "age_and_authority_certification",
+              "membership_terms_and_conditions",
+              "waiver_release_indemnity",
+              "health_insurance_authorization",
+              "coppa_verification",
+              "guardian_certification"
+            ],
+            "registeredByRole": "guardian",
+            "membership": {
+              "id": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+              "productCode": "junior",
+              "status": {
+                "code": "active",
+                "label": "Membership active",
+                "tone": "success"
+              },
+              "validTo": "2026-12-31"
+            }
+          }
+        ],
+        "athletesUnavailable": false,
+        "activeAthleteId": "01a13c43-c421-74a4-b266-58d419d278a3",
+        "passwordChangeRequired": false
+      },
+      "at": "2026-10-15T00:16:14.633Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/athletes/01a13c43-c421-74a4-b266-58d419d278a3/holdings",
+      "status": 200,
+      "body": {
+        "memberships": [
+          {
+            "membershipId": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+            "productCode": "junior",
+            "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+            "status": "active",
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31",
+            "eventCount": null
+          }
+        ],
+        "insurances": [],
+        "credits": []
+      },
+      "at": "2026-10-15T00:16:14.912Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:16:16.409Z",
+  "videoStartSeconds": 77.971,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "2c70a3af-1f0d-41ce-b4eb-34c668d1189f",
+    "input": {
+      "threadId": "fb55a0d8-2531-48ee-b4c1-a6c887bcfff2",
+      "runId": "fa7a9fc1-982d-44d7-96c2-f3ceb3b840f1",
+      "state": {},
+      "messages": [
+        {
+          "id": "eb4d57f9-b9e1-4aff-92dd-87a59a5929db",
+          "role": "user",
+          "content": "What is Junior Consent’s membership status and when does it expire?"
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_015zp5WSAA1JdsdGVG7p8f7W",
+        "name": "list_my_athletes",
+        "result": {
+          "status": "ok",
+          "athletes": [
+            {
+              "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "first_name": "Junior",
+              "last_name": "Consent",
+              "status": "active",
+              "registered_by": "guardian",
+              "membership": {
+                "product_code": "junior",
+                "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+                "status": "active",
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31",
+                "amount": {
+                  "amount_minor": 17500,
+                  "currency": "USD"
+                }
+              }
+            }
+          ]
+        },
+        "parameters": ""
+      }
+    ],
+    "answer": "Junior Consent has an active junior membership for the 2026 season. It started on January 1, 2026 and runs until December 31, 2026. It cost $175.00 USD.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "fb55a0d8-2531-48ee-b4c1-a6c887bcfff2",
+        "runId": "fa7a9fc1-982d-44d7-96c2-f3ceb3b840f1"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "fb55a0d8-2531-48ee-b4c1-a6c887bcfff2",
+        "runId": "fa7a9fc1-982d-44d7-96c2-f3ceb3b840f1"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_015zp5WSAA1JdsdGVG7p8f7W",
+      "name": "list_my_athletes",
+      "result": {
+        "status": "ok",
+        "athletes": [
+          {
+            "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+            "first_name": "Junior",
+            "last_name": "Consent",
+            "status": "active",
+            "registered_by": "guardian",
+            "membership": {
+              "product_code": "junior",
+              "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+              "status": "active",
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31",
+              "amount": {
+                "amount_minor": 17500,
+                "currency": "USD"
+              }
+            }
+          }
+        ]
+      },
+      "parameters": ""
+    }
+  ],
+  "aiResponse": "Junior Consent has an active junior membership for the 2026 season. It started on January 1, 2026 and runs until December 31, 2026. It cost $175.00 USD.",
+  "actual": "Junior Consent has an active junior membership for the 2026 season. It started on January 1, 2026 and runs until December 31, 2026. It cost $175.00 USD.",
+  "durationMs": 4480,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWhat is Junior Consent’s membership status and when does it expire?\n\nJunior Consent has an active junior membership for the 2026 season. It started on January 1, 2026 and runs until December 31, 2026. It cost $175.00 USD.\n\nJunior Consent has an active junior membership for the 2026 season. It started on January 1, 2026 and runs until December 31, 2026. It cost $175.00 USD.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A03.png",
+  "videoEndSeconds": 83.129,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:16:16.430Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:16:21.567Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Active Junior membership and1 Jan–31 Dec2026 dates match owned API/tool data.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Own-athlete scope; direct foreign holdings403 verified in A16/S02",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Junior membership active, expiry from current API; do not substitute season-end assumptions.",
+    "observed": "Junior Consent has an active junior membership for the 2026 season. It started on January 1, 2026 and runs until December 31, 2026. It cost $175.00 USD.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A03-BM-LIVE-A03.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

@@ -1,0 +1,1724 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{font:16px/1.6 system-ui;background:#f4f6fa;color:#17344c;margin:0;padding:20px;overflow-wrap:anywhere}main{max-width:1250px;margin:auto}section,article{padding:22px;margin:20px 0;background:white;border:1px solid #dbe2e9;border-radius:12px}h1{color:#073752}h2{color:#124d70}summary{cursor:pointer;font-weight:650}details{padding:12px;background:#f8fafc;border-radius:8px;margin:12px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf2f7;padding:14px}a{color:#075db0}table{width:100%;border-collapse:collapse;table-layout:fixed}td,th{padding:10px;border-bottom:1px solid #dbe2e9;text-align:left;vertical-align:top}img,video{max-width:100%;width:100%;height:auto;object-fit:contain}nav a{margin-right:18px}button,select,input{font:inherit;padding:8px;margin:4px}input{max-width:100%}.PASS{color:#186534}.FAIL{color:#a52323}.BLOCKED{color:#855b00}.NOT-VERIFIED{color:#555}.tag{font-weight:bold}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}.caption{background:#eef3f8;padding:12px}small{color:#506273}@media(max-width:650px){body{padding:8px}section,article{padding:12px}.pair{grid-template-columns:1fr}td,th{padding:5px;font-size:13px}}</style><title>BM-BUG-006 Member event lookup unavailable — BM-LIVE-A13</title><main><a href="index.html">All bug reports</a> · <a href="../index.html#BM-LIVE-A13">Linked failed check</a><h1>BM-BUG-006 — Member event lookup unavailable — BM-LIVE-A13</h1><p>Role: Athlete · Severity: High · Priority: P1 (proposed)</p><section><section><h4>Flow in simple steps</h4><ol><li>Use the Athlete session and open Beach Marshal.</li><li>Start the conversation described by this check.</li><li>Send: Can you register Junior Consent for Taiwan Open of Surfing? Open the event registration page, but do not submit anything.</li><li>Observe the answer/tool result and compare it with the captured reference evidence.</li></ol><h4>What went wrong</h4><p>The assistant did not open Taiwan registration because its event-list lookup failed. Nothing was submitted.</p><details><summary>AWS logs and investigation</summary><p>Tool-path failure confirmed; exact runtime cause unresolved</p><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><p><strong>Suggested fix:</strong> Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><pre>{
+  &quot;runIds&quot;: [
+    &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;
+  ],
+  &quot;logs&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:53.903206039Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:53+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;,
+      &quot;run_id&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:55.58580099Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:55+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;,
+      &quot;run_id&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:57.728019291Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:57+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;,
+      &quot;run_id&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:18:00.865190908Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:18:00+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;,
+      &quot;run_id&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    }
+  ]
+}</pre></details><section><h4>Example 2 — PASS</h4><p><strong>Original example:</strong> FAIL; its original evidence is retained below.</p><p><strong>Alternate flow:</strong> Open Central Coast Pro Junior registration for Pay Tester, event ID 01a136e0-da63-77be-a158-285ac6418196. Do not submit or register anything.</p><p><strong>Expected:</strong> Open Central Coast Pro Junior registration for Pay Tester without submitting.</p><p><strong>Observed:</strong> Browser reached the correct event and athlete registration URL. No registration or other domain write was submitted. The original name/list-based navigation failure remains; this example supplied the exact ID.</p><p><strong>Exact answer:</strong> I've opened the Central Coast Pro Junior registration page for Pay Tester. I haven't submitted or registered anything.</p><details><summary>Alternate example recording and API evidence</summary><a href="../screenshots/BM-LIVE-A13-example-2-BM-LIVE-A13-alternate.png"><img loading="lazy" src="../screenshots/BM-LIVE-A13-example-2-BM-LIVE-A13-alternate.png" alt="Actual execution screenshot"></a><video controls preload="metadata" src="../videos/BM-LIVE-A13-example-2.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label></p><p class="caption">Alternate example captured with Chrome DevTools Protocol Page.startScreencast at the native browser viewport; no zoom, scaling or crop. Focused clip of this request and observed result.</p><a href="../evidence/BM-LIVE-A13-example-2.json">Full sanitized action log and API evidence</a><pre>{
+  &quot;api&quot;: {
+    &quot;status&quot;: 200,
+    &quot;endpoint&quot;: &quot;https://api.dev.worldsurfleague.com/api/assistant/run&quot;,
+    &quot;input&quot;: {
+      &quot;threadId&quot;: &quot;644df1e5-7c2f-4de2-96b1-2c85477c5660&quot;,
+      &quot;runId&quot;: &quot;cfd5091f-4656-4dd2-8b98-6b436c718453&quot;,
+      &quot;state&quot;: {},
+      &quot;messages&quot;: [
+        {
+          &quot;id&quot;: &quot;7eaaf6c5-2c94-41d4-8350-9aa7874228a3&quot;,
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;Open Central Coast Pro Junior registration for Pay Tester, event ID 01a136e0-da63-77be-a158-285ac6418196. Do not submit or register anything.&quot;
+        }
+      ],
+      &quot;tools&quot;: [],
+      &quot;context&quot;: [],
+      &quot;forwardedProps&quot;: {}
+    }
+  },
+  &quot;runIds&quot;: [
+    {
+      &quot;type&quot;: &quot;RUN_STARTED&quot;,
+      &quot;threadId&quot;: &quot;644df1e5-7c2f-4de2-96b1-2c85477c5660&quot;,
+      &quot;runId&quot;: &quot;cfd5091f-4656-4dd2-8b98-6b436c718453&quot;
+    },
+    {
+      &quot;type&quot;: &quot;RUN_FINISHED&quot;,
+      &quot;threadId&quot;: &quot;644df1e5-7c2f-4de2-96b1-2c85477c5660&quot;,
+      &quot;runId&quot;: &quot;cfd5091f-4656-4dd2-8b98-6b436c718453&quot;
+    }
+  ],
+  &quot;tools&quot;: [
+    {
+      &quot;id&quot;: &quot;toolu_bdrk_01BaHTbMX7AhjTVJmVmh56Bn&quot;,
+      &quot;name&quot;: &quot;list_my_athletes&quot;,
+      &quot;result&quot;: {
+        &quot;status&quot;: &quot;ok&quot;,
+        &quot;athletes&quot;: [
+          {
+            &quot;athlete_id&quot;: &quot;01a13c42-9891-71a5-b144-1b5687a5c929&quot;,
+            &quot;first_name&quot;: &quot;Pay&quot;,
+            &quot;last_name&quot;: &quot;Tester&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;registered_by&quot;: &quot;self&quot;,
+            &quot;membership&quot;: {
+              &quot;product_code&quot;: &quot;junior&quot;,
+              &quot;season_id&quot;: &quot;2ac225ca-986b-5c3d-b624-4fdcbed34b42&quot;,
+              &quot;status&quot;: &quot;active&quot;,
+              &quot;valid_from&quot;: &quot;2026-01-01&quot;,
+              &quot;valid_to&quot;: &quot;2026-12-31&quot;,
+              &quot;amount&quot;: {
+                &quot;amount_minor&quot;: 17500,
+                &quot;currency&quot;: &quot;USD&quot;
+              }
+            }
+          }
+        ]
+      },
+      &quot;parameters&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;toolu_bdrk_01H6XVa1RQrhPofbRh78tpDC&quot;,
+      &quot;name&quot;: &quot;open_page&quot;,
+      &quot;result&quot;: {
+        &quot;status&quot;: &quot;ok&quot;,
+        &quot;navigate&quot;: {
+          &quot;page&quot;: &quot;event_register&quot;,
+          &quot;params&quot;: {
+            &quot;eventId&quot;: &quot;01a136e0-da63-77be-a158-285ac6418196&quot;,
+            &quot;athleteId&quot;: &quot;01a13c42-9891-71a5-b144-1b5687a5c929&quot;
+          },
+          &quot;label&quot;: &quot;Central Coast Pro Junior registration for Pay Tester&quot;
+        }
+      },
+      &quot;parameters&quot;: {
+        &quot;page&quot;: &quot;event_register&quot;,
+        &quot;label&quot;: &quot;Central Coast Pro Junior registration for Pay Tester&quot;,
+        &quot;params&quot;: {
+          &quot;eventId&quot;: &quot;01a136e0-da63-77be-a158-285ac6418196&quot;,
+          &quot;athleteId&quot;: &quot;01a13c42-9891-71a5-b144-1b5687a5c929&quot;
+        }
+      }
+    }
+  ],
+  &quot;reference&quot;: [
+    {
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;url&quot;: &quot;https://api.dev.worldsurfleague.com/api/session&quot;,
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;user&quot;: {
+          &quot;id&quot;: &quot;01a13c42-7b51-7737-8ee3-a2e63a62a52b&quot;,
+          &quot;name&quot;: &quot;Pay Tester&quot;,
+          &quot;firstName&quot;: &quot;Pay&quot;,
+          &quot;lastName&quot;: &quot;Tester&quot;,
+          &quot;email&quot;: &quot;[email redacted]&quot;,
+          &quot;dateOfBirth&quot;: &quot;2011-03-10&quot;
+        },
+        &quot;athletes&quot;: [
+          {
+            &quot;id&quot;: &quot;01a13c42-9891-71a5-b144-1b5687a5c929&quot;,
+            &quot;name&quot;: &quot;Pay Tester&quot;,
+            &quot;firstName&quot;: &quot;Pay&quot;,
+            &quot;lastName&quot;: &quot;Tester&quot;,
+            &quot;initials&quot;: &quot;PT&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;signedCodes&quot;: [
+              &quot;age_and_authority_certification&quot;,
+              &quot;guardian_certification&quot;,
+              &quot;health_insurance_authorization&quot;,
+              &quot;membership_terms_and_conditions&quot;,
+              &quot;waiver_release_indemnity&quot;
+            ],
+            &quot;registeredByRole&quot;: &quot;self&quot;,
+            &quot;membership&quot;: {
+              &quot;id&quot;: &quot;01a13c42-b280-7579-aa49-a1c403fbb204&quot;,
+              &quot;productCode&quot;: &quot;junior&quot;,
+              &quot;status&quot;: {
+                &quot;code&quot;: &quot;active&quot;,
+                &quot;label&quot;: &quot;Membership active&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              },
+              &quot;validTo&quot;: &quot;2026-12-31&quot;
+            }
+          }
+        ],
+        &quot;athletesUnavailable&quot;: false,
+        &quot;activeAthleteId&quot;: &quot;01a13c42-9891-71a5-b144-1b5687a5c929&quot;,
+        &quot;passwordChangeRequired&quot;: false
+      },
+      &quot;at&quot;: &quot;2026-10-15T18:06:05.824Z&quot;
+    },
+    {
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;url&quot;: &quot;https://api.dev.worldsurfleague.com/api/events?athlete=01a13c42-9891-71a5-b144-1b5687a5c929&amp;scope=all&quot;,
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;status&quot;: {
+          &quot;code&quot;: &quot;active&quot;,
+          &quot;label&quot;: &quot;Membership active&quot;,
+          &quot;tone&quot;: &quot;success&quot;
+        },
+        &quot;tour&quot;: &quot;&quot;,
+        &quot;season&quot;: &quot;&quot;,
+        &quot;tours&quot;: [
+          &quot;Challenger Series&quot;,
+          &quot;Championship Tour&quot;,
+          &quot;International Qualifying Series&quot;,
+          &quot;Longboard Qualifying Series&quot;,
+          &quot;Pro Junior Series&quot;,
+          &quot;Qualifying Series&quot;
+        ],
+        &quot;empty&quot;: null,
+        &quot;banner&quot;: null,
+        &quot;events&quot;: [
+          {
+            &quot;id&quot;: &quot;01a136e0-db3c-70c4-b1df-ef78dfea845d&quot;,
+            &quot;name&quot;: &quot;North Shore Open&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 27–Dec 2 · Haleiwa Ali'i Beach Park, Oahu · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 28 Oct 2026 · 17:00 HST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-da63-77be-a158-285ac6418196&quot;,
+            &quot;name&quot;: &quot;Central Coast Pro Junior&quot;,
+            &quot;tour&quot;: &quot;JR 1,000&quot;,
+            &quot;tourName&quot;: &quot;Pro Junior Series&quot;,
+            &quot;meta&quot;: &quot;Nov 30–Dec 1 · Pismo Beach Pier, CA · Junior Men’s&quot;,
+            &quot;entryFee&quot;: 90,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 31 Oct 2026 · 17:00 PDT&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: false,
+                &quot;trailingChevron&quot;: false,
+                &quot;href&quot;: &quot;/athlete-registration/events/01a136e0-da63-77be-a158-285ac6418196/register?athlete=01a13c42-9891-71a5-b144-1b5687a5c929&quot;
+              }
+            ],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dbc3-72a1-85ed-5b36b30a74d4&quot;,
+            &quot;name&quot;: &quot;Tahara Pacific Open&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 4–8 · Akabane Beach, Aichi · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 4 Nov 2026 · 17:00 JST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a1402d-c449-7115-abe2-6485825de4fd&quot;,
+            &quot;name&quot;: &quot;fffffffffffffffffffff&quot;,
+            &quot;tour&quot;: &quot;Challenger Series&quot;,
+            &quot;tourName&quot;: &quot;Challenger Series&quot;,
+            &quot;meta&quot;: &quot;Dec 5 · Huntington Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 3 Nov 2026 · 17:00 PST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-da95-7757-9197-8159ef60e816&quot;,
+            &quot;name&quot;: &quot;Mid-Atlantic Pro&quot;,
+            &quot;tour&quot;: &quot;QS 4,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 7–12 · 1st Street Jetty, VA · Men’s&quot;,
+            &quot;entryFee&quot;: 225,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 7 Nov 2026 · 17:00 EST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: false,
+                &quot;trailingChevron&quot;: false,
+                &quot;href&quot;: &quot;/athlete-registration/events/01a136e0-da95-7757-9197-8159ef60e816/register?athlete=01a13c42-9891-71a5-b144-1b5687a5c929&quot;
+              }
+            ],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-ca86-74e5-b293-d3fba5570ee9&quot;,
+            &quot;name&quot;: &quot;Lexus Pipe Masters&quot;,
+            &quot;tour&quot;: &quot;Championship Tour&quot;,
+            &quot;tourName&quot;: &quot;Championship Tour&quot;,
+            &quot;meta&quot;: &quot;Dec 8–20 · Banzai Pipeline, Oahu · Men’s&quot;,
+            &quot;entryFee&quot;: 500,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 8 Nov 2026 · 17:00 HST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dad5-7182-b737-15bf31318165&quot;,
+            &quot;name&quot;: &quot;Mid-Atlantic Longboard Classic&quot;,
+            &quot;tour&quot;: &quot;LQS 1,000&quot;,
+            &quot;tourName&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 14–16 · 1st Street Jetty, VA · Men’s&quot;,
+            &quot;entryFee&quot;: 90,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 14 Nov 2026 · 17:00 EST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-db85-70ad-bf9b-d688a33b05ba&quot;,
+            &quot;name&quot;: &quot;Lacanau Atlantic Pro&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 18–22 · Lacanau Océan, Gironde · Men’s&quot;,
+            &quot;entryFee&quot;: 135,
+            &quot;currency&quot;: &quot;EUR&quot;,
+            &quot;note&quot;: &quot;Entries close 18 Nov 2026 · 17:00 CET&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a139e9-d260-751f-9760-9cd2b159240e&quot;,
+            &quot;name&quot;: &quot;QA Main Flow 6e301a29&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 20 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 1 Nov 2026 · 03:00 PST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: false,
+                &quot;trailingChevron&quot;: false,
+                &quot;href&quot;: &quot;/athlete-registration/events/01a139e9-d260-751f-9760-9cd2b159240e/register?athlete=01a13c42-9891-71a5-b144-1b5687a5c929&quot;
+              }
+            ],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-db04-715a-b884-19427ff27f7a&quot;,
+            &quot;name&quot;: &quot;Surf City Open&quot;,
+            &quot;tour&quot;: &quot;QS 1,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 22–26 · Huntington Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 120,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 22 Nov 2026 · 17:00 PST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: false,
+                &quot;trailingChevron&quot;: false,
+                &quot;href&quot;: &quot;/athlete-registration/events/01a136e0-db04-715a-b884-19427ff27f7a/register?athlete=01a13c42-9891-71a5-b144-1b5687a5c929&quot;
+              }
+            ],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dc04-778c-9019-04713fd16d0a&quot;,
+            &quot;name&quot;: &quot;Saquarema International Pro&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Jan 1–7 · Itaúna, RJ · Men’s&quot;,
+            &quot;entryFee&quot;: 1925,
+            &quot;currency&quot;: &quot;BRL&quot;,
+            &quot;note&quot;: &quot;Entries close 2 Dec 2026 · 17:00 -03&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-ca0b-71e5-84ce-384a1a37cb77&quot;,
+            &quot;name&quot;: &quot;MEO Rip Curl Pro Portugal&quot;,
+            &quot;tour&quot;: &quot;Championship Tour&quot;,
+            &quot;tourName&quot;: &quot;Championship Tour&quot;,
+            &quot;meta&quot;: &quot;Oct 16–25 · Supertubos, Portugal · Men’s&quot;,
+            &quot;entryFee&quot;: 450,
+            &quot;currency&quot;: &quot;EUR&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-d732-7352-a0a3-413d5c0b0645&quot;,
+            &quot;name&quot;: &quot;Sunset Pro&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Oct 26–Nov 2 · Sunset Beach, Oahu · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-ca4d-76f1-90a8-e73e107819af&quot;,
+            &quot;name&quot;: &quot;Philippines Pro&quot;,
+            &quot;tour&quot;: &quot;Championship Tour&quot;,
+            &quot;tourName&quot;: &quot;Championship Tour&quot;,
+            &quot;meta&quot;: &quot;Oct 31–Nov 10 · Cloud 9, Siargao · Men’s&quot;,
+            &quot;entryFee&quot;: 500,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dc52-75d6-a236-01644c851b5e&quot;,
+            &quot;name&quot;: &quot;Orange County Classic&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 2–5 · Huntington Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-d78f-712e-ab76-1306bf1a2671&quot;,
+            &quot;name&quot;: &quot;HTA Haleiwa Pro&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 5–14 · Haleiwa Ali'i Beach Park, Oahu · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-d213-718f-84c2-d9954d325783&quot;,
+            &quot;name&quot;: &quot;Miyazaki Pro&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 6–8 · Kisakihama, Miyazaki · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dca6-75c9-bef7-49b35c573979&quot;,
+            &quot;name&quot;: &quot;Costa da Caparica Pro&quot;,
+            &quot;tour&quot;: &quot;QS 1,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 7–10 · Costa da Caparica, Portugal · Men’s&quot;,
+            &quot;entryFee&quot;: 110,
+            &quot;currency&quot;: &quot;EUR&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-ce4a-70ba-907d-453ccfb5e318&quot;,
+            &quot;name&quot;: &quot;Taiwan Open of Surfing&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 14–22 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-da1f-7244-8f4d-160d7de0ff6e&quot;,
+            &quot;name&quot;: &quot;Central Coast Open&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 22–26 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13fa6-0043-7672-adf0-72afe71a47dd&quot;,
+            &quot;name&quot;: &quot;QA Live Flow 1510 Current&quot;,
+            &quot;tour&quot;: &quot;LQS 1,000&quot;,
+            &quot;tourName&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 10–12 · QA Live Flow 1510 · Men’s&quot;,
+            &quot;entryFee&quot;: 1,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a139e1-8ab3-75ea-acc4-b46b391c816f&quot;,
+            &quot;name&quot;: &quot;QA Main Flow 93ae6bbc&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 18 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13a0f-19cc-72b3-a36f-26b5b2c331f3&quot;,
+            &quot;name&quot;: &quot;QA Main Flow d4207e61&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 18 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13a95-5e25-72ab-a44d-792872f27e57&quot;,
+            &quot;name&quot;: &quot;QA Main Flow 2722138a&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 19 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a139e6-31ff-7258-b9de-1cd2f0100bcf&quot;,
+            &quot;name&quot;: &quot;QA Main Flow b145bd93&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 19 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13b51-b856-7116-aa45-41bf7edf7bde&quot;,
+            &quot;name&quot;: &quot;QA Main Flow 5b1837d0&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 20 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13bd2-4eee-7331-97bf-35b4d7472b46&quot;,
+            &quot;name&quot;: &quot;QA Main Flow d762b574&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 21 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13a0b-27e8-724b-b6c0-dc6ff6598d32&quot;,
+            &quot;name&quot;: &quot;QA Main Flow df3398fa&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 21 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13b4c-a30d-745c-a59a-a5b33a82040b&quot;,
+            &quot;name&quot;: &quot;QA Main Flow d86e79d4&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 22 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13bce-bd5f-7339-a30c-80fbc91acc43&quot;,
+            &quot;name&quot;: &quot;QA Main Flow dc1df295&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 23 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          }
+        ]
+      },
+      &quot;at&quot;: &quot;2026-10-15T18:06:06.213Z&quot;
+    }
+  ]
+}</pre></details><p>AWS investigation above belongs to the original run; this alternate run has new IDs and has not been matched to those old logs.</p></section></section><h2>What happened</h2><p>The real member Events API returned HTTP200 with events for the same QA athlete, but AI list_enterable_events returned unavailable. Requested event information/navigation could not be completed. Error honesty was correct; read integration availability failed.</p><h2>Steps to reproduce</h2><ol><li>Use normal application role/session.</li><li>Open Beach Marshal.</li><li>Start a new conversation.</li><li>Send the exact recorded prompt.</li><li>Wait for the real stream and capture answer, tools and UI.</li></ol><p><strong>Exact prompt:</strong> Can you register Junior Consent for Taiwan Open of Surfing? Open the event registration page, but do not submit anything.</p><h2>Expected result</h2><p>Navigate to correct event/athlete entry form or explain restrictions; no claimed entry/payment success.</p><h2>Actual result</h2><p>I couldn't open the Taiwan Open of Surfing registration page for Junior Consent. The events list isn't loading right now, so I can't get the event details the page needs. I haven't submitted anything.
+
+Junior's junior membership for 2026 is active, so that won't hold you up. You can find the event on the Events page and open its registration from there. If you'd like, I can open the Events page for you, or try the registration page again in a little while.</p><h2>What needs attention</h2><p>The AI adapter collapses RPC/service errors, tool timeout and adapter exceptions into unavailable. Check the recorded correlation/run IDs against AI and owner-service logs; contract/delegation/timeout causes are hypotheses, not proven.</p><p><strong>Root-cause status:</strong> investigation finding/hypothesis, not a proven deployed-code diagnosis.</p><h2>AWS investigation</h2><p>Tool-path failure confirmed; exact runtime cause unresolved</p><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><p><strong>Suggested fix:</strong> Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="../aws-investigation.html#BM-LIVE-A13">Exact AWS logs and correlation evidence</a></p><h2>Technical details</h2><p>Dev · 2026-10-15T00:17:51.689Z</p><pre>{
+  &quot;api&quot;: {
+    &quot;method&quot;: &quot;POST&quot;,
+    &quot;endpoint&quot;: &quot;https://api.dev.worldsurfleague.com/api/assistant/run&quot;,
+    &quot;status&quot;: 200,
+    &quot;correlationId&quot;: &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;,
+    &quot;input&quot;: {
+      &quot;threadId&quot;: &quot;a9dff3f7-b678-4cc4-b9c6-e132a11db268&quot;,
+      &quot;runId&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;,
+      &quot;state&quot;: {},
+      &quot;messages&quot;: [
+        {
+          &quot;id&quot;: &quot;e5ca4835-79a2-4cc9-9e49-d53ea976bd81&quot;,
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;Can you register Junior Consent for Taiwan Open of Surfing? Open the event registration page, but do not submit anything.&quot;
+        }
+      ],
+      &quot;tools&quot;: [],
+      &quot;context&quot;: [],
+      &quot;forwardedProps&quot;: {}
+    }
+  },
+  &quot;runIds&quot;: [
+    {
+      &quot;type&quot;: &quot;RUN_STARTED&quot;,
+      &quot;threadId&quot;: &quot;a9dff3f7-b678-4cc4-b9c6-e132a11db268&quot;,
+      &quot;runId&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    },
+    {
+      &quot;type&quot;: &quot;RUN_FINISHED&quot;,
+      &quot;threadId&quot;: &quot;a9dff3f7-b678-4cc4-b9c6-e132a11db268&quot;,
+      &quot;runId&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    }
+  ],
+  &quot;tools&quot;: [
+    {
+      &quot;id&quot;: &quot;toolu_bdrk_011cWLVxsrU3ARon3gLP6hJ4&quot;,
+      &quot;name&quot;: &quot;list_my_athletes&quot;,
+      &quot;result&quot;: {
+        &quot;status&quot;: &quot;ok&quot;,
+        &quot;athletes&quot;: [
+          {
+            &quot;athlete_id&quot;: &quot;01a13c43-c421-74a4-b266-58d419d278a3&quot;,
+            &quot;first_name&quot;: &quot;Junior&quot;,
+            &quot;last_name&quot;: &quot;Consent&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;registered_by&quot;: &quot;guardian&quot;,
+            &quot;membership&quot;: {
+              &quot;product_code&quot;: &quot;junior&quot;,
+              &quot;season_id&quot;: &quot;2ac225ca-986b-5c3d-b624-4fdcbed34b42&quot;,
+              &quot;status&quot;: &quot;active&quot;,
+              &quot;valid_from&quot;: &quot;2026-01-01&quot;,
+              &quot;valid_to&quot;: &quot;2026-12-31&quot;,
+              &quot;amount&quot;: {
+                &quot;amount_minor&quot;: 17500,
+                &quot;currency&quot;: &quot;USD&quot;
+              }
+            }
+          }
+        ]
+      },
+      &quot;parameters&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;toolu_bdrk_01T6LmKWxK8fwxrdfXxait4x&quot;,
+      &quot;name&quot;: &quot;list_enterable_events&quot;,
+      &quot;result&quot;: {
+        &quot;status&quot;: &quot;unavailable&quot;
+      },
+      &quot;parameters&quot;: {
+        &quot;athlete_id&quot;: &quot;01a13c43-c421-74a4-b266-58d419d278a3&quot;,
+        &quot;scope&quot;: &quot;all&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;toolu_bdrk_01XPd86Ec33jUVwo9jns5VfQ&quot;,
+      &quot;name&quot;: &quot;list_enterable_events&quot;,
+      &quot;result&quot;: {
+        &quot;status&quot;: &quot;unavailable&quot;
+      },
+      &quot;parameters&quot;: {
+        &quot;athlete_id&quot;: &quot;01a13c43-c421-74a4-b266-58d419d278a3&quot;,
+        &quot;scope&quot;: &quot;international&quot;
+      }
+    }
+  ],
+  &quot;backend&quot;: [
+    {
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;url&quot;: &quot;https://api.dev.worldsurfleague.com/api/events?athlete=01a13c43-c421-74a4-b266-58d419d278a3&amp;scope=all&quot;,
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;status&quot;: {
+          &quot;code&quot;: &quot;active&quot;,
+          &quot;label&quot;: &quot;Membership active&quot;,
+          &quot;tone&quot;: &quot;success&quot;
+        },
+        &quot;tour&quot;: &quot;&quot;,
+        &quot;season&quot;: &quot;&quot;,
+        &quot;tours&quot;: [
+          &quot;Championship Tour&quot;,
+          &quot;International Qualifying Series&quot;,
+          &quot;Longboard Qualifying Series&quot;,
+          &quot;Pro Junior Series&quot;,
+          &quot;Qualifying Series&quot;
+        ],
+        &quot;empty&quot;: null,
+        &quot;banner&quot;: null,
+        &quot;events&quot;: [
+          {
+            &quot;id&quot;: &quot;01a136e0-ce4a-70ba-907d-453ccfb5e318&quot;,
+            &quot;name&quot;: &quot;Taiwan Open of Surfing&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 14–22 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 15 Oct 2026 · 17:00 CST&quot;,
+            &quot;noteTone&quot;: &quot;warning&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              },
+              {
+                &quot;code&quot;: &quot;closes_soon&quot;,
+                &quot;label&quot;: &quot;Closes soon&quot;,
+                &quot;tone&quot;: &quot;warning&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-db3c-70c4-b1df-ef78dfea845d&quot;,
+            &quot;name&quot;: &quot;North Shore Open&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 27–Dec 2 · Haleiwa Ali'i Beach Park, Oahu · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 28 Oct 2026 · 17:00 HST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-da63-77be-a158-285ac6418196&quot;,
+            &quot;name&quot;: &quot;Central Coast Pro Junior&quot;,
+            &quot;tour&quot;: &quot;JR 1,000&quot;,
+            &quot;tourName&quot;: &quot;Pro Junior Series&quot;,
+            &quot;meta&quot;: &quot;Nov 30–Dec 1 · Pismo Beach Pier, CA · Junior Men’s&quot;,
+            &quot;entryFee&quot;: 90,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 31 Oct 2026 · 17:00 PDT&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: false,
+                &quot;trailingChevron&quot;: false,
+                &quot;href&quot;: &quot;/athlete-registration/events/01a136e0-da63-77be-a158-285ac6418196/register?athlete=01a13c43-c421-74a4-b266-58d419d278a3&quot;
+              }
+            ],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dbc3-72a1-85ed-5b36b30a74d4&quot;,
+            &quot;name&quot;: &quot;Tahara Pacific Open&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 4–8 · Akabane Beach, Aichi · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 4 Nov 2026 · 17:00 JST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-da95-7757-9197-8159ef60e816&quot;,
+            &quot;name&quot;: &quot;Mid-Atlantic Pro&quot;,
+            &quot;tour&quot;: &quot;QS 4,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 7–12 · 1st Street Jetty, VA · Men’s&quot;,
+            &quot;entryFee&quot;: 225,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 7 Nov 2026 · 17:00 EST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: false,
+                &quot;trailingChevron&quot;: false,
+                &quot;href&quot;: &quot;/athlete-registration/events/01a136e0-da95-7757-9197-8159ef60e816/register?athlete=01a13c43-c421-74a4-b266-58d419d278a3&quot;
+              }
+            ],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-ca86-74e5-b293-d3fba5570ee9&quot;,
+            &quot;name&quot;: &quot;Lexus Pipe Masters&quot;,
+            &quot;tour&quot;: &quot;Championship Tour&quot;,
+            &quot;tourName&quot;: &quot;Championship Tour&quot;,
+            &quot;meta&quot;: &quot;Dec 8–20 · Banzai Pipeline, Oahu · Men’s&quot;,
+            &quot;entryFee&quot;: 500,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 8 Nov 2026 · 17:00 HST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dad5-7182-b737-15bf31318165&quot;,
+            &quot;name&quot;: &quot;Mid-Atlantic Longboard Classic&quot;,
+            &quot;tour&quot;: &quot;LQS 1,000&quot;,
+            &quot;tourName&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 14–16 · 1st Street Jetty, VA · Men’s&quot;,
+            &quot;entryFee&quot;: 90,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 14 Nov 2026 · 17:00 EST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-db85-70ad-bf9b-d688a33b05ba&quot;,
+            &quot;name&quot;: &quot;Lacanau Atlantic Pro&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 18–22 · Lacanau Océan, Gironde · Men’s&quot;,
+            &quot;entryFee&quot;: 135,
+            &quot;currency&quot;: &quot;EUR&quot;,
+            &quot;note&quot;: &quot;Entries close 18 Nov 2026 · 17:00 CET&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a139e9-d260-751f-9760-9cd2b159240e&quot;,
+            &quot;name&quot;: &quot;QA Main Flow 6e301a29&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 20 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 1 Nov 2026 · 03:00 PST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: false,
+                &quot;trailingChevron&quot;: false,
+                &quot;href&quot;: &quot;/athlete-registration/events/01a139e9-d260-751f-9760-9cd2b159240e/register?athlete=01a13c43-c421-74a4-b266-58d419d278a3&quot;
+              }
+            ],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-db04-715a-b884-19427ff27f7a&quot;,
+            &quot;name&quot;: &quot;Surf City Open&quot;,
+            &quot;tour&quot;: &quot;QS 1,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 22–26 · Huntington Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 120,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries close 22 Nov 2026 · 17:00 PST&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: false,
+                &quot;trailingChevron&quot;: false,
+                &quot;href&quot;: &quot;/athlete-registration/events/01a136e0-db04-715a-b884-19427ff27f7a/register?athlete=01a13c43-c421-74a4-b266-58d419d278a3&quot;
+              }
+            ],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dc04-778c-9019-04713fd16d0a&quot;,
+            &quot;name&quot;: &quot;Saquarema International Pro&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Jan 1–7 · Itaúna, RJ · Men’s&quot;,
+            &quot;entryFee&quot;: 1925,
+            &quot;currency&quot;: &quot;BRL&quot;,
+            &quot;note&quot;: &quot;Entries close 2 Dec 2026 · 17:00 -03&quot;,
+            &quot;noteTone&quot;: &quot;success&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;ready_for_entries&quot;,
+                &quot;label&quot;: &quot;Ready for entries&quot;,
+                &quot;tone&quot;: &quot;success&quot;
+              }
+            ],
+            &quot;actions&quot;: [
+              {
+                &quot;code&quot;: &quot;register&quot;,
+                &quot;label&quot;: &quot;Register&quot;,
+                &quot;variant&quot;: &quot;primary&quot;,
+                &quot;disabled&quot;: true,
+                &quot;trailingChevron&quot;: false
+              }
+            ],
+            &quot;lock&quot;: &quot;Upgrade your membership plan to access this event.&quot;
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-ca0b-71e5-84ce-384a1a37cb77&quot;,
+            &quot;name&quot;: &quot;MEO Rip Curl Pro Portugal&quot;,
+            &quot;tour&quot;: &quot;Championship Tour&quot;,
+            &quot;tourName&quot;: &quot;Championship Tour&quot;,
+            &quot;meta&quot;: &quot;Oct 16–25 · Supertubos, Portugal · Men’s&quot;,
+            &quot;entryFee&quot;: 450,
+            &quot;currency&quot;: &quot;EUR&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-cdc7-709f-9632-517fae186b3f&quot;,
+            &quot;name&quot;: &quot;Siargao International Surfing Cup&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Oct 16–25 · Cloud 9, Siargao · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-d732-7352-a0a3-413d5c0b0645&quot;,
+            &quot;name&quot;: &quot;Sunset Pro&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Oct 26–Nov 2 · Sunset Beach, Oahu · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-ca4d-76f1-90a8-e73e107819af&quot;,
+            &quot;name&quot;: &quot;Philippines Pro&quot;,
+            &quot;tour&quot;: &quot;Championship Tour&quot;,
+            &quot;tourName&quot;: &quot;Championship Tour&quot;,
+            &quot;meta&quot;: &quot;Oct 31–Nov 10 · Cloud 9, Siargao · Men’s&quot;,
+            &quot;entryFee&quot;: 500,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dc52-75d6-a236-01644c851b5e&quot;,
+            &quot;name&quot;: &quot;Orange County Classic&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 2–5 · Huntington Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-d78f-712e-ab76-1306bf1a2671&quot;,
+            &quot;name&quot;: &quot;HTA Haleiwa Pro&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 5–14 · Haleiwa Ali'i Beach Park, Oahu · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-d213-718f-84c2-d9954d325783&quot;,
+            &quot;name&quot;: &quot;Miyazaki Pro&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 6–8 · Kisakihama, Miyazaki · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-dca6-75c9-bef7-49b35c573979&quot;,
+            &quot;name&quot;: &quot;Costa da Caparica Pro&quot;,
+            &quot;tour&quot;: &quot;QS 1,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 7–10 · Costa da Caparica, Portugal · Men’s&quot;,
+            &quot;entryFee&quot;: 110,
+            &quot;currency&quot;: &quot;EUR&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a136e0-da1f-7244-8f4d-160d7de0ff6e&quot;,
+            &quot;name&quot;: &quot;Central Coast Open&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Nov 22–26 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a139e1-8ab3-75ea-acc4-b46b391c816f&quot;,
+            &quot;name&quot;: &quot;QA Main Flow 93ae6bbc&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 18 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13a0f-19cc-72b3-a36f-26b5b2c331f3&quot;,
+            &quot;name&quot;: &quot;QA Main Flow d4207e61&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 18 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13a95-5e25-72ab-a44d-792872f27e57&quot;,
+            &quot;name&quot;: &quot;QA Main Flow 2722138a&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 19 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13c3f-e1ac-7363-81aa-30e22cf9164e&quot;,
+            &quot;name&quot;: &quot;QA Main Flow 6a41a52a&quot;,
+            &quot;tour&quot;: &quot;QS 4,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 19 · 1st Street Jetty, VA · Men’s&quot;,
+            &quot;entryFee&quot;: 225,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a139e6-31ff-7258-b9de-1cd2f0100bcf&quot;,
+            &quot;name&quot;: &quot;QA Main Flow b145bd93&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 19 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13b51-b856-7116-aa45-41bf7edf7bde&quot;,
+            &quot;name&quot;: &quot;QA Main Flow 5b1837d0&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 20 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13bd2-4eee-7331-97bf-35b4d7472b46&quot;,
+            &quot;name&quot;: &quot;QA Main Flow d762b574&quot;,
+            &quot;tour&quot;: &quot;INTL QS 6,000&quot;,
+            &quot;tourName&quot;: &quot;International Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 21 · Jinzun Harbor, Taitung · Men’s&quot;,
+            &quot;entryFee&quot;: 350,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13a0b-27e8-724b-b6c0-dc6ff6598d32&quot;,
+            &quot;name&quot;: &quot;QA Main Flow df3398fa&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 21 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13b4c-a30d-745c-a59a-a5b33a82040b&quot;,
+            &quot;name&quot;: &quot;QA Main Flow d86e79d4&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 22 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          },
+          {
+            &quot;id&quot;: &quot;01a13bce-bd5f-7339-a30c-80fbc91acc43&quot;,
+            &quot;name&quot;: &quot;QA Main Flow dc1df295&quot;,
+            &quot;tour&quot;: &quot;QS 2,000&quot;,
+            &quot;tourName&quot;: &quot;Qualifying Series&quot;,
+            &quot;meta&quot;: &quot;Dec 23 · Pismo Beach Pier, CA · Men’s&quot;,
+            &quot;entryFee&quot;: 150,
+            &quot;currency&quot;: &quot;USD&quot;,
+            &quot;note&quot;: &quot;Entries are closed.&quot;,
+            &quot;noteTone&quot;: &quot;neutral&quot;,
+            &quot;badges&quot;: [
+              {
+                &quot;code&quot;: &quot;closed&quot;,
+                &quot;label&quot;: &quot;Closed&quot;,
+                &quot;tone&quot;: &quot;muted&quot;
+              }
+            ],
+            &quot;actions&quot;: [],
+            &quot;lock&quot;: null
+          }
+        ]
+      },
+      &quot;at&quot;: &quot;2026-10-15T00:17:52.112Z&quot;
+    }
+  ]
+}</pre><h2>Evidence</h2><a href="../screenshots/BM-LIVE-A13-BM-LIVE-A13.png"><img loading="lazy" src="../screenshots/BM-LIVE-A13-BM-LIVE-A13.png" alt="Actual execution screenshot"></a><video controls preload="metadata" src="../videos/BM-LIVE-A13.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label></p><p class="caption">Focused original browser-content viewport, no zoom, resize or crop. Chrome toolbar/OS tabs are not recorded by Playwright. Clip includes the actual sent prompt and observed result.</p><a href="../evidence/BM-LIVE-A13.json">Full sanitized action log and API evidence</a></section></main></html>

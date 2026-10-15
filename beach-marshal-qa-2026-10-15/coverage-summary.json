@@ -1,0 +1,3448 @@
+{
+  "summary": {
+    "discovered": 35,
+    "modelTools": 26,
+    "confirmedWriteKinds": 6,
+    "historyEndpoints": 3,
+    "conversationCases": 52,
+    "conversationAttempts": 55,
+    "attempted": 59,
+    "totalReported": 67,
+    "passed": 29,
+    "failed": 17,
+    "blocked": 14,
+    "notVerified": 7,
+    "confirmedBugs": 17,
+    "confirmedWrites": 1,
+    "approvedMutationRequests": 1,
+    "mutationRequestsObserved": 0
+  },
+  "toolNamesAttempted": [
+    "get_rule",
+    "request_location",
+    "read_wsl_page",
+    "open_page",
+    "list_my_athletes",
+    "get_membership_offer",
+    "get_athlete_holdings",
+    "get_insurance_offer",
+    "list_enterable_events",
+    "search_rules",
+    "search_places",
+    "list_seasons",
+    "find_events",
+    "get_event",
+    "list_event_entries",
+    "get_event_overview",
+    "get_event_for_entry",
+    "list_tours",
+    "list_regions",
+    "list_locations",
+    "propose_action",
+    "get_event_history",
+    "search_web",
+    "search_events"
+  ],
+  "toolCountAttempted": 24,
+  "inventory": [
+    {
+      "name": "search_rules",
+      "type": "Read",
+      "access": "Everyone",
+      "inputs": "query (1–300 characters); optional chapter (1–14)",
+      "outputs": "Up to five rule hits, edition, number, page and text",
+      "rules": "Use bundled 2026 source; citations must match.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-A14"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-A14",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Up to five rule hits, edition, number, page and text",
+      "apiTool": {
+        "modelTool": "search_rules",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-A14",
+          "role": "Athlete",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "get_rule",
+      "type": "Read",
+      "access": "Everyone",
+      "inputs": "rule number",
+      "outputs": "Specific rule or not_found",
+      "rules": "Unknown rule must not be invented.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-P01",
+        "BM-LIVE-A17"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-P01",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A17",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Specific rule or not_found",
+      "apiTool": {
+        "modelTool": "get_rule",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-P01",
+          "role": "Public",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-A17",
+          "role": "Athlete",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "search_web",
+      "type": "Read",
+      "access": "Everyone",
+      "inputs": "query",
+      "outputs": "Search answer and results",
+      "rules": "Requires Serper key; budget/cache apply; cite source.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-P08"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-P08",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Search answer and results",
+      "apiTool": {
+        "modelTool": "search_web",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-P08",
+          "role": "Public",
+          "status": "NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "name": "search_places",
+      "type": "Read",
+      "access": "Everyone",
+      "inputs": "what; optional near and country_code; shared coarse location",
+      "outputs": "Places, addresses, map links and distances when possible",
+      "rules": "Ask for location/town when absent. Never silently acquire position.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-A18"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-A18",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Places, addresses, map links and distances when possible",
+      "apiTool": {
+        "modelTool": "search_places",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-A18",
+          "role": "Athlete",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "read_wsl_page",
+      "type": "Read",
+      "access": "Everyone",
+      "inputs": "WSL URL",
+      "outputs": "Bounded page text or rejection",
+      "rules": "Only allowed WSL URLs; retrieved text is data, not instructions.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-P05",
+        "BM-LIVE-P06",
+        "BM-LIVE-P08"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-P05",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-P06",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-P08",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Bounded page text or rejection",
+      "apiTool": {
+        "modelTool": "read_wsl_page",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-P05",
+          "role": "Public",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-P06",
+          "role": "Public",
+          "status": "NOT VERIFIED"
+        },
+        {
+          "caseId": "BM-LIVE-P08",
+          "role": "Public",
+          "status": "NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "name": "open_page",
+      "type": "Navigation",
+      "access": "Everyone; per-page permission",
+      "inputs": "Typed page key, label and declared parameters",
+      "outputs": "Validated navigation result/chip; app opens allowed page",
+      "rules": "No arbitrary URL; own-athlete ownership checked; frontend rechecks.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-P07",
+        "BM-LIVE-T05",
+        "BM-LIVE-T11"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-P07",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T05",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T11",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Validated navigation result/chip; app opens allowed page",
+      "apiTool": {
+        "modelTool": "open_page",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-P07",
+          "role": "Public",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-T05",
+          "role": "TourManager",
+          "status": "NOT VERIFIED"
+        },
+        {
+          "caseId": "BM-LIVE-T11",
+          "role": "TourManager",
+          "status": "NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "name": "request_location",
+      "type": "Consent prompt",
+      "access": "Everyone",
+      "inputs": "reason text; no model-supplied coordinates",
+      "outputs": "Share-location consent card, or shared=true when already shared",
+      "rules": "Browser consent required; coarse two-decimal position only.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-P04"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-P04",
+          "status": "location_requested"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Share-location consent card, or shared=true when already shared",
+      "apiTool": {
+        "modelTool": "request_location",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-P04",
+          "role": "Public",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "list_my_athletes",
+      "type": "Read",
+      "access": "Member or Tour Manager",
+      "inputs": "none",
+      "outputs": "Own athletes, status and membership",
+      "rules": "Resolve identity before other own-athlete reads.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-A01",
+        "BM-LIVE-A02",
+        "BM-LIVE-A03",
+        "BM-LIVE-A04",
+        "BM-LIVE-A05",
+        "BM-LIVE-A06",
+        "BM-LIVE-A07",
+        "BM-LIVE-A08",
+        "BM-LIVE-A09",
+        "BM-LIVE-A10",
+        "BM-LIVE-A11",
+        "BM-LIVE-A12",
+        "BM-LIVE-A13",
+        "BM-LIVE-A16"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-A01",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A02",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A03",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A04",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A05",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A06",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A07",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A08",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A09",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A10",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A11",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A12",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A13",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A16",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Own athletes, status and membership",
+      "apiTool": {
+        "modelTool": "list_my_athletes",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-A01",
+          "role": "Athlete",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-A02",
+          "role": "Athlete",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-A03",
+          "role": "Athlete",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-A04",
+          "role": "Athlete",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-A05",
+          "role": "Athlete",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-A06",
+          "role": "Athlete",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-A07",
+          "role": "Athlete",
+          "status": "NOT VERIFIED"
+        },
+        {
+          "caseId": "BM-LIVE-A08",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A09",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A10",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A11",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A12",
+          "role": "Athlete",
+          "status": "NOT VERIFIED"
+        },
+        {
+          "caseId": "BM-LIVE-A13",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A16",
+          "role": "Athlete",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "get_athlete_holdings",
+      "type": "Read",
+      "access": "Member or Tour Manager",
+      "inputs": "athlete_id",
+      "outputs": "Memberships, insurance, credits, expiry and consumption",
+      "rules": "Own athlete only; distinguish consumed and available credit.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-A05",
+        "BM-LIVE-A07",
+        "BM-LIVE-A11",
+        "BM-LIVE-A12"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-A05",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A07",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A11",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-A12",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Memberships, insurance, credits, expiry and consumption",
+      "apiTool": {
+        "modelTool": "get_athlete_holdings",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-A05",
+          "role": "Athlete",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-A07",
+          "role": "Athlete",
+          "status": "NOT VERIFIED"
+        },
+        {
+          "caseId": "BM-LIVE-A11",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A12",
+          "role": "Athlete",
+          "status": "NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "name": "get_membership_offer",
+      "type": "Read",
+      "access": "Member or Tour Manager",
+      "inputs": "athlete_id",
+      "outputs": "Products, eligibility/reasons, prices/tax/handling/total and validity",
+      "rules": "Offered product is not necessarily eligible or purchased; preserve currency.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-A04"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-A04",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Products, eligibility/reasons, prices/tax/handling/total and validity",
+      "apiTool": {
+        "modelTool": "get_membership_offer",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-A04",
+          "role": "Athlete",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "get_insurance_offer",
+      "type": "Read",
+      "access": "Member or Tour Manager",
+      "inputs": "athlete_id",
+      "outputs": "Insurance offers, eligibility, prices and validity",
+      "rules": "Offer is not proof of purchased cover or carry-over.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-A06"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-A06",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Insurance offers, eligibility, prices and validity",
+      "apiTool": {
+        "modelTool": "get_insurance_offer",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-A06",
+          "role": "Athlete",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "list_enterable_events",
+      "type": "Read",
+      "access": "Member or Tour Manager",
+      "inputs": "athlete_id; scope home_region|international|all",
+      "outputs": "Up to 20 events, deadlines, fees, open flags and membership",
+      "rules": "Apply actual ownership/consent restrictions. Registration is on Events UI.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-A08",
+        "BM-LIVE-A09",
+        "BM-LIVE-A10",
+        "BM-LIVE-A11",
+        "BM-LIVE-A12",
+        "BM-LIVE-A13"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-A08",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-A09",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-A10",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-A11",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-A11",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-A12",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-A13",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-A13",
+          "status": "unavailable"
+        }
+      ],
+      "coverage": "Attempted; unavailable or refused",
+      "description": "Up to 20 events, deadlines, fees, open flags and membership",
+      "apiTool": {
+        "modelTool": "list_enterable_events",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-A08",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A09",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A10",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A11",
+          "role": "Athlete",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-A12",
+          "role": "Athlete",
+          "status": "NOT VERIFIED"
+        },
+        {
+          "caseId": "BM-LIVE-A13",
+          "role": "Athlete",
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "name": "get_event_for_entry",
+      "type": "Read",
+      "access": "Member or Tour Manager",
+      "inputs": "event_id from lookup",
+      "outputs": "Event dates, venue, fee/tax/total, field size and deadlines",
+      "rules": "Owning service authorizes; no charge or entry creation.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T09"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T09",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Event dates, venue, fee/tax/total, field size and deadlines",
+      "apiTool": {
+        "modelTool": "get_event_for_entry",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T09",
+          "role": "TourManager",
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "name": "get_my_entry",
+      "type": "Read",
+      "access": "Member or Tour Manager",
+      "inputs": "entry reference",
+      "outputs": "Own entry status, insurance, late flag and fee",
+      "rules": "Never disclose another account entry.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [],
+      "toolOutcomes": [],
+      "coverage": "BLOCKED / not reached",
+      "description": "Own entry status, insurance, late flag and fee",
+      "apiTool": {
+        "modelTool": "get_my_entry",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "list_seasons",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "none",
+      "outputs": "Season dates/status/tour and event counts",
+      "rules": "Current code silently truncates to 20; verified current-season omission.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T01",
+        "BM-LIVE-T02",
+        "BM-LIVE-T03",
+        "BM-LIVE-T17"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T01",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T02",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T03",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T17",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Season dates/status/tour and event counts",
+      "apiTool": {
+        "modelTool": "list_seasons",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T01",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T02",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T03",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T17",
+          "role": "TourManager",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "search_events",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "season_id; optional view, region_codes, tour_ids, country_codes, division, offset, query",
+      "outputs": "20-row pages, total and next_offset",
+      "rules": "Use date-containing season; paginate; do not assume calendar-year name.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T17",
+        "BM-LIVE-T18"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T17",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T18",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "20-row pages, total and next_offset",
+      "apiTool": {
+        "modelTool": "search_events",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T17",
+          "role": "TourManager",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-T18",
+          "role": "TourManager",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "find_events",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "text; optional season_id",
+      "outputs": "Up to five scored events; best if unambiguous",
+      "rules": "Use lookup IDs; ask clarification when no clear best.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T04",
+        "BM-LIVE-T05",
+        "BM-LIVE-T06",
+        "BM-LIVE-T07",
+        "BM-LIVE-T08",
+        "BM-LIVE-T09",
+        "BM-LIVE-T10",
+        "BM-LIVE-T11",
+        "BM-LIVE-W01",
+        "BM-LIVE-W02",
+        "BM-LIVE-W03",
+        "BM-LIVE-W04",
+        "BM-LIVE-W05",
+        "BM-LIVE-W06",
+        "BM-LIVE-W07",
+        "BM-LIVE-W08",
+        "BM-LIVE-T15",
+        "BM-LIVE-T16",
+        "BM-LIVE-X05"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T04",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T05",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T06",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T07",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T08",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T09",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T10",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T11",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-W01",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-W02",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-W03",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-W04",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-W05",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-W06",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-W07",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-W08",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T15",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-T16",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-X05",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Up to five scored events; best if unambiguous",
+      "apiTool": {
+        "modelTool": "find_events",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T04",
+          "role": "TourManager",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-T05",
+          "role": "TourManager",
+          "status": "NOT VERIFIED"
+        },
+        {
+          "caseId": "BM-LIVE-T06",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T07",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T08",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T09",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T10",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T11",
+          "role": "TourManager",
+          "status": "NOT VERIFIED"
+        },
+        {
+          "caseId": "BM-LIVE-W01",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W02",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W03",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W04",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W05",
+          "role": "TourManager",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-W06",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W07",
+          "role": "TourManager",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-W08",
+          "role": "TourManager",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-T15",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T16",
+          "role": "TourManager",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-X05",
+          "role": "TourManager",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "get_event",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "event_id",
+      "outputs": "Event details",
+      "rules": "Caller-scoped; unknown event must not be invented.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T04"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T04",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Event details",
+      "apiTool": {
+        "modelTool": "get_event",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T04",
+          "role": "TourManager",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "list_tours",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "none",
+      "outputs": "Tour catalogue",
+      "rules": "Full catalogue returned by current tool; verify counts against actual scoped source. Do not assume a20-row limit for this tool.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T12"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T12",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Tour catalogue",
+      "apiTool": {
+        "modelTool": "list_tours",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T12",
+          "role": "TourManager",
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "name": "list_locations",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "none",
+      "outputs": "Venue/location catalogue",
+      "rules": "Full catalogue returned by current tool; verify counts against actual scoped source. Do not assume a20-row limit for this tool.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T12"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T12",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Venue/location catalogue",
+      "apiTool": {
+        "modelTool": "list_locations",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T12",
+          "role": "TourManager",
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "name": "list_regions",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "none",
+      "outputs": "Region catalogue",
+      "rules": "Use returned codes for filters.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T12"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T12",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Region catalogue",
+      "apiTool": {
+        "modelTool": "list_regions",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T12",
+          "role": "TourManager",
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "name": "get_event_overview",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "event_id",
+      "outputs": "Readiness/overview",
+      "rules": "Read does not authorize a change.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T09",
+        "BM-LIVE-T15"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T09",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-T15",
+          "status": "unavailable"
+        }
+      ],
+      "coverage": "Attempted; unavailable or refused",
+      "description": "Readiness/overview",
+      "apiTool": {
+        "modelTool": "get_event_overview",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T09",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T15",
+          "role": "TourManager",
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "name": "list_event_entries",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "event_id; optional status, offset and athlete",
+      "outputs": "50-row pages, total, next_offset, field/wildcard sizes",
+      "rules": "Fuzzy closest name is not proof of identity.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T06",
+        "BM-LIVE-T07",
+        "BM-LIVE-T08",
+        "BM-LIVE-T09",
+        "BM-LIVE-T10",
+        "BM-LIVE-W01",
+        "BM-LIVE-W02",
+        "BM-LIVE-W03",
+        "BM-LIVE-W04",
+        "BM-LIVE-W06",
+        "BM-LIVE-W07"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T06",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-T07",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-T08",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-T09",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-T10",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-W01",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-W02",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-W03",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-W04",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-W06",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-W06",
+          "status": "unavailable"
+        },
+        {
+          "caseId": "BM-LIVE-W07",
+          "status": "unavailable"
+        }
+      ],
+      "coverage": "Attempted; unavailable or refused",
+      "description": "50-row pages, total, next_offset, field/wildcard sizes",
+      "apiTool": {
+        "modelTool": "list_event_entries",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T06",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T07",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T08",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T09",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-T10",
+          "role": "TourManager",
+          "status": "FAIL"
+        },
+        {
+          "caseId": "BM-LIVE-W01",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W02",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W03",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W04",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W06",
+          "role": "TourManager",
+          "status": "BLOCKED"
+        },
+        {
+          "caseId": "BM-LIVE-W07",
+          "role": "TourManager",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "get_entry_history",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "entry_id",
+      "outputs": "Up to 20 newest entry changes",
+      "rules": "A message requested is not proof of email delivered.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [],
+      "toolOutcomes": [],
+      "coverage": "BLOCKED / not reached",
+      "description": "Up to 20 newest entry changes",
+      "apiTool": {
+        "modelTool": "get_entry_history",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "get_event_history",
+      "type": "Read",
+      "access": "Tour Manager",
+      "inputs": "event_id",
+      "outputs": "Up to 20 newest event changes",
+      "rules": "Bounded recent history is not full audit history.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/infrastructure/agent/tools.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-T16"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-T16",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "Up to 20 newest event changes",
+      "apiTool": {
+        "modelTool": "get_event_history",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-T16",
+          "role": "TourManager",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "propose_action",
+      "type": "Proposal",
+      "access": "Tour Manager",
+      "inputs": "kind and validated params",
+      "outputs": "One proposal per turn, or invalid_request",
+      "rules": "Never writes; fixed kind-specific title/button; IDs authoritative, names display-only.",
+      "source": "https://github.com/worldsurfleague/wsl-ai-service/blob/17f6b0e28c7f2df98dcfc3905da8e82f94332e43/src/ai/domain/proposals.py",
+      "confirmationRequired": false,
+      "observedIn": [
+        "BM-LIVE-W05",
+        "BM-LIVE-X05"
+      ],
+      "toolOutcomes": [
+        {
+          "caseId": "BM-LIVE-W05",
+          "status": "ok"
+        },
+        {
+          "caseId": "BM-LIVE-X05",
+          "status": "ok"
+        }
+      ],
+      "coverage": "Executed; see per-case result",
+      "description": "One proposal per turn, or invalid_request",
+      "apiTool": {
+        "modelTool": "propose_action",
+        "chatApi": "POST /api/assistant/run"
+      },
+      "roleCoverage": [
+        {
+          "caseId": "BM-LIVE-W05",
+          "role": "TourManager",
+          "status": "PASS"
+        },
+        {
+          "caseId": "BM-LIVE-X05",
+          "role": "TourManager",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "entry.withdraw",
+      "type": "Confirmed write",
+      "access": "Tour Manager; explicit card confirmation",
+      "inputs": "eventId, entryId, athleteName, eventName, reasonCode; optional note",
+      "outputs": "Entry withdrawn and seed freed",
+      "rules": "Reasons injury/athlete-request/other; alternates not automatically promoted. Frontend rereads IDs/names, retries stale once and uses stable idempotency key.",
+      "source": "https://github.com/worldsurfleague/wsl-frontend/blob/ea988cea96cf77d51f1bc742de65488934403fba/src/features/tour-manager/hooks/use-assistant-actions.ts",
+      "confirmationRequired": true,
+      "observedIn": [
+        "BM-LIVE-X02"
+      ],
+      "toolOutcomes": [],
+      "coverage": "BLOCKED — no confirmed mutation",
+      "description": "Entry withdrawn and seed freed",
+      "apiTool": {
+        "modelTool": "propose_action",
+        "chatApi": "POST /api/assistant/run",
+        "mutationApi": "POST /api/tour-manager/events/{eventId}/entries/{entryId}/actions",
+        "mutationCode": "withdraw"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "entry.confirm",
+      "type": "Confirmed write",
+      "access": "Tour Manager; explicit card confirmation",
+      "inputs": "eventId, entryId, athleteName, eventName; waivesFee, waivesInsurance, note",
+      "outputs": "Entry confirmation; charge timing from event",
+      "rules": "Manager chooses waivers; require a true waiver or nonempty note. Frontend rereads IDs/names, retries stale once and uses stable idempotency key.",
+      "source": "https://github.com/worldsurfleague/wsl-frontend/blob/ea988cea96cf77d51f1bc742de65488934403fba/src/features/tour-manager/hooks/use-assistant-actions.ts",
+      "confirmationRequired": true,
+      "observedIn": [
+        "BM-LIVE-X01"
+      ],
+      "toolOutcomes": [],
+      "coverage": "BLOCKED — no confirmed mutation",
+      "description": "Entry confirmation; charge timing from event",
+      "apiTool": {
+        "modelTool": "propose_action",
+        "chatApi": "POST /api/assistant/run",
+        "mutationApi": "POST /api/tour-manager/events/{eventId}/entries/{entryId}/actions",
+        "mutationCode": "confirm"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "entry.promote",
+      "type": "Confirmed write",
+      "access": "Tour Manager; explicit card confirmation",
+      "inputs": "eventId, entryId, athleteName, eventName",
+      "outputs": "Alternate promoted, potential entry charge",
+      "rules": "Verify exact identity; sandbox payment only. Frontend rereads IDs/names, retries stale once and uses stable idempotency key.",
+      "source": "https://github.com/worldsurfleague/wsl-frontend/blob/ea988cea96cf77d51f1bc742de65488934403fba/src/features/tour-manager/hooks/use-assistant-actions.ts",
+      "confirmationRequired": true,
+      "observedIn": [
+        "BM-LIVE-X03"
+      ],
+      "toolOutcomes": [],
+      "coverage": "BLOCKED — no confirmed mutation",
+      "description": "Alternate promoted, potential entry charge",
+      "apiTool": {
+        "modelTool": "propose_action",
+        "chatApi": "POST /api/assistant/run",
+        "mutationApi": "POST /api/tour-manager/events/{eventId}/entries/{entryId}/actions",
+        "mutationCode": "promote"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "entry.retry",
+      "type": "Confirmed write",
+      "access": "Tour Manager; explicit card confirmation",
+      "inputs": "eventId, entryId, athleteName, eventName",
+      "outputs": "Saved-card entry payment retry",
+      "rules": "Potential charge; stable per-proposal idempotency key. Frontend rereads IDs/names, retries stale once and uses stable idempotency key.",
+      "source": "https://github.com/worldsurfleague/wsl-frontend/blob/ea988cea96cf77d51f1bc742de65488934403fba/src/features/tour-manager/hooks/use-assistant-actions.ts",
+      "confirmationRequired": true,
+      "observedIn": [
+        "BM-LIVE-X04"
+      ],
+      "toolOutcomes": [],
+      "coverage": "BLOCKED — no confirmed mutation",
+      "description": "Saved-card entry payment retry",
+      "apiTool": {
+        "modelTool": "propose_action",
+        "chatApi": "POST /api/assistant/run",
+        "mutationApi": "POST /api/tour-manager/events/{eventId}/entries/{entryId}/actions",
+        "mutationCode": "retry"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "event.status.set",
+      "type": "Confirmed write",
+      "access": "Tour Manager; explicit card confirmation",
+      "inputs": "eventId, eventName, status; optional openNow, registration opening/closing date/time",
+      "outputs": "Updated event state",
+      "rules": "Seven proposable statuses; Started/Completed missing despite manual-transition requirement. Frontend rereads IDs/names, retries stale once and uses stable idempotency key.",
+      "source": "https://github.com/worldsurfleague/wsl-frontend/blob/ea988cea96cf77d51f1bc742de65488934403fba/src/features/tour-manager/hooks/use-assistant-actions.ts",
+      "confirmationRequired": true,
+      "observedIn": [
+        "BM-LIVE-X05"
+      ],
+      "toolOutcomes": [],
+      "coverage": "PASS — exact approved archive executed; other transitions/replays unverified",
+      "description": "Updated event state",
+      "apiTool": {
+        "modelTool": "propose_action",
+        "chatApi": "POST /api/assistant/run",
+        "mutationApi": "PUT /api/tour-manager/events/{eventId}/status"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "event.message",
+      "type": "Confirmed write",
+      "access": "Tour Manager; explicit card confirmation",
+      "inputs": "eventId, entryId, athleteName, subject, body; optional eventName",
+      "outputs": "Email request",
+      "rules": "Only dedicated QA entry and verified Mailosaur address during execution tests. Frontend rereads IDs/names, retries stale once and uses stable idempotency key.",
+      "source": "https://github.com/worldsurfleague/wsl-frontend/blob/ea988cea96cf77d51f1bc742de65488934403fba/src/features/tour-manager/hooks/use-assistant-actions.ts",
+      "confirmationRequired": true,
+      "observedIn": [
+        "BM-LIVE-X06"
+      ],
+      "toolOutcomes": [],
+      "coverage": "BLOCKED — no confirmed mutation",
+      "description": "Email request",
+      "apiTool": {
+        "modelTool": "propose_action",
+        "chatApi": "POST /api/assistant/run",
+        "mutationApi": "POST /api/tour-manager/events/{eventId}/entries/{entryId}/messages"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "GET /api/assistant/conversations",
+      "type": "History read",
+      "access": "Authenticated owner",
+      "inputs": "limit 1–50 (default 20); optional before",
+      "outputs": "Own summaries newest first and nextBefore",
+      "rules": "Caller identity from token; cross-owner conversation is not found. Delete only dedicated QA threads.",
+      "source": "wsl-local/wsl-django-bff/interfaces/http/api/assistant.py",
+      "confirmationRequired": false,
+      "observedIn": [],
+      "toolOutcomes": [],
+      "coverage": "API/history checks executed",
+      "description": "Own summaries newest first and nextBefore",
+      "apiTool": {
+        "endpoint": "GET /api/assistant/conversations"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "GET /api/assistant/conversations/{id}",
+      "type": "History read",
+      "access": "Authenticated owner",
+      "inputs": "Conversation UUID",
+      "outputs": "Owned messages oldest first",
+      "rules": "Caller identity from token; cross-owner conversation is not found. Delete only dedicated QA threads.",
+      "source": "wsl-local/wsl-django-bff/interfaces/http/api/assistant.py",
+      "confirmationRequired": false,
+      "observedIn": [],
+      "toolOutcomes": [],
+      "coverage": "API/history checks executed",
+      "description": "Owned messages oldest first",
+      "apiTool": {
+        "endpoint": "GET /api/assistant/conversations/{id}"
+      },
+      "roleCoverage": []
+    },
+    {
+      "name": "DELETE /api/assistant/conversations/{id}",
+      "type": "History delete",
+      "access": "Authenticated owner",
+      "inputs": "Owned QA conversation UUID",
+      "outputs": "204 on success",
+      "rules": "Caller identity from token; cross-owner conversation is not found. Delete only dedicated QA threads.",
+      "source": "wsl-local/wsl-django-bff/interfaces/http/api/assistant.py",
+      "confirmationRequired": true,
+      "observedIn": [],
+      "toolOutcomes": [],
+      "coverage": "BLOCKED — no confirmed mutation",
+      "description": "204 on success",
+      "apiTool": {
+        "endpoint": "DELETE /api/assistant/conversations/{id}"
+      },
+      "roleCoverage": []
+    }
+  ],
+  "unexecuted": [
+    {
+      "id": "BM-LIVE-X01",
+      "role": "TourManager",
+      "action": "Confirmed write",
+      "kind": "entry.confirm",
+      "prompt": "Not sent: execute entry.confirm on dedicated QA data.",
+      "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+      "actual": "Current QA entry is already confirmed. A new pending-entry fixture and explicit approval are required; confirmation may apply configured fees/waivers.",
+      "status": "BLOCKED",
+      "attempted": false,
+      "tools": [],
+      "target": {
+        "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "eventName": "QA Main Flow 6a41a52a",
+        "entryId": "01a13c40-3648-72cb-b13b-396818758d87"
+      },
+      "review": {
+        "verification": "Current QA entry is already confirmed. A new pending-entry fixture and explicit approval are required; confirmation may apply configured fees/waivers.",
+        "classification": "Approval / safe fixture required"
+      },
+      "unexecutedChecks": [
+        "Confirmed execution",
+        "Repeated confirmation/duplicate prevention",
+        "Stale write/retry",
+        "UI/backend mutation consistency"
+      ],
+      "simpleSummary": {
+        "flow": [
+          "Not executed: see the recorded approval or fixture limitation."
+        ],
+        "whatWentWrong": null,
+        "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+        "observed": "Current QA entry is already confirmed. A new pending-entry fixture and explicit approval are required; confirmation may apply configured fees/waivers.",
+        "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+      },
+      "prerequisiteReview": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "reason": "The existing QA entry is already Confirmed and its payment is Collected. It cannot verify a new pending-entry confirmation.",
+        "needed": "An isolated pending-entry QA fixture and the exact confirmation/fee action approved for that fixture.",
+        "execution": "Prerequisites reviewed; test not executed",
+        "evidence": [
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+            "status": 200,
+            "body": {
+              "workspace": {
+                "name": "World Surf League",
+                "product": "Tour Manager"
+              },
+              "user": {
+                "initials": "TM",
+                "name": "Tour Manager 101",
+                "meta": "Tour Manager · All regions"
+              }
+            },
+            "at": "2026-10-15T18:37:41.960Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "status": 200,
+            "body": {
+              "event": {
+                "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+                "status": {
+                  "code": "archived",
+                  "label": "Archived",
+                  "tone": "muted"
+                },
+                "statusOptions": [
+                  {
+                    "code": "draft",
+                    "label": "Draft",
+                    "destructive": false
+                  }
+                ],
+                "fields": {
+                  "name": "QA Main Flow 6a41a52a",
+                  "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+                  "rating": "01a136e0-a604-7170-9191-e87921200f63",
+                  "regions": [
+                    "north_america"
+                  ],
+                  "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+                  "prizeMoney": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "registrationOpensDate": "2026-10-14",
+                  "registrationOpensTime": "17:09",
+                  "registrationClosesDate": "2026-10-14",
+                  "registrationClosesTime": "17:10",
+                  "currency": "USD",
+                  "entryFee": {
+                    "amount": 22500,
+                    "currency": "USD"
+                  }
+                },
+                "readOnly": true,
+                "feeFromGrid": false,
+                "version": 6
+              }
+            },
+            "at": "2026-10-15T18:37:42.270Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+            "status": 200,
+            "body": {
+              "stage": "waitlist",
+              "field": 96,
+              "cutLine": "Field of 96 ends here. Nobody is waiting behind it.",
+              "openSeats": [],
+              "summary": [
+                {
+                  "count": 1,
+                  "label": "ready to confirm",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "insurance needed",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "payments declined",
+                  "tone": "error"
+                },
+                {
+                  "count": 0,
+                  "label": "wildcard",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "alternates · not charged",
+                  "tone": "muted"
+                }
+              ],
+              "primaryAction": null,
+              "publish": null,
+              "filters": [
+                {
+                  "code": "entry",
+                  "label": "Entry status",
+                  "options": [
+                    {
+                      "value": "confirmed",
+                      "label": "Confirmed"
+                    }
+                  ]
+                },
+                {
+                  "code": "region",
+                  "label": "All regions",
+                  "options": [
+                    {
+                      "value": "north_america",
+                      "label": "N. AMERICA"
+                    }
+                  ]
+                },
+                {
+                  "code": "payment",
+                  "label": "Payment",
+                  "options": [
+                    {
+                      "value": "collected",
+                      "label": "Collected"
+                    }
+                  ]
+                },
+                {
+                  "code": "insurance",
+                  "label": "Insurance",
+                  "options": [
+                    {
+                      "value": "verified",
+                      "label": "Verified"
+                    }
+                  ]
+                }
+              ],
+              "entries": [
+                {
+                  "id": "01a13c40-3648-72cb-b13b-396818758d87",
+                  "group": "field",
+                  "athlete": {
+                    "initials": "PT",
+                    "name": "Pay Tester",
+                    "country": "United States"
+                  },
+                  "ranking": "N. AMERICA",
+                  "region": "north_america",
+                  "highlight": null,
+                  "insurance": {
+                    "state": "ok",
+                    "label": "Insurance: verified",
+                    "code": "verified"
+                  },
+                  "payment": {
+                    "code": "collected",
+                    "label": "Collected",
+                    "tone": "neutral"
+                  },
+                  "entry": {
+                    "code": "confirmed",
+                    "label": "Confirmed",
+                    "tone": "neutral"
+                  },
+                  "actions": [
+                    {
+                      "code": "message",
+                      "label": "Send message",
+                      "destructive": false
+                    }
+                  ],
+                  "movable": false,
+                  "pinned": false,
+                  "hasHistory": true,
+                  "seedRank": null,
+                  "alternatePosition": null,
+                  "moveUpSeat": null,
+                  "movedUpFrom": null
+                }
+              ],
+              "version": 1
+            },
+            "at": "2026-10-15T18:37:42.553Z"
+          }
+        ]
+      },
+      "latestResult": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "execution": "Prerequisite review only",
+        "reason": "The existing QA entry is already Confirmed and its payment is Collected. It cannot verify a new pending-entry confirmation."
+      },
+      "evidenceLinks": {
+        "screenshot": null,
+        "cancelScreenshot": null,
+        "proposalScreenshot": null,
+        "log": "evidence/BM-LIVE-X01.json"
+      }
+    },
+    {
+      "id": "BM-LIVE-X02",
+      "role": "TourManager",
+      "action": "Confirmed write",
+      "kind": "entry.withdraw",
+      "prompt": "Not sent: execute entry.withdraw on dedicated QA data.",
+      "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+      "actual": "Would withdraw confirmed Pay Tester entry, free its seed and may involve notifications/refund rules that must be verified. No approval supplied.",
+      "status": "BLOCKED",
+      "attempted": false,
+      "tools": [],
+      "target": {
+        "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "eventName": "QA Main Flow 6a41a52a",
+        "entryId": "01a13c40-3648-72cb-b13b-396818758d87"
+      },
+      "review": {
+        "verification": "Would withdraw confirmed Pay Tester entry, free its seed and may involve notifications/refund rules that must be verified. No approval supplied.",
+        "classification": "Approval / safe fixture required"
+      },
+      "unexecutedChecks": [
+        "Confirmed execution",
+        "Repeated confirmation/duplicate prevention",
+        "Stale write/retry",
+        "UI/backend mutation consistency"
+      ],
+      "simpleSummary": {
+        "flow": [
+          "Not executed: see the recorded approval or fixture limitation."
+        ],
+        "whatWentWrong": null,
+        "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+        "observed": "Would withdraw confirmed Pay Tester entry, free its seed and may involve notifications/refund rules that must be verified. No approval supplied.",
+        "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+      },
+      "prerequisiteReview": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "reason": "The existing entry is Confirmed in the archived QA event. No exact withdrawal target/action approval has been supplied.",
+        "needed": "Approval of the specific isolated entry withdrawal and its notification/refund effects.",
+        "execution": "Prerequisites reviewed; test not executed",
+        "evidence": [
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+            "status": 200,
+            "body": {
+              "workspace": {
+                "name": "World Surf League",
+                "product": "Tour Manager"
+              },
+              "user": {
+                "initials": "TM",
+                "name": "Tour Manager 101",
+                "meta": "Tour Manager · All regions"
+              }
+            },
+            "at": "2026-10-15T18:37:41.960Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "status": 200,
+            "body": {
+              "event": {
+                "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+                "status": {
+                  "code": "archived",
+                  "label": "Archived",
+                  "tone": "muted"
+                },
+                "statusOptions": [
+                  {
+                    "code": "draft",
+                    "label": "Draft",
+                    "destructive": false
+                  }
+                ],
+                "fields": {
+                  "name": "QA Main Flow 6a41a52a",
+                  "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+                  "rating": "01a136e0-a604-7170-9191-e87921200f63",
+                  "regions": [
+                    "north_america"
+                  ],
+                  "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+                  "prizeMoney": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "registrationOpensDate": "2026-10-14",
+                  "registrationOpensTime": "17:09",
+                  "registrationClosesDate": "2026-10-14",
+                  "registrationClosesTime": "17:10",
+                  "currency": "USD",
+                  "entryFee": {
+                    "amount": 22500,
+                    "currency": "USD"
+                  }
+                },
+                "readOnly": true,
+                "feeFromGrid": false,
+                "version": 6
+              }
+            },
+            "at": "2026-10-15T18:37:42.270Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+            "status": 200,
+            "body": {
+              "stage": "waitlist",
+              "field": 96,
+              "cutLine": "Field of 96 ends here. Nobody is waiting behind it.",
+              "openSeats": [],
+              "summary": [
+                {
+                  "count": 1,
+                  "label": "ready to confirm",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "insurance needed",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "payments declined",
+                  "tone": "error"
+                },
+                {
+                  "count": 0,
+                  "label": "wildcard",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "alternates · not charged",
+                  "tone": "muted"
+                }
+              ],
+              "primaryAction": null,
+              "publish": null,
+              "filters": [
+                {
+                  "code": "entry",
+                  "label": "Entry status",
+                  "options": [
+                    {
+                      "value": "confirmed",
+                      "label": "Confirmed"
+                    }
+                  ]
+                },
+                {
+                  "code": "region",
+                  "label": "All regions",
+                  "options": [
+                    {
+                      "value": "north_america",
+                      "label": "N. AMERICA"
+                    }
+                  ]
+                },
+                {
+                  "code": "payment",
+                  "label": "Payment",
+                  "options": [
+                    {
+                      "value": "collected",
+                      "label": "Collected"
+                    }
+                  ]
+                },
+                {
+                  "code": "insurance",
+                  "label": "Insurance",
+                  "options": [
+                    {
+                      "value": "verified",
+                      "label": "Verified"
+                    }
+                  ]
+                }
+              ],
+              "entries": [
+                {
+                  "id": "01a13c40-3648-72cb-b13b-396818758d87",
+                  "group": "field",
+                  "athlete": {
+                    "initials": "PT",
+                    "name": "Pay Tester",
+                    "country": "United States"
+                  },
+                  "ranking": "N. AMERICA",
+                  "region": "north_america",
+                  "highlight": null,
+                  "insurance": {
+                    "state": "ok",
+                    "label": "Insurance: verified",
+                    "code": "verified"
+                  },
+                  "payment": {
+                    "code": "collected",
+                    "label": "Collected",
+                    "tone": "neutral"
+                  },
+                  "entry": {
+                    "code": "confirmed",
+                    "label": "Confirmed",
+                    "tone": "neutral"
+                  },
+                  "actions": [
+                    {
+                      "code": "message",
+                      "label": "Send message",
+                      "destructive": false
+                    }
+                  ],
+                  "movable": false,
+                  "pinned": false,
+                  "hasHistory": true,
+                  "seedRank": null,
+                  "alternatePosition": null,
+                  "moveUpSeat": null,
+                  "movedUpFrom": null
+                }
+              ],
+              "version": 1
+            },
+            "at": "2026-10-15T18:37:42.553Z"
+          }
+        ]
+      },
+      "latestResult": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "execution": "Prerequisite review only",
+        "reason": "The existing entry is Confirmed in the archived QA event. No exact withdrawal target/action approval has been supplied."
+      },
+      "evidenceLinks": {
+        "screenshot": null,
+        "cancelScreenshot": null,
+        "proposalScreenshot": null,
+        "log": "evidence/BM-LIVE-X02.json"
+      }
+    },
+    {
+      "id": "BM-LIVE-X03",
+      "role": "TourManager",
+      "action": "Confirmed write",
+      "kind": "entry.promote",
+      "prompt": "Not sent: execute entry.promote on dedicated QA data.",
+      "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+      "actual": "Current entry is confirmed, not alternate. Requires eligible alternate fixture, explicit approval and verified Stripe test mode.",
+      "status": "BLOCKED",
+      "attempted": false,
+      "tools": [],
+      "target": {
+        "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "eventName": "QA Main Flow 6a41a52a",
+        "entryId": "01a13c40-3648-72cb-b13b-396818758d87"
+      },
+      "review": {
+        "verification": "Current entry is confirmed, not alternate. Requires eligible alternate fixture, explicit approval and verified Stripe test mode.",
+        "classification": "Approval / safe fixture required"
+      },
+      "unexecutedChecks": [
+        "Confirmed execution",
+        "Repeated confirmation/duplicate prevention",
+        "Stale write/retry",
+        "UI/backend mutation consistency"
+      ],
+      "simpleSummary": {
+        "flow": [
+          "Not executed: see the recorded approval or fixture limitation."
+        ],
+        "whatWentWrong": null,
+        "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+        "observed": "Current entry is confirmed, not alternate. Requires eligible alternate fixture, explicit approval and verified Stripe test mode.",
+        "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+      },
+      "prerequisiteReview": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "reason": "The current QA roster has one Confirmed entry and no eligible alternate.",
+        "needed": "An isolated eligible alternate, verified Stripe test mode if charging applies, and approval of that promotion.",
+        "execution": "Prerequisites reviewed; test not executed",
+        "evidence": [
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+            "status": 200,
+            "body": {
+              "workspace": {
+                "name": "World Surf League",
+                "product": "Tour Manager"
+              },
+              "user": {
+                "initials": "TM",
+                "name": "Tour Manager 101",
+                "meta": "Tour Manager · All regions"
+              }
+            },
+            "at": "2026-10-15T18:37:41.960Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "status": 200,
+            "body": {
+              "event": {
+                "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+                "status": {
+                  "code": "archived",
+                  "label": "Archived",
+                  "tone": "muted"
+                },
+                "statusOptions": [
+                  {
+                    "code": "draft",
+                    "label": "Draft",
+                    "destructive": false
+                  }
+                ],
+                "fields": {
+                  "name": "QA Main Flow 6a41a52a",
+                  "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+                  "rating": "01a136e0-a604-7170-9191-e87921200f63",
+                  "regions": [
+                    "north_america"
+                  ],
+                  "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+                  "prizeMoney": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "registrationOpensDate": "2026-10-14",
+                  "registrationOpensTime": "17:09",
+                  "registrationClosesDate": "2026-10-14",
+                  "registrationClosesTime": "17:10",
+                  "currency": "USD",
+                  "entryFee": {
+                    "amount": 22500,
+                    "currency": "USD"
+                  }
+                },
+                "readOnly": true,
+                "feeFromGrid": false,
+                "version": 6
+              }
+            },
+            "at": "2026-10-15T18:37:42.270Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+            "status": 200,
+            "body": {
+              "stage": "waitlist",
+              "field": 96,
+              "cutLine": "Field of 96 ends here. Nobody is waiting behind it.",
+              "openSeats": [],
+              "summary": [
+                {
+                  "count": 1,
+                  "label": "ready to confirm",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "insurance needed",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "payments declined",
+                  "tone": "error"
+                },
+                {
+                  "count": 0,
+                  "label": "wildcard",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "alternates · not charged",
+                  "tone": "muted"
+                }
+              ],
+              "primaryAction": null,
+              "publish": null,
+              "filters": [
+                {
+                  "code": "entry",
+                  "label": "Entry status",
+                  "options": [
+                    {
+                      "value": "confirmed",
+                      "label": "Confirmed"
+                    }
+                  ]
+                },
+                {
+                  "code": "region",
+                  "label": "All regions",
+                  "options": [
+                    {
+                      "value": "north_america",
+                      "label": "N. AMERICA"
+                    }
+                  ]
+                },
+                {
+                  "code": "payment",
+                  "label": "Payment",
+                  "options": [
+                    {
+                      "value": "collected",
+                      "label": "Collected"
+                    }
+                  ]
+                },
+                {
+                  "code": "insurance",
+                  "label": "Insurance",
+                  "options": [
+                    {
+                      "value": "verified",
+                      "label": "Verified"
+                    }
+                  ]
+                }
+              ],
+              "entries": [
+                {
+                  "id": "01a13c40-3648-72cb-b13b-396818758d87",
+                  "group": "field",
+                  "athlete": {
+                    "initials": "PT",
+                    "name": "Pay Tester",
+                    "country": "United States"
+                  },
+                  "ranking": "N. AMERICA",
+                  "region": "north_america",
+                  "highlight": null,
+                  "insurance": {
+                    "state": "ok",
+                    "label": "Insurance: verified",
+                    "code": "verified"
+                  },
+                  "payment": {
+                    "code": "collected",
+                    "label": "Collected",
+                    "tone": "neutral"
+                  },
+                  "entry": {
+                    "code": "confirmed",
+                    "label": "Confirmed",
+                    "tone": "neutral"
+                  },
+                  "actions": [
+                    {
+                      "code": "message",
+                      "label": "Send message",
+                      "destructive": false
+                    }
+                  ],
+                  "movable": false,
+                  "pinned": false,
+                  "hasHistory": true,
+                  "seedRank": null,
+                  "alternatePosition": null,
+                  "moveUpSeat": null,
+                  "movedUpFrom": null
+                }
+              ],
+              "version": 1
+            },
+            "at": "2026-10-15T18:37:42.553Z"
+          }
+        ]
+      },
+      "latestResult": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "execution": "Prerequisite review only",
+        "reason": "The current QA roster has one Confirmed entry and no eligible alternate."
+      },
+      "evidenceLinks": {
+        "screenshot": null,
+        "cancelScreenshot": null,
+        "proposalScreenshot": null,
+        "log": "evidence/BM-LIVE-X03.json"
+      }
+    },
+    {
+      "id": "BM-LIVE-X04",
+      "role": "TourManager",
+      "action": "Confirmed write",
+      "kind": "entry.retry",
+      "prompt": "Not sent: execute entry.retry on dedicated QA data.",
+      "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+      "actual": "Current payment is collected, not declined. Requires declined-payment QA fixture, explicit approval and verified Stripe test mode.",
+      "status": "BLOCKED",
+      "attempted": false,
+      "tools": [],
+      "target": {
+        "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "eventName": "QA Main Flow 6a41a52a",
+        "entryId": "01a13c40-3648-72cb-b13b-396818758d87"
+      },
+      "review": {
+        "verification": "Current payment is collected, not declined. Requires declined-payment QA fixture, explicit approval and verified Stripe test mode.",
+        "classification": "Approval / safe fixture required"
+      },
+      "unexecutedChecks": [
+        "Confirmed execution",
+        "Repeated confirmation/duplicate prevention",
+        "Stale write/retry",
+        "UI/backend mutation consistency"
+      ],
+      "simpleSummary": {
+        "flow": [
+          "Not executed: see the recorded approval or fixture limitation."
+        ],
+        "whatWentWrong": null,
+        "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+        "observed": "Current payment is collected, not declined. Requires declined-payment QA fixture, explicit approval and verified Stripe test mode.",
+        "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+      },
+      "prerequisiteReview": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "reason": "The existing payment is Collected, not declined; retrying it would not test a declined-payment retry.",
+        "needed": "An isolated declined-payment fixture, verified Stripe test mode and approval of the exact retry.",
+        "execution": "Prerequisites reviewed; test not executed",
+        "evidence": [
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+            "status": 200,
+            "body": {
+              "workspace": {
+                "name": "World Surf League",
+                "product": "Tour Manager"
+              },
+              "user": {
+                "initials": "TM",
+                "name": "Tour Manager 101",
+                "meta": "Tour Manager · All regions"
+              }
+            },
+            "at": "2026-10-15T18:37:41.960Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "status": 200,
+            "body": {
+              "event": {
+                "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+                "status": {
+                  "code": "archived",
+                  "label": "Archived",
+                  "tone": "muted"
+                },
+                "statusOptions": [
+                  {
+                    "code": "draft",
+                    "label": "Draft",
+                    "destructive": false
+                  }
+                ],
+                "fields": {
+                  "name": "QA Main Flow 6a41a52a",
+                  "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+                  "rating": "01a136e0-a604-7170-9191-e87921200f63",
+                  "regions": [
+                    "north_america"
+                  ],
+                  "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+                  "prizeMoney": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "registrationOpensDate": "2026-10-14",
+                  "registrationOpensTime": "17:09",
+                  "registrationClosesDate": "2026-10-14",
+                  "registrationClosesTime": "17:10",
+                  "currency": "USD",
+                  "entryFee": {
+                    "amount": 22500,
+                    "currency": "USD"
+                  }
+                },
+                "readOnly": true,
+                "feeFromGrid": false,
+                "version": 6
+              }
+            },
+            "at": "2026-10-15T18:37:42.270Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+            "status": 200,
+            "body": {
+              "stage": "waitlist",
+              "field": 96,
+              "cutLine": "Field of 96 ends here. Nobody is waiting behind it.",
+              "openSeats": [],
+              "summary": [
+                {
+                  "count": 1,
+                  "label": "ready to confirm",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "insurance needed",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "payments declined",
+                  "tone": "error"
+                },
+                {
+                  "count": 0,
+                  "label": "wildcard",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "alternates · not charged",
+                  "tone": "muted"
+                }
+              ],
+              "primaryAction": null,
+              "publish": null,
+              "filters": [
+                {
+                  "code": "entry",
+                  "label": "Entry status",
+                  "options": [
+                    {
+                      "value": "confirmed",
+                      "label": "Confirmed"
+                    }
+                  ]
+                },
+                {
+                  "code": "region",
+                  "label": "All regions",
+                  "options": [
+                    {
+                      "value": "north_america",
+                      "label": "N. AMERICA"
+                    }
+                  ]
+                },
+                {
+                  "code": "payment",
+                  "label": "Payment",
+                  "options": [
+                    {
+                      "value": "collected",
+                      "label": "Collected"
+                    }
+                  ]
+                },
+                {
+                  "code": "insurance",
+                  "label": "Insurance",
+                  "options": [
+                    {
+                      "value": "verified",
+                      "label": "Verified"
+                    }
+                  ]
+                }
+              ],
+              "entries": [
+                {
+                  "id": "01a13c40-3648-72cb-b13b-396818758d87",
+                  "group": "field",
+                  "athlete": {
+                    "initials": "PT",
+                    "name": "Pay Tester",
+                    "country": "United States"
+                  },
+                  "ranking": "N. AMERICA",
+                  "region": "north_america",
+                  "highlight": null,
+                  "insurance": {
+                    "state": "ok",
+                    "label": "Insurance: verified",
+                    "code": "verified"
+                  },
+                  "payment": {
+                    "code": "collected",
+                    "label": "Collected",
+                    "tone": "neutral"
+                  },
+                  "entry": {
+                    "code": "confirmed",
+                    "label": "Confirmed",
+                    "tone": "neutral"
+                  },
+                  "actions": [
+                    {
+                      "code": "message",
+                      "label": "Send message",
+                      "destructive": false
+                    }
+                  ],
+                  "movable": false,
+                  "pinned": false,
+                  "hasHistory": true,
+                  "seedRank": null,
+                  "alternatePosition": null,
+                  "moveUpSeat": null,
+                  "movedUpFrom": null
+                }
+              ],
+              "version": 1
+            },
+            "at": "2026-10-15T18:37:42.553Z"
+          }
+        ]
+      },
+      "latestResult": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "execution": "Prerequisite review only",
+        "reason": "The existing payment is Collected, not declined; retrying it would not test a declined-payment retry."
+      },
+      "evidenceLinks": {
+        "screenshot": null,
+        "cancelScreenshot": null,
+        "proposalScreenshot": null,
+        "log": "evidence/BM-LIVE-X04.json"
+      }
+    },
+    {
+      "id": "BM-LIVE-X06",
+      "role": "TourManager",
+      "action": "Confirmed write",
+      "kind": "event.message",
+      "prompt": "Not sent: execute event.message on dedicated QA data.",
+      "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+      "actual": "Would send an email for this QA entry. Exact recipient/SES verification and explicit send approval are not established.",
+      "status": "BLOCKED",
+      "attempted": false,
+      "tools": [],
+      "target": {
+        "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "eventName": "QA Main Flow 6a41a52a",
+        "entryId": "01a13c40-3648-72cb-b13b-396818758d87"
+      },
+      "review": {
+        "verification": "Would send an email for this QA entry. Exact recipient/SES verification and explicit send approval are not established.",
+        "classification": "Approval / safe fixture required"
+      },
+      "unexecutedChecks": [
+        "Confirmed execution",
+        "Repeated confirmation/duplicate prevention",
+        "Stale write/retry",
+        "UI/backend mutation consistency"
+      ],
+      "simpleSummary": {
+        "flow": [
+          "Not executed: see the recorded approval or fixture limitation."
+        ],
+        "whatWentWrong": null,
+        "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+        "observed": "Would send an email for this QA entry. Exact recipient/SES verification and explicit send approval are not established.",
+        "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+      },
+      "prerequisiteReview": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "reason": "The roster response does not establish the exact deliverable recipient or its SES status, and no exact message send is approved.",
+        "needed": "The verified QA destination and approval of the precise subject/body/recipient.",
+        "execution": "Prerequisites reviewed; test not executed",
+        "evidence": [
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+            "status": 200,
+            "body": {
+              "workspace": {
+                "name": "World Surf League",
+                "product": "Tour Manager"
+              },
+              "user": {
+                "initials": "TM",
+                "name": "Tour Manager 101",
+                "meta": "Tour Manager · All regions"
+              }
+            },
+            "at": "2026-10-15T18:37:41.960Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "status": 200,
+            "body": {
+              "event": {
+                "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+                "status": {
+                  "code": "archived",
+                  "label": "Archived",
+                  "tone": "muted"
+                },
+                "statusOptions": [
+                  {
+                    "code": "draft",
+                    "label": "Draft",
+                    "destructive": false
+                  }
+                ],
+                "fields": {
+                  "name": "QA Main Flow 6a41a52a",
+                  "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+                  "rating": "01a136e0-a604-7170-9191-e87921200f63",
+                  "regions": [
+                    "north_america"
+                  ],
+                  "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+                  "prizeMoney": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "registrationOpensDate": "2026-10-14",
+                  "registrationOpensTime": "17:09",
+                  "registrationClosesDate": "2026-10-14",
+                  "registrationClosesTime": "17:10",
+                  "currency": "USD",
+                  "entryFee": {
+                    "amount": 22500,
+                    "currency": "USD"
+                  }
+                },
+                "readOnly": true,
+                "feeFromGrid": false,
+                "version": 6
+              }
+            },
+            "at": "2026-10-15T18:37:42.270Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+            "status": 200,
+            "body": {
+              "stage": "waitlist",
+              "field": 96,
+              "cutLine": "Field of 96 ends here. Nobody is waiting behind it.",
+              "openSeats": [],
+              "summary": [
+                {
+                  "count": 1,
+                  "label": "ready to confirm",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "insurance needed",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "payments declined",
+                  "tone": "error"
+                },
+                {
+                  "count": 0,
+                  "label": "wildcard",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "alternates · not charged",
+                  "tone": "muted"
+                }
+              ],
+              "primaryAction": null,
+              "publish": null,
+              "filters": [
+                {
+                  "code": "entry",
+                  "label": "Entry status",
+                  "options": [
+                    {
+                      "value": "confirmed",
+                      "label": "Confirmed"
+                    }
+                  ]
+                },
+                {
+                  "code": "region",
+                  "label": "All regions",
+                  "options": [
+                    {
+                      "value": "north_america",
+                      "label": "N. AMERICA"
+                    }
+                  ]
+                },
+                {
+                  "code": "payment",
+                  "label": "Payment",
+                  "options": [
+                    {
+                      "value": "collected",
+                      "label": "Collected"
+                    }
+                  ]
+                },
+                {
+                  "code": "insurance",
+                  "label": "Insurance",
+                  "options": [
+                    {
+                      "value": "verified",
+                      "label": "Verified"
+                    }
+                  ]
+                }
+              ],
+              "entries": [
+                {
+                  "id": "01a13c40-3648-72cb-b13b-396818758d87",
+                  "group": "field",
+                  "athlete": {
+                    "initials": "PT",
+                    "name": "Pay Tester",
+                    "country": "United States"
+                  },
+                  "ranking": "N. AMERICA",
+                  "region": "north_america",
+                  "highlight": null,
+                  "insurance": {
+                    "state": "ok",
+                    "label": "Insurance: verified",
+                    "code": "verified"
+                  },
+                  "payment": {
+                    "code": "collected",
+                    "label": "Collected",
+                    "tone": "neutral"
+                  },
+                  "entry": {
+                    "code": "confirmed",
+                    "label": "Confirmed",
+                    "tone": "neutral"
+                  },
+                  "actions": [
+                    {
+                      "code": "message",
+                      "label": "Send message",
+                      "destructive": false
+                    }
+                  ],
+                  "movable": false,
+                  "pinned": false,
+                  "hasHistory": true,
+                  "seedRank": null,
+                  "alternatePosition": null,
+                  "moveUpSeat": null,
+                  "movedUpFrom": null
+                }
+              ],
+              "version": 1
+            },
+            "at": "2026-10-15T18:37:42.553Z"
+          }
+        ]
+      },
+      "latestResult": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "execution": "Prerequisite review only",
+        "reason": "The roster response does not establish the exact deliverable recipient or its SES status, and no exact message send is approved."
+      },
+      "evidenceLinks": {
+        "screenshot": null,
+        "cancelScreenshot": null,
+        "proposalScreenshot": null,
+        "log": "evidence/BM-LIVE-X06.json"
+      }
+    },
+    {
+      "id": "BM-LIVE-C01",
+      "role": "Athlete",
+      "action": "Read",
+      "prompt": "Not sent: read a known own event entry by reference.",
+      "expected": "Verify real own entry status with get_my_entry.",
+      "actual": "The chosen QA member has no approved known entry-reference fixture. No new entry was created to fill this gap.",
+      "status": "BLOCKED",
+      "attempted": false,
+      "tools": [],
+      "review": {
+        "classification": "Missing approval / fixture",
+        "verification": "The chosen QA member has no approved known entry-reference fixture. No new entry was created to fill this gap."
+      },
+      "simpleSummary": {
+        "flow": [
+          "Not executed: see the recorded approval or fixture limitation."
+        ],
+        "whatWentWrong": null,
+        "expected": "Verify real own entry status with get_my_entry.",
+        "observed": "The chosen QA member has no approved known entry-reference fixture. No new entry was created to fill this gap.",
+        "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+      },
+      "prerequisiteReview": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "reason": "Normal member sign-in works, but the selected original member still has no supplied known own-entry reference for this test. An entry UUID from a manager roster is not the member reference.",
+        "needed": "A known owned member entry reference (or an approved fixture creation flow).",
+        "execution": "Prerequisites reviewed; test not executed",
+        "evidence": [
+          {
+            "role": "Athlete",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/session",
+            "status": 200,
+            "body": {
+              "user": {
+                "id": "01a13c43-a97b-7601-928a-4d4652edae0c",
+                "name": "Guardian Consent",
+                "firstName": "Guardian",
+                "lastName": "Consent",
+                "email": "[email redacted]",
+                "dateOfBirth": "1986-10-15"
+              },
+              "athletes": [
+                {
+                  "id": "01a13c43-c421-74a4-b266-58d419d278a3",
+                  "name": "Junior Consent",
+                  "firstName": "Junior",
+                  "lastName": "Consent",
+                  "initials": "JC",
+                  "status": "active",
+                  "signedCodes": [
+                    "age_and_authority_certification",
+                    "membership_terms_and_conditions",
+                    "waiver_release_indemnity",
+                    "health_insurance_authorization",
+                    "coppa_verification",
+                    "guardian_certification"
+                  ],
+                  "registeredByRole": "guardian",
+                  "membership": {
+                    "id": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+                    "productCode": "junior",
+                    "status": {
+                      "code": "active",
+                      "label": "Membership active",
+                      "tone": "success"
+                    },
+                    "validTo": "2026-12-31"
+                  }
+                }
+              ],
+              "athletesUnavailable": false,
+              "activeAthleteId": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "passwordChangeRequired": false
+            },
+            "at": "2026-10-15T18:37:33.420Z"
+          },
+          {
+            "role": "Athlete",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/assistant/conversations?limit=3",
+            "status": 200,
+            "body": {
+              "conversations": [
+                {
+                  "id": "fedbc53b-9c4d-4c02-8f74-10b242703802",
+                  "title": "Read Taiwan Open of Surfing by its exact event ID 01a136e0-ce4a-70ba-907d-453ccf",
+                  "persona": "member",
+                  "messageCount": 2,
+                  "createdAt": "2026-10-15T11:48:33.230393+00:00",
+                  "lastMessageAt": "2026-10-15T11:48:33.203060+00:00"
+                },
+                {
+                  "id": "d6ba74c4-12a6-45b7-bc13-dd21913e7785",
+                  "title": "For Junior Consent, show Taiwan Open of Surfing: eligibility, entry fee and curr",
+                  "persona": "member",
+                  "messageCount": 2,
+                  "createdAt": "2026-10-15T11:46:39.619880+00:00",
+                  "lastMessageAt": "2026-10-15T11:46:39.586755+00:00"
+                },
+                {
+                  "id": "4509b505-6e6a-426f-b791-eefaf5c96e94",
+                  "title": "Find a cafe near Bells Beach, Torquay, Victoria, Australia.",
+                  "persona": "member",
+                  "messageCount": 2,
+                  "createdAt": "2026-10-15T00:18:41.360236+00:00",
+                  "lastMessageAt": "2026-10-15T00:18:41.332456+00:00"
+                }
+              ],
+              "nextBefore": "2026-10-15T00:18:41.332456+00:00"
+            },
+            "at": "2026-10-15T18:37:33.694Z"
+          }
+        ]
+      },
+      "latestResult": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "execution": "Prerequisite review only",
+        "reason": "Normal member sign-in works, but the selected original member still has no supplied known own-entry reference for this test. An entry UUID from a manager roster is not the member reference."
+      },
+      "evidenceLinks": {
+        "screenshot": null,
+        "cancelScreenshot": null,
+        "proposalScreenshot": null,
+        "log": "evidence/BM-LIVE-C01.json"
+      }
+    },
+    {
+      "id": "BM-LIVE-C02",
+      "role": "TourManager",
+      "action": "Read",
+      "prompt": "Not sent: retrieve another organisation fixture as an unauthorized manager.",
+      "expected": "Owning service rejects cross-organisation access.",
+      "actual": "No separate-organisation QA IDs or account provided. Verbal spoofing refusal/empty response does not prove tenant isolation.",
+      "status": "BLOCKED",
+      "attempted": false,
+      "tools": [],
+      "review": {
+        "classification": "Missing approval / fixture",
+        "verification": "No separate-organisation QA IDs or account provided. Verbal spoofing refusal/empty response does not prove tenant isolation."
+      },
+      "simpleSummary": {
+        "flow": [
+          "Not executed: see the recorded approval or fixture limitation."
+        ],
+        "whatWentWrong": null,
+        "expected": "Owning service rejects cross-organisation access.",
+        "observed": "No separate-organisation QA IDs or account provided. Verbal spoofing refusal/empty response does not prove tenant isolation.",
+        "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+      },
+      "prerequisiteReview": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "reason": "Manager sign-in works; no second-organisation fixture/account is available. An access refusal alone does not prove tenant isolation.",
+        "needed": "A known event/entry in a distinct organisation and an explicitly unauthorized manager fixture.",
+        "execution": "Prerequisites reviewed; test not executed",
+        "evidence": [
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+            "status": 200,
+            "body": {
+              "workspace": {
+                "name": "World Surf League",
+                "product": "Tour Manager"
+              },
+              "user": {
+                "initials": "TM",
+                "name": "Tour Manager 101",
+                "meta": "Tour Manager · All regions"
+              }
+            },
+            "at": "2026-10-15T18:37:41.960Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "status": 200,
+            "body": {
+              "event": {
+                "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+                "status": {
+                  "code": "archived",
+                  "label": "Archived",
+                  "tone": "muted"
+                },
+                "statusOptions": [
+                  {
+                    "code": "draft",
+                    "label": "Draft",
+                    "destructive": false
+                  }
+                ],
+                "fields": {
+                  "name": "QA Main Flow 6a41a52a",
+                  "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+                  "rating": "01a136e0-a604-7170-9191-e87921200f63",
+                  "regions": [
+                    "north_america"
+                  ],
+                  "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+                  "prizeMoney": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "registrationOpensDate": "2026-10-14",
+                  "registrationOpensTime": "17:09",
+                  "registrationClosesDate": "2026-10-14",
+                  "registrationClosesTime": "17:10",
+                  "currency": "USD",
+                  "entryFee": {
+                    "amount": 22500,
+                    "currency": "USD"
+                  }
+                },
+                "readOnly": true,
+                "feeFromGrid": false,
+                "version": 6
+              }
+            },
+            "at": "2026-10-15T18:37:42.270Z"
+          },
+          {
+            "role": "TourManager",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+            "status": 200,
+            "body": {
+              "stage": "waitlist",
+              "field": 96,
+              "cutLine": "Field of 96 ends here. Nobody is waiting behind it.",
+              "openSeats": [],
+              "summary": [
+                {
+                  "count": 1,
+                  "label": "ready to confirm",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "insurance needed",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "payments declined",
+                  "tone": "error"
+                },
+                {
+                  "count": 0,
+                  "label": "wildcard",
+                  "tone": "default"
+                },
+                {
+                  "count": 0,
+                  "label": "alternates · not charged",
+                  "tone": "muted"
+                }
+              ],
+              "primaryAction": null,
+              "publish": null,
+              "filters": [
+                {
+                  "code": "entry",
+                  "label": "Entry status",
+                  "options": [
+                    {
+                      "value": "confirmed",
+                      "label": "Confirmed"
+                    }
+                  ]
+                },
+                {
+                  "code": "region",
+                  "label": "All regions",
+                  "options": [
+                    {
+                      "value": "north_america",
+                      "label": "N. AMERICA"
+                    }
+                  ]
+                },
+                {
+                  "code": "payment",
+                  "label": "Payment",
+                  "options": [
+                    {
+                      "value": "collected",
+                      "label": "Collected"
+                    }
+                  ]
+                },
+                {
+                  "code": "insurance",
+                  "label": "Insurance",
+                  "options": [
+                    {
+                      "value": "verified",
+                      "label": "Verified"
+                    }
+                  ]
+                }
+              ],
+              "entries": [
+                {
+                  "id": "01a13c40-3648-72cb-b13b-396818758d87",
+                  "group": "field",
+                  "athlete": {
+                    "initials": "PT",
+                    "name": "Pay Tester",
+                    "country": "United States"
+                  },
+                  "ranking": "N. AMERICA",
+                  "region": "north_america",
+                  "highlight": null,
+                  "insurance": {
+                    "state": "ok",
+                    "label": "Insurance: verified",
+                    "code": "verified"
+                  },
+                  "payment": {
+                    "code": "collected",
+                    "label": "Collected",
+                    "tone": "neutral"
+                  },
+                  "entry": {
+                    "code": "confirmed",
+                    "label": "Confirmed",
+                    "tone": "neutral"
+                  },
+                  "actions": [
+                    {
+                      "code": "message",
+                      "label": "Send message",
+                      "destructive": false
+                    }
+                  ],
+                  "movable": false,
+                  "pinned": false,
+                  "hasHistory": true,
+                  "seedRank": null,
+                  "alternatePosition": null,
+                  "moveUpSeat": null,
+                  "movedUpFrom": null
+                }
+              ],
+              "version": 1
+            },
+            "at": "2026-10-15T18:37:42.553Z"
+          }
+        ]
+      },
+      "latestResult": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "execution": "Prerequisite review only",
+        "reason": "Manager sign-in works; no second-organisation fixture/account is available. An access refusal alone does not prove tenant isolation."
+      },
+      "evidenceLinks": {
+        "screenshot": null,
+        "cancelScreenshot": null,
+        "proposalScreenshot": null,
+        "log": "evidence/BM-LIVE-C02.json"
+      }
+    },
+    {
+      "id": "BM-LIVE-C03",
+      "role": "Athlete",
+      "action": "History delete",
+      "prompt": "Not sent: delete an owned conversation.",
+      "expected": "Explicitly approved QA-history deletion only.",
+      "actual": "No exact conversation-deletion approval. History list/read/pagination were tested, deletion was not.",
+      "status": "BLOCKED",
+      "attempted": false,
+      "tools": [],
+      "review": {
+        "classification": "Missing approval / fixture",
+        "verification": "No exact conversation-deletion approval. History list/read/pagination were tested, deletion was not."
+      },
+      "simpleSummary": {
+        "flow": [
+          "Not executed: see the recorded approval or fixture limitation."
+        ],
+        "whatWentWrong": null,
+        "expected": "Explicitly approved QA-history deletion only.",
+        "observed": "No exact conversation-deletion approval. History list/read/pagination were tested, deletion was not.",
+        "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+      },
+      "prerequisiteReview": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "reason": "Owned history list/read returns HTTP 200. No exact QA conversation has been approved for deletion under this test’s existing approval requirement.",
+        "needed": "Approval of the specific disposable QA conversation to delete.",
+        "execution": "Prerequisites reviewed; test not executed",
+        "evidence": [
+          {
+            "role": "Athlete",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/session",
+            "status": 200,
+            "body": {
+              "user": {
+                "id": "01a13c43-a97b-7601-928a-4d4652edae0c",
+                "name": "Guardian Consent",
+                "firstName": "Guardian",
+                "lastName": "Consent",
+                "email": "[email redacted]",
+                "dateOfBirth": "1986-10-15"
+              },
+              "athletes": [
+                {
+                  "id": "01a13c43-c421-74a4-b266-58d419d278a3",
+                  "name": "Junior Consent",
+                  "firstName": "Junior",
+                  "lastName": "Consent",
+                  "initials": "JC",
+                  "status": "active",
+                  "signedCodes": [
+                    "age_and_authority_certification",
+                    "membership_terms_and_conditions",
+                    "waiver_release_indemnity",
+                    "health_insurance_authorization",
+                    "coppa_verification",
+                    "guardian_certification"
+                  ],
+                  "registeredByRole": "guardian",
+                  "membership": {
+                    "id": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+                    "productCode": "junior",
+                    "status": {
+                      "code": "active",
+                      "label": "Membership active",
+                      "tone": "success"
+                    },
+                    "validTo": "2026-12-31"
+                  }
+                }
+              ],
+              "athletesUnavailable": false,
+              "activeAthleteId": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "passwordChangeRequired": false
+            },
+            "at": "2026-10-15T18:37:33.420Z"
+          },
+          {
+            "role": "Athlete",
+            "method": "GET",
+            "url": "https://api.dev.worldsurfleague.com/api/assistant/conversations?limit=3",
+            "status": 200,
+            "body": {
+              "conversations": [
+                {
+                  "id": "fedbc53b-9c4d-4c02-8f74-10b242703802",
+                  "title": "Read Taiwan Open of Surfing by its exact event ID 01a136e0-ce4a-70ba-907d-453ccf",
+                  "persona": "member",
+                  "messageCount": 2,
+                  "createdAt": "2026-10-15T11:48:33.230393+00:00",
+                  "lastMessageAt": "2026-10-15T11:48:33.203060+00:00"
+                },
+                {
+                  "id": "d6ba74c4-12a6-45b7-bc13-dd21913e7785",
+                  "title": "For Junior Consent, show Taiwan Open of Surfing: eligibility, entry fee and curr",
+                  "persona": "member",
+                  "messageCount": 2,
+                  "createdAt": "2026-10-15T11:46:39.619880+00:00",
+                  "lastMessageAt": "2026-10-15T11:46:39.586755+00:00"
+                },
+                {
+                  "id": "4509b505-6e6a-426f-b791-eefaf5c96e94",
+                  "title": "Find a cafe near Bells Beach, Torquay, Victoria, Australia.",
+                  "persona": "member",
+                  "messageCount": 2,
+                  "createdAt": "2026-10-15T00:18:41.360236+00:00",
+                  "lastMessageAt": "2026-10-15T00:18:41.332456+00:00"
+                }
+              ],
+              "nextBefore": "2026-10-15T00:18:41.332456+00:00"
+            },
+            "at": "2026-10-15T18:37:33.694Z"
+          }
+        ]
+      },
+      "latestResult": {
+        "at": "2026-10-15T18:37:24.473Z",
+        "status": "BLOCKED",
+        "execution": "Prerequisite review only",
+        "reason": "Owned history list/read returns HTTP 200. No exact QA conversation has been approved for deletion under this test’s existing approval requirement."
+      },
+      "evidenceLinks": {
+        "screenshot": null,
+        "cancelScreenshot": null,
+        "proposalScreenshot": null,
+        "log": "evidence/BM-LIVE-C03.json"
+      }
+    }
+  ],
+  "limitations": [
+    "Role-by-role exhaustive combinations are not all verified.",
+    "Known own-entry reference and separate-org fixture missing.",
+    "Five other write kinds and artificial duplicate/stale tests blocked; approved archive executed successfully."
+  ]
+}

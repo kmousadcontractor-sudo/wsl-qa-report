@@ -1,0 +1,46 @@
+{
+  "id": "BM-LIVE-S03",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "Read the first QA owner’s real conversation as the separate second QA owner.",
+  "expected": "404 / not found, without private conversation content.",
+  "actual": "{\"title\":\"Not found\",\"message\":\"We could not find that conversation. It may have been deleted.\",\"reason\":\"ai.conversation_not_found\",\"fields\":{},\"retryable\":false}",
+  "aiResponse": "Not an AI conversation: direct API/UI authorization or history check.",
+  "tools": [],
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/conversations/4509b505-6e6a-426f-b791-eefaf5c96e94",
+      "status": 404,
+      "body": {
+        "title": "Not found",
+        "message": "We could not find that conversation. It may have been deleted.",
+        "reason": "ai.conversation_not_found",
+        "fields": {},
+        "retryable": false
+      },
+      "at": "2026-10-15T00:25:13.984Z"
+    }
+  ],
+  "status": "PASS",
+  "startedAt": "2026-10-15T00:25:13.984Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\history-security\\[email redacted]",
+  "review": {
+    "verification": "Actual API/UI assertion as recorded; not inferred from an AI answer.",
+    "classification": "Authorization/history"
+  },
+  "simpleSummary": {
+    "flow": [
+      "Review the direct API/UI verification described in the original evidence."
+    ],
+    "whatWentWrong": null,
+    "expected": "404 / not found, without private conversation content.",
+    "observed": "{\"title\":\"Not found\",\"message\":\"We could not find that conversation. It may have been deleted.\",\"reason\":\"ai.conversation_not_found\",\"fields\":{},\"retryable\":false}",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": null,
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

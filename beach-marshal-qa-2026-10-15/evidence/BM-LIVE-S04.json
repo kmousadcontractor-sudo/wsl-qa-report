@@ -1,0 +1,43 @@
+{
+  "id": "BM-LIVE-S04",
+  "role": "Public",
+  "action": "Read",
+  "prompt": "GET saved conversations without authentication.",
+  "expected": "HTTP401 and no private history.",
+  "actual": "{\"title\":\"Something went wrong\",\"message\":\"Please sign in and try again.\",\"reason\":null,\"fields\":{},\"retryable\":false}",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/conversations",
+      "status": 401,
+      "body": {
+        "title": "Something went wrong",
+        "message": "Please sign in and try again.",
+        "reason": null,
+        "fields": {},
+        "retryable": false
+      },
+      "at": "2026-10-15T00:26:12.163Z"
+    }
+  ],
+  "tools": [],
+  "status": "PASS",
+  "review": {
+    "verification": "Actual API/UI assertion as recorded; not inferred from an AI answer.",
+    "classification": "Authorization/history"
+  },
+  "simpleSummary": {
+    "flow": [
+      "Review the direct API/UI verification described in the original evidence."
+    ],
+    "whatWentWrong": null,
+    "expected": "HTTP401 and no private history.",
+    "observed": "{\"title\":\"Something went wrong\",\"message\":\"Please sign in and try again.\",\"reason\":null,\"fields\":{},\"retryable\":false}",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": null,
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

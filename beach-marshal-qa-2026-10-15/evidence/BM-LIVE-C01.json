@@ -1,0 +1,129 @@
+{
+  "id": "BM-LIVE-C01",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "Not sent: read a known own event entry by reference.",
+  "expected": "Verify real own entry status with get_my_entry.",
+  "actual": "The chosen QA member has no approved known entry-reference fixture. No new entry was created to fill this gap.",
+  "status": "BLOCKED",
+  "attempted": false,
+  "tools": [],
+  "review": {
+    "classification": "Missing approval / fixture",
+    "verification": "The chosen QA member has no approved known entry-reference fixture. No new entry was created to fill this gap."
+  },
+  "simpleSummary": {
+    "flow": [
+      "Not executed: see the recorded approval or fixture limitation."
+    ],
+    "whatWentWrong": null,
+    "expected": "Verify real own entry status with get_my_entry.",
+    "observed": "The chosen QA member has no approved known entry-reference fixture. No new entry was created to fill this gap.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "prerequisiteReview": {
+    "at": "2026-10-15T18:37:24.473Z",
+    "status": "BLOCKED",
+    "reason": "Normal member sign-in works, but the selected original member still has no supplied known own-entry reference for this test. An entry UUID from a manager roster is not the member reference.",
+    "needed": "A known owned member entry reference (or an approved fixture creation flow).",
+    "execution": "Prerequisites reviewed; test not executed",
+    "evidence": [
+      {
+        "role": "Athlete",
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/session",
+        "status": 200,
+        "body": {
+          "user": {
+            "id": "01a13c43-a97b-7601-928a-4d4652edae0c",
+            "name": "Guardian Consent",
+            "firstName": "Guardian",
+            "lastName": "Consent",
+            "email": "[email redacted]",
+            "dateOfBirth": "1986-10-15"
+          },
+          "athletes": [
+            {
+              "id": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "name": "Junior Consent",
+              "firstName": "Junior",
+              "lastName": "Consent",
+              "initials": "JC",
+              "status": "active",
+              "signedCodes": [
+                "age_and_authority_certification",
+                "membership_terms_and_conditions",
+                "waiver_release_indemnity",
+                "health_insurance_authorization",
+                "coppa_verification",
+                "guardian_certification"
+              ],
+              "registeredByRole": "guardian",
+              "membership": {
+                "id": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+                "productCode": "junior",
+                "status": {
+                  "code": "active",
+                  "label": "Membership active",
+                  "tone": "success"
+                },
+                "validTo": "2026-12-31"
+              }
+            }
+          ],
+          "athletesUnavailable": false,
+          "activeAthleteId": "01a13c43-c421-74a4-b266-58d419d278a3",
+          "passwordChangeRequired": false
+        },
+        "at": "2026-10-15T18:37:33.420Z"
+      },
+      {
+        "role": "Athlete",
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/assistant/conversations?limit=3",
+        "status": 200,
+        "body": {
+          "conversations": [
+            {
+              "id": "fedbc53b-9c4d-4c02-8f74-10b242703802",
+              "title": "Read Taiwan Open of Surfing by its exact event ID 01a136e0-ce4a-70ba-907d-453ccf",
+              "persona": "member",
+              "messageCount": 2,
+              "createdAt": "2026-10-15T11:48:33.230393+00:00",
+              "lastMessageAt": "2026-10-15T11:48:33.203060+00:00"
+            },
+            {
+              "id": "d6ba74c4-12a6-45b7-bc13-dd21913e7785",
+              "title": "For Junior Consent, show Taiwan Open of Surfing: eligibility, entry fee and curr",
+              "persona": "member",
+              "messageCount": 2,
+              "createdAt": "2026-10-15T11:46:39.619880+00:00",
+              "lastMessageAt": "2026-10-15T11:46:39.586755+00:00"
+            },
+            {
+              "id": "4509b505-6e6a-426f-b791-eefaf5c96e94",
+              "title": "Find a cafe near Bells Beach, Torquay, Victoria, Australia.",
+              "persona": "member",
+              "messageCount": 2,
+              "createdAt": "2026-10-15T00:18:41.360236+00:00",
+              "lastMessageAt": "2026-10-15T00:18:41.332456+00:00"
+            }
+          ],
+          "nextBefore": "2026-10-15T00:18:41.332456+00:00"
+        },
+        "at": "2026-10-15T18:37:33.694Z"
+      }
+    ]
+  },
+  "latestResult": {
+    "at": "2026-10-15T18:37:24.473Z",
+    "status": "BLOCKED",
+    "execution": "Prerequisite review only",
+    "reason": "Normal member sign-in works, but the selected original member still has no supplied known own-entry reference for this test. An entry UUID from a manager roster is not the member reference."
+  },
+  "evidenceLinks": {
+    "screenshot": null,
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

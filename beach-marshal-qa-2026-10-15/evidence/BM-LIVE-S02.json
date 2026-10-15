@@ -1,0 +1,46 @@
+{
+  "id": "BM-LIVE-S02",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "GET the separate QA owner’s athlete holdings by its real ID.",
+  "expected": "403 or404; no foreign holdings content.",
+  "actual": "{\"title\":\"You do not have access\",\"message\":\"You do not have access to that.\",\"reason\":null,\"fields\":{},\"retryable\":false}",
+  "aiResponse": "Not an AI conversation: direct API/UI authorization or history check.",
+  "tools": [],
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/athletes/01a13c42-9891-71a5-b144-1b5687a5c929/holdings",
+      "status": 403,
+      "body": {
+        "title": "You do not have access",
+        "message": "You do not have access to that.",
+        "reason": null,
+        "fields": {},
+        "retryable": false
+      },
+      "at": "2026-10-15T00:25:10.079Z"
+    }
+  ],
+  "status": "PASS",
+  "startedAt": "2026-10-15T00:25:10.079Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\history-security\\[email redacted]",
+  "review": {
+    "verification": "Actual API/UI assertion as recorded; not inferred from an AI answer.",
+    "classification": "Authorization/history"
+  },
+  "simpleSummary": {
+    "flow": [
+      "Review the direct API/UI verification described in the original evidence."
+    ],
+    "whatWentWrong": null,
+    "expected": "403 or404; no foreign holdings content.",
+    "observed": "{\"title\":\"You do not have access\",\"message\":\"You do not have access to that.\",\"reason\":null,\"fields\":{},\"retryable\":false}",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": null,
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

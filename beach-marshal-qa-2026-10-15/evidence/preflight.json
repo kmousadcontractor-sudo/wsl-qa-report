@@ -1,0 +1,821 @@
+{
+  "checkedAt": "2026-10-15T00:10:50.992Z",
+  "application": "https://app.dev.worldsurfleague.com",
+  "accounts": {
+    "Athlete": {
+      "source": "Existing SES-verified under-13 parent QA account from remaining-failures-rerun/minors/recipients.json; registration password resolved from existing TestConfig",
+      "auth": {
+        "http": 200,
+        "url": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+        "sessionHint": "1"
+      },
+      "session": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/session",
+        "status": 200,
+        "body": {
+          "user": {
+            "id": "01a13c43-a97b-7601-928a-4d4652edae0c",
+            "name": "Guardian Consent",
+            "firstName": "Guardian",
+            "lastName": "Consent",
+            "email": "[email redacted]",
+            "dateOfBirth": "1986-10-15"
+          },
+          "athletes": [
+            {
+              "id": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "name": "Junior Consent",
+              "firstName": "Junior",
+              "lastName": "Consent",
+              "initials": "JC",
+              "status": "active",
+              "signedCodes": [
+                "age_and_authority_certification",
+                "membership_terms_and_conditions",
+                "waiver_release_indemnity",
+                "health_insurance_authorization",
+                "coppa_verification",
+                "guardian_certification"
+              ],
+              "registeredByRole": "guardian",
+              "membership": {
+                "id": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+                "productCode": "junior",
+                "status": {
+                  "code": "active",
+                  "label": "Membership active",
+                  "tone": "success"
+                },
+                "validTo": "2026-12-31"
+              }
+            }
+          ],
+          "athletesUnavailable": false,
+          "activeAthleteId": "01a13c43-c421-74a4-b266-58d419d278a3",
+          "passwordChangeRequired": false
+        },
+        "at": "2026-10-15T00:10:59.307Z"
+      },
+      "managerSession": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+        "status": 403,
+        "body": {
+          "title": "You do not have access",
+          "message": "You need Tour Manager access to do that.",
+          "reason": "competition.not_a_tour_manager",
+          "fields": {},
+          "retryable": false
+        },
+        "at": "2026-10-15T00:10:59.536Z"
+      },
+      "guardBlocked": []
+    },
+    "SecondOwner": {
+      "source": "Existing teen QA account, separate owner",
+      "auth": {
+        "http": 200,
+        "url": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+        "sessionHint": "1"
+      },
+      "session": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/session",
+        "status": 200,
+        "body": {
+          "user": {
+            "id": "01a13c42-7b51-7737-8ee3-a2e63a62a52b",
+            "name": "Pay Tester",
+            "firstName": "Pay",
+            "lastName": "Tester",
+            "email": "[email redacted]",
+            "dateOfBirth": "2011-03-10"
+          },
+          "athletes": [
+            {
+              "id": "01a13c42-9891-71a5-b144-1b5687a5c929",
+              "name": "Pay Tester",
+              "firstName": "Pay",
+              "lastName": "Tester",
+              "initials": "PT",
+              "status": "active",
+              "signedCodes": [
+                "age_and_authority_certification",
+                "guardian_certification",
+                "health_insurance_authorization",
+                "membership_terms_and_conditions",
+                "waiver_release_indemnity"
+              ],
+              "registeredByRole": "self",
+              "membership": {
+                "id": "01a13c42-b280-7579-aa49-a1c403fbb204",
+                "productCode": "junior",
+                "status": {
+                  "code": "active",
+                  "label": "Membership active",
+                  "tone": "success"
+                },
+                "validTo": "2026-12-31"
+              }
+            }
+          ],
+          "athletesUnavailable": false,
+          "activeAthleteId": "01a13c42-9891-71a5-b144-1b5687a5c929",
+          "passwordChangeRequired": false
+        },
+        "at": "2026-10-15T00:11:13.063Z"
+      },
+      "managerSession": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+        "status": 403,
+        "body": {
+          "title": "You do not have access",
+          "message": "You need Tour Manager access to do that.",
+          "reason": "competition.not_a_tour_manager",
+          "fields": {},
+          "retryable": false
+        },
+        "at": "2026-10-15T00:11:13.305Z"
+      },
+      "guardBlocked": []
+    },
+    "TourManager": {
+      "source": "secrets.properties: devTourManagerEmail/devTourManagerPassword",
+      "auth": {
+        "http": 200,
+        "url": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+        "sessionHint": "1"
+      },
+      "session": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/session",
+        "status": 200,
+        "body": {
+          "user": {
+            "id": "01a13678-65bd-7793-aa12-f6448c46e1e2",
+            "name": "Tour Manager 101",
+            "firstName": "Tour",
+            "lastName": "Manager 101",
+            "email": "[email redacted]",
+            "dateOfBirth": "1985-06-15"
+          },
+          "athletes": [],
+          "athletesUnavailable": false,
+          "activeAthleteId": null,
+          "passwordChangeRequired": false
+        },
+        "at": "2026-10-15T00:11:21.244Z"
+      },
+      "managerSession": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+        "status": 200,
+        "body": {
+          "workspace": {
+            "name": "World Surf League",
+            "product": "Tour Manager"
+          },
+          "user": {
+            "initials": "TM",
+            "name": "Tour Manager 101",
+            "meta": "Tour Manager · All regions"
+          }
+        },
+        "at": "2026-10-15T00:11:21.707Z"
+      },
+      "seasons": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/seasons",
+        "status": 200,
+        "body": {
+          "seasons": [
+            {
+              "id": "01a13c3b-ee31-728d-864f-d3f600a32b7a",
+              "dates": "1 Jan – 31 Dec 2046",
+              "tours": 1,
+              "events": 1,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13c3b-ee31-728d-864f-d3f600a32b7a",
+              "name": "2046",
+              "startDate": "2046-01-01",
+              "endDate": "2046-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 1,
+              "version": 1
+            },
+            {
+              "id": "01a13bcc-9675-7797-97a0-cf6b8248ba76",
+              "dates": "1 Jan – 31 Dec 2045",
+              "tours": 0,
+              "events": 0,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13bcc-9675-7797-97a0-cf6b8248ba76",
+              "name": "2045",
+              "startDate": "2045-01-01",
+              "endDate": "2045-12-31",
+              "status": "draft",
+              "tourCount": 0,
+              "eventCount": 0,
+              "version": 1
+            },
+            {
+              "id": "01a13b4b-8617-7294-8a34-06cd9c6a7768",
+              "dates": "1 Jan – 31 Dec 2044",
+              "tours": 1,
+              "events": 1,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13b4b-8617-7294-8a34-06cd9c6a7768",
+              "name": "2044",
+              "startDate": "2044-01-01",
+              "endDate": "2044-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 1,
+              "version": 1
+            },
+            {
+              "id": "01a13b49-5d59-7085-8c75-6fc4a19f22a3",
+              "dates": "1 Jan – 31 Dec 2043",
+              "tours": 1,
+              "events": 2,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13b49-5d59-7085-8c75-6fc4a19f22a3",
+              "name": "2043",
+              "startDate": "2043-01-01",
+              "endDate": "2043-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 2,
+              "version": 1
+            },
+            {
+              "id": "01a13b44-9826-7263-a3d8-9388c1b03a29",
+              "dates": "1 Jan – 31 Dec 2042",
+              "tours": 1,
+              "events": 2,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13b44-9826-7263-a3d8-9388c1b03a29",
+              "name": "2042",
+              "startDate": "2042-01-01",
+              "endDate": "2042-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 2,
+              "version": 1
+            },
+            {
+              "id": "01a13b05-d40e-742a-acfc-0e694db2d1e5",
+              "dates": "1 Jan – 31 Dec 2041",
+              "tours": 1,
+              "events": 1,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13b05-d40e-742a-acfc-0e694db2d1e5",
+              "name": "2041",
+              "startDate": "2041-01-01",
+              "endDate": "2041-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 1,
+              "version": 1
+            },
+            {
+              "id": "01a13b03-8d98-744c-a56b-69282b30ea4e",
+              "dates": "1 Jan – 31 Dec 2040",
+              "tours": 1,
+              "events": 3,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13b03-8d98-744c-a56b-69282b30ea4e",
+              "name": "2040",
+              "startDate": "2040-01-01",
+              "endDate": "2040-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 3,
+              "version": 1
+            },
+            {
+              "id": "01a13b00-5a3d-76d0-96d3-ec28778a006f",
+              "dates": "1 Jan – 31 Dec 2039",
+              "tours": 1,
+              "events": 3,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13b00-5a3d-76d0-96d3-ec28778a006f",
+              "name": "2039",
+              "startDate": "2039-01-01",
+              "endDate": "2039-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 3,
+              "version": 1
+            },
+            {
+              "id": "01a13ad0-17be-7096-adaf-8dceb1161d9c",
+              "dates": "1 Jan – 31 Dec 2038",
+              "tours": 1,
+              "events": 4,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13ad0-17be-7096-adaf-8dceb1161d9c",
+              "name": "2038",
+              "startDate": "2038-01-01",
+              "endDate": "2038-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 4,
+              "version": 1
+            },
+            {
+              "id": "01a139b6-1bdd-7728-a39a-d4d786d24b0a",
+              "dates": "1 Jan – 31 Dec 2037",
+              "tours": 1,
+              "events": 4,
+              "current": false,
+              "open": true,
+              "seasonId": "01a139b6-1bdd-7728-a39a-d4d786d24b0a",
+              "name": "2037",
+              "startDate": "2037-01-01",
+              "endDate": "2037-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 4,
+              "version": 1
+            },
+            {
+              "id": "01a1397a-dd22-71cb-b060-7de3fea2a9f6",
+              "dates": "1 Jan – 31 Dec 2036",
+              "tours": 1,
+              "events": 2,
+              "current": false,
+              "open": true,
+              "seasonId": "01a1397a-dd22-71cb-b060-7de3fea2a9f6",
+              "name": "2036",
+              "startDate": "2036-01-01",
+              "endDate": "2036-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 2,
+              "version": 1
+            },
+            {
+              "id": "01a1397a-b68b-715a-895c-efb87440ae83",
+              "dates": "1 Jan – 31 Dec 2035",
+              "tours": 1,
+              "events": 24,
+              "current": false,
+              "open": true,
+              "seasonId": "01a1397a-b68b-715a-895c-efb87440ae83",
+              "name": "2035",
+              "startDate": "2035-01-01",
+              "endDate": "2035-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 24,
+              "version": 1
+            },
+            {
+              "id": "01a1379c-e07f-75e5-afd8-4bb141fed8b8",
+              "dates": "1 Jan – 31 Dec 2034",
+              "tours": 1,
+              "events": 2,
+              "current": false,
+              "open": true,
+              "seasonId": "01a1379c-e07f-75e5-afd8-4bb141fed8b8",
+              "name": "2034",
+              "startDate": "2034-01-01",
+              "endDate": "2034-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 2,
+              "version": 1
+            },
+            {
+              "id": "01a1379a-0fd8-72c4-92c4-d7d3b34a1622",
+              "dates": "1 Jan – 31 Dec 2033",
+              "tours": 1,
+              "events": 7,
+              "current": false,
+              "open": true,
+              "seasonId": "01a1379a-0fd8-72c4-92c4-d7d3b34a1622",
+              "name": "2033",
+              "startDate": "2033-01-01",
+              "endDate": "2033-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 7,
+              "version": 1
+            },
+            {
+              "id": "01a13794-c29e-77f4-8c70-0bd84eebba1d",
+              "dates": "1 Jan – 31 Dec 2032",
+              "tours": 2,
+              "events": 16,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13794-c29e-77f4-8c70-0bd84eebba1d",
+              "name": "2032",
+              "startDate": "2032-01-01",
+              "endDate": "2032-12-31",
+              "status": "draft",
+              "tourCount": 2,
+              "eventCount": 16,
+              "version": 1
+            },
+            {
+              "id": "01a13774-6fe4-751f-bdf7-4f5393b06071",
+              "dates": "1 Jan – 31 Dec 2031",
+              "tours": 1,
+              "events": 2,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13774-6fe4-751f-bdf7-4f5393b06071",
+              "name": "2031",
+              "startDate": "2031-01-01",
+              "endDate": "2031-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 2,
+              "version": 1
+            },
+            {
+              "id": "01a13774-4b9f-75f1-a85d-6644fe4ad707",
+              "dates": "1 Jan – 31 Dec 2030",
+              "tours": 2,
+              "events": 25,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13774-4b9f-75f1-a85d-6644fe4ad707",
+              "name": "2030",
+              "startDate": "2030-01-01",
+              "endDate": "2030-12-31",
+              "status": "draft",
+              "tourCount": 2,
+              "eventCount": 25,
+              "version": 1
+            },
+            {
+              "id": "01a1374b-43d8-7205-b217-87b8c95b0c25",
+              "dates": "1 Jan – 31 Dec 2029",
+              "tours": 1,
+              "events": 2,
+              "current": false,
+              "open": true,
+              "seasonId": "01a1374b-43d8-7205-b217-87b8c95b0c25",
+              "name": "2029",
+              "startDate": "2029-01-01",
+              "endDate": "2029-12-31",
+              "status": "draft",
+              "tourCount": 1,
+              "eventCount": 2,
+              "version": 1
+            },
+            {
+              "id": "01a1374b-139c-7030-8311-34e67a299df8",
+              "dates": "1 Jan – 31 Dec 2028",
+              "tours": 2,
+              "events": 25,
+              "current": false,
+              "open": true,
+              "seasonId": "01a1374b-139c-7030-8311-34e67a299df8",
+              "name": "2028",
+              "startDate": "2028-01-01",
+              "endDate": "2028-12-31",
+              "status": "draft",
+              "tourCount": 2,
+              "eventCount": 25,
+              "version": 1
+            },
+            {
+              "id": "01a13751-29bf-72d2-a9a4-2dc7f258bb7b",
+              "dates": "1 Apr – 31 Dec 2027",
+              "tours": 30,
+              "events": 166,
+              "current": false,
+              "open": true,
+              "seasonId": "01a13751-29bf-72d2-a9a4-2dc7f258bb7b",
+              "name": "2027",
+              "startDate": "2027-04-01",
+              "endDate": "2027-12-31",
+              "status": "draft",
+              "tourCount": 30,
+              "eventCount": 166,
+              "version": 1
+            },
+            {
+              "id": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+              "dates": "1 Apr 2026 – 31 Mar 2027",
+              "tours": 44,
+              "events": 251,
+              "current": true,
+              "open": true,
+              "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+              "name": "2026-27",
+              "startDate": "2026-04-01",
+              "endDate": "2027-03-31",
+              "status": "active",
+              "tourCount": 44,
+              "eventCount": 251,
+              "version": 1
+            },
+            {
+              "id": "01a136e0-a741-7380-a67a-d0802248e806",
+              "dates": "1 Jan 2025 – 31 Mar 2026",
+              "tours": 26,
+              "events": 130,
+              "current": false,
+              "open": false,
+              "seasonId": "01a136e0-a741-7380-a67a-d0802248e806",
+              "name": "2025-26",
+              "startDate": "2025-01-01",
+              "endDate": "2026-03-31",
+              "status": "closed",
+              "tourCount": 26,
+              "eventCount": 130,
+              "version": 1
+            }
+          ],
+          "next": {
+            "name": "2047",
+            "startDate": "2047-01-01",
+            "endDate": "2047-12-31"
+          }
+        },
+        "at": "2026-10-15T00:11:22.042Z"
+      },
+      "event": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "status": 200,
+        "body": {
+          "event": {
+            "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+            "status": {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "tone": "warning"
+            },
+            "statusOptions": [
+              {
+                "code": "ready-for-entries",
+                "label": "Ready for entries",
+                "destructive": false
+              },
+              {
+                "code": "cancelled",
+                "label": "Cancel event",
+                "destructive": true
+              },
+              {
+                "code": "archived",
+                "label": "Archive",
+                "destructive": true
+              }
+            ],
+            "fields": {
+              "name": "QA Main Flow 6a41a52a",
+              "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+              "rating": "01a136e0-a604-7170-9191-e87921200f63",
+              "regions": [
+                "north_america"
+              ],
+              "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+              "prizeMoney": {
+                "amount": 3000000,
+                "currency": "USD"
+              },
+              "registrationOpensDate": "2026-10-14",
+              "registrationOpensTime": "17:09",
+              "registrationClosesDate": "2026-10-14",
+              "registrationClosesTime": "17:10",
+              "currency": "USD",
+              "entryFee": {
+                "amount": 22500,
+                "currency": "USD"
+              }
+            },
+            "readOnly": false,
+            "feeFromGrid": false,
+            "version": 5
+          }
+        },
+        "at": "2026-10-15T00:11:22.421Z"
+      },
+      "entries": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+        "status": 200,
+        "body": {
+          "stage": "seeding",
+          "field": 96,
+          "cutLine": "Field of 96 ends here. Alternates stay seeded in order and are never charged unless promoted.",
+          "summary": [
+            {
+              "count": 1,
+              "label": "ready to confirm",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "insurance needed",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "payments declined",
+              "tone": "error"
+            },
+            {
+              "count": 0,
+              "label": "wildcard",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "alternates · not charged",
+              "tone": "muted"
+            }
+          ],
+          "primaryAction": null,
+          "publish": null,
+          "filters": [
+            {
+              "code": "entry",
+              "label": "Entry status",
+              "options": [
+                {
+                  "value": "confirmed",
+                  "label": "Confirmed"
+                }
+              ]
+            },
+            {
+              "code": "region",
+              "label": "All regions",
+              "options": [
+                {
+                  "value": "north_america",
+                  "label": "N. AMERICA"
+                }
+              ]
+            },
+            {
+              "code": "payment",
+              "label": "Payment",
+              "options": [
+                {
+                  "value": "collected",
+                  "label": "Collected"
+                }
+              ]
+            },
+            {
+              "code": "insurance",
+              "label": "Insurance",
+              "options": [
+                {
+                  "value": "verified",
+                  "label": "Verified"
+                }
+              ]
+            }
+          ],
+          "entries": [
+            {
+              "id": "01a13c40-3648-72cb-b13b-396818758d87",
+              "group": "field",
+              "athlete": {
+                "initials": "PT",
+                "name": "Pay Tester",
+                "country": "United States"
+              },
+              "ranking": "N. AMERICA",
+              "region": "north_america",
+              "highlight": null,
+              "insurance": {
+                "state": "ok",
+                "label": "Insurance: verified",
+                "code": "verified"
+              },
+              "payment": {
+                "code": "collected",
+                "label": "Collected",
+                "tone": "neutral"
+              },
+              "entry": {
+                "code": "confirmed",
+                "label": "Confirmed",
+                "tone": "neutral"
+              },
+              "actions": [
+                {
+                  "code": "message",
+                  "label": "Send message",
+                  "destructive": false
+                },
+                {
+                  "code": "confirm",
+                  "label": "Confirm entry",
+                  "destructive": false
+                },
+                {
+                  "code": "withdraw",
+                  "label": "Withdraw entry",
+                  "destructive": true
+                }
+              ],
+              "movable": true,
+              "pinned": false,
+              "hasHistory": true
+            }
+          ],
+          "version": 1
+        },
+        "at": "2026-10-15T00:11:22.885Z"
+      },
+      "overview": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/overview",
+        "status": 200,
+        "body": {
+          "overview": {
+            "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "name": "QA Main Flow 6a41a52a",
+            "starred": false,
+            "status": {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "tone": "warning"
+            },
+            "statusOptions": [
+              {
+                "code": "ready-for-entries",
+                "label": "Ready for entries",
+                "destructive": false
+              },
+              {
+                "code": "cancelled",
+                "label": "Cancel event",
+                "destructive": true
+              },
+              {
+                "code": "archived",
+                "label": "Archive",
+                "destructive": true
+              }
+            ],
+            "seasonName": "2026-27",
+            "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+            "tourName": "Qualifying Series (QS) · Men",
+            "tour": "01a136e0-a5d2-7281-bd03-46b0fe771f3b",
+            "tourFilter": "Qualifying Series",
+            "readOnly": false,
+            "version": 5,
+            "summary": "4,000 · Sat 19 – Sat 19 Dec 2026 · 1st Street Jetty, VA",
+            "athletes": 1,
+            "divisions": [
+              {
+                "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "name": "This event",
+                "registered": 1,
+                "field": 96,
+                "alternates": 0,
+                "toReview": null,
+                "status": {
+                  "code": "closed-for-entries",
+                  "label": "Closed for entries",
+                  "tone": "warning"
+                }
+              }
+            ],
+            "details": {
+              "seasonTour": "2026-27 · Qualifying Series (QS) · Men",
+              "dates": "Sat 19 – Sat 19 Dec 2026",
+              "location": "1st Street Jetty, VA · EST",
+              "regions": "North America (primary)",
+              "registrationOpened": "14 Oct 2026 · 17:09 EDT",
+              "registrationClosed": "14 Oct 2026 · 17:10 EDT",
+              "entryFee": "USD 225 from N. AMERICA"
+            }
+          }
+        },
+        "at": "2026-10-15T00:11:23.276Z"
+      },
+      "guardBlocked": []
+    }
+  },
+  "safety": "GET reference reads; normal UI sign-in only; no domain mutation"
+}

@@ -1,0 +1,255 @@
+{
+  "id": "BM-LIVE-X02",
+  "role": "TourManager",
+  "action": "Confirmed write",
+  "kind": "entry.withdraw",
+  "prompt": "Not sent: execute entry.withdraw on dedicated QA data.",
+  "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+  "actual": "Would withdraw confirmed Pay Tester entry, free its seed and may involve notifications/refund rules that must be verified. No approval supplied.",
+  "status": "BLOCKED",
+  "attempted": false,
+  "tools": [],
+  "target": {
+    "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+    "eventName": "QA Main Flow 6a41a52a",
+    "entryId": "01a13c40-3648-72cb-b13b-396818758d87"
+  },
+  "review": {
+    "verification": "Would withdraw confirmed Pay Tester entry, free its seed and may involve notifications/refund rules that must be verified. No approval supplied.",
+    "classification": "Approval / safe fixture required"
+  },
+  "unexecutedChecks": [
+    "Confirmed execution",
+    "Repeated confirmation/duplicate prevention",
+    "Stale write/retry",
+    "UI/backend mutation consistency"
+  ],
+  "simpleSummary": {
+    "flow": [
+      "Not executed: see the recorded approval or fixture limitation."
+    ],
+    "whatWentWrong": null,
+    "expected": "Execute only after exact-action approval and valid isolated fixtures; verify API state before/after, UI and duplicate prevention.",
+    "observed": "Would withdraw confirmed Pay Tester entry, free its seed and may involve notifications/refund rules that must be verified. No approval supplied.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "prerequisiteReview": {
+    "at": "2026-10-15T18:37:24.473Z",
+    "status": "BLOCKED",
+    "reason": "The existing entry is Confirmed in the archived QA event. No exact withdrawal target/action approval has been supplied.",
+    "needed": "Approval of the specific isolated entry withdrawal and its notification/refund effects.",
+    "execution": "Prerequisites reviewed; test not executed",
+    "evidence": [
+      {
+        "role": "TourManager",
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+        "status": 200,
+        "body": {
+          "workspace": {
+            "name": "World Surf League",
+            "product": "Tour Manager"
+          },
+          "user": {
+            "initials": "TM",
+            "name": "Tour Manager 101",
+            "meta": "Tour Manager · All regions"
+          }
+        },
+        "at": "2026-10-15T18:37:41.960Z"
+      },
+      {
+        "role": "TourManager",
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "status": 200,
+        "body": {
+          "event": {
+            "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+            "status": {
+              "code": "archived",
+              "label": "Archived",
+              "tone": "muted"
+            },
+            "statusOptions": [
+              {
+                "code": "draft",
+                "label": "Draft",
+                "destructive": false
+              }
+            ],
+            "fields": {
+              "name": "QA Main Flow 6a41a52a",
+              "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+              "rating": "01a136e0-a604-7170-9191-e87921200f63",
+              "regions": [
+                "north_america"
+              ],
+              "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+              "prizeMoney": {
+                "amount": 3000000,
+                "currency": "USD"
+              },
+              "registrationOpensDate": "2026-10-14",
+              "registrationOpensTime": "17:09",
+              "registrationClosesDate": "2026-10-14",
+              "registrationClosesTime": "17:10",
+              "currency": "USD",
+              "entryFee": {
+                "amount": 22500,
+                "currency": "USD"
+              }
+            },
+            "readOnly": true,
+            "feeFromGrid": false,
+            "version": 6
+          }
+        },
+        "at": "2026-10-15T18:37:42.270Z"
+      },
+      {
+        "role": "TourManager",
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+        "status": 200,
+        "body": {
+          "stage": "waitlist",
+          "field": 96,
+          "cutLine": "Field of 96 ends here. Nobody is waiting behind it.",
+          "openSeats": [],
+          "summary": [
+            {
+              "count": 1,
+              "label": "ready to confirm",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "insurance needed",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "payments declined",
+              "tone": "error"
+            },
+            {
+              "count": 0,
+              "label": "wildcard",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "alternates · not charged",
+              "tone": "muted"
+            }
+          ],
+          "primaryAction": null,
+          "publish": null,
+          "filters": [
+            {
+              "code": "entry",
+              "label": "Entry status",
+              "options": [
+                {
+                  "value": "confirmed",
+                  "label": "Confirmed"
+                }
+              ]
+            },
+            {
+              "code": "region",
+              "label": "All regions",
+              "options": [
+                {
+                  "value": "north_america",
+                  "label": "N. AMERICA"
+                }
+              ]
+            },
+            {
+              "code": "payment",
+              "label": "Payment",
+              "options": [
+                {
+                  "value": "collected",
+                  "label": "Collected"
+                }
+              ]
+            },
+            {
+              "code": "insurance",
+              "label": "Insurance",
+              "options": [
+                {
+                  "value": "verified",
+                  "label": "Verified"
+                }
+              ]
+            }
+          ],
+          "entries": [
+            {
+              "id": "01a13c40-3648-72cb-b13b-396818758d87",
+              "group": "field",
+              "athlete": {
+                "initials": "PT",
+                "name": "Pay Tester",
+                "country": "United States"
+              },
+              "ranking": "N. AMERICA",
+              "region": "north_america",
+              "highlight": null,
+              "insurance": {
+                "state": "ok",
+                "label": "Insurance: verified",
+                "code": "verified"
+              },
+              "payment": {
+                "code": "collected",
+                "label": "Collected",
+                "tone": "neutral"
+              },
+              "entry": {
+                "code": "confirmed",
+                "label": "Confirmed",
+                "tone": "neutral"
+              },
+              "actions": [
+                {
+                  "code": "message",
+                  "label": "Send message",
+                  "destructive": false
+                }
+              ],
+              "movable": false,
+              "pinned": false,
+              "hasHistory": true,
+              "seedRank": null,
+              "alternatePosition": null,
+              "moveUpSeat": null,
+              "movedUpFrom": null
+            }
+          ],
+          "version": 1
+        },
+        "at": "2026-10-15T18:37:42.553Z"
+      }
+    ]
+  },
+  "latestResult": {
+    "at": "2026-10-15T18:37:24.473Z",
+    "status": "BLOCKED",
+    "execution": "Prerequisite review only",
+    "reason": "The existing entry is Confirmed in the archived QA event. No exact withdrawal target/action approval has been supplied."
+  },
+  "evidenceLinks": {
+    "screenshot": null,
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

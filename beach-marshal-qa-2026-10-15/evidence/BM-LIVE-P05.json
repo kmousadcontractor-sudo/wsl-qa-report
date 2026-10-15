@@ -1,0 +1,398 @@
+{
+  "id": "BM-LIVE-P05",
+  "role": "Public",
+  "action": "Read",
+  "prompt": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions",
+  "expected": "Uses allowed page/web lookup or honestly reports inability. Facts must match actual returned source.",
+  "expectedTools": [
+    "read_wsl_page"
+  ],
+  "referencePaths": [],
+  "web": true,
+  "startedAt": "2026-10-15T00:23:22.045Z",
+  "status": "BLOCKED",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:23:22.397Z",
+  "videoStartSeconds": 6.449,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "8a203c76-bce8-4981-b33e-ac722f887f0f",
+    "input": {
+      "threadId": "16c9789d-190b-439e-a3b1-1f4ebaed3cdd",
+      "runId": "94bbad4c-9af5-44ba-a43b-bc06901c4c44",
+      "state": {},
+      "messages": [
+        {
+          "id": "85d6bf55-4057-42db-8b67-c6667ee56d40",
+          "role": "user",
+          "content": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions"
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01Hahh4ZzqMH8UgFZzTZzD9A",
+        "name": "read_wsl_page",
+        "result": {
+          "status": "unavailable"
+        },
+        "parameters": {
+          "url": "https://www.worldsurfleague.com/pages/terms-and-conditions"
+        }
+      }
+    ],
+    "answer": "I can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "16c9789d-190b-439e-a3b1-1f4ebaed3cdd",
+        "runId": "94bbad4c-9af5-44ba-a43b-bc06901c4c44"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "16c9789d-190b-439e-a3b1-1f4ebaed3cdd",
+        "runId": "94bbad4c-9af5-44ba-a43b-bc06901c4c44"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01Hahh4ZzqMH8UgFZzTZzD9A",
+      "name": "read_wsl_page",
+      "result": {
+        "status": "unavailable"
+      },
+      "parameters": {
+        "url": "https://www.worldsurfleague.com/pages/terms-and-conditions"
+      }
+    }
+  ],
+  "aiResponse": "I can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.",
+  "actual": "I can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.",
+  "durationMs": 7179,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+  "visibleText": "Beach Marshal\nNew conversation\n\nRead this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions\n\nI can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.\n\nI can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P05.png",
+  "videoEndSeconds": 14.727,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:23:22.510Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:23:30.675Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "previousAttempts": [
+    {
+      "id": "BM-LIVE-P05",
+      "role": "Public",
+      "action": "Read",
+      "prompt": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions",
+      "expected": "Uses allowed page/web lookup or honestly reports inability. Facts must match actual returned source.",
+      "expectedTools": [
+        "read_wsl_page"
+      ],
+      "referencePaths": [],
+      "web": true,
+      "startedAt": "2026-10-15T00:15:33.556Z",
+      "status": "FAIL",
+      "evaluation": "Pending evidence-based semantic review",
+      "backendBefore": [],
+      "backendAfter": [],
+      "steps": [
+        "Use normal application role/session.",
+        "Open Beach Marshal.",
+        "Start a new conversation.",
+        "Send the exact recorded prompt.",
+        "Wait for the real stream and capture answer, tools and UI."
+      ],
+      "sentAt": "2026-10-15T00:15:36.888Z",
+      "videoStartSeconds": 38.45,
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "status": 429,
+        "correlationId": "ace607e5-b87a-4d22-95f1-2ca30c7c7f4a",
+        "input": {
+          "threadId": "46c74552-01f7-4cfa-ac6a-3e424ff26420",
+          "runId": "c1c84567-3b00-4ca9-9494-b15d2e5c9897",
+          "state": {},
+          "messages": [
+            {
+              "id": "6f45f61f-8952-44df-b7c9-7fb0d250740b",
+              "role": "user",
+              "content": "Find surf shops near me."
+            },
+            {
+              "id": "lc_run--01a13ce9-f999-7eb1-a346-f3c2d2212808",
+              "role": "assistant",
+              "toolCalls": [
+                {
+                  "id": "toolu_bdrk_01TpbnyJyPB52fYwG8nbJfVQ",
+                  "type": "function",
+                  "function": {
+                    "name": "request_location",
+                    "arguments": "{\"reason\": \"to find surf shops near you\"}"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "toolu_bdrk_01TpbnyJyPB52fYwG8nbJfVQ",
+              "role": "tool",
+              "toolCallId": "toolu_bdrk_01TpbnyJyPB52fYwG8nbJfVQ",
+              "content": "{\"status\":\"location_requested\",\"reason\":\"to find surf shops near you\"}"
+            },
+            {
+              "id": "lc_run--01a13cea-0126-74b3-b93b-7b8461e28260",
+              "role": "assistant",
+              "content": "To find surf shops near you, I need your location. Tap Share on the card, or tell me a town or beach and I'll search there."
+            },
+            {
+              "id": "a29546a5-207a-4bc8-9f20-b48351a9616e",
+              "role": "user",
+              "content": "Location not shared."
+            },
+            {
+              "id": "lc_run--01a13cea-0bf0-71a3-9ded-49bf1361412a",
+              "role": "assistant",
+              "content": "No problem. Tell me a town, beach or area and I'll find surf shops there."
+            },
+            {
+              "id": "b1136f40-fb7c-412a-bb23-54597e640ee2",
+              "role": "user",
+              "content": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions"
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [],
+        "answer": "",
+        "finished": false,
+        "errors": [],
+        "runIds": [],
+        "eventTypes": []
+      },
+      "tools": [],
+      "aiResponse": "",
+      "actual": "No final text answer was captured.",
+      "durationMs": 527,
+      "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+      "visibleText": "Beach Marshal\nNew conversation\n\nFind surf shops near me.\n\nShare your location?\n\nto find surf shops near you\n\nLocation not shared\n\nTo find surf shops near you, I need your location. Tap Share on the card, or tell me a town or beach and I'll search there.\n\nLocation not shared.\n\nNo problem. Tell me a town, beach or area and I'll find surf shops there.\n\nRead this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions\n\nNo problem. Tell me a town, beach or area and I'll find surf shops there.\n\nYou're sending messages quickly. Try again in a minute.\n\nRetry",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P05.png",
+      "videoEndSeconds": 39.858,
+      "finding": "Assistant request did not complete successfully: HTTP 429, terminal finish false, errors []",
+      "proposal": null,
+      "network": [
+        {
+          "method": "POST",
+          "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+          "at": "2026-10-15T00:15:36.939Z"
+        }
+      ],
+      "finishedAt": "2026-10-15T00:15:38.296Z",
+      "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+      "reviewNote": "Initial public run encountered documented quota refusal. Retained as an automation-pacing observation; retried only after the window reset, without bypassing quotas."
+    }
+  ],
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "The WSL page read returned unavailable. The assistant honestly disclosed it; content accuracy cannot be evaluated for that page. No independent evidence proves this external page should have loaded.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Public tools only",
+    "limitations": "The WSL page read returned unavailable. The assistant honestly disclosed it; content accuracy cannot be evaluated for that page. No independent evidence proves this external page should have loaded.",
+    "aiEvaluation": {
+      "accuracy": "Requested facts unavailable; honesty of fallback checked",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Incomplete requested data; see blocked/failed integration result",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Tool reports unavailable; requested source data not delivered",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "Honest fallback; integration failure remains failed/blocked"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Uses allowed page/web lookup or honestly reports inability. Facts must match actual returned source.",
+    "observed": "I can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "additionalExamples": [
+    {
+      "id": "BM-LIVE-P05",
+      "example": 2,
+      "role": "Public",
+      "prompt": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions",
+      "expected": "Uses allowed page/web lookup or honestly reports inability. Facts must match actual returned source.",
+      "startedAt": "2026-10-15T18:37:07.053Z",
+      "backendBefore": [],
+      "status": "BLOCKED",
+      "videoPath": "artifacts/beach-marshal-live-2026-10-15/blocked-recording-Public-1792089422862/tab-1.webm",
+      "videoStartSeconds": 1.745,
+      "sentAt": "2026-10-15T18:37:08.844Z",
+      "api": {
+        "status": 200,
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "input": {
+          "threadId": "fa171f52-6da6-4f0d-be54-6d620b6956d9",
+          "runId": "b6c2be29-3825-4c41-8188-ab9cd5ec4e4a",
+          "state": {},
+          "messages": [
+            {
+              "id": "13653b39-150c-4ff8-9f9d-13b929b974e9",
+              "role": "user",
+              "content": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions"
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [
+          {
+            "id": "toolu_bdrk_01JDsY29abXYLbE5Yg49sSz2",
+            "name": "read_wsl_page",
+            "result": {
+              "status": "unavailable"
+            },
+            "parameters": {
+              "url": "https://www.worldsurfleague.com/pages/terms-and-conditions"
+            }
+          }
+        ],
+        "answer": "I can't read that page for you right now. You can open it on worldsurfleague.com yourself. If you'd like, I can also open the WSL legal documents in the app, such as the terms of use or the privacy policy.",
+        "finished": true,
+        "errors": [],
+        "runIds": [
+          {
+            "type": "RUN_STARTED",
+            "threadId": "fa171f52-6da6-4f0d-be54-6d620b6956d9",
+            "runId": "b6c2be29-3825-4c41-8188-ab9cd5ec4e4a"
+          },
+          {
+            "type": "RUN_FINISHED",
+            "threadId": "fa171f52-6da6-4f0d-be54-6d620b6956d9",
+            "runId": "b6c2be29-3825-4c41-8188-ab9cd5ec4e4a"
+          }
+        ],
+        "eventTypes": [
+          "RUN_STARTED",
+          "STEP_STARTED",
+          "STEP_FINISHED",
+          "TOOL_CALL_START",
+          "TOOL_CALL_ARGS",
+          "TOOL_CALL_END",
+          "STATE_SNAPSHOT",
+          "TOOL_CALL_RESULT",
+          "REASONING_START",
+          "REASONING_MESSAGE_START",
+          "REASONING_MESSAGE_CONTENT",
+          "REASONING_MESSAGE_END",
+          "REASONING_END",
+          "TEXT_MESSAGE_START",
+          "TEXT_MESSAGE_CONTENT",
+          "TEXT_MESSAGE_END",
+          "MESSAGES_SNAPSHOT",
+          "RUN_FINISHED"
+        ]
+      },
+      "tools": [
+        {
+          "id": "toolu_bdrk_01JDsY29abXYLbE5Yg49sSz2",
+          "name": "read_wsl_page",
+          "result": {
+            "status": "unavailable"
+          },
+          "parameters": {
+            "url": "https://www.worldsurfleague.com/pages/terms-and-conditions"
+          }
+        }
+      ],
+      "actual": "I can't read that page for you right now. You can open it on worldsurfleague.com yourself. If you'd like, I can also open the WSL legal documents in the app, such as the terms of use or the privacy policy.",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P05-blocked-rerun.png",
+      "videoEndSeconds": 10.7,
+      "visibleText": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nLog In\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited States\nEnglish\n1\nDate of Birth\nCurrent step\n2\nAccount\nNot started\n3\nAthlete Details\nNot started\n4\nMembership\nNot started\n5\nPayment\nNot started\nPlease enter your date of birth\nDate of Birth*\nContinue\n\nAlready have an account? Login\n\nBeach Marshal\nNew conversation\n\nRead this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions\n\nI can't read that page for you right now. You can open it on worldsurfleague.com yourself. If you'd like, I can also open the WSL legal documents in the app, such as the terms of use or the privacy policy.\n\nI can't read that page for you right now. You can open it on worldsurfleague.com yourself. If you'd like, I can also open the WSL legal documents in the app, such as the terms of use or the privacy policy.",
+      "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+      "finishedAt": "2026-10-15T18:37:17.727Z",
+      "runKind": "blocked-rerun",
+      "assessment": "read_wsl_page still returns unavailable. The assistant honestly reports it cannot read the requested page; source-content verification remains blocked.",
+      "originalExampleStatus": "BLOCKED",
+      "evidenceLinks": {
+        "screenshot": "screenshots/BM-LIVE-P05-example-2-BM-LIVE-P05-blocked-rerun.png",
+        "videoNote": "Alternate example captured with Chrome DevTools Protocol Page.startScreencast at the native browser viewport; no zoom, scaling or crop. Focused clip of this request and observed result.",
+        "video": "videos/BM-LIVE-P05-example-2.webm",
+        "log": "evidence/BM-LIVE-P05-example-2.json"
+      }
+    }
+  ],
+  "latestResult": {
+    "at": "2026-10-15T18:37:17.727Z",
+    "status": "BLOCKED",
+    "execution": "Rerun executed",
+    "reason": "read_wsl_page still returns unavailable. The assistant honestly reports it cannot read the requested page; source-content verification remains blocked."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-P05-BM-LIVE-P05.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

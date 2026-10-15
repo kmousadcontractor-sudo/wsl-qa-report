@@ -1,0 +1,43 @@
+{
+  "id": "BM-LIVE-S05",
+  "role": "Public",
+  "action": "Read",
+  "prompt": "Invalid test access cookie plus an anonymous identity on assistant/run.",
+  "expected": "HTTP401; no fallback to anonymous or private data.",
+  "actual": "{\"title\":\"Please sign in\",\"message\":\"Please sign in and try again.\",\"reason\":null,\"fields\":{},\"retryable\":false}",
+  "backendBefore": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "status": 401,
+      "body": {
+        "title": "Please sign in",
+        "message": "Please sign in and try again.",
+        "reason": null,
+        "fields": {},
+        "retryable": false
+      },
+      "input": "Only invalid QA test cookie and synthetic anonymous identity; no real token."
+    }
+  ],
+  "tools": [],
+  "status": "PASS",
+  "review": {
+    "verification": "Actual API/UI assertion as recorded; not inferred from an AI answer.",
+    "classification": "Authorization/history"
+  },
+  "simpleSummary": {
+    "flow": [
+      "Review the direct API/UI verification described in the original evidence."
+    ],
+    "whatWentWrong": null,
+    "expected": "HTTP401; no fallback to anonymous or private data.",
+    "observed": "{\"title\":\"Please sign in\",\"message\":\"Please sign in and try again.\",\"reason\":null,\"fields\":{},\"retryable\":false}",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": null,
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

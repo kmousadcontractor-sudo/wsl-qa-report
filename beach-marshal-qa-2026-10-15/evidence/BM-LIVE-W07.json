@@ -1,0 +1,426 @@
+{
+  "id": "BM-LIVE-W07",
+  "role": "TourManager",
+  "action": "Write proposal",
+  "prompt": "Confirm Pay Tester in QA Main Flow 6a41a52a.",
+  "expected": "Ask the manager to choose waiver/note, rather than assuming; no mutation.",
+  "expectedTools": [],
+  "referencePaths": [
+    "/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries"
+  ],
+  "missingDecision": true,
+  "startedAt": "2026-10-15T00:21:52.355Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries",
+      "status": 200,
+      "body": {
+        "stage": "seeding",
+        "field": 96,
+        "cutLine": "Field of 96 ends here. Alternates stay seeded in order and are never charged unless promoted.",
+        "summary": [
+          {
+            "count": 1,
+            "label": "ready to confirm",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "insurance needed",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "payments declined",
+            "tone": "error"
+          },
+          {
+            "count": 0,
+            "label": "wildcard",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "alternates · not charged",
+            "tone": "muted"
+          }
+        ],
+        "primaryAction": null,
+        "publish": null,
+        "filters": [
+          {
+            "code": "entry",
+            "label": "Entry status",
+            "options": [
+              {
+                "value": "confirmed",
+                "label": "Confirmed"
+              }
+            ]
+          },
+          {
+            "code": "region",
+            "label": "All regions",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "N. AMERICA"
+              }
+            ]
+          },
+          {
+            "code": "payment",
+            "label": "Payment",
+            "options": [
+              {
+                "value": "collected",
+                "label": "Collected"
+              }
+            ]
+          },
+          {
+            "code": "insurance",
+            "label": "Insurance",
+            "options": [
+              {
+                "value": "verified",
+                "label": "Verified"
+              }
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "id": "01a13c40-3648-72cb-b13b-396818758d87",
+            "group": "field",
+            "athlete": {
+              "initials": "PT",
+              "name": "Pay Tester",
+              "country": "United States"
+            },
+            "ranking": "N. AMERICA",
+            "region": "north_america",
+            "highlight": null,
+            "insurance": {
+              "state": "ok",
+              "label": "Insurance: verified",
+              "code": "verified"
+            },
+            "payment": {
+              "code": "collected",
+              "label": "Collected",
+              "tone": "neutral"
+            },
+            "entry": {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "tone": "neutral"
+            },
+            "actions": [
+              {
+                "code": "message",
+                "label": "Send message",
+                "destructive": false
+              },
+              {
+                "code": "confirm",
+                "label": "Confirm entry",
+                "destructive": false
+              },
+              {
+                "code": "withdraw",
+                "label": "Withdraw entry",
+                "destructive": true
+              }
+            ],
+            "movable": true,
+            "pinned": false,
+            "hasHistory": true
+          }
+        ],
+        "version": 1
+      },
+      "at": "2026-10-15T00:21:52.653Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:21:52.724Z",
+  "videoStartSeconds": 414.286,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "29d6f1f3-ca15-4f60-b508-21446ccb3081",
+    "input": {
+      "threadId": "2c670405-4b4d-4913-afc6-07525f594227",
+      "runId": "74c209c4-1d10-4399-a507-39e2e2e45e33",
+      "state": {},
+      "messages": [
+        {
+          "id": "fe12ca27-5876-4b14-bfcc-f342ff2eba94",
+          "role": "user",
+          "content": "Confirm Pay Tester in QA Main Flow 6a41a52a."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01VLQiyMDs11wux3m8derXzq",
+        "name": "find_events",
+        "result": {
+          "status": "ok",
+          "events": [
+            {
+              "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "name": "QA Main Flow 6a41a52a",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 1
+            },
+            {
+              "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+              "name": "QA Main Flow 93ae6bbc",
+              "startDate": "2026-12-18",
+              "endDate": "2026-12-18",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.8
+            },
+            {
+              "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+              "name": "QA Main Flow 6e301a29",
+              "startDate": "2026-12-20",
+              "endDate": "2026-12-20",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.82
+            },
+            {
+              "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+              "name": "QA Main Flow b145bd93",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 0.79
+            },
+            {
+              "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+              "name": "QA Checklist 20261014081146624-d9f105 21",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "International Qualifying Series",
+              "division": "mens",
+              "score": 0.73
+            }
+          ],
+          "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+        },
+        "parameters": {
+          "text": "QA Main Flow 6a41a52a"
+        }
+      },
+      {
+        "id": "toolu_bdrk_01FT9htdAUKvoLVdNHHc1TZx",
+        "name": "list_event_entries",
+        "result": {
+          "status": "unavailable"
+        },
+        "parameters": {
+          "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "athlete": "Pay Tester"
+        }
+      }
+    ],
+    "answer": "I found QA Main Flow 6a41a52a (December 19 at 1st Street Jetty, Virginia Beach), but I can't look up its seed list right now, so I can't find Pay Tester's entry yet.\n\nTo confirm the entry I also need to know what you want to waive: the entry fee, the insurance requirement, both, or neither with a note saying why. Tell me that and I'll try the seed list again.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "2c670405-4b4d-4913-afc6-07525f594227",
+        "runId": "74c209c4-1d10-4399-a507-39e2e2e45e33"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "2c670405-4b4d-4913-afc6-07525f594227",
+        "runId": "74c209c4-1d10-4399-a507-39e2e2e45e33"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01VLQiyMDs11wux3m8derXzq",
+      "name": "find_events",
+      "result": {
+        "status": "ok",
+        "events": [
+          {
+            "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "name": "QA Main Flow 6a41a52a",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 1
+          },
+          {
+            "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+            "name": "QA Main Flow 93ae6bbc",
+            "startDate": "2026-12-18",
+            "endDate": "2026-12-18",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.8
+          },
+          {
+            "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+            "name": "QA Main Flow 6e301a29",
+            "startDate": "2026-12-20",
+            "endDate": "2026-12-20",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.82
+          },
+          {
+            "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+            "name": "QA Main Flow b145bd93",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 0.79
+          },
+          {
+            "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+            "name": "QA Checklist 20261014081146624-d9f105 21",
+            "startDate": "2026-11-23",
+            "endDate": "2026-11-23",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "International Qualifying Series",
+            "division": "mens",
+            "score": 0.73
+          }
+        ],
+        "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+      },
+      "parameters": {
+        "text": "QA Main Flow 6a41a52a"
+      }
+    },
+    {
+      "id": "toolu_bdrk_01FT9htdAUKvoLVdNHHc1TZx",
+      "name": "list_event_entries",
+      "result": {
+        "status": "unavailable"
+      },
+      "parameters": {
+        "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+        "athlete": "Pay Tester"
+      }
+    }
+  ],
+  "aiResponse": "I found QA Main Flow 6a41a52a (December 19 at 1st Street Jetty, Virginia Beach), but I can't look up its seed list right now, so I can't find Pay Tester's entry yet.\n\nTo confirm the entry I also need to know what you want to waive: the entry fee, the insurance requirement, both, or neither with a note saying why. Tell me that and I'll try the seed list again.",
+  "actual": "I found QA Main Flow 6a41a52a (December 19 at 1st Street Jetty, Virginia Beach), but I can't look up its seed list right now, so I can't find Pay Tester's entry yet.\n\nTo confirm the entry I also need to know what you want to waive: the entry fee, the insurance requirement, both, or neither with a note saying why. Tell me that and I'll try the seed list again.",
+  "durationMs": 6927,
+  "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e?tab=history",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nConfirm Pay Tester in QA Main Flow 6a41a52a.\n\nLooking up the event and entry…\n\nI found QA Main Flow 6a41a52a (December 19 at 1st Street Jetty, Virginia Beach), but I can't look up its seed list right now, so I can't find Pay Tester's entry yet.\n\nTo confirm the entry I also need to know what you want to waive: the entry fee, the insurance requirement, both, or neither with a note saying why. Tell me that and I'll try the seed list again.\n\nI found QA Main Flow 6a41a52a (December 19 at 1st Street Jetty, Virginia Beach), but I can't look up its seed list right now, so I can't find Pay Tester's entry yet. To confirm the entry I also need to know what you want to waive: the entry fee, the insurance requirement, both, or neither with a note saying why. Tell me that and I'll try the seed list again.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-W07.png",
+  "videoEndSeconds": 421.859,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:21:52.782Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:22:00.297Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Asked manager to choose fee/insurance waiver or neither with a note; no guessed waiver and no mutation. Roster lookup still unavailable.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Manager normal sign-in verified by session API",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Requested facts unavailable; honesty of fallback checked",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Incomplete requested data; see blocked/failed integration result",
+      "identity": "Actual returned QA event match inspected",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Tool reports unavailable; requested source data not delivered",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "Honest fallback; integration failure remains failed/blocked"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Ask the manager to choose waiver/note, rather than assuming; no mutation.",
+    "observed": "I found QA Main Flow 6a41a52a (December 19 at 1st Street Jetty, Virginia Beach), but I can't look up its seed list right now, so I can't find Pay Tester's entry yet.\n\nTo confirm the entry I also need to know what you want to waive: the entry fee, the insurance requirement, both, or neither with a note saying why. Tell me that and I'll try the seed list again.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-W07-BM-LIVE-W07.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

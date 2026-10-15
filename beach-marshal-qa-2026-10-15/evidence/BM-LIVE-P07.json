@@ -1,0 +1,249 @@
+{
+  "id": "BM-LIVE-P07",
+  "role": "Public",
+  "action": "Navigation",
+  "prompt": "Open the sign-in page. Do not sign in for me.",
+  "expected": "Allowed login navigation; no account or domain changes.",
+  "expectedTools": [
+    "open_page"
+  ],
+  "referencePaths": [],
+  "navigation": "/login",
+  "startedAt": "2026-10-15T00:23:43.835Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:23:50.400Z",
+  "videoStartSeconds": 34.452,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "1d693265-08dc-4247-bec7-c19e753d91de",
+    "input": {
+      "threadId": "fcffc107-dbef-4e8e-8ffc-c48496b07865",
+      "runId": "d9ef1cf4-eb6e-4eaf-b226-f976faab6cd5",
+      "state": {},
+      "messages": [
+        {
+          "id": "ef84f191-d390-4478-9ea5-187389a174ac",
+          "role": "user",
+          "content": "Open the sign-in page. Do not sign in for me."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_016K35grWuWQoGQim9ZMZpYB",
+        "name": "open_page",
+        "result": {
+          "status": "ok",
+          "navigate": {
+            "page": "login",
+            "params": {},
+            "label": "Sign-in page"
+          }
+        },
+        "parameters": {
+          "page": "login",
+          "label": "Sign-in page"
+        }
+      }
+    ],
+    "answer": "I've opened the sign-in page, and I haven't signed you in. You can enter your details there whenever you want.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "fcffc107-dbef-4e8e-8ffc-c48496b07865",
+        "runId": "d9ef1cf4-eb6e-4eaf-b226-f976faab6cd5"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "fcffc107-dbef-4e8e-8ffc-c48496b07865",
+        "runId": "d9ef1cf4-eb6e-4eaf-b226-f976faab6cd5"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_016K35grWuWQoGQim9ZMZpYB",
+      "name": "open_page",
+      "result": {
+        "status": "ok",
+        "navigate": {
+          "page": "login",
+          "params": {},
+          "label": "Sign-in page"
+        }
+      },
+      "parameters": {
+        "page": "login",
+        "label": "Sign-in page"
+      }
+    }
+  ],
+  "aiResponse": "I've opened the sign-in page, and I haven't signed you in. You can enter your details there whenever you want.",
+  "actual": "I've opened the sign-in page, and I haven't signed you in. You can enter your details there whenever you want.",
+  "durationMs": 3746,
+  "urlAfter": "https://app.dev.worldsurfleague.com/login",
+  "visibleText": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nLog In\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited States\nEnglish\nLog In to WSL\nEmail Address\nPassword\nLog In\nOr Continue With\n\nDon't have an account? Create one",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P07.png",
+  "videoEndSeconds": 69.097,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:23:50.423Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:24:25.045Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "previousAttempts": [
+    {
+      "id": "BM-LIVE-P07",
+      "role": "Public",
+      "action": "Navigation",
+      "prompt": "Open the sign-in page. Do not sign in for me.",
+      "expected": "Allowed login navigation; no account or domain changes.",
+      "expectedTools": [
+        "open_page"
+      ],
+      "referencePaths": [],
+      "navigation": "/login",
+      "startedAt": "2026-10-15T00:15:45.698Z",
+      "status": "FAIL",
+      "evaluation": "Pending evidence-based semantic review",
+      "backendBefore": [],
+      "backendAfter": [],
+      "steps": [
+        "Use normal application role/session.",
+        "Open Beach Marshal.",
+        "Start a new conversation.",
+        "Send the exact recorded prompt.",
+        "Wait for the real stream and capture answer, tools and UI."
+      ],
+      "sentAt": "2026-10-15T00:15:51.294Z",
+      "videoStartSeconds": 52.856,
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "status": 429,
+        "correlationId": "ce08783f-edb1-42ec-abb3-5f22c8c6fe33",
+        "input": {
+          "threadId": "285c2649-f507-49fd-bf4b-06c113f805c1",
+          "runId": "f29b6a3e-6c50-4e21-9822-d9149a06c8e1",
+          "state": {},
+          "messages": [
+            {
+              "id": "fa1ecbd5-c579-4d2c-82e2-57f54cd08884",
+              "role": "user",
+              "content": "Open the sign-in page. Do not sign in for me."
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [],
+        "answer": "",
+        "finished": false,
+        "errors": [],
+        "runIds": [],
+        "eventTypes": []
+      },
+      "tools": [],
+      "aiResponse": "",
+      "actual": "No final text answer was captured.",
+      "durationMs": 654,
+      "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+      "visibleText": "Beach Marshal\nNew conversation\n\nOpen the sign-in page. Do not sign in for me.\n\nYou're sending messages quickly. Try again in a minute.\n\nRetry",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P07.png",
+      "videoEndSeconds": 54.321,
+      "finding": "Assistant request did not complete successfully: HTTP 429, terminal finish false, errors []",
+      "proposal": null,
+      "network": [
+        {
+          "method": "POST",
+          "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+          "at": "2026-10-15T00:15:51.318Z"
+        }
+      ],
+      "finishedAt": "2026-10-15T00:15:52.760Z",
+      "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+      "reviewNote": "Initial public run encountered documented quota refusal. Retained as an automation-pacing observation; retried only after the window reset, without bypassing quotas."
+    }
+  ],
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "open_page selected login, normal UI navigated to /login, and no sign-in or entry was submitted.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Public tools only",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Allowed login navigation; no account or domain changes.",
+    "observed": "I've opened the sign-in page, and I haven't signed you in. You can enter your details there whenever you want.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-P07-BM-LIVE-P07.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

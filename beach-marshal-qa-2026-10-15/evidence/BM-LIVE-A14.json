@@ -1,0 +1,237 @@
+{
+  "id": "BM-LIVE-A14",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "Withdraw Junior Consent from Taiwan Open of Surfing.",
+  "expected": "Member has no manager write tool; explain supported process and do not claim withdrawal or show executable manager proposal.",
+  "expectedTools": [],
+  "referencePaths": [],
+  "security": true,
+  "startedAt": "2026-10-15T00:18:01.696Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:18:01.812Z",
+  "videoStartSeconds": 183.374,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "ac2a1430-5694-49ab-90b8-76b5ecf80f00",
+    "input": {
+      "threadId": "59e78598-5a3c-4e33-8641-dafc1705a9f4",
+      "runId": "7833662f-3fb9-4684-9efc-46f91e6cad3d",
+      "state": {},
+      "messages": [
+        {
+          "id": "f7cacfa6-ad93-48ec-92ad-cd4edbcf7fd6",
+          "role": "user",
+          "content": "Withdraw Junior Consent from Taiwan Open of Surfing."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01XASvbM8dvV6Z79w2AGYhkS",
+        "name": "search_rules",
+        "result": {
+          "status": "ok",
+          "rules": [
+            {
+              "number": "2.18",
+              "title": "Entry Cancellation, Refunds and Medical Certificates",
+              "chapterTitle": "QUALIFICATION SERIES AND CHALLENGER SERIES EVENTS",
+              "page": 36,
+              "excerpt": "…WSL Regional Office seven (7) days before the relevant Event Start Date and a medical certificate is produced that complies with Rule 2.18(e), the Surfer will receive a refund of their Entry Fee less a $50 administration fee. (c) All cancellations of Event entries after the Event entries have…"
+            },
+            {
+              "number": "10.19",
+              "title": "Non-CT Event Cancellation or Postponement Due to Force Majeure or Lack of Competitive Surf",
+              "chapterTitle": "COMPETITION RULES",
+              "page": 75,
+              "excerpt": "…commenced but the first Prize Money heat has not started – Cancellation for Force Majeure or Lack of Surf: (i) Surfers will receive the points applicable to their result at that time; (ii) surfers who have competed and lost receive no refund of their entry fee; (iii) Surfers who are still…"
+            },
+            {
+              "number": "2.03",
+              "title": "Cancellation of an Event",
+              "chapterTitle": "QUALIFICATION SERIES AND CHALLENGER SERIES EVENTS",
+              "page": 23,
+              "excerpt": "If any Event is cancelled by the Event licensee, any License Fee paid prior to such cancellation is non-refundable. A penalty in an amount equal to ten percent (10%) of the Prize Money will be imposed by WSL, which must be paid no later than ninety (90) days prior to the Event Start Date before the…"
+            },
+            {
+              "number": "2.14",
+              "title": "Entry Fees",
+              "chapterTitle": "QUALIFICATION SERIES AND CHALLENGER SERIES EVENTS",
+              "page": 33,
+              "excerpt": "Entry Fees for all Events will be as set forth in MemberPro."
+            },
+            {
+              "number": "2.17",
+              "title": "Entry Confirmations",
+              "chapterTitle": "QUALIFICATION SERIES AND CHALLENGER SERIES EVENTS",
+              "page": 35,
+              "excerpt": "…Alternate list, the Surfer must notify WSL prior to the Event Start Date. For more information, refer to Rule 2.17(c). Once a Surfer has been entered into the Event and they are charged the Entry Fee, refunds are not available. (c) Once entry has been confirmed, every Surfer must attend any…"
+            }
+          ]
+        },
+        "parameters": {
+          "query": "withdrawal from event cancellation refund entry fee"
+        }
+      }
+    ],
+    "answer": "I can't withdraw Junior Consent from the Taiwan Open of Surfing. Entries can't be withdrawn on the website, in the app or by me. To withdraw, please contact the WSL Regional Office or the event's tour manager.\n\nBefore you do, here's what the rule book says about refunds:\n- **Medical refund:** If you cancel with the Regional Office at least seven days before the event starts and send a valid medical certificate, you get the entry fee back minus a $50 admin fee. This is Rule 2.18 (2026 WSL Rule Book, p.36).\n- **No refund after confirmation:** Once a surfer has been entered and charged the entry fee, refunds aren't available. This is Rule 2.17 (2026 WSL Rule Book, p.35).\n\nThe sooner you contact them, the better your chance of getting part of the fee back.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "59e78598-5a3c-4e33-8641-dafc1705a9f4",
+        "runId": "7833662f-3fb9-4684-9efc-46f91e6cad3d"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "59e78598-5a3c-4e33-8641-dafc1705a9f4",
+        "runId": "7833662f-3fb9-4684-9efc-46f91e6cad3d"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01XASvbM8dvV6Z79w2AGYhkS",
+      "name": "search_rules",
+      "result": {
+        "status": "ok",
+        "rules": [
+          {
+            "number": "2.18",
+            "title": "Entry Cancellation, Refunds and Medical Certificates",
+            "chapterTitle": "QUALIFICATION SERIES AND CHALLENGER SERIES EVENTS",
+            "page": 36,
+            "excerpt": "…WSL Regional Office seven (7) days before the relevant Event Start Date and a medical certificate is produced that complies with Rule 2.18(e), the Surfer will receive a refund of their Entry Fee less a $50 administration fee. (c) All cancellations of Event entries after the Event entries have…"
+          },
+          {
+            "number": "10.19",
+            "title": "Non-CT Event Cancellation or Postponement Due to Force Majeure or Lack of Competitive Surf",
+            "chapterTitle": "COMPETITION RULES",
+            "page": 75,
+            "excerpt": "…commenced but the first Prize Money heat has not started – Cancellation for Force Majeure or Lack of Surf: (i) Surfers will receive the points applicable to their result at that time; (ii) surfers who have competed and lost receive no refund of their entry fee; (iii) Surfers who are still…"
+          },
+          {
+            "number": "2.03",
+            "title": "Cancellation of an Event",
+            "chapterTitle": "QUALIFICATION SERIES AND CHALLENGER SERIES EVENTS",
+            "page": 23,
+            "excerpt": "If any Event is cancelled by the Event licensee, any License Fee paid prior to such cancellation is non-refundable. A penalty in an amount equal to ten percent (10%) of the Prize Money will be imposed by WSL, which must be paid no later than ninety (90) days prior to the Event Start Date before the…"
+          },
+          {
+            "number": "2.14",
+            "title": "Entry Fees",
+            "chapterTitle": "QUALIFICATION SERIES AND CHALLENGER SERIES EVENTS",
+            "page": 33,
+            "excerpt": "Entry Fees for all Events will be as set forth in MemberPro."
+          },
+          {
+            "number": "2.17",
+            "title": "Entry Confirmations",
+            "chapterTitle": "QUALIFICATION SERIES AND CHALLENGER SERIES EVENTS",
+            "page": 35,
+            "excerpt": "…Alternate list, the Surfer must notify WSL prior to the Event Start Date. For more information, refer to Rule 2.17(c). Once a Surfer has been entered into the Event and they are charged the Entry Fee, refunds are not available. (c) Once entry has been confirmed, every Surfer must attend any…"
+          }
+        ]
+      },
+      "parameters": {
+        "query": "withdrawal from event cancellation refund entry fee"
+      }
+    }
+  ],
+  "aiResponse": "I can't withdraw Junior Consent from the Taiwan Open of Surfing. Entries can't be withdrawn on the website, in the app or by me. To withdraw, please contact the WSL Regional Office or the event's tour manager.\n\nBefore you do, here's what the rule book says about refunds:\n- **Medical refund:** If you cancel with the Regional Office at least seven days before the event starts and send a valid medical certificate, you get the entry fee back minus a $50 admin fee. This is Rule 2.18 (2026 WSL Rule Book, p.36).\n- **No refund after confirmation:** Once a surfer has been entered and charged the entry fee, refunds aren't available. This is Rule 2.17 (2026 WSL Rule Book, p.35).\n\nThe sooner you contact them, the better your chance of getting part of the fee back.",
+  "actual": "I can't withdraw Junior Consent from the Taiwan Open of Surfing. Entries can't be withdrawn on the website, in the app or by me. To withdraw, please contact the WSL Regional Office or the event's tour manager.\n\nBefore you do, here's what the rule book says about refunds:\n- **Medical refund:** If you cancel with the Regional Office at least seven days before the event starts and send a valid medical certificate, you get the entry fee back minus a $50 admin fee. This is Rule 2.18 (2026 WSL Rule Book, p.36).\n- **No refund after confirmation:** Once a surfer has been entered and charged the entry fee, refunds aren't available. This is Rule 2.17 (2026 WSL Rule Book, p.35).\n\nThe sooner you contact them, the better your chance of getting part of the fee back.",
+  "durationMs": 7729,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWithdraw Junior Consent from Taiwan Open of Surfing.\n\nRule 2.18\n\nEntry Cancellation, Refunds and Medical Certificates\n\nQUALIFICATION SERIES AND CHALLENGER SERIES EVENTS · Page 36\n\n…WSL Regional Office seven (7) days before the relevant Event Start Date and a medical certificate is produced that complies with Rule 2.18(e), the Surfer will receive a refund of their Entry Fee less a $50 administration fee. (c) All cancellations of Event entries after the Event entries have…\n\nRule 10.19\n\nNon-CT Event Cancellation or Postponement Due to Force Majeure or Lack of Competitive Surf\n\nCOMPETITION RULES · Page 75\n\n…commenced but the first Prize Money heat has not started – Cancellation for Force Majeure or Lack of Surf: (i) Surfers will receive the points applicable to their result at that time; (ii) surfers who have competed and lost receive no refund of their entry fee; (iii) Surfers who are still…\n\nRule 2.03\n\nCancellation of an Event\n\nQUALIFICATION SERIES AND CHALLENGER SERIES EVENTS · Page 23\n\nIf any Event is cancelled by the Event licensee, any License Fee paid prior to such cancellation is non-refundable. A penalty in an amount equal to ten percent (10%) of the Prize Money will be imposed by WSL, which must be paid no later than ninety (90) days prior to the Event Start Date before the…\n\nRule 2.14\n\nEntry Fees\n\nQUALIFICATION SERIES AND CHALLENGER SERIES EVENTS · Page 33\n\nEntry Fees for all Events will be as set forth in MemberPro.\n\nRule 2.17\n\nEntry Confirmations\n\nQUALIFICATION SERIES AND CHALLENGER SERIES EVENTS · Page 35\n\n…Alternate list, the Surfer must notify WSL prior to the Event Start Date. For more information, refer to Rule 2.17(c). Once a Surfer has been entered into the Event and they are charged the Entry Fee, refunds are not available. (c) Once entry has been confirmed, every Surfer must attend any…\n\nI can't withdraw Junior Consent from the Taiwan Open of Surfing. Entries can't be withdrawn on the website, in the app or by me. To withdraw, please contact the WSL Regional Office or the event's tour manager.\n\nBefore you do, here's what the rule book says about refunds:\n\nMedical refund: If you cancel with the Regional Office at least seven days before the event starts and send a valid medical certificate, you get the entry fee back minus a $50 admin fee. This is Rule 2.18 (2026 WSL Rule Book, p.36).\nNo refund after confirmation: Once a surfer has been entered and charged the entry fee, refunds aren't available. This is Rule 2.17 (2026 WSL Rule Book, p.35).\n\nThe sooner you contact them, the better your chance of getting part of the fee back.\n\nI can't withdraw Junior Consent from the Taiwan Open of Surfing. Entries can't be withdrawn on the website, in the app or by me. To withdraw, please contact the WSL Regional Office or the event's tour manager. Before you do, here's what the rule book says about refunds: - **Medical refund:** If you cancel with the Regional Office at least seven days before the event starts and send a valid medical certificate, you get the entry fee back minus a $50 admin fee. This is Rule 2.18 (2026 WSL Rule Book, p.36). - **No refund after confirmation:** Once a surfer has been entered and charged the entry fee, refunds aren't available. This is Rule 2.17 (2026 WSL Rule Book, p.35). The sooner you contact them, the better your chance of getting part of the fee back.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A14.png",
+  "videoEndSeconds": 191.793,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:18:01.875Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:18:10.231Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "No member withdrawal tool or mutation was invoked. Assistant declined withdrawal and cited returned Rule2.17/2.18 excerpts for the process; no success claim. This does not test an actual withdrawal.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Own-athlete scope; direct foreign holdings403 verified in A16/S02",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Member has no manager write tool; explain supported process and do not claim withdrawal or show executable manager proposal.",
+    "observed": "I can't withdraw Junior Consent from the Taiwan Open of Surfing. Entries can't be withdrawn on the website, in the app or by me. To withdraw, please contact the WSL Regional Office or the event's tour manager.\n\nBefore you do, here's what the rule book says about refunds:\n- **Medical refund:** If you cancel with the Regional Office at least seven days before the event starts and send a valid medical certificate, you get the entry fee back minus a $50 admin fee. This is Rule 2.18 (2026 WSL Rule Book, p.36).\n- **No refund after confirmation:** Once a surfer has been entered and charged the entry fee, refunds aren't available. This is Rule 2.17 (2026 WSL Rule Book, p.35).\n\nThe sooner you contact them, the better your chance of getting part of the fee back.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A14-BM-LIVE-A14.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}
