@@ -9,8 +9,7 @@
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
     "action": "Update or invalidate the retained Event List data after entry creation. Verify the same athlete, event and entry when checking the card.",
-    "status": "RESOLVED",
-    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
+    "status": "FAIL"
   },
   {
     "id": "WSL-BUG-002",
@@ -46,8 +45,7 @@
     "priority": "P3",
     "classification": "Automation wording mismatch: the observed Selected / Ready to Compete state represents successful confirmation",
     "action": "Confirm that Selected / Ready to Compete is the correct label, then update the assertion and rerun it. Do not classify this observation as failed entry confirmation or mark it passed without a verified corrected assertion.",
-    "status": "RESOLVED",
-    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
+    "status": "FAIL"
   },
   {
     "id": "WSL-BUG-005",
@@ -334,8 +332,7 @@
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
     "action": "Update or invalidate the retained Event List data after entry creation. Verify the same athlete, event and entry when checking the card.",
-    "status": "RESOLVED",
-    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
+    "status": "FAIL"
   },
   {
     "id": "WSL-BUG-031",
@@ -360,7 +357,6 @@
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
     "action": "Invalidate or refresh the athlete card data when confirmation completes. Verify the accepted athlete-facing label; it may be Selected rather than the literal word Confirmed.",
-    "status": "RESOLVED",
-    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
+    "status": "FAIL"
   }
 ]
