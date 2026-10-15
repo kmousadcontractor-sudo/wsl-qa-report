@@ -8,7 +8,9 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Update or invalidate the retained Event List data after entry creation. Verify the same athlete, event and entry when checking the card."
+    "action": "Update or invalidate the retained Event List data after entry creation. Verify the same athlete, event and entry when checking the card.",
+    "status": "RESOLVED",
+    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
   },
   {
     "id": "WSL-BUG-002",
@@ -30,7 +32,9 @@
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Refresh the roster data when asynchronous payment collection completes. Verify the entry identity and update the payment cell when the collected state arrives."
+    "action": "Refresh the roster data when asynchronous payment collection completes. Verify the entry identity and update the payment cell when the collected state arrives.",
+    "status": "RESOLVED",
+    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
   },
   {
     "id": "WSL-BUG-004",
@@ -41,7 +45,9 @@
     "severity": "Low",
     "priority": "P3",
     "classification": "Automation wording mismatch: the observed Selected / Ready to Compete state represents successful confirmation",
-    "action": "Confirm that Selected / Ready to Compete is the correct label, then update the assertion and rerun it. Do not classify this observation as failed entry confirmation or mark it passed without a verified corrected assertion."
+    "action": "Confirm that Selected / Ready to Compete is the correct label, then update the assertion and rerun it. Do not classify this observation as failed entry confirmation or mark it passed without a verified corrected assertion.",
+    "status": "RESOLVED",
+    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
   },
   {
     "id": "WSL-BUG-005",
@@ -327,7 +333,9 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Update or invalidate the retained Event List data after entry creation. Verify the same athlete, event and entry when checking the card."
+    "action": "Update or invalidate the retained Event List data after entry creation. Verify the same athlete, event and entry when checking the card.",
+    "status": "RESOLVED",
+    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
   },
   {
     "id": "WSL-BUG-031",
@@ -338,7 +346,9 @@
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Refresh the roster data when asynchronous payment collection completes. Verify the entry identity and update the payment cell when the collected state arrives."
+    "action": "Refresh the roster data when asynchronous payment collection completes. Verify the entry identity and update the payment cell when the collected state arrives.",
+    "status": "RESOLVED",
+    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
   },
   {
     "id": "WSL-BUG-032",
@@ -349,6 +359,8 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Invalidate or refresh the athlete card data when confirmation completes. Verify the accepted athlete-facing label; it may be Selected rather than the literal word Confirmed."
+    "action": "Invalidate or refresh the athlete card data when confirmation completes. Verify the accepted athlete-facing label; it may be Selected rather than the literal word Confirmed.",
+    "status": "RESOLVED",
+    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
   }
 ]
