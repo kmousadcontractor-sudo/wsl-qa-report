@@ -72463,6 +72463,340 @@
       ],
       "idempotencyKey": "qa-report:839f0b798c87fc03",
       "published": false
+    },
+    {
+      "bugId": "BUG-92028a339a2ebcb0",
+      "correlationKey": "action-item:ADD-61",
+      "title": "A parent can add a second child before the first child has consent",
+      "description": "The parent flow lets a second child be added while the first is still waiting for guardian consent, documents and confirmation. Found by ADD-61 (meeting action item AI-57, D-44) on dev, 19 Oct 2026.",
+      "severity": "High",
+      "priority": "P1",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Minor registration · guardian consent",
+      "checks": [
+        {
+          "checkId": "e9fa840f3d7aa2f7",
+          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD61",
+          "testName": "ADD-61 · Consent per athlete before adding another",
+          "checkName": "A second child cannot be added while the first still needs consent, documents and confirmation",
+          "bugTitle": "A parent can add a second child before the first child has consent",
+          "severity": "High",
+          "priority": "P1",
+          "expected": "true",
+          "actual": "false",
+          "message": "HTTP 201: the second child was created while the first child was still pending (no consent, documents or confirmation yet).",
+          "steps": [
+            "A parent adds a child, then tries to add a second child while the first is pending.",
+            "Expected: The second child cannot be added until the first has consent, documents and confirmation."
+          ]
+        }
+      ],
+      "idempotencyKey": "7ba5cf28634ec6ad",
+      "published": false,
+      "source": "Main report"
+    },
+    {
+      "bugId": "BUG-af591631545c43e3",
+      "correlationKey": "action-item:ADD-62",
+      "title": "Athlete details accept an invalid US ZIP code",
+      "description": "An invalid United States ZIP code is accepted by the athlete details API. Found by ADD-62 (meeting action item AI-109, D-105) on dev, 19 Oct 2026.",
+      "severity": "Medium",
+      "priority": "P2",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Athlete details · address validation",
+      "checks": [
+        {
+          "checkId": "70ddfea770de0a60",
+          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD62",
+          "testName": "ADD-62 · Address validation",
+          "checkName": "The API rejects an invalid US ZIP code",
+          "bugTitle": "Athlete details accept an invalid US ZIP code",
+          "severity": "Medium",
+          "priority": "P2",
+          "expected": "true",
+          "actual": "false",
+          "message": "HTTP 201  {}",
+          "steps": [
+            "Submit athlete details with a missing street, a missing city and an invalid ZIP code.",
+            "Expected: Each invalid address is rejected with an error on its field."
+          ]
+        }
+      ],
+      "idempotencyKey": "1a1d130cad39cc7a",
+      "published": false,
+      "source": "Main report"
+    },
+    {
+      "bugId": "BUG-440a4a138d416e7e",
+      "correlationKey": "action-item:ADD-64",
+      "title": "Date of birth stays MM/DD/YYYY after switching the country to United Kingdom",
+      "description": "The date of birth format does not follow the selected country. Found by ADD-64 (meeting action item Item 32 (09-03)) on dev, 19 Oct 2026.",
+      "severity": "Low",
+      "priority": "P3",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Age gate · date format",
+      "checks": [
+        {
+          "checkId": "21fb69c42f98c997",
+          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD64",
+          "testName": "ADD-64 · Country-based date format",
+          "checkName": "United Kingdom shows the date of birth as DD/MM/YYYY",
+          "bugTitle": "Date of birth stays MM/DD/YYYY after switching the country to United Kingdom",
+          "severity": "Low",
+          "priority": "P3",
+          "expected": "DD/MM/YYYY",
+          "actual": "MM/DD/YYYY",
+          "message": "Placeholder after choosing United Kingdom: MM/DD/YYYY",
+          "steps": [
+            "Open the age gate as United States, then switch the country to United Kingdom.",
+            "Expected: The date of birth uses the country's format (MM/DD/YYYY for the US, DD/MM/YYYY for the UK)."
+          ]
+        }
+      ],
+      "idempotencyKey": "0410885231cb2285",
+      "published": false,
+      "source": "Main report"
+    },
+    {
+      "bugId": "BUG-b38064d747b57610",
+      "correlationKey": "action-item:ADD-66",
+      "title": "Athlete Events list has no International region tab",
+      "description": "The region filter offers All regions, Home region and Other regions but no International tab (the \"Other regions\" tab uses the API scope \"international\"), so the agreed three-way filter is not shown. Found by ADD-66 (meeting action item AI-58, D-50) on dev, 19 Oct 2026.",
+      "severity": "Low",
+      "priority": "P3",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Athlete Events list · region filter",
+      "checks": [
+        {
+          "checkId": "735846155df87656",
+          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD66",
+          "testName": "ADD-66 · Home / Other regions / International filter",
+          "checkName": "The region filter has a \"International\" tab",
+          "bugTitle": "Athlete Events list has no International region tab",
+          "severity": "Low",
+          "priority": "P3",
+          "expected": "true",
+          "actual": "false",
+          "message": "Tabs shown: All regions · Home region · Other regions (the \"Other regions\" tab uses the API scope \"international\")",
+          "steps": [
+            "Open the athlete Events list and read the region tabs.",
+            "Expected: The filter offers Home region, Other regions and International, and each list loads."
+          ]
+        }
+      ],
+      "idempotencyKey": "afa5ba661e4af975",
+      "published": false,
+      "source": "Main report"
+    },
+    {
+      "bugId": "BUG-17776a4cc817f6a4",
+      "correlationKey": "action-item:ADD-67",
+      "title": "Single Event membership is not listed first",
+      "description": "The membership offer does not list Single Event first. Found by ADD-67 (meeting action item AI-142, D-126) on dev, 19 Oct 2026.",
+      "severity": "Low",
+      "priority": "P3",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Membership offer · ordering",
+      "checks": [
+        {
+          "checkId": "06e6b0b53b699588",
+          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD67",
+          "testName": "ADD-67 · Single Event membership listed first",
+          "checkName": "Single Event is the first membership offered",
+          "bugTitle": "Single Event membership is not listed first",
+          "severity": "Low",
+          "priority": "P3",
+          "expected": "single_event",
+          "actual": "full_regional",
+          "message": "Order: full_regional → longboard → single_event",
+          "steps": [
+            "Read the membership offer.",
+            "Expected: Single Event is the first membership offered."
+          ]
+        }
+      ],
+      "idempotencyKey": "4ae864e18e8f8d0d",
+      "published": false,
+      "source": "Main report"
+    },
+    {
+      "bugId": "BUG-9210dd8ffac2aabe",
+      "correlationKey": "action-item:ADD-77",
+      "title": "Tax set-up has no start and end dates of its own",
+      "description": "The tax set-up carries a season but not its own start and end dates. Found by ADD-77 (meeting action item TA-51) on dev, 19 Oct 2026.",
+      "severity": "Medium",
+      "priority": "P2",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Tour Manager settings · entry fees and tax",
+      "checks": [
+        {
+          "checkId": "f834fe9a40f292ed",
+          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD77",
+          "testName": "ADD-77 · Season and dates on the tax set-up",
+          "checkName": "The tax set-up has its own start and end dates",
+          "bugTitle": "Tax set-up has no start and end dates of its own",
+          "severity": "Medium",
+          "priority": "P2",
+          "expected": "true",
+          "actual": "false",
+          "message": "Tax fields: {\"africa\":{\"treatment\":\"none\",\"rate\":null,\"label\":\"No tax\"},\"asia\":{\"treatment\":\"none\",\"rate\":null,\"label\":\"No tax\"},\"aus_oce\":{\"treatment\":\"gst\",\"rate\":\"10\",\"label\":\"10% GST\"},\"europe\":{\"treatment\":\"",
+          "steps": [
+            "Read the entry-fee and tax settings.",
+            "Expected: The tax set-up has a season and its own start and end dates."
+          ]
+        }
+      ],
+      "idempotencyKey": "68e4f98f1e4f0b7c",
+      "published": false,
+      "source": "Main report"
+    },
+    {
+      "bugId": "BUG-b57cbe12286b6b35",
+      "correlationKey": "action-item:ADD-78",
+      "title": "Duplicate event error does not identify the conflicting fields",
+      "description": "Saving a duplicate event returns an error that does not name the conflicting fields, so they cannot be highlighted. Found by ADD-78 (meeting action item AI-121) on dev, 19 Oct 2026.",
+      "severity": "Low",
+      "priority": "P3",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Tour Manager · event form errors",
+      "checks": [
+        {
+          "checkId": "58a9ee11f0f050f2",
+          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD78",
+          "testName": "ADD-78 · Errors highlight conflicting fields",
+          "checkName": "The duplicate error identifies the conflicting fields to highlight",
+          "bugTitle": "Duplicate event error does not identify the conflicting fields",
+          "severity": "Low",
+          "priority": "P3",
+          "expected": "true",
+          "actual": "false",
+          "message": "fields: {} · the message is shown as a banner only",
+          "steps": [
+            "Save a duplicate event and an event with missing fields.",
+            "Expected: Errors name the problem and identify the conflicting fields to highlight in red."
+          ]
+        }
+      ],
+      "idempotencyKey": "a0e3b587d856ec5b",
+      "published": false,
+      "source": "Main report"
+    },
+    {
+      "bugId": "BUG-3c7bbb4d20145606",
+      "correlationKey": "ext:AUTO-AST-007",
+      "title": "AL cannot list Tour Manager events in a date range",
+      "description": "Asked which current-season events start in a given week, AL misses events in that range and says it \"can't promise that's all of them\". Its calendar search has no date-range filter, so it runs text searches or pages until its model-call limit (6/6). Extension report: https://kmousadcontractor-sudo.github.io/wsl-qa-report/extension/",
+      "severity": "Medium",
+      "priority": "P2",
+      "environment": "WSL dev",
+      "affectedFunctionality": "AL assistant · Tour Manager calendar",
+      "checks": [
+        {
+          "checkId": "63e13bfec9c1aaf3",
+          "testId": "com.worldsurfleague.registration.tests.ExtensionE2ETest.autoAST007",
+          "testName": "AUTO-AST-007 AL answers a calendar date query",
+          "checkName": "In-range events are listed",
+          "bugTitle": "AL cannot list Tour Manager events in a date range",
+          "severity": "Medium",
+          "priority": "P2",
+          "expected": "true",
+          "actual": "false",
+          "message": "Expected one of: MEO Rip Curl Pro Portugal, MEO Rip Curl Pro Portugal, Siargao International Surfing Cup, Siargao International Surfing Cup · answer: I could only find one event starting in that window, and I can't promise that's all of them.\n\n- **QA Checklist 20261019154558657-d61531 1**: International Qualifying Series, men's. It's a one-day event on Thursday, October 22, 2026, at 56th Street, Newport Beach, California. It's in the 2026-27 seas",
+          "steps": [
+            "Ask AL which current-season events start on a given date.",
+            "Expected: Only events in that range are listed.",
+            "Compare with the events whose start date is in the range (GET /api/tour-manager/events/{id})."
+          ],
+          "extensionReport": "https://kmousadcontractor-sudo.github.io/wsl-qa-report/extension/"
+        },
+        {
+          "checkId": "460bb05b9c48bf45",
+          "testId": "com.worldsurfleague.registration.tests.ExtensionE2ETest.autoAST007",
+          "testName": "AUTO-AST-007 AL answers a calendar date query",
+          "checkName": "The assistant has a date-range filter for the calendar",
+          "bugTitle": "AL cannot list Tour Manager events in a date range",
+          "severity": "Medium",
+          "priority": "P2",
+          "expected": "true",
+          "actual": "false",
+          "message": "Calendar tool calls: find_events {\"text\": \"events October 2026\"} | find_events {\"text\": \"events starting October 16 to 22 2026\"}",
+          "steps": [
+            "Ask AL which current-season events start on a given date.",
+            "Expected: Only events in that range are listed.",
+            "Compare with the events whose start date is in the range (GET /api/tour-manager/events/{id})."
+          ],
+          "extensionReport": "https://kmousadcontractor-sudo.github.io/wsl-qa-report/extension/"
+        }
+      ],
+      "idempotencyKey": "6fd5a029ff3342df",
+      "published": false,
+      "source": "Extension report"
+    },
+    {
+      "bugId": "BUG-280c0e6389716e7b",
+      "correlationKey": "ext:moved-up-charge",
+      "title": "No way in the Tour Manager UI to charge an alternate moved up after Confirm & charge",
+      "description": "After the first Confirm & charge the seed list stage is \"charged\" and offers no Confirm action (primaryAction null), so a moved-up alternate cannot be charged from the UI. The API (POST /charge with the entry) does charge and confirm them. Needs a product decision (plan Q5). Extension report: https://kmousadcontractor-sudo.github.io/wsl-qa-report/extension/",
+      "severity": "Medium",
+      "priority": "P2",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Tour Manager · alternates and charging",
+      "checks": [
+        {
+          "checkId": "ext-wdr-007",
+          "testId": "com.worldsurfleague.registration.tests.ExtensionE2ETest.autoWDR007",
+          "testName": "AUTO-WDR-007 Confirm a promoted alternate",
+          "checkName": "The UI offers a way to charge the moved-up alternate",
+          "bugTitle": "No way in the Tour Manager UI to charge an alternate moved up after Confirm & charge",
+          "severity": "Medium",
+          "priority": "P2",
+          "expected": "After a move-up, the Athletes tab offers a way to charge the moved-up alternate.",
+          "actual": "No Confirm or charge action is offered (primaryAction null, stage charged). The charge only works through the API.",
+          "message": "Executed AUTO-WDR-007 using real browser/API calls from 2026-10-19T23:16:46.672Z to 2026-10-19T23:17:04.945Z",
+          "steps": [
+            "Fill an 18-surfer event with 20 paid athletes, save the seed order, Confirm & charge the field.",
+            "Withdraw a field athlete; Move up the ready alternate (API).",
+            "Open the Athletes tab: no action charges the moved-up alternate."
+          ],
+          "extensionReport": "https://kmousadcontractor-sudo.github.io/wsl-qa-report/extension/"
+        }
+      ],
+      "idempotencyKey": "01d8f8cba92cd0b9",
+      "published": false,
+      "source": "Extension report"
+    },
+    {
+      "bugId": "BUG-ce663cca09a8e761",
+      "correlationKey": "ext:move-up-ui",
+      "title": "Tour Manager UI has no Move up control for ready alternates",
+      "description": "The BFF supports Move up and Undo for ready alternates (POST /alternates/move-up and /undo), and the seed list marks them \"Moving up\", but the frontend has no control to move them up or undo it, so a Tour Manager cannot promote an alternate from the UI. Extension report: https://kmousadcontractor-sudo.github.io/wsl-qa-report/extension/",
+      "severity": "Medium",
+      "priority": "P2",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Tour Manager · alternates",
+      "checks": [
+        {
+          "checkId": "ext-wdr-006",
+          "testId": "com.worldsurfleague.registration.tests.ExtensionE2ETest.autoWDR006",
+          "testName": "AUTO-WDR-006 Promotion cancelled before approval",
+          "checkName": "The Athletes tab offers Move up for a ready alternate",
+          "bugTitle": "Tour Manager UI has no Move up control for ready alternates",
+          "severity": "Medium",
+          "priority": "P2",
+          "expected": "A ready alternate has a Move up action (with cancel and undo) on the Athletes tab.",
+          "actual": "No Move up control or promote dialog exists in the Tour Manager UI (frontend main 190959d).",
+          "message": "The Tour Manager UI (latest frontend main) has no Move up control or promote dialog, so there is nothing to cancel. The API has no approval step; Undo is covered in WDR-005. Page shows \"Moving up\": false",
+          "steps": [
+            "Fill an 18-surfer event past its field size and save the seed order.",
+            "Withdraw a field athlete so an alternate becomes \"Moving up\".",
+            "Open the Athletes tab and look for a Move up action."
+          ],
+          "extensionReport": "https://kmousadcontractor-sudo.github.io/wsl-qa-report/extension/"
+        }
+      ],
+      "idempotencyKey": "d17fc97bad1cde88",
+      "published": false,
+      "source": "Extension report"
     }
   ]
 }
