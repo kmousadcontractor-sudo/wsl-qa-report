@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-19T14:52:17.691Z",
+  "generatedAt": "2026-10-19T16:12:22.859Z",
   "summary": {
-    "totalTests": 82,
-    "totalChecks": 2123,
-    "passed": 1755,
-    "failed": 26,
-    "skipped": 337,
+    "totalTests": 85,
+    "totalChecks": 2148,
+    "passed": 1777,
+    "failed": 27,
+    "skipped": 339,
     "executionErrors": 0,
     "resolved": 5
   },
@@ -65388,6 +65388,428 @@
       "videoLinks": [
         "videos/probe-2026-10-19-eligibility-fullscreen-recording-eligibility-at-confirmation-full-flow.mp4"
       ]
+    },
+    {
+      "invocationId": "0df4f747-6232-493f-aabf-4a4bd400552b",
+      "testId": "EVENT-DATE-001",
+      "testName": "Event and registration date/time validation — frontend and backend",
+      "status": "FAIL",
+      "isNew": true,
+      "startedAt": "2026-10-19T15:57:52.004Z",
+      "finishedAt": "2026-10-19T15:58:09.917Z",
+      "isMainFlow": true,
+      "requiresFullFlowRecording": true,
+      "deterministicSummary": "Dev validation matrix: 14 checks passed and one product validation gap failed.",
+      "flowLog": [
+        "Authenticated as the dev Tour Manager and created an isolated Draft event.",
+        "Submitted event end before start and verified HTTP 422 with competition.event_dates_reversed.",
+        "Saved equal event start/end dates and verified HTTP 200.",
+        "Saved registration open/close on the same day at 09:00/10:00 and verified backend persistence.",
+        "Submitted equal registration timestamps and verified HTTP 422 with competition.registration_closes_before_opens.",
+        "Submitted registration close at event start and verified HTTP 422 with competition.registration_closes_after_start.",
+        "Submitted registration open at event start and verified HTTP 422 with competition.registration_opens_after_start.",
+        "Submitted a new Draft with both event dates in the past; dev accepted it with HTTP 201.",
+        "Opened the event edit page, reversed Start date and End date, observed the inline error, clicked Save changes, and verified that no PUT request was sent."
+      ],
+      "checks": [
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend rejects event end before event start",
+          "status": "PASS",
+          "expected": "422",
+          "actual": "422",
+          "message": "{\"title\":\"Check these details\",\"message\":\"The event's end date must fall on or after its start date. Move the end date forward, or the start date back.\",\"reason\":\"competition.event_dates_reversed\",\"fields\":{\"endDate\":{\"code\":\"competition.event_dates_reversed\",\"message\":\"The event's end date must fall on or after its start date. Move the end date forward, or the start date back.\"}},\"retryable\":false}",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:57:57.422Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend event-date reversal reason",
+          "status": "PASS",
+          "expected": "competition.event_dates_reversed",
+          "actual": "competition.event_dates_reversed",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:57:57.423Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend accepts same-day event start and end",
+          "status": "PASS",
+          "expected": "200",
+          "actual": "200",
+          "message": "{\"event\":{\"id\":\"01a154e2-41ca-77c4-b3bf-652933ca7451\",\"seasonId\":\"01a154e2-3c1e-7627-a43e-67cde9b7486c\",\"status\":{\"code\":\"draft\",\"label\":\"Draft\",\"tone\":\"muted\"},\"statusOptions\":[{\"code\":\"tentative\",\"label\":\"Tentative\",\"destructive\":false},{\"code\":\"archived\",\"label\":\"Archive\",\"destructive\":true}],\"fields\":{\"name\":\"QA Checklist 20261019155751998-d29b9b 1\",\"tour\":\"01a14127-5313-7165-a37f-b78a3d1fb5a7\",\"rating\":\"\",\"regions\":[\"north_america\"],\"location\":\"01a14127-5440-7046-a232-843c64ab9676\",\"startDate\":\"2048-10-12\",\"endDate\":\"2048-10-12\",\"format\":\"01a14127-53f2-7694-86aa-9034f7fddb51\",\"prizeMoney\":{\"amount\":12345,\"currency\":\"USD\"},\"registrationOpensDate\":\"\",\"registrationOpensTime\":\"\",\"registrationClosesDate\":\"\",\"registrationClosesTime\":\"\",\"currency\":\"\",\"entryFee\":null},\"readOnly\":false,\"feeFromGrid\":true,\"version\":2}}",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:57:58.164Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend accepts same-day registration with different ordered times",
+          "status": "PASS",
+          "expected": "200",
+          "actual": "200",
+          "message": "{\"event\":{\"id\":\"01a154e2-41ca-77c4-b3bf-652933ca7451\",\"seasonId\":\"01a154e2-3c1e-7627-a43e-67cde9b7486c\",\"status\":{\"code\":\"draft\",\"label\":\"Draft\",\"tone\":\"muted\"},\"statusOptions\":[{\"code\":\"tentative\",\"label\":\"Tentative\",\"destructive\":false},{\"code\":\"archived\",\"label\":\"Archive\",\"destructive\":true}],\"fields\":{\"name\":\"QA Checklist 20261019155751998-d29b9b 1\",\"tour\":\"01a14127-5313-7165-a37f-b78a3d1fb5a7\",\"rating\":\"\",\"regions\":[\"north_america\"],\"location\":\"01a14127-5440-7046-a232-843c64ab9676\",\"startDate\":\"2048-10-12\",\"endDate\":\"2048-10-12\",\"format\":\"01a14127-53f2-7694-86aa-9034f7fddb51\",\"prizeMoney\":{\"amount\":12345,\"currency\":\"USD\"},\"registrationOpensDate\":\"2048-10-10\",\"registrationOpensTime\":\"09:00\",\"registrationClosesDate\":\"2048-10-10\",\"registrationClosesTime\":\"10:00\",\"currency\":\"\",\"entryFee\":null},\"readOnly\":false,\"feeFromGrid\":true,\"version\":3}}",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:57:59.003Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend persists registration opening time",
+          "status": "PASS",
+          "expected": "09:00",
+          "actual": "09:00",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:57:59.334Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend persists registration closing time",
+          "status": "PASS",
+          "expected": "10:00",
+          "actual": "10:00",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:57:59.334Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend rejects registration opening and closing at same instant",
+          "status": "PASS",
+          "expected": "422",
+          "actual": "422",
+          "message": "{\"title\":\"Check these details\",\"message\":\"Registration must close after it opens. Pick an earlier opening date.\",\"reason\":\"competition.registration_closes_before_opens\",\"fields\":{\"registrationOpensDate\":{\"code\":\"competition.registration_closes_before_opens\",\"message\":\"Registration must close after it opens. Pick an earlier opening date.\"}},\"retryable\":false}",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:58:00.005Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend same-instant reason",
+          "status": "PASS",
+          "expected": "competition.registration_closes_before_opens",
+          "actual": "competition.registration_closes_before_opens",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:58:00.005Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend rejects registration close at event start",
+          "status": "PASS",
+          "expected": "422",
+          "actual": "422",
+          "message": "{\"title\":\"Check these details\",\"message\":\"Registration must close before the event starts. Pick an earlier date.\",\"reason\":\"competition.registration_closes_after_start\",\"fields\":{\"registrationClosesDate\":{\"code\":\"competition.registration_closes_after_start\",\"message\":\"Registration must close before the event starts. Pick an earlier date.\"}},\"retryable\":false}",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:58:00.720Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend close-at-start reason",
+          "status": "PASS",
+          "expected": "competition.registration_closes_after_start",
+          "actual": "competition.registration_closes_after_start",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:58:00.720Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend rejects registration open at event start",
+          "status": "PASS",
+          "expected": "422",
+          "actual": "422",
+          "message": "{\"title\":\"Check these details\",\"message\":\"Registration must open before the event starts. Pick an earlier date.\",\"reason\":\"competition.registration_opens_after_start\",\"fields\":{\"registrationOpensDate\":{\"code\":\"competition.registration_opens_after_start\",\"message\":\"Registration must open before the event starts. Pick an earlier date.\"}},\"retryable\":false}",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:58:01.432Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend open-at-start reason",
+          "status": "PASS",
+          "expected": "competition.registration_opens_after_start",
+          "actual": "competition.registration_opens_after_start",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:58:01.432Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Backend validation",
+          "checkName": "Backend requires newly-created event dates to be future",
+          "status": "FAIL",
+          "expected": "422",
+          "actual": "201",
+          "message": "Observed API response: HTTP 201 {\"event\":{\"id\":\"01a154e2-5d6a-7392-ada1-0d704e8f5a43\",\"seasonId\":\"01a14127-7179-718f-8b17-d7ff6a6f6c7b\",\"status\":{\"code\":\"draft\",\"label\":\"Draft\",\"tone\":\"muted\"},\"statusOptions\":[{\"code\":\"tentative\",\"label\":\"Tentative\",\"destructive\":false},{\"code\":\"archived\",\"label\":\"Archive\",\"destructive\":true}],\"fields\":{\"name\":\"QA Checklist 20261019155751998-d29b9b 2\",\"tour\":\"01a14127-5313-7165-a37f-b78a3d1fb5a7\",\"rating\":\"\",\"regions\":[\"north_america\"],\"location\":\"01a14127-5441-7536-80b8-67a4d98a13e3\",\"startDate\":\"2026-08-20\",\"endDate\":\"2026-08-21\",\"format\":\"01a14127-53f2-7694-86aa-9034f7fddb51\",\"prizeMoney\":{\"amount\":12345,\"currency\":\"USD\"},\"registrationOpensDate\":\"\",\"registrationOpensTime\":\"\",\"registrationClosesDate\":\"\",\"registrationClosesTime\":\"\",\"currency\":\"\",\"entryFee\":null},\"readOnly\":false,\"feeFromGrid\":true,\"version\":1}}",
+          "screenshotPath": "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/date-status-report/screenshots/EVENT-DATE-001-check-13.png",
+          "timestamp": "2026-10-19T15:58:03.807Z",
+          "isNew": true,
+          "expectedResult": "Creating a new event with a start and end date in the past is rejected by both frontend and backend validation.",
+          "actualResult": "The dev API accepted the event and returned HTTP 201. The saved Draft used start date 2026-08-20 and end date 2026-08-21 while execution occurred on 2026-10-19.",
+          "failureExplanation": "The ordering rules are enforced, but neither the event form nor the event domain rule validates that the event dates are in the future."
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Frontend validation",
+          "checkName": "Frontend shows event end-before-start validation",
+          "status": "PASS",
+          "expected": "true",
+          "actual": "true",
+          "message": "TM\nEvents\n/\nQA Checklist 20261019155751998-d29b9b 1\nEdit event\nDraft\nSave changes\nBasics\nSeason\n2048\nEvent name\nTour\nInternational Qualifying Series (QS) · Men\nEvent rating\n \nSanctioning regions (max 2)\nNorth America (primary)\nLocation\n56th Street, Newport Beach, California · Los Angeles time\nStart date\nEnd date\nThe event's end date must fall on or after its start date. Move the end date forward, or the start date back.\nEvent format\n48 surfers · 4-surfer heats · 5 rounds\nCurrency\nUSD\nPrize money\nRegistration\n\nTimes are at the venue (GMT-7).\n\nRegistration opens\nRegistration opens\n= 19:00 in your time\nRegistration closes\nRegistration closes\n= 20:00 in your time\nCurrency\n \nEntry fee\nTax\nVAT",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:58:08.877Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-DATE-001",
+          "testName": "Event and registration date/time validation — frontend and backend",
+          "stage": "Frontend validation",
+          "checkName": "Frontend blocks network save for reversed event dates",
+          "status": "PASS",
+          "expected": "true",
+          "actual": "true",
+          "message": "PUT observed: false",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T15:58:09.805Z",
+          "isNew": true
+        }
+      ],
+      "videoPath": "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/date-status-report/videos/EVENT-DATE-001.webm",
+      "videoPaths": [
+        "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/date-status-report/videos/EVENT-DATE-001.webm"
+      ],
+      "videoLinks": [],
+      "fullPageSnapshots": [
+        {
+          "title": "Frontend reversed event-date validation",
+          "path": "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/date-status-report/screenshots/EVENT-DATE-001-ui-reversed.png"
+        }
+      ],
+      "recordingNote": "One continuous recording covers authentication, API boundary setup, frontend reversed-date validation, and the failed future-date assertion."
+    },
+    {
+      "invocationId": "868149cb-d34e-4fbe-9622-03d0a22288ea",
+      "testId": "EVENT-STATUS-001",
+      "testName": "Scheduled registration opening and closing lifecycle — frontend and backend",
+      "status": "PASS",
+      "isNew": true,
+      "startedAt": "2026-10-19T16:05:38.130Z",
+      "finishedAt": "2026-10-19T16:11:07.096Z",
+      "isMainFlow": true,
+      "requiresFullFlowRecording": true,
+      "deterministicSummary": "All eight scheduled lifecycle checks passed on dev.",
+      "flowLog": [
+        "Authenticated as the dev Tour Manager and selected an active venue with its venue timezone.",
+        "Created an isolated future event with same-day registration opening and closing at different times.",
+        "Moved the event through Tentative and Confirmed to Ready for entries with scheduled opening/closing timestamps.",
+        "Before opening, verified backend status Ready for entries and frontend label Ready for entries.",
+        "Waited for the configured opening time and scheduler cycle; verified the scheduled-opening history entry while status remained Ready for entries.",
+        "Refreshed the manager event page and verified Ready for entries remained displayed after opening.",
+        "Waited for the configured closing time and scheduler cycle; verified backend status changed to Closed for entries.",
+        "Refreshed the manager event page and verified Closed for entries was displayed."
+      ],
+      "checks": [
+        {
+          "testId": "EVENT-STATUS-001",
+          "testName": "Scheduled registration open/close lifecycle — frontend and backend",
+          "stage": "Before registration opens",
+          "checkName": "Before opening, backend status is Ready for entries",
+          "status": "PASS",
+          "expected": "ready-for-entries",
+          "actual": "ready-for-entries",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T16:05:48.181Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-STATUS-001",
+          "testName": "Scheduled registration open/close lifecycle — frontend and backend",
+          "stage": "Before registration opens",
+          "checkName": "Scheduled opening is still in the future",
+          "status": "PASS",
+          "expected": "true",
+          "actual": "true",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T16:05:48.181Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-STATUS-001",
+          "testName": "Scheduled registration open/close lifecycle — frontend and backend",
+          "stage": "Before registration opens",
+          "checkName": "Before opening, frontend shows Ready for entries",
+          "status": "PASS",
+          "expected": "true",
+          "actual": "true",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T16:05:52.822Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-STATUS-001",
+          "testName": "Scheduled registration open/close lifecycle — frontend and backend",
+          "stage": "Registration opens",
+          "checkName": "Scheduler processes registration opening after configured time",
+          "status": "PASS",
+          "expected": "true",
+          "actual": "true",
+          "message": "Status ready-for-entries; event snapshot {\"id\":\"01a154e9-69c4-7674-ad0b-cfd620ae132d\",\"seasonId\":\"01a14127-7179-718f-8b17-d7ff6a6f6c7b\",\"status\":{\"code\":\"ready-for-entries\",\"label\":\"Ready for entries\",\"tone\":\"success\"},\"statusOptions\":[{\"code\":\"confirmed\",\"label\":\"Confirmed\",\"destructive\":false},{\"code\":\"cancelled\",\"label\":\"Cancel event\",\"destructive\":true},{\"code\":\"archived\",\"label\":\"Archive\",\"destructive\":true}],\"fields\":{\"name\":\"QA Checklist 20261019160538124-4c3c17 1\",\"tour\":\"01a14127-5313-7165-a37f-b78a3d1fb5a7\",\"rating\":\"\",\"regions\":[\"north_america\"],\"location\":\"01a14127-5440-7046-a232-843c64ab9676\",\"startDate\":\"2026-10-24\",\"endDate\":\"2026-10-24\",\"format\":\"01a14127-53f2-7694-86aa-9034f7fddb51\",\"prizeMoney\":{\"amount\":12345,\"currency\":\"USD\"},\"registrationOpensDate\":\"2026-10-19\",\"registrationOpensTime\":\"09:07\",\"registrationClosesDate\":\"2026-10-19\",\"registrationClosesTime\":\"09:10\",\"currency\":\"USD\",\"entryFee\":{\"amount\":15000,\"currency\":\"USD\"}},\"readOnly\":false,\"feeFromGrid\":false,\"version\":4}",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T16:07:48.813Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-STATUS-001",
+          "testName": "Scheduled registration open/close lifecycle — frontend and backend",
+          "stage": "Registration opens",
+          "checkName": "Opening does not change backend status",
+          "status": "PASS",
+          "expected": "ready-for-entries",
+          "actual": "ready-for-entries",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T16:07:48.813Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-STATUS-001",
+          "testName": "Scheduled registration open/close lifecycle — frontend and backend",
+          "stage": "Registration opens",
+          "checkName": "After opening refresh, frontend remains Ready for entries",
+          "status": "PASS",
+          "expected": "true",
+          "actual": "true",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T16:07:50.501Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-STATUS-001",
+          "testName": "Scheduled registration open/close lifecycle — frontend and backend",
+          "stage": "Registration closes",
+          "checkName": "Scheduler changes backend status at registration close",
+          "status": "PASS",
+          "expected": "closed-for-entries",
+          "actual": "closed-for-entries",
+          "message": "Configured close 2026-10-19 09:10 PDT",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T16:11:05.720Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-STATUS-001",
+          "testName": "Scheduled registration open/close lifecycle — frontend and backend",
+          "stage": "Registration closes",
+          "checkName": "After closing refresh, frontend shows Closed for entries",
+          "status": "PASS",
+          "expected": "true",
+          "actual": "true",
+          "message": "",
+          "screenshotPath": "",
+          "timestamp": "2026-10-19T16:11:07.096Z",
+          "isNew": true
+        }
+      ],
+      "videoPath": "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/date-status-report/videos/EVENT-STATUS-001.webm",
+      "videoPaths": [
+        "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/date-status-report/videos/EVENT-STATUS-001.webm"
+      ],
+      "videoLinks": [],
+      "fullPageSnapshots": [
+        {
+          "title": "Before registration opens",
+          "path": "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/date-status-report/screenshots/EVENT-STATUS-001-before-open.png"
+        },
+        {
+          "title": "After registration opens and page refresh",
+          "path": "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/date-status-report/screenshots/EVENT-STATUS-001-after-open.png"
+        },
+        {
+          "title": "After registration closes and page refresh",
+          "path": "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/date-status-report/screenshots/EVENT-STATUS-001-after-close.png"
+        }
+      ],
+      "recordingNote": "One continuous recording covers setup, the wait through both scheduler boundaries, each refresh, and final frontend/backend assertions."
+    },
+    {
+      "invocationId": "a9d118f0-22f0-486c-be4e-5942e5ba44ac",
+      "testId": "EVENT-STATUS-002",
+      "testName": "Scheduled event start and event end status behavior",
+      "status": "SKIPPED",
+      "isNew": true,
+      "startedAt": "2026-10-19T16:12:22.856Z",
+      "finishedAt": "2026-10-19T16:12:22.859Z",
+      "flowLog": [],
+      "videoLinks": [],
+      "fullPageSnapshots": [],
+      "checks": [
+        {
+          "testId": "EVENT-STATUS-002",
+          "testName": "Scheduled event start and event end status behavior",
+          "stage": "Event start",
+          "checkName": "Closed for entries changes to Event started when the venue-local start date arrives",
+          "status": "SKIPPED",
+          "expected": "event-started",
+          "actual": "Not executed in this dev run",
+          "message": "The event start is date-only and is evaluated at venue-local midnight. A valid closed event fixture and a run spanning that real midnight boundary are required.",
+          "timestamp": "2026-10-19T16:12:22.859Z",
+          "isNew": true
+        },
+        {
+          "testId": "EVENT-STATUS-002",
+          "testName": "Scheduled event start and event end status behavior",
+          "stage": "Event end",
+          "checkName": "Event end does not automatically mark the event Completed",
+          "status": "SKIPPED",
+          "expected": "Status remains event-started until results complete the event",
+          "actual": "Repository behavior identified; live midnight/end-boundary execution not performed",
+          "message": "The scheduler implements Closed for entries → Event started. The code contains no Event started → Completed clock transition; completion is owned by results processing.",
+          "timestamp": "2026-10-19T16:12:22.859Z",
+          "isNew": true
+        }
+      ],
+      "recordingNote": "No recording: this real-time date-only boundary was not executed during this dev run."
     }
   ],
   "combinedRuns": true,
