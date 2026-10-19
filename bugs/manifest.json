@@ -335,17 +335,5 @@
     "action": "Refresh the roster data when asynchronous payment collection completes. Verify the entry identity and update the payment cell when the collected state arrives.",
     "status": "RESOLVED",
     "resolutionSource": "User confirmation, 16 October 2026; not rerun"
-  },
-  {
-    "id": "WSL-BUG-032",
-    "title": "Already-open athlete card still shows Register after entry confirmation",
-    "testId": "com.worldsurfleague.registration.tests.AthleteRegistrationThroughEventEntryE2ETest.regionalMembershipBackNavigationAndLiveStatus",
-    "checkId": "593c06fb9b75faa3",
-    "file": "WSL-BUG-032.html",
-    "severity": "Medium",
-    "priority": "P2",
-    "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Invalidate or refresh the athlete card data when confirmation completes. Verify the accepted athlete-facing label; it may be Selected rather than the literal word Confirmed.",
-    "status": "FAIL"
   }
 ]

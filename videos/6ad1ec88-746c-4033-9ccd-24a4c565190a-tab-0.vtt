@@ -1,0 +1,82 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:00.600
+Athlete registration tab — 
+
+00:00:00.600 --> 00:00:02.400
+Tour Manager tab — 
+
+00:00:02.400 --> 00:00:02.600
+Tour Manager tab — Opened WSL login
+
+00:00:02.600 --> 00:00:19.000
+Tour Manager tab — Entered configured login credentials
+
+00:00:19.000 --> 00:00:20.000
+Tour Manager tab — Submitted WSL login; server returned HTTP 200
+
+00:00:20.000 --> 00:00:20.600
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a136e0-da95-7757-9197-8159ef60e816 returned HTTP 200
+
+00:00:20.600 --> 00:00:21.000
+Tour Manager tab — Tour Manager API POST /tour-manager/events returned HTTP 409
+
+00:00:21.000 --> 00:00:21.400
+Tour Manager tab — Tour Manager API POST /tour-manager/events returned HTTP 201
+
+00:00:21.400 --> 00:00:21.800
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e returned HTTP 200
+
+00:00:21.800 --> 00:00:22.000
+Tour Manager tab — Tour Manager API PUT /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/status returned HTTP 200
+
+00:00:22.000 --> 00:00:22.400
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e returned HTTP 200
+
+00:00:22.400 --> 00:00:22.800
+Tour Manager tab — Tour Manager API PUT /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/status returned HTTP 200
+
+00:00:22.800 --> 00:00:23.000
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e returned HTTP 200
+
+00:00:23.000 --> 00:00:27.400
+Tour Manager tab — Tour Manager API PUT /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/status returned HTTP 200
+
+00:00:27.400 --> 00:00:28.200
+Tour Manager tab — Athlete event-list tab opened before registration; it will remain mounted to check live card updates without refresh.
+
+00:00:28.200 --> 00:00:32.200
+Tour Manager tab — Event entry did not offer an insurance option on this screen
+
+00:00:32.200 --> 00:00:32.600
+Tour Manager tab — Entered a Stripe test card for Event entry
+
+00:00:32.600 --> 00:00:43.000
+Tour Manager tab — Submitted Event entry
+
+00:00:43.000 --> 00:00:44.000
+Tour Manager tab — Athlete tab: event registration accepted with HTTP 201; matched the returned entry ID.
+
+00:00:44.000 --> 00:01:08.600
+Tour Manager tab — Athlete event-list tab: waiting for Waitlisted to render on its already-open event card, without navigation or refresh.
+
+00:01:08.600 --> 00:01:18.400
+Tour Manager tab — Back returned to the Event List. No repeat registration is expected in the corrected scenario.
+
+00:01:18.400 --> 00:01:19.000
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries returned HTTP 200
+
+00:01:19.000 --> 00:01:21.000
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e returned HTTP 200
+
+00:01:21.000 --> 00:01:21.400
+Tour Manager tab — After entries closed, the retained entry status was pending; waitlisted was verified before closure.
+
+00:01:21.400 --> 00:01:24.600
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries returned HTTP 200
+
+00:01:24.600 --> 00:02:08.000
+Tour Manager tab — Tour Manager tab: backend is confirmed/collected; waiting for the visible row to show Confirmed and Collected without refreshing or changing tabs.
+
+00:02:08.000 --> 00:02:10.000
+Tour Manager tab — E2E phase summary: Athlete Registration: PASSED; Membership Payment: PASSED; Membership Confirmation: PASSED; Event Registration: PASSED; Insurance: PASSED; Event Payment: PASSED;
