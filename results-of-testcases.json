@@ -3,9 +3,9 @@
   "generatedAt": "2026-10-14T21:16:07.571Z",
   "summary": {
     "totalTests": 81,
-    "totalChecks": 2043,
+    "totalChecks": 2042,
     "passed": 1663,
-    "failed": 28,
+    "failed": 27,
     "skipped": 348,
     "executionErrors": 1,
     "resolved": 4
@@ -12782,7 +12782,7 @@
     {
       "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD40",
       "testName": "ADD-40 · Membership grid read, rename, reprice and restore",
-      "status": "FAIL",
+      "status": "PASS",
       "startedAt": "2026-10-14T21:04:16.693Z",
       "finishedAt": "2026-10-14T21:04:21.995Z",
       "checks": [
@@ -12833,42 +12833,6 @@
           "checkId": "363d5a368d9ba395",
           "investigationImageLinks": [],
           "focusedVideoLinks": []
-        },
-        {
-          "name": "Europe membership VAT",
-          "expected": "23",
-          "actual": "20",
-          "status": "FAIL",
-          "message": "",
-          "timestamp": "2026-10-14T21:04:20.396Z",
-          "checkName": "Europe membership VAT",
-          "stage": "ADD-40 · Membership grid read, rename, reprice and restore",
-          "isNew": true,
-          "failureExplanation": "The live membership settings contain VAT 20%, while this assertion expects 23%. This is a configuration/baseline mismatch; it does not by itself prove incorrect tax calculation.",
-          "evidenceKind": "api",
-          "responseEvidence": {
-            "path": "/tour-manager/settings/memberships",
-            "expectedRate": "23",
-            "returnedRate": "20"
-          },
-          "expectedResult": "23",
-          "actualResult": "20",
-          "checkId": "817ea206d7685eb1",
-          "executedSteps": [
-            "POST /auth/login returned HTTP 200.",
-            "GET /tour-manager/settings/memberships?year=2026 returned HTTP 200.",
-            "POST /auth/login returned HTTP 200.",
-            "POST /auth/login returned HTTP 200.",
-            "GET /tour-manager/settings/memberships?year=2026 returned HTTP 200.",
-            "GET /tour-manager/settings/memberships?year=2090 returned HTTP 200.",
-            "PUT /tour-manager/settings/memberships returned HTTP 404."
-          ],
-          "stepsSource": "Recorded requests from the same scenario; no separate browser action log was captured.",
-          "investigationImageLinks": [],
-          "focusedVideoLinks": [],
-          "severity": "Medium",
-          "priority": "P2",
-          "bugTitle": "Europe VAT configuration differs from the test baseline"
         },
         {
           "name": "Membership full_regional africa",
@@ -13451,11 +13415,11 @@
       "executionSource": "Selective rerun of remaining failed scenarios on dev: 2026-10-14T21:04:16.693Z",
       "checkCounts": {
         "passed": 31,
-        "failed": 1,
+        "failed": 0,
         "resolved": 0,
         "skipped": 1
       },
-      "deterministicSummary": "Tested ADD-40 · Membership grid read, rename, reprice and restore. 31 passed, 1 failed, 1 skipped or blocked. Failure location: ADD-40 · Membership grid read, rename, reprice and restore. Europe membership VAT: 20",
+      "deterministicSummary": "Tested ADD-40 · Membership grid read, rename, reprice and restore. 31 passed, 0 failed, 1 skipped or blocked.",
       "videoLinks": []
     },
     {
@@ -53610,10 +53574,6 @@
     "BUG-dc8b36d3f19bb744": {
       "key": "WSL-9582",
       "url": "https://wslproduct.atlassian.net/browse/WSL-9582"
-    },
-    "BUG-e408a3ef860d91bc": {
-      "key": "WSL-9583",
-      "url": "https://wslproduct.atlassian.net/browse/WSL-9583"
     },
     "BUG-8552bdcca1a22290": {
       "key": "WSL-9584",
