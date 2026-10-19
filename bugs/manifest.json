@@ -9,7 +9,10 @@
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
     "action": "Update or invalidate the retained Event List data after entry creation. Verify the same athlete, event and entry when checking the card.",
-    "status": "FAIL"
+    "status": "FAIL",
+    "jiraKey": "WSL-9578",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9578",
+    "consolidatedTitle": "Already-open event cards do not update after waitlisting"
   },
   {
     "id": "WSL-BUG-002",
@@ -20,20 +23,24 @@
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Use the consumed-credit state consistently across all other event cards. Show Upgrade membership and route to upgrade rather than another entry form. This execution counted card actions; it did not establish that another entry could be completed."
+    "action": "Use the consumed-credit state consistently across all other event cards. Show Upgrade membership and route to upgrade rather than another entry form. This execution counted card actions; it did not establish that another entry could be completed.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9579",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9579",
+    "consolidatedTitle": "Other event cards still offer Register after the Single Event credit is used"
   },
   {
     "id": "WSL-BUG-003",
     "title": "Tour Manager payment stays Pending after the API reports Collected",
     "testId": "com.worldsurfleague.registration.tests.AthleteRegistrationThroughEventEntryE2ETest.athleteRegistration_throughEventEntry",
-    "checkId": "05accce7ec1b8adf",
+    "checkId": "a33dba8ee1a2e0a8",
     "file": "WSL-BUG-003.html",
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
     "action": "Refresh the roster data when asynchronous payment collection completes. Verify the entry identity and update the payment cell when the collected state arrives.",
     "status": "RESOLVED",
-    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
+    "resolutionSource": "User confirmation, 2026-10-16; not rerun"
   },
   {
     "id": "WSL-BUG-004",
@@ -45,7 +52,10 @@
     "priority": "P3",
     "classification": "Automation wording mismatch: the observed Selected / Ready to Compete state represents successful confirmation",
     "action": "Confirm that Selected / Ready to Compete is the correct label, then update the assertion and rerun it. Do not classify this observation as failed entry confirmation or mark it passed without a verified corrected assertion.",
-    "status": "FAIL"
+    "status": "FAIL",
+    "jiraKey": "WSL-9580",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9580",
+    "consolidatedTitle": "Automation expects Confirmed although the card shows Selected / Ready to Compete"
   },
   {
     "id": "WSL-BUG-005",
@@ -56,7 +66,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended."
+    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9581",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9581",
+    "consolidatedTitle": "Account details are cleared after Back and Continue"
   },
   {
     "id": "WSL-BUG-006",
@@ -67,7 +81,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended."
+    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9581",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9581",
+    "consolidatedTitle": "Account details are cleared after Back and Continue"
   },
   {
     "id": "WSL-BUG-007",
@@ -78,7 +96,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended."
+    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9581",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9581",
+    "consolidatedTitle": "Account details are cleared after Back and Continue"
   },
   {
     "id": "WSL-BUG-008",
@@ -89,7 +111,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Confirm the password-retention requirement and align the assertion with the agreed secure behavior. Do not persist passwords solely to satisfy this check."
+    "action": "Confirm the password-retention requirement and align the assertion with the agreed secure behavior. Do not persist passwords solely to satisfy this check.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9581",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9581",
+    "consolidatedTitle": "Account details are cleared after Back and Continue"
   },
   {
     "id": "WSL-BUG-009",
@@ -100,7 +126,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended."
+    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9581",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9581",
+    "consolidatedTitle": "Account details are cleared after Back and Continue"
   },
   {
     "id": "WSL-BUG-010",
@@ -111,7 +141,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended."
+    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9582",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9582",
+    "consolidatedTitle": "Registration details are cleared after page refresh"
   },
   {
     "id": "WSL-BUG-011",
@@ -122,7 +156,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended."
+    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9582",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9582",
+    "consolidatedTitle": "Registration details are cleared after page refresh"
   },
   {
     "id": "WSL-BUG-012",
@@ -133,7 +171,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended."
+    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9582",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9582",
+    "consolidatedTitle": "Registration details are cleared after page refresh"
   },
   {
     "id": "WSL-BUG-013",
@@ -144,7 +186,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended."
+    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9582",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9582",
+    "consolidatedTitle": "Registration details are cleared after page refresh"
   },
   {
     "id": "WSL-BUG-014",
@@ -155,7 +201,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Confirm the password-retention requirement and align the assertion with the agreed secure behavior. Do not persist passwords solely to satisfy this check."
+    "action": "Confirm the password-retention requirement and align the assertion with the agreed secure behavior. Do not persist passwords solely to satisfy this check.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9582",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9582",
+    "consolidatedTitle": "Registration details are cleared after page refresh"
   },
   {
     "id": "WSL-BUG-015",
@@ -166,29 +216,37 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended."
+    "action": "Preserve the relevant draft value across this navigation, or confirm and document that resetting it is intended.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9582",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9582",
+    "consolidatedTitle": "Registration details are cleared after page refresh"
   },
   {
     "id": "WSL-BUG-016",
     "title": "Junior membership is offered to an athlete aged 21",
     "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD07",
-    "checkId": "deba907f028a2bc0",
+    "checkId": "05b19e23b49d75ed",
     "file": "WSL-BUG-016.html",
     "severity": "Medium",
     "priority": "P2",
     "classification": "Membership offer / eligibility expectation discrepancy; actual cutoff calculation is not captured",
-    "action": "Confirm the applicable season-end cutoff and whether offers are filtered by eligibility. Then correct the offer or the test expectation. Capture the cutoff date and calculated cutoff age in a follow-up run."
+    "action": "Confirm the applicable season-end cutoff and whether offers are filtered by eligibility. Then correct the offer or the test expectation. Capture the cutoff date and calculated cutoff age in a follow-up run.",
+    "status": "RESOLVED",
+    "resolutionSource": "Automated dev rerun, 2026-10-18; verified by automated rerun"
   },
   {
     "id": "WSL-BUG-017",
     "title": "Junior membership is offered to an athlete aged 30",
     "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD07",
-    "checkId": "b58176f6b7bec2f8",
+    "checkId": "62c422985774871e",
     "file": "WSL-BUG-017.html",
     "severity": "Medium",
     "priority": "P2",
     "classification": "Membership offer / eligibility expectation discrepancy; actual cutoff calculation is not captured",
-    "action": "Confirm the applicable season-end cutoff and whether offers are filtered by eligibility. Then correct the offer or the test expectation. Capture the cutoff date and calculated cutoff age in a follow-up run."
+    "action": "Confirm the applicable season-end cutoff and whether offers are filtered by eligibility. Then correct the offer or the test expectation. Capture the cutoff date and calculated cutoff age in a follow-up run.",
+    "status": "RESOLVED",
+    "resolutionSource": "Automated dev rerun, 2026-10-18; verified by automated rerun"
   },
   {
     "id": "WSL-BUG-019",
@@ -199,18 +257,26 @@
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Apply the under-18 dependent restriction whether certification is checked or unchecked. Keep this check failed until the request is rejected."
+    "action": "Apply the under-18 dependent restriction whether certification is checked or unchecked. Keep this check failed until the request is rejected.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9584",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9584",
+    "consolidatedTitle": "Guardian registration accepts adult dependents"
   },
   {
     "id": "WSL-BUG-020",
-    "title": "Guardian registration accepts an 19-year-old dependent when certification is unchecked",
+    "title": "Guardian registration accepts a 19-year-old dependent when certification is unchecked",
     "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD44",
     "checkId": "75cdf198e67b9eef",
     "file": "WSL-BUG-020.html",
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Apply the under-18 dependent restriction whether certification is checked or unchecked. Keep this check failed until the request is rejected."
+    "action": "Apply the under-18 dependent restriction whether certification is checked or unchecked. Keep this check failed until the request is rejected.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9584",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9584",
+    "consolidatedTitle": "Guardian registration accepts adult dependents"
   },
   {
     "id": "WSL-BUG-021",
@@ -221,7 +287,11 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Populate the Location timezone from the selected address, or surface a clear manual selection if lookup fails. Verify this in Location only, not athlete details."
+    "action": "Populate the Location timezone from the selected address, or surface a clear manual selection if lookup fails. Verify this in Location only, not athlete details.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9585",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9585",
+    "consolidatedTitle": "Google address selection leaves the Location timezone empty"
   },
   {
     "id": "WSL-BUG-022",
@@ -232,7 +302,12 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Display the required Pacific time alongside the configured venue time. Verify conversions against the applicable timezone rules; do not replace the venue time."
+    "action": "Display the required Pacific time alongside the configured venue time. Verify conversions against the applicable timezone rules; do not replace the venue time.",
+    "status": "RESOLVED",
+    "resolutionSource": "Automated dev rerun, 2026-10-19; verified by automated rerun",
+    "jiraKey": "WSL-9586",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9586",
+    "consolidatedTitle": "Configured event timezone labels are missing"
   },
   {
     "id": "WSL-BUG-023",
@@ -243,73 +318,101 @@
     "severity": "Medium",
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Display the required viewer-local time alongside the configured venue time. Verify conversions against the applicable timezone rules; do not replace the venue time."
+    "action": "Display the required viewer-local time alongside the configured venue time. Verify conversions against the applicable timezone rules; do not replace the venue time.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9586",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9586",
+    "consolidatedTitle": "Configured event timezone labels are missing"
   },
   {
     "id": "WSL-BUG-024",
-    "title": "Age 13�17 � event cards are visible before guardian consent",
+    "title": "Age 13–17 — event cards are visible before guardian consent",
     "testId": "com.worldsurfleague.registration.tests.SignupAgeThirteenToSeventeenE2ETest.registerAsThirteenToSeventeenAndCompleteGuardianFlow",
     "checkId": "3a5245fcce7f49d2",
     "file": "WSL-BUG-024.html",
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Enforce the pending-consent restriction in the Events list and the API that supplies it. Verify both under-13 and 13�17 sessions after the correction."
+    "action": "Enforce the pending-consent restriction in the Events list and the API that supplies it. Verify both under-13 and 13–17 sessions after the correction.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9587",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9587",
+    "consolidatedTitle": "Teen event access is available before guardian consent"
   },
   {
     "id": "WSL-BUG-025",
-    "title": "Age 13�17 � Events API returns events before guardian consent",
+    "title": "Age 13–17 — Events API returns events before guardian consent",
     "testId": "com.worldsurfleague.registration.tests.SignupAgeThirteenToSeventeenE2ETest.registerAsThirteenToSeventeenAndCompleteGuardianFlow",
     "checkId": "80816fd57ea2f747",
     "file": "WSL-BUG-025.html",
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Enforce the pending-consent restriction in the Events API. Verify both under-13 and 13�17 sessions after the correction."
+    "action": "Enforce the pending-consent restriction in the Events API. Verify both under-13 and 13–17 sessions after the correction.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9587",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9587",
+    "consolidatedTitle": "Teen event access is available before guardian consent"
   },
   {
     "id": "WSL-BUG-026",
-    "title": "Age 13�17 � event registration form opens before guardian consent",
+    "title": "Age 13–17 — event registration form opens before guardian consent",
     "testId": "com.worldsurfleague.registration.tests.SignupAgeThirteenToSeventeenE2ETest.registerAsThirteenToSeventeenAndCompleteGuardianFlow",
     "checkId": "1c246cc2658091c1",
     "file": "WSL-BUG-026.html",
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Enforce the pending-consent restriction in the direct registration route and its server-side entry checks. Verify both under-13 and 13�17 sessions after the correction."
+    "action": "Enforce the pending-consent restriction in the direct registration route and its server-side entry checks. Verify both under-13 and 13–17 sessions after the correction.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9587",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9587",
+    "consolidatedTitle": "Teen event access is available before guardian consent"
   },
   {
     "id": "WSL-BUG-027",
-    "title": "Under 13 � event cards are visible before guardian consent",
+    "title": "Under 13 — event cards are visible before guardian consent",
     "testId": "com.worldsurfleague.registration.tests.SignupUnderThirteenE2ETest.registerUnderThirteenAndDocumentConsentEmailGap",
     "checkId": "6a0dffda07e0a446",
     "file": "WSL-BUG-027.html",
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Enforce the pending-consent restriction in the Events list and the API that supplies it. Verify both under-13 and 13�17 sessions after the correction."
+    "action": "Enforce the pending-consent restriction in the Events list and the API that supplies it. Verify both under-13 and 13–17 sessions after the correction.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9588",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9588",
+    "consolidatedTitle": "Under-13 event access is available before guardian consent"
   },
   {
     "id": "WSL-BUG-028",
-    "title": "Under 13 � Events API returns events before guardian consent",
+    "title": "Under 13 — Events API returns events before guardian consent",
     "testId": "com.worldsurfleague.registration.tests.SignupUnderThirteenE2ETest.registerUnderThirteenAndDocumentConsentEmailGap",
     "checkId": "4c688cdf357c0569",
     "file": "WSL-BUG-028.html",
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Enforce the pending-consent restriction in the Events API. Verify both under-13 and 13�17 sessions after the correction."
+    "action": "Enforce the pending-consent restriction in the Events API. Verify both under-13 and 13–17 sessions after the correction.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9588",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9588",
+    "consolidatedTitle": "Under-13 event access is available before guardian consent"
   },
   {
     "id": "WSL-BUG-029",
-    "title": "Under 13 � event registration form opens before guardian consent",
+    "title": "Under 13 — event registration form opens before guardian consent",
     "testId": "com.worldsurfleague.registration.tests.SignupUnderThirteenE2ETest.registerUnderThirteenAndDocumentConsentEmailGap",
     "checkId": "da4d55b8fe963462",
     "file": "WSL-BUG-029.html",
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
-    "action": "Enforce the pending-consent restriction in the direct registration route and its server-side entry checks. Verify both under-13 and 13�17 sessions after the correction."
+    "action": "Enforce the pending-consent restriction in the direct registration route and its server-side entry checks. Verify both under-13 and 13–17 sessions after the correction.",
+    "status": "FAIL",
+    "jiraKey": "WSL-9588",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9588",
+    "consolidatedTitle": "Under-13 event access is available before guardian consent"
   },
   {
     "id": "WSL-BUG-030",
@@ -321,19 +424,22 @@
     "priority": "P2",
     "classification": "Observed application failure; root cause requires developer confirmation",
     "action": "Update or invalidate the retained Event List data after entry creation. Verify the same athlete, event and entry when checking the card.",
-    "status": "FAIL"
+    "status": "FAIL",
+    "jiraKey": "WSL-9578",
+    "jiraUrl": "https://wslproduct.atlassian.net/browse/WSL-9578",
+    "consolidatedTitle": "Already-open event cards do not update after waitlisting"
   },
   {
     "id": "WSL-BUG-031",
     "title": "Tour Manager payment stays Pending after the API reports Collected",
     "testId": "com.worldsurfleague.registration.tests.AthleteRegistrationThroughEventEntryE2ETest.regionalMembershipBackNavigationAndLiveStatus",
-    "checkId": "662465bae4514d71",
+    "checkId": "6ca11e66c631ccbe",
     "file": "WSL-BUG-031.html",
     "severity": "High",
     "priority": "P1",
     "classification": "Observed application failure; root cause requires developer confirmation",
     "action": "Refresh the roster data when asynchronous payment collection completes. Verify the entry identity and update the payment cell when the collected state arrives.",
     "status": "RESOLVED",
-    "resolutionSource": "User confirmation, 16 October 2026; not rerun"
+    "resolutionSource": "User confirmation, 2026-10-16; not rerun"
   }
 ]
