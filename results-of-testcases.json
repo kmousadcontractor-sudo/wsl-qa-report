@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-19T12:55:59.742Z",
+  "generatedAt": "2026-10-19T14:52:17.691Z",
   "summary": {
-    "totalTests": 81,
-    "totalChecks": 2118,
-    "passed": 1751,
-    "failed": 25,
+    "totalTests": 82,
+    "totalChecks": 2123,
+    "passed": 1755,
+    "failed": 26,
     "skipped": 337,
     "executionErrors": 0,
     "resolved": 5
@@ -65260,6 +65260,134 @@
         }
       ],
       "requiresFullFlowRecording": true
+    },
+    {
+      "invocationId": "eligibility-at-confirmation-20261019",
+      "testId": "AUTO-PAY-004",
+      "testName": "Eligibility at confirmation — no-longer-eligible Junior athlete is charged",
+      "status": "FAIL",
+      "isNew": true,
+      "isMainFlow": true,
+      "startedAt": "2026-10-19T14:38:43.000Z",
+      "finishedAt": "2026-10-19T14:40:56.321Z",
+      "deterministicSummary": "A Junior athlete entered while eligible, became ineligible after the event region changed, and was still charged and confirmed through the Tour Manager UI.",
+      "flowLog": [
+        "Started full-window recording before the first test step.",
+        "Created a 19-year-old athlete and activated a North America Junior membership.",
+        "Saved an active Stripe test-mode Visa ending 4242.",
+        "Opened Athlete and Tour Manager as separate tabs in the same browser window.",
+        "Entered the North America QS event while eligible: HTTP 201, QS-2026-M-077-001.",
+        "Changed the event region to Europe.",
+        "Proved current ineligibility with a second Junior entry: HTTP 409 competition.membership_scope.",
+        "Closed registration and opened the Athletes tab.",
+        "Opened Confirm field & charge, checked the reviewed/ready acknowledgement, and clicked Confirm & charge.",
+        "Confirmation returned HTTP 200 with charged 1 and skipped [].",
+        "Stripe recorded Card payment charge started and Card payment succeeded.",
+        "Final state: Payment Collected and Entry Confirmed."
+      ],
+      "checks": [
+        {
+          "checkId": "AUTO-PAY-004-entry-eligible",
+          "stage": "Arrange",
+          "checkName": "Entry succeeds while the Junior membership covers the event",
+          "status": "PASS",
+          "expected": "HTTP 201 and deferred charge requested",
+          "expectedResult": "HTTP 201 and deferred charge requested",
+          "actual": "HTTP 201 · QS-2026-M-077-001 · requested",
+          "actualResult": "HTTP 201 · QS-2026-M-077-001 · requested",
+          "message": "HTTP 201 · QS-2026-M-077-001 · requested",
+          "verificationSource": "dev-ui-and-api"
+        },
+        {
+          "checkId": "AUTO-PAY-004-region-change",
+          "stage": "Arrange",
+          "checkName": "Tour Manager changes the event region from North America to Europe",
+          "status": "PASS",
+          "expected": "Event update succeeds",
+          "expectedResult": "Event update succeeds",
+          "actual": "HTTP 200",
+          "actualResult": "HTTP 200",
+          "message": "HTTP 200",
+          "verificationSource": "dev-ui-and-api"
+        },
+        {
+          "checkId": "AUTO-PAY-004-eligibility-proof",
+          "stage": "Eligibility proof",
+          "checkName": "Equivalent Junior athlete is refused after the region change",
+          "status": "PASS",
+          "expected": "Membership scope rejection proves current ineligibility",
+          "expectedResult": "Membership scope rejection proves current ineligibility",
+          "actual": "HTTP 409 · competition.membership_scope · Your membership does not cover this event.",
+          "actualResult": "HTTP 409 · competition.membership_scope · Your membership does not cover this event.",
+          "message": "HTTP 409 · competition.membership_scope · Your membership does not cover this event.",
+          "verificationSource": "dev-ui-and-api"
+        },
+        {
+          "checkId": "AUTO-PAY-004-ui-confirm",
+          "stage": "Confirm & charge",
+          "checkName": "Tour Manager checks the acknowledgement and confirms through the UI",
+          "status": "PASS",
+          "expected": "Confirmation is submitted from the charge-and-publish modal",
+          "expectedResult": "Confirmation is submitted from the charge-and-publish modal",
+          "actual": "HTTP 200 · charged 1 · skipped 0 · confirmedThrough UI",
+          "actualResult": "HTTP 200 · charged 1 · skipped 0 · confirmedThrough UI",
+          "message": "HTTP 200 · charged 1 · skipped 0 · confirmedThrough UI",
+          "verificationSource": "dev-ui-and-api"
+        },
+        {
+          "checkId": "AUTO-PAY-004-eligibility-at-confirmation",
+          "stage": "Confirm & charge",
+          "checkName": "No-longer-eligible athlete is not charged at confirmation",
+          "status": "FAIL",
+          "expected": "Current eligibility is rechecked; the entry is skipped and no payment is collected",
+          "expectedResult": "Current eligibility is rechecked; the entry is skipped and no payment is collected",
+          "actual": "Visa 4242 charged USD 150; Payment Collected; Entry Confirmed",
+          "actualResult": "Visa 4242 charged USD 150; Payment Collected; Entry Confirmed",
+          "message": "Visa 4242 charged USD 150; Payment Collected; Entry Confirmed",
+          "verificationSource": "dev-ui-and-api",
+          "defectKey": "eligibility-at-confirmation",
+          "bugTitle": "Tour Manager Confirm & charge collects payment after athlete becomes ineligible",
+          "severity": "High",
+          "priority": "High",
+          "affectedFunctionality": "Tour Manager field confirmation, membership eligibility and deferred card charging",
+          "useMainFlowRecordings": true,
+          "screenshotPath": "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/probe-2026-10-19-eligibility-fullscreen-recording/screenshots/PROBE-ELIG-UI-final.png",
+          "reproductionSteps": [
+            "Create a 19-year-old athlete with an active North America Junior membership and saved Visa test card.",
+            "Enter a North America QS event while eligible.",
+            "Change the event region to Europe and verify another equivalent Junior athlete is refused with membership_scope.",
+            "Close registration and open the Tour Manager Athletes tab.",
+            "Click Confirm field & charge, check the reviewed/ready acknowledgement, then click Confirm & charge.",
+            "Observe charged: 1, skipped: [], Payment Collected and Entry Confirmed."
+          ],
+          "screenshotLink": "screenshots/e24980002a79552f-PROBE-ELIG-UI-final.png"
+        }
+      ],
+      "checkCounts": {
+        "passed": 4,
+        "failed": 1,
+        "resolved": 0,
+        "skipped": 0
+      },
+      "executionSource": "Fresh visible dev execution on 19 Oct 2026; confirmation submitted through the real Tour Manager UI.",
+      "requiresFullFlowRecording": true,
+      "videoPath": "C:/Users/hp/Desktop/wsl-qa-automation/artifacts/probe-2026-10-19-eligibility-fullscreen-recording/eligibility-at-confirmation-full-flow.mp4",
+      "videoTitles": [
+        "Complete browser-window recording — Athlete and Tour Manager tabs, acknowledgement, charge and result"
+      ],
+      "fullPageSnapshots": [
+        {
+          "title": "Roster immediately before Confirm & charge",
+          "path": "artifacts/probe-2026-10-19-eligibility-fullscreen-recording/screenshots/PROBE-ELIG-UI-before-confirm.png"
+        },
+        {
+          "title": "Final collected and confirmed result",
+          "path": "artifacts/probe-2026-10-19-eligibility-fullscreen-recording/screenshots/PROBE-ELIG-UI-final.png"
+        }
+      ],
+      "videoLinks": [
+        "videos/probe-2026-10-19-eligibility-fullscreen-recording-eligibility-at-confirmation-full-flow.mp4"
+      ]
     }
   ],
   "combinedRuns": true,
@@ -65427,6 +65555,10 @@
     "BUG-09ebc44d0b3ff8de": {
       "key": "WSL-9588",
       "url": "https://wslproduct.atlassian.net/browse/WSL-9588"
+    },
+    "BUG-235d11ca724ed29f": {
+      "key": "WSL-9591",
+      "url": "https://wslproduct.atlassian.net/browse/WSL-9591"
     }
   },
   "jiraPublishEndpoint": "",
@@ -66595,6 +66727,45 @@
       "jira": {
         "key": "WSL-9588",
         "url": "https://wslproduct.atlassian.net/browse/WSL-9588"
+      }
+    },
+    {
+      "bugId": "BUG-235d11ca724ed29f",
+      "correlationKey": "eligibility-at-confirmation",
+      "title": "Tour Manager Confirm & charge collects payment after athlete becomes ineligible",
+      "description": "A Junior athlete who became ineligible after entry was charged and confirmed through the Tour Manager UI.",
+      "severity": "High",
+      "priority": "High",
+      "environment": "WSL dev",
+      "affectedFunctionality": "Tour Manager field confirmation, membership eligibility and deferred card charging",
+      "checks": [
+        {
+          "checkId": "AUTO-PAY-004-eligibility-at-confirmation",
+          "testId": "AUTO-PAY-004",
+          "testName": "Eligibility at confirmation — no-longer-eligible Junior athlete is charged",
+          "checkName": "No-longer-eligible athlete is not charged at confirmation",
+          "expected": "Current eligibility is rechecked; the entry is skipped and no payment is collected",
+          "actual": "Visa 4242 charged USD 150; Payment Collected; Entry Confirmed",
+          "message": "Visa 4242 charged USD 150; Payment Collected; Entry Confirmed",
+          "steps": [
+            "Create a 19-year-old athlete with an active North America Junior membership and saved Visa test card.",
+            "Enter a North America QS event while eligible.",
+            "Change the event region to Europe and verify another equivalent Junior athlete is refused with membership_scope.",
+            "Close registration and open the Tour Manager Athletes tab.",
+            "Click Confirm field & charge, check the reviewed/ready acknowledgement, then click Confirm & charge.",
+            "Observe charged: 1, skipped: [], Payment Collected and Entry Confirmed."
+          ],
+          "screenshotLink": "screenshots/e24980002a79552f-PROBE-ELIG-UI-final.png",
+          "recordingLinks": [
+            "videos/probe-2026-10-19-eligibility-fullscreen-recording-eligibility-at-confirmation-full-flow.mp4"
+          ]
+        }
+      ],
+      "idempotencyKey": "qa-report:235d11ca724ed29f",
+      "published": true,
+      "jira": {
+        "key": "WSL-9591",
+        "url": "https://wslproduct.atlassian.net/browse/WSL-9591"
       }
     }
   ]
