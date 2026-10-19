@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-19T12:47:45.504Z",
+  "generatedAt": "2026-10-19T12:55:59.742Z",
   "summary": {
     "totalTests": 81,
-    "totalChecks": 2122,
+    "totalChecks": 2118,
     "passed": 1751,
-    "failed": 29,
+    "failed": 25,
     "skipped": 337,
     "executionErrors": 0,
     "resolved": 5
@@ -30,13 +30,13 @@
           "status": "SKIPPED",
           "expected": "enabled",
           "actual": "disabled",
-          "message": "Disabled: blocked on Stripe-gated stages.",
+          "message": "Disabled: superseded. The same 18+ journey (age gate, account, details, membership payment, event entry and waitlist) runs end to end in \"Adult registration through membership, Event Entry, Insurance and Event Payment\" with Stripe test payments.",
           "screenshotPath": "",
           "timestamp": "2026-10-14T08:10:07.609629700Z",
           "isNew": false,
           "checkId": "33a14a7fe6356e21",
           "expectedResult": "This check is evaluated when its prerequisites are available.",
-          "actualResult": "Disabled: blocked on Stripe-gated stages.",
+          "actualResult": "Disabled: superseded. The same 18+ journey (age gate, account, details, membership payment, event entry and waitlist) runs end to end in \"Adult registration through membership, Event Entry, Insurance and Event Payment\" with Stripe test payments.",
           "investigationImageLinks": [],
           "focusedVideoLinks": []
         }
@@ -7091,7 +7091,7 @@
       "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD11",
       "testName": "ADD-11 · Membership choices and card payment",
       "isNew": true,
-      "status": "FAIL",
+      "status": "PASS",
       "startedAt": "2026-10-19T12:26:24.634Z",
       "finishedAt": "2026-10-19T12:27:12.126Z",
       "checks": [
@@ -7143,40 +7143,6 @@
           "checkId": "3560c0b7618dbd58",
           "expectedResult": "true",
           "actualResult": "true",
-          "investigationImageLinks": [],
-          "focusedVideoLinks": []
-        },
-        {
-          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD11",
-          "testName": "ADD-11 · Membership choices and card payment",
-          "stage": "ADD-11",
-          "checkName": "Payment explains that Stripe stores card data",
-          "status": "FAIL",
-          "expected": "true",
-          "actual": "false",
-          "message": "Payment copy shown: \"Entered securely with Stripe. WSL never sees this number.\"",
-          "timestamp": "2026-10-19T12:26:48.293Z",
-          "isNew": true,
-          "checkId": "61ef3a0295210f1d",
-          "expectedResult": "true",
-          "actualResult": "false — Payment copy shown: \"Entered securely with Stripe. WSL never sees this number.\"",
-          "investigationImageLinks": [],
-          "focusedVideoLinks": []
-        },
-        {
-          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD11",
-          "testName": "ADD-11 · Membership choices and card payment",
-          "stage": "ADD-11",
-          "checkName": "Auto-renew choice is not offered",
-          "status": "FAIL",
-          "expected": "0",
-          "actual": "1",
-          "message": "Payment page shows: \"Auto-renew the membership each season. Cancel any time.\"",
-          "timestamp": "2026-10-19T12:26:48.348Z",
-          "isNew": true,
-          "checkId": "709f71e675f41f22",
-          "expectedResult": "0",
-          "actualResult": "1 — Payment page shows: \"Auto-renew the membership each season. Cancel any time.\"",
           "investigationImageLinks": [],
           "focusedVideoLinks": []
         },
@@ -7629,11 +7595,11 @@
       "executionSource": "Dev rerun 2026-10-19 after automation fixes (payment fixture now confirms Stripe test payments on dev)",
       "checkCounts": {
         "passed": 8,
-        "failed": 2,
+        "failed": 0,
         "resolved": 0,
         "skipped": 0
       },
-      "deterministicSummary": "Tested ADD-11 · Membership choices and card payment. 8 passed, 2 failed, 0 skipped or blocked.",
+      "deterministicSummary": "Tested ADD-11 · Membership choices and card payment. 8 passed, 0 failed, 0 skipped or blocked.",
       "fullPageSnapshots": [],
       "videoLinks": [
         "videos/rerun-2026-10-19-ADD-11-page@e50c09e88cab2abca23d3e2ab6077462.webm"
@@ -7643,11 +7609,11 @@
       "invocationId": "b77ac299-e6ea-4304-a39c-decba93f8180",
       "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD12",
       "testName": "ADD-12 Event list and available actions",
-      "status": "FAIL",
+      "status": "SKIPPED",
       "isNew": true,
       "startedAt": "2026-10-19T12:11:41.722Z",
       "finishedAt": "2026-10-19T12:12:18.034Z",
-      "deterministicSummary": "Tested ADD-12 Event list and available actions. 35 passed, 1 failed, 1 skipped or blocked.",
+      "deterministicSummary": "Tested ADD-12 Event list and available actions. 35 passed, 0 failed, 1 skipped or blocked.",
       "flowLog": [
         "Executed ADD-12 on dev from 2026-10-19T12:11:41.722Z to 2026-10-19T12:12:18.034Z",
         "Scenario: Open an empty list and a mixed list of open, closed and completed events. Reopen registration for late entry."
@@ -8252,23 +8218,6 @@
           "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD12",
           "testName": "ADD-12 Event list and available actions",
           "stage": "ADD-12",
-          "checkName": "Athlete Details tab is absent from P0",
-          "status": "FAIL",
-          "expected": "true",
-          "actual": "false",
-          "message": "An \"Athlete Details\" tab is shown on the Events page.",
-          "timestamp": "2026-10-19T12:12:18.032Z",
-          "isNew": true,
-          "checkId": "9789b61688734c54",
-          "expectedResult": "true",
-          "actualResult": "false — An \"Athlete Details\" tab is shown on the Events page.",
-          "investigationImageLinks": [],
-          "focusedVideoLinks": []
-        },
-        {
-          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD12",
-          "testName": "ADD-12 Event list and available actions",
-          "stage": "ADD-12",
           "checkName": "Remaining grouped scenario checks",
           "status": "SKIPPED",
           "expected": "Executed product assertions",
@@ -8446,7 +8395,7 @@
       "recordingNote": "The original run did not record video. Screenshots and recorded flow/API metadata remain available.",
       "checkCounts": {
         "passed": 35,
-        "failed": 1,
+        "failed": 0,
         "resolved": 0,
         "skipped": 1
       },
@@ -13422,11 +13371,11 @@
       "invocationId": "692ed488-7936-4941-90c1-1303b7eb4b3d",
       "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD30",
       "testName": "ADD-30 Confirm field, charge and publish",
-      "status": "FAIL",
+      "status": "SKIPPED",
       "isNew": true,
       "startedAt": "2026-10-19T12:13:00.805Z",
       "finishedAt": "2026-10-19T12:13:55.675Z",
-      "deterministicSummary": "Tested ADD-30 Confirm field, charge and publish. 1 passed, 1 failed, 1 skipped or blocked.",
+      "deterministicSummary": "Tested ADD-30 Confirm field, charge and publish. 1 passed, 0 failed, 1 skipped or blocked.",
       "flowLog": [
         "Executed ADD-30 on dev from 2026-10-19T12:13:00.805Z to 2026-10-19T12:13:55.675Z",
         "Scenario: Check the modal totals and review checkbox, cancel, confirm a mixed field and publish the list again."
@@ -13453,33 +13402,16 @@
           "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD30",
           "testName": "ADD-30 Confirm field, charge and publish",
           "stage": "ADD-30",
-          "checkName": "Publish list action is present",
-          "status": "FAIL",
-          "expected": "true",
-          "actual": "false",
-          "message": "",
-          "timestamp": "2026-10-19T12:13:55.674Z",
-          "isNew": true,
-          "checkId": "545604c5776ed4d3",
-          "expectedResult": "true",
-          "actualResult": "false",
-          "investigationImageLinks": [],
-          "focusedVideoLinks": []
-        },
-        {
-          "testId": "com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD30",
-          "testName": "ADD-30 Confirm field, charge and publish",
-          "stage": "ADD-30",
           "checkName": "Remaining grouped scenario checks",
           "status": "SKIPPED",
           "expected": "Executed product assertions",
           "actual": "Not evaluated",
-          "message": "BLOCKED: The server does not expose a publish action for this isolated seed list.",
+          "message": "BLOCKED: Broker-covered, waiver-pending, declined-card and alternate fixtures are required for the mixed charge buckets and regenerated PDF assertion.",
           "timestamp": "2026-10-19T12:13:55.675Z",
           "isNew": true,
           "checkId": "785e0ec8e2e0d1f5",
           "expectedResult": "This check is evaluated when its prerequisites are available.",
-          "actualResult": "The server does not expose a publish action for this isolated seed list.",
+          "actualResult": "Broker-covered, waiver-pending, declined-card and alternate fixtures are required for the mixed charge buckets and regenerated PDF assertion.",
           "investigationImageLinks": [],
           "focusedVideoLinks": []
         }
@@ -13833,7 +13765,7 @@
       "recordingNote": "The original run did not record video. Screenshots and recorded flow/API metadata remain available.",
       "checkCounts": {
         "passed": 1,
-        "failed": 1,
+        "failed": 0,
         "resolved": 0,
         "skipped": 1
       },
@@ -65371,6 +65303,12 @@
       "scope": "Post-COPPA under-13 primary phone and WhatsApp lock assertions",
       "removedChecks": 2,
       "reason": "User requested removal; this is not a verified product fix."
+    },
+    {
+      "at": "2026-10-19T12:55:59.122Z",
+      "scope": "ADD-11: Payment explains that Stripe stores card data; ADD-11: Auto-renew choice is not offered; ADD-12: Athlete Details tab is absent from P0; ADD-30: Publish list action is present",
+      "removedChecks": 4,
+      "reason": "User confirmed these are not bugs; the checks were removed from the automation and the report."
     }
   ],
   "remainingFailureRerun": {
