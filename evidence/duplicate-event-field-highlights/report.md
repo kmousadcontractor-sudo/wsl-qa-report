@@ -1,58 +1,52 @@
-# Tour Manager duplicate-event error omits conflicting field highlights
+# Tour Manager: duplicate event error shows a banner but does not highlight conflicting fields
 
-Status: Draft bug report; no Jira ticket created.
-Suggested priority: Medium. Area: Tour Manager event creation; BFF error contract and frontend form errors.
+Status: Draft bug report. No Jira ticket created. Suggested priority: Medium.
+Requirement: AI-121 / ADD-78. Area: Tour Manager event creation/editing, duplicate conflict errors.
 
 ## Summary
-Duplicate event creation is correctly rejected with HTTP 409 and a descriptive message, but the error contains no field-level errors (`fields: {}`). The form cannot use that response to identify the conflicting inputs as required by AI-121 / ADD-78.
+When a Tour Manager changes an event's dates to overlap an existing event on the same tour at the same location, Save changes is correctly rejected. However, the page only displays a duplicate banner; Location, Start date and End date keep their normal appearance and show no inline explanation. The API returns HTTP 409 with an empty fields map, and the local frontend error mapper handles field errors only for HTTP 422.
 
-## Evidence
-Recorded dev execution: 19 October 2026, 22:58:21–22:58:27 Africa/Cairo (19:58 UTC). This report inspects existing evidence; no fresh rerun was performed.
-Source: artifacts/action-items-2026-10-19/checklist-results.json, group ADD-78.
-Result: 3 passed checks, 1 failed check.
+## Fresh verification
+Recorded on dev: 2026-10-20T18:42:21.127Z. Frontend: https://app.dev.worldsurfleague.com.
+This is a real Edit event UI reproduction. Two isolated QA Drafts were created via API for setup; no production or imported events were edited.
+Existing event: 01a15a9e-b59b-7432-b8f7-fc3453b11250, 2082-11-06–2082-11-06.
+Candidate event: 01a15a9e-b7ac-70e0-8514-3a9aa6564dab, originally 2082-11-07–2082-11-07.
+Tour: International Qualifying Series (QS), Men. Location: 56th Street. Season: 2082.
 
-| Check | Expected | Actual | Result |
-| --- | --- | --- | --- |
-| Saving a duplicate event is refused | 409 | 409 | PASS |
-| Duplicate error names the problem | true | true | PASS |
-| Duplicate error identifies conflicting fields | true | false; fields: {} | FAIL |
-| Missing-field validation identifies inputs | field errors | HTTP 422; name, startDate | PASS |
-
-Recorded reason: `competition.event_duplicate`.
-Recorded message: `"QA Checklist 20261019195026249-8ff84e 6" is already on this tour at 56th Street on overlapping dates (Fri 6 – Fri 6 Nov 2054). Change the location or the dates.`
-
-The raw 409 response body was not retained in this artifact. The reason, message and empty field map above come from the recorded assertions, not a reconstructed full response.
-
-## Preconditions and reproduction
-1. Sign in to dev as a Tour Manager with event-creation access.
-2. Create a valid event in an isolated QA season using valid tour, location, format and date references; confirm HTTP 201.
-3. Submit the same event fields again to `POST https://api.dev.worldsurfleague.com/api/tour-manager/events`.
-4. Inspect the HTTP 409 error, its message and its `fields` map.
-5. For UI verification, submit the duplicate in New event and inspect the conflicting inputs. This visual step was not performed by the recorded ADD-78 handler.
+## Reproduction
+1. Create two valid Draft events in the same QA season, tour and location, on November 6 and November 7 respectively.
+2. Open the November 7 event in Edit event.
+3. Change both Start date and End date to November 6, matching the existing event.
+4. Click Save changes.
+5. Observe the duplicate banner. Inspect Location, Start date and End date: no red error state or inline duplicate message appears.
 
 ## Expected
-Reject the duplicate and explain the conflict. Return field-level errors using the event form's field names so the relevant location/date/tour inputs can be highlighted with actionable inline messages. Confirm the precise field set against the duplicate business rule; changing the event name alone does not resolve the collision.
+Reject the duplicate and keep the explanatory banner. Identify the relevant conflicting inputs in the API fields map and display corresponding field highlights and inline guidance. Managers should immediately see which values need changing.
 
 ## Actual
-HTTP 409 and the descriptive duplicate message are present, but `fields` is empty. The test labels the outcome “banner only”; that wording is an assertion annotation, not a direct visual observation. Local frontend source is consistent with a banner-only outcome.
-
-## Technical findings
-- Automation: scripts/checklist-tests/action-items.mjs, ADD-78 (approximately lines 257–266). It creates a valid event, repeats the same payload, and checks the 409 response for a nonempty field map. It separately verifies ordinary HTTP 422 errors identify name/startDate.
-- BFF: wsl-local/wsl-django-bff/interfaces/http/api/tour_manager_events.py, duplicate outcome branch (approximately lines 209–217). The branch builds the descriptive message and returns a 409 error with reason competition.event_duplicate without supplying field mappings.
-- Frontend: wsl-local/wsl-frontend/src/features/tour-manager/components/event-editor.tsx, refusedFields (approximately lines 63–70). It immediately returns an empty object unless the error is an ApiError with status 422, then maps error.fields to draft keys. Duplicate HTTP 409 errors are excluded even if the BFF later supplies fields.
-- Both sides need to agree on the error contract. Keep duplicate rejection as 409 and explicitly support its field errors, unless the API contract is intentionally changed.
-- These are local-source findings; the deployed revision was not verified. No code fix was made.
+HTTP 409; reason competition.event_duplicate; fields {}.
+Banner: "QA duplicate field evidence 1792521712169" is already on International Qualifying Series (QS) · Men at 56th Street on overlapping dates (Fri 6 – Fri 6 Nov 2082). Change the location or the dates.
+The screenshot shows the red page-level banner but normal field borders and no inline duplicate messages. Captured form controls have no aria-invalid markers or described-by errors. The rejected edit was not persisted: readback retained 2082-11-07–2082-11-07.
 
 ## Impact
-Managers get the reason for rejection but lack field-specific guidance on what to change. They must interpret the banner and find the relevant inputs themselves. Duplicate prevention still works; this evidence does not show duplicate records being saved or data loss.
+The manager has to interpret the banner and locate the relevant inputs without field-level guidance. Duplicate prevention remains effective; no duplicate was saved and no data loss was observed.
+
+## Technical findings
+- BFF: wsl-local/wsl-django-bff/interfaces/http/api/tour_manager_events.py, _written duplicate branch around lines 209–218. It builds a 409 competition.event_duplicate response and conflict reference without providing field mappings.
+- Frontend: wsl-local/wsl-frontend/src/features/tour-manager/components/event-editor.tsx, refusedFields around lines 63–70. It returns no field errors unless status is 422. Adding fields to the 409 response alone will not enable highlights.
+- Fix both sides of the contract: keep duplicate rejection behavior and map supported 409 duplicate field errors to form inputs.
+- These are inspected local-source findings; deployed revision was not verified. No application fix was made.
 
 ## Acceptance criteria
-- Duplicate HTTP 409 errors include actionable field entries for the actual conflicting inputs.
-- The frontend maps duplicate errors to the corresponding inputs, highlights them and shows inline messages while retaining the explanatory banner.
-- Fixing the conflicting input clears/recalculates the relevant error; a valid corrected event can be saved.
-- Ordinary 422 field validation and duplicate prevention remain correct.
-- Verify both New event and Edit event collision paths where supported.
-- Add an API contract check and a UI assertion for the visible field errors; merely checking a nonempty field map is insufficient UI coverage.
+- Duplicate rejection carries actionable errors for the fields responsible for the collision.
+- The form highlights those fields and shows inline guidance while retaining the banner.
+- Correcting the collision clears the relevant errors and permits a valid save.
+- Existing HTTP 422 validation remains correct; duplicate rejection remains effective.
+- Verify both New event and Edit event paths, including a visible UI assertion.
 
-## Evidence limits
-The retained recording/screenshot show browser context after API assertions, not the duplicate form being submitted. They are supporting context only. Frontend inline highlighting must be verified directly on a follow-up UI run. No Jira issue was created for this report.
+## Evidence
+recording-captioned.mp4: direct UI action recording with captions; setup is outside the recorded steps.
+before.png / after.png: full-page before/after screenshots.
+results.json: actual PUT request, full HTTP 409 body, displayed text, form-control error attributes, and readback dates.
+response.json: exact captured duplicate response.
+The earlier 19 October ADD-78 run separately confirmed the create path returns 409 with fields {} (3 checks passed; 1 failed). The fresh recording verifies the Edit event path visually.
