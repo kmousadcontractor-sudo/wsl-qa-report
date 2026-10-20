@@ -1,0 +1,100 @@
+{
+  "reportStatus": "Draft bug report; no Jira ticket created",
+  "testId": "ADD-78",
+  "requirementRefs": [
+    "AI-121"
+  ],
+  "startedAt": "2026-10-19T19:58:21.887Z",
+  "finishedAt": "2026-10-19T19:58:27.228Z",
+  "environment": "WSL dev",
+  "freshRerun": false,
+  "checks": [
+    {
+      "name": "Saving a duplicate event is refused",
+      "expected": 409,
+      "actual": 409,
+      "status": "PASS",
+      "message": "competition.event_duplicate",
+      "timestamp": "2026-10-19T19:58:26.919Z"
+    },
+    {
+      "name": "The duplicate error names the problem",
+      "expected": true,
+      "actual": true,
+      "status": "PASS",
+      "message": "\"QA Checklist 20261019195026249-8ff84e 6\" is already on this tour at 56th Street on overlapping dates (Fri 6 – Fri 6 Nov 2054). Change the location or the dates.",
+      "timestamp": "2026-10-19T19:58:26.919Z"
+    },
+    {
+      "name": "The duplicate error identifies the conflicting fields to highlight",
+      "expected": true,
+      "actual": false,
+      "status": "FAIL",
+      "message": "fields: {} · the message is shown as a banner only",
+      "timestamp": "2026-10-19T19:58:26.919Z"
+    },
+    {
+      "name": "A validation error identifies the fields to highlight",
+      "expected": true,
+      "actual": true,
+      "status": "PASS",
+      "message": "HTTP 422 fields: name, startDate",
+      "timestamp": "2026-10-19T19:58:27.228Z"
+    }
+  ],
+  "requests": [
+    {
+      "path": "/auth/login",
+      "method": "POST",
+      "status": 200,
+      "elapsedMs": 1203
+    },
+    {
+      "path": "/auth/login",
+      "method": "POST",
+      "status": 200,
+      "elapsedMs": 410
+    },
+    {
+      "path": "/tour-manager/reference/tours",
+      "method": "GET",
+      "status": 200,
+      "elapsedMs": 277
+    },
+    {
+      "path": "/tour-manager/reference/tours/01a14127-5313-7165-a37f-b78a3d1fb5a7/formats",
+      "method": "GET",
+      "status": 200,
+      "elapsedMs": 337
+    },
+    {
+      "path": "/tour-manager/reference/locations?region=north_america",
+      "method": "GET",
+      "status": 200,
+      "elapsedMs": 311
+    },
+    {
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "status": 201,
+      "elapsedMs": 453
+    },
+    {
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "status": 409,
+      "elapsedMs": 565
+    },
+    {
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "status": 422,
+      "elapsedMs": 308
+    }
+  ],
+  "limitations": [
+    "Full duplicate response body was not retained. Values come from recorded assertions.",
+    "Recording contains post-assertion browser context, not the duplicate submission.",
+    "Frontend duplicate-field highlighting was not directly tested."
+  ]
+}
