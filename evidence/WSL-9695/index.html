@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WSL-9695 rerun evidence</title><style>
+  :root { --bg:#f4f7f8; --surface:#fff; --ink:#0f2230; --muted:#536877; --line:#d6e0e5; --accent:#0b6e8a; --ok:#1b7a4b; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0c171f; --surface:#12212c; --ink:#e3edf2; --muted:#9bb0bd; --line:#233846; --accent:#5cc3dd; --ok:#7fd3a6; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:28px 16px 56px; display:grid; gap:18px; }
+  h1 { font-size:26px; line-height:1.2; margin:0; }
+  h2 { font-size:18px; margin:0; }
+  p { margin:0; max-width:78ch; }
+  .muted { color:var(--muted); font-size:14px; }
+  .verdict { color:var(--ok); font-weight:700; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px; display:grid; gap:10px; min-width:0; }
+  video, img { width:100%; height:auto; border:1px solid var(--line); border-radius:6px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  .box { overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:8px; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size:.9em; }
+  a { color:var(--accent); }
+
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}.fail{color:#c33939;font-weight:700}.pass{color:var(--ok)}li{margin:6px 0}</style></head><body><main>
+<div><h1>WSL-9695 · New event creation accepts past dates</h1><p class="muted">Dev rerun · 20 Oct 2026, 20:49–20:50 Africa/Cairo · <a href="https://wslproduct.atlassian.net/browse/WSL-9695">Jira bug</a> · <a href="https://wslproduct.atlassian.net/wiki/spaces/PROD/pages/2788491270">Detailed investigation</a></p></div>
+<p><span class="fail">Still reproducible on dev.</span> Creating a new event with past start and end dates returned HTTP <strong>201</strong> instead of expected <strong>422</strong>. The response contains a new Draft event dated <strong>2026-06-28–2026-06-29</strong>. 14 other date-validation checks passed.</p>
+<div class="box"><table><thead><tr><th>Evidence</th><th>Expected</th><th>Observed</th></tr></thead><tbody><tr><td>POST /api/tour-manager/events</td><td>422 validation error; no event created</td><td class="fail">201 Created</td></tr><tr><td>New event dates</td><td>Future dates, per AUTO-DATE-001</td><td>2026-06-28 / 2026-06-29</td></tr><tr><td>Created event</td><td>No saved event</td><td><code>01a15a6f-3b3a-7357-9aff-eac716b965e1</code><br>Draft · version 1</td></tr><tr><td>Run result</td><td>All assertions pass</td><td>14 passed / 1 failed</td></tr></tbody></table></div>
+<section class="card"><h2>API evidence — primary proof</h2><p>The following is the captured response from the failed assertion, not a simulated API response. No independent database read was performed.</p><p><a href="response.json">Download response.json</a> · <a href="results.json">Download checks and request-status log</a></p><pre><code>POST https://api.dev.worldsurfleague.com/api/tour-manager/events
+HTTP 201
+{
+  &quot;event&quot;: {
+    &quot;id&quot;: &quot;01a15a6f-3b3a-7357-9aff-eac716b965e1&quot;,
+    &quot;seasonId&quot;: &quot;01a14127-7179-718f-8b17-d7ff6a6f6c7b&quot;,
+    &quot;status&quot;: {
+      &quot;code&quot;: &quot;draft&quot;,
+      &quot;label&quot;: &quot;Draft&quot;,
+      &quot;tone&quot;: &quot;muted&quot;
+    },
+    &quot;statusOptions&quot;: [
+      {
+        &quot;code&quot;: &quot;tentative&quot;,
+        &quot;label&quot;: &quot;Tentative&quot;,
+        &quot;destructive&quot;: false
+      },
+      {
+        &quot;code&quot;: &quot;archived&quot;,
+        &quot;label&quot;: &quot;Archive&quot;,
+        &quot;destructive&quot;: true
+      }
+    ],
+    &quot;fields&quot;: {
+      &quot;name&quot;: &quot;QA Checklist 20261020174947284-806a84 2&quot;,
+      &quot;tour&quot;: &quot;01a14127-5313-7165-a37f-b78a3d1fb5a7&quot;,
+      &quot;rating&quot;: &quot;&quot;,
+      &quot;regions&quot;: [
+        &quot;north_america&quot;
+      ],
+      &quot;location&quot;: &quot;01a14127-5441-7536-80b8-67a4d98a13e3&quot;,
+      &quot;startDate&quot;: &quot;2026-06-28&quot;,
+      &quot;endDate&quot;: &quot;2026-06-29&quot;,
+      &quot;format&quot;: &quot;01a14127-53f2-7694-86aa-9034f7fddb51&quot;,
+      &quot;prizeMoney&quot;: {
+        &quot;amount&quot;: 12345,
+        &quot;currency&quot;: &quot;USD&quot;
+      },
+      &quot;registrationOpensDate&quot;: &quot;&quot;,
+      &quot;registrationOpensTime&quot;: &quot;&quot;,
+      &quot;registrationClosesDate&quot;: &quot;&quot;,
+      &quot;registrationClosesTime&quot;: &quot;&quot;,
+      &quot;currency&quot;: &quot;&quot;,
+      &quot;entryFee&quot;: null
+    },
+    &quot;readOnly&quot;: false,
+    &quot;feeFromGrid&quot;: true,
+    &quot;version&quot;: 1
+  }
+}</code></pre></section>
+<section class="card"><h2>Reproduction</h2><ol><li>Authenticate as a dev Tour Manager and choose a current season with valid tour, location and format references.</li><li>Create a uniquely named event with ordered start/end dates in the past and within the selected season. Leave registration dates/times blank for Draft.</li><li>Submit directly to <code>POST /api/tour-manager/events</code>.</li><li>Observe HTTP 201 with a new Draft event. Expected: HTTP 422 with field validation.</li></ol><p class="muted">The runner retries another valid location only on HTTP 409 collision. The response above is the successful create. Exact request payload was not retained; the accepted fields are preserved in response.json.</p></section>
+<section class="card"><h2>Recording — supporting browser context</h2><video controls preload="metadata" src="recording.webm"></video><p class="muted">The test first runs API boundary checks, then opens Edit event for a separate reversed-date check. API activity is not visible in the recording; use the response and check log above to verify the past-date defect. The recording does not establish frontend past-date rejection.</p></section>
+<section class="card"><h2>Screenshot — separate frontend ordering check</h2><img src="frontend-reversed-dates.png" alt="Edit event shows end-before-start field validation for a separate future-season fixture"><p class="muted">This is a different fixture: end date before start date. Frontend ordering validation passed and blocked the save request. This screenshot is context, not visual proof of the historical event create.</p></section>
+<section class="card"><h2>All assertions</h2><div class="box"><table><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody><tr><td>Backend rejects event end before event start</td><td class="pass">PASS</td></tr><tr><td>Backend identifies reversed event dates</td><td class="pass">PASS</td></tr><tr><td>Backend accepts the same event start and end date</td><td class="pass">PASS</td></tr><tr><td>Backend accepts same-day registration with ordered different times</td><td class="pass">PASS</td></tr><tr><td>Registration opening time persists</td><td class="pass">PASS</td></tr><tr><td>Registration closing time persists</td><td class="pass">PASS</td></tr><tr><td>Backend rejects equal registration opening and closing times</td><td class="pass">PASS</td></tr><tr><td>Backend identifies the equal registration timestamps</td><td class="pass">PASS</td></tr><tr><td>Backend rejects registration closing at event start</td><td class="pass">PASS</td></tr><tr><td>Backend identifies registration closing at event start</td><td class="pass">PASS</td></tr><tr><td>Backend rejects registration opening at event start</td><td class="pass">PASS</td></tr><tr><td>Backend identifies registration opening at event start</td><td class="pass">PASS</td></tr><tr><td>Backend requires newly-created event dates to be future</td><td class="fail">FAIL</td></tr><tr><td>Frontend shows the end-before-start validation</td><td class="pass">PASS</td></tr><tr><td>Frontend blocks the invalid reversed-date save request</td><td class="pass">PASS</td></tr></tbody></table></div></section>
+<section class="card"><h2>Technical findings</h2><p>In the inspected local competition-service source, <code>application/events/save.py:create_event</code> passes <code>today</code> to <code>_build_write</code>. That function checks season eligibility, date ordering and season boundaries, but has no future event-date guard before <code>store.insert</code>. This is consistent with the API result; deployed source revision was not verified.</p><p>Fix acceptance: enforce the approved future-date rule before persistence, return actionable 422 field errors, align frontend behavior, define today/timezone boundaries, and retain valid historical editing.</p><p class="muted">Requirement basis: supplied checklist / AUTO-DATE-001. Product should explicitly resolve any intended exception for historical Draft creation. Frontend past-date behavior remains unverified. Original occurrence: 19 Oct, dates 2026-08-20–2026-08-21. Earlier rerun: 20 Oct, dates 2026-07-21–2026-07-22. This page uses the latest rerun with the correct frontend address.</p></section>
+</main></body></html>
