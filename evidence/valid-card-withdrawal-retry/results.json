@@ -1,0 +1,1189 @@
+{
+  "environment": "WSL dev; Stripe test mode",
+  "eventId": "01a15ac0-27f5-7371-aa14-100478c529fa",
+  "eventUrl": "https://app.dev.worldsurfleague.com/tour-manager/events/01a15ac0-27f5-7371-aa14-100478c529fa",
+  "entryId": "01a15ac0-347a-73ba-8faf-89658f5fdbc9",
+  "athleteId": "01a15abf-090b-70da-89c7-a8b3c5895247",
+  "name": "Checklist ExtValidCardRemovalf81b",
+  "timeline": [
+    {
+      "at": "2026-10-20T19:18:30.478Z",
+      "step": "Initial Confirm and charge",
+      "data": {
+        "status": 200,
+        "body": {
+          "confirmationId": "01a15ac0-3ecc-7775-978d-3ee4001ecfec",
+          "charged": 1,
+          "skipped": []
+        }
+      }
+    },
+    {
+      "at": "2026-10-20T19:18:33.897Z",
+      "step": "Change entry to valid saved Visa",
+      "data": {
+        "status": 202,
+        "body": {
+          "entryId": "01a15ac0-347a-73ba-8faf-89658f5fdbc9",
+          "status": "agreed",
+          "reason": null,
+          "message": null,
+          "total": {
+            "amount": 150,
+            "amountMinor": 15000,
+            "currency": "USD"
+          },
+          "savedPaymentMethodId": "01a15abf-94fb-750c-90cc-2ab665f95ba8",
+          "cardChange": {
+            "status": "requested",
+            "reason": null,
+            "message": null
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-20T19:18:35.260Z",
+      "step": "Remove athlete after valid-card change",
+      "data": {
+        "status": 200,
+        "body": {
+          "stage": "charged",
+          "field": 48,
+          "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+          "openSeats": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48
+          ],
+          "summary": [
+            {
+              "count": 0,
+              "label": "charged",
+              "tone": "success"
+            },
+            {
+              "count": 0,
+              "label": "insurance needed",
+              "tone": "warning"
+            },
+            {
+              "count": 0,
+              "label": "declined · your call",
+              "tone": "error"
+            },
+            {
+              "count": 0,
+              "label": "wildcard seats",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "alternates · not charged",
+              "tone": "muted"
+            }
+          ],
+          "primaryAction": null,
+          "publish": null,
+          "filters": [
+            {
+              "code": "entry",
+              "label": "Entry status",
+              "options": [
+                {
+                  "value": "withdrawn",
+                  "label": "Withdrawn"
+                }
+              ]
+            },
+            {
+              "code": "region",
+              "label": "All regions",
+              "options": [
+                {
+                  "value": "north_america",
+                  "label": "N. AMERICA"
+                }
+              ]
+            },
+            {
+              "code": "payment",
+              "label": "Payment",
+              "options": []
+            },
+            {
+              "code": "insurance",
+              "label": "Insurance",
+              "options": [
+                {
+                  "value": "verified",
+                  "label": "Verified"
+                }
+              ]
+            }
+          ],
+          "entries": [
+            {
+              "id": "01a15ac0-347a-73ba-8faf-89658f5fdbc9",
+              "group": "withdrawn",
+              "athlete": {
+                "initials": "CE",
+                "name": "Checklist ExtValidCardRemovalf81b",
+                "country": "United States"
+              },
+              "ranking": "Withdrawn 20 Oct · Athlete request",
+              "region": "north_america",
+              "highlight": null,
+              "insurance": {
+                "state": "ok",
+                "label": "Insurance: verified",
+                "code": "verified"
+              },
+              "payment": null,
+              "entry": {
+                "code": "withdrawn",
+                "label": "Withdrawn",
+                "tone": "neutral"
+              },
+              "waivable": {
+                "fee": false
+              },
+              "actions": [],
+              "movable": false,
+              "pinned": false,
+              "hasHistory": true,
+              "seedRank": null,
+              "alternatePosition": null,
+              "moveUpSeat": null,
+              "movedUpFrom": null
+            }
+          ],
+          "version": 3,
+          "chargesInFlight": false
+        }
+      }
+    },
+    {
+      "at": "2026-10-20T19:18:35.762Z",
+      "step": "Manual retry after removal with valid card selected",
+      "data": {
+        "status": 200,
+        "body": {
+          "stage": "charged",
+          "field": 48,
+          "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+          "openSeats": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48
+          ],
+          "summary": [
+            {
+              "count": 0,
+              "label": "charged",
+              "tone": "success"
+            },
+            {
+              "count": 0,
+              "label": "insurance needed",
+              "tone": "warning"
+            },
+            {
+              "count": 0,
+              "label": "declined · your call",
+              "tone": "error"
+            },
+            {
+              "count": 0,
+              "label": "wildcard seats",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "alternates · not charged",
+              "tone": "muted"
+            }
+          ],
+          "primaryAction": null,
+          "publish": null,
+          "filters": [
+            {
+              "code": "entry",
+              "label": "Entry status",
+              "options": [
+                {
+                  "value": "withdrawn",
+                  "label": "Withdrawn"
+                }
+              ]
+            },
+            {
+              "code": "region",
+              "label": "All regions",
+              "options": [
+                {
+                  "value": "north_america",
+                  "label": "N. AMERICA"
+                }
+              ]
+            },
+            {
+              "code": "payment",
+              "label": "Payment",
+              "options": []
+            },
+            {
+              "code": "insurance",
+              "label": "Insurance",
+              "options": [
+                {
+                  "value": "verified",
+                  "label": "Verified"
+                }
+              ]
+            }
+          ],
+          "entries": [
+            {
+              "id": "01a15ac0-347a-73ba-8faf-89658f5fdbc9",
+              "group": "withdrawn",
+              "athlete": {
+                "initials": "CE",
+                "name": "Checklist ExtValidCardRemovalf81b",
+                "country": "United States"
+              },
+              "ranking": "Withdrawn 20 Oct · Athlete request",
+              "region": "north_america",
+              "highlight": null,
+              "insurance": {
+                "state": "ok",
+                "label": "Insurance: verified",
+                "code": "verified"
+              },
+              "payment": null,
+              "entry": {
+                "code": "withdrawn",
+                "label": "Withdrawn",
+                "tone": "neutral"
+              },
+              "waivable": {
+                "fee": false
+              },
+              "actions": [],
+              "movable": false,
+              "pinned": false,
+              "hasHistory": true,
+              "seedRank": null,
+              "alternatePosition": null,
+              "moveUpSeat": null,
+              "movedUpFrom": null
+            }
+          ],
+          "version": 3,
+          "chargesInFlight": false
+        }
+      }
+    }
+  ],
+  "snapshots": [
+    {
+      "stage": "initial decline",
+      "list": {
+        "stage": "charged",
+        "field": 48,
+        "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+        "openSeats": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "summary": [
+          {
+            "count": 0,
+            "label": "charged",
+            "tone": "success"
+          },
+          {
+            "count": 0,
+            "label": "insurance needed",
+            "tone": "warning"
+          },
+          {
+            "count": 1,
+            "label": "declined · your call",
+            "tone": "error"
+          },
+          {
+            "count": 0,
+            "label": "wildcard seats",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "alternates · not charged",
+            "tone": "muted"
+          }
+        ],
+        "primaryAction": null,
+        "publish": null,
+        "filters": [
+          {
+            "code": "entry",
+            "label": "Entry status",
+            "options": [
+              {
+                "value": "pending",
+                "label": "Pending"
+              }
+            ]
+          },
+          {
+            "code": "region",
+            "label": "All regions",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "N. AMERICA"
+              }
+            ]
+          },
+          {
+            "code": "payment",
+            "label": "Payment",
+            "options": [
+              {
+                "value": "declined",
+                "label": "Declined"
+              }
+            ]
+          },
+          {
+            "code": "insurance",
+            "label": "Insurance",
+            "options": [
+              {
+                "value": "verified",
+                "label": "Verified"
+              }
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "id": "01a15ac0-347a-73ba-8faf-89658f5fdbc9",
+            "group": "field",
+            "athlete": {
+              "initials": "CE",
+              "name": "Checklist ExtValidCardRemovalf81b",
+              "country": "United States"
+            },
+            "ranking": "Seed 1 · N. AMERICA",
+            "region": "north_america",
+            "highlight": null,
+            "insurance": {
+              "state": "ok",
+              "label": "Insurance: verified",
+              "code": "verified"
+            },
+            "payment": {
+              "code": "declined",
+              "label": "Declined",
+              "tone": "error"
+            },
+            "entry": {
+              "code": "pending",
+              "label": "Pending",
+              "tone": "neutral"
+            },
+            "waivable": {
+              "fee": true
+            },
+            "actions": [
+              {
+                "code": "message",
+                "label": "Send message",
+                "destructive": false
+              },
+              {
+                "code": "waive",
+                "label": "Waive fee",
+                "destructive": false
+              },
+              {
+                "code": "withdraw",
+                "label": "Withdraw entry",
+                "destructive": true
+              },
+              {
+                "code": "retry",
+                "label": "Retry payment",
+                "destructive": false
+              }
+            ],
+            "movable": true,
+            "pinned": false,
+            "hasHistory": true,
+            "seedRank": 1,
+            "alternatePosition": null,
+            "moveUpSeat": null,
+            "movedUpFrom": null
+          }
+        ],
+        "version": 2,
+        "chargesInFlight": false
+      }
+    },
+    {
+      "stage": "after card change before removal",
+      "at": "2026-10-20T19:18:34.645Z",
+      "list": {
+        "stage": "charged",
+        "field": 48,
+        "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+        "openSeats": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "summary": [
+          {
+            "count": 0,
+            "label": "charged",
+            "tone": "success"
+          },
+          {
+            "count": 0,
+            "label": "insurance needed",
+            "tone": "warning"
+          },
+          {
+            "count": 1,
+            "label": "declined · your call",
+            "tone": "error"
+          },
+          {
+            "count": 0,
+            "label": "wildcard seats",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "alternates · not charged",
+            "tone": "muted"
+          }
+        ],
+        "primaryAction": null,
+        "publish": null,
+        "filters": [
+          {
+            "code": "entry",
+            "label": "Entry status",
+            "options": [
+              {
+                "value": "pending",
+                "label": "Pending"
+              }
+            ]
+          },
+          {
+            "code": "region",
+            "label": "All regions",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "N. AMERICA"
+              }
+            ]
+          },
+          {
+            "code": "payment",
+            "label": "Payment",
+            "options": [
+              {
+                "value": "declined",
+                "label": "Declined"
+              }
+            ]
+          },
+          {
+            "code": "insurance",
+            "label": "Insurance",
+            "options": [
+              {
+                "value": "verified",
+                "label": "Verified"
+              }
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "id": "01a15ac0-347a-73ba-8faf-89658f5fdbc9",
+            "group": "field",
+            "athlete": {
+              "initials": "CE",
+              "name": "Checklist ExtValidCardRemovalf81b",
+              "country": "United States"
+            },
+            "ranking": "Seed 1 · N. AMERICA",
+            "region": "north_america",
+            "highlight": null,
+            "insurance": {
+              "state": "ok",
+              "label": "Insurance: verified",
+              "code": "verified"
+            },
+            "payment": {
+              "code": "declined",
+              "label": "Declined",
+              "tone": "error"
+            },
+            "entry": {
+              "code": "pending",
+              "label": "Pending",
+              "tone": "neutral"
+            },
+            "waivable": {
+              "fee": true
+            },
+            "actions": [
+              {
+                "code": "message",
+                "label": "Send message",
+                "destructive": false
+              },
+              {
+                "code": "waive",
+                "label": "Waive fee",
+                "destructive": false
+              },
+              {
+                "code": "withdraw",
+                "label": "Withdraw entry",
+                "destructive": true
+              },
+              {
+                "code": "retry",
+                "label": "Retry payment",
+                "destructive": false
+              }
+            ],
+            "movable": true,
+            "pinned": false,
+            "hasHistory": true,
+            "seedRank": 1,
+            "alternatePosition": null,
+            "moveUpSeat": null,
+            "movedUpFrom": null
+          }
+        ],
+        "version": 2,
+        "chargesInFlight": false
+      }
+    },
+    {
+      "stage": "final after removal and retry",
+      "at": "2026-10-20T19:18:46.085Z",
+      "list": {
+        "stage": "charged",
+        "field": 48,
+        "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+        "openSeats": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "summary": [
+          {
+            "count": 0,
+            "label": "charged",
+            "tone": "success"
+          },
+          {
+            "count": 0,
+            "label": "insurance needed",
+            "tone": "warning"
+          },
+          {
+            "count": 0,
+            "label": "declined · your call",
+            "tone": "error"
+          },
+          {
+            "count": 0,
+            "label": "wildcard seats",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "alternates · not charged",
+            "tone": "muted"
+          }
+        ],
+        "primaryAction": null,
+        "publish": null,
+        "filters": [
+          {
+            "code": "entry",
+            "label": "Entry status",
+            "options": [
+              {
+                "value": "withdrawn",
+                "label": "Withdrawn"
+              }
+            ]
+          },
+          {
+            "code": "region",
+            "label": "All regions",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "N. AMERICA"
+              }
+            ]
+          },
+          {
+            "code": "payment",
+            "label": "Payment",
+            "options": []
+          },
+          {
+            "code": "insurance",
+            "label": "Insurance",
+            "options": [
+              {
+                "value": "verified",
+                "label": "Verified"
+              }
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "id": "01a15ac0-347a-73ba-8faf-89658f5fdbc9",
+            "group": "withdrawn",
+            "athlete": {
+              "initials": "CE",
+              "name": "Checklist ExtValidCardRemovalf81b",
+              "country": "United States"
+            },
+            "ranking": "Withdrawn 20 Oct · Athlete request",
+            "region": "north_america",
+            "highlight": null,
+            "insurance": {
+              "state": "ok",
+              "label": "Insurance: verified",
+              "code": "verified"
+            },
+            "payment": null,
+            "entry": {
+              "code": "withdrawn",
+              "label": "Withdrawn",
+              "tone": "neutral"
+            },
+            "waivable": {
+              "fee": false
+            },
+            "actions": [],
+            "movable": false,
+            "pinned": false,
+            "hasHistory": true,
+            "seedRank": null,
+            "alternatePosition": null,
+            "moveUpSeat": null,
+            "movedUpFrom": null
+          }
+        ],
+        "version": 3,
+        "chargesInFlight": false
+      }
+    }
+  ],
+  "retry": {
+    "status": 200,
+    "body": {
+      "stage": "charged",
+      "field": 48,
+      "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+      "openSeats": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "summary": [
+        {
+          "count": 0,
+          "label": "charged",
+          "tone": "success"
+        },
+        {
+          "count": 0,
+          "label": "insurance needed",
+          "tone": "warning"
+        },
+        {
+          "count": 0,
+          "label": "declined · your call",
+          "tone": "error"
+        },
+        {
+          "count": 0,
+          "label": "wildcard seats",
+          "tone": "default"
+        },
+        {
+          "count": 0,
+          "label": "alternates · not charged",
+          "tone": "muted"
+        }
+      ],
+      "primaryAction": null,
+      "publish": null,
+      "filters": [
+        {
+          "code": "entry",
+          "label": "Entry status",
+          "options": [
+            {
+              "value": "withdrawn",
+              "label": "Withdrawn"
+            }
+          ]
+        },
+        {
+          "code": "region",
+          "label": "All regions",
+          "options": [
+            {
+              "value": "north_america",
+              "label": "N. AMERICA"
+            }
+          ]
+        },
+        {
+          "code": "payment",
+          "label": "Payment",
+          "options": []
+        },
+        {
+          "code": "insurance",
+          "label": "Insurance",
+          "options": [
+            {
+              "value": "verified",
+              "label": "Verified"
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "id": "01a15ac0-347a-73ba-8faf-89658f5fdbc9",
+          "group": "withdrawn",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtValidCardRemovalf81b",
+            "country": "United States"
+          },
+          "ranking": "Withdrawn 20 Oct · Athlete request",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "ok",
+            "label": "Insurance: verified",
+            "code": "verified"
+          },
+          "payment": null,
+          "entry": {
+            "code": "withdrawn",
+            "label": "Withdrawn",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [],
+          "movable": false,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": null,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        }
+      ],
+      "version": 3,
+      "chargesInFlight": false
+    }
+  },
+  "history": {
+    "summary": "2 card attempts · 1 declined",
+    "items": [
+      {
+        "id": "01a15ac0-540a-7069-8932-c865ddb9a95c",
+        "when": "20 Oct 19:18 UTC",
+        "what": "Card payment succeeded",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15ac0-511b-7172-a042-d3385f875713",
+        "when": "20 Oct 19:18 UTC",
+        "what": "Entry withdrawn · was #1 · Athlete request",
+        "channel": "Tour Manager",
+        "by": "T. Manager 101"
+      },
+      {
+        "id": "01a15ac0-47ef-70a8-8438-bc8d9c38b9cd",
+        "when": "20 Oct 19:18 UTC",
+        "what": "Card payment declined (generic_decline)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15ac0-3edc-76f0-9a70-264f2cfb77be",
+        "when": "20 Oct 19:18 UTC",
+        "what": "Card payment charge started",
+        "channel": "Stripe",
+        "by": "T. Manager 101"
+      },
+      {
+        "id": "01a15ac0-3d44-77bc-929b-be827720a3e5",
+        "when": "20 Oct 19:18 UTC",
+        "what": "Seed · to #1",
+        "channel": "Tour Manager",
+        "by": "T. Manager 101"
+      }
+    ]
+  },
+  "finalRow": {
+    "id": "01a15ac0-347a-73ba-8faf-89658f5fdbc9",
+    "group": "withdrawn",
+    "athlete": {
+      "initials": "CE",
+      "name": "Checklist ExtValidCardRemovalf81b",
+      "country": "United States"
+    },
+    "ranking": "Withdrawn 20 Oct · Athlete request",
+    "region": "north_america",
+    "highlight": null,
+    "insurance": {
+      "state": "ok",
+      "label": "Insurance: verified",
+      "code": "verified"
+    },
+    "payment": null,
+    "entry": {
+      "code": "withdrawn",
+      "label": "Withdrawn",
+      "tone": "neutral"
+    },
+    "waivable": {
+      "fee": false
+    },
+    "actions": [],
+    "movable": false,
+    "pinned": false,
+    "hasHistory": true,
+    "seedRank": null,
+    "alternatePosition": null,
+    "moveUpSeat": null,
+    "movedUpFrom": null
+  },
+  "limit": "No database mutations, controlled automatic scheduler run or alternate promotion. Card change may itself trigger retry; inspect timeline and pre-removal snapshot.",
+  "checks": [
+    {
+      "name": "Initial test card declines",
+      "expected": "declined",
+      "actual": "declined",
+      "status": "PASS",
+      "message": "",
+      "timestamp": "2026-10-20T19:18:33.614Z"
+    },
+    {
+      "name": "Athlete remains withdrawn",
+      "expected": "withdrawn",
+      "actual": "withdrawn",
+      "status": "PASS",
+      "message": "",
+      "timestamp": "2026-10-20T19:18:46.394Z"
+    },
+    {
+      "name": "Retry endpoint rejects a withdrawn athlete with valid card",
+      "expected": true,
+      "actual": false,
+      "status": "FAIL",
+      "message": "HTTP 200",
+      "timestamp": "2026-10-20T19:18:46.394Z"
+    }
+  ]
+}
