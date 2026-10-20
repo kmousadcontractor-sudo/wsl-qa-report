@@ -1,0 +1,198 @@
+<title>WSL Athlete Registration — Demo Library</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a broadcast-style header, then each demo as a section — player with a chapter rail beside it on wide screens, outcome and timeline below. */
+:root {
+  --bg: #f2f6f8; --surface: #ffffff; --ink: #0c2230; --muted: #557080; --line: #d3e0e6;
+  --ocean: #0a6fa8; --ocean-soft: #e1eef6; --deep: #0a2a3b; --on-deep: #e8f4f9; --sun: #e2582b;
+  --ok: #217a4a; --ok-bg: #e3f3ea; --bad: #b3261e; --bad-bg: #fbe7e5; --wait: #6a7780; --wait-bg: #e9eef1;
+  --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #08161e; --surface: #0f2230; --ink: #e3eef3; --muted: #93adbb; --line: #20394a; --ocean: #5bb8e8; --ocean-soft: #133447;
+  --deep: #061a26; --on-deep: #e3f1f7; --sun: #f08a5d; --ok: #8fd6ad; --ok-bg: #15342a; --bad: #f2a39c; --bad-bg: #3b1c1a; --wait: #a9b8c0; --wait-bg: #1f313c; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #08161e; --surface: #0f2230; --ink: #e3eef3; --muted: #93adbb; --line: #20394a; --ocean: #5bb8e8; --ocean-soft: #133447;
+  --deep: #061a26; --on-deep: #e3f1f7; --sun: #f08a5d; --ok: #8fd6ad; --ok-bg: #15342a; --bad: #f2a39c; --bad-bg: #3b1c1a; --wait: #a9b8c0; --wait-bg: #1f313c; color-scheme: dark }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 17px/1.55 var(--body); }
+.band { background: var(--deep); color: var(--on-deep); }
+.wrap { max-width: 1280px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header .wrap { padding-block: 34px 30px; display: grid; gap: 10px; }
+.eyebrow { font: 500 13px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--sun); }
+h1 { font: 700 clamp(34px, 5vw, 58px)/1.02 var(--display); margin: 0; letter-spacing: .01em; text-wrap: balance; }
+header p { margin: 0; max-width: 72ch; color: var(--on-deep); opacity: .86; }
+nav.jump { display: flex; flex-wrap: wrap; gap: 8px 18px; padding-top: 6px; }
+nav.jump a { color: var(--on-deep); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--sun); }
+main .wrap { padding-block: 30px 70px; display: grid; gap: 38px; }
+section { display: grid; gap: 18px; }
+h2 { font: 700 34px/1.05 var(--display); margin: 0; text-wrap: balance; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+h2 .tag { font: 500 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ocean); }
+h3 { font: 700 22px/1.2 var(--display); margin: 0; letter-spacing: .01em; }
+p { margin: 0; }
+.lead { max-width: 75ch; color: var(--muted); }
+.lead a, .ref a { color: var(--ocean); }
+.player { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start; }
+.screen { background: #000; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; max-width: 100%; }
+.screen video { width: 100%; height: 100%; display: block; }
+.rail { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: grid; gap: 4px; max-height: 100%; overflow: auto; }
+.rail strong { font: 600 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 4px 8px 8px; }
+.chap { display: grid; grid-template-columns: 58px 1fr; gap: 8px; align-items: baseline; text-align: left; width: 100%; padding: 8px; border: 0; border-radius: 7px; background: transparent; color: var(--ink); font: 600 16px var(--body); cursor: pointer; }
+.chap .t { font: 500 13px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.chap:hover { background: var(--ocean-soft); }
+.chap[aria-current="true"] { background: var(--ocean); color: var(--surface); }
+.chap[aria-current="true"] .t { color: var(--surface); }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { font: 600 15px/1 var(--body); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.btn.primary { background: var(--ocean); border-color: var(--ocean); color: var(--surface); }
+.btn[aria-pressed="false"] { opacity: .7; }
+.speed { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.speed span { font: 600 13px var(--body); color: var(--muted); padding: 10px 10px 10px 12px; }
+.speed button { font: 600 15px/1 var(--mono); padding: 10px 11px; border: 0; border-left: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font-variant-numeric: tabular-nums; }
+.speed button[aria-pressed="true"] { background: var(--ocean); color: var(--surface); }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--sun); outline-offset: 2px; }
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 18px; align-items: start; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.ref { display: grid; gap: 4px; font-size: 15px; }
+.ref span { color: var(--muted); }
+ul.outcome { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+ul.outcome li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; }
+.mark { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 13px var(--body); }
+.mark.ok { background: var(--ok-bg); color: var(--ok); } .mark.bad { background: var(--bad-bg); color: var(--bad); } .mark.wait { background: var(--wait-bg); color: var(--wait); }
+.note { font-size: 14px; color: var(--muted); }
+.failure { background: var(--bad-bg); color: var(--bad); border-radius: 8px; padding: 10px 12px; font-weight: 600; }
+ol.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.tl-head { display: flex; gap: 10px; align-items: baseline; }
+.tl-head button { border: 0; background: none; padding: 0; cursor: pointer; color: var(--ocean); font: 500 14px var(--mono); font-variant-numeric: tabular-nums; }
+.tl-steps { margin: 6px 0 0; padding: 0 0 0 68px; list-style: none; display: grid; gap: 3px; font-size: 15px; }
+.tl-steps button { border: 0; background: none; padding: 0; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.tl-steps button:hover { color: var(--ocean); }
+.tl-steps .t { font: 500 12px var(--mono); color: var(--muted); margin-right: 8px; font-variant-numeric: tabular-nums; }
+details summary { cursor: pointer; font-weight: 600; color: var(--ocean); }
+.pending { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.pending .panel { border-style: dashed; }
+.badge { display: inline-block; font: 600 12px/1.6 var(--body); padding: 1px 9px; border-radius: 999px; background: var(--wait-bg); color: var(--wait); width: fit-content; }
+footer .wrap { padding-block: 22px 40px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
+@media (max-width: 960px) { .player, .cols { grid-template-columns: 1fr; } .rail { max-height: none; } .tl-steps { padding-left: 0; } }
+@media (prefers-reduced-motion: no-preference) { .chap, .btn { transition: background .12s, color .12s; } }
+</style>
+
+<header class="band">
+  <div class="wrap">
+    <div class="eyebrow">WSL Pro · development environment</div>
+    <h1>WSL Athlete Registration — Demo Library</h1>
+    <p>Screen recordings of the real registration journeys, recorded by automation on the WSL dev environment with Stripe test mode. Each demo shows every field being filled, the event entry, and what the Tour Manager does next. Captions describe each action in plain English.</p>
+    <nav class="jump" aria-label="Sections">
+      <a href="#demo01">Demo 01 · Athlete 18+</a><a href="#demo02">Demo 02 · Ages 13–17</a><a href="#demo03">Demo 03 · Under 13</a>
+      <a href="#demo01" id="jumpTm">Tour Manager workflow</a><a href="#consent">Consent and email flows</a>
+    </nav>
+  </div>
+</header>
+
+<main><div class="wrap">
+  <section id="demo01" aria-labelledby="d1">
+    <h2 id="d1"><span class="tag">Demo 01</span>Athlete 18+ · registration to payment</h2>
+    <p class="lead" id="d1lead"></p>
+    <div class="player">
+      <div class="screen"><video id="video" controls preload="metadata" playsinline>
+        <source src="demo-web.mp4" type="video/mp4">
+      </video></div>
+      <div class="rail" id="rail" role="list" aria-label="Chapters"><strong>Chapters</strong></div>
+    </div>
+    <div class="controls">
+      <div class="speed" role="group" aria-label="Playback speed" id="speed"></div>
+      <button class="btn" type="button" id="capToggle" aria-pressed="true">Captions on</button>
+      <button class="btn primary" type="button" id="toTm">Jump to Tour Manager</button>
+      <button class="btn" type="button" id="toEmail" hidden>Jump to emails</button>
+      <span class="note" id="length"></span>
+    </div>
+    <div class="cols">
+      <div class="panel">
+        <h3>About this demo</h3>
+        <div class="ref" id="ref"></div>
+        <h3>Verified outcome</h3>
+        <div id="failure" hidden class="failure"></div>
+        <ul class="outcome" id="outcome"></ul>
+        <p class="note">Each line was checked against the application after the step, not taken from the screen alone.</p>
+      </div>
+      <div class="panel">
+        <h3>Step-by-step timeline</h3>
+        <p class="note">Times come from the recording. Select any line to play from there.</p>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="pendingTitle">
+    <h2 id="pendingTitle"><span class="tag">Coming next</span>Other age groups</h2>
+    <div class="pending">
+      <div class="panel" id="demo02"><span class="badge">Not Yet Recorded</span><h3>Demo 02 · Ages 13–17</h3>
+        <p>The athlete registers, a guardian receives a consent email, opens the consent form, completes it and submits it, then the entry continues.</p></div>
+      <div class="panel" id="demo03"><span class="badge">Not Yet Recorded</span><h3>Demo 03 · Under 13</h3>
+        <p>A parent or guardian registers the child, completes consent, and the demo shows the event entry rules that apply under 13.</p></div>
+      <div class="panel" id="consent"><span class="badge">Not Yet Recorded</span><h3>Consent and email flows</h3>
+        <p>Guardian consent emails and forms appear in Demos 02 and 03. Demo 01 includes the athlete's real receipt and entry emails where they were received.</p></div>
+    </div>
+  </section>
+</div></main>
+<footer><div class="wrap">Recorded on the WSL development environment. Athlete names and hometowns come from public WSL profiles; contact, address, birth date and card details are not the athletes' own. These accounts were created for the recording and are not owned or authorised by the athletes. Payments use Stripe test mode.</div></footer>
+
+<script id="demo-data" type="application/json">{"athlete":{"name":"Gabriela Bryan","profileUrl":"https://www.worldsurfleague.com/athletes/7854/gabriela-bryan","nation":"United States"},"event":{"id":"01a158ce-cb4b-774c-99af-d4fa68739d16","name":"Haleiwa Women's Pro","start":"2026-11-15","region":"hawaii_tahiti","tour":"Qualifying Series (QS) · Women","location":"Haleiwa, Oahu, Hawaii · Honolulu time"},"recordedAt":"2026-10-20T10:15:06.097Z","durationMs":408930,"chapters":[{"start":6542,"title":"Registration begins","steps":[{"start":6543,"text":"The athlete opens the WSL Pro registration page."},{"start":10577,"text":"The athlete enters their date of birth."},{"start":14956,"text":"The athlete continues to create an account."}]},{"start":17996,"title":"Create account","steps":[{"start":17996,"text":"The empty account form is shown."},{"start":21024,"text":"The athlete enters their first name."},{"start":24765,"text":"The athlete enters their last name."},{"start":28349,"text":"The athlete enters their email address."},{"start":33579,"text":"The athlete creates a password. It stays hidden."},{"start":37820,"text":"The athlete accepts the Terms of Use and Privacy Policy."},{"start":40517,"text":"The athlete leaves the optional marketing emails unticked."},{"start":43185,"text":"The account form is complete."},{"start":46274,"text":"The athlete creates the account."},{"start":50346,"text":"The account is created and the athlete is signed in."}]},{"start":53000,"title":"Athlete details","steps":[{"start":53000,"text":"The athlete details form is shown."},{"start":56086,"text":"The athlete chooses to register themselves."},{"start":58749,"text":"First and last name are filled in from the account."},{"start":61434,"text":"Middle name is optional, so the athlete leaves it empty."},{"start":64084,"text":"The athlete selects their gender."},{"start":67059,"text":"The athlete selects the nation they represent."},{"start":71997,"text":"The athlete selects their country of residence."},{"start":77003,"text":"The athlete enters their street address."},{"start":81892,"text":"The athlete selects their state."},{"start":86815,"text":"The athlete enters their city."},{"start":91330,"text":"The athlete enters their ZIP code."},{"start":95154,"text":"The athlete enters their phone number."},{"start":99486,"text":"The athlete adds their WhatsApp number, which is optional."},{"start":103791,"text":"The athlete enters their emergency contact name."},{"start":108757,"text":"The athlete enters the emergency contact relationship."},{"start":113055,"text":"The athlete enters the emergency contact phone number."},{"start":117301,"text":"The athlete enters the emergency contact email."},{"start":122729,"text":"The athlete details form is complete."},{"start":125761,"text":"The athlete continues to the membership step."}]},{"start":128410,"title":"Membership","steps":[{"start":128410,"text":"The athlete reviews the membership plans."},{"start":131940,"text":"The athlete selects the Regional Membership."},{"start":134634,"text":"The athlete opens legal document 1 of 4."},{"start":137250,"text":"The athlete reads the document to the end."},{"start":139892,"text":"The athlete confirms they have read Age and authority certification."},{"start":142523,"text":"The athlete signs the document."},{"start":145216,"text":"The athlete opens legal document 2 of 4."},{"start":147832,"text":"The athlete reads the document to the end."},{"start":150466,"text":"The athlete confirms they have read Membership terms and conditions."},{"start":153099,"text":"The athlete signs the document."},{"start":155783,"text":"The athlete opens legal document 3 of 4."},{"start":158385,"text":"The athlete reads the document to the end."},{"start":161017,"text":"The athlete confirms they have read Waiver, release and indemnity."},{"start":163646,"text":"The athlete signs the document."},{"start":166313,"text":"The athlete opens legal document 4 of 4."},{"start":168962,"text":"The athlete reads the document to the end."},{"start":171603,"text":"The athlete confirms they have read Health and insurance authorisation."},{"start":174230,"text":"The athlete signs the document."},{"start":176899,"text":"All four documents are signed."},{"start":179524,"text":"The athlete continues to payment."}]},{"start":182182,"title":"Membership payment","steps":[{"start":182182,"text":"The checkout shows the membership price."},{"start":185718,"text":"The athlete enters a Stripe test card number."},{"start":190168,"text":"The athlete enters the card expiry date."},{"start":193223,"text":"The athlete enters the card security code."},{"start":196019,"text":"The athlete leaves card saving and auto-renew off."},{"start":198645,"text":"The athlete pays for the membership in Stripe test mode."},{"start":210460,"text":"The membership is confirmed for this athlete."}]},{"start":214532,"title":"Event entry","steps":[{"start":214532,"text":"The athlete goes to the events they can enter."},{"start":217168,"text":"The athlete views the available events."},{"start":220767,"text":"The athlete finds Haleiwa Women's Pro."},{"start":223450,"text":"The athlete opens the event registration."},{"start":226449,"text":"The athlete reviews their membership and insurance."},{"start":229970,"text":"The athlete confirms they have their own insurance."},{"start":232642,"text":"The athlete uses their membership phone for reminders."},{"start":235266,"text":"WhatsApp event reminders stay switched on."},{"start":237917,"text":"The athlete chooses to pay with a new card."},{"start":240583,"text":"The athlete enters the Stripe test card number."},{"start":244912,"text":"The athlete enters the card expiry date."},{"start":247879,"text":"The athlete enters the card security code."},{"start":250703,"text":"The entry fee is set aside on the card, not charged yet."},{"start":254265,"text":"The athlete submits their event entry."},{"start":266906,"text":"The entry is submitted and the athlete is on the waitlist."}]},{"start":271454,"title":"Emails","steps":[{"start":272223,"text":"The athlete receives the membership payment receipt by email."},{"start":278974,"text":"The athlete receives an email that the entry is submitted."}]},{"start":295765,"title":"Tour Manager","steps":[{"start":295765,"text":"The Tour Manager opens the sign-in page."},{"start":298661,"text":"The Tour Manager enters their test account email."},{"start":304609,"text":"The Tour Manager enters their password. It stays hidden."},{"start":308997,"text":"The Tour Manager signs in."},{"start":312158,"text":"The Tour Manager opens the events list."},{"start":316532,"text":"The Tour Manager opens Haleiwa Women's Pro."},{"start":320053,"text":"The event page has Overview, Athletes and History tabs."},{"start":323597,"text":"The Tour Manager opens the event settings."},{"start":326543,"text":"The Tour Manager closes the event for new entries."},{"start":331305,"text":"The event is now closed for entries."},{"start":333963,"text":"The Tour Manager opens the Athletes tab."},{"start":337468,"text":"The Tour Manager finds the athlete: waitlisted, with the fee set aside."},{"start":341494,"text":"The Tour Manager starts confirming the field."},{"start":344145,"text":"The dialog shows who is confirmed and what is charged."},{"start":348660,"text":"The Tour Manager confirms they reviewed the seed list."},{"start":351301,"text":"The Tour Manager confirms the field and starts the test payment."},{"start":353955,"text":"The page updates while the payment is processed."},{"start":357645,"text":"The test payment is collected and the entry is confirmed."},{"start":362728,"text":"The Tour Manager opens the entry history."}]},{"start":371770,"title":"Final verification","steps":[{"start":371770,"text":"The athlete signs in again."},{"start":384830,"text":"The athlete opens their event entry."},{"start":389899,"text":"The athlete sees the entry as confirmed."}]}],"outcome":[["Athlete account created and signed in",true],["Regional membership paid in Stripe test mode and active",true],["Event entry submitted (waitlisted, fee set aside on the card)",true],["Event closed for entries by the Tour Manager",true],["Field confirmed by the Tour Manager",true],["Entry fee collected in Stripe test mode",true],["Athlete sees the entry as confirmed",true],["Email received: \"payment receipt\"",true],["Email received: \"entry is submitted\"",true]],"failure":null,"cardAttempts":["Card payment succeeded","Card payment charge started"],"captionsVtt":"WEBVTT\n\n1\n00:00:06.543 --> 00:00:10.537\nThe athlete opens the WSL Pro registration page.\n\n2\n00:00:10.577 --> 00:00:14.916\nThe athlete enters their date of birth.\n\n3\n00:00:14.956 --> 00:00:17.956\nThe athlete continues to create an account.\n\n4\n00:00:17.996 --> 00:00:20.984\nThe empty account form is shown.\n\n5\n00:00:21.024 --> 00:00:24.725\nThe athlete enters their first name.\n\n6\n00:00:24.765 --> 00:00:28.309\nThe athlete enters their last name.\n\n7\n00:00:28.349 --> 00:00:33.539\nThe athlete enters their email address.\n\n8\n00:00:33.579 --> 00:00:37.780\nThe athlete creates a password. It stays hidden.\n\n9\n00:00:37.820 --> 00:00:40.477\nThe athlete accepts the Terms of Use and Privacy Policy.\n\n10\n00:00:40.517 --> 00:00:43.145\nThe athlete leaves the optional marketing emails unticked.\n\n11\n00:00:43.185 --> 00:00:46.234\nThe account form is complete.\n\n12\n00:00:46.274 --> 00:00:49.326\nThe athlete creates the account.\n\n13\n00:00:50.346 --> 00:00:52.960\nThe account is created and the athlete is signed in.\n\n14\n00:00:53.000 --> 00:00:56.046\nThe athlete details form is shown.\n\n15\n00:00:56.086 --> 00:00:58.709\nThe athlete chooses to register themselves.\n\n16\n00:00:58.749 --> 00:01:01.394\nFirst and last name are filled in from the account.\n\n17\n00:01:01.434 --> 00:01:04.044\nMiddle name is optional, so the athlete leaves it empty.\n\n18\n00:01:04.084 --> 00:01:07.019\nThe athlete selects their gender.\n\n19\n00:01:07.059 --> 00:01:11.957\nThe athlete selects the nation they represent.\n\n20\n00:01:11.997 --> 00:01:16.963\nThe athlete selects their country of residence.\n\n21\n00:01:17.003 --> 00:01:21.852\nThe athlete enters their street address.\n\n22\n00:01:21.892 --> 00:01:26.775\nThe athlete selects their state.\n\n23\n00:01:26.815 --> 00:01:31.290\nThe athlete enters their city.\n\n24\n00:01:31.330 --> 00:01:35.114\nThe athlete enters their ZIP code.\n\n25\n00:01:35.154 --> 00:01:39.446\nThe athlete enters their phone number.\n\n26\n00:01:39.486 --> 00:01:43.751\nThe athlete adds their WhatsApp number, which is optional.\n\n27\n00:01:43.791 --> 00:01:48.717\nThe athlete enters their emergency contact name.\n\n28\n00:01:48.757 --> 00:01:53.015\nThe athlete enters the emergency contact relationship.\n\n29\n00:01:53.055 --> 00:01:57.261\nThe athlete enters the emergency contact phone number.\n\n30\n00:01:57.301 --> 00:02:02.689\nThe athlete enters the emergency contact email.\n\n31\n00:02:02.729 --> 00:02:05.721\nThe athlete details form is complete.\n\n32\n00:02:05.761 --> 00:02:08.370\nThe athlete continues to the membership step.\n\n33\n00:02:08.410 --> 00:02:11.900\nThe athlete reviews the membership plans.\n\n34\n00:02:11.940 --> 00:02:14.594\nThe athlete selects the Regional Membership.\n\n35\n00:02:14.634 --> 00:02:17.210\nThe athlete opens legal document 1 of 4.\n\n36\n00:02:17.250 --> 00:02:19.852\nThe athlete reads the document to the end.\n\n37\n00:02:19.892 --> 00:02:22.483\nThe athlete confirms they have read Age and authority certification.\n\n38\n00:02:22.523 --> 00:02:25.176\nThe athlete signs the document.\n\n39\n00:02:25.216 --> 00:02:27.792\nThe athlete opens legal document 2 of 4.\n\n40\n00:02:27.832 --> 00:02:30.426\nThe athlete reads the document to the end.\n\n41\n00:02:30.466 --> 00:02:33.059\nThe athlete confirms they have read Membership terms and conditions.\n\n42\n00:02:33.099 --> 00:02:35.743\nThe athlete signs the document.\n\n43\n00:02:35.783 --> 00:02:38.345\nThe athlete opens legal document 3 of 4.\n\n44\n00:02:38.385 --> 00:02:40.977\nThe athlete reads the document to the end.\n\n45\n00:02:41.017 --> 00:02:43.606\nThe athlete confirms they have read Waiver, release and indemnity.\n\n46\n00:02:43.646 --> 00:02:46.273\nThe athlete signs the document.\n\n47\n00:02:46.313 --> 00:02:48.922\nThe athlete opens legal document 4 of 4.\n\n48\n00:02:48.962 --> 00:02:51.563\nThe athlete reads the document to the end.\n\n49\n00:02:51.603 --> 00:02:54.190\nThe athlete confirms they have read Health and insurance authorisation.\n\n50\n00:02:54.230 --> 00:02:56.859\nThe athlete signs the document.\n\n51\n00:02:56.899 --> 00:02:59.484\nAll four documents are signed.\n\n52\n00:02:59.524 --> 00:03:02.142\nThe athlete continues to payment.\n\n53\n00:03:02.182 --> 00:03:05.678\nThe checkout shows the membership price.\n\n54\n00:03:05.718 --> 00:03:10.128\nThe athlete enters a Stripe test card number.\n\n55\n00:03:10.168 --> 00:03:13.183\nThe athlete enters the card expiry date.\n\n56\n00:03:13.223 --> 00:03:15.979\nThe athlete enters the card security code.\n\n57\n00:03:16.019 --> 00:03:18.605\nThe athlete leaves card saving and auto-renew off.\n\n58\n00:03:18.645 --> 00:03:29.473\nThe athlete pays for the membership in Stripe test mode.\n\n59\n00:03:30.460 --> 00:03:34.492\nThe membership is confirmed for this athlete.\n\n60\n00:03:34.532 --> 00:03:37.128\nThe athlete goes to the events they can enter.\n\n61\n00:03:37.168 --> 00:03:40.727\nThe athlete views the available events.\n\n62\n00:03:40.767 --> 00:03:43.410\nThe athlete finds Haleiwa Women's Pro.\n\n63\n00:03:43.450 --> 00:03:46.409\nThe athlete opens the event registration.\n\n64\n00:03:46.449 --> 00:03:49.930\nThe athlete reviews their membership and insurance.\n\n65\n00:03:49.970 --> 00:03:52.602\nThe athlete confirms they have their own insurance.\n\n66\n00:03:52.642 --> 00:03:55.226\nThe athlete uses their membership phone for reminders.\n\n67\n00:03:55.266 --> 00:03:57.877\nWhatsApp event reminders stay switched on.\n\n68\n00:03:57.917 --> 00:04:00.543\nThe athlete chooses to pay with a new card.\n\n69\n00:04:00.583 --> 00:04:04.872\nThe athlete enters the Stripe test card number.\n\n70\n00:04:04.912 --> 00:04:07.839\nThe athlete enters the card expiry date.\n\n71\n00:04:07.879 --> 00:04:10.663\nThe athlete enters the card security code.\n\n72\n00:04:10.703 --> 00:04:14.225\nThe entry fee is set aside on the card, not charged yet.\n\n73\n00:04:14.265 --> 00:04:26.111\nThe athlete submits their event entry.\n\n74\n00:04:26.906 --> 00:04:31.454\nThe entry is submitted and the athlete is on the waitlist.\n\n75\n00:04:32.223 --> 00:04:38.247\nThe athlete receives the membership payment receipt by email.\n\n76\n00:04:38.974 --> 00:04:45.050\nThe athlete receives an email that the entry is submitted.\n\n77\n00:04:55.765 --> 00:04:58.621\nThe Tour Manager opens the sign-in page.\n\n78\n00:04:58.661 --> 00:05:04.569\nThe Tour Manager enters their test account email.\n\n79\n00:05:04.609 --> 00:05:08.957\nThe Tour Manager enters their password. It stays hidden.\n\n80\n00:05:08.997 --> 00:05:12.118\nThe Tour Manager signs in.\n\n81\n00:05:12.158 --> 00:05:16.492\nThe Tour Manager opens the events list.\n\n82\n00:05:16.532 --> 00:05:20.013\nThe Tour Manager opens Haleiwa Women's Pro.\n\n83\n00:05:20.053 --> 00:05:23.557\nThe event page has Overview, Athletes and History tabs.\n\n84\n00:05:23.597 --> 00:05:26.294\nThe Tour Manager opens the event settings.\n\n85\n00:05:26.543 --> 00:05:31.057\nThe Tour Manager closes the event for new entries.\n\n86\n00:05:31.305 --> 00:05:33.923\nThe event is now closed for entries.\n\n87\n00:05:33.963 --> 00:05:37.428\nThe Tour Manager opens the Athletes tab.\n\n88\n00:05:37.468 --> 00:05:41.454\nThe Tour Manager finds the athlete: waitlisted, with the fee set aside.\n\n89\n00:05:41.494 --> 00:05:44.105\nThe Tour Manager starts confirming the field.\n\n90\n00:05:44.145 --> 00:05:48.620\nThe dialog shows who is confirmed and what is charged.\n\n91\n00:05:48.660 --> 00:05:51.261\nThe Tour Manager confirms they reviewed the seed list.\n\n92\n00:05:51.301 --> 00:05:53.915\nThe Tour Manager confirms the field and starts the test payment.\n\n93\n00:05:53.955 --> 00:05:57.056\nThe page updates while the payment is processed.\n\n94\n00:05:57.645 --> 00:06:02.688\nThe test payment is collected and the entry is confirmed.\n\n95\n00:06:02.728 --> 00:06:07.730\nThe Tour Manager opens the entry history.\n\n96\n00:06:11.770 --> 00:06:24.790\nThe athlete signs in again.\n\n97\n00:06:24.830 --> 00:06:29.859\nThe athlete opens their event entry.\n\n98\n00:06:29.899 --> 00:06:34.990\nThe athlete sees the entry as confirmed.\n","chaptersVtt":"WEBVTT\n\n1\n00:00:06.542 --> 00:00:17.996\nRegistration begins\n\n2\n00:00:17.996 --> 00:00:53.000\nCreate account\n\n3\n00:00:53.000 --> 00:02:08.410\nAthlete details\n\n4\n00:02:08.410 --> 00:03:02.182\nMembership\n\n5\n00:03:02.182 --> 00:03:34.532\nMembership payment\n\n6\n00:03:34.532 --> 00:04:31.454\nEvent entry\n\n7\n00:04:31.454 --> 00:04:55.765\nEmails\n\n8\n00:04:55.765 --> 00:06:11.770\nTour Manager\n\n9\n00:06:11.770 --> 00:06:48.930\nFinal verification\n"}</script>
+<script>
+const D = JSON.parse(document.getElementById('demo-data').textContent);
+const video = document.getElementById('video');
+const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+const mmss = ms => { const s = Math.floor(ms / 1000); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+// Captions and chapters ship inside the page and are attached as tracks from blob URLs.
+for (const [kind, label, text, isDefault] of [['captions', 'English', D.captionsVtt, true], ['chapters', 'Chapters', D.chaptersVtt, false]]) {
+  const track = document.createElement('track'); track.kind = kind; track.label = label; track.srclang = 'en'; track.default = isDefault;
+  track.src = URL.createObjectURL(new Blob([text], { type: 'text/vtt' })); video.append(track);
+}
+video.textTracks[0] && (video.textTracks[0].mode = 'showing');
+const seek = ms => { video.currentTime = ms / 1000; video.play().catch(() => {}); video.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); };
+
+document.getElementById('d1lead').textContent = `${D.athlete.name} registers as an athlete, pays for a Regional membership, enters ${D.event.name}, and the Tour Manager confirms the field and takes the entry fee. Recorded ${new Date(D.recordedAt).toUTCString().slice(5, 16)}.`;
+document.getElementById('length').textContent = 'Length ' + mmss(D.durationMs) + ' · ' + D.chapters.length + ' chapters';
+const ref = document.getElementById('ref');
+const link = el('a', null, 'Public WSL profile'); link.href = D.athlete.profileUrl; link.target = '_blank'; link.rel = 'noopener';
+const source = el('div'); source.append(link, document.createTextNode(' · public name, hometown and tour only. WSL lists her nation as Hawaii; the app offers ISO countries, so the demo uses United States.'));
+ref.append(el('div', null, 'Demo athlete: ' + D.athlete.name), source);
+ref.append(el('span', null, 'Event: ' + D.event.name + ' · ' + D.event.tour + ' · starts ' + D.event.start));
+ref.append(el('span', null, 'Contact, address, birth date and card are not the athlete\'s own.'));
+
+const outcome = document.getElementById('outcome');
+for (const [text, ok] of D.outcome) { const li = el('li'); li.append(el('span', 'mark ' + (ok === true ? 'ok' : ok === false ? 'bad' : 'wait'), ok === true ? '✓' : ok === false ? '✕' : '–'), el('span', null, text + (ok == null ? ' (not reached)' : ''))); outcome.append(li); }
+if (D.failure) { const f = document.getElementById('failure'); f.hidden = false; f.textContent = 'The recording stopped early: ' + (D.failure.step ? D.failure.step + ' — ' : '') + D.failure.message; }
+
+const rail = document.getElementById('rail'); const chapButtons = [];
+for (const c of D.chapters) { const b = el('button', 'chap'); b.type = 'button'; b.setAttribute('role', 'listitem'); b.append(el('span', 't', mmss(c.start)), el('span', null, c.title)); b.addEventListener('click', () => seek(c.start)); rail.append(b); chapButtons.push([c, b]); }
+video.addEventListener('timeupdate', () => { const t = video.currentTime * 1000; let cur = null; for (const [c, b] of chapButtons) if (t >= c.start) cur = b; for (const [, b] of chapButtons) b.setAttribute('aria-current', String(b === cur)); });
+
+const tl = document.getElementById('timeline');
+for (const c of D.chapters) {
+  const li = el('li'); const head = el('div', 'tl-head'); const t = el('button', null, mmss(c.start)); t.type = 'button'; t.addEventListener('click', () => seek(c.start));
+  head.append(t, el('h3', null, c.title)); li.append(head);
+  const det = el('details'); det.append(el('summary', null, c.steps.length + ' steps'));
+  const ul = el('ul', 'tl-steps'); for (const s of c.steps) { const i = el('li'); const b = el('button'); b.type = 'button'; b.append(el('span', 't', mmss(s.start)), document.createTextNode(s.text)); b.addEventListener('click', () => seek(s.start)); i.append(b); ul.append(i); }
+  det.append(ul); li.append(det); tl.append(li);
+}
+const find = re => D.chapters.find(c => re.test(c.title));
+const tm = find(/Tour Manager/), mail = find(/Email/);
+document.getElementById('toTm').addEventListener('click', () => tm && seek(tm.start)); if (!tm) document.getElementById('toTm').hidden = true;
+document.getElementById('jumpTm').addEventListener('click', () => tm && setTimeout(() => seek(tm.start), 50));
+if (mail) { const b = document.getElementById('toEmail'); b.hidden = false; b.addEventListener('click', () => seek(mail.start)); }
+// Playback speed: remembered per viewer when the browser allows it.
+const speedBox = document.getElementById('speed'); speedBox.append(el('span', null, 'Speed'));
+let rate = 1; try { rate = Number(localStorage.getItem('wsl-demo-speed')) || 1; } catch (e) {}
+const speedButtons = [0.75, 1, 1.25, 1.5, 2].map(r => { const b = el('button', null, r + '×'); b.type = 'button'; b.setAttribute('aria-label', 'Play at ' + r + ' times speed');
+  b.addEventListener('click', () => setRate(r)); speedBox.append(b); return [r, b]; });
+function setRate(r) { video.playbackRate = r; for (const [v, b] of speedButtons) b.setAttribute('aria-pressed', String(v === r)); try { localStorage.setItem('wsl-demo-speed', String(r)); } catch (e) {} }
+video.addEventListener('loadedmetadata', () => setRate(rate)); setRate(rate);
+const capBtn = document.getElementById('capToggle');
+capBtn.addEventListener('click', () => { const tr = video.textTracks[0]; const on = tr.mode !== 'showing'; tr.mode = on ? 'showing' : 'hidden'; capBtn.setAttribute('aria-pressed', String(on)); capBtn.textContent = on ? 'Captions on' : 'Captions off'; });
+</script>
