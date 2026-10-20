@@ -53,8 +53,8 @@ p { margin: 0; }
 .btn[aria-pressed="false"] { opacity: .7; }
 .speed { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
 .speed span { font: 600 13px var(--body); color: var(--muted); padding: 10px 10px 10px 12px; }
-.speed button { font: 600 15px/1 var(--mono); padding: 10px 11px; border: 0; border-left: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font-variant-numeric: tabular-nums; }
-.speed button[aria-pressed="true"] { background: var(--ocean); color: var(--surface); }
+.speed { align-items: center; }
+.speed select { font: 600 15px/1 var(--mono); padding: 9px 10px; border: 0; border-left: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font-variant-numeric: tabular-nums; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--sun); outline-offset: 2px; }
 .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 18px; align-items: start; }
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
@@ -105,7 +105,7 @@ footer .wrap { padding-block: 22px 40px; font-size: 14px; color: var(--muted); b
       <div class="rail" id="rail" role="list" aria-label="Chapters"><strong>Chapters</strong></div>
     </div>
     <div class="controls">
-      <div class="speed" role="group" aria-label="Playback speed" id="speed"></div>
+      <label class="speed" for="speedSelect"><span>Speed</span><select id="speedSelect"></select></label>
       <button class="btn" type="button" id="capToggle" aria-pressed="true">Captions on</button>
       <button class="btn primary" type="button" id="toTm">Jump to Tour Manager</button>
       <button class="btn" type="button" id="toEmail" hidden>Jump to emails</button>
@@ -186,12 +186,14 @@ const tm = find(/Tour Manager/), mail = find(/Email/);
 document.getElementById('toTm').addEventListener('click', () => tm && seek(tm.start)); if (!tm) document.getElementById('toTm').hidden = true;
 document.getElementById('jumpTm').addEventListener('click', () => tm && setTimeout(() => seek(tm.start), 50));
 if (mail) { const b = document.getElementById('toEmail'); b.hidden = false; b.addEventListener('click', () => seek(mail.start)); }
-// Playback speed: remembered per viewer when the browser allows it.
-const speedBox = document.getElementById('speed'); speedBox.append(el('span', null, 'Speed'));
+// Playback speed dropdown: remembered per viewer when the browser allows it.
+const SPEEDS = [0.75, 1, 1.25, 1.5, 2, 2.3, 2.5];
+const speedSelect = document.getElementById('speedSelect');
+for (const r of SPEEDS) { const o = el('option', null, r + '×'); o.value = String(r); speedSelect.append(o); }
 let rate = 1; try { rate = Number(localStorage.getItem('wsl-demo-speed')) || 1; } catch (e) {}
-const speedButtons = [0.75, 1, 1.25, 1.5, 2].map(r => { const b = el('button', null, r + '×'); b.type = 'button'; b.setAttribute('aria-label', 'Play at ' + r + ' times speed');
-  b.addEventListener('click', () => setRate(r)); speedBox.append(b); return [r, b]; });
-function setRate(r) { video.playbackRate = r; for (const [v, b] of speedButtons) b.setAttribute('aria-pressed', String(v === r)); try { localStorage.setItem('wsl-demo-speed', String(r)); } catch (e) {} }
+if (!SPEEDS.includes(rate)) rate = 1;
+function setRate(r) { video.playbackRate = r; speedSelect.value = String(r); try { localStorage.setItem('wsl-demo-speed', String(r)); } catch (e) {} }
+speedSelect.addEventListener('change', () => setRate(Number(speedSelect.value)));
 video.addEventListener('loadedmetadata', () => setRate(rate)); setRate(rate);
 const capBtn = document.getElementById('capToggle');
 capBtn.addEventListener('click', () => { const tr = video.textTracks[0]; const on = tr.mode !== 'showing'; tr.mode = on ? 'showing' : 'hidden'; capBtn.setAttribute('aria-pressed', String(on)); capBtn.textContent = on ? 'Captions on' : 'Captions off'; });
