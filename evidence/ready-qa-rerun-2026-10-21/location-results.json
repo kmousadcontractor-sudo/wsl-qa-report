@@ -1,0 +1,815 @@
+{
+  "runId": "20261021201156236-52b2e3",
+  "scope": "Existing regression plus October 13 session requirements. CMS migration excluded. Settings functionality is active; super-admin role assertions, calendar-year/November/insurance rollover rules, full manual status sequence, CT seeding and Stripe routing are deferred.",
+  "selectiveRerun": [
+    "ADD-44",
+    "ADD-45"
+  ],
+  "results": [
+    {
+      "id": "ADD-44",
+      "area": "Athlete",
+      "title": "Adult child-registration boundary and teen controls",
+      "steps": "Select For My Child with an age-18 account holder; submit a valid age-17 control and otherwise-valid age-18 and age-19 dependents; inspect teen controls.",
+      "expected": "Under-18 dependents are accepted; dependents aged 18 or older cannot complete registration. No specific message is required.",
+      "requirementRefs": [
+        "D-121",
+        "D-109"
+      ],
+      "cases": [],
+      "note": "Session action-item coverage; these are not additional spreadsheet case IDs.",
+      "startedAt": "2026-10-21T20:11:56.248Z",
+      "checks": [
+        {
+          "name": "An exactly-18 account holder can choose For My Child",
+          "expected": true,
+          "actual": true,
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:03.815Z"
+        },
+        {
+          "name": "For My Child is selected through its visible control",
+          "expected": true,
+          "actual": true,
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:03.888Z"
+        },
+        {
+          "name": "A valid under-18 dependent can complete child registration",
+          "expected": 201,
+          "actual": 201,
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:04.422Z"
+        },
+        {
+          "name": "Certified age-18 dependent submission is rejected",
+          "expected": 422,
+          "actual": 422,
+          "status": "PASS",
+          "message": "Same otherwise-valid guardian payload as the successful age-17 control. {\"title\":\"Check these details\",\"message\":\"An adult athlete registers as themselves.\",\"reason\":\"adult_registers_themselves\",\"fields\":{\"dateOfBirth\":{\"code\":\"adult_registers_themselves\",\"message\":\"An adult athlete registers as themselves.\"}},\"retryable\":false}",
+          "timestamp": "2026-10-21T20:12:04.870Z",
+          "expectedResult": "Reject the age-18 dependent without creating an athlete (HTTP 422).",
+          "actualResult": "The final child registration request returned HTTP 422.",
+          "executedSteps": [
+            "Signed in an exactly-18 account holder.",
+            "Selected For My Child and entered an age-18 DOB.",
+            "Submitted a valid age-17 dependent as a positive control.",
+            "Submitted the same valid guardian fields with a fresh dependent aged 18."
+          ],
+          "evidenceKind": "api"
+        },
+        {
+          "name": "Age-18 dependent cannot bypass the child boundary without certification",
+          "expected": 422,
+          "actual": 422,
+          "status": "PASS",
+          "message": "{\"title\":\"Check these details\",\"message\":\"An adult athlete registers as themselves.\",\"reason\":\"adult_registers_themselves\",\"fields\":{\"dateOfBirth\":{\"code\":\"adult_registers_themselves\",\"message\":\"An adult athlete registers as themselves.\"}},\"retryable\":false}",
+          "timestamp": "2026-10-21T20:12:09.140Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:05.200Z",
+          "expectedResult": "Reject an adult dependent in the guardian registration flow even when certification is unchecked (HTTP 422).",
+          "actualResult": "Guardian registration for age 18 with certification unchecked returned HTTP 422.",
+          "evidenceKind": "api-browser-reproduction",
+          "evidenceVideoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\ready-qa-rerun-2026-10-21\\guardian-location\\videos\\ADD-44\\page@982496413bb0763ca593805d7f299f65.webm",
+          "evidenceVideoStartedAt": "2026-10-21T20:12:05.096Z",
+          "executedSteps": [
+            "Used an exactly-18 account holder and the successful age-17 positive control.",
+            "Submitted fresh age-18 dependent details with registeredByRole guardian and guardianCertified false.",
+            "Inspected the final creation response; no specific error wording is required."
+          ]
+        },
+        {
+          "name": "Certified age-19 dependent submission is rejected",
+          "expected": 422,
+          "actual": 422,
+          "status": "PASS",
+          "message": "Same otherwise-valid guardian payload as the successful age-17 control. {\"title\":\"Check these details\",\"message\":\"An adult athlete registers as themselves.\",\"reason\":\"adult_registers_themselves\",\"fields\":{\"dateOfBirth\":{\"code\":\"adult_registers_themselves\",\"message\":\"An adult athlete registers as themselves.\"}},\"retryable\":false}",
+          "timestamp": "2026-10-21T20:12:09.534Z",
+          "expectedResult": "Reject the age-19 dependent without creating an athlete (HTTP 422).",
+          "actualResult": "The final child registration request returned HTTP 422.",
+          "executedSteps": [
+            "Signed in an exactly-18 account holder.",
+            "Selected For My Child and entered an age-18 DOB.",
+            "Submitted a valid age-17 dependent as a positive control.",
+            "Submitted the same valid guardian fields with a fresh dependent aged 19."
+          ],
+          "evidenceKind": "api"
+        },
+        {
+          "name": "Age-19 dependent cannot bypass the child boundary without certification",
+          "expected": 422,
+          "actual": 422,
+          "status": "PASS",
+          "message": "{\"title\":\"Check these details\",\"message\":\"An adult athlete registers as themselves.\",\"reason\":\"adult_registers_themselves\",\"fields\":{\"dateOfBirth\":{\"code\":\"adult_registers_themselves\",\"message\":\"An adult athlete registers as themselves.\"}},\"retryable\":false}",
+          "timestamp": "2026-10-21T20:12:13.554Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:09.658Z",
+          "expectedResult": "Reject an adult dependent in the guardian registration flow even when certification is unchecked (HTTP 422).",
+          "actualResult": "Guardian registration for age 19 with certification unchecked returned HTTP 422.",
+          "evidenceKind": "api-browser-reproduction",
+          "evidenceVideoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\ready-qa-rerun-2026-10-21\\guardian-location\\videos\\ADD-44\\page@ccd5967c2d60194d7109206f3c3c52dc.webm",
+          "evidenceVideoStartedAt": "2026-10-21T20:12:09.610Z",
+          "executedSteps": [
+            "Used an exactly-18 account holder and the successful age-17 positive control.",
+            "Submitted fresh age-19 dependent details with registeredByRole guardian and guardianCertified false.",
+            "Inspected the final creation response; no specific error wording is required."
+          ]
+        },
+        {
+          "name": "Teen registration hides For My Child",
+          "expected": 0,
+          "actual": 0,
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:16.970Z"
+        },
+        {
+          "name": "Teen registration hides optional marketing",
+          "expected": 0,
+          "actual": 0,
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:16.997Z"
+        }
+      ],
+      "requests": [
+        {
+          "path": "/age-gate",
+          "method": "POST",
+          "status": 200,
+          "elapsedMs": 998
+        },
+        {
+          "path": "/auth/register",
+          "method": "POST",
+          "status": 201,
+          "elapsedMs": 393
+        },
+        {
+          "path": "/athletes",
+          "method": "POST",
+          "status": 201,
+          "elapsedMs": 466
+        },
+        {
+          "path": "/athletes",
+          "method": "POST",
+          "status": 422,
+          "elapsedMs": 448
+        },
+        {
+          "path": "/athletes",
+          "method": "POST",
+          "status": 422,
+          "elapsedMs": 380
+        },
+        {
+          "path": "/athletes",
+          "method": "POST",
+          "status": 422,
+          "elapsedMs": 393
+        },
+        {
+          "path": "/athletes",
+          "method": "POST",
+          "status": 422,
+          "elapsedMs": 317
+        },
+        {
+          "path": "/age-gate",
+          "method": "POST",
+          "status": 200,
+          "elapsedMs": 243
+        },
+        {
+          "path": "/auth/register",
+          "method": "POST",
+          "status": 201,
+          "elapsedMs": 400
+        }
+      ],
+      "recordingQuality": {
+        "nativeViewport": true,
+        "recordingSize": {
+          "width": 764,
+          "height": 485
+        },
+        "layoutZoomApplied": false
+      },
+      "browserEvents": [
+        {
+          "at": "2026-10-21T20:11:59.328Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/login"
+        },
+        {
+          "at": "2026-10-21T20:12:01.246Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+        },
+        {
+          "at": "2026-10-21T20:12:02.658Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+        },
+        {
+          "at": "2026-10-21T20:12:02.914Z",
+          "kind": "Console error",
+          "detail": "Failed to load resource: the server responded with a status of 404 ()"
+        },
+        {
+          "at": "2026-10-21T20:12:03.008Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/locales → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.137Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/session → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.268Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.269Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.410Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/tour-manager/session → 403"
+        },
+        {
+          "at": "2026-10-21T20:12:03.410Z",
+          "kind": "Console error",
+          "detail": "Failed to load resource: the server responded with a status of 403 ()"
+        },
+        {
+          "at": "2026-10-21T20:12:03.419Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/reference/countries → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.496Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/registration/draft → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.594Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/common → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.616Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/validation → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.638Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/athlete-registration → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.653Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/common → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.671Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/validation → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.689Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/athlete-registration → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.706Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/common → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.724Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/validation → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.741Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/athlete-registration → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.754Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/common → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.769Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/validation → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:03.789Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/athlete-registration → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:04.197Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/reference/genders → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:05.091Z",
+          "kind": "HTTP",
+          "detail": "PUT https://api.dev.worldsurfleague.com/api/registration/draft → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:05.454Z",
+          "kind": "HTTP",
+          "detail": "PUT https://api.dev.worldsurfleague.com/api/registration/draft → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:14.491Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/login"
+        },
+        {
+          "at": "2026-10-21T20:12:14.745Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/login"
+        },
+        {
+          "at": "2026-10-21T20:12:14.803Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/locales → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:14.867Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+        },
+        {
+          "at": "2026-10-21T20:12:15.650Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+        },
+        {
+          "at": "2026-10-21T20:12:15.708Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/locales → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:15.753Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:15.811Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:16.032Z",
+          "kind": "Console error",
+          "detail": "Failed to load resource: the server responded with a status of 404 ()"
+        },
+        {
+          "at": "2026-10-21T20:12:16.035Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/session → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:16.312Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/tour-manager/session → 403"
+        },
+        {
+          "at": "2026-10-21T20:12:16.313Z",
+          "kind": "Console error",
+          "detail": "Failed to load resource: the server responded with a status of 403 ()"
+        },
+        {
+          "at": "2026-10-21T20:12:16.317Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/reference/countries → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:16.475Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/registration/draft → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:16.775Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/reference/genders → 200"
+        }
+      ],
+      "finishedAt": "2026-10-21T20:12:16.997Z",
+      "status": "PASS",
+      "screenshot": "artifacts/ready-qa-rerun-2026-10-21/guardian-location/screenshots/ADD-44.png",
+      "videoPaths": []
+    },
+    {
+      "id": "ADD-45",
+      "area": "Athlete",
+      "title": "Google address, ZIP, Location timezone and WhatsApp",
+      "steps": "Select a real Google address in athlete and location forms; inspect autofill. Change the prefilled WhatsApp number.",
+      "expected": "Athlete address, city, state and ZIP fill automatically; timezone is checked only in Location settings. WhatsApp starts from phone and can be edited.",
+      "requirementRefs": [
+        "D-103",
+        "D-105"
+      ],
+      "cases": [],
+      "note": "Session action-item coverage; these are not additional spreadsheet case IDs.",
+      "startedAt": "2026-10-21T20:12:18.902Z",
+      "checks": [
+        {
+          "name": "WhatsApp is prefilled from athlete phone",
+          "expected": "2025550121",
+          "actual": "2025550121",
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:26.580Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:26.014Z"
+        },
+        {
+          "name": "WhatsApp can be changed independently",
+          "expected": "2025550199",
+          "actual": "2025550199",
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:26.674Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:26.014Z"
+        },
+        {
+          "name": "Google selection fills the street address",
+          "expected": true,
+          "actual": true,
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:27.854Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:26.014Z"
+        },
+        {
+          "name": "Google selection fills City",
+          "expected": "Mountain View",
+          "actual": "Mountain View",
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:27.860Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:26.014Z"
+        },
+        {
+          "name": "Google selection fills State",
+          "expected": true,
+          "actual": true,
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:27.866Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:26.014Z"
+        },
+        {
+          "name": "Google selection fills ZIP",
+          "expected": "94043",
+          "actual": "94043",
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:27.872Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:26.014Z"
+        },
+        {
+          "name": "Location selection fills City",
+          "expected": "Mountain View",
+          "actual": "Mountain View",
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:32.530Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:27.872Z"
+        },
+        {
+          "name": "Location selection fills ZIP",
+          "expected": "94043",
+          "actual": "94043",
+          "status": "PASS",
+          "message": "",
+          "timestamp": "2026-10-21T20:12:32.579Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:27.872Z"
+        },
+        {
+          "name": "Location selection fills timezone automatically",
+          "expected": true,
+          "actual": false,
+          "status": "FAIL",
+          "message": "Observed timezone selector:  ",
+          "timestamp": "2026-10-21T20:12:32.633Z",
+          "evidenceStartTimestamp": "2026-10-21T20:12:27.872Z",
+          "actualResult": "The timezone selector displayed   after selecting the Google address.",
+          "screenshotPath": "artifacts/ready-qa-rerun-2026-10-21/guardian-location/screenshots/ADD-45-observed-8.png"
+        }
+      ],
+      "requests": [
+        {
+          "path": "/age-gate",
+          "method": "POST",
+          "status": 200,
+          "elapsedMs": 1069
+        },
+        {
+          "path": "/auth/register",
+          "method": "POST",
+          "status": 201,
+          "elapsedMs": 397
+        },
+        {
+          "path": "/auth/login",
+          "method": "POST",
+          "status": 200,
+          "elapsedMs": 428
+        }
+      ],
+      "recordingQuality": {
+        "nativeViewport": true,
+        "recordingSize": {
+          "width": 764,
+          "height": 485
+        },
+        "layoutZoomApplied": false
+      },
+      "browserEvents": [
+        {
+          "at": "2026-10-21T20:12:22.453Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/login"
+        },
+        {
+          "at": "2026-10-21T20:12:24.036Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+        },
+        {
+          "at": "2026-10-21T20:12:25.099Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+        },
+        {
+          "at": "2026-10-21T20:12:25.366Z",
+          "kind": "Console error",
+          "detail": "Failed to load resource: the server responded with a status of 404 ()"
+        },
+        {
+          "at": "2026-10-21T20:12:25.479Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/locales → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:25.480Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/session → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:25.749Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:25.752Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:25.904Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/tour-manager/session → 403"
+        },
+        {
+          "at": "2026-10-21T20:12:25.904Z",
+          "kind": "Console error",
+          "detail": "Failed to load resource: the server responded with a status of 403 ()"
+        },
+        {
+          "at": "2026-10-21T20:12:25.907Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/reference/countries → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:25.912Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/registration/draft → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.005Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/athlete-registration → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.006Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/athlete-registration → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.006Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/athlete-registration → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.006Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/athlete-registration → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.106Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/common → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.119Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/validation → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.130Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/common → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.142Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/validation → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.153Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/common → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.165Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/validation → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.175Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/common → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.192Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/validation → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.198Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/reference/genders → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:26.736Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/reference/countries/US/states → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:27.614Z",
+          "kind": "HTTP",
+          "detail": "PUT https://api.dev.worldsurfleague.com/api/registration/draft → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:27.908Z",
+          "kind": "HTTP",
+          "detail": "PUT https://api.dev.worldsurfleague.com/api/registration/draft → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:28.232Z",
+          "kind": "HTTP",
+          "detail": "PUT https://api.dev.worldsurfleague.com/api/registration/draft → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:28.647Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/login"
+        },
+        {
+          "at": "2026-10-21T20:12:28.765Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/login"
+        },
+        {
+          "at": "2026-10-21T20:12:28.782Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/locales → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:28.793Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:28.802Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:28.963Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/tour-manager/settings"
+        },
+        {
+          "at": "2026-10-21T20:12:29.284Z",
+          "kind": "Navigation",
+          "detail": "https://app.dev.worldsurfleague.com/tour-manager/settings"
+        },
+        {
+          "at": "2026-10-21T20:12:29.311Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/locales → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.315Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.319Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/manifest/en → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.557Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/session → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.565Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/tour-manager/reference/currencies → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.577Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/tour-manager → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.577Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/tour-manager → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.578Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/i18n/bundles/en/tour-manager → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.621Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/tour-manager/seasons → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.671Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/tour-manager/session → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:29.735Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/tour-manager/settings/locations → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:30.689Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/tour-manager/reference/countries → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:30.689Z",
+          "kind": "HTTP",
+          "detail": "GET https://api.dev.worldsurfleague.com/api/tour-manager/reference/time-zones → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:32.731Z",
+          "kind": "HTTP",
+          "detail": "GET https://maps.googleapis.com/maps/api/timezone/json → 200"
+        },
+        {
+          "at": "2026-10-21T20:12:32.749Z",
+          "kind": "Console warning",
+          "detail": "Time zone lookup is unavailable: Error: Time Zone API REQUEST_DENIED: This API is not activated on your API project. You may need to enable this API in the Google Cloud Console: https://console.cloud.google.com/apis/library?filter=category:maps. Learn more at https://developers.google.com/maps/gmp-get-started#enable-api-sdk.\n    at Object.zoneAt (https://app.dev.worldsurfleague.com/_next/static/chunks/32d_-99jkkskq.js:1:29968)\n    at async queryFn (https://app.dev.worldsurfleague.com/_next/static/chunks/16gzt_a4k37q1.js:1:9171)"
+        }
+      ],
+      "evidenceStartTimestamp": "2026-10-21T20:12:27.872Z",
+      "finishedAt": "2026-10-21T20:12:34.671Z",
+      "status": "FAIL",
+      "screenshot": "artifacts/ready-qa-rerun-2026-10-21/guardian-location/screenshots/ADD-45.png",
+      "videoPaths": [
+        "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\ready-qa-rerun-2026-10-21\\guardian-location\\videos\\ADD-45\\page@7e8b5d52143fa7654489f9f7e8f8061f.webm"
+      ],
+      "videoTimings": [
+        {
+          "path": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\ready-qa-rerun-2026-10-21\\guardian-location\\videos\\ADD-45\\page@7e8b5d52143fa7654489f9f7e8f8061f.webm",
+          "startedAt": "2026-10-21T20:12:20.125Z"
+        }
+      ]
+    }
+  ]
+}

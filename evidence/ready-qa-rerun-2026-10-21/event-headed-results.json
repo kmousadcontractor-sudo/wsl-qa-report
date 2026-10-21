@@ -1,0 +1,3058 @@
+{
+  "startedAt": "2026-10-21T20:19:18.594Z",
+  "fixture": {
+    "startedAt": "2026-10-21T20:15:02.636Z",
+    "email": "heavy-actually+card-compare-1792592171840@btj5keea.mailosaur.net",
+    "athleteId": "01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+    "event": {
+      "id": "01a1601d-fc7d-7108-bfc3-827ea10aabcf",
+      "name": "QA Ready for QA rerun 1792613938747"
+    },
+    "eventCard": {
+      "id": "01a1601d-fc7d-7108-bfc3-827ea10aabcf",
+      "name": "QA Ready for QA rerun 1792613938747",
+      "tour": "QS 2,000",
+      "tourName": "Qualifying Series",
+      "meta": "Nov 13 · Middles Beach, Isabela, Puerto Rico · Men’s",
+      "entryFee": 150,
+      "currency": "USD",
+      "note": "Entries close 6 Nov 2026 · 20:00 EST",
+      "noteTone": "success",
+      "badges": [
+        {
+          "code": "ready_for_entries",
+          "label": "Ready for entries",
+          "tone": "success"
+        }
+      ],
+      "actions": [
+        {
+          "code": "register",
+          "label": "Register",
+          "variant": "primary",
+          "disabled": false,
+          "trailingChevron": false,
+          "href": "/athlete-registration/events/01a1601d-fc7d-7108-bfc3-827ea10aabcf/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+        }
+      ],
+      "lock": null
+    },
+    "options": {
+      "at": "2026-10-21T20:19:05.626Z",
+      "path": "/entries/options?event=01a1601d-fc7d-7108-bfc3-827ea10aabcf&athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1601d-fc7d-7108-bfc3-827ea10aabcf",
+          "name": "QA Ready for QA rerun 1792613938747",
+          "meta": "Nov 13 · Middles Beach, Isabela, Puerto Rico · Men’s",
+          "entryFee": 150,
+          "currency": "USD"
+        },
+        "membership": {
+          "title": "Current membership & insurance",
+          "rows": [
+            {
+              "id": "membership",
+              "label": "Membership",
+              "value": "Full regional"
+            },
+            {
+              "id": "event-credits",
+              "label": "Event credits",
+              "value": "Unlimited"
+            },
+            {
+              "id": "insurance-credits",
+              "label": "Insurance credits",
+              "value": "0"
+            }
+          ],
+          "note": ""
+        },
+        "insurance": {
+          "eyebrow": "INSURANCE",
+          "title": "Choose your coverage for QA Ready for QA rerun 1792613938747",
+          "description": "Every athlete must have injury insurance in place before their first heat — WSL checks this at event check-in, not before. Cover bought through WSL is applied automatically, no proof needed. Cover from elsewhere must meet WSL's minimum coverage requirement, and you'll need to show proof of the policy at check-in.",
+          "includes": {
+            "title": "What cover includes",
+            "items": [
+              "Medical treatment at the event",
+              "Emergency evacuation"
+            ],
+            "note": ""
+          },
+          "options": [
+            {
+              "code": "use-credit",
+              "title": "Use an existing coverage credit",
+              "description": "Choose from eligible available products below",
+              "trailing": "",
+              "disabled": true,
+              "selectedCreditId": null,
+              "products": []
+            },
+            {
+              "code": "own-policy",
+              "title": "The athlete already has their own insurance",
+              "description": "For cover purchased outside WSL. Your entry submits now — bring proof of the policy to event check-in.",
+              "trailing": "No charge",
+              "disabled": false
+            },
+            {
+              "code": "none",
+              "title": "Continue without insurance for now",
+              "description": "Your entry submits with no cover in place. Add cover before competing — the spot may be released if it's still missing by the entry deadline.",
+              "trailing": "",
+              "disabled": false
+            }
+          ],
+          "defaultCode": "own-policy",
+          "addCoverage": {
+            "label": "Add/Upgrade Coverage",
+            "athleteId": "01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+            "eventId": "01a1601d-fc7d-7108-bfc3-827ea10aabcf"
+          }
+        },
+        "insuranceBanner": null,
+        "reminders": {
+          "title": "Event reminders",
+          "description": "Get event updates on WhatsApp.",
+          "helperText": "",
+          "phoneCountry": "US",
+          "sameAsMembershipLabel": "Same as my membership phone",
+          "optInLabel": "Send me reminders on WhatsApp"
+        },
+        "attendingGuardian": null,
+        "confirm": {
+          "title": "Confirm your entry",
+          "note": {
+            "title": "What happens next",
+            "body": "This submits the event registration. Insurance must be in place before the athlete competes."
+          }
+        },
+        "existingEntry": null
+      }
+    }
+  },
+  "steps": [],
+  "checks": [
+    {
+      "key": "WSL-9580",
+      "name": "Second distinct request refused",
+      "status": "PASS",
+      "actual": {
+        "at": "2026-10-21T20:20:04.872Z",
+        "path": "/entries",
+        "method": "POST",
+        "status": 409,
+        "body": {
+          "title": "That did not go through",
+          "message": "This athlete is already entered in this event.",
+          "reason": "competition.already_entered",
+          "fields": {},
+          "retryable": false
+        }
+      },
+      "at": "2026-10-21T20:20:05.706Z"
+    },
+    {
+      "key": "WSL-9580",
+      "name": "Stale form opens existing entry without reload",
+      "status": "FAIL",
+      "actual": {
+        "url": "https://app.dev.worldsurfleague.com/athlete-registration/events/01a1601d-fc7d-7108-bfc3-827ea10aabcf/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+        "text": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nCard C.\nWSL Pro\nBack to Events\nRegister: QA Ready for QA rerun 1792613938747\n\nNov 13 · Middles Beach, Isabela, Puerto Rico · Men’s\n\nCurrent membership & insurance\n\nMembership\n\nFull regional\n\nEvent credits\n\nUnlimited\n\nInsurance credits\n\n0\n\nINSURANCE\n\nChoose your coverage for QA Ready for QA rerun 1792613938747\n\nEvery athlete must have injury insurance in place before their first heat — WSL checks this at event check-in, not before. Cover bought through WSL is applied automatically, no proof needed. Cover from elsewhere must meet WSL's minimum coverage requirement, and you'll need to show proof of the policy at check-in.\n\nWhat cover includes\n\nMedical treatment at the event\nEmergency evacuation\n\nUse an existing coverage credit\nChoose from eligible available products below\nThe athlete already has their own insurance\n\nNo charge\n\nFor cover purchased outside WSL. Your entry submits now — bring proof of the policy to event check-in.\nContinue without insurance for now\nYour entry submits with no cover in place. Add cover before competing — the spot may be released if it's still missing by the entry deadline.\nAdd/Upgrade Coverage\nEvent reminders\n\nGet event updates on WhatsApp.\n\nPhone Number\n+1\nSame as my membership phone\nSend me reminders on WhatsApp\nConfirm your entry\n\nEvent entry fee (set aside, not charged yet)\n\nUSD 150\n\nTax\n\nUSD 0\n\nCharged today\n\n$0.00\n\nNo money is taken yet\n\nSet aside on your card\n\n$150.00\n\nCharged only if your place is confirmed\n\nVisa\n**** 4242\n\nUse a New Card\ni\n\nWhat happens next\n\nThis submits the event registration. Insurance must be in place before the athlete competes.\n\nSubmit Event Registration",
+        "submitCount": 1
+      },
+      "at": "2026-10-21T20:20:05.708Z"
+    },
+    {
+      "key": "WSL-9580",
+      "name": "UI submits an Idempotency-Key",
+      "status": "PASS",
+      "actual": true,
+      "at": "2026-10-21T20:20:05.710Z"
+    },
+    {
+      "key": "WSL-9578",
+      "name": "Regional mounted card changes to Waitlisted",
+      "status": "PASS",
+      "actual": "QA Ready for QA rerun 1792613938747\n· QS 2,000\n\nNov 13 · Middles Beach, Isabela, Puerto Rico · Men’s\n\nEvent entry fee $150.00\n\nWaitlisted\nCoverage Confirmed\n\nWSL confirms the final field by 13 Nov 2026.",
+      "at": "2026-10-21T20:20:16.071Z"
+    }
+  ],
+  "before": "QA Ready for QA rerun 1792613938747\n· QS 2,000\n\nNov 13 · Middles Beach, Isabela, Puerto Rico · Men’s\n\nEvent entry fee $150.00\n\nReady for entries\n\nEntries close 6 Nov 2026 · 20:00 EST\n\nRegister",
+  "staleFormBefore": {
+    "url": "https://app.dev.worldsurfleague.com/athlete-registration/events/01a1601d-fc7d-7108-bfc3-827ea10aabcf/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+    "text": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nCard C.\nWSL Pro\nBack to Events\nRegister: QA Ready for QA rerun 1792613938747\n\nNov 13 · Middles Beach, Isabela, Puerto Rico · Men’s\n\nCurrent membership & insurance\n\nMembership\n\nFull regional\n\nEvent credits\n\nUnlimited\n\nInsurance credits\n\n0\n\nINSURANCE\n\nChoose your coverage for QA Ready for QA rerun 1792613938747\n\nEvery athlete must have injury insurance in place before their first heat — WSL checks this at event check-in, not before. Cover bought through WSL is applied automatically, no proof needed. Cover from elsewhere must meet WSL's minimum coverage requirement, and you'll need to show proof of the policy at check-in.\n\nWhat cover includes\n\nMedical treatment at the event\nEmergency evacuation\n\nUse an existing coverage credit\nChoose from eligible available products below\nThe athlete already has their own insurance\n\nNo charge\n\nFor cover purchased outside WSL. Your entry submits now — bring proof of the policy to event check-in.\nContinue without insurance for now\nYour entry submits with no cover in place. Add cover before competing — the spot may be released if it's still missing by the entry deadline.\nAdd/Upgrade Coverage\nEvent reminders\n\nGet event updates on WhatsApp.\n\nPhone Number\n+1\nSame as my membership phone\nSend me reminders on WhatsApp\nConfirm your entry\ni\n\nWhat happens next\n\nThis submits the event registration. Insurance must be in place before the athlete competes.\n\nSubmit Event Registration"
+  },
+  "submit": {
+    "at": "2026-10-21T20:19:51.500Z",
+    "status": 201,
+    "body": {
+      "reference": "QS-2026-M-137-001",
+      "entryId": "01a1601e-c722-75bf-8254-a9b33c50120c",
+      "total": {
+        "amount": 150,
+        "amountMinor": 15000,
+        "currency": "USD"
+      },
+      "chargeStatus": "requested"
+    },
+    "hasIdempotencyKey": true
+  },
+  "entryId": "01a1601e-c722-75bf-8254-a9b33c50120c",
+  "reference": "QS-2026-M-137-001",
+  "visibility": {
+    "p1": {
+      "visibility": "visible",
+      "focus": true
+    },
+    "p2": {
+      "visibility": "visible",
+      "focus": true
+    }
+  },
+  "staleFormAfter": {
+    "url": "https://app.dev.worldsurfleague.com/athlete-registration/events/01a1601d-fc7d-7108-bfc3-827ea10aabcf/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+    "text": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nCard C.\nWSL Pro\nBack to Events\nRegister: QA Ready for QA rerun 1792613938747\n\nNov 13 · Middles Beach, Isabela, Puerto Rico · Men’s\n\nCurrent membership & insurance\n\nMembership\n\nFull regional\n\nEvent credits\n\nUnlimited\n\nInsurance credits\n\n0\n\nINSURANCE\n\nChoose your coverage for QA Ready for QA rerun 1792613938747\n\nEvery athlete must have injury insurance in place before their first heat — WSL checks this at event check-in, not before. Cover bought through WSL is applied automatically, no proof needed. Cover from elsewhere must meet WSL's minimum coverage requirement, and you'll need to show proof of the policy at check-in.\n\nWhat cover includes\n\nMedical treatment at the event\nEmergency evacuation\n\nUse an existing coverage credit\nChoose from eligible available products below\nThe athlete already has their own insurance\n\nNo charge\n\nFor cover purchased outside WSL. Your entry submits now — bring proof of the policy to event check-in.\nContinue without insurance for now\nYour entry submits with no cover in place. Add cover before competing — the spot may be released if it's still missing by the entry deadline.\nAdd/Upgrade Coverage\nEvent reminders\n\nGet event updates on WhatsApp.\n\nPhone Number\n+1\nSame as my membership phone\nSend me reminders on WhatsApp\nConfirm your entry\n\nEvent entry fee (set aside, not charged yet)\n\nUSD 150\n\nTax\n\nUSD 0\n\nCharged today\n\n$0.00\n\nNo money is taken yet\n\nSet aside on your card\n\n$150.00\n\nCharged only if your place is confirmed\n\nVisa\n**** 4242\n\nUse a New Card\ni\n\nWhat happens next\n\nThis submits the event registration. Insurance must be in place before the athlete competes.\n\nSubmit Event Registration",
+    "submitCount": 1
+  },
+  "staleUiSubmit": {
+    "status": 409,
+    "body": {
+      "title": "That did not go through",
+      "message": "This athlete is already entered in this event.",
+      "reason": "competition.already_entered",
+      "fields": {},
+      "retryable": false
+    }
+  },
+  "staleAfterRefusal": {
+    "url": "https://app.dev.worldsurfleague.com/athlete-registration/events/01a1601d-fc7d-7108-bfc3-827ea10aabcf/entry/QS-2026-M-137-001",
+    "text": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nCard C.\nWSL Pro\nBack to Events\n\nEntry Submitted\n\nYou are on the waitlist\n\nQA Ready for QA rerun 1792613938747 · Nov 13 · Middles Beach, Isabela, Puerto Rico · Men’s\n\nWaitlisted\n\nReference QS-2026-M-137-001\n\nEntry fee\n\nUSD 150\n\nSet aside on your card, charged only if your place is confirmed\n\nInsurance\n\nOwn policy\n\nBring proof to event check-in\n\nWhat happens next\n1\n\nWSL confirms the field\n\nEntries are held until the field is set. This page updates automatically.\n\nView entry\n\nA copy of this confirmation has been emailed to the account holder's email address."
+  },
+  "duplicate": {
+    "at": "2026-10-21T20:20:04.872Z",
+    "path": "/entries",
+    "method": "POST",
+    "status": 409,
+    "body": {
+      "title": "That did not go through",
+      "message": "This athlete is already entered in this event.",
+      "reason": "competition.already_entered",
+      "fields": {},
+      "retryable": false
+    }
+  },
+  "optionsAfter": {
+    "at": "2026-10-21T20:20:05.705Z",
+    "path": "/entries/options?event=01a1601d-fc7d-7108-bfc3-827ea10aabcf&athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "event": {
+        "id": "01a1601d-fc7d-7108-bfc3-827ea10aabcf",
+        "name": "QA Ready for QA rerun 1792613938747",
+        "meta": "Nov 13 · Middles Beach, Isabela, Puerto Rico · Men’s",
+        "entryFee": 150,
+        "currency": "USD"
+      },
+      "membership": {
+        "title": "Current membership & insurance",
+        "rows": [
+          {
+            "id": "membership",
+            "label": "Membership",
+            "value": "Full regional"
+          },
+          {
+            "id": "event-credits",
+            "label": "Event credits",
+            "value": "Unlimited"
+          },
+          {
+            "id": "insurance-credits",
+            "label": "Insurance credits",
+            "value": "0"
+          }
+        ],
+        "note": ""
+      },
+      "insurance": {
+        "eyebrow": "INSURANCE",
+        "title": "Choose your coverage for QA Ready for QA rerun 1792613938747",
+        "description": "Every athlete must have injury insurance in place before their first heat — WSL checks this at event check-in, not before. Cover bought through WSL is applied automatically, no proof needed. Cover from elsewhere must meet WSL's minimum coverage requirement, and you'll need to show proof of the policy at check-in.",
+        "includes": {
+          "title": "What cover includes",
+          "items": [
+            "Medical treatment at the event",
+            "Emergency evacuation"
+          ],
+          "note": ""
+        },
+        "options": [
+          {
+            "code": "use-credit",
+            "title": "Use an existing coverage credit",
+            "description": "Choose from eligible available products below",
+            "trailing": "",
+            "disabled": true,
+            "selectedCreditId": null,
+            "products": []
+          },
+          {
+            "code": "own-policy",
+            "title": "The athlete already has their own insurance",
+            "description": "For cover purchased outside WSL. Your entry submits now — bring proof of the policy to event check-in.",
+            "trailing": "No charge",
+            "disabled": false
+          },
+          {
+            "code": "none",
+            "title": "Continue without insurance for now",
+            "description": "Your entry submits with no cover in place. Add cover before competing — the spot may be released if it's still missing by the entry deadline.",
+            "trailing": "",
+            "disabled": false
+          }
+        ],
+        "defaultCode": "own-policy",
+        "addCoverage": {
+          "label": "Add/Upgrade Coverage",
+          "athleteId": "01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+          "eventId": "01a1601d-fc7d-7108-bfc3-827ea10aabcf"
+        }
+      },
+      "insuranceBanner": null,
+      "reminders": {
+        "title": "Event reminders",
+        "description": "Get event updates on WhatsApp.",
+        "helperText": "",
+        "phoneCountry": "US",
+        "sameAsMembershipLabel": "Same as my membership phone",
+        "optInLabel": "Send me reminders on WhatsApp"
+      },
+      "attendingGuardian": null,
+      "confirm": {
+        "title": "Confirm your entry",
+        "note": {
+          "title": "What happens next",
+          "body": "This submits the event registration. Insurance must be in place before the athlete competes."
+        }
+      },
+      "existingEntry": {
+        "reference": "QS-2026-M-137-001",
+        "entryId": "01a1601e-c722-75bf-8254-a9b33c50120c"
+      }
+    }
+  },
+  "waitlist": {
+    "url": "https://app.dev.worldsurfleague.com/athlete-registration/events?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+    "text": "QA Ready for QA rerun 1792613938747\n· QS 2,000\n\nNov 13 · Middles Beach, Isabela, Puerto Rico · Men’s\n\nEvent entry fee $150.00\n\nWaitlisted\nCoverage Confirmed\n\nWSL confirms the final field by 13 Nov 2026.",
+    "api": {
+      "at": "2026-10-21T20:20:15.904Z",
+      "path": "/events?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8&scope=all",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "status": {
+          "code": "active",
+          "label": "Membership active",
+          "tone": "success"
+        },
+        "tour": "",
+        "season": "",
+        "tours": [
+          "Championship Tour",
+          "International Qualifying Series",
+          "Longboard Qualifying Series",
+          "Qualifying Series"
+        ],
+        "empty": null,
+        "banner": null,
+        "events": [
+          {
+            "id": "01a1600a-66cc-7134-9441-88f97e05860e",
+            "name": "56th Street Classic 195727 2",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 2 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries close 26 Oct 2026 · 17:00 PDT",
+            "noteTone": "warning",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              },
+              {
+                "code": "closes_soon",
+                "label": "Closes soon",
+                "tone": "warning"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a1600a-66cc-7134-9441-88f97e05860e/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1560f-edfe-71b7-88e9-1b4f5995cb3e",
+            "name": "QA Checklist 20261019212653347-90ad19 3",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 11 · Belmar, New Jersey, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 EDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a1560f-edfe-71b7-88e9-1b4f5995cb3e/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15610-b605-70d0-ac1d-dcd9b707298b",
+            "name": "QA Checklist 20261019212653347-90ad19 4",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 13 · Malibu, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15610-b605-70d0-ac1d-dcd9b707298b/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1601d-fc7d-7108-bfc3-827ea10aabcf",
+            "name": "QA Ready for QA rerun 1792613938747",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 13 · Middles Beach, Isabela, Puerto Rico · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "WSL confirms the final field by 13 Nov 2026.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "waitlisted",
+                "label": "Waitlisted",
+                "tone": "warning"
+              },
+              {
+                "code": "coverage_confirmed",
+                "label": "Coverage Confirmed",
+                "tone": "success"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a14127-8739-740d-9a7e-90da15f07457",
+            "name": "Central Coast Open",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 24–28 · Bells Beach, Victoria, Australia · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 25 Oct 2026 · 17:00 AEDT",
+            "noteTone": "warning",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              },
+              {
+                "code": "closes_soon",
+                "label": "Closes soon",
+                "tone": "warning"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a14127-8739-740d-9a7e-90da15f07457/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1567a-d63a-7306-9777-ce8783e95b19",
+            "name": "QA Checklist 20261019232332480-ac092c 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 24 · Huntington Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a1567a-d63a-7306-9777-ce8783e95b19/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15669-773e-7270-8686-252501d1fac5",
+            "name": "QA Checklist 20261019230345875-54c2b1 2",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 27 · La Bocana, La Libertad, El Salvador · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 CST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15669-773e-7270-8686-252501d1fac5/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15407-4781-7768-8e33-51dee9d15508",
+            "name": "QA Checklist 20261019115637042-5be01a 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 28 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15407-4781-7768-8e33-51dee9d15508/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a14127-884a-7116-97de-7fbfcc17d8de",
+            "name": "North Shore Open",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 29–Dec 4 · Haleiwa, Hawaii, Hawaii · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 30 Oct 2026 · 17:00 HST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a14127-884a-7116-97de-7fbfcc17d8de/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15408-08e1-7442-8b45-71a58c17b966",
+            "name": "QA Checklist 20261019115637042-5be01a 2",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 29 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15408-08e1-7442-8b45-71a58c17b966/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15408-9009-7274-b3d5-bb41203804bc",
+            "name": "QA Checklist 20261019115637042-5be01a 3",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 30 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15408-9009-7274-b3d5-bb41203804bc/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15408-f407-71d4-84c9-83d2e33c8956",
+            "name": "QA Checklist 20261019115637042-5be01a 4",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 1 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 2 Nov 2026 · 17:00 PST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15408-f407-71d4-84c9-83d2e33c8956/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15410-cf20-70fa-8ae6-eda8bcd6a935",
+            "name": "QA Checklist 20261019120801196-903840 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 6 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15410-cf20-70fa-8ae6-eda8bcd6a935/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a14127-88bd-7464-904f-52946f56f3f9",
+            "name": "Tahara Pacific Open",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 6–10 · Tahara, Aichi Prefecture, Japan · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 6 Nov 2026 · 17:00 JST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a14127-88bd-7464-904f-52946f56f3f9/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15411-428a-774e-961e-7d9f4bd498b2",
+            "name": "QA Checklist 20261019120801196-903840 2",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 7 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15411-428a-774e-961e-7d9f4bd498b2/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a14127-771c-73b2-bcbb-50b2704ea668",
+            "name": "Lexus Pipe Masters",
+            "tour": "Championship Tour",
+            "tourName": "Championship Tour",
+            "meta": "Dec 8–20 · Oahu, Hawaii · Men’s",
+            "entryFee": 500,
+            "currency": "USD",
+            "note": "Entries close 8 Nov 2026 · 17:00 HST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a14127-771c-73b2-bcbb-50b2704ea668/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a14127-87aa-7316-872c-fd10420b722b",
+            "name": "Mid-Atlantic Pro",
+            "tour": "QS 4,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 9–14 · Virginia Beach, Virginia, United States · Men’s",
+            "entryFee": 225,
+            "currency": "USD",
+            "note": "Entries close 9 Nov 2026 · 17:00 EST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a14127-87aa-7316-872c-fd10420b722b/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15414-0c01-7248-b5ea-4e80aca7e8f8",
+            "name": "QA Checklist 20261019121141715-542e76 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 10 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15414-0c01-7248-b5ea-4e80aca7e8f8/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a14127-87e6-73aa-9a98-90a48de5c0c4",
+            "name": "Mid-Atlantic Longboard Classic",
+            "tour": "LQS 1,000",
+            "tourName": "Longboard Qualifying Series",
+            "meta": "Dec 16–18 · Virginia Beach, Virginia, United States · Men’s",
+            "entryFee": 90,
+            "currency": "USD",
+            "note": "Entries close 16 Nov 2026 · 17:00 EST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a14127-87e6-73aa-9a98-90a48de5c0c4/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1541e-6754-7111-aa37-81563699a2ab",
+            "name": "QA Checklist 20261019122146981-50898e 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 17 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a1541e-6754-7111-aa37-81563699a2ab/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15678-2ec0-7496-87da-216537dbf337",
+            "name": "QA Checklist 20261019232032900-92c676 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 19 · Mavericks, Half Moon Bay, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15678-2ec0-7496-87da-216537dbf337/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a14127-8882-73c2-9bab-7da4fd6713b7",
+            "name": "Lacanau Atlantic Pro",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 20–24 · Gironde, Nouvelle-Aquitaine, France · Men’s",
+            "entryFee": 135,
+            "currency": "EUR",
+            "note": "Entries close 20 Nov 2026 · 17:00 PST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a14127-8882-73c2-9bab-7da4fd6713b7/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15622-2b1a-73ec-923a-332847d4e951",
+            "name": "AL Test Basalt Saffron C838",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 21 · California, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15622-2b1a-73ec-923a-332847d4e951/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a155c6-7287-76be-bff2-3cf49ff91bd7",
+            "name": "QA Checklist 20261019200642730-5c1ca8 2",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 22 · TBA · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a155c6-7287-76be-bff2-3cf49ff91bd7/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a155c6-dbb3-73c4-9058-0e642bf28a28",
+            "name": "QA Checklist 20261019200642730-5c1ca8 3",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 23 · Zippers, San Jose del Cabo, Mexico · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 MDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a155c6-dbb3-73c4-9058-0e642bf28a28/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a153a7-e576-7667-b46c-8c71072a5b58",
+            "name": "QA Main Flow e22fd5bd",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 24 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 26 Oct 2026 · 17:00 PDT",
+            "noteTone": "warning",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              },
+              {
+                "code": "closes_soon",
+                "label": "Closes soon",
+                "tone": "warning"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a153a7-e576-7667-b46c-8c71072a5b58/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a14127-8811-7595-8be9-a4b799cb7fdb",
+            "name": "Surf City Open",
+            "tour": "QS 1,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 24–28 · Huntington Beach, California, United States · Men’s",
+            "entryFee": 120,
+            "currency": "USD",
+            "note": "Entries close 24 Nov 2026 · 17:00 PST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a14127-8811-7595-8be9-a4b799cb7fdb/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15533-15e3-7008-81d6-9d1540475cfa",
+            "name": "QA Checklist 20261019172531413-dd13f8 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 25 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15533-15e3-7008-81d6-9d1540475cfa/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a153ab-23f7-75f2-ac9f-68a847b162d4",
+            "name": "QA Main Flow aa01605b",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 25 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 26 Oct 2026 · 17:00 PDT",
+            "noteTone": "warning",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              },
+              {
+                "code": "closes_soon",
+                "label": "Closes soon",
+                "tone": "warning"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a153ab-23f7-75f2-ac9f-68a847b162d4/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1553a-a180-743d-8e72-778dca575879",
+            "name": "QA Checklist 20261019173348685-b4cf7e 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 26 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a1553a-a180-743d-8e72-778dca575879/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1557a-543a-7485-a6e8-a1f679bd0ef9",
+            "name": "QA Checklist 20261019184321861-7c60fd 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 27 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a1557a-543a-7485-a6e8-a1f679bd0ef9/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a155bb-770b-725a-8856-ed57a4755b6b",
+            "name": "QA Checklist 20261019195026249-8ff84e 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 28 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a155bb-770b-725a-8856-ed57a4755b6b/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a155bc-1126-7430-b4da-e929b9cfc825",
+            "name": "QA Checklist 20261019195026249-8ff84e 2",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 29 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a155bc-1126-7430-b4da-e929b9cfc825/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a155bc-aa13-701e-b8f1-395421d62964",
+            "name": "QA Checklist 20261019195026249-8ff84e 3",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 30 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a155bc-aa13-701e-b8f1-395421d62964/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a14127-88f9-744f-b7f1-26bb566f97b5",
+            "name": "Saquarema International Pro",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Jan 3–9 · Saquarema, Rio de Janeiro, Brazil · Men’s",
+            "entryFee": 1925,
+            "currency": "BRL",
+            "note": "Entries close 4 Dec 2026 · 17:00 -03",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a14127-88f9-744f-b7f1-26bb566f97b5/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15600-97a4-7307-be47-baec3ef94723",
+            "name": "QA Checklist 20261019211014428-7d478f 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Jan 18 · Atlantic Park Surf, Virginia Beach, VA · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15600-97a4-7307-be47-baec3ef94723/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15620-3213-754a-a58b-fc7a24689959",
+            "name": "AL Test Zephyr Tundra N1D1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Jan 23 · Oceanside Pier, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15620-3213-754a-a58b-fc7a24689959/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15628-9dcb-7202-9d40-d646af75db40",
+            "name": "AL Test Juniper Zephyr AKNI",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Jan 28 · Cortes Bank, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15628-9dcb-7202-9d40-d646af75db40/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1561f-8a2d-736b-b87a-7c72524aa433",
+            "name": "AL Test Zephyr Zephyr RZGL",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Jan 30 · Virginia Beach, Virginia, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 EDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a1561f-8a2d-736b-b87a-7c72524aa433/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a155c3-3015-73d1-a80b-203f25b02d14",
+            "name": "QA Checklist 20261019200205670-98e20c 2",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Feb 4 · Maryland, Maryland, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 EDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a155c3-3015-73d1-a80b-203f25b02d14/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15622-0f92-7272-a68b-d469c4228682",
+            "name": "AL Test Tundra Zephyr 4SA8",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Feb 20 · Bathsheba, St. Josephs, Barbados · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 AST",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15622-0f92-7272-a68b-d469c4228682/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15601-86ac-76e0-ab32-40f4600b61d9",
+            "name": "QA Checklist 20261019211006923-88fd20 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Feb 22 · Sebastian Inlet, Florida, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 EDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15601-86ac-76e0-ab32-40f4600b61d9/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15628-c48c-75e6-935b-d25989589318",
+            "name": "AL Test Basalt Kestrel 46BY",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Feb 26 · Solana Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15628-c48c-75e6-935b-d25989589318/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1561f-7b22-7659-b8f5-87288607e071",
+            "name": "AL Test Juniper Juniper A0SL",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Mar 16 · Todos Santos, Baja California, Mexico · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a1561f-7b22-7659-b8f5-87288607e071/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15601-7661-72eb-99cb-7dae0f28b7a3",
+            "name": "QA Checklist 20261019211014428-7d478f 3",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Mar 26 · Florida, Florida, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries close 29 Oct 2026 · 17:00 PDT",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "ready_for_entries",
+                "label": "Ready for entries",
+                "tone": "success"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": false,
+                "trailingChevron": false,
+                "href": "/athlete-registration/events/01a15601-7661-72eb-99cb-7dae0f28b7a3/register?athlete=01a15ed1-e7f1-756f-a31e-bb2648c73ed8"
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a154d6-08c9-72e9-960c-b2f04eb03c68",
+            "name": "QA Checklist 20261019154410889-a038f6 3",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Oct 21 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a154d7-6b86-77bc-add2-ddbf110667e3",
+            "name": "QA Checklist 20261019154558657-d61531 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Oct 22 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a154e6-d5ac-76c6-b302-e6be0621ec9c",
+            "name": "QA Checklist 20261019160248580-e899b2 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Oct 23 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a154e9-69c4-7674-ad0b-cfd620ae132d",
+            "name": "QA Checklist 20261019160538124-4c3c17 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Oct 24 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a14127-83e5-75a6-af03-7cd191e463ad",
+            "name": "Sunset Pro",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Oct 26–Nov 2 · Sunset Beach, Oahu, Hawaii · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a14127-76e4-7332-9231-0f00af0b7a59",
+            "name": "Philippines Pro",
+            "tour": "Championship Tour",
+            "tourName": "Championship Tour",
+            "meta": "Oct 31–Nov 10 · Cloud 9, Siargao Island, Philippines · Men’s",
+            "entryFee": 500,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1600a-5483-77c9-b9d1-47cc288c5268",
+            "name": "56th Street Classic 195727 1",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 1 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a14127-8944-7799-a7d5-ff73966fcaf8",
+            "name": "Orange County Classic",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 4–7 · Huntington Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a14127-844b-7228-8fd2-1b0cfe10b6ae",
+            "name": "HTA Haleiwa Pro",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 5–14 · Haleiwa, Hawaii, Hawaii · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a14127-7e6e-742a-b63e-4dd717d92c56",
+            "name": "Miyazaki Pro",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 6–8 · Kisakihama Beach, Miyazaki, Japan · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15654-3890-7635-95fc-bafa83b9ae4f",
+            "name": "QA Checklist 20261019223914382-ab7c4c 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 8 · El Sunzal, La Libertad, El Salvador · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a14127-898c-7275-b7a5-726fbf7430d7",
+            "name": "Costa da Caparica Pro",
+            "tour": "QS 1,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 9–12 · Costa da Caparica, Almada, Portugal · Men’s",
+            "entryFee": 110,
+            "currency": "EUR",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15b28-ebbc-743f-81ec-5d36c177f089",
+            "name": "QA Checklist 20261020211134895-bc87db 10",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 10 · El Rastrial · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15610-fbad-70e4-93ca-02418161bc7b",
+            "name": "QA Checklist 20261019212651103-7952ec 2",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 12 · El Rastrial · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15ee5-6548-76b6-bfea-4df397213040",
+            "name": "QA Full expiry reminders 1792593451679",
+            "tour": "Qualifying Series",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 12 · Hastings, Christ Church, Barbados · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15d6d-df77-76f9-99fa-5cff13be3f99",
+            "name": "QA Retry isolated browser 1792568841524",
+            "tour": "Qualifying Series",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 14 · Lanzarote, Canary Islands, Spain · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a14127-7b10-7420-93ac-6c9e4bfd394f",
+            "name": "Taiwan Open of Surfing",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 14–22 · Jinzun Harbor, Taitung County, Taiwan · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1562a-286c-7034-aa8b-a5c633bf8963",
+            "name": "QA Checklist 20261019215413380-e621f8 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 17 · New Jersey, New Jersey, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1561c-9b73-76a8-90e8-7065f2a402ad",
+            "name": "QA Checklist 20261019213908028-6ab56c 2",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 18 · Los Cerritos, Baja California Sur, Mexico · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15632-e9e8-7793-ae2a-49f909605cc1",
+            "name": "QA Checklist 20261019220348978-d5e094 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 19 · New Jersey, New Jersey, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15644-4045-73b9-85cc-2ec32c0d56a7",
+            "name": "QA Checklist 20261019222144444-c8b54d 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 21 · Shepard Beach Park, Cocoa Beach, Florida · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15ee5-17d8-7267-b401-217b22864acc",
+            "name": "QA Full recovery reminders 1792593431785",
+            "tour": "Qualifying Series",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 22 · Bathsheba, St. Josephs, Barbados · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15ac0-27f5-7371-aa14-100478c529fa",
+            "name": "QA Checklist 20261020191707964-e1f81b 15",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 23 · Soup Bowl, Bathsheba, Barbados · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15ab8-429a-731b-9c99-a3e65c7ce815",
+            "name": "QA Checklist 20261020190817529-3668d1 5",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 25 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1563b-31e7-763e-9f5e-8b6c412eeb4d",
+            "name": "QA Checklist 20261019221135128-fa22ad 7",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 26 · Belmar, New Jersey, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1601a-73ec-71f6-890c-388a16f3d6fd",
+            "name": "QA Ready for QA rerun 1792613707193",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 26 · Puerto Escondido, Oaxaca, Mexico · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "charging",
+                "label": "Charging",
+                "tone": "neutral"
+              },
+              {
+                "code": "coverage_confirmed",
+                "label": "Coverage Confirmed",
+                "tone": "success"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a16009-83a7-7015-b7cf-ef6cf29f8f4a",
+            "name": "Atlantic Park Surf Fee Check 2026-11-27",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 27 · Atlantic Park Surf, Virginia Beach, VA · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a16009-8d7d-77d6-90a1-8afc7469d504",
+            "name": "Atlantic Park Surf Fee Check 2026-11-30",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Nov 30 · Atlantic Park Surf, Virginia Beach, VA · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15409-cc41-76ac-b71f-042cea264058",
+            "name": "QA Checklist 20261019115637042-5be01a 5",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 2 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1540a-31ec-7273-8db3-81b2faeba505",
+            "name": "QA Checklist 20261019115637042-5be01a 6",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 3 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1566a-e21c-71f6-ab88-e0f84251d501",
+            "name": "QA Checklist 20261019230345875-54c2b1 3",
+            "tour": "Championship Tour",
+            "tourName": "Championship Tour",
+            "meta": "Dec 3 · Cabarete, Sosúa, DO · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "WSL confirms the final field by 3 Dec 2026.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "waitlisted",
+                "label": "Waitlisted",
+                "tone": "warning"
+              },
+              {
+                "code": "coverage_confirmed",
+                "label": "Coverage Confirmed",
+                "tone": "success"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1540a-a3cd-72f0-a212-0dde74945951",
+            "name": "QA Checklist 20261019115637042-5be01a 7",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 4 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15ed6-3b7f-738e-af7b-e3147e37f0ec",
+            "name": "QA Card decline comparison 1792592457680",
+            "tour": "Qualifying Series",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 5 · Jaco Beach, Costa Rica · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entry, payment, documents, and coverage are complete.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "selected",
+                "label": "Selected",
+                "tone": "success"
+              },
+              {
+                "code": "ready_to_compete",
+                "label": "Ready to Compete",
+                "tone": "success"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1540b-52af-714f-af68-e1ae613c044a",
+            "name": "QA Checklist 20261019115637042-5be01a 8",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 5 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a16009-3c7a-7167-add8-a66b429af559",
+            "name": "Atlantic Park Surf Fee Check 2026-12-08",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 8 · Atlantic Park Surf, Virginia Beach, VA · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1540b-f19e-756c-9075-3a44b1b4d9ae",
+            "name": "QA Checklist 20261019115637042-5be01a 11",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 8 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15411-bae1-759c-b4b0-1864925b9c2b",
+            "name": "QA Checklist 20261019120801196-903840 3",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 9 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15414-c11b-76cf-bfee-bcf7f7c1b676",
+            "name": "QA Checklist 20261019121141715-542e76 2",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 11 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15415-e0cf-7549-a88f-176c8ab3b9e9",
+            "name": "QA Checklist 20261019121141715-542e76 5",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 14 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a16008-cc51-7006-bda2-0d159fd91444",
+            "name": "56th Street Men's Pro 886h",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 17 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a15e8d-00c4-732a-9f7a-a8293edfba1a",
+            "name": "QA retry UI race 1792587658735",
+            "tour": "Qualifying Series",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 17 · Bidart/Guethary, Nouvelle-Aquitaine, France · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15470-497e-70ad-9133-9852bc504a9f",
+            "name": "QA Checklist 20261019135249757-dc7689 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 18 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15473-7ea9-7545-ad06-15235e83bf06",
+            "name": "QA Checklist 20261019135546596-a8c15d 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 19 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15488-0841-7158-8883-efa48f8559cf",
+            "name": "QA Checklist 20261019141806395-76920a 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 20 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a155c7-3dbc-73f5-94da-8b748d11d298",
+            "name": "QA Checklist 20261019200642730-5c1ca8 4",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 20 · Oceanside Pier, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a16009-9785-767c-8adc-a05f88eae5d2",
+            "name": "Atlantic Park Surf Fee Check 2026-12-21",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 21 · Atlantic Park Surf, Virginia Beach, VA · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a1548b-e865-76a9-9bcc-f19ce05a336e",
+            "name": "QA Checklist 20261019142222236-23bec9 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 21 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a15490-3238-72ea-a402-97b83262de91",
+            "name": "QA Checklist 20261019142648445-5dbf52 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 22 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a14f13-94ed-704c-9997-c5197bbc9f94",
+            "name": "QA Main Flow 387b152e",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 22 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1549a-cdd1-7128-91fb-b77bc8476379",
+            "name": "QA Checklist 20261019143818825-326452 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 23 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a153a1-dcd8-707c-85f8-d37a0be2f90d",
+            "name": "QA Main Flow e2336ea0",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 23 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a154c7-e151-7332-a2aa-aaac2b40fbf8",
+            "name": "QA Checklist 20261019152734072-9199ae 1",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 24 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a1564b-e378-707c-abe1-d690bda0c29d",
+            "name": "QA Checklist 20261019222957595-efa712 3",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 24 · Morro Bay, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a153ae-c8b5-7016-b6a4-ce81e625db2f",
+            "name": "QA Main Flow b28aa57f",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 26 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a153b2-c89b-77b8-9950-249562f3a31c",
+            "name": "QA Main Flow 7a6d0797",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 27 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a153b5-5907-7339-aef2-44ce6dad3288",
+            "name": "QA Main Flow 2d64ee2d",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 28 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a153b8-b08c-7771-b1fc-f2adca17a796",
+            "name": "QA Main Flow 857308a4",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 29 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a153bc-9111-7382-b4a2-1f2f16a4c010",
+            "name": "QA Main Flow 35d20e11",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 30 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a155bd-58a0-7123-966b-66f73c85fe0b",
+            "name": "QA Checklist 20261019195026249-8ff84e 4",
+            "tour": "International Qualifying Series",
+            "tourName": "International Qualifying Series",
+            "meta": "Dec 31 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a153c1-2206-7063-ab5e-b57717746fb8",
+            "name": "QA Main Flow 0b32f761",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Dec 31 · Pismo Beach, California, United States · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries are closed.",
+            "noteTone": "neutral",
+            "badges": [
+              {
+                "code": "closed",
+                "label": "Closed",
+                "tone": "muted"
+              }
+            ],
+            "actions": [],
+            "lock": null
+          },
+          {
+            "id": "01a16009-a13d-71e3-82c6-c7fd85eaacfc",
+            "name": "Atlantic Park Surf Fee Check 2027-01-14",
+            "tour": "QS 2,000",
+            "tourName": "Qualifying Series",
+            "meta": "Jan 14 · Atlantic Park Surf, Virginia Beach, VA · Men’s",
+            "entryFee": 150,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a16007-a321-722d-9740-ddc84ee0efd8",
+            "name": "56th Street Classic 195430 1",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 1 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          },
+          {
+            "id": "01a16007-b559-7693-83f4-1f0b562ca768",
+            "name": "56th Street Classic 195430 2",
+            "tour": "INTL QS 6,000",
+            "tourName": "International Qualifying Series",
+            "meta": "Nov 2 · 56th Street, Newport Beach, California · Men’s",
+            "entryFee": 350,
+            "currency": "USD",
+            "note": "Entries open soon.",
+            "noteTone": "success",
+            "badges": [
+              {
+                "code": "opens_soon",
+                "label": "Entries open soon",
+                "tone": "neutral"
+              }
+            ],
+            "actions": [
+              {
+                "code": "register",
+                "label": "Register",
+                "variant": "primary",
+                "disabled": true,
+                "trailingChevron": false
+              }
+            ],
+            "lock": null
+          }
+        ]
+      }
+    }
+  },
+  "status": "COMPLETED",
+  "finishedAt": "2026-10-21T20:20:16.074Z"
+}
