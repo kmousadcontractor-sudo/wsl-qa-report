@@ -1,0 +1,393 @@
+{
+  "startedAt": "2026-10-21T15:31:24.251Z",
+  "steps": [
+    {
+      "at": "2026-10-21T15:31:41.481Z",
+      "name": "event created and open for entries",
+      "event": "Turtle Bay Women's Pro"
+    },
+    {
+      "at": "2026-10-21T15:32:31.507Z",
+      "name": "athlete registered, Regional membership active"
+    },
+    {
+      "at": "2026-10-21T15:32:50.142Z",
+      "name": "entry submitted with test card 4000 0000 0000 0341 (attaches, declines when charged)"
+    },
+    {
+      "at": "2026-10-21T15:32:58.695Z",
+      "name": "entries closed",
+      "status": 200
+    },
+    {
+      "at": "2026-10-21T15:33:04.768Z",
+      "name": "Confirm field & charge clicked",
+      "status": 200
+    },
+    {
+      "at": "2026-10-21T15:33:08.786Z",
+      "name": "first charge result",
+      "payment": "declined"
+    },
+    {
+      "at": "2026-10-21T15:33:19.445Z",
+      "name": "Retry payment → Proceed",
+      "status": 200
+    },
+    {
+      "at": "2026-10-21T15:33:35.202Z",
+      "name": "state after retry",
+      "payment": "declined"
+    },
+    {
+      "at": "2026-10-21T15:36:07.654Z",
+      "name": "emails 3 min after decline",
+      "count": 0
+    },
+    {
+      "at": "2026-10-21T15:36:21.060Z",
+      "name": "athlete card changed to test Visa 4242",
+      "status": 202
+    },
+    {
+      "at": "2026-10-21T15:36:29.573Z",
+      "name": "final state",
+      "entry": {
+        "code": "confirmed",
+        "label": "Confirmed",
+        "tone": "neutral"
+      },
+      "payment": {
+        "code": "collected",
+        "label": "Collected",
+        "tone": "neutral"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "at": "2026-10-21T15:33:04.767Z",
+      "method": "POST",
+      "url": "/tour-manager/events/01a15f16-eb7b-7092-bf40-f010885443cc/charge",
+      "status": 200,
+      "body": {
+        "confirmationId": "01a15f18-3967-72b4-b87c-939716d2bb84",
+        "charged": 1,
+        "skipped": []
+      }
+    },
+    {
+      "at": "2026-10-21T15:33:19.444Z",
+      "method": "POST",
+      "url": "/tour-manager/events/01a15f16-eb7b-7092-bf40-f010885443cc/entries/01a15f17-f898-75ad-8d75-4daeb3fcbc9b/actions",
+      "status": 200,
+      "body": {
+        "stage": "charged",
+        "field": 48,
+        "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+        "openSeats": [],
+        "summary": [
+          {
+            "count": 0,
+            "label": "charged",
+            "tone": "success"
+          },
+          {
+            "count": 0,
+            "label": "insurance needed",
+            "tone": "warning"
+          },
+          {
+            "count": 0,
+            "label": "declined · your call",
+            "tone": "error"
+          },
+          {
+            "count": 0,
+            "label": "wildcard seats",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "alternates · not charged",
+            "tone": "muted"
+          }
+        ],
+        "primaryAction": null,
+        "publish": null,
+        "filters": [
+          {
+            "code": "entry",
+            "label": "Entry status",
+            "options": [
+              {
+                "value": "pending",
+                "label": "Pending"
+              }
+            ]
+          },
+          {
+            "code": "region",
+            "label": "All regions",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "N. AMERICA"
+              }
+            ]
+          },
+          {
+            "code": "payment",
+            "label": "Payment",
+            "options": [
+              {
+                "value": "pending",
+                "label": "Pending"
+              }
+            ]
+          },
+          {
+            "code": "insurance",
+            "label": "Insurance",
+            "options": [
+              {
+                "value": "verified",
+                "label": "Verified"
+              }
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "id": "01a15f17-f898-75ad-8d75-4daeb3fcbc9b",
+            "group": "field",
+            "athlete": {
+              "initials": "LK",
+              "name": "Leilani Kanoho",
+              "country": "United States"
+            },
+            "ranking": "N. AMERICA",
+            "region": "north_america",
+            "highlight": null,
+            "insurance": {
+              "state": "ok",
+              "label": "Insurance: verified",
+              "code": "verified"
+            },
+            "payment": {
+              "code": "pending",
+              "label": "Pending",
+              "tone": "neutral"
+            },
+            "entry": {
+              "code": "pending",
+              "label": "Pending",
+              "tone": "neutral"
+            },
+            "waivable": {
+              "fee": false
+            },
+            "actions": [
+              {
+                "code": "message",
+                "label": "Send message",
+                "destructive": false
+              },
+              {
+                "code": "withdraw",
+                "label": "Withdraw entry",
+                "destructive": true
+              }
+            ],
+            "movable": true,
+            "pinned": false,
+            "hasHistory": true,
+            "seedRank": null,
+            "alternatePosition": null,
+            "moveUpSeat": null,
+            "movedUpFrom": null
+          }
+        ],
+        "version": 1,
+        "chargesInFlight": true
+      }
+    },
+    {
+      "at": "2026-10-21T15:33:39.243Z",
+      "method": "GET",
+      "url": "/tour-manager/events/01a15f16-eb7b-7092-bf40-f010885443cc/entries/01a15f17-f898-75ad-8d75-4daeb3fcbc9b/history",
+      "status": 200
+    }
+  ],
+  "checks": {
+    "firstChargeDeclined": true,
+    "retryHttp200": true,
+    "historySaysNotAttempted": true,
+    "historyCountsItAsDeclinedAttempt": true,
+    "noEmailWithin3MinOfDecline": true,
+    "recoveredAfterCardChange": true
+  },
+  "athlete": {
+    "name": "Leilani Kanoho",
+    "email": "leilanikanoho9s5wc@btj5keea.mailosaur.net"
+  },
+  "event": {
+    "id": "01a15f16-eb7b-7092-bf40-f010885443cc",
+    "name": "Turtle Bay Women's Pro",
+    "start": "2026-11-16",
+    "region": "hawaii_tahiti",
+    "tour": "Qualifying Series (QS) · Women",
+    "location": "Turtle Bay, Oahu, Hawaii · Honolulu time"
+  },
+  "entryReference": "QS-2026-W-060-001",
+  "entryId": "01a15f17-f898-75ad-8d75-4daeb3fcbc9b",
+  "afterCharge": {
+    "entry": {
+      "code": "pending",
+      "label": "Pending",
+      "tone": "neutral"
+    },
+    "payment": {
+      "code": "declined",
+      "label": "Declined",
+      "tone": "error"
+    },
+    "actions": [
+      "message",
+      "waive",
+      "withdraw",
+      "retry"
+    ]
+  },
+  "historyAfterCharge": {
+    "summary": "1 card attempt · 1 declined",
+    "items": [
+      {
+        "id": "01a15f18-40dd-76d0-befd-925fedb5f85a",
+        "when": "21 Oct 15:33 UTC",
+        "what": "Card payment declined (generic_decline)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15f18-398b-72da-8edf-682cabffeb86",
+        "when": "21 Oct 15:33 UTC",
+        "what": "Card payment charge started",
+        "channel": "Stripe",
+        "by": "T. Manager 101"
+      }
+    ]
+  },
+  "retry": {
+    "status": 200,
+    "at": "2026-10-21T15:33:19.445Z"
+  },
+  "afterRetry": {
+    "entry": {
+      "code": "pending",
+      "label": "Pending",
+      "tone": "neutral"
+    },
+    "payment": {
+      "code": "declined",
+      "label": "Declined",
+      "tone": "error"
+    },
+    "actions": [
+      "message",
+      "waive",
+      "withdraw",
+      "retry"
+    ]
+  },
+  "historyAfterRetry": {
+    "summary": "2 card attempts · 2 declined",
+    "items": [
+      {
+        "id": "01a15f18-76f3-7109-8395-75afb2597246",
+        "when": "21 Oct 15:33 UTC",
+        "what": "Card payment not attempted (the saved payment method pinned to this charge is no longer active)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15f18-40dd-76d0-befd-925fedb5f85a",
+        "when": "21 Oct 15:33 UTC",
+        "what": "Card payment declined (generic_decline)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15f18-398b-72da-8edf-682cabffeb86",
+        "when": "21 Oct 15:33 UTC",
+        "what": "Card payment charge started",
+        "channel": "Stripe",
+        "by": "T. Manager 101"
+      }
+    ]
+  },
+  "historyPanelText": [
+    "Payment",
+    "declined · your call",
+    "wildcard seats",
+    "\tPAYMENT",
+    "Declined",
+    "Leilani Kanoho · payment & communication history",
+    "2 card attempts · 2 declined",
+    "21 Oct 15:33 UTC\tCard payment not attempted (the saved payment method pinned to this charge is no longer active)\tStripe\tSystem",
+    "21 Oct 15:33 UTC\tCard payment declined (generic_decline)\tStripe\tSystem",
+    "21 Oct 15:33 UTC\tCard payment charge started\tStripe\tT. Manager 101"
+  ],
+  "emailsWithin3MinOfDecline": [],
+  "stripeMode": "test",
+  "cardChange": {
+    "setup": "succeeded",
+    "status": 202
+  },
+  "final": {
+    "entry": {
+      "code": "confirmed",
+      "label": "Confirmed",
+      "tone": "neutral"
+    },
+    "payment": {
+      "code": "collected",
+      "label": "Collected",
+      "tone": "neutral"
+    }
+  },
+  "historyFinal": {
+    "summary": "3 card attempts · 2 declined",
+    "items": [
+      {
+        "id": "01a15f1b-4039-7049-b546-bfb974a6d7f9",
+        "when": "21 Oct 15:36 UTC",
+        "what": "Card payment succeeded",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15f18-76f3-7109-8395-75afb2597246",
+        "when": "21 Oct 15:33 UTC",
+        "what": "Card payment not attempted (the saved payment method pinned to this charge is no longer active)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15f18-40dd-76d0-befd-925fedb5f85a",
+        "when": "21 Oct 15:33 UTC",
+        "what": "Card payment declined (generic_decline)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15f18-398b-72da-8edf-682cabffeb86",
+        "when": "21 Oct 15:33 UTC",
+        "what": "Card payment charge started",
+        "channel": "Stripe",
+        "by": "T. Manager 101"
+      }
+    ]
+  },
+  "finishedAt": "2026-10-21T15:37:20.588Z"
+}
