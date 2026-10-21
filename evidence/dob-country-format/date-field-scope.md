@@ -1,6 +1,6 @@
 # Expanded DOB and date formatting scope: athlete flow and dashboard
 
-21 October 2026. Existing report BUG-440a4a138d416e7e / ADD-64. Low/P3 remains the original classification; no Jira change.
+21 October 2026. Existing report BUG-440a4a138d416e7e / ADD-64. Low/P3 remains the original classification; now tracked in [WSL-9745](https://wslproduct.atlassian.net/browse/WSL-9745).
 
 All full calendar-date fields should follow the selected country throughout the athlete journey. Under United Kingdom, use day/month/year for numeric dates and a day-first equivalent for written ranges. This expansion adds the requested athlete-flow/dashboard coverage to the original DOB issue; it does not quote an additional meeting decision.
 
@@ -64,3 +64,6 @@ Shared DatePicker and mask/parse/format helpers cover all DOB variants. Membersh
 
 ## Fixture and limits
 Eight live screenshot groups were captured. Controlled QA athlete setup was used for the membership offer; an existing draft blocked the first attempt, so a fresh controlled account/athlete reached the offer. No membership purchase, payment, event-entry submission, application change or Jira action. The original six DOB recordings remain on the report. New capture recordings are retained locally; this expansion publishes highlighted screenshots and originals.
+
+
+Jira bug created 21 October 2026: [WSL-9745](https://wslproduct.atlassian.net/browse/WSL-9745). [Full ticket description](jira-report.md).
