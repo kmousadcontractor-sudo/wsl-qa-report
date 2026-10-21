@@ -1,6 +1,6 @@
 # QA-RETRY-04: Manager roster stays Declined and Pending after valid-card recovery succeeds until page refresh
 
-Status: Reproduced. Not in Jira. P3 suggested.
+Status: Reproduced. Tracked in WSL-9744. P3 suggested.
 Environment: Live dev / independent athlete and manager browser sessions. Matrix: RET-105.
 
 ## Summary
@@ -49,4 +49,10 @@ F-04 — Open manager roster remains stale after successful card recovery
 ## Recording
 Actual live dev UI: ../../execution-2026-10-21/recovery-recording.webm; timestamped API/UI evidence in recovery-results.json.
 
-No Jira ticket or application fix created.
+Tracked in WSL-9744. No application fix created.
+
+## Jira tracking
+
+[WSL-9744](https://wslproduct.atlassian.net/browse/WSL-9744) · Priority Low.
+
+[Complete detailed ticket report with logs, backend validation and evidence](jira-report.md).

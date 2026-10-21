@@ -32,3 +32,10 @@ The local charge-result method ignores success after its charge is cancelled. In
 The original UI attempt paused at a styled-radio automation selector; it was resumed on the same declined fixture by clicking the visible reason label. This was a script issue, not an application defect. Raw data retains the diagnostic; the final actual UI recording is the resumed sequence. No shared dev rules, database timestamps, UUIDs, clock or broker messages were changed. No funds outside Stripe test mode. No refund or Jira action.
 
 No time acceleration was performed in dev. Local test clocks are explicitly separate from live UI evidence. The old withdrawn fixture was reviewed as a comparison only; it is not the fresh race fixture and is not proof of the ignored-outcome component.
+
+## Jira tracking
+
+- [WSL-9742](https://wslproduct.atlassian.net/browse/WSL-9742): Payment retries: completed 24-hour slot is selected again and dispatches an extra execute at the exact boundary
+- [WSL-9743](https://wslproduct.atlassian.net/browse/WSL-9743): Payment reconciliation: competition charge-result method ignores late success after cancellation
+
+Tickets created after the recorded execution.

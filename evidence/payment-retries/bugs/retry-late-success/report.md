@@ -1,6 +1,6 @@
 # QA-RETRY-03: Competition ignores a successful payment result after withdrawal cancels the charge
 
-Status: Reproduced. Not in Jira. P2 suggested.
+Status: Reproduced. Tracked in WSL-9743. P2 suggested.
 Environment: Local repository / disposable Postgres. Matrix: RET-087.
 
 ## Summary
@@ -48,9 +48,15 @@ F-03 — Late success is ignored after competition charge cancellation
 ## Recording
 Fresh backend test execution, not application UI. Started 2026-10-21T12:15:33.828Z. Captured output: recorded-output.txt; XML: rerun.xml; video: reproduction.webm.
 
-No Jira ticket or application fix created.
+Tracked in WSL-9743. No application fix created.
 
 ## Latest UI impact rerun
 The local charge-result method ignores success after its charge is cancelled. In the separate real UI run, however, payment success appeared in history after withdrawal. That UI run did not reproduce a missing success record.
 
 See ../rerun-ui-impact-2026-10-21/report.md and the linked SVG flow graphs for fresh evidence and scope.
+
+## Jira tracking
+
+[WSL-9743](https://wslproduct.atlassian.net/browse/WSL-9743) · Priority Medium.
+
+[Complete detailed ticket report with logs, backend validation and evidence](jira-report.md).
