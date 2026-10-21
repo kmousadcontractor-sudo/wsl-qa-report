@@ -1,0 +1,553 @@
+{
+  "startedAt": "2026-10-21T07:47:18.821Z",
+  "finishedAt": "2026-10-21T07:49:32.391Z",
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "RET-012 Confirm and charge accepted",
+      "expected": 200,
+      "actual": 200,
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:47:28.973Z"
+    },
+    {
+      "name": "RET-012 Declined test card leaves entry pending",
+      "expected": "declined",
+      "actual": "declined",
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:47:31.670Z"
+    },
+    {
+      "name": "RET-101 Athlete cannot trigger Tour Manager retry",
+      "expected": 403,
+      "actual": 403,
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:47:31.992Z"
+    },
+    {
+      "name": "RET-010 Athlete cannot read Tour Manager payment rules",
+      "expected": 403,
+      "actual": 403,
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:47:32.278Z"
+    },
+    {
+      "name": "RET-060 Unknown saved-card identifier rejected",
+      "expected": 422,
+      "actual": 422,
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:47:32.571Z"
+    },
+    {
+      "name": "RET-056 Valid test Visa accepted after decline",
+      "expected": 202,
+      "actual": 202,
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:47:41.236Z"
+    },
+    {
+      "name": "RET-058 Replaying same card-change key is accepted safely",
+      "expected": 202,
+      "actual": 202,
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:47:41.535Z"
+    },
+    {
+      "name": "RET-056 Successful valid-card recovery",
+      "expected": "collected",
+      "actual": "collected",
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:49:28.328Z"
+    },
+    {
+      "name": "RET-056 Entry confirmed after collection",
+      "expected": "confirmed",
+      "actual": "confirmed",
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:49:28.329Z"
+    },
+    {
+      "name": "RET-105 Open roster updates to Collected without refresh",
+      "expected": true,
+      "actual": false,
+      "status": "FAIL",
+      "timestamp": "2026-10-21T07:49:28.331Z"
+    },
+    {
+      "name": "RET-058 Exactly one successful history outcome",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:49:28.333Z"
+    },
+    {
+      "name": "RET-065 Retry after successful collection rejected",
+      "expected": 409,
+      "actual": 409,
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:49:28.783Z"
+    },
+    {
+      "name": "RET-105 Collected persists after refresh",
+      "expected": true,
+      "actual": true,
+      "status": "PASS",
+      "timestamp": "2026-10-21T07:49:32.290Z"
+    }
+  ],
+  "investigation": {
+    "stages": [
+      {
+        "stage": "initial decline",
+        "at": "2026-10-21T07:47:31.671Z",
+        "list": {
+          "stage": "charged",
+          "field": 48,
+          "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+          "openSeats": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48
+          ],
+          "summary": [
+            {
+              "count": 0,
+              "label": "charged",
+              "tone": "success"
+            },
+            {
+              "count": 0,
+              "label": "insurance needed",
+              "tone": "warning"
+            },
+            {
+              "count": 1,
+              "label": "declined · your call",
+              "tone": "error"
+            },
+            {
+              "count": 0,
+              "label": "wildcard seats",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "alternates · not charged",
+              "tone": "muted"
+            }
+          ],
+          "primaryAction": null,
+          "publish": null,
+          "filters": [
+            {
+              "code": "entry",
+              "label": "Entry status",
+              "options": [
+                {
+                  "value": "pending",
+                  "label": "Pending"
+                }
+              ]
+            },
+            {
+              "code": "region",
+              "label": "All regions",
+              "options": [
+                {
+                  "value": "north_america",
+                  "label": "N. AMERICA"
+                }
+              ]
+            },
+            {
+              "code": "payment",
+              "label": "Payment",
+              "options": [
+                {
+                  "value": "declined",
+                  "label": "Declined"
+                }
+              ]
+            },
+            {
+              "code": "insurance",
+              "label": "Insurance",
+              "options": [
+                {
+                  "value": "verified",
+                  "label": "Verified"
+                }
+              ]
+            }
+          ],
+          "entries": [
+            {
+              "id": "01a15d6d-eb6b-762c-bf81-59240b572ff4",
+              "group": "field",
+              "athlete": {
+                "initials": "CE",
+                "name": "Checklist ExtMatrixRecovery9251",
+                "country": "United States"
+              },
+              "ranking": "Seed 1 · N. AMERICA",
+              "region": "north_america",
+              "highlight": null,
+              "insurance": {
+                "state": "ok",
+                "label": "Insurance: verified",
+                "code": "verified"
+              },
+              "payment": {
+                "code": "declined",
+                "label": "Declined",
+                "tone": "error"
+              },
+              "entry": {
+                "code": "pending",
+                "label": "Pending",
+                "tone": "neutral"
+              },
+              "waivable": {
+                "fee": true
+              },
+              "actions": [
+                {
+                  "code": "message",
+                  "label": "Send message",
+                  "destructive": false
+                },
+                {
+                  "code": "waive",
+                  "label": "Waive fee",
+                  "destructive": false
+                },
+                {
+                  "code": "withdraw",
+                  "label": "Withdraw entry",
+                  "destructive": true
+                },
+                {
+                  "code": "retry",
+                  "label": "Retry payment",
+                  "destructive": false
+                }
+              ],
+              "movable": true,
+              "pinned": false,
+              "hasHistory": true,
+              "seedRank": 1,
+              "alternatePosition": null,
+              "moveUpSeat": null,
+              "movedUpFrom": null
+            }
+          ],
+          "version": 2,
+          "chargesInFlight": false
+        }
+      },
+      {
+        "stage": "after valid-card recovery",
+        "at": "2026-10-21T07:49:27.884Z",
+        "list": {
+          "stage": "charged",
+          "field": 48,
+          "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+          "openSeats": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48
+          ],
+          "summary": [
+            {
+              "count": 1,
+              "label": "charged",
+              "tone": "success"
+            },
+            {
+              "count": 0,
+              "label": "insurance needed",
+              "tone": "warning"
+            },
+            {
+              "count": 0,
+              "label": "declined · your call",
+              "tone": "error"
+            },
+            {
+              "count": 0,
+              "label": "wildcard seats",
+              "tone": "default"
+            },
+            {
+              "count": 0,
+              "label": "alternates · not charged",
+              "tone": "muted"
+            }
+          ],
+          "primaryAction": null,
+          "publish": null,
+          "filters": [
+            {
+              "code": "entry",
+              "label": "Entry status",
+              "options": [
+                {
+                  "value": "confirmed",
+                  "label": "Confirmed"
+                }
+              ]
+            },
+            {
+              "code": "region",
+              "label": "All regions",
+              "options": [
+                {
+                  "value": "north_america",
+                  "label": "N. AMERICA"
+                }
+              ]
+            },
+            {
+              "code": "payment",
+              "label": "Payment",
+              "options": [
+                {
+                  "value": "collected",
+                  "label": "Collected"
+                }
+              ]
+            },
+            {
+              "code": "insurance",
+              "label": "Insurance",
+              "options": [
+                {
+                  "value": "verified",
+                  "label": "Verified"
+                }
+              ]
+            }
+          ],
+          "entries": [
+            {
+              "id": "01a15d6d-eb6b-762c-bf81-59240b572ff4",
+              "group": "field",
+              "athlete": {
+                "initials": "CE",
+                "name": "Checklist ExtMatrixRecovery9251",
+                "country": "United States"
+              },
+              "ranking": "Seed 1 · N. AMERICA",
+              "region": "north_america",
+              "highlight": null,
+              "insurance": {
+                "state": "ok",
+                "label": "Insurance: verified",
+                "code": "verified"
+              },
+              "payment": {
+                "code": "collected",
+                "label": "Collected",
+                "tone": "neutral"
+              },
+              "entry": {
+                "code": "confirmed",
+                "label": "Confirmed",
+                "tone": "neutral"
+              },
+              "waivable": {
+                "fee": false
+              },
+              "actions": [
+                {
+                  "code": "message",
+                  "label": "Send message",
+                  "destructive": false
+                },
+                {
+                  "code": "withdraw",
+                  "label": "Withdraw entry",
+                  "destructive": true
+                }
+              ],
+              "movable": true,
+              "pinned": false,
+              "hasHistory": true,
+              "seedRank": 1,
+              "alternatePosition": null,
+              "moveUpSeat": null,
+              "movedUpFrom": null
+            }
+          ],
+          "version": 2,
+          "chargesInFlight": false
+        }
+      }
+    ],
+    "eventId": "01a15d6d-df77-76f9-99fa-5cff13be3f99",
+    "athleteId": "01a15b2c-7f09-743b-94b1-74d13e0c9d2a",
+    "entryId": "01a15d6d-eb6b-762c-bf81-59240b572ff4",
+    "cardChange": {
+      "status": 202,
+      "body": {
+        "entryId": "01a15d6d-eb6b-762c-bf81-59240b572ff4",
+        "status": "agreed",
+        "reason": null,
+        "message": null,
+        "total": {
+          "amount": 184.5,
+          "amountMinor": 18450,
+          "currency": "USD"
+        },
+        "savedPaymentMethodId": "01a15b2c-fdac-729b-a5a0-15b3443b73e3",
+        "cardChange": {
+          "status": "requested",
+          "reason": null,
+          "message": null
+        }
+      }
+    },
+    "cardChangeReplay": {
+      "status": 202,
+      "body": {
+        "entryId": "01a15d6d-eb6b-762c-bf81-59240b572ff4",
+        "status": "agreed",
+        "reason": null,
+        "message": null,
+        "total": {
+          "amount": 184.5,
+          "amountMinor": 18450,
+          "currency": "USD"
+        },
+        "savedPaymentMethodId": "01a15b2c-fdac-729b-a5a0-15b3443b73e3",
+        "cardChange": {
+          "status": "requested",
+          "reason": null,
+          "message": null
+        }
+      }
+    },
+    "history": {
+      "summary": "2 card attempts · 1 declined",
+      "items": [
+        {
+          "id": "01a15d6e-2c79-763a-aa40-46e18f95728d",
+          "when": "21 Oct 07:47 UTC",
+          "what": "Card payment succeeded",
+          "channel": "Stripe",
+          "by": "System"
+        },
+        {
+          "id": "01a15d6d-fc52-721c-8c51-c13aa9d8b9e9",
+          "when": "21 Oct 07:47 UTC",
+          "what": "Card payment declined (generic_decline)",
+          "channel": "Stripe",
+          "by": "System"
+        },
+        {
+          "id": "01a15d6d-f447-739e-b438-1b49bab871dd",
+          "when": "21 Oct 07:47 UTC",
+          "what": "Card payment charge started",
+          "channel": "Stripe",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15d6d-f279-7223-a54f-dcc83c5317be",
+          "when": "21 Oct 07:47 UTC",
+          "what": "Seed · to #1",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        }
+      ]
+    }
+  },
+  "scope": "Fresh recovery, invalid card, athlete permissions and UI update"
+}
