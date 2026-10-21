@@ -1,0 +1,23 @@
+python -m pytest tests/unit/test_retry_ui_impact_rerun.py -q --tb=short --color=no --junitxml=C:\Users\hp\Desktop\wsl-qa-automation\artifacts\retry-ui-impact-rerun-2026-10-21\backend\retry-worker-impact\rerun.xml
+
+F.                                                                       [100%]
+================================== FAILURES ===================================
+________________ test_completed_offset_full_worker_sequence[0] ________________
+tests\unit\test_retry_ui_impact_rerun.py:15: in test_completed_offset_full_worker_sequence
+    assert second.retries==0, 'Completed 24h retry was dispatched again after its same-instant failure result'
+E   AssertionError: Completed 24h retry was dispatched again after its same-instant failure result
+E   assert 1 == 0
+E    +  where 1 = TickResult(retries=1, notices=0, flagged=0, stopped=0, failed=0).retries
+---------------------------- Captured stdout call -----------------------------
+answer_delay_ms=0; next_due=2026-10-02 12:00:00+00:00; second_tick_retries=1; execute_commands=2
+============================== warnings summary ===============================
+..\wsl-service-core\src\wsl_service_core\testing\fixtures.py:26
+  C:\Users\hp\Desktop\wsl-qa-automation\wsl-local\wsl-service-core\src\wsl_service_core\testing\fixtures.py:26: DeprecationWarning: testcontainers.postgres is deprecated, use testcontainers.community.postgres instead
+    from testcontainers.postgres import PostgresContainer
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/unit/test_retry_ui_impact_rerun.py::test_completed_offset_full_worker_sequence[0]
+1 failed, 1 passed, 1 warning in 0.50s
+
+Process exit code: 1

@@ -47,3 +47,8 @@ F-01 — Completed retry offset can be selected again at exact boundary
 Fresh backend test execution, not application UI. Started 2026-10-21T12:15:03.983Z. Captured output: recorded-output.txt; XML: rerun.xml; video: reproduction.webm.
 
 No Jira ticket or application fix created.
+
+## Latest UI impact rerun
+The scheduler can reuse the first retry time. In the exact-time local worker test it sent a second execute command. Moving the result just 1 millisecond later avoided that extra command.
+
+See ../rerun-ui-impact-2026-10-21/report.md and the linked SVG flow graphs for fresh evidence and scope.

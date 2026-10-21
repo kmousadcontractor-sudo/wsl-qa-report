@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="0.501" timestamp="2026-10-21T15:59:24.860895+03:00" hostname="DESKTOP-TDKA2AL"><testcase classname="tests.unit.test_retry_ui_impact_rerun" name="test_completed_offset_full_worker_sequence[0]" time="0.005"><failure message="AssertionError: Completed 24h retry was dispatched again after its same-instant failure result&#10;assert 1 == 0&#10; +  where 1 = TickResult(retries=1, notices=0, flagged=0, stopped=0, failed=0).retries">tests\unit\test_retry_ui_impact_rerun.py:15: in test_completed_offset_full_worker_sequence
+    assert second.retries==0, 'Completed 24h retry was dispatched again after its same-instant failure result'
+E   AssertionError: Completed 24h retry was dispatched again after its same-instant failure result
+E   assert 1 == 0
+E    +  where 1 = TickResult(retries=1, notices=0, flagged=0, stopped=0, failed=0).retries</failure></testcase><testcase classname="tests.unit.test_retry_ui_impact_rerun" name="test_completed_offset_full_worker_sequence[1]" time="0.004" /></testsuite></testsuites>
