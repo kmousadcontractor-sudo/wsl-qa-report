@@ -1,0 +1,42 @@
+python -m pytest tests/unit/test_retry_matrix_lifecycle.py::test_matrix_terminal_entry_must_not_prepare_manual_retry -q --tb=short --color=no --junitxml=C:\Users\hp\Desktop\wsl-qa-automation\artifacts\retry-bugs-2026-10-21\retry-terminal-entry\rerun.xml
+
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+_____ test_matrix_terminal_entry_must_not_prepare_manual_retry[withdrawn] _____
+tests\unit\test_retry_matrix_lifecycle.py:46: in test_matrix_terminal_entry_must_not_prepare_manual_retry
+    assert facts.chargeable is False, f'Terminal entry {status} was allowed to claim retry'
+E   AssertionError: Terminal entry withdrawn was allowed to claim retry
+E   assert True is False
+E    +  where True = RetryPaymentFacts(entry_id=UUID('01a15e63-3def-7088-9deb-e4812c34aaa7'), chargeable=True, account_holder_iam_user_id=UUID('01a15e63-3dda-72d0-b342-8230fc954b37')).chargeable
+______ test_matrix_terminal_entry_must_not_prepare_manual_retry[removed] ______
+tests\unit\test_retry_matrix_lifecycle.py:46: in test_matrix_terminal_entry_must_not_prepare_manual_retry
+    assert facts.chargeable is False, f'Terminal entry {status} was allowed to claim retry'
+E   AssertionError: Terminal entry removed was allowed to claim retry
+E   assert True is False
+E    +  where True = RetryPaymentFacts(entry_id=UUID('01a15e63-3f8d-759e-bcd2-ccecb96a0c0e'), chargeable=True, account_holder_iam_user_id=UUID('01a15e63-3dda-72d0-b342-8230fc954b37')).chargeable
+___ test_matrix_terminal_entry_must_not_prepare_manual_retry[not_selected] ____
+tests\unit\test_retry_matrix_lifecycle.py:46: in test_matrix_terminal_entry_must_not_prepare_manual_retry
+    assert facts.chargeable is False, f'Terminal entry {status} was allowed to claim retry'
+E   AssertionError: Terminal entry not_selected was allowed to claim retry
+E   assert True is False
+E    +  where True = RetryPaymentFacts(entry_id=UUID('01a15e63-3fa0-75b3-b211-87c5d14e57b6'), chargeable=True, account_holder_iam_user_id=UUID('01a15e63-3dda-72d0-b342-8230fc954b37')).chargeable
+______ test_matrix_terminal_entry_must_not_prepare_manual_retry[expired] ______
+tests\unit\test_retry_matrix_lifecycle.py:46: in test_matrix_terminal_entry_must_not_prepare_manual_retry
+    assert facts.chargeable is False, f'Terminal entry {status} was allowed to claim retry'
+E   AssertionError: Terminal entry expired was allowed to claim retry
+E   assert True is False
+E    +  where True = RetryPaymentFacts(entry_id=UUID('01a15e63-3fb3-74d7-8d8c-9853364ff054'), chargeable=True, account_holder_iam_user_id=UUID('01a15e63-3dda-72d0-b342-8230fc954b37')).chargeable
+============================== warnings summary ===============================
+..\wsl-service-core\src\wsl_service_core\testing\fixtures.py:26
+  C:\Users\hp\Desktop\wsl-qa-automation\wsl-local\wsl-service-core\src\wsl_service_core\testing\fixtures.py:26: DeprecationWarning: testcontainers.postgres is deprecated, use testcontainers.community.postgres instead
+    from testcontainers.postgres import PostgresContainer
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/unit/test_retry_matrix_lifecycle.py::test_matrix_terminal_entry_must_not_prepare_manual_retry[withdrawn]
+FAILED tests/unit/test_retry_matrix_lifecycle.py::test_matrix_terminal_entry_must_not_prepare_manual_retry[removed]
+FAILED tests/unit/test_retry_matrix_lifecycle.py::test_matrix_terminal_entry_must_not_prepare_manual_retry[not_selected]
+FAILED tests/unit/test_retry_matrix_lifecycle.py::test_matrix_terminal_entry_must_not_prepare_manual_retry[expired]
+4 failed, 1 warning in 0.93s
+
+Process exit code: 1

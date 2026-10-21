@@ -1,0 +1,13 @@
+{
+  "id": "retry-consumed-offset",
+  "title": "F-01: completed retry offset selected again",
+  "test": "tests/unit/test_retry_matrix_boundaries.py::test_completed_retry_offset_is_not_rescheduled_at_same_instant",
+  "expected": 1,
+  "startedAt": "2026-10-21T12:15:03.983Z",
+  "finishedAt": "2026-10-21T12:15:18.922Z",
+  "command": "python -m pytest tests/unit/test_retry_matrix_boundaries.py::test_completed_retry_offset_is_not_rescheduled_at_same_instant -q --tb=short --color=no --junitxml=C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\retry-bugs-2026-10-21\\retry-consumed-offset\\rerun.xml",
+  "exitCode": 1,
+  "output": "python -m pytest tests/unit/test_retry_matrix_boundaries.py::test_completed_retry_offset_is_not_rescheduled_at_same_instant -q --tb=short --color=no --junitxml=C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\retry-bugs-2026-10-21\\retry-consumed-offset\\rerun.xml\n\nF                                                                        [100%]\r\n================================== FAILURES ===================================\r\n_______ test_completed_retry_offset_is_not_rescheduled_at_same_instant ________\r\ntests\\unit\\test_retry_matrix_boundaries.py:65: in test_completed_retry_offset_is_not_rescheduled_at_same_instant\r\n    assert due==T0+dt.timedelta(hours=72), 'Already sent 24h offset was selected again at its exact timestamp'\r\nE   AssertionError: Already sent 24h offset was selected again at its exact timestamp\r\nE   assert datetime.datetime(2026, 10, 21, 12, 0, tzinfo=datetime.timezone.utc) == (datetime.datetime(2026, 10, 20, 12, 0, tzinfo=datetime.timezone.utc) + datetime.timedelta(days=3))\r\nE    +  where datetime.timedelta(days=3) = <class 'datetime.timedelta'>(hours=72)\r\nE    +    where <class 'datetime.timedelta'> = dt.timedelta\r\n============================== warnings summary ===============================\r\n..\\wsl-service-core\\src\\wsl_service_core\\testing\\fixtures.py:26\r\n  C:\\Users\\hp\\Desktop\\wsl-qa-automation\\wsl-local\\wsl-service-core\\src\\wsl_service_core\\testing\\fixtures.py:26: DeprecationWarning: testcontainers.postgres is deprecated, use testcontainers.community.postgres instead\r\n    from testcontainers.postgres import PostgresContainer\r\n\r\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\r\n=========================== short test summary info ===========================\r\nFAILED tests/unit/test_retry_matrix_boundaries.py::test_completed_retry_offset_is_not_rescheduled_at_same_instant\r\n1 failed, 1 warning in 0.59s\r\n\nProcess exit code: 1\n",
+  "recording": "reproduction.webm",
+  "screenshot": "assertion.png"
+}

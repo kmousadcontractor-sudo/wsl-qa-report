@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="67.956" timestamp="2026-10-21T15:15:38.669192+03:00" hostname="DESKTOP-TDKA2AL"><testcase classname="tests.integration.test_retry_matrix_regressions" name="test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge" time="66.585"><failure message="AssertionError: Late successful payment ignored; local charge still cancelled; needs reconciliation&#10;assert None is not None">tests\integration\test_retry_matrix_regressions.py:43: in test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge
+    assert updated is not None, f'Late successful payment ignored; local charge still {charge.status}; needs reconciliation'
+E   AssertionError: Late successful payment ignored; local charge still cancelled; needs reconciliation
+E   assert None is not None</failure></testcase></testsuite></testsuites>
