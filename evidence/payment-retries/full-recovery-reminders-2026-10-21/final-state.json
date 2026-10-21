@@ -1,0 +1,523 @@
+{
+  "at": "2026-10-21T14:51:16.985Z",
+  "entries": [
+    {
+      "kind": "recovery",
+      "entryId": "01a15ee5-22f2-71c3-82c7-62abb84e0d79",
+      "eventId": "01a15ee5-17d8-7267-b401-217b22864acc",
+      "roster": {
+        "stage": "charged",
+        "field": 48,
+        "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+        "openSeats": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "summary": [
+          {
+            "count": 1,
+            "label": "charged",
+            "tone": "success"
+          },
+          {
+            "count": 0,
+            "label": "insurance needed",
+            "tone": "warning"
+          },
+          {
+            "count": 0,
+            "label": "declined · your call",
+            "tone": "error"
+          },
+          {
+            "count": 0,
+            "label": "wildcard seats",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "alternates · not charged",
+            "tone": "muted"
+          }
+        ],
+        "primaryAction": null,
+        "publish": null,
+        "filters": [
+          {
+            "code": "entry",
+            "label": "Entry status",
+            "options": [
+              {
+                "value": "confirmed",
+                "label": "Confirmed"
+              }
+            ]
+          },
+          {
+            "code": "region",
+            "label": "All regions",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "N. AMERICA"
+              }
+            ]
+          },
+          {
+            "code": "payment",
+            "label": "Payment",
+            "options": [
+              {
+                "value": "collected",
+                "label": "Collected"
+              }
+            ]
+          },
+          {
+            "code": "insurance",
+            "label": "Insurance",
+            "options": [
+              {
+                "value": "verified",
+                "label": "Verified"
+              }
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "id": "01a15ee5-22f2-71c3-82c7-62abb84e0d79",
+            "group": "field",
+            "athlete": {
+              "initials": "RH",
+              "name": "Retry HeavyQA",
+              "country": "United States"
+            },
+            "ranking": "Seed 1 · N. AMERICA",
+            "region": "north_america",
+            "highlight": null,
+            "insurance": {
+              "state": "ok",
+              "label": "Insurance: verified",
+              "code": "verified"
+            },
+            "payment": {
+              "code": "collected",
+              "label": "Collected",
+              "tone": "neutral"
+            },
+            "entry": {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "tone": "neutral"
+            },
+            "waivable": {
+              "fee": false
+            },
+            "actions": [
+              {
+                "code": "message",
+                "label": "Send message",
+                "destructive": false
+              },
+              {
+                "code": "withdraw",
+                "label": "Withdraw entry",
+                "destructive": true
+              }
+            ],
+            "movable": true,
+            "pinned": false,
+            "hasHistory": true,
+            "seedRank": 1,
+            "alternatePosition": null,
+            "moveUpSeat": null,
+            "movedUpFrom": null
+          }
+        ],
+        "version": 2,
+        "chargesInFlight": false
+      },
+      "history": {
+        "summary": "2 card attempts · 1 declined",
+        "items": [
+          {
+            "id": "01a15eeb-4532-76fc-ab06-3c56b53d3eac",
+            "when": "21 Oct 14:43 UTC",
+            "what": "Card payment succeeded",
+            "channel": "Stripe",
+            "by": "System"
+          },
+          {
+            "id": "01a15ee5-31f3-757d-b2e9-46bec18b1dd3",
+            "when": "21 Oct 14:37 UTC",
+            "what": "Card payment declined (generic_decline)",
+            "channel": "Stripe",
+            "by": "System"
+          },
+          {
+            "id": "01a15ee5-2b63-7247-8c1c-6c3d79004fe4",
+            "when": "21 Oct 14:37 UTC",
+            "what": "Card payment charge started",
+            "channel": "Stripe",
+            "by": "T. Manager 101"
+          },
+          {
+            "id": "01a15ee5-29ae-75ac-a756-66c6532f64a6",
+            "when": "21 Oct 14:37 UTC",
+            "what": "Seed · to #1",
+            "channel": "Tour Manager",
+            "by": "T. Manager 101"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "expiry",
+      "entryId": "01a15ee5-6fe7-753a-acef-1b72f9ea0c0f",
+      "eventId": "01a15ee5-6548-76b6-bfea-4df397213040",
+      "roster": {
+        "stage": "charged",
+        "field": 48,
+        "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+        "openSeats": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "summary": [
+          {
+            "count": 0,
+            "label": "charged",
+            "tone": "success"
+          },
+          {
+            "count": 0,
+            "label": "insurance needed",
+            "tone": "warning"
+          },
+          {
+            "count": 1,
+            "label": "declined · your call",
+            "tone": "error"
+          },
+          {
+            "count": 0,
+            "label": "wildcard seats",
+            "tone": "default"
+          },
+          {
+            "count": 0,
+            "label": "alternates · not charged",
+            "tone": "muted"
+          }
+        ],
+        "primaryAction": null,
+        "publish": null,
+        "filters": [
+          {
+            "code": "entry",
+            "label": "Entry status",
+            "options": [
+              {
+                "value": "pending",
+                "label": "Pending"
+              }
+            ]
+          },
+          {
+            "code": "region",
+            "label": "All regions",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "N. AMERICA"
+              }
+            ]
+          },
+          {
+            "code": "payment",
+            "label": "Payment",
+            "options": [
+              {
+                "value": "needs_decision",
+                "label": "Needs a decision"
+              }
+            ]
+          },
+          {
+            "code": "insurance",
+            "label": "Insurance",
+            "options": [
+              {
+                "value": "verified",
+                "label": "Verified"
+              }
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "id": "01a15ee5-6fe7-753a-acef-1b72f9ea0c0f",
+            "group": "field",
+            "athlete": {
+              "initials": "RH",
+              "name": "Retry HeavyQA",
+              "country": "United States"
+            },
+            "ranking": "Seed 1 · N. AMERICA",
+            "region": "north_america",
+            "highlight": null,
+            "insurance": {
+              "state": "ok",
+              "label": "Insurance: verified",
+              "code": "verified"
+            },
+            "payment": {
+              "code": "needs_decision",
+              "label": "Needs a decision",
+              "tone": "error"
+            },
+            "entry": {
+              "code": "pending",
+              "label": "Pending",
+              "tone": "neutral"
+            },
+            "waivable": {
+              "fee": true
+            },
+            "actions": [
+              {
+                "code": "message",
+                "label": "Send message",
+                "destructive": false
+              },
+              {
+                "code": "waive",
+                "label": "Waive fee",
+                "destructive": false
+              },
+              {
+                "code": "withdraw",
+                "label": "Withdraw entry",
+                "destructive": true
+              },
+              {
+                "code": "retry",
+                "label": "Retry payment",
+                "destructive": false
+              }
+            ],
+            "movable": true,
+            "pinned": false,
+            "hasHistory": true,
+            "seedRank": 1,
+            "alternatePosition": null,
+            "moveUpSeat": null,
+            "movedUpFrom": null
+          }
+        ],
+        "version": 2,
+        "chargesInFlight": false
+      },
+      "history": {
+        "summary": "1 card attempt · 1 declined",
+        "items": [
+          {
+            "id": "01a15ee5-7e46-75f4-a92b-e61ef8ded13a",
+            "when": "21 Oct 14:37 UTC",
+            "what": "Card payment declined (generic_decline)",
+            "channel": "Stripe",
+            "by": "System"
+          },
+          {
+            "id": "01a15ee5-77e2-75cc-9245-7c6f57ac3d1a",
+            "when": "21 Oct 14:37 UTC",
+            "what": "Card payment charge started",
+            "channel": "Stripe",
+            "by": "T. Manager 101"
+          },
+          {
+            "id": "01a15ee5-7679-76d1-9de2-e92140f1cce3",
+            "when": "21 Oct 14:37 UTC",
+            "what": "Seed · to #1",
+            "channel": "Tour Manager",
+            "by": "T. Manager 101"
+          }
+        ]
+      }
+    }
+  ],
+  "rulesAfter": {
+    "name": "Card payment failed",
+    "scope": "GLOBAL · ALL REGIONS",
+    "version": 16,
+    "rules": [
+      {
+        "id": "grace",
+        "name": "Grace period",
+        "description": "The whole window from the first failure to the point where the entry is flagged to a Tour Manager.",
+        "setting": "7 days"
+      },
+      {
+        "id": "notices",
+        "name": "Notification schedule",
+        "description": "Notices go out at 24 hours, 3 days, 5 days and 7 days after the failure, asking the athlete to update their card. The same schedule drives insurance follow-up and recurring membership payments.",
+        "setting": "24 hours · 3 days · 5 days · 7 days"
+      },
+      {
+        "id": "attempts",
+        "name": "Retry attempts",
+        "description": "How many automatic attempts are made after the first failure. Zero means no automatic retry.",
+        "setting": "2 attempts"
+      },
+      {
+        "id": "retry-1",
+        "name": "1st retry",
+        "description": "When the first automatic attempt runs after the failure.",
+        "setting": "24 hours after the failure"
+      },
+      {
+        "id": "retry-2",
+        "name": "2nd retry",
+        "description": "The last automatic attempt. After this the entry needs a decision.",
+        "setting": "3 days after the failure"
+      },
+      {
+        "id": "stop",
+        "name": "Stop condition",
+        "description": "Retries stop the moment the position is no longer available. Nothing is chased inside 10 days of the event: an entry still unpaid by then is flagged to a Tour Manager so an alternate has time to travel.",
+        "setting": "Retries stop when the place is gone"
+      },
+      {
+        "id": "proceed",
+        "name": "Proceed without payment",
+        "description": "Proceed without payment. A Tour Manager can clear an athlete to compete without paying, for a stated reason. Once set, the athlete is marked as a manual override and is never charged again for this event.",
+        "setting": "Proceed without payment · Admin or Tour Manager · reason required · 10 in use this season"
+      }
+    ],
+    "values": {
+      "gracePeriodHours": 168,
+      "notificationOffsetsHours": [
+        24,
+        72,
+        120,
+        168
+      ],
+      "retryOffsetsHours": [
+        24,
+        72
+      ],
+      "shortNoticeDays": 10
+    },
+    "seasonId": "01a14127-7179-718f-8b17-d7ff6a6f6c7b",
+    "edited": {
+      "at": "2026-10-19T22:37:08.435007Z",
+      "by": "T. Manager 101",
+      "text": "Last edited 19 Oct 2026 by T. Manager 101"
+    },
+    "canEdit": true
+  },
+  "athleteDashboardText": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nRetry H.\nLog Out\nWSL Pro\nRH\nSwitch AS\nRetry HeavyQA\n\nAthlete Events\n\nEvents Retry Can Enter\nMembership active\nEvents\nAthlete Details\nAll regions\nHome region\nOther regions\nTour\nAll tours\nMid-Atlantic Pro\n· QS 4,000\n\nDec 9–14 · Virginia Beach, Virginia, United States · Men’s\n\nEvent entry fee $225.00\n\nReady for entries\n\nEntries close 9 Nov 2026 · 17:00 EST\n\nRegister\nMid-Atlantic Longboard Classic\n· LQS 1,000\n\nDec 16–18 · Virginia Beach, Virginia, United States · Men’s\n\nEvent entry fee $90.00\n\nReady for entries\n\nEntries close 16 Nov 2026 · 17:00 EST\n\nRegister\nQA Main Flow e22fd5bd\n· QS 2,000\n\nDec 24 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nReady for entries\nCloses soon\n\nEntries close 26 Oct 2026 · 17:00 PDT\n\nRegister\nSurf City Open\n· QS 1,000\n\nDec 24–28 · Huntington Beach, California, United States · Men’s\n\nEvent entry fee $120.00\n\nReady for entries\n\nEntries close 24 Nov 2026 · 17:00 PST\n\nRegister\nQA Main Flow aa01605b\n· QS 2,000\n\nDec 25 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nReady for entries\nCloses soon\n\nEntries close 26 Oct 2026 · 17:00 PDT\n\nRegister\nOrange County Classic\n· QS 2,000\n\nNov 4–7 · Huntington Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Full expiry reminders 1792593451679\n· Qualifying Series\n\nNov 12 · Hastings, Christ Church, Barbados · Men’s\n\nEvent entry fee $150.00\n\nSelected\nCoverage Confirmed\n\nEntries are closed.\n\nQA Full recovery reminders 1792593431785\n· Qualifying Series\n\nNov 22 · Bathsheba, St. Josephs, Barbados · Men’s\n\nEvent entry fee $150.00\n\nSelected\nReady to Compete\n\nEntry, payment, documents, and coverage are complete.\n\nQA Card decline comparison 1792592457680\n· Qualifying Series\n\nDec 5 · Jaco Beach, Costa Rica · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow 387b152e\n· QS 2,000\n\nDec 22 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow e2336ea0\n· QS 2,000\n\nDec 23 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow b28aa57f\n· QS 2,000\n\nDec 26 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow 7a6d0797\n· QS 2,000\n\nDec 27 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow 2d64ee2d\n· QS 2,000\n\nDec 28 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow 857308a4\n· QS 2,000\n\nDec 29 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow 35d20e11\n· QS 2,000\n\nDec 30 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.\n\nQA Main Flow 0b32f761\n· QS 2,000\n\nDec 31 · Pismo Beach, California, United States · Men’s\n\nEvent entry fee $150.00\n\nClosed\n\nEntries are closed.",
+  "athleteButtons": [
+    "Log Out",
+    "RHSwitch ASRetry HeavyQA",
+    "TourAll tours",
+    "Register",
+    "Register",
+    "Register",
+    "Register",
+    "Register",
+    ""
+  ],
+  "video": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\full-recovery-reminders-2026-10-21\\page@9ec6803a9799ea03bc2626571773fc25.webm"
+}
