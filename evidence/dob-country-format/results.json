@@ -1,0 +1,374 @@
+{
+  "bugId": "BUG-440a4a138d416e7e",
+  "startedAt": "2026-10-21T12:35:56.609Z",
+  "environment": "https://app.dev.worldsurfleague.com",
+  "checks": [
+    {
+      "surface": "initial-age-gate",
+      "name": "Selected country",
+      "expected": "United States",
+      "actual": "United States",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:05.101Z"
+    },
+    {
+      "surface": "initial-age-gate",
+      "name": "United States DOB placeholder",
+      "expected": "MM/DD/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:05.111Z"
+    },
+    {
+      "surface": "initial-age-gate",
+      "name": "Selected country",
+      "expected": "United Kingdom",
+      "actual": "United Kingdom",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:09.236Z"
+    },
+    {
+      "surface": "initial-age-gate",
+      "name": "United Kingdom DOB placeholder",
+      "expected": "DD/MM/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "FAIL",
+      "at": "2026-10-21T12:36:09.250Z"
+    },
+    {
+      "surface": "initial-age-gate",
+      "name": "UK typed 04/05/1990 is 4 May",
+      "expected": "1990-05-04",
+      "actual": "1990-04-05",
+      "status": "FAIL",
+      "at": "2026-10-21T12:36:13.954Z"
+    },
+    {
+      "surface": "initial-age-gate-other-countries",
+      "name": "Selected country",
+      "expected": "Australia",
+      "actual": "Australia",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:22.678Z"
+    },
+    {
+      "surface": "initial-age-gate-other-countries",
+      "name": "Australia DOB placeholder",
+      "expected": "DD/MM/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "FAIL",
+      "at": "2026-10-21T12:36:22.693Z"
+    },
+    {
+      "surface": "initial-age-gate-other-countries",
+      "name": "Selected country",
+      "expected": "United States",
+      "actual": "United States",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:25.911Z"
+    },
+    {
+      "surface": "initial-age-gate-other-countries",
+      "name": "United States DOB placeholder",
+      "expected": "MM/DD/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:25.914Z"
+    },
+    {
+      "surface": "initial-age-gate-browser-en-GB",
+      "name": "Selected country",
+      "expected": "United Kingdom",
+      "actual": "United Kingdom",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:39.014Z"
+    },
+    {
+      "surface": "initial-age-gate-browser-en-GB",
+      "name": "United Kingdom DOB placeholder",
+      "expected": "DD/MM/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "FAIL",
+      "at": "2026-10-21T12:36:39.031Z"
+    },
+    {
+      "surface": "parent-guardian-age-gate",
+      "name": "Selected country",
+      "expected": "United States",
+      "actual": "United States",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:49.559Z"
+    },
+    {
+      "surface": "parent-guardian-age-gate",
+      "name": "United States DOB placeholder",
+      "expected": "MM/DD/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:49.573Z"
+    },
+    {
+      "surface": "parent-guardian-age-gate",
+      "name": "Selected country",
+      "expected": "United Kingdom",
+      "actual": "United Kingdom",
+      "status": "PASS",
+      "at": "2026-10-21T12:36:52.808Z"
+    },
+    {
+      "surface": "parent-guardian-age-gate",
+      "name": "United Kingdom DOB placeholder",
+      "expected": "DD/MM/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "FAIL",
+      "at": "2026-10-21T12:36:52.811Z"
+    },
+    {
+      "surface": "child-athlete-details",
+      "name": "Selected country",
+      "expected": "United States",
+      "actual": "United States",
+      "status": "PASS",
+      "at": "2026-10-21T12:39:41.807Z"
+    },
+    {
+      "surface": "child-athlete-details",
+      "name": "United States DOB placeholder",
+      "expected": "MM/DD/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "PASS",
+      "at": "2026-10-21T12:39:41.825Z"
+    },
+    {
+      "surface": "child-athlete-details",
+      "name": "Selected country",
+      "expected": "United Kingdom",
+      "actual": "United Kingdom",
+      "status": "PASS",
+      "at": "2026-10-21T12:39:45.006Z"
+    },
+    {
+      "surface": "child-athlete-details",
+      "name": "United Kingdom DOB placeholder",
+      "expected": "DD/MM/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "FAIL",
+      "at": "2026-10-21T12:39:45.010Z"
+    },
+    {
+      "surface": "child-athlete-details",
+      "name": "UK residence and header DOB placeholder",
+      "expected": "DD/MM/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "FAIL",
+      "at": "2026-10-21T12:39:48.197Z"
+    },
+    {
+      "surface": "teen-athlete-details-readonly",
+      "name": "Selected country",
+      "expected": "United States",
+      "actual": "United States",
+      "status": "PASS",
+      "at": "2026-10-21T12:40:08.358Z"
+    },
+    {
+      "surface": "teen-athlete-details-readonly",
+      "name": "United States DOB placeholder",
+      "expected": "MM/DD/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "PASS",
+      "at": "2026-10-21T12:40:08.371Z"
+    },
+    {
+      "surface": "teen-athlete-details-readonly",
+      "name": "Selected country",
+      "expected": "United Kingdom",
+      "actual": "United Kingdom",
+      "status": "PASS",
+      "at": "2026-10-21T12:40:11.601Z"
+    },
+    {
+      "surface": "teen-athlete-details-readonly",
+      "name": "United Kingdom DOB placeholder",
+      "expected": "DD/MM/YYYY",
+      "actual": "MM/DD/YYYY",
+      "status": "FAIL",
+      "at": "2026-10-21T12:40:11.606Z"
+    },
+    {
+      "surface": "teen-athlete-details-readonly",
+      "name": "Saved 5 April 2011 displayed in UK order",
+      "expected": "05/04/2011",
+      "actual": "04/05/2011",
+      "status": "FAIL",
+      "at": "2026-10-21T12:40:13.512Z"
+    },
+    {
+      "surface": "teen-athlete-details-readonly",
+      "name": "Teen repeated DOB remains read-only",
+      "expected": true,
+      "actual": true,
+      "status": "PASS",
+      "at": "2026-10-21T12:40:13.517Z"
+    }
+  ],
+  "surfaces": [
+    {
+      "surface": "initial-age-gate",
+      "country": "United States",
+      "placeholder": "MM/DD/YYYY",
+      "value": "",
+      "readOnly": false,
+      "screenshot": "initial-age-gate-United-States.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "initial-age-gate",
+      "country": "United Kingdom",
+      "placeholder": "MM/DD/YYYY",
+      "value": "",
+      "readOnly": false,
+      "screenshot": "initial-age-gate-United-Kingdom.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "initial-age-gate-other-countries",
+      "country": "Australia",
+      "placeholder": "MM/DD/YYYY",
+      "value": "",
+      "readOnly": false,
+      "screenshot": "initial-age-gate-other-countries-Australia.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "initial-age-gate-other-countries",
+      "country": "United States",
+      "placeholder": "MM/DD/YYYY",
+      "value": "",
+      "readOnly": false,
+      "screenshot": "initial-age-gate-other-countries-United-States.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "initial-age-gate-browser-en-GB",
+      "country": "United Kingdom",
+      "placeholder": "MM/DD/YYYY",
+      "value": "",
+      "readOnly": false,
+      "screenshot": "initial-age-gate-browser-en-GB-United-Kingdom.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "parent-guardian-age-gate",
+      "country": "United States",
+      "placeholder": "MM/DD/YYYY",
+      "value": "",
+      "readOnly": false,
+      "screenshot": "parent-guardian-age-gate-United-States.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "parent-guardian-age-gate",
+      "country": "United Kingdom",
+      "placeholder": "MM/DD/YYYY",
+      "value": "",
+      "readOnly": false,
+      "screenshot": "parent-guardian-age-gate-United-Kingdom.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "child-athlete-details",
+      "country": "United States",
+      "placeholder": "MM/DD/YYYY",
+      "value": "",
+      "readOnly": false,
+      "screenshot": "child-athlete-details-United-States.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "child-athlete-details",
+      "country": "United Kingdom",
+      "placeholder": "MM/DD/YYYY",
+      "value": "",
+      "readOnly": false,
+      "screenshot": "child-athlete-details-United-Kingdom.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "teen-athlete-details-readonly",
+      "country": "United States",
+      "placeholder": "MM/DD/YYYY",
+      "value": "04/05/2011",
+      "readOnly": true,
+      "screenshot": "teen-athlete-details-readonly-United-States.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    },
+    {
+      "surface": "teen-athlete-details-readonly",
+      "country": "United Kingdom",
+      "placeholder": "MM/DD/YYYY",
+      "value": "04/05/2011",
+      "readOnly": true,
+      "screenshot": "teen-athlete-details-readonly-United-Kingdom.png",
+      "url": "https://app.dev.worldsurfleague.com/athlete-registration/register"
+    }
+  ],
+  "recordings": [
+    {
+      "surface": "initial-age-gate",
+      "name": "initial-age-gate.webm"
+    },
+    {
+      "surface": "initial-age-gate-other-countries",
+      "name": "initial-age-gate-other-countries.webm"
+    },
+    {
+      "surface": "initial-age-gate-browser-en-GB",
+      "name": "initial-age-gate-browser-en-GB.webm"
+    },
+    {
+      "surface": "parent-guardian-age-gate",
+      "name": "parent-guardian-age-gate.webm"
+    },
+    {
+      "surface": "child-athlete-details",
+      "name": "child-athlete-details.webm"
+    },
+    {
+      "surface": "teen-athlete-details-readonly",
+      "name": "teen-athlete-details-readonly.webm"
+    }
+  ],
+  "errors": [],
+  "ukInvalidInput": {
+    "value": "25/12/1990",
+    "body": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nLog In\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited Kingdom\nEnglish\n1\nDate of Birth\nCurrent step\n2\nAccount\nNot started\n3\nAthlete Details\nNot started\n4\nMembership\nNot started\n5\nPayment\nNot started\nPlease enter your date of birth\nDate of Birth*\nPlease enter a valid date.\nContinue\n\nAlready have an account? Login",
+    "screenshot": "initial-age-gate-uk-day-over-12.png"
+  },
+  "ukAmbiguousInput": {
+    "typed": "04/05/1990",
+    "postedDateOfBirth": "1990-04-05",
+    "screenshot": "initial-age-gate-uk-ambiguous-after-continue.png"
+  },
+  "finishedAt": "2026-10-21T12:40:14.363Z",
+  "summary": {
+    "PASS": 17,
+    "FAIL": 9
+  },
+  "setupDiagnostics": [
+    {
+      "surface": "child-athlete-details",
+      "error": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://app.dev.worldsurfleague.com/athlete-registration/register\", waiting until \"load\"\u001b[22m\n\n    at open (C:\\Users\\hp\\Desktop\\wsl-qa-automation\\scripts\\demo\\test-dob-country-format.mjs:9:242)\n    at async file:///C:/Users/hp/Desktop/wsl-qa-automation/scripts/demo/test-dob-country-format.mjs:23:2"
+    }
+  ],
+  "adultFixture": {
+    "dateOfBirth": "1990-04-05",
+    "scope": "Fresh controlled QA account; no athlete submitted"
+  },
+  "ukResidenceScreenshot": "child-athlete-details-uk-residence.png",
+  "teenFixture": {
+    "dateOfBirth": "2011-04-05",
+    "scope": "Fresh controlled QA account; no membership purchase"
+  },
+  "teenScreenshot": "teen-athlete-details-uk-readonly.png"
+}
