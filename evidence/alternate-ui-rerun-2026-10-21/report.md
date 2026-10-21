@@ -1,10 +1,10 @@
-# Tour Manager alternate promotion and charging � dev rerun
+# Tour Manager alternate promotion and charging - dev rerun
 
-Executed 21 October 2026, 21:09:18�21:11:31 Cairo (raw evidence UTC).
+Executed 21 October 2026, 21:09:18-21:11:31 Cairo (raw evidence UTC).
 
 ## Outcome
-- BUG-280c0e6389716e7b � missing charge action: NOT REPRODUCED. The live UI offered Confirm field & charge 1 after the event had already been charged. Clicking it opened a preview and the final Confirm & charge 1 submitted POST /charge: HTTP 200, charged=1, skipped=17 (already_charged). The promoted alternate became Confirmed / Collected.
-- BUG-ce663cca09a8e761 � missing Move up control: promotion portion NOT REPRODUCED. Move up all (1) was visible for the ready alternate and clicking it moved the athlete into field seat 18. No Undo button was found immediately after promotion in the inspected UI. The API Undo worked before charge, so this portion remains an observed UI gap needing product review. This does not establish every possible undo affordance is absent.
+- BUG-280c0e6389716e7b - missing charge action: NOT REPRODUCED. The live UI offered Confirm field & charge 1 after the event had already been charged. Clicking it opened a preview and the final Confirm & charge 1 submitted POST /charge: HTTP 200, charged=1, skipped=17 (already_charged). The promoted alternate became Confirmed / Collected.
+- BUG-ce663cca09a8e761 - missing Move up control: promotion portion NOT REPRODUCED. Move up all (1) was visible for the ready alternate and clicking it moved the athlete into field seat 18. No Undo button was found immediately after promotion in the inspected UI. The API Undo worked before charge, so this portion remains an observed UI gap needing product review. This does not establish every possible undo affordance is absent.
 
 ## Exact fixture
 Reused the original isolated QA extension event; did not create a new full roster or re-run the original first Confirm & charge.
@@ -35,7 +35,7 @@ A manager should be able to fill an open seat and charge only the newly eligible
 - Relevant history: [{"id":"01a15fa9-3af6-7187-a0e4-faa6add69498","when":"21 Oct 18:11 UTC","what":"Card payment succeeded","channel":"Stripe","by":"System"},{"id":"01a15fa9-3285-7274-b2c1-c6685de702af","when":"21 Oct 18:11 UTC","what":"Card payment charge started","channel":"Stripe","by":"T. Manager 101"},{"id":"01a15fa9-1367-7150-b58b-76d27ea207ff","when":"21 Oct 18:11 UTC","what":"Alternate promoted · to #18 · moved up from A1","channel":"Tour Manager","by":"T. Manager 101"},{"id":"01a15fa8-e8c6-71e1-ab50-4491741ec1c8","when":"21 Oct 18:11 UTC","what":"Back to the alternates · was #18 · move up undone","channel":"Tour Manager","by":"T. Manager 101"},{"id":"01a15fa7-aa2c-71a8-a9f5-2eb774d840f1","when":"21 Oct 18:09 UTC","what":"Alternate promoted · to #18 · moved up from A1","channel":"Tour Manager","by":"T. Manager 101"},{"id":"01a15fa7-99da-705b-9d48-37e5351b4358","when":"21 Oct 18:09 UTC","what":"Back to the alternates · was #18 · move up undone","channel":"Tour Manager","by":"T. Manager 101"},{"id":"01a15fa7-8a05-7504-9309-8f615e216245","when":"21 Oct 18:09 UTC","what":"Alternate promoted · to #18 · moved up from A1","channel":"Tour Manager","by":"T. Manager 101"},{"id":"01a15673-abb2-717b-ae5b-89949602fcb5","when":"19 Oct 23:16 UTC","what":"Seed · down from alternate 1 to alternate 2 · after a move up was undone","channel":"Tour Manager","by":"T. Manager 101"}].
 
 ## Recordings and screenshots
-ui-flow.webm is the actual successful UI promotion and charge sequence. alternate-flow.webm is the earlier API-positive-control observation sequence; API calls are not shown as UI actions. Screenshots 09�15 document the successful UI rerun; screenshots 01�06 document the API-control setup.
+ui-flow.webm is the actual successful UI promotion and charge sequence. alternate-flow.webm is the earlier API-positive-control observation sequence; API calls are not shown as UI actions. Screenshots 09-15 document the successful UI rerun; screenshots 01-06 document the API-control setup.
 
 ## Test tooling correction and limits
 The first runner waited for an obsolete review-acknowledgement checkbox. The current dialog has no such checkbox, so it timed out before submitting charge. results.json retains INCOMPLETE and the error screenshot. The second runner handled the actual dialog and completed. The initial timeout is a test-runner issue, not a product failure. The second runner captured chargePreview too early as Cancel; use screenshot 14 and the first error screenshot for loaded preview text.
