@@ -63,3 +63,7 @@ No status transition is requested or performed.
 ## API request exports
 
 [Postman collection](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/postman-collection.json) · [REST-client requests](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/api-requests.http). Credentials omitted.
+
+## Setup and capture exclusions
+
+Two incompatible Firefox revisions failed during context creation, before product requests. Matching Firefox 157/revision 1555 was installed. The headed crash and one interrupted staging setup produced zero-byte files; both are excluded from playable evidence. Completed staging empty-heat execution has a separate verified recording. [Setup/exclusion registry](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/recording-exclusions.json).
