@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-22T10:12:13.755Z",
+  "event": {
+    "id": "01a16313-7c81-7071-9ae2-e5cb7ca20c7c",
+    "name": "QA Duplicate and confirmation rerun 1792663582721"
+  },
+  "entryId": "01a16315-5af7-70c6-be7d-4d79d3904ca7",
+  "row": {
+    "id": "01a16315-5af7-70c6-be7d-4d79d3904ca7",
+    "group": "field",
+    "athlete": {
+      "initials": "AQ",
+      "name": "Adult QAOct22",
+      "country": "United States"
+    },
+    "ranking": "Seed 1 · N. AMERICA",
+    "region": "north_america",
+    "highlight": null,
+    "insurance": {
+      "state": "warn",
+      "label": "Third-party",
+      "code": "third-party"
+    },
+    "entryType": {
+      "code": "regular",
+      "label": "Regular"
+    },
+    "payment": {
+      "code": "authorized",
+      "label": "Authorized",
+      "tone": "neutral"
+    },
+    "entry": {
+      "code": "waitlisted",
+      "label": "Waitlisted",
+      "tone": "neutral"
+    },
+    "waivable": {
+      "fee": true
+    },
+    "actions": [
+      {
+        "code": "message",
+        "label": "Send message",
+        "destructive": false
+      },
+      {
+        "code": "confirm_and_charge",
+        "label": "Confirm and charge",
+        "destructive": false,
+        "amount": "USD 150",
+        "description": "Adult QAOct22 will be charged USD 150, the fee they agreed to when they entered."
+      },
+      {
+        "code": "waive",
+        "label": "Waive fee",
+        "destructive": false
+      },
+      {
+        "code": "withdraw",
+        "label": "Withdraw entry",
+        "destructive": true
+      }
+    ],
+    "movable": true,
+    "pinned": false,
+    "hasHistory": true,
+    "seedRank": 1,
+    "alternatePosition": null,
+    "moveUpSeat": null,
+    "movedUpFrom": null
+  },
+  "history": {
+    "status": 200,
+    "body": {
+      "summary": "1 history entry",
+      "items": [
+        {
+          "id": "01a16315-fa19-74ed-89a3-783e41203033",
+          "when": "22 Oct 10:09 UTC",
+          "what": "Seed · to #1",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        }
+      ]
+    }
+  }
+}

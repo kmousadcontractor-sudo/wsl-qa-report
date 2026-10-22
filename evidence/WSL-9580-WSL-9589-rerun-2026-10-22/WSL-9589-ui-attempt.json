@@ -1,0 +1,505 @@
+{
+  "startedAt": "2026-10-22T10:10:15.117Z",
+  "event": {
+    "id": "01a16313-7c81-7071-9ae2-e5cb7ca20c7c",
+    "name": "QA Duplicate and confirmation rerun 1792663582721"
+  },
+  "athleteId": "01a162c5-73e8-7082-b934-37e999d12fdf",
+  "entryId": "01a16315-5af7-70c6-be7d-4d79d3904ca7",
+  "email": "qa.adult.1792658419723@btj5keea.mailosaur.net",
+  "observations": [],
+  "requests": [],
+  "before": {
+    "stage": "seeding",
+    "field": 48,
+    "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+    "openSeats": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48
+    ],
+    "seatsFilled": {
+      "filled": 1,
+      "capacity": 48,
+      "note": "47 seats open"
+    },
+    "summary": [
+      {
+        "count": 1,
+        "label": "ready to confirm",
+        "tone": "default"
+      },
+      {
+        "count": 0,
+        "label": "confirmed",
+        "tone": "success"
+      },
+      {
+        "count": 47,
+        "label": "needs attention",
+        "tone": "warning",
+        "detail": "47 open seats"
+      }
+    ],
+    "summaryBar": [
+      {
+        "code": "ready",
+        "count": 1,
+        "label": "Ready to confirm",
+        "detail": "Charged when you confirm",
+        "tone": "default"
+      },
+      {
+        "code": "confirmed",
+        "count": 0,
+        "label": "Confirmed",
+        "detail": "Not charged again",
+        "tone": "success"
+      },
+      {
+        "code": "attention",
+        "count": 47,
+        "label": "Needs attention",
+        "detail": "47 open seats",
+        "tone": "warning"
+      },
+      {
+        "code": "seats",
+        "count": 1,
+        "label": "Seats filled",
+        "detail": "1 / 48",
+        "tone": "default"
+      }
+    ],
+    "primaryAction": {
+      "code": "confirm",
+      "label": "Confirm field & charge 1"
+    },
+    "publish": null,
+    "filters": [
+      {
+        "code": "entry",
+        "label": "Entry status",
+        "options": [
+          {
+            "value": "waitlisted",
+            "label": "Waitlisted"
+          }
+        ]
+      },
+      {
+        "code": "region",
+        "label": "All regions",
+        "options": [
+          {
+            "value": "north_america",
+            "label": "N. AMERICA"
+          }
+        ]
+      },
+      {
+        "code": "payment",
+        "label": "Payment",
+        "options": [
+          {
+            "value": "authorized",
+            "label": "Authorized"
+          }
+        ]
+      },
+      {
+        "code": "insurance",
+        "label": "Insurance",
+        "options": [
+          {
+            "value": "third-party",
+            "label": "Third-party"
+          }
+        ]
+      },
+      {
+        "code": "entryType",
+        "label": "Entry type",
+        "options": [
+          {
+            "value": "regular",
+            "label": "Regular"
+          }
+        ]
+      }
+    ],
+    "entries": [
+      {
+        "id": "01a16315-5af7-70c6-be7d-4d79d3904ca7",
+        "group": "field",
+        "athlete": {
+          "initials": "AQ",
+          "name": "Adult QAOct22",
+          "country": "United States"
+        },
+        "ranking": "Seed 1 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "authorized",
+          "label": "Authorized",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "waitlisted",
+          "label": "Waitlisted",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": true
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "confirm_and_charge",
+            "label": "Confirm and charge",
+            "destructive": false,
+            "amount": "USD 150",
+            "description": "Adult QAOct22 will be charged USD 150, the fee they agreed to when they entered."
+          },
+          {
+            "code": "waive",
+            "label": "Waive fee",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 1,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      }
+    ],
+    "version": 2,
+    "chargesInFlight": false
+  },
+  "historyBefore": {
+    "summary": "1 history entry",
+    "items": [
+      {
+        "id": "01a16315-fa19-74ed-89a3-783e41203033",
+        "when": "22 Oct 10:09 UTC",
+        "what": "Seed · to #1",
+        "channel": "Tour Manager",
+        "by": "T. Manager 101"
+      }
+    ]
+  },
+  "cardBefore": "Dec\n\n2\n\n1 day\n\nQA Duplicate and confirmation rerun 1792663582721\n· QS 2,000\n\nDec 2 · Playa Hermosa, Garabito, Costa Rica · Men’s · Closed For Entries\n\nEvent entry fee $150.00\nENT-2026-00025\nView Invoice\n\nWaitlisted\nThird Party Insurance\n\nWSL confirms the final field by 2 Dec 2026.\n\nWaitlisted",
+  "athleteUrlBefore": "https://app.dev.worldsurfleague.com/athlete-registration/athletes/01a162c5-73e8-7082-b934-37e999d12fdf",
+  "close": {
+    "status": 200,
+    "body": {
+      "alreadyClosed": true
+    }
+  },
+  "order": {
+    "status": 200,
+    "body": {
+      "stage": "seeding",
+      "field": 48,
+      "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+      "openSeats": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "seatsFilled": {
+        "filled": 1,
+        "capacity": 48,
+        "note": "47 seats open"
+      },
+      "summary": [
+        {
+          "count": 1,
+          "label": "ready to confirm",
+          "tone": "default"
+        },
+        {
+          "count": 0,
+          "label": "confirmed",
+          "tone": "success"
+        },
+        {
+          "count": 47,
+          "label": "needs attention",
+          "tone": "warning",
+          "detail": "47 open seats"
+        }
+      ],
+      "summaryBar": [
+        {
+          "code": "ready",
+          "count": 1,
+          "label": "Ready to confirm",
+          "detail": "Charged when you confirm",
+          "tone": "default"
+        },
+        {
+          "code": "confirmed",
+          "count": 0,
+          "label": "Confirmed",
+          "detail": "Not charged again",
+          "tone": "success"
+        },
+        {
+          "code": "attention",
+          "count": 47,
+          "label": "Needs attention",
+          "detail": "47 open seats",
+          "tone": "warning"
+        },
+        {
+          "code": "seats",
+          "count": 1,
+          "label": "Seats filled",
+          "detail": "1 / 48",
+          "tone": "default"
+        }
+      ],
+      "primaryAction": {
+        "code": "confirm",
+        "label": "Confirm field & charge 1"
+      },
+      "publish": null,
+      "filters": [
+        {
+          "code": "entry",
+          "label": "Entry status",
+          "options": [
+            {
+              "value": "waitlisted",
+              "label": "Waitlisted"
+            }
+          ]
+        },
+        {
+          "code": "region",
+          "label": "All regions",
+          "options": [
+            {
+              "value": "north_america",
+              "label": "N. AMERICA"
+            }
+          ]
+        },
+        {
+          "code": "payment",
+          "label": "Payment",
+          "options": [
+            {
+              "value": "authorized",
+              "label": "Authorized"
+            }
+          ]
+        },
+        {
+          "code": "insurance",
+          "label": "Insurance",
+          "options": [
+            {
+              "value": "third-party",
+              "label": "Third-party"
+            }
+          ]
+        },
+        {
+          "code": "entryType",
+          "label": "Entry type",
+          "options": [
+            {
+              "value": "regular",
+              "label": "Regular"
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "id": "01a16315-5af7-70c6-be7d-4d79d3904ca7",
+          "group": "field",
+          "athlete": {
+            "initials": "AQ",
+            "name": "Adult QAOct22",
+            "country": "United States"
+          },
+          "ranking": "Seed 1 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "authorized",
+            "label": "Authorized",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "waitlisted",
+            "label": "Waitlisted",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": true
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "confirm_and_charge",
+              "label": "Confirm and charge",
+              "destructive": false,
+              "amount": "USD 150",
+              "description": "Adult QAOct22 will be charged USD 150, the fee they agreed to when they entered."
+            },
+            {
+              "code": "waive",
+              "label": "Waive fee",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 1,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        }
+      ],
+      "version": 3,
+      "chargesInFlight": false
+    }
+  },
+  "preview": "Confirm and charge 1 athlete?\n\nQA Duplicate and confirmation rerun 1792663582721 · field of 48\n\nWILL BE CHARGED\n1\nReady to confirm\nUSD 150 each\nEstimated entry fees\nUSD 150 × 1 ready to confirm · via Stripe\nUSD 150 est.\n\nFinal amount depends on which cards clear\n\nExpected number of athletes in event after charge\n1 athlete\n\nAll surfers below the line will not be confirmed and charged. You can confirm a partial field and leave seats empty, and you can run this again later, for example after declined cards are updated.\n\nCancel\nConfirm & charge 1",
+  "status": "BLOCKED",
+  "error": "page.waitForResponse: Timeout 25000ms exceeded while waiting for event \"response\"\n    at C:\\Users\\hp\\Desktop\\wsl-qa-automation\\scripts\\demo\\rerun-WSL-9589-2026-10-22.mjs:7:1003",
+  "finishedAt": "2026-10-22T10:11:28.079Z"
+}
