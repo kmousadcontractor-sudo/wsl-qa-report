@@ -1,8 +1,8 @@
 {
   "primaryCounts": {
-    "PASS": 14,
+    "PASS": 10,
     "FAIL": 1,
-    "BLOCKED": 1
+    "BLOCKED": 0
   },
   "primaryCases": [
     {
@@ -92,45 +92,6 @@
       "status": 500,
       "evidenceId": "A27",
       "video": "tests/A27/recording.mp4"
-    },
-    {
-      "env": "staging",
-      "id": "empty-default",
-      "result": "BLOCKED",
-      "evidenceId": "A06",
-      "video": "tests/A06/recording.mp4"
-    },
-    {
-      "env": "staging",
-      "id": "populated-default",
-      "result": "PASS",
-      "status": 200,
-      "evidenceId": "A17",
-      "video": "tests/A17/recording.mp4"
-    },
-    {
-      "env": "staging",
-      "id": "populated-details",
-      "result": "PASS",
-      "status": 200,
-      "evidenceId": "A18",
-      "video": "tests/A18/recording.mp4"
-    },
-    {
-      "env": "staging",
-      "id": "populated-career",
-      "result": "PASS",
-      "status": 200,
-      "evidenceId": "A16",
-      "video": "tests/A16/recording.mp4"
-    },
-    {
-      "env": "staging",
-      "id": "populated-h2h",
-      "result": "PASS",
-      "status": 200,
-      "evidenceId": "A19",
-      "video": "tests/A19/recording.mp4"
     }
   ],
   "historicalVideos": 14,
@@ -165,7 +126,9 @@
           "result": "PASS",
           "status": 200
         }
-      ]
+      ],
+      "scope": "excluded",
+      "reason": "Recorded staging build does not contain WSL-9678 fix. Excluded from ticket verification and result totals; historical evidence retained without sign-off impact."
     },
     {
       "env": "beta",
@@ -227,5 +190,48 @@
         }
       ]
     }
-  ]
+  ],
+  "excludedStagingCases": [
+    {
+      "env": "staging",
+      "id": "empty-default",
+      "result": "BLOCKED",
+      "evidenceId": "A06",
+      "video": "tests/A06/recording.mp4"
+    },
+    {
+      "env": "staging",
+      "id": "populated-default",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A17",
+      "video": "tests/A17/recording.mp4"
+    },
+    {
+      "env": "staging",
+      "id": "populated-details",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A18",
+      "video": "tests/A18/recording.mp4"
+    },
+    {
+      "env": "staging",
+      "id": "populated-career",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A16",
+      "video": "tests/A16/recording.mp4"
+    },
+    {
+      "env": "staging",
+      "id": "populated-h2h",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A19",
+      "video": "tests/A19/recording.mp4"
+    }
+  ],
+  "scope": "Beta only; staging recorded build lacks the fix",
+  "stagingVerification": "staging-scope-verification.json"
 }

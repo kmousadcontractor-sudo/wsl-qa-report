@@ -6,13 +6,19 @@ QA verification for WSL-9678.
 
 [Published report, screenshots, all recordings and API evidence](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/)
 
-16 cases with dedicated verified API recordings: 14 PASS, 1 FAIL, 1 BLOCKED, 0 REVIEW. Dedicated recordings are live API execution evidence; product UI recordings/screenshots are separately labelled.
+11 beta cases with dedicated verified API recordings: 10 PASS, 1 FAIL, 0 BLOCKED, 0 REVIEW. Dedicated recordings are live API execution evidence; product UI recordings/screenshots are separately labelled.
 
 ## Browser regression results
 
-The Firefox browser-network run recorded 14 safe endpoint responses, one HTTP 500 (missing heatId on beta), and one staging timeout. Beta desktop/mobile popup opening was observed without horizontal overflow. Close/reopen and interactive tab switching remain unverified; staging exposed Replay links rather than a certified visible Details control.
+The beta Firefox browser-network run recorded 10 safe endpoint responses and one HTTP 500 for missing heatId. Staging is excluded because its recorded build lacks the fix. Beta desktop/mobile popup opening was observed without horizontal overflow. Close/reopen and interactive tab switching remain unverified.
 
-## Latest dedicated API cases
+## Scope correction
+
+Staging is **excluded** from this ticket’s fix verification and counts. Its recorded build `41685710eb0a41768af132c50d8f268f81c227f1-12147` lacks all three protections from PR #3936: DA filter guard, popup null-tab fallback and H2H athlete-count guard. The merge commit is not an ancestor of this staging commit. This is confirmation about the build returned in the captured responses, not a new current-deployment test. Staging timeouts are not evidence of failure of the deployed beta fix and are not a beta QA blocker. Previous staging attachments/comments are historical and superseded for verification scope.
+
+[Build/source verification](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/staging-scope-verification.json).
+
+## Latest dedicated API cases — beta only
 
 | Environment | Test | Result | HTTP/error | Full recording | Screenshot | Request/response |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -27,11 +33,6 @@ The Firefox browser-network run recorded 14 safe endpoint responses, one HTTP 50
 | beta | empty-unknown-tab | PASS | 200 | [A26](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A26/recording.mp4) | [Image](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A26/result.png) | [Metadata](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A26/request-response.json), [raw body](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A26/response.txt) |
 | beta | empty-refresh | PASS | 200 | [A25](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A25/recording.mp4) | [Image](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A25/result.png) | [Metadata](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A25/request-response.json), [raw body](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A25/response.txt) |
 | beta | missing-heat | FAIL | 500 | [A27](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A27/recording.mp4) | [Image](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A27/result.png) | [Metadata](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A27/request-response.json), [raw body](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A27/response.txt) |
-| staging | empty-default | BLOCKED | TimeoutError: The operation timed out. | [A06](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A06/recording.mp4) | [Image](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A06/result.png) | [Metadata](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A06/request-response.json), [raw body](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A06/response.txt) |
-| staging | populated-default | PASS | 200 | [A17](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A17/recording.mp4) | [Image](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A17/result.png) | [Metadata](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A17/request-response.json), [raw body](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A17/response.txt) |
-| staging | populated-details | PASS | 200 | [A18](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A18/recording.mp4) | [Image](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A18/result.png) | [Metadata](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A18/request-response.json), [raw body](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A18/response.txt) |
-| staging | populated-career | PASS | 200 | [A16](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A16/recording.mp4) | [Image](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A16/result.png) | [Metadata](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A16/request-response.json), [raw body](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A16/response.txt) |
-| staging | populated-h2h | PASS | 200 | [A19](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A19/recording.mp4) | [Image](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A19/result.png) | [Metadata](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A19/request-response.json), [raw body](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/tests/A19/response.txt) |
 
 ## Requests and technical details
 
@@ -51,7 +52,6 @@ The Firefox browser-network run recorded 14 safe endpoint responses, one HTTP 50
 
 ## Findings and limitations
 
-- Staging empty-heat transport failures remain inconclusive; runtime logs/current fixture verification required.
 - Beta missing heatId returned 500 in the browser run, zero-byte body; separate malformed-input finding. [Detailed report](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/missing-heat-id-bug.md).
 - Dedicated reruns preserve later transport failures; inspect latest results instead of treating every historical PASS as current universal sign-off.
 - No backend logs, SQL trace, memory readback, exact stat accuracy, production test or data changes. One-athlete, invalid IDs, Finals/CS/team layouts, tablet/keyboard and UI follow-ups remain as specified in the [full regression plan](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/regression-plan.md).
@@ -70,4 +70,4 @@ Two incompatible Firefox revisions failed during context creation, before produc
 
 ## QA-readable response views
 
-[Open readable API responses](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/responses/). Covers the 16 main cases and all 27 attempts. Each page explains the HTTP result, heat/athlete details where returned, decoded popup text/tables, and request metadata. Original raw responses remain unchanged; formatted JSON is available for valid JSON bodies. Empty bodies and timeouts are described explicitly without inventing missing response content.
+[Open readable API responses](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/responses/). Covers the 11 beta verification cases and all 27 historical attempts (staging excluded). Each page explains the HTTP result, heat/athlete details where returned, decoded popup text/tables, and request metadata. Original raw responses remain unchanged; formatted JSON is available for valid JSON bodies. Empty bodies and timeouts are described explicitly without inventing missing response content.

@@ -1,0 +1,243 @@
+{
+  "info": {
+    "name": "WSL-9790 heat popup regression — recorded requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Read-only requests used in this QA report. Credentials intentionally omitted. Set environment-specific Basic auth in Postman before use. Staging empty heat has unresolved transport failures; avoid repeated runs against it."
+  },
+  "item": [
+    {
+      "name": "beta",
+      "item": [
+        {
+          "name": "populated-default",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792676504691",
+            "description": "Observed PASS 200; source evidence A11. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "populated-details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792676615988",
+            "description": "Observed PASS 200; source evidence A12. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "populated-career",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792676361203",
+            "description": "Observed PASS 200; source evidence A02. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "populated-h2h",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792676377163",
+            "description": "Observed PASS 200; source evidence A05. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "empty-default",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792676727068",
+            "description": "Observed PASS 200; source evidence A21. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "empty-h2h",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792676750526",
+            "description": "Observed PASS 200; source evidence A23. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "empty-career",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792676761936",
+            "description": "Observed PASS 200; source evidence A20. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "empty-details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792676863842",
+            "description": "Observed PASS 200; source evidence A24. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "empty-unknown-tab",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=qa-invalid-tab&requestName=postEventWatchHeatDetailsPopup&rnd=1792676878354",
+            "description": "Observed PASS 200; source evidence A26. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "empty-refresh",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsContentPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsContentPopup&rnd=1792676901562",
+            "description": "Observed PASS 200; source evidence A25. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "missing-heat",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?requestName=postEventWatchHeatDetailsPopup&rnd=1792676914918",
+            "description": "Observed FAIL 500; source evidence A27. No request body. Configure environment-specific authentication separately."
+          }
+        }
+      ]
+    },
+    {
+      "name": "staging",
+      "item": [
+        {
+          "name": "populated-default",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792676668427",
+            "description": "Observed PASS 200; source evidence A17. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "populated-details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792676680458",
+            "description": "Observed PASS 200; source evidence A18. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "populated-career",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792676692890",
+            "description": "Observed PASS 200; source evidence A16. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "populated-h2h",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792676704146",
+            "description": "Observed PASS 200; source evidence A19. No request body. Configure environment-specific authentication separately."
+          }
+        },
+        {
+          "name": "empty-default",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Ajax-Request",
+                "value": "postEventWatchHeatDetailsPopup"
+              }
+            ],
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792676390551",
+            "description": "Observed BLOCKED TimeoutError: The operation timed out.; source evidence A06. No request body. Configure environment-specific authentication separately."
+          }
+        }
+      ]
+    }
+  ]
+}
