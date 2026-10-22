@@ -67,3 +67,7 @@ No status transition is requested or performed.
 ## Setup and capture exclusions
 
 Two incompatible Firefox revisions failed during context creation, before product requests. Matching Firefox 157/revision 1555 was installed. The headed crash and one interrupted staging setup produced zero-byte files; both are excluded from playable evidence. Completed staging empty-heat execution has a separate verified recording. [Setup/exclusion registry](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/recording-exclusions.json).
+
+## QA-readable response views
+
+[Open readable API responses](https://kmousadcontractor-sudo.github.io/wsl-qa-report/evidence/WSL-9790/responses/). Covers the 16 main cases and all 27 attempts. Each page explains the HTTP result, heat/athlete details where returned, decoded popup text/tables, and request metadata. Original raw responses remain unchanged; formatted JSON is available for valid JSON bodies. Empty bodies and timeouts are described explicitly without inventing missing response content.
