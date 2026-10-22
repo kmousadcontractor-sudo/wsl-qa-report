@@ -1,0 +1,1791 @@
+[
+  {
+    "source": "artifacts/WSL-9678-firefox-regression-2026-10-22/staging/results.json",
+    "data": {
+      "env": "staging",
+      "host": "https://staging.worldsurfleague.com",
+      "browser": "Firefox firefox-1555",
+      "startedAt": "2026-10-22T13:30:12.936Z",
+      "checks": [],
+      "fixtures": [],
+      "limitations": [],
+      "landing": {
+        "status": 200,
+        "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+      },
+      "browserVersion": "157.0",
+      "error": "page.screenshot: Target page, context or browser has been closed",
+      "finishedAt": "2026-10-22T13:30:24.785Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-firefox-regression-final-2026-10-22/beta/results.json",
+    "data": {
+      "env": "beta",
+      "host": "https://www.beta.worldsurfleague.com",
+      "browser": "Firefox firefox-1555",
+      "startedAt": "2026-10-22T13:32:28.974Z",
+      "checks": [
+        {
+          "id": "empty-default",
+          "heat": "114944",
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:33:04.280Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675979174",
+          "status": 200,
+          "ms": 5096,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 2,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 8295,
+          "result": "PASS"
+        },
+        {
+          "id": "empty-h2h",
+          "heat": "114944",
+          "tab": "h2h",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:33:04.805Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792675984283",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation.",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "bytes": 0,
+          "result": "BLOCKED"
+        },
+        {
+          "id": "control-114284",
+          "heat": "114284",
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:33:04.810Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792675984807",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "bytes": 0,
+          "result": "BLOCKED"
+        }
+      ],
+      "fixtures": [
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114285",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114286",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114287",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114288",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114289",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114290",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114291",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        }
+      ],
+      "limitations": [
+        "Stopped remaining direct negative checks after server failure/transport error.",
+        "No populated control verified from discovered page links.",
+        "No backend SQL, memory or error-log tracing. One-athlete, Finals multi-heat, CS and wavepool/team datasets not verified; those cases remain NOT RUN."
+      ],
+      "landing": {
+        "status": 200,
+        "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+      },
+      "browserVersion": "157.0",
+      "discoveredHeatIds": [
+        "114284",
+        "114285",
+        "114286",
+        "114287",
+        "114288",
+        "114289",
+        "114290",
+        "114291"
+      ],
+      "mobile": {
+        "width": 390,
+        "overflow": false,
+        "error": "locator.click: Timeout 10000ms exceeded."
+      },
+      "finishedAt": "2026-10-22T13:33:17.487Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-firefox-regression-final-2026-10-22/results.json",
+    "data": [
+      {
+        "env": "staging",
+        "host": "https://staging.worldsurfleague.com",
+        "browser": "Firefox firefox-1555",
+        "startedAt": "2026-10-22T13:31:19.910Z",
+        "checks": [
+          {
+            "id": "empty-default",
+            "heat": "114944",
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:32:04.423Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675889415",
+            "error": "TimeoutError: The operation timed out.",
+            "ms": 35001,
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "bytes": 0,
+            "result": "BLOCKED"
+          },
+          {
+            "id": "control-114284",
+            "heat": "114284",
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:32:04.928Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792675924514",
+            "status": 200,
+            "ms": 405,
+            "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 2,
+            "isAjax": true,
+            "bytes": 22474,
+            "result": "PASS"
+          },
+          {
+            "id": "populated-details",
+            "heat": "114284",
+            "tab": "details",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:32:05.317Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792675924931",
+            "status": 200,
+            "ms": 379,
+            "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 2,
+            "isAjax": true,
+            "bytes": 22522,
+            "result": "PASS"
+          },
+          {
+            "id": "populated-career",
+            "heat": "114284",
+            "tab": "career",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:32:05.666Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792675925319",
+            "status": 200,
+            "ms": 339,
+            "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 24854,
+            "result": "PASS"
+          },
+          {
+            "id": "populated-h2h",
+            "heat": "114284",
+            "tab": "h2h",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:32:06.031Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792675925668",
+            "status": 200,
+            "ms": 354,
+            "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 21175,
+            "result": "PASS"
+          }
+        ],
+        "fixtures": [
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114285",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114286",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114287",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114288",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114289",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114290",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114291",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          }
+        ],
+        "limitations": [
+          "Other empty-heat requests not repeated after initial failure/transport error.",
+          "No backend SQL, memory or error-log tracing. One-athlete, Finals multi-heat, CS and wavepool/team datasets not verified; those cases remain NOT RUN."
+        ],
+        "landing": {
+          "status": 200,
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+        },
+        "browserVersion": "157.0",
+        "discoveredHeatIds": [
+          "114284",
+          "114285",
+          "114286",
+          "114287",
+          "114288",
+          "114289",
+          "114290",
+          "114291"
+        ],
+        "populatedControl": "114284",
+        "uiDesktop": {
+          "result": "BLOCKED",
+          "error": "locator.click: Timeout 10000ms exceeded."
+        },
+        "mobile": {
+          "width": 390,
+          "overflow": false,
+          "error": "locator.click: Timeout 10000ms exceeded."
+        },
+        "finishedAt": "2026-10-22T13:32:27.771Z"
+      },
+      {
+        "env": "beta",
+        "host": "https://www.beta.worldsurfleague.com",
+        "browser": "Firefox firefox-1555",
+        "startedAt": "2026-10-22T13:32:28.974Z",
+        "checks": [
+          {
+            "id": "empty-default",
+            "heat": "114944",
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:33:04.280Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675979174",
+            "status": 200,
+            "ms": 5096,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 2,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 8295,
+            "result": "PASS"
+          },
+          {
+            "id": "empty-h2h",
+            "heat": "114944",
+            "tab": "h2h",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:33:04.805Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792675984283",
+            "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation.",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "bytes": 0,
+            "result": "BLOCKED"
+          },
+          {
+            "id": "control-114284",
+            "heat": "114284",
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:33:04.810Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792675984807",
+            "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "bytes": 0,
+            "result": "BLOCKED"
+          }
+        ],
+        "fixtures": [
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114285",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114286",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114287",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114288",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114289",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114290",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114291",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          }
+        ],
+        "limitations": [
+          "Stopped remaining direct negative checks after server failure/transport error.",
+          "No populated control verified from discovered page links.",
+          "No backend SQL, memory or error-log tracing. One-athlete, Finals multi-heat, CS and wavepool/team datasets not verified; those cases remain NOT RUN."
+        ],
+        "landing": {
+          "status": 200,
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+        },
+        "browserVersion": "157.0",
+        "discoveredHeatIds": [
+          "114284",
+          "114285",
+          "114286",
+          "114287",
+          "114288",
+          "114289",
+          "114290",
+          "114291"
+        ],
+        "mobile": {
+          "width": 390,
+          "overflow": false,
+          "error": "locator.click: Timeout 10000ms exceeded."
+        },
+        "finishedAt": "2026-10-22T13:33:17.487Z"
+      }
+    ]
+  },
+  {
+    "source": "artifacts/WSL-9678-firefox-regression-final-2026-10-22/staging/results.json",
+    "data": {
+      "env": "staging",
+      "host": "https://staging.worldsurfleague.com",
+      "browser": "Firefox firefox-1555",
+      "startedAt": "2026-10-22T13:31:19.910Z",
+      "checks": [
+        {
+          "id": "empty-default",
+          "heat": "114944",
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:32:04.423Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675889415",
+          "error": "TimeoutError: The operation timed out.",
+          "ms": 35001,
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "bytes": 0,
+          "result": "BLOCKED"
+        },
+        {
+          "id": "control-114284",
+          "heat": "114284",
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:32:04.928Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792675924514",
+          "status": 200,
+          "ms": 405,
+          "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 2,
+          "isAjax": true,
+          "bytes": 22474,
+          "result": "PASS"
+        },
+        {
+          "id": "populated-details",
+          "heat": "114284",
+          "tab": "details",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:32:05.317Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792675924931",
+          "status": 200,
+          "ms": 379,
+          "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 2,
+          "isAjax": true,
+          "bytes": 22522,
+          "result": "PASS"
+        },
+        {
+          "id": "populated-career",
+          "heat": "114284",
+          "tab": "career",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:32:05.666Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792675925319",
+          "status": 200,
+          "ms": 339,
+          "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 24854,
+          "result": "PASS"
+        },
+        {
+          "id": "populated-h2h",
+          "heat": "114284",
+          "tab": "h2h",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:32:06.031Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792675925668",
+          "status": 200,
+          "ms": 354,
+          "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 21175,
+          "result": "PASS"
+        }
+      ],
+      "fixtures": [
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114285",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114286",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114287",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114288",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114289",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114290",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114291",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        }
+      ],
+      "limitations": [
+        "Other empty-heat requests not repeated after initial failure/transport error.",
+        "No backend SQL, memory or error-log tracing. One-athlete, Finals multi-heat, CS and wavepool/team datasets not verified; those cases remain NOT RUN."
+      ],
+      "landing": {
+        "status": 200,
+        "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+      },
+      "browserVersion": "157.0",
+      "discoveredHeatIds": [
+        "114284",
+        "114285",
+        "114286",
+        "114287",
+        "114288",
+        "114289",
+        "114290",
+        "114291"
+      ],
+      "populatedControl": "114284",
+      "uiDesktop": {
+        "result": "BLOCKED",
+        "error": "locator.click: Timeout 10000ms exceeded."
+      },
+      "mobile": {
+        "width": 390,
+        "overflow": false,
+        "error": "locator.click: Timeout 10000ms exceeded."
+      },
+      "finishedAt": "2026-10-22T13:32:27.771Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-firefox-stable-regression-2026-10-22/beta/results.json",
+    "data": {
+      "env": "beta",
+      "host": "https://www.beta.worldsurfleague.com",
+      "browser": "Firefox firefox-1555",
+      "startedAt": "2026-10-22T13:34:49.540Z",
+      "checks": [
+        {
+          "id": "empty-default",
+          "heat": "114944",
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:56.517Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792676096219",
+          "status": 200,
+          "ms": 284,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 2,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 8295,
+          "result": "PASS"
+        },
+        {
+          "id": "empty-h2h",
+          "heat": "114944",
+          "tab": "h2h",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:56.824Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792676096520",
+          "status": 200,
+          "ms": 281,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 3402,
+          "result": "PASS"
+        },
+        {
+          "id": "empty-career",
+          "heat": "114944",
+          "tab": "career",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:57.140Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792676096826",
+          "status": 200,
+          "ms": 283,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 4135,
+          "result": "PASS"
+        },
+        {
+          "id": "empty-details",
+          "heat": "114944",
+          "tab": "details",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:57.861Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792676097187",
+          "status": 200,
+          "ms": 630,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 2,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 8729,
+          "result": "PASS"
+        },
+        {
+          "id": "empty-unknown-tab",
+          "heat": "114944",
+          "tab": "qa-invalid-tab",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:58.254Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=qa-invalid-tab&requestName=postEventWatchHeatDetailsPopup&rnd=1792676097884",
+          "status": 200,
+          "ms": 307,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 2,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 9097,
+          "result": "PASS"
+        },
+        {
+          "id": "empty-refresh",
+          "heat": "114944",
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsContentPopup",
+          "at": "2026-10-22T13:34:58.612Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsContentPopup&rnd=1792676098277",
+          "status": 200,
+          "ms": 322,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 2,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 7503,
+          "result": "PASS"
+        },
+        {
+          "id": "missing-heat",
+          "heat": null,
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:58.922Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?requestName=postEventWatchHeatDetailsPopup&rnd=1792676098622",
+          "status": 500,
+          "ms": 291,
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "bytes": 0,
+          "result": "FAIL"
+        },
+        {
+          "id": "control-114284",
+          "heat": "114284",
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:59.352Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792676098924",
+          "status": 200,
+          "ms": 406,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 2,
+          "isAjax": true,
+          "bytes": 20218,
+          "result": "PASS"
+        },
+        {
+          "id": "populated-details",
+          "heat": "114284",
+          "tab": "details",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:59.833Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792676099355",
+          "status": 200,
+          "ms": 454,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 2,
+          "isAjax": true,
+          "bytes": 20266,
+          "result": "PASS"
+        },
+        {
+          "id": "populated-career",
+          "heat": "114284",
+          "tab": "career",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:35:00.201Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792676099843",
+          "status": 200,
+          "ms": 325,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 23158,
+          "result": "PASS"
+        },
+        {
+          "id": "populated-h2h",
+          "heat": "114284",
+          "tab": "h2h",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:35:00.713Z",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792676100211",
+          "status": 200,
+          "ms": 432,
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 21816,
+          "result": "PASS"
+        }
+      ],
+      "fixtures": [
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114285",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114286",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114287",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114288",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114289",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114290",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114291",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        }
+      ],
+      "limitations": [
+        "Stopped remaining direct negative checks after server failure/transport error.",
+        "No backend SQL, memory or error-log tracing. One-athlete, Finals multi-heat, CS and wavepool/team datasets not verified; those cases remain NOT RUN."
+      ],
+      "landing": {
+        "status": 200,
+        "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+      },
+      "browserVersion": "157.0",
+      "discoveredHeatIds": [
+        "114284",
+        "114285",
+        "114286",
+        "114287",
+        "114288",
+        "114289",
+        "114290",
+        "114291"
+      ],
+      "populatedControl": "114284",
+      "uiDesktop": {
+        "popupVisible": true,
+        "text": "Round 1 - Heat 2\nUpcoming\nCareer Event Stats\nHead-to-Head Stats\nMEO Rip Curl Pro Portugal career stats\n \t\nM. Mignot\nFrance\n\t\nM. Cibilic\nAustralia\n\nEvent appearances\t2\t1\nAverage heat score\t9.33\t9.84\nHeat win %\t40%\t0%\nBest heat score\t14.43\t12.50\nBest wave score\t8.00\t6.50\nHeats surfed\t5\t2\nHeat wins\t2\t0\nFinal appearances\t0\t0\nSemifinal appearances\t0\t0\nQuarterfinal appearances\t1\t0\nExcellent heats\t0\t0\nExcellent waves\t1\t0",
+        "result": "PASS",
+        "closed": false
+      },
+      "mobile": {
+        "width": 390,
+        "overflow": false,
+        "popupVisible": true,
+        "popupOverflow": false
+      },
+      "finishedAt": "2026-10-22T13:35:11.402Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-firefox-stable-regression-2026-10-22/beta/ui-followup/results.json",
+    "data": {
+      "startedAt": "2026-10-22T13:35:54.117Z",
+      "tabs": [],
+      "error": "locator.waitFor: Timeout 10000ms exceeded.",
+      "finishedAt": "2026-10-22T13:36:26.544Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-firefox-stable-regression-2026-10-22/results.json",
+    "data": [
+      {
+        "env": "staging",
+        "host": "https://staging.worldsurfleague.com",
+        "browser": "Firefox firefox-1555",
+        "startedAt": "2026-10-22T13:33:52.294Z",
+        "checks": [
+          {
+            "id": "empty-default",
+            "heat": "114944",
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:37.496Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792676041358",
+            "error": "TimeoutError: The operation timed out.",
+            "ms": 36120,
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "bytes": 0,
+            "result": "BLOCKED"
+          },
+          {
+            "id": "control-114284",
+            "heat": "114284",
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:37.882Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792676077503",
+            "status": 200,
+            "ms": 368,
+            "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 2,
+            "isAjax": true,
+            "bytes": 22474,
+            "result": "PASS"
+          },
+          {
+            "id": "populated-details",
+            "heat": "114284",
+            "tab": "details",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:38.249Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792676077884",
+            "status": 200,
+            "ms": 356,
+            "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 2,
+            "isAjax": true,
+            "bytes": 22522,
+            "result": "PASS"
+          },
+          {
+            "id": "populated-career",
+            "heat": "114284",
+            "tab": "career",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:38.601Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792676078250",
+            "status": 200,
+            "ms": 340,
+            "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 24854,
+            "result": "PASS"
+          },
+          {
+            "id": "populated-h2h",
+            "heat": "114284",
+            "tab": "h2h",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:38.949Z",
+            "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792676078603",
+            "status": 200,
+            "ms": 337,
+            "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 21175,
+            "result": "PASS"
+          }
+        ],
+        "fixtures": [
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114285",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114286",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114287",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114288",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114289",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114290",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114291",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          }
+        ],
+        "limitations": [
+          "Other empty-heat requests not repeated after initial failure/transport error.",
+          "No backend SQL, memory or error-log tracing. One-athlete, Finals multi-heat, CS and wavepool/team datasets not verified; those cases remain NOT RUN."
+        ],
+        "landing": {
+          "status": 200,
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+        },
+        "browserVersion": "157.0",
+        "discoveredHeatIds": [
+          "114284",
+          "114285",
+          "114286",
+          "114287",
+          "114288",
+          "114289",
+          "114290",
+          "114291"
+        ],
+        "populatedControl": "114284",
+        "mobile": {
+          "width": 390,
+          "overflow": false
+        },
+        "finishedAt": "2026-10-22T13:34:42.728Z"
+      },
+      {
+        "env": "beta",
+        "host": "https://www.beta.worldsurfleague.com",
+        "browser": "Firefox firefox-1555",
+        "startedAt": "2026-10-22T13:34:49.540Z",
+        "checks": [
+          {
+            "id": "empty-default",
+            "heat": "114944",
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:56.517Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792676096219",
+            "status": 200,
+            "ms": 284,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 2,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 8295,
+            "result": "PASS"
+          },
+          {
+            "id": "empty-h2h",
+            "heat": "114944",
+            "tab": "h2h",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:56.824Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792676096520",
+            "status": 200,
+            "ms": 281,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 3402,
+            "result": "PASS"
+          },
+          {
+            "id": "empty-career",
+            "heat": "114944",
+            "tab": "career",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:57.140Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792676096826",
+            "status": 200,
+            "ms": 283,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 4135,
+            "result": "PASS"
+          },
+          {
+            "id": "empty-details",
+            "heat": "114944",
+            "tab": "details",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:57.861Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792676097187",
+            "status": 200,
+            "ms": 630,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 2,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 8729,
+            "result": "PASS"
+          },
+          {
+            "id": "empty-unknown-tab",
+            "heat": "114944",
+            "tab": "qa-invalid-tab",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:58.254Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&matchupTab=qa-invalid-tab&requestName=postEventWatchHeatDetailsPopup&rnd=1792676097884",
+            "status": 200,
+            "ms": 307,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 2,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 9097,
+            "result": "PASS"
+          },
+          {
+            "id": "empty-refresh",
+            "heat": "114944",
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsContentPopup",
+            "at": "2026-10-22T13:34:58.612Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsContentPopup&rnd=1792676098277",
+            "status": 200,
+            "ms": 322,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 2,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 7503,
+            "result": "PASS"
+          },
+          {
+            "id": "missing-heat",
+            "heat": null,
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:58.922Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?requestName=postEventWatchHeatDetailsPopup&rnd=1792676098622",
+            "status": 500,
+            "ms": 291,
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "bytes": 0,
+            "result": "FAIL"
+          },
+          {
+            "id": "control-114284",
+            "heat": "114284",
+            "tab": "",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:59.352Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792676098924",
+            "status": 200,
+            "ms": 406,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 2,
+            "isAjax": true,
+            "bytes": 20218,
+            "result": "PASS"
+          },
+          {
+            "id": "populated-details",
+            "heat": "114284",
+            "tab": "details",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:34:59.833Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792676099355",
+            "status": 200,
+            "ms": 454,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 2,
+            "isAjax": true,
+            "bytes": 20266,
+            "result": "PASS"
+          },
+          {
+            "id": "populated-career",
+            "heat": "114284",
+            "tab": "career",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:35:00.201Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792676099843",
+            "status": 200,
+            "ms": 325,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 23158,
+            "result": "PASS"
+          },
+          {
+            "id": "populated-h2h",
+            "heat": "114284",
+            "tab": "h2h",
+            "requestName": "postEventWatchHeatDetailsPopup",
+            "at": "2026-10-22T13:35:00.713Z",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792676100211",
+            "status": 200,
+            "ms": 432,
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "bytes": 21816,
+            "result": "PASS"
+          }
+        ],
+        "fixtures": [
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114285",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114286",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114287",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114288",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114289",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114290",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          },
+          {
+            "href": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114291",
+            "text": "Details",
+            "request": "postEventWatchHeatDetailsPopup"
+          }
+        ],
+        "limitations": [
+          "Stopped remaining direct negative checks after server failure/transport error.",
+          "No backend SQL, memory or error-log tracing. One-athlete, Finals multi-heat, CS and wavepool/team datasets not verified; those cases remain NOT RUN."
+        ],
+        "landing": {
+          "status": 200,
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+        },
+        "browserVersion": "157.0",
+        "discoveredHeatIds": [
+          "114284",
+          "114285",
+          "114286",
+          "114287",
+          "114288",
+          "114289",
+          "114290",
+          "114291"
+        ],
+        "populatedControl": "114284",
+        "uiDesktop": {
+          "popupVisible": true,
+          "text": "Round 1 - Heat 2\nUpcoming\nCareer Event Stats\nHead-to-Head Stats\nMEO Rip Curl Pro Portugal career stats\n \t\nM. Mignot\nFrance\n\t\nM. Cibilic\nAustralia\n\nEvent appearances\t2\t1\nAverage heat score\t9.33\t9.84\nHeat win %\t40%\t0%\nBest heat score\t14.43\t12.50\nBest wave score\t8.00\t6.50\nHeats surfed\t5\t2\nHeat wins\t2\t0\nFinal appearances\t0\t0\nSemifinal appearances\t0\t0\nQuarterfinal appearances\t1\t0\nExcellent heats\t0\t0\nExcellent waves\t1\t0",
+          "result": "PASS",
+          "closed": false
+        },
+        "mobile": {
+          "width": 390,
+          "overflow": false,
+          "popupVisible": true,
+          "popupOverflow": false
+        },
+        "finishedAt": "2026-10-22T13:35:11.402Z"
+      }
+    ]
+  },
+  {
+    "source": "artifacts/WSL-9678-firefox-stable-regression-2026-10-22/staging/results.json",
+    "data": {
+      "env": "staging",
+      "host": "https://staging.worldsurfleague.com",
+      "browser": "Firefox firefox-1555",
+      "startedAt": "2026-10-22T13:33:52.294Z",
+      "checks": [
+        {
+          "id": "empty-default",
+          "heat": "114944",
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:37.496Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792676041358",
+          "error": "TimeoutError: The operation timed out.",
+          "ms": 36120,
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "bytes": 0,
+          "result": "BLOCKED"
+        },
+        {
+          "id": "control-114284",
+          "heat": "114284",
+          "tab": "",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:37.882Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&requestName=postEventWatchHeatDetailsPopup&rnd=1792676077503",
+          "status": 200,
+          "ms": 368,
+          "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 2,
+          "isAjax": true,
+          "bytes": 22474,
+          "result": "PASS"
+        },
+        {
+          "id": "populated-details",
+          "heat": "114284",
+          "tab": "details",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:38.249Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=details&requestName=postEventWatchHeatDetailsPopup&rnd=1792676077884",
+          "status": 200,
+          "ms": 356,
+          "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 2,
+          "isAjax": true,
+          "bytes": 22522,
+          "result": "PASS"
+        },
+        {
+          "id": "populated-career",
+          "heat": "114284",
+          "tab": "career",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:38.601Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=career&requestName=postEventWatchHeatDetailsPopup&rnd=1792676078250",
+          "status": 200,
+          "ms": 340,
+          "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 24854,
+          "result": "PASS"
+        },
+        {
+          "id": "populated-h2h",
+          "heat": "114284",
+          "tab": "h2h",
+          "requestName": "postEventWatchHeatDetailsPopup",
+          "at": "2026-10-22T13:34:38.949Z",
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284&matchupTab=h2h&requestName=postEventWatchHeatDetailsPopup&rnd=1792676078603",
+          "status": 200,
+          "ms": 337,
+          "build": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "bytes": 21175,
+          "result": "PASS"
+        }
+      ],
+      "fixtures": [
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114284",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114285",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114286",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114287",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114288",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114289",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114290",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        },
+        {
+          "href": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114291",
+          "text": "Details",
+          "request": "postEventWatchHeatDetailsPopup"
+        }
+      ],
+      "limitations": [
+        "Other empty-heat requests not repeated after initial failure/transport error.",
+        "No backend SQL, memory or error-log tracing. One-athlete, Finals multi-heat, CS and wavepool/team datasets not verified; those cases remain NOT RUN."
+      ],
+      "landing": {
+        "status": 200,
+        "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+      },
+      "browserVersion": "157.0",
+      "discoveredHeatIds": [
+        "114284",
+        "114285",
+        "114286",
+        "114287",
+        "114288",
+        "114289",
+        "114290",
+        "114291"
+      ],
+      "populatedControl": "114284",
+      "mobile": {
+        "width": 390,
+        "overflow": false
+      },
+      "finishedAt": "2026-10-22T13:34:42.728Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-reproduction-2026-10-22/environment-check.json",
+    "data": [
+      {
+        "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+        "status": 401,
+        "headers": {
+          "date": "Thu, 22 Oct 2026 13:13:58 GMT",
+          "content-type": "text/html; charset=iso-8859-1",
+          "content-length": "475",
+          "connection": "keep-alive",
+          "server": "Apache/2.4.54 (Debian)",
+          "www-authenticate": "Basic realm=\"Restricted Content\"",
+          "x-varnish": "887",
+          "age": "0",
+          "via": "1.1 varnish (Varnish/6.5)",
+          "x-cache": "MISS"
+        },
+        "body": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>401 Unauthorized</title>\n</head><body>\n<h1>Unauthorized</h1>\n<p>This server could not verify that you\nare authorized to access the document\nrequested.  Either you supplied the wrong\ncredentials (e.g., bad password), or your\nbrowser doesn't understand how to supply\nthe credentials required.</p>\n<hr>\n<address>Apache/2.4.54 (Debian) Server at www.beta.worldsurfleague.com Port 80</address>\n</body></html>\n"
+      },
+      {
+        "url": "https://beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+        "status": 401,
+        "headers": {
+          "date": "Thu, 22 Oct 2026 13:14:10 GMT",
+          "content-type": "text/html; charset=iso-8859-1",
+          "content-length": "471",
+          "connection": "keep-alive",
+          "server": "Apache/2.4.54 (Debian)",
+          "www-authenticate": "Basic realm=\"Restricted Content\"",
+          "x-varnish": "900",
+          "age": "0",
+          "via": "1.1 varnish (Varnish/6.5)",
+          "x-cache": "MISS"
+        },
+        "body": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>401 Unauthorized</title>\n</head><body>\n<h1>Unauthorized</h1>\n<p>This server could not verify that you\nare authorized to access the document\nrequested.  Either you supplied the wrong\ncredentials (e.g., bad password), or your\nbrowser doesn't understand how to supply\nthe credentials required.</p>\n<hr>\n<address>Apache/2.4.54 (Debian) Server at beta.worldsurfleague.com Port 80</address>\n</body></html>\n"
+      }
+    ]
+  },
+  {
+    "source": "artifacts/WSL-9678-reproduction-2026-10-22/results.json",
+    "data": {
+      "startedAt": "2026-10-22T13:14:38.989Z",
+      "environment": "https://www.beta.worldsurfleague.com",
+      "requests": [
+        {
+          "heatId": 114944,
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup",
+          "status": 200,
+          "bytes": 8295,
+          "at": "2026-10-22T13:14:59.322Z",
+          "preview": "{\"generateNewUUID\":true,\"type\":\"post-event\",\"subType\":\"watch-heat-details\",\"popup\":true,\"popupConfig\":{\"type\":\"generic\",\"closeUrl\":false,\"index\":\"popup-1\",\"subType\":\"\",\"disableClose\":false},\"content\":\"\\n            <div\\n                class=\\\"popup-wrap popup-wrap--generic popup-wrap--heat-details popup-wrap--heat-details-on-event\\\"\\n                data-close-url=\\\"\\\"\\n                data-gtm-"
+        },
+        {
+          "heatId": 114300,
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114300&requestName=postEventWatchHeatDetailsPopup",
+          "status": 200,
+          "bytes": 8285,
+          "at": "2026-10-22T13:15:01.456Z",
+          "preview": "{\"generateNewUUID\":true,\"type\":\"post-event\",\"subType\":\"watch-heat-details\",\"popup\":true,\"popupConfig\":{\"type\":\"generic\",\"closeUrl\":false,\"index\":\"popup-1\",\"subType\":\"\",\"disableClose\":false},\"content\":\"\\n            <div\\n                class=\\\"popup-wrap popup-wrap--generic popup-wrap--heat-details popup-wrap--heat-details-on-event\\\"\\n                data-close-url=\\\"\\\"\\n                data-gtm-"
+        }
+      ],
+      "status": "ORIGINAL_500_NOT_REPRODUCED_ON_BETA",
+      "landing": {
+        "status": 200,
+        "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+      },
+      "pageText": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch \nLog In\nOCT 16 - 25, 2026\nCT\nEVENT 10\nMEO Rip Curl Pro Portugal\nPresented By Corona CeroSupertubos, Peniche, Portugal\nLIVE\nIt's ON!\n \nMain\nResults\nHeat Analyzer\nChampions\nMen's Heats\nIN THE WATER\nWomen's Heats\nUPCOMING\nRound 1\nIN PROGRESS\nBracket\nUPCOMING\nSurfers\nClear\nApply\nResults are hidden to prevent spoilers.\nShow results\nHEAT 1\nWINNER ADV. TO R2H5\nCallum Robson\n9.50\n6.60 + 2.90\nConnor O'Leary\n14.40\n9.60 + 4.80\nHEAT 2\nWINNER ADV. TO R2H1\nDetails\nMarco Mignot\n––\nMorgan Cibilic\n––\nHEAT 3\nWINNER ADV. TO R2H3\nDetails\nJack Robinson\n––\nJoao Chianca\n––\nHEAT 4\nWINNER ADV. TO R2H7\nDetails\nCole Houshmand\n––\nSeth Moniz\n––\nHEAT 5\nWINNER ADV. TO R2H2\nDetails\nLiam O'Brien\n––\nFilipe Toledo\n––\nHEAT 6\nWINNER ADV. TO R2H8\nDetails\nKauli Vaast\n––\nJake Marshall\n––\nHEAT 7\nWINNER ADV. TO R2H4\nDetails\nGeorge Pittar\n––\nGuilherme Ribeiro\n––\nHEAT 8\nWINNER ADV. TO R2H6\nDetails\nSamuel Pupo\n––\nFrederico Morais\n––\nWorld Surf League\nAbout\nHistory\nCareers\nTours and Competition\nCompetitor Services\nRules and Regulations\nDiscover\nWays to Watch\nSurfline\nTrue Surf\nBetting\nFinseta\nContact\nPress\nGive Feedback\n© 2026 World Surf League\nPrivacy\nTerms\nDo Not Sell or Share My Personal Information\nLog In\nSchedule\nChampionship Tour\nChallenger Series\nQualifying Series\nJunior Tour\nLongboard Tour\nBig Wave\nSpecialty Events\nRankings\nChampionship Tour\nChallenger Series\nQualifying Series\nJunior Tour\nLongboard Tour\nAussie Treble\nShaper Rankings\nSurfers\nFantasy\nFantasy Surfing\nBracket Challenge\nOne Ocean\nStore\nOfficial Jerseys\nEvent Merchandise\nPosters & Gear\nVIP Experiences\nSearch\nThis website uses cookies and other tracking technologies to enhance user experience and to analyze performance and traffic on our website. We also share information about your use of our site with our social media, advertising and analytics partners. If we have detected an opt-out preference signal then it will be honored. Further information is available in our Cookie Policy\nOpt out of Sale of Personal Data and Targeted Advertising Reject All Accept All",
+      "finishedAt": "2026-10-22T13:16:09.227Z",
+      "additional": [
+        {
+          "case": "h2h",
+          "status": 200,
+          "bytes": 3402,
+          "at": "2026-10-22T13:15:59.451Z"
+        },
+        {
+          "case": "career",
+          "status": 200,
+          "bytes": 4135,
+          "at": "2026-10-22T13:16:01.258Z"
+        },
+        {
+          "case": "content-refresh",
+          "status": 200,
+          "at": "2026-10-22T13:16:04.453Z"
+        }
+      ],
+      "browserHeatText": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch \nLog In\nOCT 16 - 25, 2026\nCT\nEVENT 10\nMEO Rip Curl Pro Portugal\nPresented By Corona CeroSupertubos, Peniche, Portugal\nLIVE\nIt's ON!\n \nMain\nResults\nHeat Analyzer\nChampions\nMen's Heats\nIN THE WATER\nWomen's Heats\nUPCOMING\nRound 1\nIN PROGRESS\nBracket\nUPCOMING\nSurfers\nClear\nApply\nResults are hidden to prevent spoilers.\nShow results\nHEAT 1\nWINNER ADV. TO R2H5\nCallum Robson\n9.50\n6.60 + 2.90\nConnor O'Leary\n14.40\n9.60 + 4.80\nHEAT 2\nWINNER ADV. TO R2H1\nDetails\nMarco Mignot\n––\nMorgan Cibilic\n––\nHEAT 3\nWINNER ADV. TO R2H3\nDetails\nJack Robinson\n––\nJoao Chianca\n––\nHEAT 4\nWINNER ADV. TO R2H7\nDetails\nCole Houshmand\n––\nSeth Moniz\n––\nHEAT 5\nWINNER ADV. TO R2H2\nDetails\nLiam O'Brien\n––\nFilipe Toledo\n––\nHEAT 6\nWINNER ADV. TO R2H8\nDetails\nKauli Vaast\n––\nJake Marshall\n––\nHEAT 7\nWINNER ADV. TO R2H4\nDetails\nGeorge Pittar\n––\nGuilherme Ribeiro\n––\nHEAT 8\nWINNER ADV. TO R2H6\nDetails\nSamuel Pupo\n––\nFrederico Morais\n––\nWorld Surf League\nAbout\nHistory\nCareers\nTours and Competition\nCompetitor Services\nRules and Regulations\nDiscover\nWays to Watch\nSurfline\nTrue Surf\nBetting\nFinseta\nContact\nPress\nGive Feedback\n© 2026 World Surf League\nPrivacy\nTerms\nDo Not Sell or Share My Personal Information\nLog In\nSchedule\nChampionship Tour\nChallenger Series\nQualifying Series\nJunior Tour\nLongboard Tour\nBig Wave\nSpecialty Events\nRankings\nChampionship Tour\nChallenger Series\nQualifying Series\nJunior Tour\nLongboard Tour\nAussie Treble\nShaper Rankings\nSurfers\nFantasy\nFantasy Surfing\nBracket Challenge\nOne Ocean\nStore\nOfficial Jerseys\nEvent Merchandise\nPosters & Gear\nVIP Experiences\nSearch\nThis website uses cookies and other tracking technologies to enhance user experience and to analyze performance and traffic on our website. We also share information about your use of our site with our social media, advertising and analytics partners. If we have detected an opt-out preference signal then it will be honored. Further information is available in our Cookie Policy\nOpt out of Sale of Personal Data and Targeted Advertising Reject All Accept All",
+      "recordedResponseStatus": 200,
+      "fixtureEvidence": {
+        "heatId": 114944,
+        "tbdSlots": 2,
+        "numericAthleteSlots": 0,
+        "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+        "hasH2HModule": false
+      },
+      "limit": "No backend SQL/memory/log trace; control heat 114300 also needs dataset verification. UI recording covers navigation and real direct AJAX JSON response, not clicking an unavailable TBD control."
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-authenticated-2026-10-22/host-check.json",
+    "data": [
+      {
+        "host": "https://www.staging.worldsurfleague.com",
+        "url": "https://staging.worldsurfleague.com//events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+        "status": 401,
+        "challenge": "Basic realm=\"Restricted Content\""
+      },
+      {
+        "host": "https://staging.worldsurfleague.com",
+        "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+        "status": 200
+      }
+    ]
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-authenticated-2026-10-22/results.json",
+    "data": [
+      {
+        "environment": "staging",
+        "host": "https://www.staging.worldsurfleague.com",
+        "startedAt": "2026-10-22T13:21:08.748Z",
+        "checks": [],
+        "status": "BLOCKED",
+        "error": "page.goto: net::ERR_INVALID_AUTH_CREDENTIALS at https://www.staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+        "finishedAt": "2026-10-22T13:21:35.819Z"
+      }
+    ]
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-authenticated-2026-10-22/staging/results.json",
+    "data": {
+      "environment": "staging",
+      "host": "https://www.staging.worldsurfleague.com",
+      "startedAt": "2026-10-22T13:21:08.748Z",
+      "checks": [],
+      "status": "BLOCKED",
+      "error": "page.goto: net::ERR_INVALID_AUTH_CREDENTIALS at https://www.staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+      "finishedAt": "2026-10-22T13:21:35.819Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-beta-2026-10-22/beta/results.json",
+    "data": {
+      "environment": "beta",
+      "host": "https://www.beta.worldsurfleague.com",
+      "startedAt": "2026-10-22T13:18:56.609Z",
+      "checks": [
+        {
+          "case": "default",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675145296",
+          "status": 200,
+          "bytes": 8295,
+          "at": "2026-10-22T13:19:12.616Z",
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 2,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "internalError": false
+        },
+        {
+          "case": "h2h",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675156372&matchupTab=h2h",
+          "status": 200,
+          "bytes": 3402,
+          "at": "2026-10-22T13:19:17.503Z",
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "internalError": false
+        },
+        {
+          "case": "career",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675157503&matchupTab=career",
+          "status": 200,
+          "bytes": 4135,
+          "at": "2026-10-22T13:19:18.591Z",
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 0,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "internalError": false
+        },
+        {
+          "case": "refresh",
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsContentPopup&rnd=1792675158591",
+          "status": 200,
+          "bytes": 7503,
+          "at": "2026-10-22T13:19:20.629Z",
+          "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+          "tbdSlots": 2,
+          "numericAthleteSlots": 0,
+          "isAjax": true,
+          "internalError": false
+        }
+      ],
+      "status": "ORIGINAL_500_NOT_REPRODUCED",
+      "landing": {
+        "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+        "status": 200
+      },
+      "recordedStatus": 200,
+      "finishedAt": "2026-10-22T13:19:20.629Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-beta-2026-10-22/results.json",
+    "data": [
+      {
+        "environment": "staging",
+        "host": "https://staging.worldsurfleague.com",
+        "startedAt": "2026-10-22T13:23:17.255Z",
+        "checks": [],
+        "status": "INCONCLUSIVE_CONNECTION_RESET",
+        "landing": {
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+          "status": 200
+        },
+        "error": "apiRequestContext.get: read ECONNRESET",
+        "finishedAt": "2026-10-22T13:23:42.501Z"
+      },
+      {
+        "environment": "beta",
+        "host": "https://www.beta.worldsurfleague.com",
+        "startedAt": "2026-10-22T13:18:56.609Z",
+        "checks": [
+          {
+            "case": "default",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675145296",
+            "status": 200,
+            "bytes": 8295,
+            "at": "2026-10-22T13:19:12.616Z",
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 2,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "internalError": false
+          },
+          {
+            "case": "h2h",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675156372&matchupTab=h2h",
+            "status": 200,
+            "bytes": 3402,
+            "at": "2026-10-22T13:19:17.503Z",
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "internalError": false
+          },
+          {
+            "case": "career",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsPopup&rnd=1792675157503&matchupTab=career",
+            "status": 200,
+            "bytes": 4135,
+            "at": "2026-10-22T13:19:18.591Z",
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 0,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "internalError": false
+          },
+          {
+            "case": "refresh",
+            "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results?heatId=114944&requestName=postEventWatchHeatDetailsContentPopup&rnd=1792675158591",
+            "status": 200,
+            "bytes": 7503,
+            "at": "2026-10-22T13:19:20.629Z",
+            "build": "11927ab6cb3a62e6ff3043e6a1b77566d3259a84-12142",
+            "tbdSlots": 2,
+            "numericAthleteSlots": 0,
+            "isAjax": true,
+            "internalError": false
+          }
+        ],
+        "status": "ORIGINAL_500_NOT_REPRODUCED",
+        "landing": {
+          "url": "https://www.beta.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+          "status": 200
+        },
+        "recordedStatus": 200,
+        "finishedAt": "2026-10-22T13:19:20.629Z"
+      }
+    ]
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-beta-2026-10-22/staging/results.json",
+    "data": {
+      "environment": "staging",
+      "host": "https://www.staging.worldsurfleague.com",
+      "startedAt": "2026-10-22T13:18:56.583Z",
+      "checks": [],
+      "status": "BLOCKED",
+      "error": "page.goto: net::ERR_INVALID_AUTH_CREDENTIALS at https://www.staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+      "finishedAt": "2026-10-22T13:18:59.929Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-canonical-2026-10-22/results.json",
+    "data": [
+      {
+        "environment": "staging",
+        "host": "https://staging.worldsurfleague.com",
+        "startedAt": "2026-10-22T13:22:21.154Z",
+        "checks": [],
+        "status": "BLOCKED",
+        "landing": {
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+          "status": 200
+        },
+        "error": "apiRequestContext.get: Timeout 30000ms exceeded.",
+        "finishedAt": "2026-10-22T13:22:57.380Z"
+      }
+    ]
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-canonical-2026-10-22/staging/results.json",
+    "data": {
+      "environment": "staging",
+      "host": "https://staging.worldsurfleague.com",
+      "startedAt": "2026-10-22T13:22:21.154Z",
+      "checks": [],
+      "status": "BLOCKED",
+      "landing": {
+        "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+        "status": 200
+      },
+      "error": "apiRequestContext.get: Timeout 30000ms exceeded.",
+      "finishedAt": "2026-10-22T13:22:57.380Z"
+    }
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-final-2026-10-22/results.json",
+    "data": [
+      {
+        "environment": "staging",
+        "host": "https://staging.worldsurfleague.com",
+        "startedAt": "2026-10-22T13:23:17.255Z",
+        "checks": [],
+        "status": "INCONCLUSIVE_CONNECTION_RESET",
+        "landing": {
+          "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+          "status": 200
+        },
+        "error": "apiRequestContext.get: read ECONNRESET",
+        "finishedAt": "2026-10-22T13:23:42.501Z"
+      }
+    ]
+  },
+  {
+    "source": "artifacts/WSL-9678-staging-final-2026-10-22/staging/results.json",
+    "data": {
+      "environment": "staging",
+      "host": "https://staging.worldsurfleague.com",
+      "startedAt": "2026-10-22T13:23:17.255Z",
+      "checks": [],
+      "status": "INCONCLUSIVE_CONNECTION_RESET",
+      "landing": {
+        "url": "https://staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results",
+        "status": 200
+      },
+      "error": "apiRequestContext.get: read ECONNRESET",
+      "finishedAt": "2026-10-22T13:23:42.501Z"
+    }
+  }
+]
