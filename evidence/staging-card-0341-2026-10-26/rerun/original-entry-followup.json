@@ -1,0 +1,176 @@
+{
+  "startedAt": "2026-10-26T18:55:23.902Z",
+  "event": {
+    "id": "01a1794d-d445-702a-8138-b5c5e1b34180",
+    "name": "QA Staging 0341 Confirm Charge 1793036503126",
+    "start": "2026-12-10",
+    "location": "56th Street, Newport Beach, California · Los Angeles time",
+    "timeZone": "America/Los_Angeles"
+  },
+  "entryId": "01a17950-741b-74a5-8280-d8bae66a6947",
+  "originalCharge": {
+    "at": "2026-10-26T17:46:40.245Z",
+    "status": 200,
+    "body": {
+      "confirmationId": "01a17952-5580-71bf-9026-142f7cde425c",
+      "charged": 1,
+      "skipped": []
+    }
+  },
+  "observations": [
+    {
+      "at": "2026-10-26T18:55:25.388Z",
+      "row": {
+        "id": "01a17950-741b-74a5-8280-d8bae66a6947",
+        "group": "field",
+        "athlete": {
+          "initials": "SC",
+          "name": "Staging Card0341QA",
+          "country": "United States"
+        },
+        "ranking": "Seed 1 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "ok",
+          "label": "Insurance: verified",
+          "code": "verified"
+        },
+        "payment": {
+          "code": "declined",
+          "label": "Declined",
+          "tone": "error"
+        },
+        "entry": {
+          "code": "pending",
+          "label": "Pending",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": true
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "waive",
+            "label": "Waive fee",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          },
+          {
+            "code": "retry",
+            "label": "Retry payment",
+            "destructive": false
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 1,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      }
+    }
+  ],
+  "mode": "read-only; no new charge",
+  "history": {
+    "status": 200,
+    "body": {
+      "summary": "1 card attempt · 1 declined",
+      "items": [
+        {
+          "id": "01a17989-7611-716b-b90d-d54d2e761b8d",
+          "when": "26 Oct 18:46 UTC",
+          "what": "Card payment declined (generic_decline)",
+          "channel": "Stripe",
+          "by": "System"
+        },
+        {
+          "id": "01a17952-558e-77d0-a4eb-d8b7d18c941e",
+          "when": "26 Oct 17:46 UTC",
+          "what": "Card payment charge started",
+          "channel": "Stripe",
+          "by": "Q. Staging Manager 1"
+        },
+        {
+          "id": "01a17950-7f52-7265-aeda-185b7e8a1545",
+          "when": "26 Oct 17:44 UTC",
+          "what": "Seed · to #1",
+          "channel": "Tour Manager",
+          "by": "Q. Staging Manager 1"
+        }
+      ]
+    }
+  },
+  "final": {
+    "id": "01a17950-741b-74a5-8280-d8bae66a6947",
+    "group": "field",
+    "athlete": {
+      "initials": "SC",
+      "name": "Staging Card0341QA",
+      "country": "United States"
+    },
+    "ranking": "Seed 1 · N. AMERICA",
+    "region": "north_america",
+    "highlight": null,
+    "insurance": {
+      "state": "ok",
+      "label": "Insurance: verified",
+      "code": "verified"
+    },
+    "payment": {
+      "code": "declined",
+      "label": "Declined",
+      "tone": "error"
+    },
+    "entry": {
+      "code": "pending",
+      "label": "Pending",
+      "tone": "neutral"
+    },
+    "waivable": {
+      "fee": true
+    },
+    "actions": [
+      {
+        "code": "message",
+        "label": "Send message",
+        "destructive": false
+      },
+      {
+        "code": "waive",
+        "label": "Waive fee",
+        "destructive": false
+      },
+      {
+        "code": "withdraw",
+        "label": "Withdraw entry",
+        "destructive": true
+      },
+      {
+        "code": "retry",
+        "label": "Retry payment",
+        "destructive": false
+      }
+    ],
+    "movable": true,
+    "pinned": false,
+    "hasHistory": true,
+    "seedRank": 1,
+    "alternatePosition": null,
+    "moveUpSeat": null,
+    "movedUpFrom": null
+  },
+  "ui": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nQS\nQA Staging Manager 1\nTour Manager · All regions\nEvents\n/\nQA Staging 0341 Confirm Charge 1793036503126\n/\nAthletes\nQA Staging 0341 Confirm Charge 1793036503126\nClosed for entries\n\n2,000 · Thu 10 – Thu 10 Dec 2026 · 56th Street, Newport Beach, California\n\nSave changes\nOverview\nAthletes\n1\nHistory\nEntry status\nAll regions\nPayment\nInsurance\nClear\n0\ncharged\n0\ninsurance needed\n1\ndeclined · your call\n0\nwildcard seats\n0\nalternates · not charged\n\nUse the up and down arrow keys to move this athlete one seat.\n\nSEED NO.\n↑\n\tATHLETE\n\tRANK · POINTS · REGION\n\tINSURANCE\n\tPAYMENT\n\tENTRY\n\tACTION\n\n1\n\t\nSC\nStaging Card0341QA\nUnited States\n\tSeed 1 · N. AMERICA\t\n\t\nDeclined\n\t\nPending\n\t\n\n\n2\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n3\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n4\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n5\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n6\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n7\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n8\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n9\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n10\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n11\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n12\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n13\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n14\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n15\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n16\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n17\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n18\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n19\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n20\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n21\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n22\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n23\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n24\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n25\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n26\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n27\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n28\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n29\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n30\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n31\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n32\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n33\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n34\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n35\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n36\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n37\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n38\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n39\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n40\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n41\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n42\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n43\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n44\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n45\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n46\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n47\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n48\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\nCUT LINE\nField of 48 ends here. Nobody is waiting behind it.\n\nNo alternates. Everyone on the waitlist has moved up, so seats 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47 and 48 stay open until a new entry comes in.",
+  "status": "DECLINED",
+  "finishedAt": "2026-10-26T18:55:41.667Z"
+}
