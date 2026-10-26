@@ -1,0 +1,339 @@
+{
+  "date": "2026-10-26",
+  "scope": "AWS staging; reminder/expiry probe only; no card charges",
+  "region": "us-west-2",
+  "workerSha256": "f9ac179b519184507c416c253aed694a5ccc111553bd99a174f76dc6f0b730b3",
+  "baseline": {
+    "environment": "staging",
+    "mode": "reminders_only",
+    "entryId": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+    "eventId": "01a17991-fab3-708e-b549-bd79cfc8f703",
+    "eventName": "QA Staging 0341 fresh rerun 1793040969438",
+    "pinnedRules": {
+      "grace_period_hours": 168,
+      "notification_offsets_hours": [
+        24,
+        72,
+        120,
+        168
+      ],
+      "retry_offsets_hours": [
+        24,
+        72,
+        168
+      ],
+      "short_notice_days": 9
+    },
+    "actualTime": "2026-10-26T19:43:18.522631+00:00",
+    "fixtureClock": null,
+    "before": {
+      "id": "01a17992-c704-752f-a041-f728eebe539a",
+      "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+      "status": "failed",
+      "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+      "payment_rules_version": "2",
+      "last_failure_class": "needs_new_method",
+      "retries_sent": "0",
+      "notices_sent": "0",
+      "next_attempt_at": null,
+      "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+      "flagged_at": null
+    },
+    "tick": null,
+    "after": {
+      "id": "01a17992-c704-752f-a041-f728eebe539a",
+      "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+      "status": "failed",
+      "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+      "payment_rules_version": "2",
+      "last_failure_class": "needs_new_method",
+      "retries_sent": "0",
+      "notices_sent": "0",
+      "next_attempt_at": null,
+      "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+      "flagged_at": null
+    }
+  },
+  "results": [
+    {
+      "name": "checkpoint-24",
+      "actualTime": "2026-10-26T19:44:56.170861+00:00",
+      "fixtureClock": "2026-10-27T18:57:06.659403+00:00",
+      "tick": {
+        "retries": 0,
+        "notices": 1,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "before": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "0",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": null
+      },
+      "after": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "1",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": null
+      }
+    },
+    {
+      "name": "checkpoint-24-repeat",
+      "actualTime": "2026-10-26T19:45:36.333549+00:00",
+      "fixtureClock": "2026-10-27T18:57:06.659403+00:00",
+      "tick": {
+        "retries": 0,
+        "notices": 0,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "before": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "1",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": null
+      },
+      "after": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "1",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": null
+      }
+    },
+    {
+      "name": "checkpoint-72",
+      "actualTime": "2026-10-26T19:45:47.111046+00:00",
+      "fixtureClock": "2026-10-29T18:57:06.659403+00:00",
+      "tick": {
+        "retries": 0,
+        "notices": 1,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "before": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "1",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": null
+      },
+      "after": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "2",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": null
+      }
+    },
+    {
+      "name": "checkpoint-120",
+      "actualTime": "2026-10-26T19:45:56.695547+00:00",
+      "fixtureClock": "2026-10-31T18:57:06.659403+00:00",
+      "tick": {
+        "retries": 0,
+        "notices": 1,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "before": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "2",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": null
+      },
+      "after": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "3",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": null
+      }
+    },
+    {
+      "name": "checkpoint-168",
+      "actualTime": "2026-10-26T19:46:07.418091+00:00",
+      "fixtureClock": "2026-11-02T18:57:06.659403+00:00",
+      "tick": {
+        "retries": 0,
+        "notices": 1,
+        "flagged": 1,
+        "stopped": 0,
+        "failed": 0
+      },
+      "before": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "3",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": null
+      },
+      "after": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "4",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": "2026-11-02 18:57:06.659403+00:00"
+      }
+    },
+    {
+      "name": "checkpoint-168-repeat",
+      "actualTime": "2026-10-26T19:46:17.784729+00:00",
+      "fixtureClock": "2026-11-02T18:57:06.659403+00:00",
+      "tick": {
+        "retries": 0,
+        "notices": 0,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "before": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "4",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": "2026-11-02 18:57:06.659403+00:00"
+      },
+      "after": {
+        "id": "01a17992-c704-752f-a041-f728eebe539a",
+        "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+        "status": "failed",
+        "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "4",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+        "flagged_at": "2026-11-02 18:57:06.659403+00:00"
+      }
+    }
+  ],
+  "final": {
+    "environment": "staging",
+    "mode": "reminders_only",
+    "entryId": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+    "eventId": "01a17991-fab3-708e-b549-bd79cfc8f703",
+    "eventName": "QA Staging 0341 fresh rerun 1793040969438",
+    "pinnedRules": {
+      "grace_period_hours": 168,
+      "notification_offsets_hours": [
+        24,
+        72,
+        120,
+        168
+      ],
+      "retry_offsets_hours": [
+        24,
+        72,
+        168
+      ],
+      "short_notice_days": 9
+    },
+    "actualTime": "2026-10-26T19:47:23.460961+00:00",
+    "fixtureClock": null,
+    "before": {
+      "id": "01a17992-c704-752f-a041-f728eebe539a",
+      "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+      "status": "failed",
+      "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+      "payment_rules_version": "2",
+      "last_failure_class": "needs_new_method",
+      "retries_sent": "0",
+      "notices_sent": "4",
+      "next_attempt_at": null,
+      "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+      "flagged_at": "2026-11-02 18:57:06.659403+00:00"
+    },
+    "tick": null,
+    "after": {
+      "id": "01a17992-c704-752f-a041-f728eebe539a",
+      "entry_id": "01a17992-92f9-7094-ab38-842ab3e1c4c9",
+      "status": "failed",
+      "first_failed_at": "2026-10-26 18:57:06.659403+00:00",
+      "payment_rules_version": "2",
+      "last_failure_class": "needs_new_method",
+      "retries_sent": "0",
+      "notices_sent": "4",
+      "next_attempt_at": null,
+      "deadline_at": "2026-11-02 18:57:06.659403+00:00",
+      "flagged_at": "2026-11-02 18:57:06.659403+00:00"
+    }
+  },
+  "emailDelivery": "Not verified: staging SES sandbox; recipient and parent domains are not verified identities. No SES configuration changed."
+}

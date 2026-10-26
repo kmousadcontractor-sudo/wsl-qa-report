@@ -54,33 +54,48 @@ footer{margin-top:48px;color:var(--soft);font-size:14px}
 <body>
 
 <main>
-  <p class="kicker">QA · staging01 vs dev · 22–24 Oct 2026</p>
+  <p class="kicker">QA · staging01 vs dev · 22–24 Oct 2026 · payment follow-up 26 Oct</p>
   <h1>Staging vs Dev</h1>
   <p class="lede">The full master suite run on staging01, compared check by check with dev, after removing network noise, test-setup issues and known configuration differences.</p>
   <p class="meta">staging01 = P0 build · dev = P1 build (since 21 Oct) · 166 tests, 2,536 checks · five staging runs on 24 Oct, plus a smoke run on 22 Oct</p>
 
+  <section id="payment-update-20261026">
+  <h2>Payment follow-up — 26 October 2026</h2>
+  <div class="finding good"><span class="sev">Latest result · initial decline now settles</span><h3>Fresh Confirm &amp; charge with card 0341 reached Declined in 5.7 seconds</h3><p>At <b>18:57:03 UTC</b>, the Tour Manager submitted one charge from the real UI. It returned HTTP 200, charged=1. At <b>18:57:09 UTC</b>, payment showed <b>Declined</b>, History recorded <code>generic_decline</code>, and <b>Retry payment</b> was available. Entry remained Pending because the fee was unpaid; payment was no longer stuck Pending.</p><p>The earlier 26 October fixture also eventually declined: its History records the decline at 18:46, around one hour after charge start. The fresh result is a passing initial-decline check, not proof of the cause or a complete payment-recovery fix.</p><p><a href="../evidence/staging-card-0341-2026-10-26/#latest-rerun">Full report and recordings</a> · <a href="../evidence/staging-card-0341-2026-10-26/rerun/manager-resume.webm">Manager recording</a> · <a href="../evidence/staging-card-0341-2026-10-26/rerun/12-manager-final.png">Declined screenshot</a> · <a href="../evidence/staging-card-0341-2026-10-26/rerun/resume.json">Request, roster samples and History</a></p></div>
+  <div class="tablewrap"><table><thead><tr><th>Area</th><th>Latest staging result</th><th>Remaining scope</th></tr></thead><tbody>
+  <tr><td>Membership, card 0341</td><td>Expected HTTP 402 generic decline; valid 4242 then completed membership as setup.</td><td>No new membership charge in the fresh event rerun.</td></tr>
+  <tr><td>Initial event-fee decline / AUTO-PAY-002, 010 behaviour</td><td>Fresh 0341 UI charge settles to Declined in 5.7 seconds, with History and Retry action.</td><td>Original historical results are retained. Not a full rerun of each original suite case.</td></tr>
+  <tr><td>Valid-card recovery / AUTO-RET-005</td><td>Not rerun in this follow-up.</td><td>Collected/Confirmed after changing the event card still needs verification.</td></tr>
+  <tr><td>Manual failed retries / AUTO-RET-006, 008</td><td>Retry payment is available after the initial decline.</td><td>The retry action itself was not executed; repeat-failure handling remains unverified.</td></tr>
+  <tr><td>Scoped AWS reminder worker</td><td>PASS: 24/72/120/168-hour checkpoints queue four notices and one expiry flag. Repeated 24h/168h calls create no duplicates.</td><td>These are reminder/expiry checks, not card retry attempts. All ticks report retries=0 and failed=0.</td></tr>
+  <tr><td>Actual reminder emails</td><td>Delivery unverified / environment blocker.</td><td>SES sandbox; this fresh QA address and its parent domains are not verified identities. Queued notices are not delivered-email evidence.</td></tr>
+  </tbody></table></div>
+  <div class="finding"><h3>AWS staging execution — 19:42–19:47 UTC</h3><p>The deployed competition worker ran on only the named QA entry, using a fixture clock anchored to its original failure. The final persisted state is <b>notices_sent=4</b>, <b>retries_sent=0</b>, with the QA expiry flag set. The original failure date, deadline and shared payment rules were not rewritten. No card charge, replay or service deployment was triggered by this worker.</p><p>Staging uses pinned <b>rule version 2</b>: retry offsets 24/72/168 hours, reminders 24/72/120/168 hours, grace 168 hours, short-notice window <b>9 days</b>. This differs from the earlier dev version-16 fixture (24/72 retry offsets, 10-day window); a policy difference is not classified here as a defect.</p><p><a href="../evidence/staging-retry-worker-2026-10-26/">AWS execution report and per-checkpoint logs</a> · <a href="../evidence/staging-retry-worker-2026-10-26/summary.json">Readable ledger</a> · <a href="../evidence/staging-retry-worker-2026-10-26/final-readback-decoded.json">Final database read-back</a> · <a href="../evidence/staging-retry-worker-2026-10-26/executed-worker.py">Executed script</a></p><p class="ev">Event <code>01a17991-fab3-708e-b549-bd79cfc8f703</code>; entry <code>01a17992-92f9-7094-ab38-842ab3e1c4c9</code>. This fixture has been advanced through expiry. Use a fresh entry for a new full reminder timeline.</p></div>
+  <div class="note"><p><b>Comparison scope:</b> the 166-test totals below are the original 22–24 October suite, unchanged. This update adds targeted staging evidence only; it does not rerun the full suite or certify recovery, automatic provider retries, email delivery or the other two staging findings.</p></div>
+  </section>
+
   <div class="tiles">
     <div class="tile"><b>166</b><span>tests run on staging</span></div>
     <div class="tile ok"><b>130</b><span>behave the same as dev</span></div>
-    <div class="tile bad"><b>3</b><span>real problems on staging</span></div>
+    <div class="tile bad"><b>3</b><span>findings recorded on 24 Oct</span></div>
     <div class="tile warn"><b>5</b><span>staging does better than dev</span></div>
     <div class="tile mute"><b>3</b><span>still to rerun (network)</span></div>
   </div>
   <p class="meta">The other ~25 differences are test setup or deliberate staging limits, explained below. None of them is an app problem.</p>
 
-  <h2>Real problems on staging</h2>
+  <h2>Findings recorded on 24 October</h2>
 
   <div class="finding high">
     <span class="sev high">High · bug report written</span>
-    <h3>Declined card payments and retries never settle; they stay "pending"</h3>
-    <p>A successful first charge works (Collected, Confirmed). Everything after it never comes back: a card that declines on Confirm &amp; charge stays pending forever, with no "declined" line in History, and Retry payment is never offered. A retry after the athlete changes card also stays pending. In one case a payment was <b>collected but the entry stayed pending</b>.</p>
+    <h3>Historical payment-pending finding — initial decline now passes; recovery still needs retest</h3>
+    <p>In the 24 October observation, a successful first charge worked (Collected, Confirmed), while declined attempts stayed Pending during the recorded window, without a decline line in History or a Retry payment action. The fresh 26 October initial-decline run now passes, as shown above. In that earlier run, a retry after the athlete changed card also stayed Pending. In one case a payment was <b>collected but the entry stayed pending</b>.</p>
     <ul>
       <li>AUTO-PAY-002: Payment shows Declined. Dev PASS, staging "pending"; History has no decline line.</li>
       <li>AUTO-PAY-010: the declining athlete is Declined. Dev PASS, staging "pending".</li>
       <li>AUTO-RET-005: Collected with the new card. Dev PASS, staging "pending" with 0 captures.</li>
       <li>AUTO-RET-006 / 008: failed retries recorded and Retry still offered. Dev PASS; staging records nothing and offers only Send message and Withdraw entry.</li>
     </ul>
-    <p class="ev">Evidence: event La Marginal Classic <code>01a16e79-2dc0-754a-b10f-15a27c35b3cf</code>, charged 15:13 UTC; entry <code>01a16e79-4bce-…</code> still pending two hours later. Likely cause: staging doesn't process Stripe's failed and retried payment results (webhook or worker). Report: <span class="mono">artifacts/bugs/staging-declines-and-retries-stay-pending-2026-10-24.md</span></p>
+    <p class="ev">Evidence: event La Marginal Classic <code>01a16e79-2dc0-754a-b10f-15a27c35b3cf</code>, charged 15:13 UTC; entry <code>01a16e79-4bce-…</code> still pending two hours later. The exact cause was not established; no deployment, worker or webhook fix is inferred from the passing follow-up. Report: <span class="mono">artifacts/bugs/staging-declines-and-retries-stay-pending-2026-10-24.md</span></p>
   </div>
 
   <div class="finding med">
@@ -155,6 +170,8 @@ footer{margin-top:48px;color:var(--soft);font-size:14px}
       <tr><td class="mono">20261024T122305</td><td class="n">24 Oct 12:23–13:03</td><td class="n">166</td><td>Full suite, including tests blocked on dev</td></tr>
       <tr><td class="mono">20261024T135840</td><td class="n">24 Oct 13:58–14:50</td><td class="n">84</td><td>Rerun of network-hit tests</td></tr>
       <tr><td class="mono">20261024T150802</td><td class="n">24 Oct 15:08–17:20</td><td class="n">40</td><td>Second rerun, plus the payment checks to confirm "stays pending"</td></tr>
+      <tr><td class="mono">20261026-card-0341</td><td class="n">26 Oct 17:40–18:57</td><td class="n">Targeted</td><td>Initial pending observation, late decline read-back and fresh 5.7-second decline rerun.</td></tr>
+      <tr><td class="mono">20261026-aws-reminders</td><td class="n">26 Oct 19:42–19:47</td><td class="n">6 ticks</td><td>Four reminder thresholds plus repeat checks at 24h and 168h. No card retries; email delivery unverified.</td></tr>
       <tr><td class="mono">20261024T173257</td><td class="n">24 Oct 17:32–17:53</td><td class="n">8</td><td>Email tests with staging's own inboxes, ADD-33</td></tr>
     </tbody>
   </table></div>
@@ -169,7 +186,7 @@ footer{margin-top:48px;color:var(--soft);font-size:14px}
     </ul>
   </div>
 
-  <footer>Raw results: tests/results/&lt;run&gt;/ (summary.json, diff.md, diff.json, logs). Prepared 25 Oct 2026.</footer>
+  <footer>Raw results: tests/results/&lt;run&gt;/ (summary.json, diff.md, diff.json, logs). Prepared 25 Oct 2026. Targeted staging payment and AWS reminder update: 26 Oct 2026.</footer>
 </main>
 </body>
 </html>
