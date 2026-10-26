@@ -1,0 +1,582 @@
+{
+  "startedAt": "2026-10-26T17:40:53.211Z",
+  "app": "https://app.staging01.worldsurfleague.com",
+  "api": "https://api.staging01.worldsurfleague.com/api",
+  "cardLast4": "0341",
+  "email": "qa.staging.0341.1793036453212@btj5keea.mailosaur.net",
+  "calls": [
+    {
+      "at": "2026-10-26T17:41:04.126Z",
+      "path": "/athletes",
+      "method": "POST",
+      "status": 201,
+      "body": {
+        "athlete": {
+          "id": "01a1794d-3473-7269-90ae-ba237c8b6010",
+          "status": "pending_documents",
+          "homeRegion": "north_america"
+        },
+        "next": {
+          "title": "Details saved",
+          "body": "Next, the membership terms, the waiver, the insurance authorisation and the age certification all need signing before this athlete can compete."
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:04.396Z",
+      "path": "/membership/documents?athlete=01a1794d-3473-7269-90ae-ba237c8b6010",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "documents": [
+          {
+            "id": "age_and_authority_certification",
+            "title": "Age and authority certification",
+            "body": "Certifies the age given, and who is registering on this athlete's behalf.",
+            "signed": false
+          },
+          {
+            "id": "membership_terms_and_conditions",
+            "title": "Membership terms and conditions",
+            "body": "The rules of holding a WSL membership.",
+            "signed": false
+          },
+          {
+            "id": "waiver_release_indemnity",
+            "title": "Waiver, release and indemnity",
+            "body": "Acknowledges the risks of competitive surfing.",
+            "signed": false
+          },
+          {
+            "id": "health_insurance_authorization",
+            "title": "Health and insurance authorisation",
+            "body": "Authorises emergency medical care and insurance handling if needed.",
+            "signed": false
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:04.673Z",
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:04.951Z",
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:05.228Z",
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "waiver_release_indemnity",
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:05.513Z",
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "waiver_release_indemnity",
+          "health_insurance_authorization",
+          "age_and_authority_certification"
+        ],
+        "status": "active"
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:10.314Z",
+      "path": "/api/membership/documents",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "documents": [
+          {
+            "id": "age_and_authority_certification",
+            "title": "Age and authority certification",
+            "body": "Certifies the age given, and who is registering on this athlete's behalf.",
+            "signed": true
+          },
+          {
+            "id": "membership_terms_and_conditions",
+            "title": "Membership terms and conditions",
+            "body": "The rules of holding a WSL membership.",
+            "signed": true
+          },
+          {
+            "id": "waiver_release_indemnity",
+            "title": "Waiver, release and indemnity",
+            "body": "Acknowledges the risks of competitive surfing.",
+            "signed": true
+          },
+          {
+            "id": "health_insurance_authorization",
+            "title": "Health and insurance authorisation",
+            "body": "Authorises emergency medical care and insurance handling if needed.",
+            "signed": true
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:10.490Z",
+      "path": "/api/membership/offer",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+        "homeRegion": {
+          "code": "north_america",
+          "label": "North America"
+        },
+        "products": [
+          {
+            "id": "01a156ff-14ae-728a-993f-01092b082212",
+            "code": "full_regional",
+            "name": "Regional Membership",
+            "description": "Enter events across all seven regions, not just the home region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 250,
+            "amountMinor": 25000,
+            "currency": "USD",
+            "priceMinor": 25000,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a156ff-14ec-77be-95d7-fa6b5da00cd0",
+            "code": "longboard",
+            "name": "Longboard Membership",
+            "description": "Enter Longboard and Longboard Qualifying Series events in any region. International tour events are by invitation.",
+            "compete": "All 7 regions, Longboard tours",
+            "includes": "Longboard Qualifying Series",
+            "details": "Longboard Qualifying Series events. Insurance is required when competing outside the country of residence. Regional ranking points only.",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 150,
+            "amountMinor": 15000,
+            "currency": "USD",
+            "priceMinor": 15000,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a156ff-1507-77e1-aa88-c4f2386505ca",
+            "code": "single_event",
+            "name": "Single Event",
+            "description": "Enter one event in any region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "One event only. Junior events need age eligibility. Insurance is required when competing outside the country of residence. Ranking points are only earned in events sanctioned by your home region & QS 6000 events",
+            "note": "You can upgrade later by paying the price difference.",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 75,
+            "amountMinor": 7500,
+            "currency": "USD",
+            "priceMinor": 7500,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:19.151Z",
+      "path": "/api/membership/checkout",
+      "method": "POST",
+      "status": 201,
+      "body": {
+        "membershipId": "01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+        "status": "awaiting_attempt",
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "lines": [
+          {
+            "id": "plan",
+            "label": "Membership",
+            "amount": 250,
+            "amountMinor": 25000,
+            "currency": "USD"
+          },
+          {
+            "id": "handling-fee",
+            "label": "Handling fee",
+            "amount": 0,
+            "amountMinor": 0,
+            "currency": "USD"
+          },
+          {
+            "id": "tax",
+            "label": "Tax",
+            "amount": 0,
+            "amountMinor": 0,
+            "currency": "USD"
+          }
+        ],
+        "total": {
+          "label": "Total",
+          "amount": 250,
+          "amountMinor": 25000,
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:19.382Z",
+      "path": "/api/payments/intents/01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:20.717Z",
+      "path": "/api/payments/intents/01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:22.001Z",
+      "path": "/api/payments/intents/01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:23.298Z",
+      "path": "/api/payments/intents/01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:24.587Z",
+      "path": "/api/payments/intents/01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:25.898Z",
+      "path": "/api/payments/intents/01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-6f09-70db-bdff-2c1e4c8e3a2d",
+        "status": "attempt_ready",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:26.331Z",
+      "path": "/api/membership/checkout/01a1794d-6f09-70db-bdff-2c1e4c8e3a2d/secret",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "clientSecret": "[REDACTED_CLIENT_SECRET]"
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:33.017Z",
+      "path": "/api/membership/checkout",
+      "method": "POST",
+      "status": 201,
+      "body": {
+        "membershipId": "01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+        "status": "awaiting_attempt",
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "lines": [
+          {
+            "id": "plan",
+            "label": "Membership",
+            "amount": 250,
+            "amountMinor": 25000,
+            "currency": "USD"
+          },
+          {
+            "id": "handling-fee",
+            "label": "Handling fee",
+            "amount": 0,
+            "amountMinor": 0,
+            "currency": "USD"
+          },
+          {
+            "id": "tax",
+            "label": "Tax",
+            "amount": 0,
+            "amountMinor": 0,
+            "currency": "USD"
+          }
+        ],
+        "total": {
+          "label": "Total",
+          "amount": 250,
+          "amountMinor": 25000,
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:33.246Z",
+      "path": "/api/payments/intents/01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:34.521Z",
+      "path": "/api/payments/intents/01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:35.834Z",
+      "path": "/api/payments/intents/01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+        "status": "attempt_ready",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:36.183Z",
+      "path": "/api/membership/checkout/01a1794d-a526-73bf-8b1e-946b7b4e15f3/secret",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "clientSecret": "[REDACTED_CLIENT_SECRET]"
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:39.554Z",
+      "path": "/api/payments/intents/01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+        "status": "attempt_ready",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:41.419Z",
+      "path": "/api/payments/intents/01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+        "status": "complete",
+        "membershipStatus": "active",
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "complete",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:41.595Z",
+      "path": "/api/payments/intents/01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a1794d-a526-73bf-8b1e-946b7b4e15f3",
+        "status": "complete",
+        "membershipStatus": "active",
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "complete",
+        "failureClass": null,
+        "message": null
+      }
+    }
+  ],
+  "provider": [
+    {
+      "at": "2026-10-26T17:41:27.621Z",
+      "http": 402,
+      "id": "pi_3UUrtcHma49jszOG18wJFycb",
+      "status": "requires_payment_method",
+      "livemode": false,
+      "error": {
+        "code": "card_declined",
+        "decline_code": "generic_decline",
+        "message": "Your card was declined."
+      }
+    },
+    {
+      "at": "2026-10-26T17:41:39.318Z",
+      "http": 200,
+      "id": "pi_3UUrtqHma49jszOG0BglpG3h",
+      "status": "succeeded",
+      "livemode": false,
+      "error": null
+    }
+  ],
+  "observations": [],
+  "stripeKeyMode": "pk_test",
+  "athleteId": "01a1794d-3473-7269-90ae-ba237c8b6010",
+  "membership0341": {
+    "text": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nStaging C.\nLog Out\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited States\nEnglish\n1\nDate of Birth\nCompleted\n2\nAccount\nCompleted\n3\nAthlete Details\nCompleted\n4\nMembership\nCompleted\n5\nPayment\nCurrent step\nMembership Checkout\n\nRegional Membership\n\n$250.00\n\nHandling\n\n$0.00\n\nTotal Today: Regional Membership\n\n$250.00\n\nCard Number\nEntered securely with Stripe. WSL never sees this number.\nExpiry Date\nSecurity Code\nSave this card for future payments, including insurance and entry fees.\nAuto-renew the membership each season. Cancel any time.\n\nYour card has been declined.\n\nPay $250.00\nBack",
+    "provider": [
+      {
+        "at": "2026-10-26T17:41:27.621Z",
+        "http": 402,
+        "id": "pi_3UUrtcHma49jszOG18wJFycb",
+        "status": "requires_payment_method",
+        "livemode": false,
+        "error": {
+          "code": "card_declined",
+          "decline_code": "generic_decline",
+          "message": "Your card was declined."
+        }
+      }
+    ]
+  },
+  "membershipRecovered": true,
+  "event": {
+    "id": "01a1794d-d445-702a-8138-b5c5e1b34180",
+    "name": "QA Staging 0341 Confirm Charge 1793036503126",
+    "start": "2026-12-10",
+    "location": "56th Street, Newport Beach, California · Los Angeles time",
+    "timeZone": "America/Los_Angeles"
+  },
+  "status": "BLOCKED",
+  "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Register: QA Staging 0341 Confirm Charge 1793036503126').or(getByText('QA Staging 0341 Confirm Charge 1793036503126').first()).first() to be visible\u001b[22m\n\n    at enterEvent (C:\\Users\\hp\\Desktop\\wsl-qa-automation\\scripts\\demo\\exec-athlete.mjs:72:92)\n    at async file:///C:/Users/hp/Desktop/wsl-qa-automation/scripts/bugs/staging-0341-confirm-charge-20261026.mjs:31:14",
+  "finishedAt": "2026-10-26T17:42:12.374Z"
+}

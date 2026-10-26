@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Staging payment test — card 0341 — 26 October 2026</title><style>body{font:16px/1.6 system-ui;background:#f2f5f9;color:#162b40;margin:0}main{max-width:1050px;margin:auto;padding:28px}section{background:white;border:1px solid #cad5df;border-radius:12px;padding:24px;margin:20px 0}td,th{border:1px solid #ccd5df;padding:12px;text-align:left}table{border-collapse:collapse;width:100%}img,video{max-width:100%;display:block;margin:18px 0}video{width:100%;background:#101820}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf2f7;padding:16px}a{color:#1259a0}.pass{color:#08723d}.pending{color:#a04206}</style><main><h1>Staging payment test: card ending 0341</h1><p>26 October 2026 · app.staging01.worldsurfleague.com · Stripe test mode, provider responses livemode=false.</p><table><tr><th>Check</th><th>Result</th></tr><tr><td>Membership payment with 4000 0000 0000 0341</td><td class="pass">Expected decline: HTTP 402, card_declined / generic_decline.</td></tr><tr><td>Valid-card membership prerequisite</td><td class="pass">4242 succeeded and Membership Confirmed was displayed.</td></tr><tr><td>Event entry with 0341</td><td class="pass">Saved through real UI; entry 201; roster Authorized / Waitlisted before charge.</td></tr><tr><td>Tour Manager UI Confirm &amp; charge</td><td>One request, HTTP 200, charged=1 at 2026-10-26T17:46:40.245Z.</td></tr><tr><td>Final manager payment result</td><td class="pending">FAIL to settle within the 2-minute observation: payment Pending, entry Pending. No decline result recorded.</td></tr></table>
+<section><h2>What happened</h2><ol><li>Created one new adult QA athlete via API setup and signed membership documents.</li><li>In the actual membership checkout UI entered 0341 and clicked Pay. Stripe returned HTTP 402 with generic_decline; the membership did not complete.</li><li>Changed to valid test Visa 4242 solely to establish an active membership for the entry-charge test. Stripe returned succeeded, livemode=false, and the app reached Membership Confirmed.</li><li>Created a separate controlled staging event, opened entries, then registered through the athlete UI using 0341 as a new card and own insurance. Entry POST returned 201. Before charge, the roster was Authorized / Waitlisted.</li><li>Closed registration and seeded the one-entry fixture through API setup.</li><li>Opened Tour Manager Athletes, clicked Confirm field &amp; charge, checked the seed-list acknowledgement and clicked Confirm &amp; charge once.</li><li>Observed the roster for approximately two minutes, then reloaded the manager UI. Payment and entry remained Pending. History only contained Seed and Card payment charge started. Retry payment was not offered; actions were Send message and Withdraw entry.</li></ol><p><strong>No second manager charge or retry was submitted.</strong> The pending fixture remains for investigation; no database repair, payment-result replay, worker trigger or cancellation was performed.</p><p><a href="https://docs.stripe.com/testing">Stripe documents 0341 as a card that can be attached successfully but fails when the customer is charged.</a> The membership decline is directly supported by the browser’s provider response. The later event-charge provider result was not independently retrieved; Pending alone does not prove where its processing failed.</p></section>
+<section><h2>Membership: expected decline, then successful prerequisite</h2><pre>[
+  {
+    &quot;at&quot;: &quot;2026-10-26T17:41:27.621Z&quot;,
+    &quot;http&quot;: 402,
+    &quot;id&quot;: &quot;pi_3UUrtcHma49jszOG18wJFycb&quot;,
+    &quot;status&quot;: &quot;requires_payment_method&quot;,
+    &quot;livemode&quot;: false,
+    &quot;error&quot;: {
+      &quot;code&quot;: &quot;card_declined&quot;,
+      &quot;decline_code&quot;: &quot;generic_decline&quot;,
+      &quot;message&quot;: &quot;Your card was declined.&quot;
+    }
+  },
+  {
+    &quot;at&quot;: &quot;2026-10-26T17:41:39.318Z&quot;,
+    &quot;http&quot;: 200,
+    &quot;id&quot;: &quot;pi_3UUrtqHma49jszOG0BglpG3h&quot;,
+    &quot;status&quot;: &quot;succeeded&quot;,
+    &quot;livemode&quot;: false,
+    &quot;error&quot;: null
+  }
+]</pre><img src="02-membership-result.png" alt="Membership checkout decline"><img src="03-membership-active.png" alt="Membership confirmed with valid setup card"><video controls preload="metadata" src="athlete.webm"></video><p><a href="results.json">Timestamped UI/API/provider evidence</a></p></section>
+<section><h2>Event entry with 0341</h2><p>The following recording shows the actual 0341 entry. The earlier setup helper left the event Draft because staging status options omit an availability flag. That was corrected using the same fixture before successful registration; it was not counted as a payment failure.</p><img src="09-waitlisted.png" alt="Entry waitlisted"><video controls preload="metadata" src="athlete-resume.webm"></video><p><a href="resume.json">Entry response, setup status transitions and initial manager attempt diagnostics</a></p></section>
+<section><h2>Manager confirmation: payment stays pending</h2><p>Event <code>01a1794d-d445-702a-8138-b5c5e1b34180</code><br>Entry <code>01a17950-741b-74a5-8280-d8bae66a6947</code><br>Reference <code>QS-2026-M-106-001</code><br>Confirmation <code>01a17952-5580-71bf-9026-142f7cde425c</code><br>Entry fee USD 150 (test mode).</p><img src="13-ready-confirm.png" alt="Checked confirmation acknowledgement before one charge"><img src="14-final-roster.png" alt="Pending payment and entry after observation"><video controls preload="metadata" src="manager-final.webm"></video><pre>{
+  &quot;charge&quot;: {
+    &quot;at&quot;: &quot;2026-10-26T17:46:40.245Z&quot;,
+    &quot;status&quot;: 200,
+    &quot;body&quot;: {
+      &quot;confirmationId&quot;: &quot;01a17952-5580-71bf-9026-142f7cde425c&quot;,
+      &quot;charged&quot;: 1,
+      &quot;skipped&quot;: []
+    }
+  },
+  &quot;lastObservation&quot;: {
+    &quot;at&quot;: &quot;2026-10-26T17:48:37.619Z&quot;,
+    &quot;row&quot;: {
+      &quot;id&quot;: &quot;01a17950-741b-74a5-8280-d8bae66a6947&quot;,
+      &quot;group&quot;: &quot;field&quot;,
+      &quot;athlete&quot;: {
+        &quot;initials&quot;: &quot;SC&quot;,
+        &quot;name&quot;: &quot;Staging Card0341QA&quot;,
+        &quot;country&quot;: &quot;United States&quot;
+      },
+      &quot;ranking&quot;: &quot;Seed 1 · N. AMERICA&quot;,
+      &quot;region&quot;: &quot;north_america&quot;,
+      &quot;highlight&quot;: null,
+      &quot;insurance&quot;: {
+        &quot;state&quot;: &quot;ok&quot;,
+        &quot;label&quot;: &quot;Insurance: verified&quot;,
+        &quot;code&quot;: &quot;verified&quot;
+      },
+      &quot;payment&quot;: {
+        &quot;code&quot;: &quot;pending&quot;,
+        &quot;label&quot;: &quot;Pending&quot;,
+        &quot;tone&quot;: &quot;neutral&quot;
+      },
+      &quot;entry&quot;: {
+        &quot;code&quot;: &quot;pending&quot;,
+        &quot;label&quot;: &quot;Pending&quot;,
+        &quot;tone&quot;: &quot;neutral&quot;
+      },
+      &quot;waivable&quot;: {
+        &quot;fee&quot;: false
+      },
+      &quot;actions&quot;: [
+        {
+          &quot;code&quot;: &quot;message&quot;,
+          &quot;label&quot;: &quot;Send message&quot;,
+          &quot;destructive&quot;: false
+        },
+        {
+          &quot;code&quot;: &quot;withdraw&quot;,
+          &quot;label&quot;: &quot;Withdraw entry&quot;,
+          &quot;destructive&quot;: true
+        }
+      ],
+      &quot;movable&quot;: true,
+      &quot;pinned&quot;: false,
+      &quot;hasHistory&quot;: true,
+      &quot;seedRank&quot;: 1,
+      &quot;alternatePosition&quot;: null,
+      &quot;moveUpSeat&quot;: null,
+      &quot;movedUpFrom&quot;: null
+    }
+  },
+  &quot;history&quot;: {
+    &quot;summary&quot;: &quot;2 history entries&quot;,
+    &quot;items&quot;: [
+      {
+        &quot;id&quot;: &quot;01a17952-558e-77d0-a4eb-d8b7d18c941e&quot;,
+        &quot;when&quot;: &quot;26 Oct 17:46 UTC&quot;,
+        &quot;what&quot;: &quot;Card payment charge started&quot;,
+        &quot;channel&quot;: &quot;Stripe&quot;,
+        &quot;by&quot;: &quot;Q. Staging Manager 1&quot;
+      },
+      {
+        &quot;id&quot;: &quot;01a17950-7f52-7265-aeda-185b7e8a1545&quot;,
+        &quot;when&quot;: &quot;26 Oct 17:44 UTC&quot;,
+        &quot;what&quot;: &quot;Seed · to #1&quot;,
+        &quot;channel&quot;: &quot;Tour Manager&quot;,
+        &quot;by&quot;: &quot;Q. Staging Manager 1&quot;
+      }
+    ]
+  }
+}</pre><p><a href="manager-result.json">Complete manager request, roster samples, history and visible actions</a></p></section>
+<section><h2>Evidence boundaries</h2><p>An initial manager automation attempt inspected the dialog before its contents loaded; it timed out with acknowledgement unchecked and no charge submitted. Read-only roster/history verification confirmed Authorized / Waitlisted and no started charge before the final successful UI action. The primary manager recording is the final acknowledged attempt. This is not a claim of multiple charge attempts.</p><p>API setup was used for the test account, document signing, event statuses and seed order. Membership payment, event-card entry and final Confirm &amp; charge were actual UI actions. No email-delivery or scheduled-retry check is included. Card secrets in JSON are redacted. All times in logs are UTC.</p></section></main></html>
