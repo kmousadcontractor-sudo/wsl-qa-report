@@ -1,0 +1,193 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{overflow-wrap:anywhere}td{overflow-wrap:anywhere}body{font:16px/1.6 system-ui;max-width:1100px;margin:30px auto;padding:20px;color:#172637}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f8;padding:16px}img,video{max-width:100%;height:auto;object-fit:contain}table{width:100%;border-collapse:collapse}td,th{padding:12px;border-bottom:1px solid #ddd;text-align:left}a{color:#075ca8}</style><title>WSL-BUG-016 — Junior membership is offered to an athlete aged 21</title><a href="index.html">All bug reports</a> · <a href="../results-of-testcases.html#check-05b19e23b49d75ed">View failed check and run</a><h1>WSL-BUG-016 — Junior membership is offered to an athlete aged 21</h1><div id="status-banner" style="background:#e7f6ec;border-left:4px solid #1a7f37;padding:12px 16px;margin:12px 0"><strong>Status: Resolved</strong> — Automated dev rerun, 2026-10-18; verified by automated rerun. The original failure evidence below is kept for history.</div><p><strong>Test case:</strong> com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD07</p><p><strong>Severity / Priority:</strong> Medium / P2 (proposed)</p><p><strong>Classification:</strong> Membership offer / eligibility expectation discrepancy; actual cutoff calculation is not captured</p><h2>What happened</h2><p>At execution age 21, the offer returned full_regional, junior, longboard and single_event. The cutoff date was not returned.</p><h2>What should happen</h2><p>The existing assertion expects Junior to be excluded for this fixture under the season-end eligibility rule.</p><h2>Why it matters</h2><p>An apparently ineligible tier is offered; purchase or assignment of Junior was not verified.</p><h2>What needs to be done</h2><p>Confirm the applicable season-end cutoff and whether offers are filtered by eligibility. Then correct the offer or the test expectation. Capture the cutoff date and calculated cutoff age in a follow-up run.</p><h2>Steps to reproduce</h2><ol><li>Use the test athlete fixture aged 21.</li><li>Request its membership offer through the test API flow.</li><li>Inspect the returned tier codes and compare them with the eligibility rule.</li></ol><p><strong>Environment:</strong> WSL dev. <strong>Run started:</strong> 2026-10-14T21:04:00.418Z. Results and evidence are retained from that execution; this wording update did not rerun the test.</p><details><summary>Original check result and recorded scenario steps</summary><p><strong>Original expected:</strong> Junior tier age 21 follows season-end cutoff.</p><p><strong>Original actual:</strong> Not observed: Junior tier age 21 follows season-end cutoff. Age at execution 21; returned tier codes: full_regional, junior, longboard, single_event. Cutoff date: Not returned by membership offer. This checks offered products, not an assigned or purchased membership.</p><ol><li>Created a fresh account using the recorded date of birth.</li><li>Created the athlete using POST /athletes.</li><li>Requested GET /membership/offer for that saved athlete.</li><li>Compared the returned Junior product code against the existing age-band assertion.</li></ol></details><h2>Technical details</h2><p>Logs are from the same scenario, not necessarily a single request attributable to this assertion. Missing payloads, service logs and deployment revision are not inferred.</p><pre>{
+  &quot;environment&quot;: &quot;WSL dev: app.dev.worldsurfleague.com / api.dev.worldsurfleague.com&quot;,
+  &quot;executionStarted&quot;: &quot;2026-10-14T21:04:00.418Z&quot;,
+  &quot;checkTimestamp&quot;: &quot;2026-10-14T21:04:06.115Z&quot;,
+  &quot;checkId&quot;: &quot;05b19e23b49d75ed&quot;,
+  &quot;responseEvidence&quot;: {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/membership/offer&quot;,
+    &quot;status&quot;: 200,
+    &quot;products&quot;: [
+      {
+        &quot;code&quot;: &quot;full_regional&quot;,
+        &quot;id&quot;: &quot;01a136e0-abe2-74e5-bbe8-815062a8821f&quot;,
+        &quot;label&quot;: &quot;Regional Membership&quot;
+      },
+      {
+        &quot;code&quot;: &quot;junior&quot;,
+        &quot;id&quot;: &quot;01a136e0-abfa-734b-8897-7f98cbb84ce4&quot;,
+        &quot;label&quot;: &quot;Junior Membership&quot;
+      },
+      {
+        &quot;code&quot;: &quot;longboard&quot;,
+        &quot;id&quot;: &quot;01a136e0-ac13-769c-b4da-00b0c37b4d47&quot;,
+        &quot;label&quot;: &quot;Longboard Membership&quot;
+      },
+      {
+        &quot;code&quot;: &quot;single_event&quot;,
+        &quot;id&quot;: &quot;01a136e0-ac2c-71ea-9a98-2fd23b08778b&quot;,
+        &quot;label&quot;: &quot;Single Event&quot;
+      }
+    ],
+    &quot;season&quot;: null,
+    &quot;seasonEndDate&quot;: null
+  },
+  &quot;failureExplanation&quot;: &quot;The offer includes Junior although the existing assertion excludes it for this fixture. This is an offered product, not an assigned membership. The API did not return the applicable cutoff date, so the exact cutoff-age calculation remains unavailable.&quot;,
+  &quot;recordedMessage&quot;: &quot;Age at execution 21; returned tier codes: full_regional, junior, longboard, single_event. Cutoff date: Not returned by membership offer. This checks offered products, not an assigned or purchased membership.&quot;,
+  &quot;requests&quot;: [
+    {
+      &quot;path&quot;: &quot;/age-gate&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 1069
+    },
+    {
+      &quot;path&quot;: &quot;/auth/register&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 466
+    },
+    {
+      &quot;path&quot;: &quot;/athletes&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 388
+    },
+    {
+      &quot;path&quot;: &quot;/membership/offer?athlete=01a13c3a-bafc-77d0-9ccb-5d69832a38b5&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 323
+    },
+    {
+      &quot;path&quot;: &quot;/age-gate&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 233
+    },
+    {
+      &quot;path&quot;: &quot;/auth/register&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 389
+    },
+    {
+      &quot;path&quot;: &quot;/athletes&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 379
+    },
+    {
+      &quot;path&quot;: &quot;/membership/offer?athlete=01a13c3a-c034-7376-a072-171b9f6cb4f0&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 319
+    },
+    {
+      &quot;path&quot;: &quot;/age-gate&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 232
+    },
+    {
+      &quot;path&quot;: &quot;/auth/register&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 389
+    },
+    {
+      &quot;path&quot;: &quot;/athletes&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 416
+    },
+    {
+      &quot;path&quot;: &quot;/membership/offer?athlete=01a13c3a-c563-7786-b8d1-49a4cf1b77bd&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 332
+    }
+  ],
+  &quot;scenarioHttpAndErrorLog&quot;: [
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:11.960Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:11.963Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:11.965Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:12.108Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/session → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:12.245Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:12.247Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:12.249Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:12.557Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/session → 403&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:12.557Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 403 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:12.562Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/reference/countries → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:12.595Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/registration/draft → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:12.605Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:13.303Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:13.306Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/membership/documents → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:13.306Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/athletes/01a13c3a-c563-7786-b8d1-49a4cf1b77bd → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:13.310Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/membership/offer → 200&quot;
+    }
+  ]
+}</pre><h2>Evidence</h2><p>Screenshot unavailable for this check. API-only checks are supported by recorded response evidence below.</p><p>Focused recording unavailable. No matching browser recording was captured; no substitute or fabricated evidence is attached.</p>

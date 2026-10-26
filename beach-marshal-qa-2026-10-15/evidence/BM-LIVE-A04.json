@@ -1,0 +1,526 @@
+{
+  "id": "BM-LIVE-A04",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "What membership options can Junior Consent buy, and which are eligible? Include the price, tax, currency and total.",
+  "expected": "Matches actual offer eligibility flags/reasons and configured monetary values; offered does not mean eligible.",
+  "expectedTools": [
+    "get_membership_offer"
+  ],
+  "referencePaths": [
+    "/membership/offer?athlete=01a13c43-c421-74a4-b266-58d419d278a3"
+  ],
+  "startedAt": "2026-10-15T00:16:21.574Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/membership/offer?athlete=01a13c43-c421-74a4-b266-58d419d278a3",
+      "status": 200,
+      "body": {
+        "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+        "homeRegion": {
+          "code": "north_america",
+          "label": "North America"
+        },
+        "products": [
+          {
+            "id": "01a136e0-abe2-74e5-bbe8-815062a8821f",
+            "code": "full_regional",
+            "name": "Regional Membership",
+            "description": "Enter events across all seven regions, not just the home region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "",
+            "note": "",
+            "eligible": false,
+            "ineligibleReason": {
+              "code": "already_held",
+              "label": "Already held"
+            },
+            "amount": 250,
+            "amountMinor": 25000,
+            "currency": "USD",
+            "priceMinor": 25000,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a136e0-abfa-734b-8897-7f98cbb84ce4",
+            "code": "junior",
+            "name": "Junior Membership",
+            "description": "Enter one event in the home region.",
+            "compete": "North America",
+            "includes": "Junior Qualifying Series · Qualifying Series Events. Must be under 21 at season end date.",
+            "details": "One event only. Junior events need age eligibility. Insurance is required when competing outside the country of residence. Ranking points are only earned in events sanctioned by your home region & QS 6000 events",
+            "note": "You can upgrade later by paying the price difference.",
+            "eligible": false,
+            "ineligibleReason": {
+              "code": "already_held",
+              "label": "Already held"
+            },
+            "amount": 175,
+            "amountMinor": 17500,
+            "currency": "USD",
+            "priceMinor": 17500,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a136e0-ac13-769c-b4da-00b0c37b4d47",
+            "code": "longboard",
+            "name": "Longboard Membership",
+            "description": "Enter Longboard Qualifying Series events in the home region. Can also be used to register for events out of region.",
+            "compete": "North America, plus eligible international Longboard events",
+            "includes": "Longboard Qualifying Series",
+            "details": "Longboard Qualifying Series events. Insurance is required when competing outside the country of residence. Regional ranking points only.",
+            "note": "",
+            "eligible": false,
+            "ineligibleReason": {
+              "code": "already_held",
+              "label": "Already held"
+            },
+            "amount": 150,
+            "amountMinor": 15000,
+            "currency": "USD",
+            "priceMinor": 15000,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a136e0-ac2c-71ea-9a98-2fd23b08778b",
+            "code": "single_event",
+            "name": "Single Event",
+            "description": "Enter one event in the home region.",
+            "compete": "North America",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "One event only. Junior events need age eligibility. Insurance is required when competing outside the country of residence. Ranking points are only earned in events sanctioned by your home region & QS 6000 events",
+            "note": "You can upgrade later by paying the price difference.",
+            "eligible": false,
+            "ineligibleReason": {
+              "code": "already_held",
+              "label": "Already held"
+            },
+            "amount": 75,
+            "amountMinor": 7500,
+            "currency": "USD",
+            "priceMinor": 7500,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          }
+        ]
+      },
+      "at": "2026-10-15T00:16:22.113Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:16:23.613Z",
+  "videoStartSeconds": 85.175,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "943a2493-806d-4b9c-b907-cbbbbcc124f7",
+    "input": {
+      "threadId": "6b38f445-ad2a-45c3-a10a-1e0f3ab5fd84",
+      "runId": "75532c76-adf7-41b1-a9e2-19d86d4e6d05",
+      "state": {},
+      "messages": [
+        {
+          "id": "48bd433d-11a7-4664-acba-bea2097ea4b4",
+          "role": "user",
+          "content": "What membership options can Junior Consent buy, and which are eligible? Include the price, tax, currency and total."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01X7FBLPrKqaixTMLUFoVmQH",
+        "name": "list_my_athletes",
+        "result": {
+          "status": "ok",
+          "athletes": [
+            {
+              "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "first_name": "Junior",
+              "last_name": "Consent",
+              "status": "active",
+              "registered_by": "guardian",
+              "membership": {
+                "product_code": "junior",
+                "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+                "status": "active",
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31",
+                "amount": {
+                  "amount_minor": 17500,
+                  "currency": "USD"
+                }
+              }
+            }
+          ]
+        },
+        "parameters": ""
+      },
+      {
+        "id": "toolu_bdrk_01VaZvHLNZuuPQyGMzbw8QBr",
+        "name": "get_membership_offer",
+        "result": {
+          "status": "ok",
+          "offer": {
+            "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+            "region_code": "north_america",
+            "products": [
+              {
+                "product_code": "full_regional",
+                "eligible": false,
+                "reason_code": "already_held",
+                "price": {
+                  "amount_minor": 25000,
+                  "currency": "USD"
+                },
+                "tax": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 25000,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "product_code": "junior",
+                "eligible": false,
+                "reason_code": "already_held",
+                "price": {
+                  "amount_minor": 17500,
+                  "currency": "USD"
+                },
+                "tax": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 17500,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "product_code": "longboard",
+                "eligible": false,
+                "reason_code": "already_held",
+                "price": {
+                  "amount_minor": 15000,
+                  "currency": "USD"
+                },
+                "tax": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 15000,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "product_code": "single_event",
+                "eligible": false,
+                "reason_code": "already_held",
+                "price": {
+                  "amount_minor": 7500,
+                  "currency": "USD"
+                },
+                "tax": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 7500,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              }
+            ]
+          }
+        },
+        "parameters": {
+          "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3"
+        }
+      }
+    ],
+    "answer": "Junior Consent can't buy any of the memberships right now. They already have an active Junior membership for the 2026 season (January 1 to December 31, 2026), so all four North America options show as unavailable:\n\n- **Full Regional:** price $250.00, tax $0.00, total $250.00 USD (not eligible)\n- **Junior:** price $175.00, tax $0.00, total $175.00 USD (not eligible, since it's the one they already have)\n- **Longboard:** price $150.00, tax $0.00, total $150.00 USD (not eligible)\n- **Single Event:** price $75.00, tax $0.00, total $75.00 USD (not eligible)\n\nNone of them has a handling fee, and all would run from January 1 to December 31, 2026.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "6b38f445-ad2a-45c3-a10a-1e0f3ab5fd84",
+        "runId": "75532c76-adf7-41b1-a9e2-19d86d4e6d05"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "6b38f445-ad2a-45c3-a10a-1e0f3ab5fd84",
+        "runId": "75532c76-adf7-41b1-a9e2-19d86d4e6d05"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TOOL_CALL_ARGS",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01X7FBLPrKqaixTMLUFoVmQH",
+      "name": "list_my_athletes",
+      "result": {
+        "status": "ok",
+        "athletes": [
+          {
+            "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+            "first_name": "Junior",
+            "last_name": "Consent",
+            "status": "active",
+            "registered_by": "guardian",
+            "membership": {
+              "product_code": "junior",
+              "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+              "status": "active",
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31",
+              "amount": {
+                "amount_minor": 17500,
+                "currency": "USD"
+              }
+            }
+          }
+        ]
+      },
+      "parameters": ""
+    },
+    {
+      "id": "toolu_bdrk_01VaZvHLNZuuPQyGMzbw8QBr",
+      "name": "get_membership_offer",
+      "result": {
+        "status": "ok",
+        "offer": {
+          "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+          "region_code": "north_america",
+          "products": [
+            {
+              "product_code": "full_regional",
+              "eligible": false,
+              "reason_code": "already_held",
+              "price": {
+                "amount_minor": 25000,
+                "currency": "USD"
+              },
+              "tax": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 25000,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "product_code": "junior",
+              "eligible": false,
+              "reason_code": "already_held",
+              "price": {
+                "amount_minor": 17500,
+                "currency": "USD"
+              },
+              "tax": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 17500,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "product_code": "longboard",
+              "eligible": false,
+              "reason_code": "already_held",
+              "price": {
+                "amount_minor": 15000,
+                "currency": "USD"
+              },
+              "tax": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 15000,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "product_code": "single_event",
+              "eligible": false,
+              "reason_code": "already_held",
+              "price": {
+                "amount_minor": 7500,
+                "currency": "USD"
+              },
+              "tax": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 7500,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            }
+          ]
+        }
+      },
+      "parameters": {
+        "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3"
+      }
+    }
+  ],
+  "aiResponse": "Junior Consent can't buy any of the memberships right now. They already have an active Junior membership for the 2026 season (January 1 to December 31, 2026), so all four North America options show as unavailable:\n\n- **Full Regional:** price $250.00, tax $0.00, total $250.00 USD (not eligible)\n- **Junior:** price $175.00, tax $0.00, total $175.00 USD (not eligible, since it's the one they already have)\n- **Longboard:** price $150.00, tax $0.00, total $150.00 USD (not eligible)\n- **Single Event:** price $75.00, tax $0.00, total $75.00 USD (not eligible)\n\nNone of them has a handling fee, and all would run from January 1 to December 31, 2026.",
+  "actual": "Junior Consent can't buy any of the memberships right now. They already have an active Junior membership for the 2026 season (January 1 to December 31, 2026), so all four North America options show as unavailable:\n\n- **Full Regional:** price $250.00, tax $0.00, total $250.00 USD (not eligible)\n- **Junior:** price $175.00, tax $0.00, total $175.00 USD (not eligible, since it's the one they already have)\n- **Longboard:** price $150.00, tax $0.00, total $150.00 USD (not eligible)\n- **Single Event:** price $75.00, tax $0.00, total $75.00 USD (not eligible)\n\nNone of them has a handling fee, and all would run from January 1 to December 31, 2026.",
+  "durationMs": 7016,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWhat membership options can Junior Consent buy, and which are eligible? Include the price, tax, currency and total.\n\nJunior Consent can't buy any of the memberships right now. They already have an active Junior membership for the 2026 season (January 1 to December 31, 2026), so all four North America options show as unavailable:\n\nFull Regional: price $250.00, tax $0.00, total $250.00 USD (not eligible)\nJunior: price $175.00, tax $0.00, total $175.00 USD (not eligible, since it's the one they already have)\nLongboard: price $150.00, tax $0.00, total $150.00 USD (not eligible)\nSingle Event: price $75.00, tax $0.00, total $75.00 USD (not eligible)\n\nNone of them has a handling fee, and all would run from January 1 to December 31, 2026.\n\nJunior Consent can't buy any of the memberships right now. They already have an active Junior membership for the 2026 season (January 1 to December 31, 2026), so all four North America options show as unavailable: - **Full Regional:** price $250.00, tax $0.00, total $250.00 USD (not eligible) - **Junior:** price $175.00, tax $0.00, total $175.00 USD (not eligible, since it's the one they already have) - **Longboard:** price $150.00, tax $0.00, total $150.00 USD (not eligible) - **Single Event:** price $75.00, tax $0.00, total $75.00 USD (not eligible) None of them has a handling fee, and all would run from January 1 to December 31, 2026.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A04.png",
+  "videoEndSeconds": 92.905,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:16:23.634Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:16:31.343Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "All four offers, eligibility=false flags, USD prices250/175/150/75, zero tax/handling and totals match captured membership API/tool data. Offered products were not treated as eligible purchases.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Own-athlete scope; direct foreign holdings403 verified in A16/S02",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "Captured athlete parameter compared with owned QA identity",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Matches actual offer eligibility flags/reasons and configured monetary values; offered does not mean eligible.",
+    "observed": "Junior Consent can't buy any of the memberships right now. They already have an active Junior membership for the 2026 season (January 1 to December 31, 2026), so all four North America options show as unavailable:\n\n- **Full Regional:** price $250.00, tax $0.00, total $250.00 USD (not eligible)\n- **Junior:** price $175.00, tax $0.00, total $175.00 USD (not eligible, since it's the one they already have)\n- **Longboard:** price $150.00, tax $0.00, total $150.00 USD (not eligible)\n- **Single Event:** price $75.00, tax $0.00, total $75.00 USD (not eligible)\n\nNone of them has a handling fee, and all would run from January 1 to December 31, 2026.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A04-BM-LIVE-A04.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

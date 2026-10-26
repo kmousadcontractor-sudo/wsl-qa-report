@@ -1,0 +1,130 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{font:16px/1.6 system-ui;background:#f4f6fa;color:#17344c;margin:0;padding:20px;overflow-wrap:anywhere}main{max-width:1250px;margin:auto}section,article{padding:22px;margin:20px 0;background:white;border:1px solid #dbe2e9;border-radius:12px}h1{color:#073752}h2{color:#124d70}summary{cursor:pointer;font-weight:650}details{padding:12px;background:#f8fafc;border-radius:8px;margin:12px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf2f7;padding:14px}a{color:#075db0}table{width:100%;border-collapse:collapse;table-layout:fixed}td,th{padding:10px;border-bottom:1px solid #dbe2e9;text-align:left;vertical-align:top}img,video{max-width:100%;width:100%;height:auto;object-fit:contain}nav a{margin-right:18px}button,select,input{font:inherit;padding:8px;margin:4px}input{max-width:100%}.PASS{color:#186534}.FAIL{color:#a52323}.BLOCKED{color:#855b00}.NOT-VERIFIED{color:#555}.tag{font-weight:bold}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}.caption{background:#eef3f8;padding:12px}small{color:#506273}@media(max-width:650px){body{padding:8px}section,article{padding:12px}.pair{grid-template-columns:1fr}td,th{padding:5px;font-size:13px}}</style><title>BM-BUG-001 Timezone conversion — BM-LIVE-P02</title><main><a href="index.html">All bug reports</a> · <a href="../index.html#BM-LIVE-P02">Linked check</a><h1>BM-BUG-001 — Timezone conversion — BM-LIVE-P02</h1><p>Role: Public · Severity: Medium · Priority: P2 (proposed)</p><section><section><h4>Flow in simple steps</h4><ol><li>Use normal application role/session.</li><li>Open Beach Marshal.</li><li>Continue the preceding conversation.</li><li>Send the exact recorded prompt.</li><li>Wait for the real stream and capture answer, tools and UI.</li></ol><p><strong>Passed on rerun.</strong> The failure below is the original result, retained for comparison.</p><details><summary>Original failed example</summary><p><strong>Prompt:</strong> Does that rule use Pacific time for the deadline?</p><p><strong>Expected:</strong> Follow-up grounded in Rule2.15: 17:00 US Pacific on closing date. No unsupported fixed-date conversion.</p><p><strong>Actual:</strong> Yes. Under Rule 2.15(b) (2026 WSL Rule Book, p.33), online QS and Challenger Series registrations have to be made by **5:00 pm USA Pacific Coast time** on the day entries close, as shown in MemberPro. If you miss it, you lose your seeding rights.
+
+In Cairo, that deadline is **3:00 am the next day** while the US West Coast is on daylight time. After the clocks change in early November, it becomes 4:00 am the next day.</p></details><h4>What went wrong</h4><p>The assistant gave the wrong Cairo time after the November clock change: 04:00 instead of 03:00.</p><details><summary>AWS logs and investigation</summary><p>Answer error confirmed; internal model reasoning unavailable</p><p>The assistant supplied 04:00 Cairo for the November deadline; the date-specific timezone oracle gives 03:00. No conversion tool was called in this follow-up. Model transport succeeded; this is an unsupported date/DST conversion in the answer.</p><p><strong>Suggested fix:</strong> Calculate conversions with IANA time zones for the actual event date; do not infer a constant offset.</p><pre>{
+  &quot;runIds&quot;: [
+    &quot;ed483c45-cfaf-4726-9217-87cc7966f712&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;64d4c1f3-c292-472c-bfa7-d00d5fb3c266&quot;
+  ],
+  &quot;logs&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:15:16.341249554Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:15:16+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;64d4c1f3-c292-472c-bfa7-d00d5fb3c266&quot;,
+      &quot;run_id&quot;: &quot;ed483c45-cfaf-4726-9217-87cc7966f712&quot;
+    }
+  ]
+}</pre></details><section><h4>Example 2 — PASS</h4><p><strong>Original example:</strong> FAIL; its original evidence is retained below.</p><p><strong>Alternate flow:</strong> For an entry deadline of 17:00 America/Los_Angeles on 12 November 2026, what are the exact date and time in Africa/Cairo? Use the time-zone rules for that date.</p><p><strong>Expected:</strong> 17:00 America/Los_Angeles on 12 November 2026 converts to 03:00 Africa/Cairo on 13 November 2026.</p><p><strong>Observed:</strong> Correct date-specific conversion: 03:00 on 13 November. Original unsolicited wrong conversion remains recorded; this explicitly dated example did not reproduce it.</p><p><strong>Exact answer:</strong> That deadline is **03:00 on Friday 13 November 2026** in Cairo.
+
+On 12 November, Los Angeles is on standard time (UTC−8), because its daylight saving time ends on 1 November. Cairo will be back on standard time too (UTC+2), because Egypt's summer time ends on the last Thursday of October. That puts Cairo 10 hours ahead. Right now the gap is 10 hours as well (UTC−7 and UTC+3), so it's the same on both dates.
+
+17:00 in Los Angeles on Thursday 12 November is 01:00 UTC on 13 November, which is 03:00 Cairo time. It falls after midnight, so to be safe, submit by the evening of 12 November your time.</p><details><summary>Alternate example recording and API evidence</summary><a href="../screenshots/BM-LIVE-P02-example-2-BM-LIVE-P02-alternate.png"><img loading="lazy" src="../screenshots/BM-LIVE-P02-example-2-BM-LIVE-P02-alternate.png" alt="Actual execution screenshot"></a><video controls preload="metadata" src="../videos/BM-LIVE-P02-example-2.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label></p><p class="caption">Alternate example captured with Chrome DevTools Protocol Page.startScreencast at the native browser viewport; no zoom, scaling or crop. Focused clip of this request and observed result.</p><a href="../evidence/BM-LIVE-P02-example-2.json">Full sanitized action log and API evidence</a><pre>{
+  &quot;api&quot;: {
+    &quot;status&quot;: 200,
+    &quot;endpoint&quot;: &quot;https://api.dev.worldsurfleague.com/api/assistant/run&quot;,
+    &quot;input&quot;: {
+      &quot;threadId&quot;: &quot;46dcbe9e-c748-42ba-99a5-2296b68ec5dd&quot;,
+      &quot;runId&quot;: &quot;cc856d1f-6e0b-49b2-9a40-b233bdafda99&quot;,
+      &quot;state&quot;: {},
+      &quot;messages&quot;: [
+        {
+          &quot;id&quot;: &quot;63f824ab-0bbf-4f20-b2b6-81e10677d10a&quot;,
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;For an entry deadline of 17:00 America/Los_Angeles on 12 November 2026, what are the exact date and time in Africa/Cairo? Use the time-zone rules for that date.&quot;
+        }
+      ],
+      &quot;tools&quot;: [],
+      &quot;context&quot;: [],
+      &quot;forwardedProps&quot;: {}
+    }
+  },
+  &quot;runIds&quot;: [
+    {
+      &quot;type&quot;: &quot;RUN_STARTED&quot;,
+      &quot;threadId&quot;: &quot;46dcbe9e-c748-42ba-99a5-2296b68ec5dd&quot;,
+      &quot;runId&quot;: &quot;cc856d1f-6e0b-49b2-9a40-b233bdafda99&quot;
+    },
+    {
+      &quot;type&quot;: &quot;RUN_FINISHED&quot;,
+      &quot;threadId&quot;: &quot;46dcbe9e-c748-42ba-99a5-2296b68ec5dd&quot;,
+      &quot;runId&quot;: &quot;cc856d1f-6e0b-49b2-9a40-b233bdafda99&quot;
+    }
+  ],
+  &quot;tools&quot;: [],
+  &quot;reference&quot;: []
+}</pre></details><p>AWS investigation above belongs to the original run; this alternate run has new IDs and has not been matched to those old logs.</p></section></section><p class="PASS"><strong>Passed on rerun</strong>: Correct date-specific conversion: 03:00 on 13 November. Original unsolicited wrong conversion remains recorded; this explicitly dated example did not reproduce it.</p><h2>What happened</h2><p>Pacific deadline is correct, but the unsolicited claim that Cairo becomes04:00 after the early-November change is incorrect: 17:00 Los Angeles on5 November2026 is03:00 Cairo on6 November, according to the recorded Intl timezone oracle.</p><h2>Steps to reproduce</h2><ol><li>Use normal application role/session.</li><li>Open Beach Marshal.</li><li>Continue the preceding conversation.</li><li>Send the exact recorded prompt.</li><li>Wait for the real stream and capture answer, tools and UI.</li></ol><p><strong>Exact prompt:</strong> For an entry deadline of 17:00 America/Los_Angeles on 12 November 2026, what are the exact date and time in Africa/Cairo? Use the time-zone rules for that date.</p><h2>Expected result</h2><p>Follow-up grounded in Rule2.15: 17:00 US Pacific on closing date. No unsupported fixed-date conversion.</p><h2>Actual result</h2><p>Yes. Under Rule 2.15(b) (2026 WSL Rule Book, p.33), online QS and Challenger Series registrations have to be made by **5:00 pm USA Pacific Coast time** on the day entries close, as shown in MemberPro. If you miss it, you lose your seeding rights.
+
+In Cairo, that deadline is **3:00 am the next day** while the US West Coast is on daylight time. After the clocks change in early November, it becomes 4:00 am the next day.</p><h2>What needs attention</h2><p>Answer generation added a fact not supported by the captured source. Validate deterministic counts and date-specific timezone conversion before presenting them.</p><p><strong>Root-cause status:</strong> investigation finding/hypothesis, not a proven deployed-code diagnosis.</p><h2>AWS investigation</h2><p>Answer error confirmed; internal model reasoning unavailable</p><p>The assistant supplied 04:00 Cairo for the November deadline; the date-specific timezone oracle gives 03:00. No conversion tool was called in this follow-up. Model transport succeeded; this is an unsupported date/DST conversion in the answer.</p><p><strong>Suggested fix:</strong> Calculate conversions with IANA time zones for the actual event date; do not infer a constant offset.</p><p><a href="../aws-investigation.html#BM-LIVE-P02">Exact AWS logs and correlation evidence</a></p><h2>Technical details</h2><p>Dev · 2026-10-15T00:15:13.636Z</p><pre>{
+  &quot;api&quot;: {
+    &quot;method&quot;: &quot;POST&quot;,
+    &quot;endpoint&quot;: &quot;https://api.dev.worldsurfleague.com/api/assistant/run&quot;,
+    &quot;status&quot;: 200,
+    &quot;correlationId&quot;: &quot;64d4c1f3-c292-472c-bfa7-d00d5fb3c266&quot;,
+    &quot;input&quot;: {
+      &quot;threadId&quot;: &quot;1a4c54c2-9008-471f-80b4-6defc490ea6d&quot;,
+      &quot;runId&quot;: &quot;ed483c45-cfaf-4726-9217-87cc7966f712&quot;,
+      &quot;state&quot;: {},
+      &quot;messages&quot;: [
+        {
+          &quot;id&quot;: &quot;27e7827f-2e6f-487b-afed-76bc00a05e96&quot;,
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;What is Rule 2.15 in the 2026 WSL Rule Book? Give its title, page and the payment-decline rule.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;lc_run--01a13ce9-a5d8-7211-a5ef-185a2a60d853&quot;,
+          &quot;role&quot;: &quot;assistant&quot;,
+          &quot;toolCalls&quot;: [
+            {
+              &quot;id&quot;: &quot;toolu_bdrk_01AGvvcFaw3DD2iABmiAnhrN&quot;,
+              &quot;type&quot;: &quot;function&quot;,
+              &quot;function&quot;: {
+                &quot;name&quot;: &quot;get_rule&quot;,
+                &quot;arguments&quot;: &quot;{\&quot;number\&quot;: \&quot;2.15\&quot;}&quot;
+              }
+            }
+          ]
+        },
+        {
+          &quot;id&quot;: &quot;toolu_bdrk_01AGvvcFaw3DD2iABmiAnhrN&quot;,
+          &quot;role&quot;: &quot;tool&quot;,
+          &quot;toolCallId&quot;: &quot;toolu_bdrk_01AGvvcFaw3DD2iABmiAnhrN&quot;,
+          &quot;content&quot;: &quot;{\&quot;status\&quot;:\&quot;ok\&quot;,\&quot;rule\&quot;:{\&quot;number\&quot;:\&quot;2.15\&quot;,\&quot;title\&quot;:\&quot;Event Registration and Entry Procedure\&quot;,\&quot;page\&quot;:33,\&quot;text\&quot;:\&quot;(a) Registration for all QS/Challenger Series Events must be done online through MemberPro unless there are extenuating circumstances that do not allow for the Surfer to do so, in which case the Surfer should contact your WSL Regional Office immediately. Regional Office Contact information is available on the Competitor Services page of the WSL website.\\n(b) All online QS/Challenger Event registrations must be made by 5:00 pm USA Pacific Coast time on the date the Event entries close (as reflected in MemberPro) to maintain seeding rights.\\n(c) If an Entry Fee payment is declined, the Surfer will be sent an email notification and given seven (7) days to rectify the problem. After seven (7) days, if no payment is received, the Surfer will be removed from the entry and seed list for the QS/Challenger Series Event. If the Surfer subsequently re-enters the QS/Challenger Series Event, they will be placed at the bottom of the seed list as any other new entries would be at the time of successful entry to the QS/Challenger Series Event.\\n(d) Where a Surfer enters multiple QS/Challenger Series Events whose Event Windows overlap, the Surfer will be entered into the higher rated QS/Challenger Series Event. If the QS/Challenger Series Events have the same rating, the Surfer will be contacted as soon as possible, and the Surfer will have seven (7) days to respond with a choice of which QS/Challenger Series Event to enter. Should the Surfer not respond within seven (7) days, only the entry for the QS/Challenger Series Event that the Surfer entered first as indicated by MemberPro will be confirmed.\\n(e) Entry payments received after the closing date and prior to the Event Start Date will be treated on a first come first served basis until the QS/Challenger Series Event is full.\\n(f) Event organizers cannot accept any entries and must refer the Surfers to MemberPro.\\n(g) Beach entries must be made with the WSL Regional Representative at the Event Site and any Surfers who submit a beach entry will be placed on the Alternate list. For additional information, please refer to Rule 2.23.\&quot;}}&quot;
+        },
+        {
+          &quot;id&quot;: &quot;lc_run--01a13ce9-abec-7491-ae0c-3dfd7f18590f&quot;,
+          &quot;role&quot;: &quot;assistant&quot;,
+          &quot;content&quot;: &quot;Rule 2.15 is called \&quot;Event Registration and Entry Procedure\&quot; and is on page 33 of the 2026 WSL Rule Book. Here's what it says about declined payments in part (c):\n\n- If your Entry Fee payment is declined, you'll get an email and have seven days to fix it.\n- If no payment arrives within those seven days, you're taken off the entry and seed list for that QS or Challenger Series event.\n- If you enter again later, you go to the bottom of the seed list, the same as any other new entry made at that time.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;2f947080-1a8c-444d-9d4f-7be192943244&quot;,
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;Does that rule use Pacific time for the deadline?&quot;
+        }
+      ],
+      &quot;tools&quot;: [],
+      &quot;context&quot;: [],
+      &quot;forwardedProps&quot;: {}
+    }
+  },
+  &quot;runIds&quot;: [
+    {
+      &quot;type&quot;: &quot;RUN_STARTED&quot;,
+      &quot;threadId&quot;: &quot;1a4c54c2-9008-471f-80b4-6defc490ea6d&quot;,
+      &quot;runId&quot;: &quot;ed483c45-cfaf-4726-9217-87cc7966f712&quot;
+    },
+    {
+      &quot;type&quot;: &quot;RUN_FINISHED&quot;,
+      &quot;threadId&quot;: &quot;1a4c54c2-9008-471f-80b4-6defc490ea6d&quot;,
+      &quot;runId&quot;: &quot;ed483c45-cfaf-4726-9217-87cc7966f712&quot;
+    }
+  ],
+  &quot;tools&quot;: [],
+  &quot;backend&quot;: []
+}</pre><h2>Evidence</h2><a href="../screenshots/BM-LIVE-P02-BM-LIVE-P02.png"><img loading="lazy" src="../screenshots/BM-LIVE-P02-BM-LIVE-P02.png" alt="Actual execution screenshot"></a><video controls preload="metadata" src="../videos/BM-LIVE-P02.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label></p><p class="caption">Focused original browser-content viewport, no zoom, resize or crop. Chrome toolbar/OS tabs are not recorded by Playwright. Clip includes the actual sent prompt and observed result.</p><a href="../evidence/BM-LIVE-P02.json">Full sanitized action log and API evidence</a></section></main></html>

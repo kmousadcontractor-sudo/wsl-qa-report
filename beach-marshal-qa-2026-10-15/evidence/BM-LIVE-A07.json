@@ -1,0 +1,269 @@
+{
+  "id": "BM-LIVE-A07",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "Does Junior Consent have any unpaid fees or financial holds?",
+  "expected": "No general balance/financial-holds tool exists: be explicit about limits, do not claim a zero balance from membership status alone.",
+  "expectedTools": [],
+  "referencePaths": [
+    "/athletes/01a13c43-c421-74a4-b266-58d419d278a3/holdings"
+  ],
+  "capability": "No dedicated financial-hold ledger tool",
+  "startedAt": "2026-10-15T00:16:53.224Z",
+  "status": "NOT VERIFIED",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/athletes/01a13c43-c421-74a4-b266-58d419d278a3/holdings",
+      "status": 200,
+      "body": {
+        "memberships": [
+          {
+            "membershipId": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+            "productCode": "junior",
+            "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+            "status": "active",
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31",
+            "eventCount": null
+          }
+        ],
+        "insurances": [],
+        "credits": []
+      },
+      "at": "2026-10-15T00:16:53.903Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:16:53.996Z",
+  "videoStartSeconds": 115.558,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "ea48b425-d1eb-46cb-9e4d-0234c707c52b",
+    "input": {
+      "threadId": "af238589-0c22-4a71-b834-9203c492128d",
+      "runId": "1e11823c-f21e-449c-a0dc-c93ce5b5d3b0",
+      "state": {},
+      "messages": [
+        {
+          "id": "d65068a5-c2be-4d07-88e6-f357181901ec",
+          "role": "user",
+          "content": "Does Junior Consent have any unpaid fees or financial holds?"
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01U6KniH7DJUENzJZrttMJnW",
+        "name": "list_my_athletes",
+        "result": {
+          "status": "ok",
+          "athletes": [
+            {
+              "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "first_name": "Junior",
+              "last_name": "Consent",
+              "status": "active",
+              "registered_by": "guardian",
+              "membership": {
+                "product_code": "junior",
+                "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+                "status": "active",
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31",
+                "amount": {
+                  "amount_minor": 17500,
+                  "currency": "USD"
+                }
+              }
+            }
+          ]
+        },
+        "parameters": ""
+      },
+      {
+        "id": "toolu_bdrk_01LeiQmJ53Z1XCd4JRNNpvL9",
+        "name": "get_athlete_holdings",
+        "result": {
+          "status": "ok",
+          "memberships": [
+            {
+              "product_code": "junior",
+              "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+              "status": "active",
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31",
+              "event_count": null
+            }
+          ],
+          "insurances": [],
+          "credits": [],
+          "credit_count": 0
+        },
+        "parameters": {
+          "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3"
+        }
+      }
+    ],
+    "answer": "I can't see an outstanding balance or a financial hold for Junior Consent, but I can't check those directly here. What I can see: Junior's 2026 junior membership ($175.00 USD) is active from January 1 to December 31, 2026, and Junior has no insurance policies or credits on the account. For a definite answer on unpaid fees or holds, contact your regional office or check worldsurfleague.com.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "af238589-0c22-4a71-b834-9203c492128d",
+        "runId": "1e11823c-f21e-449c-a0dc-c93ce5b5d3b0"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "af238589-0c22-4a71-b834-9203c492128d",
+        "runId": "1e11823c-f21e-449c-a0dc-c93ce5b5d3b0"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "TOOL_CALL_START",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TOOL_CALL_ARGS",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01U6KniH7DJUENzJZrttMJnW",
+      "name": "list_my_athletes",
+      "result": {
+        "status": "ok",
+        "athletes": [
+          {
+            "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+            "first_name": "Junior",
+            "last_name": "Consent",
+            "status": "active",
+            "registered_by": "guardian",
+            "membership": {
+              "product_code": "junior",
+              "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+              "status": "active",
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31",
+              "amount": {
+                "amount_minor": 17500,
+                "currency": "USD"
+              }
+            }
+          }
+        ]
+      },
+      "parameters": ""
+    },
+    {
+      "id": "toolu_bdrk_01LeiQmJ53Z1XCd4JRNNpvL9",
+      "name": "get_athlete_holdings",
+      "result": {
+        "status": "ok",
+        "memberships": [
+          {
+            "product_code": "junior",
+            "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+            "status": "active",
+            "valid_from": "2026-01-01",
+            "valid_to": "2026-12-31",
+            "event_count": null
+          }
+        ],
+        "insurances": [],
+        "credits": [],
+        "credit_count": 0
+      },
+      "parameters": {
+        "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3"
+      }
+    }
+  ],
+  "aiResponse": "I can't see an outstanding balance or a financial hold for Junior Consent, but I can't check those directly here. What I can see: Junior's 2026 junior membership ($175.00 USD) is active from January 1 to December 31, 2026, and Junior has no insurance policies or credits on the account. For a definite answer on unpaid fees or holds, contact your regional office or check worldsurfleague.com.",
+  "actual": "I can't see an outstanding balance or a financial hold for Junior Consent, but I can't check those directly here. What I can see: Junior's 2026 junior membership ($175.00 USD) is active from January 1 to December 31, 2026, and Junior has no insurance policies or credits on the account. For a definite answer on unpaid fees or holds, contact your regional office or check worldsurfleague.com.",
+  "durationMs": 6927,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nDoes Junior Consent have any unpaid fees or financial holds?\n\nChecking your athletes…\n\nI can't see an outstanding balance or a financial hold for Junior Consent, but I can't check those directly here. What I can see: Junior's 2026 junior membership ($175.00 USD) is active from January 1 to December 31, 2026, and Junior has no insurance policies or credits on the account. For a definite answer on unpaid fees or holds, contact your regional office or check worldsurfleague.com.\n\nI can't see an outstanding balance or a financial hold for Junior Consent, but I can't check those directly here. What I can see: Junior's 2026 junior membership ($175.00 USD) is active from January 1 to December 31, 2026, and Junior has no insurance policies or credits on the account. For a definite answer on unpaid fees or holds, contact your regional office or check worldsurfleague.com.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A07.png",
+  "videoEndSeconds": 123.257,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:16:54.047Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:17:01.696Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "No dedicated unpaid-balance/financial-holds tool exists. Assistant disclosed that limit and did not assert a verified zero balance. Financial-hold state itself remains unverified.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Own-athlete scope; direct foreign holdings403 verified in A16/S02",
+    "limitations": "No dedicated unpaid-balance/financial-holds tool exists. Assistant disclosed that limit and did not assert a verified zero balance. Financial-hold state itself remains unverified.",
+    "aiEvaluation": {
+      "accuracy": "NOT VERIFIED — limitations detailed above",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Not fully verified",
+      "identity": "Captured athlete parameter compared with owned QA identity",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "NOT VERIFIED where source/fixture is missing",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No unsupported-success claim, but full factual verification unavailable",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "No general balance/financial-holds tool exists: be explicit about limits, do not claim a zero balance from membership status alone.",
+    "observed": "I can't see an outstanding balance or a financial hold for Junior Consent, but I can't check those directly here. What I can see: Junior's 2026 junior membership ($175.00 USD) is active from January 1 to December 31, 2026, and Junior has no insurance policies or credits on the account. For a definite answer on unpaid fees or holds, contact your regional office or check worldsurfleague.com.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A07-BM-LIVE-A07.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

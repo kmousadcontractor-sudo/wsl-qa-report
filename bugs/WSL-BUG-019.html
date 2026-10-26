@@ -1,0 +1,205 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{overflow-wrap:anywhere}td{overflow-wrap:anywhere}body{font:16px/1.6 system-ui;max-width:1100px;margin:30px auto;padding:20px;color:#172637}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f8;padding:16px}img,video{max-width:100%;height:auto;object-fit:contain}table{width:100%;border-collapse:collapse}td,th{padding:12px;border-bottom:1px solid #ddd;text-align:left}a{color:#075ca8}</style><title>WSL-BUG-019 — Guardian registration accepts an 18-year-old dependent when certification is unchecked</title><a href="index.html">All bug reports</a> · <a href="../results-of-testcases.html#check-d02ff7c85ccc21ab">View failed check and run</a><h1>WSL-BUG-019 — Guardian registration accepts an 18-year-old dependent when certification is unchecked</h1><div id="status-banner" style="background:#fdecec;border-left:4px solid #c62828;padding:12px 16px;margin:12px 0"><strong>Status: Failed</strong> — tracked in Jira <a href="https://wslproduct.atlassian.net/browse/WSL-9584">WSL-9584</a> (Guardian registration accepts adult dependents).</div><p><strong>Test case:</strong> com.worldsurfleague.registration.tests.ChecklistP0E2ETest.checklistADD44</p><p><strong>Severity / Priority:</strong> High / P1 (proposed)</p><p><strong>Classification:</strong> Observed application failure; root cause requires developer confirmation</p><h2>What happened</h2><p>The API returned HTTP 201 and created an athlete with status pending_documents.</p><h2>What should happen</h2><p>Reject the request with HTTP 422. Dependents must be younger than 18, regardless of the certification checkbox.</p><h2>Why it matters</h2><p>An adult can be created through a flow intended for children.</p><h2>What needs to be done</h2><p>Apply the under-18 dependent restriction whether certification is checked or unchecked. Keep this check failed until the request is rejected.</p><h2>Steps to reproduce</h2><ol><li>Start a guardian registration request with otherwise valid dependent details.</li><li>Set the dependent age to 18 using the test fixture date of birth.</li><li>Leave certification unchecked and submit the request.</li><li>Inspect the response status and athlete record.</li></ol><p><strong>Environment:</strong> WSL dev. <strong>Run started:</strong> 2026-10-14T21:04:28.164Z. Results and evidence are retained from that execution; this wording update did not rerun the test.</p><details><summary>Original check result and recorded scenario steps</summary><p><strong>Original expected:</strong> Reject an adult dependent in the guardian registration flow even when certification is unchecked (HTTP 422).</p><p><strong>Original actual:</strong> Guardian registration for age 18 with certification unchecked returned HTTP 201.</p><ol><li>Used an exactly-18 account holder and the successful age-17 positive control.</li><li>Submitted fresh age-18 dependent details with registeredByRole guardian and guardianCertified false.</li><li>Inspected the final creation response; no specific error wording is required.</li></ol></details><h2>Technical details</h2><p>Logs are from the same scenario, not necessarily a single request attributable to this assertion. Missing payloads, service logs and deployment revision are not inferred.</p><pre>{
+  &quot;environment&quot;: &quot;WSL dev: app.dev.worldsurfleague.com / api.dev.worldsurfleague.com&quot;,
+  &quot;executionStarted&quot;: &quot;2026-10-14T21:04:28.164Z&quot;,
+  &quot;checkTimestamp&quot;: &quot;2026-10-14T21:04:41.989Z&quot;,
+  &quot;checkId&quot;: &quot;d02ff7c85ccc21ab&quot;,
+  &quot;recordedMessage&quot;: &quot;{\&quot;athlete\&quot;:{\&quot;id\&quot;:\&quot;01a13c3b-44ee-738d-aea7-06f2895bef19\&quot;,\&quot;status\&quot;:\&quot;pending_documents\&quot;,\&quot;homeRegion\&quot;:\&quot;north_america\&quot;},\&quot;next\&quot;:{\&quot;title\&quot;:\&quot;Details saved\&quot;,\&quot;body\&quot;:\&quot;Next, the membership terms, the waiver, the insurance authorisation and the age certification all need signing before this athlete can compete.\&quot;}}&quot;,
+  &quot;requests&quot;: [
+    {
+      &quot;path&quot;: &quot;/age-gate&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 1114
+    },
+    {
+      &quot;path&quot;: &quot;/auth/register&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 388
+    },
+    {
+      &quot;path&quot;: &quot;/athletes&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 416
+    },
+    {
+      &quot;path&quot;: &quot;/athletes&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 422,
+      &quot;elapsedMs&quot;: 372
+    },
+    {
+      &quot;path&quot;: &quot;/athletes&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 456
+    },
+    {
+      &quot;path&quot;: &quot;/athletes&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 422,
+      &quot;elapsedMs&quot;: 345
+    },
+    {
+      &quot;path&quot;: &quot;/athletes&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 384
+    },
+    {
+      &quot;path&quot;: &quot;/age-gate&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 200,
+      &quot;elapsedMs&quot;: 382
+    },
+    {
+      &quot;path&quot;: &quot;/auth/register&quot;,
+      &quot;method&quot;: &quot;POST&quot;,
+      &quot;status&quot;: 201,
+      &quot;elapsedMs&quot;: 390
+    }
+  ],
+  &quot;scenarioHttpAndErrorLog&quot;: [
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.250Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.251Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.253Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.334Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/session → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.746Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.748Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.750Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.751Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/session → 403&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.752Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 403 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.757Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/reference/countries → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.759Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/registration/draft → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:35.978Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:36.143Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/reference/genders → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:37.157Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.worldsurfleague.com/api/registration/draft → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:37.787Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.worldsurfleague.com/api/registration/draft → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.191Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.198Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.200Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.254Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/session → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.472Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.474Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.487Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.586Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/tour-manager/session → 403&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.586Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 403 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.596Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/reference/countries → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.637Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/registration/draft → 200&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:49.756Z&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-10-14T21:04:50.217Z&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.worldsurfleague.com/api/reference/genders → 200&quot;
+    }
+  ]
+}</pre><h2>Evidence</h2><h3>Screenshot</h3><a href="../screenshots/d02ff7c85ccc21ab-ADD-44-check-5.png"><img loading="lazy" src="../screenshots/d02ff7c85ccc21ab-ADD-44-check-5.png"></a><h3>Focused failure recording</h3><video controls preload="metadata" src="../videos/focused-d02ff7c85ccc21ab-d02ff7c85ccc21ab-1792011881989-clear-v2-0-6406.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option selected value="1">1×</option><option value="1.5">1.5×</option></select></label></p>

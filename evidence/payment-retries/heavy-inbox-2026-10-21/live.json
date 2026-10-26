@@ -1,0 +1,88 @@
+{
+  "startedAt": "2026-10-21T13:58:44.928Z",
+  "email": "heavy-actually@btj5keea.mailosaur.net",
+  "steps": [
+    {
+      "at": "2026-10-21T13:58:46.751Z",
+      "name": "QA account created",
+      "status": 201
+    },
+    {
+      "at": "2026-10-21T13:58:47.177Z",
+      "name": "Athlete created",
+      "athleteId": "01a15ec1-e5d0-74a6-b63f-536f85f9567f"
+    },
+    {
+      "at": "2026-10-21T13:59:03.412Z",
+      "name": "Stripe test confirmation",
+      "kind": "payment_intents",
+      "id": "pi_3UT02ZHma49jszOG1TgWQMR5",
+      "token": "tok_visa",
+      "http": 200,
+      "status": "succeeded",
+      "livemode": false
+    },
+    {
+      "at": "2026-10-21T13:59:09.957Z",
+      "name": "Membership active through real Stripe webhook",
+      "state": {
+        "intentId": "01a15ec1-efdc-71a6-b9ee-d87caeae4299",
+        "status": "complete",
+        "membershipStatus": "active",
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "complete",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-21T13:59:45.970Z",
+      "name": "Stripe test confirmation",
+      "kind": "setup_intents",
+      "id": "seti_1UT03PHma49jszOGpgDTUo4t",
+      "token": "tok_visa_chargeDeclinedInsufficientFunds",
+      "http": 402,
+      "error": {
+        "code": "card_declined",
+        "decline_code": "insufficient_funds",
+        "message": "Your card has insufficient funds. Use a different payment method to complete this purchase."
+      }
+    },
+    {
+      "at": "2026-10-21T13:59:48.003Z",
+      "name": "Stripe test confirmation",
+      "kind": "setup_intents",
+      "id": "seti_1UT03PHma49jszOGpgDTUo4t",
+      "token": "tok_chargeCustomerFail",
+      "http": 200,
+      "status": "succeeded",
+      "livemode": false
+    },
+    {
+      "at": "2026-10-21T14:02:09.160Z",
+      "name": "Stripe test confirmation",
+      "kind": "setup_intents",
+      "id": "seti_1UT03PHma49jszOGpgDTUo4t",
+      "token": "tok_chargeCustomerFail",
+      "http": 400,
+      "error": {
+        "code": "setup_intent_unexpected_state",
+        "message": "You cannot confirm this SetupIntent because it has already succeeded."
+      }
+    }
+  ],
+  "athleteId": "01a15ec1-e5d0-74a6-b63f-536f85f9567f",
+  "membershipId": "01a15ec1-efdc-71a6-b9ee-d87caeae4299",
+  "membershipActive": true,
+  "retryableCardProbe": {
+    "savedPaymentMethodId": null,
+    "status": "SETUP_DECLINED"
+  },
+  "status": "INCOMPLETE",
+  "error": "Decline-after-attach fixture unavailable",
+  "finishedAt": "2026-10-21T14:02:09.164Z",
+  "video": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\heavy-payment-retry-2026-10-21\\page@58c42d38c68d0ce8b2ea51e0cf7822a1.webm",
+  "declineCard": null
+}

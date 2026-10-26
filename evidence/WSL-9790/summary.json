@@ -1,0 +1,237 @@
+{
+  "primaryCounts": {
+    "PASS": 10,
+    "FAIL": 1,
+    "BLOCKED": 0
+  },
+  "primaryCases": [
+    {
+      "env": "beta",
+      "id": "populated-career",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A02",
+      "video": "tests/A02/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "populated-h2h",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A05",
+      "video": "tests/A05/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "populated-default",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A11",
+      "video": "tests/A11/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "populated-details",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A12",
+      "video": "tests/A12/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "empty-default",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A21",
+      "video": "tests/A21/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "empty-h2h",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A23",
+      "video": "tests/A23/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "empty-career",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A20",
+      "video": "tests/A20/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "empty-details",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A24",
+      "video": "tests/A24/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "empty-unknown-tab",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A26",
+      "video": "tests/A26/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "empty-refresh",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A25",
+      "video": "tests/A25/recording.mp4"
+    },
+    {
+      "env": "beta",
+      "id": "missing-heat",
+      "result": "FAIL",
+      "status": 500,
+      "evidenceId": "A27",
+      "video": "tests/A27/recording.mp4"
+    }
+  ],
+  "historicalVideos": 14,
+  "allDedicatedAttempts": 27,
+  "validDedicatedVideos": 27,
+  "invalidDedicatedVideos": 0,
+  "originalBrowserRun": [
+    {
+      "env": "staging",
+      "checks": [
+        {
+          "id": "empty-default",
+          "result": "BLOCKED"
+        },
+        {
+          "id": "control-114284",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "populated-details",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "populated-career",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "populated-h2h",
+          "result": "PASS",
+          "status": 200
+        }
+      ],
+      "scope": "excluded",
+      "reason": "Recorded staging build does not contain WSL-9678 fix. Excluded from ticket verification and result totals; historical evidence retained without sign-off impact."
+    },
+    {
+      "env": "beta",
+      "checks": [
+        {
+          "id": "empty-default",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "empty-h2h",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "empty-career",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "empty-details",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "empty-unknown-tab",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "empty-refresh",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "missing-heat",
+          "result": "FAIL",
+          "status": 500
+        },
+        {
+          "id": "control-114284",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "populated-details",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "populated-career",
+          "result": "PASS",
+          "status": 200
+        },
+        {
+          "id": "populated-h2h",
+          "result": "PASS",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "excludedStagingCases": [
+    {
+      "env": "staging",
+      "id": "empty-default",
+      "result": "BLOCKED",
+      "evidenceId": "A06",
+      "video": "tests/A06/recording.mp4"
+    },
+    {
+      "env": "staging",
+      "id": "populated-default",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A17",
+      "video": "tests/A17/recording.mp4"
+    },
+    {
+      "env": "staging",
+      "id": "populated-details",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A18",
+      "video": "tests/A18/recording.mp4"
+    },
+    {
+      "env": "staging",
+      "id": "populated-career",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A16",
+      "video": "tests/A16/recording.mp4"
+    },
+    {
+      "env": "staging",
+      "id": "populated-h2h",
+      "result": "PASS",
+      "status": 200,
+      "evidenceId": "A19",
+      "video": "tests/A19/recording.mp4"
+    }
+  ],
+  "scope": "Beta only; staging recorded build lacks the fix",
+  "stagingVerification": "staging-scope-verification.json"
+}

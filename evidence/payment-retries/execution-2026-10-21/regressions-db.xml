@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="78.731" timestamp="2026-10-21T00:07:31.848696+03:00" hostname="DESKTOP-TDKA2AL"><testcase classname="tests.integration.test_retry_matrix_regressions" name="test_withdrawal_blocks_manual_retry_of_failed_charge" time="43.293"><failure message="AssertionError: Real withdrawn FAILED charge accepted a new retry and staged an execute command&#10;assert True is False&#10; +  where True = RetryPaymentFacts(entry_id=UUID('01a15b24-473b-74d5-bb80-9a0c2a2c7809'), chargeable=True, account_holder_iam_user_id=UUID('01a15b24-473b-74d5-bb80-9a0b0b140832')).chargeable">db = &lt;sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001E85F02F770&gt;
+
+    async def test_withdrawal_blocks_manual_retry_of_failed_charge(db):
+        org=bound_org(db);(entry_id,)=await _entries_charging(db,1);factory=session_factory(db.bind)
+        await _decline(factory,org,entry_id,failure_class='needs_new_method',hours_ago=1)
+        async with bound_to(factory,org)() as s,s.begin():
+            store=SqlEventStore(s);detail=await store.entry_detail(entry_id)
+            await store.withdraw_entry(entry_id,version=detail.version,write=WithdrawalWrite(stage=list(WithdrawalStage)[0],reason='QA matrix withdrawal',decided_by_user_id=None))
+            facts=await retry_payment_prepare(roles=frozenset({'tour_manager'}),entry_id=entry_id,request_id='matrix-'+str(uuid7()),store=store,charges=SqlChargeRetries(s),commands=OutboxCommander(s),now=dt.datetime.now(dt.UTC))
+&gt;           assert facts.chargeable is False, 'Real withdrawn FAILED charge accepted a new retry and staged an execute command'
+E           AssertionError: Real withdrawn FAILED charge accepted a new retry and staged an execute command
+E           assert True is False
+E            +  where True = RetryPaymentFacts(entry_id=UUID('01a15b24-473b-74d5-bb80-9a0c2a2c7809'), chargeable=True, account_holder_iam_user_id=UUID('01a15b24-473b-74d5-bb80-9a0b0b140832')).chargeable
+
+tests\integration\test_retry_matrix_regressions.py:24: AssertionError</failure></testcase><testcase classname="tests.integration.test_retry_matrix_regressions" name="test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge" time="34.045"><failure message="AssertionError: Late successful payment ignored; local charge still cancelled; needs reconciliation&#10;assert None is not None">db = &lt;sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001E85F06B6F0&gt;
+
+    async def test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge(db):
+        org=bound_org(db);(entry_id,)=await _entries_charging(db,1);factory=session_factory(db.bind)
+        async with bound_to(factory,org)() as s,s.begin():
+            store=SqlEventStore(s);detail=await store.entry_detail(entry_id)
+            await store.withdraw_entry(entry_id,version=detail.version,write=WithdrawalWrite(stage=list(WithdrawalStage)[0],reason='QA late provider success',decided_by_user_id=None))
+            updated=await store.record_charge_result(entry_id,succeeded=True,failure_code=None)
+            charge=await s.scalar(select(m.ChargeRequest).where(m.ChargeRequest.entry_id==entry_id))
+&gt;           assert updated is not None, f'Late successful payment ignored; local charge still {charge.status}; needs reconciliation'
+E           AssertionError: Late successful payment ignored; local charge still cancelled; needs reconciliation
+E           assert None is not None
+
+tests\integration\test_retry_matrix_regressions.py:33: AssertionError</failure></testcase></testsuite></testsuites>

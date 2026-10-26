@@ -1,0 +1,594 @@
+{
+  "startedAt": "2026-10-21T14:20:34.906Z",
+  "email": "heavy-actually+card-compare-1792592171840@btj5keea.mailosaur.net",
+  "steps": [
+    {
+      "name": "Decline-after-attach saved in Stripe",
+      "at": "2026-10-21T14:20:54.408Z",
+      "http": 200,
+      "status": "succeeded",
+      "livemode": false,
+      "setupIntent": "seti_1UT0NdHma49jszOGYmbhMlKW"
+    },
+    {
+      "name": "Real entry-fee generic decline",
+      "at": "2026-10-21T14:21:08.555Z",
+      "row": {
+        "id": "01a15ed6-4761-74bc-874b-8eb83b7d9742",
+        "group": "field",
+        "athlete": {
+          "initials": "CC",
+          "name": "Card ComparisonQA",
+          "country": "United States"
+        },
+        "ranking": "Seed 1 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "ok",
+          "label": "Insurance: verified",
+          "code": "verified"
+        },
+        "payment": {
+          "code": "declined",
+          "label": "Declined",
+          "tone": "error"
+        },
+        "entry": {
+          "code": "pending",
+          "label": "Pending",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": true
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "waive",
+            "label": "Waive fee",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          },
+          {
+            "code": "retry",
+            "label": "Retry payment",
+            "destructive": false
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 1,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      "history": {
+        "summary": "1 card attempt · 1 declined",
+        "items": [
+          {
+            "id": "01a15ed6-582a-73fa-89a9-0fae0061a27c",
+            "when": "21 Oct 14:21 UTC",
+            "what": "Card payment declined (generic_decline)",
+            "channel": "Stripe",
+            "by": "System"
+          },
+          {
+            "id": "01a15ed6-5015-7541-beb0-4de33515c26e",
+            "when": "21 Oct 14:21 UTC",
+            "what": "Card payment charge started",
+            "channel": "Stripe",
+            "by": "T. Manager 101"
+          },
+          {
+            "id": "01a15ed6-4e97-74df-8f92-1589a4c44fb1",
+            "when": "21 Oct 14:21 UTC",
+            "what": "Seed · to #1",
+            "channel": "Tour Manager",
+            "by": "T. Manager 101"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Manual retry of generic-decline card",
+      "at": "2026-10-21T14:21:16.858Z",
+      "http": 200
+    },
+    {
+      "name": "Manual retry outcome",
+      "at": "2026-10-21T14:21:18.598Z",
+      "history": {
+        "summary": "2 card attempts · 2 declined",
+        "items": [
+          {
+            "id": "01a15ed6-8051-739c-92af-eb22ab7365d8",
+            "when": "21 Oct 14:21 UTC",
+            "what": "Card payment not attempted (the saved payment method pinned to this charge is no longer active)",
+            "channel": "Stripe",
+            "by": "System"
+          },
+          {
+            "id": "01a15ed6-582a-73fa-89a9-0fae0061a27c",
+            "when": "21 Oct 14:21 UTC",
+            "what": "Card payment declined (generic_decline)",
+            "channel": "Stripe",
+            "by": "System"
+          },
+          {
+            "id": "01a15ed6-5015-7541-beb0-4de33515c26e",
+            "when": "21 Oct 14:21 UTC",
+            "what": "Card payment charge started",
+            "channel": "Stripe",
+            "by": "T. Manager 101"
+          },
+          {
+            "id": "01a15ed6-4e97-74df-8f92-1589a4c44fb1",
+            "when": "21 Oct 14:21 UTC",
+            "what": "Seed · to #1",
+            "channel": "Tour Manager",
+            "by": "T. Manager 101"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Select valid Visa for recovery",
+      "at": "2026-10-21T14:21:18.879Z",
+      "http": 202
+    },
+    {
+      "name": "Entry recovered",
+      "at": "2026-10-21T14:21:22.138Z",
+      "entry": {
+        "code": "confirmed",
+        "label": "Confirmed",
+        "tone": "neutral"
+      },
+      "payment": {
+        "code": "collected",
+        "label": "Collected",
+        "tone": "neutral"
+      }
+    }
+  ],
+  "card": "01a15ed5-e1b8-7123-b8c5-325a27af0d94",
+  "methodsBefore": {
+    "methods": [
+      {
+        "id": "01a15ed5-7643-77f1-a37a-49a65e56be9b",
+        "status": "active",
+        "cardBrand": "visa",
+        "cardLast4": "4242"
+      },
+      {
+        "id": "01a15ed5-e1b8-7123-b8c5-325a27af0d94",
+        "status": "active",
+        "cardBrand": "visa",
+        "cardLast4": "0341"
+      }
+    ]
+  },
+  "event": {
+    "id": "01a15ed6-3b7f-738e-af7b-e3147e37f0ec",
+    "name": "QA Card decline comparison 1792592457680",
+    "start": "2026-12-05",
+    "region": "north_america",
+    "tour": "Qualifying Series (QS) · Men",
+    "location": "Jaco Beach, Costa Rica · Denver time"
+  },
+  "entryId": "01a15ed6-4761-74bc-874b-8eb83b7d9742",
+  "declined": {
+    "id": "01a15ed6-4761-74bc-874b-8eb83b7d9742",
+    "group": "field",
+    "athlete": {
+      "initials": "CC",
+      "name": "Card ComparisonQA",
+      "country": "United States"
+    },
+    "ranking": "Seed 1 · N. AMERICA",
+    "region": "north_america",
+    "highlight": null,
+    "insurance": {
+      "state": "ok",
+      "label": "Insurance: verified",
+      "code": "verified"
+    },
+    "payment": {
+      "code": "declined",
+      "label": "Declined",
+      "tone": "error"
+    },
+    "entry": {
+      "code": "pending",
+      "label": "Pending",
+      "tone": "neutral"
+    },
+    "waivable": {
+      "fee": true
+    },
+    "actions": [
+      {
+        "code": "message",
+        "label": "Send message",
+        "destructive": false
+      },
+      {
+        "code": "waive",
+        "label": "Waive fee",
+        "destructive": false
+      },
+      {
+        "code": "withdraw",
+        "label": "Withdraw entry",
+        "destructive": true
+      },
+      {
+        "code": "retry",
+        "label": "Retry payment",
+        "destructive": false
+      }
+    ],
+    "movable": true,
+    "pinned": false,
+    "hasHistory": true,
+    "seedRank": 1,
+    "alternatePosition": null,
+    "moveUpSeat": null,
+    "movedUpFrom": null
+  },
+  "initialHistory": {
+    "summary": "1 card attempt · 1 declined",
+    "items": [
+      {
+        "id": "01a15ed6-582a-73fa-89a9-0fae0061a27c",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Card payment declined (generic_decline)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15ed6-5015-7541-beb0-4de33515c26e",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Card payment charge started",
+        "channel": "Stripe",
+        "by": "T. Manager 101"
+      },
+      {
+        "id": "01a15ed6-4e97-74df-8f92-1589a4c44fb1",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Seed · to #1",
+        "channel": "Tour Manager",
+        "by": "T. Manager 101"
+      }
+    ]
+  },
+  "methodsAfterDecline": {
+    "status": 200,
+    "body": {
+      "methods": [
+        {
+          "id": "01a15ed5-7643-77f1-a37a-49a65e56be9b",
+          "status": "active",
+          "cardBrand": "visa",
+          "cardLast4": "4242"
+        }
+      ]
+    }
+  },
+  "manualRetry": {
+    "status": 200,
+    "body": {
+      "stage": "charged",
+      "field": 48,
+      "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+      "openSeats": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "summary": [
+        {
+          "count": 0,
+          "label": "charged",
+          "tone": "success"
+        },
+        {
+          "count": 0,
+          "label": "insurance needed",
+          "tone": "warning"
+        },
+        {
+          "count": 0,
+          "label": "declined · your call",
+          "tone": "error"
+        },
+        {
+          "count": 0,
+          "label": "wildcard seats",
+          "tone": "default"
+        },
+        {
+          "count": 0,
+          "label": "alternates · not charged",
+          "tone": "muted"
+        }
+      ],
+      "primaryAction": null,
+      "publish": null,
+      "filters": [
+        {
+          "code": "entry",
+          "label": "Entry status",
+          "options": [
+            {
+              "value": "pending",
+              "label": "Pending"
+            }
+          ]
+        },
+        {
+          "code": "region",
+          "label": "All regions",
+          "options": [
+            {
+              "value": "north_america",
+              "label": "N. AMERICA"
+            }
+          ]
+        },
+        {
+          "code": "payment",
+          "label": "Payment",
+          "options": [
+            {
+              "value": "pending",
+              "label": "Pending"
+            }
+          ]
+        },
+        {
+          "code": "insurance",
+          "label": "Insurance",
+          "options": [
+            {
+              "value": "verified",
+              "label": "Verified"
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "id": "01a15ed6-4761-74bc-874b-8eb83b7d9742",
+          "group": "field",
+          "athlete": {
+            "initials": "CC",
+            "name": "Card ComparisonQA",
+            "country": "United States"
+          },
+          "ranking": "Seed 1 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "ok",
+            "label": "Insurance: verified",
+            "code": "verified"
+          },
+          "payment": {
+            "code": "pending",
+            "label": "Pending",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "pending",
+            "label": "Pending",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 1,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        }
+      ],
+      "version": 2,
+      "chargesInFlight": true
+    }
+  },
+  "manualHistory": {
+    "summary": "2 card attempts · 2 declined",
+    "items": [
+      {
+        "id": "01a15ed6-8051-739c-92af-eb22ab7365d8",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Card payment not attempted (the saved payment method pinned to this charge is no longer active)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15ed6-582a-73fa-89a9-0fae0061a27c",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Card payment declined (generic_decline)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15ed6-5015-7541-beb0-4de33515c26e",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Card payment charge started",
+        "channel": "Stripe",
+        "by": "T. Manager 101"
+      },
+      {
+        "id": "01a15ed6-4e97-74df-8f92-1589a4c44fb1",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Seed · to #1",
+        "channel": "Tour Manager",
+        "by": "T. Manager 101"
+      }
+    ]
+  },
+  "recovered": {
+    "id": "01a15ed6-4761-74bc-874b-8eb83b7d9742",
+    "group": "field",
+    "athlete": {
+      "initials": "CC",
+      "name": "Card ComparisonQA",
+      "country": "United States"
+    },
+    "ranking": "Seed 1 · N. AMERICA",
+    "region": "north_america",
+    "highlight": null,
+    "insurance": {
+      "state": "ok",
+      "label": "Insurance: verified",
+      "code": "verified"
+    },
+    "payment": {
+      "code": "collected",
+      "label": "Collected",
+      "tone": "neutral"
+    },
+    "entry": {
+      "code": "confirmed",
+      "label": "Confirmed",
+      "tone": "neutral"
+    },
+    "waivable": {
+      "fee": false
+    },
+    "actions": [
+      {
+        "code": "message",
+        "label": "Send message",
+        "destructive": false
+      },
+      {
+        "code": "withdraw",
+        "label": "Withdraw entry",
+        "destructive": true
+      }
+    ],
+    "movable": true,
+    "pinned": false,
+    "hasHistory": true,
+    "seedRank": 1,
+    "alternatePosition": null,
+    "moveUpSeat": null,
+    "movedUpFrom": null
+  },
+  "finalHistory": {
+    "summary": "3 card attempts · 2 declined",
+    "items": [
+      {
+        "id": "01a15ed6-8e74-74cb-bee0-73e2510e84b9",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Card payment succeeded",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15ed6-8051-739c-92af-eb22ab7365d8",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Card payment not attempted (the saved payment method pinned to this charge is no longer active)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15ed6-582a-73fa-89a9-0fae0061a27c",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Card payment declined (generic_decline)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a15ed6-5015-7541-beb0-4de33515c26e",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Card payment charge started",
+        "channel": "Stripe",
+        "by": "T. Manager 101"
+      },
+      {
+        "id": "01a15ed6-4e97-74df-8f92-1589a4c44fb1",
+        "when": "21 Oct 14:21 UTC",
+        "what": "Seed · to #1",
+        "channel": "Tour Manager",
+        "by": "T. Manager 101"
+      }
+    ]
+  },
+  "status": "COMPLETED",
+  "finishedAt": "2026-10-21T14:21:25.273Z",
+  "video": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\card-decline-comparison-2026-10-21\\page@891a3fd7db6ce50206da1056da05925e.webm"
+}

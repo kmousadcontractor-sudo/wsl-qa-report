@@ -1,0 +1,22 @@
+python -m pytest tests/unit/test_retry_matrix_boundaries.py::test_completed_retry_offset_is_not_rescheduled_at_same_instant -q --tb=short --color=no --junitxml=C:\Users\hp\Desktop\wsl-qa-automation\artifacts\retry-bugs-2026-10-21\retry-consumed-offset\rerun.xml
+
+F                                                                        [100%]
+================================== FAILURES ===================================
+_______ test_completed_retry_offset_is_not_rescheduled_at_same_instant ________
+tests\unit\test_retry_matrix_boundaries.py:65: in test_completed_retry_offset_is_not_rescheduled_at_same_instant
+    assert due==T0+dt.timedelta(hours=72), 'Already sent 24h offset was selected again at its exact timestamp'
+E   AssertionError: Already sent 24h offset was selected again at its exact timestamp
+E   assert datetime.datetime(2026, 10, 21, 12, 0, tzinfo=datetime.timezone.utc) == (datetime.datetime(2026, 10, 20, 12, 0, tzinfo=datetime.timezone.utc) + datetime.timedelta(days=3))
+E    +  where datetime.timedelta(days=3) = <class 'datetime.timedelta'>(hours=72)
+E    +    where <class 'datetime.timedelta'> = dt.timedelta
+============================== warnings summary ===============================
+..\wsl-service-core\src\wsl_service_core\testing\fixtures.py:26
+  C:\Users\hp\Desktop\wsl-qa-automation\wsl-local\wsl-service-core\src\wsl_service_core\testing\fixtures.py:26: DeprecationWarning: testcontainers.postgres is deprecated, use testcontainers.community.postgres instead
+    from testcontainers.postgres import PostgresContainer
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/unit/test_retry_matrix_boundaries.py::test_completed_retry_offset_is_not_rescheduled_at_same_instant
+1 failed, 1 warning in 0.59s
+
+Process exit code: 1

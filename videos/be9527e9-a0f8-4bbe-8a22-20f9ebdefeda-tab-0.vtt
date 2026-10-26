@@ -1,0 +1,94 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:00.600
+Athlete registration tab — 
+
+00:00:00.600 --> 00:00:04.000
+Tour Manager tab — 
+
+00:00:04.000 --> 00:00:04.400
+Tour Manager tab — Opened WSL login
+
+00:00:04.400 --> 00:00:19.600
+Tour Manager tab — Entered configured login credentials
+
+00:00:19.600 --> 00:00:20.600
+Tour Manager tab — Submitted WSL login; server returned HTTP 200
+
+00:00:20.600 --> 00:00:21.200
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a136e0-da1f-7244-8f4d-160d7de0ff6e returned HTTP 200
+
+00:00:21.200 --> 00:00:23.600
+Tour Manager tab — Tour Manager API POST /tour-manager/events returned HTTP 409
+
+00:00:23.600 --> 00:00:23.800
+Tour Manager tab — Tour Manager API POST /tour-manager/events returned HTTP 201
+
+00:00:23.800 --> 00:00:24.400
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13b4c-a30d-745c-a59a-a5b33a82040b returned HTTP 200
+
+00:00:24.400 --> 00:00:24.600
+Tour Manager tab — Tour Manager API PUT /tour-manager/events/01a13b4c-a30d-745c-a59a-a5b33a82040b/status returned HTTP 200
+
+00:00:24.600 --> 00:00:25.000
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13b4c-a30d-745c-a59a-a5b33a82040b returned HTTP 200
+
+00:00:25.000 --> 00:00:25.400
+Tour Manager tab — Tour Manager API PUT /tour-manager/events/01a13b4c-a30d-745c-a59a-a5b33a82040b/status returned HTTP 200
+
+00:00:25.400 --> 00:00:25.600
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13b4c-a30d-745c-a59a-a5b33a82040b returned HTTP 200
+
+00:00:25.600 --> 00:00:29.200
+Tour Manager tab — Tour Manager API PUT /tour-manager/events/01a13b4c-a30d-745c-a59a-a5b33a82040b/status returned HTTP 200
+
+00:00:29.200 --> 00:00:31.200
+Tour Manager tab — Athlete event-list tab opened before registration; it will remain mounted to check live card updates without refresh.
+
+00:00:31.200 --> 00:00:33.400
+Tour Manager tab — Prepared one isolated QA event through the real manager API and opened its athlete registration form; manager tab remains open.
+
+00:00:33.400 --> 00:00:33.800
+Tour Manager tab — Entered the event-entry phone number
+
+00:00:33.800 --> 00:00:37.600
+Tour Manager tab — Selected the first offered insurance option for Event entry
+
+00:00:37.600 --> 00:00:38.000
+Tour Manager tab — Entered a Stripe test card for Event entry
+
+00:00:38.000 --> 00:00:51.400
+Tour Manager tab — Submitted Event entry
+
+00:00:51.400 --> 00:00:53.400
+Tour Manager tab — Athlete tab: event registration accepted with HTTP 201; matched the returned entry ID.
+
+00:00:53.400 --> 00:01:39.200
+Tour Manager tab — Athlete event-list tab: waiting for Waitlisted to render on its already-open event card, without navigation or refresh.
+
+00:01:39.200 --> 00:01:41.600
+Tour Manager tab — Athlete tab: Back to Events returned to the event list; now using browser Back to return through confirmation to the registration form.
+
+00:01:41.600 --> 00:01:44.000
+Tour Manager tab — Athlete tab: registering again from the restored form with unchanged valid data.
+
+00:01:44.000 --> 00:02:11.600
+Tour Manager tab — Submitted Event entry
+
+00:02:11.600 --> 00:02:12.800
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13b4c-a30d-745c-a59a-a5b33a82040b/entries returned HTTP 200
+
+00:02:12.800 --> 00:02:15.200
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13b4c-a30d-745c-a59a-a5b33a82040b returned HTTP 200
+
+00:02:15.200 --> 00:02:15.600
+Tour Manager tab — After entries closed, the retained entry status was pending; waitlisted was verified before closure.
+
+00:02:15.600 --> 00:02:19.200
+Tour Manager tab — Tour Manager API GET /tour-manager/events/01a13b4c-a30d-745c-a59a-a5b33a82040b/entries returned HTTP 200
+
+00:02:19.200 --> 00:03:03.600
+Tour Manager tab — Tour Manager tab: backend is confirmed/collected; waiting for the visible row to show Confirmed and Collected without refreshing or changing tabs.
+
+00:03:03.600 --> 00:03:09.000
+Tour Manager tab — E2E phase summary: Athlete Registration: PASSED; Membership Payment: PASSED; Membership Confirmation: PASSED; Event Registration: PASSED; Insurance: PASSED; Event Payment: PASSED;

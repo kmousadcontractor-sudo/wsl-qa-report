@@ -1,0 +1,57 @@
+# Guardian email request trace — 14 October 2026
+
+The dev API accepted the teen registration, but guardian email delivery remains unverified. Mailosaur returned no matching message during the 90-second wait or the delayed recheck more than five minutes after the attempt. The exact failing dev component cannot be identified from the available local logs.
+
+## Request to trace in dev
+
+- Environment: `https://api.dev.worldsurfleague.com/api`.
+- Recipient: `captured-large@btj5keea.mailosaur.net`.
+- Athlete ID: `01a137a4-b1db-7009-914d-5e68e078de6e`.
+- Test window: **14 October 2026, 02:41:36–02:43:11 Cairo** (13 October, 23:41:36–23:43:11 UTC).
+- Delayed inbox recheck: **14 October 2026, 02:46:54 Cairo**; HTTP 200, zero matching messages.
+- `/athletes`: HTTP 201, `pending_parental_document_approval`.
+- Original HTTP request/correlation header was not captured, so the athlete ID, recipient and time window are the available correlation keys.
+
+## Code path, not proof of deployed execution
+
+```mermaid
+flowchart LR
+ A[Teen registration accepted] --> B[Athlete guardian-requested event]
+ B --> C[BFF guardian consumer records request]
+ C --> D[Build guardian documents email]
+ D --> E[BFF outbox: cmd.notification.email.send]
+ E --> F[BFF relay / NATS]
+ F --> G[Notification email handler]
+ G --> H[Mail provider]
+ H --> I[Mailosaur inbox]
+```
+
+The inspected code expects the initial guardian email before membership payment:
+
+- `wsl-local/wsl-django-bff/infrastructure/guardian/handlers.py`: handles the guardian-requested event and calls `emails.on_guardian_requested`.
+- `wsl-local/wsl-django-bff/infrastructure/notifications/triggers.py`: builds `athlete.guardian.documents.requested`. `_send` can log `email skipped` when contact data is absent, incomplete or invalid.
+- `wsl-local/wsl-django-bff/infrastructure/notifications/emails.py`: logs `email staged` and writes `cmd.notification.email.send` to `outbox_message` with an organization-scoped grant.
+- `wsl-local/wsl-notification-service/src/notification/interfaces/bus/handlers/email.py`: consumes the command and stages an email-sent or email-failed outcome. The source selects SMTP when configured, otherwise SES; the deployed dev configuration was not inspected.
+- Notification persistence models include `email` and `email_delivery`.
+
+## Logs actually available
+
+Inspected recent local Docker logs and health states for BFF, athlete and notification apps, consumers and relays. Several consumers/relays were unhealthy; the BFF consumer's recent logs included `TimeoutError`. The notification app was healthy at inspection. No inspected local log contained the dev athlete ID. Some recent log windows were empty; these do not establish service inactivity or the absence of earlier errors.
+
+These are **local services**, not the services behind the dev API. Their health failures must not be presented as the cause of this dev email failure. The prior local missing-outbox-table issue was not confirmed by the recent log sample.
+
+Dev log access discovery found zero configured Kubernetes contexts and no standard AWS config/credentials files. This does not rule out a separate company logging portal, but no usable dev log connection was found here.
+
+## Next trace in the dev runtime
+
+Using the athlete ID and time window above, check:
+
+1. Athlete service: publication and outbox delivery of the guardian-requested event.
+2. BFF guardian consumer: matching `guardian_request` and contact snapshot; `email skipped` reasons or `email staged` outcome.
+3. BFF `outbox_message`: the email command and relay publication/acknowledgment. Correlate using its actual command/message ID.
+4. Notification consumer: receipt of that command, authorization errors, and `email` / `email_delivery` result.
+5. Provider delivery logs: rejection, bounce or suppression if a provider send was attempted. Correlate its actual provider message ID.
+
+No service restart, application/configuration change or database write was performed during this trace. No private link, password or API key was saved.
+
+Sanitized evidence: `artifacts/email-service-trace-2026-10-14/trace.json` and `artifacts/mailosaur-delivery-2026-10-14/recheck.json`.

@@ -1,0 +1,248 @@
+{
+  "recordedAt": "2026-10-20T18:42:21.127Z",
+  "environment": "WSL dev",
+  "flow": "Edit event duplicate collision via real UI",
+  "season": {
+    "id": "01a15a9e-afcd-746c-ac87-63e8521db550",
+    "year": 2082
+  },
+  "existingEvent": {
+    "id": "01a15a9e-b59b-7432-b8f7-fc3453b11250",
+    "fields": {
+      "name": "QA duplicate field evidence 1792521712169",
+      "tour": "01a14127-5313-7165-a37f-b78a3d1fb5a7",
+      "rating": "",
+      "regions": [
+        "north_america"
+      ],
+      "location": "01a14127-5440-7046-a232-843c64ab9676",
+      "startDate": "2082-11-06",
+      "endDate": "2082-11-06",
+      "format": "01a14127-53f2-7694-86aa-9034f7fddb51",
+      "prizeMoney": {
+        "amount": 12345,
+        "currency": "USD"
+      },
+      "registrationOpensDate": "",
+      "registrationOpensTime": "",
+      "registrationClosesDate": "",
+      "registrationClosesTime": "",
+      "currency": "",
+      "entryFee": null
+    }
+  },
+  "editedEvent": {
+    "id": "01a15a9e-b7ac-70e0-8514-3a9aa6564dab",
+    "originalDates": [
+      "2082-11-07",
+      "2082-11-07"
+    ]
+  },
+  "request": {
+    "method": "PUT",
+    "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a15a9e-b7ac-70e0-8514-3a9aa6564dab",
+    "body": {
+      "version": 1,
+      "name": "QA duplicate field evidence 1792521712169 candidate",
+      "tour": "01a14127-5313-7165-a37f-b78a3d1fb5a7",
+      "rating": "",
+      "regions": [
+        "north_america"
+      ],
+      "location": "01a14127-5440-7046-a232-843c64ab9676",
+      "startDate": "2082-11-06",
+      "endDate": "2082-11-06",
+      "format": "01a14127-53f2-7694-86aa-9034f7fddb51",
+      "prizeMoney": {
+        "amount": 12345,
+        "currency": "USD"
+      },
+      "registrationOpensDate": "2082-08-06",
+      "registrationOpensTime": "09:00",
+      "registrationClosesDate": "2082-10-06",
+      "registrationClosesTime": "17:00",
+      "currency": "",
+      "entryFee": null,
+      "acknowledgedConflicts": []
+    }
+  },
+  "response": {
+    "status": 409,
+    "body": {
+      "title": "This event already exists",
+      "message": "\"QA duplicate field evidence 1792521712169\" is already on International Qualifying Series (QS) · Men at 56th Street on overlapping dates (Fri 6 – Fri 6 Nov 2082). Change the location or the dates.",
+      "reason": "competition.event_duplicate",
+      "fields": {},
+      "retryable": false,
+      "code": "duplicate",
+      "conflict": {
+        "id": "01a15a9e-b59b-7432-b8f7-fc3453b11250",
+        "name": "QA duplicate field evidence 1792521712169"
+      }
+    }
+  },
+  "visibleText": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nTM\nTour Manager 101\nTour Manager · All regions\nEvents\n/\nQA duplicate field evidence 1792521712169 candidate\nEdit event\nDraft\nSave changes\n\nThis event already exists\n\n\"QA duplicate field evidence 1792521712169\" is already on International Qualifying Series (QS) · Men at 56th Street on overlapping dates (Fri 6 – Fri 6 Nov 2082). Change the location or the dates.\n\nBasics\nSeason\n2082\nEvent name\nTour\nInternational Qualifying Series (QS) · Men\nEvent rating\n \nSanctioning regions (max 2)\nNorth America (primary)\nLocation\n56th Street, Newport Beach, California · Los Angeles time\nStart date\nEnd date\nEvent format\n48 surfers · 4-surfer heats · 5 rounds\nCurrency\nUSD\nPrize money\nRegistration\n\nTimes are at the venue (GMT-7).\n\nRegistration opens\nRegistration opens\n= 19:00 in your time\nRegistration closes\nRegistration closes\n= 03:00 in your time\nCurrency\n \nEntry fee\nTax\nVAT",
+  "formControls": [
+    {
+      "id": "_r_2_",
+      "value": "",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 cursor-pointer truncate border-none bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed text-text-secondary"
+    },
+    {
+      "id": "_r_3_",
+      "value": "QA duplicate field evidence 1792521712169 candidate",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary"
+    },
+    {
+      "id": "_r_4_",
+      "value": "",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 cursor-pointer truncate border-none bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed text-text-secondary"
+    },
+    {
+      "id": "_r_5_",
+      "value": "",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 cursor-pointer truncate border-none bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed text-text-muted"
+    },
+    {
+      "id": "_r_6_",
+      "value": "",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 cursor-pointer truncate border-none bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed text-text-secondary"
+    },
+    {
+      "id": "_r_7_",
+      "value": "",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 cursor-pointer truncate border-none bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed text-text-secondary"
+    },
+    {
+      "id": "_r_8_",
+      "value": "11/06/2082",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary"
+    },
+    {
+      "id": "_r_9_",
+      "value": "11/06/2082",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary"
+    },
+    {
+      "id": "_r_a_",
+      "value": "",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 cursor-pointer truncate border-none bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed text-text-secondary"
+    },
+    {
+      "id": "_r_b_",
+      "value": "",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 cursor-pointer truncate border-none bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed text-text-secondary"
+    },
+    {
+      "id": "_r_c_",
+      "value": "123.45",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary"
+    },
+    {
+      "id": "_r_d_",
+      "value": "08/06/2082",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary"
+    },
+    {
+      "id": "_r_e_",
+      "value": "9:00 AM GMT-7",
+      "ariaInvalid": null,
+      "ariaDescribedby": "_r_e_-helper",
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary cursor-pointer"
+    },
+    {
+      "id": "_r_f_",
+      "value": "10/06/2082",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary"
+    },
+    {
+      "id": "_r_g_",
+      "value": "5:00 PM GMT-7",
+      "ariaInvalid": null,
+      "ariaDescribedby": "_r_g_-helper",
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary cursor-pointer"
+    },
+    {
+      "id": "_r_h_",
+      "value": "",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 cursor-pointer truncate border-none bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed text-text-muted"
+    },
+    {
+      "id": "_r_i_",
+      "value": "",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary"
+    },
+    {
+      "id": "_r_j_",
+      "value": "Not applicable here",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary"
+    },
+    {
+      "id": "_r_k_",
+      "value": "Not applicable here",
+      "ariaInvalid": null,
+      "ariaDescribedby": null,
+      "className": "text-body-default w-full min-w-0 border-none bg-transparent p-0 text-text-secondary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-secondary"
+    }
+  ],
+  "persistedDates": [
+    "2082-11-07",
+    "2082-11-07"
+  ],
+  "steps": [
+    {
+      "at": 6068,
+      "text": "Two isolated QA events share tour and location. This event starts one day later."
+    },
+    {
+      "at": 9980,
+      "text": "Change the start and end dates to match the existing event."
+    },
+    {
+      "at": 14059,
+      "text": "Save changes. The real dev API should reject this duplicate."
+    },
+    {
+      "at": 18659,
+      "text": "The duplicate banner appears. Inspect the location and date fields for inline errors."
+    }
+  ],
+  "checks": {
+    "duplicateRejected": true,
+    "emptyFieldMap": true,
+    "bannerVisible": true,
+    "rejectedEditNotPersisted": true
+  }
+}

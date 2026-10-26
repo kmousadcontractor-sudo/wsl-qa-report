@@ -1,0 +1,330 @@
+{
+  "id": "BM-LIVE-A02",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "Show the athlete profile for Junior Consent. What is the athlete ID?",
+  "expected": "Owned basic athlete profile; do not fabricate contact fields or IDs. Current prompt disallows displaying internal IDs; record supported/unsupported response clearly.",
+  "expectedTools": [
+    "list_my_athletes"
+  ],
+  "referencePaths": [
+    "/session",
+    "/athletes/01a13c43-c421-74a4-b266-58d419d278a3"
+  ],
+  "startedAt": "2026-10-15T00:16:07.681Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/session",
+      "status": 200,
+      "body": {
+        "user": {
+          "id": "01a13c43-a97b-7601-928a-4d4652edae0c",
+          "name": "Guardian Consent",
+          "firstName": "Guardian",
+          "lastName": "Consent",
+          "email": "[email redacted]",
+          "dateOfBirth": "1986-10-15"
+        },
+        "athletes": [
+          {
+            "id": "01a13c43-c421-74a4-b266-58d419d278a3",
+            "name": "Junior Consent",
+            "firstName": "Junior",
+            "lastName": "Consent",
+            "initials": "JC",
+            "status": "active",
+            "signedCodes": [
+              "age_and_authority_certification",
+              "membership_terms_and_conditions",
+              "waiver_release_indemnity",
+              "health_insurance_authorization",
+              "coppa_verification",
+              "guardian_certification"
+            ],
+            "registeredByRole": "guardian",
+            "membership": {
+              "id": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+              "productCode": "junior",
+              "status": {
+                "code": "active",
+                "label": "Membership active",
+                "tone": "success"
+              },
+              "validTo": "2026-12-31"
+            }
+          }
+        ],
+        "athletesUnavailable": false,
+        "activeAthleteId": "01a13c43-c421-74a4-b266-58d419d278a3",
+        "passwordChangeRequired": false
+      },
+      "at": "2026-10-15T00:16:08.038Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/athletes/01a13c43-c421-74a4-b266-58d419d278a3",
+      "status": 200,
+      "body": {
+        "athlete": {
+          "id": "01a13c43-c421-74a4-b266-58d419d278a3",
+          "status": "active",
+          "homeRegion": "north_america",
+          "ageBand": "under_13",
+          "registeredByRole": "guardian",
+          "version": 2,
+          "editable": false
+        },
+        "details": {
+          "registeredByRole": "guardian",
+          "firstName": "Junior",
+          "middleName": null,
+          "lastName": "Consent",
+          "dateOfBirth": "2016-03-10",
+          "email": null,
+          "genderCode": "male",
+          "countryRepresenting": "US",
+          "countryOfResidence": "US",
+          "addressLine1": "125 QA Consent Lane",
+          "addressLine2": null,
+          "city": "San Diego",
+          "region": "CA",
+          "postalCode": null,
+          "phoneNumber": null,
+          "whatsappHandle": null,
+          "language": "en",
+          "emergencyContactName": "Emergency Updated",
+          "emergencyContactRelationship": "Relative",
+          "emergencyContactPhone": "+14155559999",
+          "emergencyContactEmail": "[email redacted]",
+          "guardianName": "Guardian Consent",
+          "guardianEmail": "[email redacted]"
+        },
+        "lockedFields": [
+          "registeredByRole",
+          "firstName",
+          "middleName",
+          "lastName",
+          "dateOfBirth",
+          "email",
+          "genderCode",
+          "countryRepresenting",
+          "countryOfResidence",
+          "guardianName",
+          "guardianEmail"
+        ],
+        "signedCodes": [
+          "age_and_authority_certification",
+          "membership_terms_and_conditions",
+          "waiver_release_indemnity",
+          "health_insurance_authorization",
+          "coppa_verification",
+          "guardian_certification"
+        ],
+        "membership": {
+          "id": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+          "productCode": "junior",
+          "status": {
+            "code": "active",
+            "label": "Membership active",
+            "tone": "success"
+          },
+          "validTo": "2026-12-31"
+        },
+        "guardianRequest": {
+          "kind": "coppa_under13",
+          "status": "verified",
+          "linkGeneration": 1,
+          "expiresAt": "2026-10-21T21:13:56.513150+00:00"
+        }
+      },
+      "at": "2026-10-15T00:16:08.692Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:16:09.207Z",
+  "videoStartSeconds": 70.769,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "cb66e22e-26c0-4085-9873-bb304bd8b1d5",
+    "input": {
+      "threadId": "d513593b-0911-4945-a221-10ffe652dbfc",
+      "runId": "46a11665-9cc7-49f4-b713-c5cb039e1b40",
+      "state": {},
+      "messages": [
+        {
+          "id": "cbbbf567-db5d-4472-9754-68c81ed5327b",
+          "role": "user",
+          "content": "Show the athlete profile for Junior Consent. What is the athlete ID?"
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_014H9cENvgAn7pdrLBfYo95t",
+        "name": "list_my_athletes",
+        "result": {
+          "status": "ok",
+          "athletes": [
+            {
+              "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "first_name": "Junior",
+              "last_name": "Consent",
+              "status": "active",
+              "registered_by": "guardian",
+              "membership": {
+                "product_code": "junior",
+                "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+                "status": "active",
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31",
+                "amount": {
+                  "amount_minor": 17500,
+                  "currency": "USD"
+                }
+              }
+            }
+          ]
+        },
+        "parameters": ""
+      }
+    ],
+    "answer": "I can't share athlete IDs, and there's no athlete profile page I can open for you. Here's what your account shows for Junior Consent:\n\n- **Status:** Active, registered by you as guardian\n- **Membership:** Junior membership for the 2026 season, active from January 1 to December 31, 2026 (US$175.00)\n\nI can also look up Junior's insurance, credits or events they can enter.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "d513593b-0911-4945-a221-10ffe652dbfc",
+        "runId": "46a11665-9cc7-49f4-b713-c5cb039e1b40"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "d513593b-0911-4945-a221-10ffe652dbfc",
+        "runId": "46a11665-9cc7-49f4-b713-c5cb039e1b40"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_014H9cENvgAn7pdrLBfYo95t",
+      "name": "list_my_athletes",
+      "result": {
+        "status": "ok",
+        "athletes": [
+          {
+            "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+            "first_name": "Junior",
+            "last_name": "Consent",
+            "status": "active",
+            "registered_by": "guardian",
+            "membership": {
+              "product_code": "junior",
+              "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+              "status": "active",
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31",
+              "amount": {
+                "amount_minor": 17500,
+                "currency": "USD"
+              }
+            }
+          }
+        ]
+      },
+      "parameters": ""
+    }
+  ],
+  "aiResponse": "I can't share athlete IDs, and there's no athlete profile page I can open for you. Here's what your account shows for Junior Consent:\n\n- **Status:** Active, registered by you as guardian\n- **Membership:** Junior membership for the 2026 season, active from January 1 to December 31, 2026 (US$175.00)\n\nI can also look up Junior's insurance, credits or events they can enter.",
+  "actual": "I can't share athlete IDs, and there's no athlete profile page I can open for you. Here's what your account shows for Junior Consent:\n\n- **Status:** Active, registered by you as guardian\n- **Membership:** Junior membership for the 2026 season, active from January 1 to December 31, 2026 (US$175.00)\n\nI can also look up Junior's insurance, credits or events they can enter.",
+  "durationMs": 4347,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nShow the athlete profile for Junior Consent. What is the athlete ID?\n\nI can't share athlete IDs, and there's no athlete profile page I can open for you. Here's what your account shows for Junior Consent:\n\nStatus: Active, registered by you as guardian\nMembership: Junior membership for the 2026 season, active from January 1 to December 31, 2026 (US$175.00)\n\nI can also look up Junior's insurance, credits or events they can enter.\n\nI can't share athlete IDs, and there's no athlete profile page I can open for you. Here's what your account shows for Junior Consent: - **Status:** Active, registered by you as guardian - **Membership:** Junior membership for the 2026 season, active from January 1 to December 31, 2026 (US$175.00) I can also look up Junior's insurance, credits or events they can enter.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A02.png",
+  "videoEndSeconds": 75.864,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:16:09.234Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:16:14.302Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Basic owned athlete profile is grounded. Internal athlete ID display and a direct profile-page action are unsupported under current prompt/navigation rules; assistant disclosed both rather than fabricating them.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Own-athlete scope; direct foreign holdings403 verified in A16/S02",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Owned basic athlete profile; do not fabricate contact fields or IDs. Current prompt disallows displaying internal IDs; record supported/unsupported response clearly.",
+    "observed": "I can't share athlete IDs, and there's no athlete profile page I can open for you. Here's what your account shows for Junior Consent:\n\n- **Status:** Active, registered by you as guardian\n- **Membership:** Junior membership for the 2026 season, active from January 1 to December 31, 2026 (US$175.00)\n\nI can also look up Junior's insurance, credits or events they can enter.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A02-BM-LIVE-A02.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

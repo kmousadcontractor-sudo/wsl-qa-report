@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tour Manager duplicate error — field highlights missing</title><style>
+  :root { --bg:#f4f7f8; --surface:#fff; --ink:#0f2230; --muted:#536877; --line:#d6e0e5; --accent:#0b6e8a; --ok:#1b7a4b; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0c171f; --surface:#12212c; --ink:#e3edf2; --muted:#9bb0bd; --line:#233846; --accent:#5cc3dd; --ok:#7fd3a6; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:28px 16px 56px; display:grid; gap:18px; }
+  h1 { font-size:26px; line-height:1.2; margin:0; }
+  h2 { font-size:18px; margin:0; }
+  p { margin:0; max-width:78ch; }
+  .muted { color:var(--muted); font-size:14px; }
+  .verdict { color:var(--ok); font-weight:700; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px; display:grid; gap:10px; min-width:0; }
+  video, img { width:100%; height:auto; border:1px solid var(--line); border-radius:6px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  .box { overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:8px; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size:.9em; }
+  a { color:var(--accent); }
+
+.fail{color:#c33939;font-weight:700}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}li{margin:8px 0}.badge{display:inline-block;padding:4px 9px;border:1px solid var(--line);border-radius:5px;font-size:13px}h1{max-width:45ch}video{max-height:760px;background:#071b29}</style></head><body><main>
+<div><p class="muted">Tour Manager · Event validation · AI-121 / ADD-78</p><h1>Duplicate event errors show a banner but leave conflicting fields unmarked</h1><p class="muted">Fresh UI reproduction · 20 October 2026 · WSL dev</p><p><span class="badge">Draft bug report</span> <span class="badge">Suggested priority: Medium</span> <span class="badge">No Jira ticket created</span></p></div>
+<p><span class="fail">Reproduced.</span> A manager changes an event's dates to match another event at the same location and tour. Saving correctly returns a duplicate error, but only the banner explains the problem. The Location, Start date and End date inputs show no red highlights or inline duplicate messages.</p>
+<section class="card"><h2>Watch the issue</h2><video controls preload="metadata" poster="after.png" src="recording-captioned.mp4"></video><p class="muted">Captioned recording of the real dev form: inspect original dates → change dates → Save changes → inspect the banner and unmarked fields. Two isolated Drafts were created by API before recording. The actual save was submitted through the UI.</p><p><a href="recording-captioned.mp4">Download recording</a></p></section>
+<div class="grid"><section class="card"><h2>Before — no collision</h2><a href="before.png"><img src="before.png" alt="Candidate event originally has November 7 dates, one day after the existing event"></a><p class="muted">The candidate initially runs on November 7. The existing event runs on November 6.</p></section><section class="card"><h2>After — banner only</h2><a href="after.png"><img src="after.png" alt="Duplicate banner is visible above the form; location and November 6 start and end dates have normal borders and no inline errors"></a><p class="muted">The banner says to change the location or dates, but those inputs remain visually unmarked. Open the screenshot to inspect it at full size.</p></section></div>
+<div class="box"><table><thead><tr><th>Behavior</th><th>Expected</th><th>Observed</th></tr></thead><tbody><tr><td>Duplicate protection</td><td>Reject conflicting save</td><td>PASS — HTTP 409</td></tr><tr><td>Explanation</td><td>Explain the duplicate</td><td>PASS — descriptive banner</td></tr><tr><td>Field guidance</td><td>Highlight conflicting inputs and show inline messages</td><td class="fail">FAIL — normal field appearance; fields: {}</td></tr><tr><td>Persistence</td><td>Do not save the rejected edit</td><td>PASS — readback still has November 7 dates</td></tr></tbody></table></div>
+<section class="card"><h2>Steps to reproduce</h2><ol><li>Prepare two valid Draft events in the same season, tour and location, on November 6 and November 7.</li><li>Open the November 7 event in <strong>Edit event</strong>.</li><li>Set <strong>Start date</strong> and <strong>End date</strong> to November 6, matching the other event.</li><li>Click <strong>Save changes</strong>.</li><li>Inspect the error banner and the Location, Start date and End date inputs.</li></ol><p><strong>Expected:</strong> Keep the duplicate explanation and mark the conflicting inputs with inline guidance.</p><p><strong>Actual:</strong> Only the banner describes the collision. The conflicting inputs have no error highlights or inline messages.</p></section>
+<section class="card"><h2>Captured API response</h2><p>This is the actual response to the UI save, not a reconstructed example.</p><pre><code>PUT https://api.dev.worldsurfleague.com/api/tour-manager/events/01a15a9e-b7ac-70e0-8514-3a9aa6564dab
+HTTP 409
+{
+  &quot;title&quot;: &quot;This event already exists&quot;,
+  &quot;message&quot;: &quot;\&quot;QA duplicate field evidence 1792521712169\&quot; is already on International Qualifying Series (QS) · Men at 56th Street on overlapping dates (Fri 6 – Fri 6 Nov 2082). Change the location or the dates.&quot;,
+  &quot;reason&quot;: &quot;competition.event_duplicate&quot;,
+  &quot;fields&quot;: {},
+  &quot;retryable&quot;: false,
+  &quot;code&quot;: &quot;duplicate&quot;,
+  &quot;conflict&quot;: {
+    &quot;id&quot;: &quot;01a15a9e-b59b-7432-b8f7-fc3453b11250&quot;,
+    &quot;name&quot;: &quot;QA duplicate field evidence 1792521712169&quot;
+  }
+}</code></pre><p><a href="response.json">Response JSON</a> · <a href="results.json">Complete evidence data</a> · <a href="report.md">Download descriptive report</a></p></section>
+<section class="card"><h2>Technical analysis</h2><p>The inspected BFF duplicate branch in <code>tour_manager_events.py:_written</code> creates HTTP 409 with a message and conflict reference, but does not populate field errors. The frontend <code>event-editor.tsx:refusedFields</code> maps errors only for HTTP 422. Both sides therefore need to support the duplicate-error field contract; adding a field map to the response alone will not fix the frontend.</p><p class="muted">Local source inspection explains the observed behavior; the exact deployed source revision was not verified. No application fix was made.</p></section>
+<section class="card"><h2>Impact and acceptance criteria</h2><p>Managers must find and correct the conflicting inputs themselves. This creates unnecessary trial and error, although duplicate protection remains effective.</p><ul><li>Return actionable field errors for the inputs responsible for a duplicate collision.</li><li>Display field highlights and inline messages while retaining the explanation banner.</li><li>Clear/recalculate errors when the conflicting values change; allow a valid corrected save.</li><li>Preserve ordinary 422 validation and duplicate prevention.</li><li>Verify both New event and Edit event paths with direct UI assertions.</li></ul></section>
+<section class="card"><h2>Run details and scope</h2><p>Captured at <code>2026-10-20T18:42:21.127Z</code>. Season 2082; existing event <code>01a15a9e-b59b-7432-b8f7-fc3453b11250</code>; edited event <code>01a15a9e-b7ac-70e0-8514-3a9aa6564dab</code>. The rejected save left the edited event at <code>2082-11-07 / 2082-11-07</code>.</p><p>The October 19 ADD-78 API run established the same empty-field-map issue for creation. This new recording directly establishes the Edit event UI behavior. The earlier context-only recording is superseded by the captioned reproduction above.</p><p class="muted">No Jira ticket created. Isolated QA fixtures were used; existing imported events were not edited.</p></section>
+</main></body></html>

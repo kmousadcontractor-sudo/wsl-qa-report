@@ -1,0 +1,13 @@
+{
+  "id": "retry-late-success",
+  "title": "F-03: cancelled competition charge ignores late success",
+  "test": "tests/integration/test_retry_matrix_regressions.py::test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge",
+  "expected": 1,
+  "startedAt": "2026-10-21T12:15:33.828Z",
+  "finishedAt": "2026-10-21T12:17:07.658Z",
+  "command": "python -m pytest tests/integration/test_retry_matrix_regressions.py::test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge -q --tb=short --color=no --junitxml=C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\retry-bugs-2026-10-21\\retry-late-success\\rerun.xml",
+  "exitCode": 1,
+  "output": "python -m pytest tests/integration/test_retry_matrix_regressions.py::test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge -q --tb=short --color=no --junitxml=C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\retry-bugs-2026-10-21\\retry-late-success\\rerun.xml\n\nF                                                                        [100%]\r\n================================== FAILURES ===================================\r\n___ test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge ___\r\ntests\\integration\\test_retry_matrix_regressions.py:43: in test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge\r\n    assert updated is not None, f'Late successful payment ignored; local charge still {charge.status}; needs reconciliation'\r\nE   AssertionError: Late successful payment ignored; local charge still cancelled; needs reconciliation\r\nE   assert None is not None\r\n============================== warnings summary ===============================\r\n..\\wsl-service-core\\src\\wsl_service_core\\testing\\fixtures.py:26\r\n  C:\\Users\\hp\\Desktop\\wsl-qa-automation\\wsl-local\\wsl-service-core\\src\\wsl_service_core\\testing\\fixtures.py:26: DeprecationWarning: testcontainers.postgres is deprecated, use testcontainers.community.postgres instead\r\n    from testcontainers.postgres import PostgresContainer\r\n\r\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\r\n=========================== short test summary info ===========================\r\nFAILED tests/integration/test_retry_matrix_regressions.py::test_late_success_is_not_lost_after_withdrawal_cancels_requested_charge\r\n1 failed, 1 warning in 67.97s (0:01:07)\r\n\nProcess exit code: 1\n",
+  "recording": "reproduction.webm",
+  "screenshot": "assertion.png"
+}

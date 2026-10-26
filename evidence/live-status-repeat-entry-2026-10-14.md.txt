@@ -1,0 +1,292 @@
+# Live rendering and repeat registration — 14 October 2026
+
+Two visible dev journeys were executed: the existing single-event membership journey with stricter frontend checks, and one new regional-membership journey. The report keeps one record per Java test method. Earlier minor/age-boundary results remain labelled with their own execution sources.
+
+The new assertions do not equate a backend state with a rendered state. An event-list tab is mounted before registration, remains open throughout the journey, and is checked for Waitlisted and then Confirmed without refresh, navigation, filter changes or query invalidation. After Confirm & charge, the manager stays on Athletes while the script waits for the visible Confirmed and Collected labels. API checks are separate. DOM reads pump browser events; they do not refresh the page.
+
+Back-navigation steps use the actual Back to Events link, verify the event list, then traverse browser history back through confirmation to the registration form. The single-event scenario resubmits unchanged valid data; the regional scenario changes the event reminder phone to another valid US number and resubmits. A successful repeat must reuse the same entry ID, and its accepted request must contain the edited phone. A submitted request alone is not reported as successful registration.
+
+## Latest actual results
+
+### Adult registration through membership, Event Entry, Insurance and Event Payment
+
+Raw method result: FAIL. 25 passed checks; 4 failed checks; 0 blocked/deferred checks.
+
+- FAIL — Waitlisted renders on the already-open event card without refresh; expected true; actual false. The event list was mounted before entry submission. Observed card: QA Main Flow df3398fa
+· QS 2,000
+
+Dec 21 · Pismo Beach Pier, CA · Men’s
+
+Event entry fee $150.00
+
+Ready for entries
+
+Entries close 21 Oct 2026 · 17:00 PDT
+
+Register
+- PASS — Back to Events returns to the event list; expected true; actual true. Used the visible Back to Events link, not a direct URL.
+- PASS — Browser Back restores the event registration page; expected true; actual true. Traversed actual browser history; did not navigate directly to the registration URL.
+- FAIL — Event registration succeeds again after Back navigation; expected true; actual false. Observed URL: https://app.dev.world[redacted]league.com/athlete-registration/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/register?athlete=01a13a0a-1552-777c-b2a7-57a3a669a483. Errors: You have no event credits left on your membership. World Surf League - The global home of [redacted]ing
+- PASS — Confirmed renders in the athlete row without refresh; expected true; actual true. Visible row: 1
+	
+PT
+[name redacted]
+United States
+	N. AMERICA	
+	
+Pending
+	
+Confirmed
+	
+- FAIL — Collected renders in the payment column without refresh; expected true; actual false. API payment is collected; visible row: 1
+	
+PT
+[name redacted]
+United States
+	N. AMERICA	
+	
+Pending
+	
+Confirmed
+	
+- FAIL — Confirmed renders on the athlete event card without refresh; expected true; actual false. The same event-list tab has stayed mounted since before registration. Observed: QA Main Flow df3398fa
+· QS 2,000
+
+Dec 21 · Pismo Beach Pier, CA · Men’s
+
+Event entry fee $150.00
+
+Ready for entries
+
+Entries close 21 Oct 2026 · 17:00 PDT
+
+Register
+
+Recorded actions:
+
+- Started independent adult registration before Event entry
+- Opened Age gate
+- Entered date of birth 07/07/2000
+- Clicked Continue on Age gate
+- Age gate accepted the date of birth and opened Account creation
+- Entered account details and accepted the WSL Terms of Use
+- Submitted Create Account
+- Reached Athlete details after account creation
+- Selected Myself for Athlete details
+- Entered Athlete details, residence and [name redacted]
+- Submitted Athlete details, attempt 1
+- Reached the next registration stage after Athlete details
+- Selected membership tier Single Event
+- Opened required document 1 of 4
+- Certified and closed required document 1
+- Opened required document 2 of 4
+- Certified and closed required document 2
+- Opened required document 3 of 4
+- Certified and closed required document 3
+- Opened required document 4 of 4
+- Certified and closed required document 4
+- Clicked Continue to Payment after signing the four required documents
+- Stripe test card form appeared
+- Entered a Stripe test card for membership payment
+- Submitted membership payment with a Stripe test card
+- Membership confirmation appeared before Event entry
+- Clicked See Events from Membership confirmation
+- Events list appeared after See Events
+- Clicked the first eligible event's entry action
+- Opened WSL login
+- Entered configured login credentials
+- Submitted WSL login; server returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a136e0-da1f-7244-8f4d-160d7de0ff6e returned HTTP 200
+- Tour Manager API POST /tour-manager/events returned HTTP 409
+- Tour Manager API POST /tour-manager/events returned HTTP 409
+- Tour Manager API POST /tour-manager/events returned HTTP 409
+- Tour Manager API POST /tour-manager/events returned HTTP 409
+- Tour Manager API POST /tour-manager/events returned HTTP 201
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32 returned HTTP 200
+- Tour Manager API PUT /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/status returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32 returned HTTP 200
+- Tour Manager API PUT /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/status returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32 returned HTTP 200
+- Tour Manager API PUT /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/status returned HTTP 200
+- Athlete event-list tab opened before registration; it will remain mounted to check live card updates without refresh.
+- Prepared one isolated QA event through the real manager API and opened its athlete registration form; manager tab remains open.
+- Entered the event-entry phone number
+- Selected the first offered insurance option for Event entry
+- Entered a Stripe test card for Event entry
+- Submitted Event entry
+- Athlete tab: event registration accepted with HTTP 201; matched the returned entry ID.
+- Read the real Event entry confirmation page
+- Athlete event-list tab: waiting for Waitlisted to render on its already-open event card, without navigation or refresh.
+- Athlete tab: Back to Events returned to the event list; now using browser Back to return through confirmation to the registration form.
+- Athlete tab: registering again from the restored form with unchanged valid data.
+- Submitted Event entry
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32 returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32 returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32 returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32 returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/entries returned HTTP 200
+- After entries closed, the retained entry status was pending; waitlisted was verified before closure.
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a0b-27e8-724b-b6c0-dc6ff6598d32/entries returned HTTP 200
+- Tour Manager tab: backend is confirmed/collected; waiting for the visible row to show Confirmed and Collected without refreshing or changing tabs.
+- Left the athlete result and manager Athletes roster open for review.
+- E2E phase summary: Athlete Registration: PASSED; Membership Payment: PASSED; Membership Confirmation: PASSED; Event Registration: PASSED; Insurance: PASSED; Event Payment: PASSED;
+
+### Regional membership: back navigation, valid entry edits, repeat registration and live statuses
+
+Raw method result: FAIL. 26 passed checks; 4 failed checks; 0 blocked/deferred checks.
+
+- FAIL — Waitlisted renders on the already-open event card without refresh; expected true; actual false. The event list was mounted before entry submission. Observed card: QA Main Flow 2722138a
+· INTL QS 6,000
+
+Dec 19 · Jinzun Harbor, Taitung · Men’s
+
+Event entry fee $350.00
+
+Ready for entries
+Closes soon
+
+Entries close 21 Oct 2026 · 17:00 CST
+
+Register
+- PASS — Back to Events returns to the event list; expected true; actual true. Used the visible Back to Events link, not a direct URL.
+- PASS — Browser Back restores the event registration page; expected true; actual true. Traversed actual browser history; did not navigate directly to the registration URL.
+- PASS — A valid changed event reminder phone remains in the form; expected 4155552671; actual 4155552671. 
+- FAIL — Regional event registration succeeds again after valid edits; expected true; actual false. Observed URL: https://app.dev.world[redacted]league.com/athlete-registration/events/01a13a95-5e25-72ab-a44d-792872f27e57/register?athlete=01a13a94-640b-73de-ae41-eb0391a95655. Errors: This athlete is already entered in this event. World Surf League - The global home of [redacted]ing
+- PASS — Confirmed renders in the athlete row without refresh; expected true; actual true. Visible row: 1
+	
+PT
+[name redacted]
+United States
+	N. AMERICA	
+	
+Pending
+	
+Confirmed
+	
+- FAIL — Collected renders in the payment column without refresh; expected true; actual false. API payment is collected; visible row: 1
+	
+PT
+[name redacted]
+United States
+	N. AMERICA	
+	
+Pending
+	
+Confirmed
+	
+- FAIL — Confirmed renders on the athlete event card without refresh; expected true; actual false. The same event-list tab has stayed mounted since before registration. Observed: QA Main Flow 2722138a
+· INTL QS 6,000
+
+Dec 19 · Jinzun Harbor, Taitung · Men’s
+
+Event entry fee $350.00
+
+Ready for entries
+Closes soon
+
+Entries close 21 Oct 2026 · 17:00 CST
+
+Register
+
+Recorded actions:
+
+- Started independent adult registration before Event entry
+- Opened Age gate
+- Entered date of birth 07/07/2000
+- Clicked Continue on Age gate
+- Age gate accepted the date of birth and opened Account creation
+- Entered account details and accepted the WSL Terms of Use
+- Submitted Create Account
+- Reached Athlete details after account creation
+- Selected Myself for Athlete details
+- Entered Athlete details, residence and [name redacted]
+- Submitted Athlete details, attempt 1
+- Reached the next registration stage after Athlete details
+- Selected membership tier Regional Membership
+- Opened required document 1 of 4
+- Certified and closed required document 1
+- Opened required document 2 of 4
+- Certified and closed required document 2
+- Opened required document 3 of 4
+- Certified and closed required document 3
+- Opened required document 4 of 4
+- Certified and closed required document 4
+- Clicked Continue to Payment after signing the four required documents
+- Stripe test card form appeared
+- Entered a Stripe test card for membership payment
+- Submitted membership payment with a Stripe test card
+- Membership confirmation appeared before Event entry
+- Clicked See Events from Membership confirmation
+- Events list appeared after See Events
+- Clicked the first eligible event's entry action
+- Opened WSL login
+- Entered configured login credentials
+- Submitted WSL login; server returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a136e0-ce4a-70ba-907d-453ccfb5e318 returned HTTP 200
+- Tour Manager API POST /tour-manager/events returned HTTP 409
+- Tour Manager API POST /tour-manager/events returned HTTP 201
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57 returned HTTP 200
+- Tour Manager API PUT /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/status returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57 returned HTTP 200
+- Tour Manager API PUT /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/status returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57 returned HTTP 200
+- Tour Manager API PUT /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/status returned HTTP 200
+- Athlete event-list tab opened before registration; it will remain mounted to check live card updates without refresh.
+- Prepared one isolated QA event through the real manager API and opened its athlete registration form; manager tab remains open.
+- Entered the event-entry phone number
+- Selected the first offered insurance option for Event entry
+- Entered a Stripe test card for Event entry
+- Submitted Event entry
+- Athlete tab: event registration accepted with HTTP 201; matched the returned entry ID.
+- Read the real Event entry confirmation page
+- Athlete event-list tab: waiting for Waitlisted to render on its already-open event card, without navigation or refresh.
+- Athlete tab: Back to Events returned to the event list; now using browser Back to return through confirmation to the registration form.
+- Regional athlete tab: changed the event reminder phone to another valid US number before registering again.
+- Submitted Event entry
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57 returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57 returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57 returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57 returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57 returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- After entries closed, the retained entry status was pending; waitlisted was verified before closure.
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- Tour Manager API GET /tour-manager/events/01a13a95-5e25-72ab-a44d-792872f27e57/entries returned HTTP 200
+- Tour Manager tab: backend is confirmed/collected; waiting for the visible row to show Confirmed and Collected without refreshing or changing tabs.
+- Left the athlete result and manager Athletes roster open for review.
+- E2E phase summary: Athlete Registration: PASSED; Membership Payment: PASSED; Membership Confirmation: PASSED; Event Registration: PASSED; Insurance: PASSED; Event Payment: PASSED;
+
+
+## Evidence and display
+
+Recordings begin before first navigation. Each browser/page has its own clip. WebVTT captions identify the athlete registration, athlete event-list or Tour Manager tab and the action actually logged. Captions follow the encoded video timeline. The browser toolbar/tab strip is outside CDP recording; the captions identify which page is shown.
+
+Videos use contain and preserve the whole captured viewport with playback-speed controls. Expand Full-page views to see content below the fold or outside the visible viewport, without cropping. Those snapshots are additional context, not reconstructed video. The test browser uses its native dimensions, with no zoom/forced window dimensions. Test windows remain open.
+
+## Trace interpretation
+
+For each failed check, compare the expected visible label with the recorded DOM text and the separately logged backend state. If the API has Collected while the row has Pending, the observed defect is stale frontend rendering; successful backend collection does not make the frontend assertion pass.
+
+The checked-out frontend's useAthleteEvents query has no periodic refetch configured. Its useConfirmField hook invalidates the seed list when confirmation is accepted, while charges complete asynchronously. These are code leads consistent with stale status rendering, not proof of the exact deployed dev revision or root cause. No application code, cache invalidation or manual refresh was used to make these assertions pass.
+
+Raw results: artifacts/main-flows-2026-10-14/live-status-regional/test-results.json. Browser request/console metadata, full-page images and captioned videos are included in the report. The report combines these latest two methods with prior suite results; it is not a new full-suite run.
+
+The regional phone comparison normalizes punctuation before comparing digits. Its corrected rerun is artifacts/main-flows-2026-10-14/regional-corrected/test-results.json; the earlier formatted-phone false failure is superseded, not counted in the latest report.
+
+## Minor flows in two tabs
+
+The under-13 and 13–17 methods were also rerun in one visible browser with exactly two tabs. They share browser authentication and storage. Each test set up a new account, so these tabs are for side-by-side inspection; account isolation after a tab/account switch is not claimed. The teen method is blocked by Gmail private-link retrieval. The under-13 method fails because its expected inline guardian-consent screen was not detected. Post-run both tabs showed membership screens, so the latest result must not be described as an observed consent-email screen. Labels and post-run full-page views are recorded in artifacts/main-flows-2026-10-14/minor-two-tabs/tab-review.json. Both tabs remain open. Their recordings are from their own latest executions.

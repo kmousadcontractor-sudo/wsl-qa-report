@@ -1,0 +1,82 @@
+{
+  "id": "BM-LIVE-P02",
+  "example": 2,
+  "role": "Public",
+  "prompt": "For an entry deadline of 17:00 America/Los_Angeles on 12 November 2026, what are the exact date and time in Africa/Cairo? Use the time-zone rules for that date.",
+  "expected": "17:00 America/Los_Angeles on 12 November 2026 converts to 03:00 Africa/Cairo on 13 November 2026.",
+  "startedAt": "2026-10-15T18:04:40.634Z",
+  "backendBefore": [],
+  "status": "PASS",
+  "videoPath": "artifacts/beach-marshal-live-2026-10-15/alternate-recording-Public-1792087476261/tab-1.webm",
+  "videoStartSeconds": 1.756,
+  "sentAt": "2026-10-15T18:04:42.445Z",
+  "api": {
+    "status": 200,
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "input": {
+      "threadId": "46dcbe9e-c748-42ba-99a5-2296b68ec5dd",
+      "runId": "cc856d1f-6e0b-49b2-9a40-b233bdafda99",
+      "state": {},
+      "messages": [
+        {
+          "id": "63f824ab-0bbf-4f20-b2b6-81e10677d10a",
+          "role": "user",
+          "content": "For an entry deadline of 17:00 America/Los_Angeles on 12 November 2026, what are the exact date and time in Africa/Cairo? Use the time-zone rules for that date."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [],
+    "answer": "That deadline is **03:00 on Friday 13 November 2026** in Cairo.\n\nOn 12 November, Los Angeles is on standard time (UTC−8), because its daylight saving time ends on 1 November. Cairo will be back on standard time too (UTC+2), because Egypt's summer time ends on the last Thursday of October. That puts Cairo 10 hours ahead. Right now the gap is 10 hours as well (UTC−7 and UTC+3), so it's the same on both dates.\n\n17:00 in Los Angeles on Thursday 12 November is 01:00 UTC on 13 November, which is 03:00 Cairo time. It falls after midnight, so to be safe, submit by the evening of 12 November your time.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "46dcbe9e-c748-42ba-99a5-2296b68ec5dd",
+        "runId": "cc856d1f-6e0b-49b2-9a40-b233bdafda99"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "46dcbe9e-c748-42ba-99a5-2296b68ec5dd",
+        "runId": "cc856d1f-6e0b-49b2-9a40-b233bdafda99"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "STATE_SNAPSHOT",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [],
+  "actual": "That deadline is **03:00 on Friday 13 November 2026** in Cairo.\n\nOn 12 November, Los Angeles is on standard time (UTC−8), because its daylight saving time ends on 1 November. Cairo will be back on standard time too (UTC+2), because Egypt's summer time ends on the last Thursday of October. That puts Cairo 10 hours ahead. Right now the gap is 10 hours as well (UTC−7 and UTC+3), so it's the same on both dates.\n\n17:00 in Los Angeles on Thursday 12 November is 01:00 UTC on 13 November, which is 03:00 Cairo time. It falls after midnight, so to be safe, submit by the evening of 12 November your time.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P02-alternate.png",
+  "videoEndSeconds": 9.631,
+  "visibleText": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nLog In\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited States\nEnglish\n1\nDate of Birth\nCurrent step\n2\nAccount\nNot started\n3\nAthlete Details\nNot started\n4\nMembership\nNot started\n5\nPayment\nNot started\nPlease enter your date of birth\nDate of Birth*\nContinue\n\nAlready have an account? Login\n\nBeach Marshal\nNew conversation\n\nFor an entry deadline of 17:00 America/Los_Angeles on 12 November 2026, what are the exact date and time in Africa/Cairo? Use the time-zone rules for that date.\n\nThat deadline is 03:00 on Friday 13 November 2026 in Cairo.\n\nOn 12 November, Los Angeles is on standard time (UTC−8), because its daylight saving time ends on 1 November. Cairo will be back on standard time too (UTC+2), because Egypt's summer time ends on the last Thursday of October. That puts Cairo 10 hours ahead. Right now the gap is 10 hours as well (UTC−7 and UTC+3), so it's the same on both dates.\n\n17:00 in Los Angeles on Thursday 12 November is 01:00 UTC on 13 November, which is 03:00 Cairo time. It falls after midnight, so to be safe, submit by the evening of 12 November your time.\n\nThat deadline is **03:00 on Friday 13 November 2026** in Cairo. On 12 November, Los Angeles is on standard time (UTC−8), because its daylight saving time ends on 1 November. Cairo will be back on standard time too (UTC+2), because Egypt's summer time ends on the last Thursday of October. That puts Cairo 10 hours ahead. Right now the gap is 10 hours as well (UTC−7 and UTC+3), so it's the same on both dates. 17:00 in Los Angeles on Thursday 12 November is 01:00 UTC on 13 November, which is 03:00 Cairo time. It falls after midnight, so to be safe, submit by the evening of 12 November your time.",
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+  "finishedAt": "2026-10-15T18:04:50.224Z",
+  "recordingSelection": "Active application capture selected from both recorded tabs; launch blank excluded; decoded frames reviewed.",
+  "assessment": "Correct date-specific conversion: 03:00 on 13 November. Original unsolicited wrong conversion remains recorded; this explicitly dated example did not reproduce it.",
+  "originalExampleStatus": "FAIL",
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-P02-example-2-BM-LIVE-P02-alternate.png",
+    "videoNote": "Alternate example captured with Chrome DevTools Protocol Page.startScreencast at the native browser viewport; no zoom, scaling or crop. Focused clip of this request and observed result.",
+    "video": "videos/BM-LIVE-P02-example-2.webm",
+    "log": "evidence/BM-LIVE-P02-example-2.json"
+  }
+}

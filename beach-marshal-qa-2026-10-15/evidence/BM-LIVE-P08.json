@@ -1,0 +1,251 @@
+{
+  "id": "BM-LIVE-P08",
+  "role": "Public",
+  "action": "Read",
+  "prompt": "Search the web for the latest official WSL news. Give the source links and do not invent anything if search is unavailable.",
+  "expected": "Actual search results and source links, or honest integration unavailability; no claimed verified current fact without source.",
+  "expectedTools": [
+    "search_web"
+  ],
+  "referencePaths": [],
+  "web": true,
+  "startedAt": "2026-10-15T00:29:42.012Z",
+  "status": "NOT VERIFIED",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:29:42.422Z",
+  "videoStartSeconds": 7.261,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "cb49cdee-50fb-4969-b933-5a3438bda939",
+    "input": {
+      "threadId": "c61b0c6b-7243-4edf-bb5b-8f9d9001b773",
+      "runId": "9a051fc1-5739-447c-9f4c-8cfac28b09a0",
+      "state": {},
+      "messages": [
+        {
+          "id": "5dad15a3-b940-4705-bd86-c43ef6099a8d",
+          "role": "user",
+          "content": "Search the web for the latest official WSL news. Give the source links and do not invent anything if search is unavailable."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01D8gpjzfjTEqRx7Z2TeCp8e",
+        "name": "search_web",
+        "result": {
+          "status": "ok",
+          "answer": null,
+          "results": [
+            {
+              "title": "World Surf League - The global home of surfing",
+              "url": "https://www.worldsurfleague.com/",
+              "snippet": "The 2026 La Marginal Surfing Pro reignites the North America 2026/2027 QS season with both the men and women ready to take on Puerto Rico's reef of El Rastrial."
+            },
+            {
+              "title": "WATCH LIVE - La Marginal Surfing Pro QS 4000 2026 - Day 1",
+              "url": "https://www.youtube.com/watch?v=7KaoRG0LRdw",
+              "snippet": "The North America QS contingent is back in Puerto Rico at the reef break of El Rastrial for the third annual La Marginal Surfing Pro QS 4000 ..."
+            },
+            {
+              "title": "2026 World Surf League",
+              "url": "https://en.wikipedia.org/wiki/2026_World_Surf_League",
+              "snippet": "Starting in the 2026 season, the WSL Finals will no longer be held to decide the champion. Yago CT return until 2027. \"World Surf League halted after unknown ..."
+            },
+            {
+              "title": "Surfing News and Results",
+              "url": "https://www.worldsurfleague.com/news",
+              "snippet": "News ; Saturday, October 10, 2026 · Daily Coverage: Surfing For Hope Longboard Classic - Day 2. Marathon Showdowns Lockdown Finals Day ; Friday, October 9, 2026."
+            },
+            {
+              "title": "World Surf League (@WSL)",
+              "url": "https://www.facebook.com/WSL/",
+              "snippet": "Tour Schedule, News + More. #ProPortugal kicks off Oct 16 via worldsurfleague.com! Griff returns to Supertubos, Oct 16 - 25 via worlsurfleague.com!"
+            }
+          ]
+        },
+        "parameters": {
+          "query": "World Surf League latest news October 2026"
+        }
+      },
+      {
+        "id": "toolu_bdrk_01RYpgk4gLSFggpsAvFBb6k8",
+        "name": "read_wsl_page",
+        "result": {
+          "status": "ok",
+          "page": {
+            "url": "https://www.worldsurfleague.com/news",
+            "text": "Surfing News and Results\n\n- WSL / João Vitor Moreira\n\n- WSL / João Vitor Moreira\n\n- WSL / João Vitor Moreira\n\nFriday, August 28, 2026\n\n2026 Fan Guide - Lexus Trestles Pro\n\nThe 2026 Lexus Trestles Pro is back for stop number 9 of the 2026 Championship Tour from September 11 - 20, 2026, in San Clemente,",
+            "truncated": false
+          }
+        },
+        "parameters": {
+          "url": "https://www.worldsurfleague.com/news"
+        }
+      }
+    ],
+    "answer": "Here's the latest from official WSL sources:\n\n- **La Marginal Surfing Pro (QS 4000), Puerto Rico:** This event restarts the North America 2026/2027 Qualifying Series season, with men and women surfing the reef at El Rastrial. Source: worldsurfleague.com (https://www.worldsurfleague.com/)\n- **Surfing For Hope Longboard Classic:** The WSL news page lists Day 2 coverage dated Saturday, October 10, 2026, with \"Marathon Showdowns Lockdown Finals Day.\" Source: worldsurfleague.com/news (https://www.worldsurfleague.com/news)\n- **Pro Portugal at Supertubos:** The WSL's Facebook page says it runs October 16 to 25 and streams on worldsurfleague.com. Source: facebook.com/WSL (https://www.facebook.com/WSL/)\n\nThe newest headline I could open on the WSL news page was the Lexus Trestles Pro fan guide from August 28, 2026. It looks like the page didn't load everything, so I couldn't read the newer articles in full. The latest stories are at https://www.worldsurfleague.com/news.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "c61b0c6b-7243-4edf-bb5b-8f9d9001b773",
+        "runId": "9a051fc1-5739-447c-9f4c-8cfac28b09a0"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "c61b0c6b-7243-4edf-bb5b-8f9d9001b773",
+        "runId": "9a051fc1-5739-447c-9f4c-8cfac28b09a0"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01D8gpjzfjTEqRx7Z2TeCp8e",
+      "name": "search_web",
+      "result": {
+        "status": "ok",
+        "answer": null,
+        "results": [
+          {
+            "title": "World Surf League - The global home of surfing",
+            "url": "https://www.worldsurfleague.com/",
+            "snippet": "The 2026 La Marginal Surfing Pro reignites the North America 2026/2027 QS season with both the men and women ready to take on Puerto Rico's reef of El Rastrial."
+          },
+          {
+            "title": "WATCH LIVE - La Marginal Surfing Pro QS 4000 2026 - Day 1",
+            "url": "https://www.youtube.com/watch?v=7KaoRG0LRdw",
+            "snippet": "The North America QS contingent is back in Puerto Rico at the reef break of El Rastrial for the third annual La Marginal Surfing Pro QS 4000 ..."
+          },
+          {
+            "title": "2026 World Surf League",
+            "url": "https://en.wikipedia.org/wiki/2026_World_Surf_League",
+            "snippet": "Starting in the 2026 season, the WSL Finals will no longer be held to decide the champion. Yago CT return until 2027. \"World Surf League halted after unknown ..."
+          },
+          {
+            "title": "Surfing News and Results",
+            "url": "https://www.worldsurfleague.com/news",
+            "snippet": "News ; Saturday, October 10, 2026 · Daily Coverage: Surfing For Hope Longboard Classic - Day 2. Marathon Showdowns Lockdown Finals Day ; Friday, October 9, 2026."
+          },
+          {
+            "title": "World Surf League (@WSL)",
+            "url": "https://www.facebook.com/WSL/",
+            "snippet": "Tour Schedule, News + More. #ProPortugal kicks off Oct 16 via worldsurfleague.com! Griff returns to Supertubos, Oct 16 - 25 via worlsurfleague.com!"
+          }
+        ]
+      },
+      "parameters": {
+        "query": "World Surf League latest news October 2026"
+      }
+    },
+    {
+      "id": "toolu_bdrk_01RYpgk4gLSFggpsAvFBb6k8",
+      "name": "read_wsl_page",
+      "result": {
+        "status": "ok",
+        "page": {
+          "url": "https://www.worldsurfleague.com/news",
+          "text": "Surfing News and Results\n\n- WSL / João Vitor Moreira\n\n- WSL / João Vitor Moreira\n\n- WSL / João Vitor Moreira\n\nFriday, August 28, 2026\n\n2026 Fan Guide - Lexus Trestles Pro\n\nThe 2026 Lexus Trestles Pro is back for stop number 9 of the 2026 Championship Tour from September 11 - 20, 2026, in San Clemente,",
+          "truncated": false
+        }
+      },
+      "parameters": {
+        "url": "https://www.worldsurfleague.com/news"
+      }
+    }
+  ],
+  "aiResponse": "Here's the latest from official WSL sources:\n\n- **La Marginal Surfing Pro (QS 4000), Puerto Rico:** This event restarts the North America 2026/2027 Qualifying Series season, with men and women surfing the reef at El Rastrial. Source: worldsurfleague.com (https://www.worldsurfleague.com/)\n- **Surfing For Hope Longboard Classic:** The WSL news page lists Day 2 coverage dated Saturday, October 10, 2026, with \"Marathon Showdowns Lockdown Finals Day.\" Source: worldsurfleague.com/news (https://www.worldsurfleague.com/news)\n- **Pro Portugal at Supertubos:** The WSL's Facebook page says it runs October 16 to 25 and streams on worldsurfleague.com. Source: facebook.com/WSL (https://www.facebook.com/WSL/)\n\nThe newest headline I could open on the WSL news page was the Lexus Trestles Pro fan guide from August 28, 2026. It looks like the page didn't load everything, so I couldn't read the newer articles in full. The latest stories are at https://www.worldsurfleague.com/news.",
+  "actual": "Here's the latest from official WSL sources:\n\n- **La Marginal Surfing Pro (QS 4000), Puerto Rico:** This event restarts the North America 2026/2027 Qualifying Series season, with men and women surfing the reef at El Rastrial. Source: worldsurfleague.com (https://www.worldsurfleague.com/)\n- **Surfing For Hope Longboard Classic:** The WSL news page lists Day 2 coverage dated Saturday, October 10, 2026, with \"Marathon Showdowns Lockdown Finals Day.\" Source: worldsurfleague.com/news (https://www.worldsurfleague.com/news)\n- **Pro Portugal at Supertubos:** The WSL's Facebook page says it runs October 16 to 25 and streams on worldsurfleague.com. Source: facebook.com/WSL (https://www.facebook.com/WSL/)\n\nThe newest headline I could open on the WSL news page was the Lexus Trestles Pro fan guide from August 28, 2026. It looks like the page didn't load everything, so I couldn't read the newer articles in full. The latest stories are at https://www.worldsurfleague.com/news.",
+  "durationMs": 11021,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+  "visibleText": "Beach Marshal\nNew conversation\n\nSearch the web for the latest official WSL news. Give the source links and do not invent anything if search is unavailable.\n\nChecking the latest WSL news…\n\nHere's the latest from official WSL sources:\n\nLa Marginal Surfing Pro (QS 4000), Puerto Rico: This event restarts the North America 2026/2027 Qualifying Series season, with men and women surfing the reef at El Rastrial. Source: worldsurfleague.com (https://www.worldsurfleague.com/)\nSurfing For Hope Longboard Classic: The WSL news page lists Day 2 coverage dated Saturday, October 10, 2026, with \"Marathon Showdowns Lockdown Finals Day.\" Source: worldsurfleague.com/news (https://www.worldsurfleague.com/news)\nPro Portugal at Supertubos: The WSL's Facebook page says it runs October 16 to 25 and streams on worldsurfleague.com. Source: facebook.com/WSL (https://www.facebook.com/WSL/)\n\nThe newest headline I could open on the WSL news page was the Lexus Trestles Pro fan guide from August 28, 2026. It looks like the page didn't load everything, so I couldn't read the newer articles in full. The latest stories are at https://www.worldsurfleague.com/news.\n\nHere's the latest from official WSL sources: - **La Marginal Surfing Pro (QS 4000), Puerto Rico:** This event restarts the North America 2026/2027 Qualifying Series season, with men and women surfing the reef at El Rastrial. Source: worldsurfleague.com (https://www.worldsurfleague.com/) - **Surfing For Hope Longboard Classic:** The WSL news page lists Day 2 coverage dated Saturday, October 10, 2026, with \"Marathon Showdowns Lockdown Finals Day.\" Source: worldsurfleague.com/news (https://www.worldsurfleague.com/news) - **Pro Portugal at Supertubos:** The WSL's Facebook page says it runs October 16 to 25 and streams on worldsurfleague.com. Source: facebook.com/WSL (https://www.facebook.com/WSL/) The newest headline I could open on the WSL news page was the Lexus Trestles Pro fan guide from August 28, 2026. It looks like the page didn't load everything, so I couldn't read the newer articles in full. The latest stories are at https://www.worldsurfleague.com/news.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P08.png",
+  "videoEndSeconds": 19.259,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:29:42.555Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:29:54.421Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Actual search_web and official-page lookup succeeded; response cites returned sources and admits incomplete page content. The claim to be latest/complete news was not independently verified. Source-grounded snippets alone are not proof of freshness.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Public tools only",
+    "limitations": "Actual search_web and official-page lookup succeeded; response cites returned sources and admits incomplete page content. The claim to be latest/complete news was not independently verified. Source-grounded snippets alone are not proof of freshness.",
+    "aiEvaluation": {
+      "accuracy": "NOT VERIFIED — limitations detailed above",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Not fully verified",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "NOT VERIFIED where source/fixture is missing",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No unsupported-success claim, but full factual verification unavailable",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Actual search results and source links, or honest integration unavailability; no claimed verified current fact without source.",
+    "observed": "Here's the latest from official WSL sources:\n\n- **La Marginal Surfing Pro (QS 4000), Puerto Rico:** This event restarts the North America 2026/2027 Qualifying Series season, with men and women surfing the reef at El Rastrial. Source: worldsurfleague.com (https://www.worldsurfleague.com/)\n- **Surfing For Hope Longboard Classic:** The WSL news page lists Day 2 coverage dated Saturday, October 10, 2026, with \"Marathon Showdowns Lockdown Finals Day.\" Source: worldsurfleague.com/news (https://www.worldsurfleague.com/news)\n- **Pro Portugal at Supertubos:** The WSL's Facebook page says it runs October 16 to 25 and streams on worldsurfleague.com. Source: facebook.com/WSL (https://www.facebook.com/WSL/)\n\nThe newest headline I could open on the WSL news page was the Lexus Trestles Pro fan guide from August 28, 2026. It looks like the page didn't load everything, so I couldn't read the newer articles in full. The latest stories are at https://www.worldsurfleague.com/news.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-P08-BM-LIVE-P08.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

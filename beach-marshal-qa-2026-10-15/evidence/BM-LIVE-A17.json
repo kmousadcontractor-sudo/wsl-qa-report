@@ -1,0 +1,172 @@
+{
+  "id": "BM-LIVE-A17",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "What does Rule 1.02 say about the gap between CT seasons?",
+  "expected": "Minimum one-month break; source/citation matches bundled2026 rulebook.",
+  "expectedTools": [
+    "search_rules"
+  ],
+  "referencePaths": [],
+  "oracle": "rule1.02",
+  "startedAt": "2026-10-15T00:18:26.264Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:18:26.375Z",
+  "videoStartSeconds": 207.937,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "61d55af7-8dca-4fe5-b52b-102a241fd13b",
+    "input": {
+      "threadId": "b51c624d-a40b-4e2c-8616-636a7bafd1e7",
+      "runId": "40d682f1-8ce1-47d3-9bad-95a8c9635457",
+      "state": {},
+      "messages": [
+        {
+          "id": "a5e68d42-e79e-4d94-9a71-9bc8a4172760",
+          "role": "user",
+          "content": "What does Rule 1.02 say about the gap between CT seasons?"
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01Uys8eF6zPXv5AnTs6utruR",
+        "name": "get_rule",
+        "result": {
+          "status": "ok",
+          "rule": {
+            "number": "1.02",
+            "title": "Scheduling",
+            "page": 9,
+            "text": "On completion of the CT Surfing Season, there will be a minimum one-month break before the start of the next CT Surfing Season."
+          }
+        },
+        "parameters": {
+          "number": "1.02"
+        }
+      }
+    ],
+    "answer": "Rule 1.02 (2026 WSL Rule Book, p.9) says that after a CT Surfing Season ends, there has to be a break of at least one month before the next CT Surfing Season starts.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "b51c624d-a40b-4e2c-8616-636a7bafd1e7",
+        "runId": "40d682f1-8ce1-47d3-9bad-95a8c9635457"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "b51c624d-a40b-4e2c-8616-636a7bafd1e7",
+        "runId": "40d682f1-8ce1-47d3-9bad-95a8c9635457"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01Uys8eF6zPXv5AnTs6utruR",
+      "name": "get_rule",
+      "result": {
+        "status": "ok",
+        "rule": {
+          "number": "1.02",
+          "title": "Scheduling",
+          "page": 9,
+          "text": "On completion of the CT Surfing Season, there will be a minimum one-month break before the start of the next CT Surfing Season."
+        }
+      },
+      "parameters": {
+        "number": "1.02"
+      }
+    }
+  ],
+  "aiResponse": "Rule 1.02 (2026 WSL Rule Book, p.9) says that after a CT Surfing Season ends, there has to be a break of at least one month before the next CT Surfing Season starts.",
+  "actual": "Rule 1.02 (2026 WSL Rule Book, p.9) says that after a CT Surfing Season ends, there has to be a break of at least one month before the next CT Surfing Season starts.",
+  "durationMs": 3461,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWhat does Rule 1.02 say about the gap between CT seasons?\n\nRule 1.02\n\nScheduling\n\nPage 9\n\nOn completion of the CT Surfing Season, there will be a minimum one-month break before the start of the next CT Surfing Season.\n\nRule 1.02 (2026 WSL Rule Book, p.9) says that after a CT Surfing Season ends, there has to be a break of at least one month before the next CT Surfing Season starts.\n\nRule 1.02 (2026 WSL Rule Book, p.9) says that after a CT Surfing Season ends, there has to be a break of at least one month before the next CT Surfing Season starts.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A17.png",
+  "videoEndSeconds": 212.085,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:18:26.439Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:18:30.523Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Minimum one-month CT break and page9 citation match pinned Rule1.02; get_rule is a correct alternative to search_rules.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Own-athlete scope; direct foreign holdings403 verified in A16/S02",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Minimum one-month break; source/citation matches bundled2026 rulebook.",
+    "observed": "Rule 1.02 (2026 WSL Rule Book, p.9) says that after a CT Surfing Season ends, there has to be a break of at least one month before the next CT Surfing Season starts.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A17-BM-LIVE-A17.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

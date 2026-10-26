@@ -1,0 +1,98 @@
+{
+  "startedAt": "2026-10-15T00:13:52.399Z",
+  "environment": {
+    "app": "https://app.dev.worldsurfleague.com",
+    "api": "https://api.dev.worldsurfleague.com/api",
+    "timezone": "Africa/Cairo"
+  },
+  "fixture": {
+    "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+    "eventName": "QA Main Flow 6a41a52a",
+    "entryId": "01a13c40-3648-72cb-b13b-396818758d87",
+    "athleteName": "Pay Tester",
+    "entryState": {
+      "code": "confirmed",
+      "label": "Confirmed",
+      "tone": "neutral"
+    },
+    "payment": {
+      "code": "collected",
+      "label": "Collected",
+      "tone": "neutral"
+    },
+    "insurance": {
+      "state": "ok",
+      "label": "Insurance: verified",
+      "code": "verified"
+    },
+    "memberAthlete": {
+      "id": "01a13c43-c421-74a4-b266-58d419d278a3",
+      "name": "Junior Consent",
+      "firstName": "Junior",
+      "lastName": "Consent",
+      "initials": "JC",
+      "status": "active",
+      "signedCodes": [
+        "age_and_authority_certification",
+        "membership_terms_and_conditions",
+        "waiver_release_indemnity",
+        "health_insurance_authorization",
+        "coppa_verification",
+        "guardian_certification"
+      ],
+      "registeredByRole": "guardian",
+      "membership": {
+        "id": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+        "productCode": "junior",
+        "status": {
+          "code": "active",
+          "label": "Membership active",
+          "tone": "success"
+        },
+        "validTo": "2026-12-31"
+      }
+    },
+    "otherOwnerAthlete": {
+      "id": "01a13c42-9891-71a5-b144-1b5687a5c929",
+      "name": "Pay Tester",
+      "firstName": "Pay",
+      "lastName": "Tester",
+      "initials": "PT",
+      "status": "active",
+      "signedCodes": [
+        "age_and_authority_certification",
+        "guardian_certification",
+        "health_insurance_authorization",
+        "membership_terms_and_conditions",
+        "waiver_release_indemnity"
+      ],
+      "registeredByRole": "self",
+      "membership": {
+        "id": "01a13c42-b280-7579-aa49-a1c403fbb204",
+        "productCode": "junior",
+        "status": {
+          "code": "active",
+          "label": "Membership active",
+          "tone": "success"
+        },
+        "validTo": "2026-12-31"
+      }
+    }
+  },
+  "actions": [],
+  "roles": {},
+  "mutationAttempts": [],
+  "safety": "No confirmations allowed. Browser routes block non-read domain requests; allowed POST only assistant/run and auth login/logout/refresh. Reference API helper uses GET only.",
+  "recording": {
+    "size": {
+      "width": 1366,
+      "height": 641
+    },
+    "nativeViewport": true,
+    "noZoom": true,
+    "noCrop": true
+  },
+  "executionBlocker": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('dialog[open] textarea') to be visible\u001b[22m\n",
+  "finishedAt": "2026-10-15T00:14:17.905Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]"
+}

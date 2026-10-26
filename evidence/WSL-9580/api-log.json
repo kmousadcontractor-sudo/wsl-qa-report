@@ -1,0 +1,1344 @@
+{
+  "environment": "dev",
+  "eventId": "01a1553a-a180-743d-8e72-778dca575879",
+  "athleteId": "01a1553a-13d9-7157-a1de-44df652be145",
+  "testAccount": "qa.checklist.account.b837d9aede4c4b4baf2aee0a9e7eb711@btj5keea.mailosaur.net",
+  "recordedAt": "2026-10-19T17:33:48.691Z",
+  "requests": [
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:34:36.052Z",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:34:37.426Z",
+      "method": "GET",
+      "path": "/events?athlete=01a1553a-13d9-7157-a1de-44df652be145&scope=home-region",
+      "status": 200
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:34:39.281Z",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:34:39.626Z",
+      "method": "GET",
+      "path": "/events?athlete=01a1553a-13d9-7157-a1de-44df652be145&scope=home-region",
+      "status": 200
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:34:40.590Z",
+      "method": "GET",
+      "path": "/entries/options?event=01a1553a-a180-743d-8e72-778dca575879&athlete=01a1553a-13d9-7157-a1de-44df652be145",
+      "status": 200
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:34:40.878Z",
+      "method": "GET",
+      "path": "/athletes/01a1553a-13d9-7157-a1de-44df652be145",
+      "status": 200
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:34:40.879Z",
+      "method": "GET",
+      "path": "/entries/quote?event=01a1553a-a180-743d-8e72-778dca575879&athlete=01a1553a-13d9-7157-a1de-44df652be145&insurance=own-policy",
+      "status": 200
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:34:41.205Z",
+      "method": "GET",
+      "path": "/payments/methods",
+      "status": 200
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:34:47.491Z",
+      "method": "GET",
+      "path": "/entries/options?event=01a1553a-a180-743d-8e72-778dca575879&athlete=01a1553a-13d9-7157-a1de-44df652be145",
+      "status": 200
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:34:47.760Z",
+      "method": "GET",
+      "path": "/entries/quote?event=01a1553a-a180-743d-8e72-778dca575879&athlete=01a1553a-13d9-7157-a1de-44df652be145&insurance=own-policy",
+      "status": 200
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:34:47.760Z",
+      "method": "GET",
+      "path": "/athletes/01a1553a-13d9-7157-a1de-44df652be145",
+      "status": 200
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:34:48.088Z",
+      "method": "GET",
+      "path": "/payments/methods",
+      "status": 200
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:26.153Z",
+      "method": "POST",
+      "path": "/entries",
+      "status": 201,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "entryId": "01a1553b-82cd-77cb-a983-5bb808dc0d0c",
+        "total": {
+          "amount": 150,
+          "amountMinor": 15000,
+          "currency": "USD"
+        },
+        "chargeStatus": "requested"
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:26.479Z",
+      "method": "GET",
+      "path": "/entries/quote?event=01a1553a-a180-743d-8e72-778dca575879&athlete=01a1553a-13d9-7157-a1de-44df652be145&insurance=own-policy",
+      "status": 200
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:26.696Z",
+      "method": "GET",
+      "path": "/entries/options?event=01a1553a-a180-743d-8e72-778dca575879&athlete=01a1553a-13d9-7157-a1de-44df652be145",
+      "status": 200
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:27.539Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Being set aside on your card",
+            "noteTone": "default",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:32.803Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:38.072Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:43.330Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:48.603Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:53.871Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:35:59.130Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:04.395Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:36:07.647Z",
+      "method": "POST",
+      "path": "/entries",
+      "status": 201,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "entryId": "01a1553b-82cd-77cb-a983-5bb808dc0d0c",
+        "total": {
+          "amount": 150,
+          "amountMinor": 15000,
+          "currency": "USD"
+        },
+        "chargeStatus": "agreed"
+      }
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:36:07.973Z",
+      "method": "GET",
+      "path": "/entries/quote?event=01a1553a-a180-743d-8e72-778dca575879&athlete=01a1553a-13d9-7157-a1de-44df652be145&insurance=own-policy",
+      "status": 200
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:36:08.169Z",
+      "method": "GET",
+      "path": "/entries/options?event=01a1553a-a180-743d-8e72-778dca575879&athlete=01a1553a-13d9-7157-a1de-44df652be145",
+      "status": 200
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:36:08.743Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:09.668Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:36:14.003Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:14.935Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 2",
+      "at": "2026-10-19T17:36:18.491Z",
+      "method": "GET",
+      "path": "/events?athlete=01a1553a-13d9-7157-a1de-44df652be145&scope=home-region",
+      "status": 200
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:20.193Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:25.451Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:30.719Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:35.984Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:41.249Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:46.511Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:51.785Z",
+      "method": "GET",
+      "path": "/entries/QS-2026-M-086-001",
+      "status": 200,
+      "response": {
+        "reference": "QS-2026-M-086-001",
+        "eyebrow": "Entry Submitted",
+        "title": "You are on the waitlist",
+        "subtitle": "QA Checklist 20261019173348685-b4cf7e 1 · Dec 26 · 56th Street, Newport Beach, California · Men’s",
+        "footnote": "Reference QS-2026-M-086-001",
+        "status": {
+          "label": "Waitlisted",
+          "tone": "warning"
+        },
+        "banner": null,
+        "stats": [
+          {
+            "id": "fee",
+            "icon": "card",
+            "label": "Entry fee",
+            "value": "USD 150",
+            "note": "Set aside on your card, charged only if your place is confirmed",
+            "noteTone": "success",
+            "tone": "default"
+          },
+          {
+            "id": "insurance",
+            "icon": "shield",
+            "label": "Insurance",
+            "value": "Own policy",
+            "note": "Bring proof to event check-in",
+            "noteTone": "success",
+            "tone": "default"
+          }
+        ],
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            {
+              "id": "field",
+              "title": "WSL confirms the field",
+              "body": "Entries are held until the field is set. This page updates automatically."
+            }
+          ]
+        },
+        "actions": [
+          {
+            "code": "view_entry",
+            "label": "View entry",
+            "variant": "secondary",
+            "disabled": false,
+            "trailingChevron": true
+          }
+        ],
+        "getCoverage": null,
+        "emailNote": "A copy of this confirmation has been emailed to the account holder's email address.",
+        "pending": true
+      }
+    },
+    {
+      "tab": "Tab 1",
+      "at": "2026-10-19T17:36:57.264Z",
+      "method": "GET",
+      "path": "/events?athlete=01a1553a-13d9-7157-a1de-44df652be145&scope=home-region",
+      "status": 200
+    }
+  ],
+  "tourManagerRoster": [
+    {
+      "id": "01a1553b-82cd-77cb-a983-5bb808dc0d0c",
+      "entry": {
+        "code": "waitlisted",
+        "label": "Waitlisted",
+        "tone": "neutral"
+      },
+      "payment": {
+        "code": "authorized",
+        "label": "Authorized",
+        "tone": "neutral"
+      },
+      "group": "field"
+    }
+  ]
+}

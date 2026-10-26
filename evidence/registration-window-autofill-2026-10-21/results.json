@@ -1,0 +1,319 @@
+{
+  "startedAt": "2026-10-21T18:12:57.307Z",
+  "redeployNote": "Dev was redeployed on 21 Oct 2026: the New event form has no registration fields; the window is set in the Open for entries dialog.",
+  "rule": "close = first Tuesday 17:00 Pacific at least 4 weeks before the start; if entry opens inside that window, close = opening + 7 days; shown on the venue clock",
+  "zoneMismatches": [
+    "Himalayas, Oahu, Hawaii → America/Los_Angeles (should be Pacific/Honolulu; off by +2 h / +3 h)",
+    "Jaws, Maui, Hawaii → America/Los_Angeles (should be Pacific/Honolulu; off by +2 h / +3 h)",
+    "Outer Reef Kahului, Maui, Hawaii → America/Los_Angeles (should be Pacific/Honolulu; off by +2 h / +3 h)",
+    "Outer Reef Oahu, Oahu, Hawaii → America/Los_Angeles (should be Pacific/Honolulu; off by +2 h / +3 h)",
+    "Pyrenees, Pyrenees, France → WET (should be Europe/Paris; off by -1 h)",
+    "Avalanche, Guethary, France → America/Los_Angeles (should be Europe/Paris; off by -9 h)",
+    "Biscarrosse, Landes, France → America/Los_Angeles (should be Europe/Paris; off by -9 h)",
+    "Vendãe, Pays de la Loire, France → WET (should be Europe/Paris; off by -1 h)",
+    "Caparica, Lisbon District, Portugal → America/Los_Angeles (should be Europe/Lisbon; off by -8 h)",
+    "Gironde, Nouvelle-Aquitaine, France → America/Los_Angeles (should be Europe/Paris; off by -9 h)",
+    "Penmarch, Bretagne, France → America/Los_Angeles (should be Europe/Paris; off by -9 h)",
+    "Hossegor, Hossegor, France → America/Los_Angeles (should be Europe/Paris; off by -9 h)",
+    "Peniche, Leiria, Portugal → Europe/Paris (should be Europe/Lisbon; off by +1 h)",
+    "Pantin, A Coruna, Spain → America/Los_Angeles (should be Europe/Madrid; off by -9 h)",
+    "Gironde, Gironde, France → WET (should be Europe/Paris; off by -1 h)",
+    "Matosinhos, Porto, Portugal → America/Los_Angeles (should be Europe/Lisbon; off by -8 h)",
+    "Prowlers, Ireland → America/Los_Angeles (should be Europe/Dublin; off by -8 h)",
+    "Rokaputa, Spain → America/Los_Angeles (should be Europe/Madrid; off by -9 h)",
+    "San Borondon, Spain → Atlantic/Azores (should be Europe/Madrid; off by -2 h)",
+    "Landes, Landes, France → WET (should be Europe/Paris; off by -1 h)",
+    "Ain Diab, Casablanca, Morocco → WET (should be Africa/Casablanca; off by -1 h)",
+    "Anchor Point, Taghazout Bay, Morocco → Europe/Paris (should be Africa/Casablanca; off by +1 h)",
+    "agadir, Agadir, Morocco → America/Los_Angeles (should be Africa/Casablanca; off by -9 h / -8 h)",
+    "Namakwaland, Northern Cape, South Africa → America/Los_Angeles (should be Africa/Johannesburg; off by -10 h / -9 h)",
+    "Herolds Bay, Western Cape, South Africa → America/Los_Angeles (should be Africa/Johannesburg; off by -10 h / -9 h)",
+    "Seal Reef, South Africa → America/Los_Angeles (should be Africa/Johannesburg; off by -10 h / -9 h)",
+    "Umhlunga Rocks, Durban, South Africa → America/Los_Angeles (should be Africa/Johannesburg; off by -10 h / -9 h)"
+  ],
+  "cases": [
+    {
+      "id": "OE-01",
+      "title": "Minimum fields before Open for entries",
+      "area": "Minimum fields",
+      "status": "PASS",
+      "expected": "Confirmed blocked until: Location, Start and end dates, Sanctioning region, Event rating; Open for entries not available",
+      "actual": "missing: Location, Start and end dates, Sanctioning region, Event rating · open-for-entries available: false"
+    },
+    {
+      "id": "OE-02",
+      "title": "Form shows no registration fields and explains the rule",
+      "area": "Form",
+      "status": "PASS",
+      "expected": "no opens/closes fields; rule text present",
+      "actual": "fields: 0; rule text: true"
+    },
+    {
+      "id": "OE-03",
+      "title": "Open now, start 31 Dec 2026 (Hawaii): close defaults to the Tuesday 4+ weeks before, 17:00 Pacific on the venue clock",
+      "area": "Default close",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-04",
+      "title": "Schedule opening before the four-week cutoff: close stays on the default Tuesday",
+      "area": "Scheduled opening",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-05",
+      "title": "Schedule opening inside the four-week window: close becomes one week after the opening",
+      "area": "Scheduled opening",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-06",
+      "title": "Schedule opening after the event starts is refused",
+      "area": "Validation",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-07",
+      "title": "Schedule opening in the past is refused",
+      "area": "Validation",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-08",
+      "title": "Entries close after the event starts is refused",
+      "area": "Validation",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-09",
+      "title": "Open now for an event 20 days away: close defaults to one week from today",
+      "area": "Inside the window",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-10",
+      "title": "Open now for an event 4 days away: the default close must not fall after the start",
+      "area": "Inside the window",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-11",
+      "title": "Daylight saving: default close on Tue 27 Oct is 17:00 PDT = 14:00 Hawaii (the form text says PST)",
+      "area": "Time zones",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-12",
+      "title": "Sydney venue: times are on the venue clock (close is Wednesday noon) with \"in your time\" shown",
+      "area": "Time zones",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-13",
+      "title": "Hawaii venue stored with a non-Hawaii time zone: the dialog shows the wrong venue clock",
+      "area": "Time zones",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-14",
+      "title": "A typed close date is kept when switching between Open now and Schedule opening",
+      "area": "Manual values",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-15",
+      "title": "Open now saves the shown window and the event becomes Open for entries",
+      "area": "Save",
+      "status": "BLOCKED",
+      "expected": "-",
+      "actual": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened.",
+      "runError": "Blocked by BUG-EVT-500: creating or editing an event with a location and both dates returns HTTP 500 on dev (21 Oct 2026, after the redeploy), and the New event form's Create event does nothing, so no fresh event without a saved window could be confirmed and opened."
+    },
+    {
+      "id": "OE-16",
+      "title": "Venue time zones match their country (the window is shown on the venue clock)",
+      "area": "Data",
+      "status": "FAIL",
+      "expected": "each venue shows its own local clock",
+      "actual": "27 venues show a wrong clock, e.g. Himalayas, Oahu, Hawaii → America/Los_Angeles (should be Pacific/Honolulu; off by +2 h / +3 h); Jaws, Maui, Hawaii → America/Los_Angeles (should be Pacific/Honolulu; off by +2 h / +3 h); Outer Reef Kahului, Maui, Hawaii → America/Los_Angeles (should be Pacific/Honolulu; off by +2 h / +3 h); Outer Reef Oahu, Oahu, Hawaii → America/Los_Angeles (should be Pacific/Honolulu; off by +2 h / +3 h); Pyrenees, Pyrenees, France → WET (should be Europe/Paris; off by -1 h); Avalanche, Guethary, France → America/Los_Angeles (should be Europe/Paris; off by -9 h). (22 more use a different but equivalent zone name.)"
+    },
+    {
+      "id": "OE-17",
+      "title": "New event form: Create event with every field filled sends the event",
+      "area": "Event create",
+      "status": "FAIL",
+      "expected": "POST /tour-manager/events, then the event page (or a field message)",
+      "actual": "Name, tour QS Women, rating 2,000, Hawaii/Tahiti Nui, Ala Moana Bowls, 12/30/2026–12/30/2026, 48 athletes, prize USD 15000, fee USD 150 (from Settings): the button is enabled, but a click, a scripted click and Enter send no request, show no message and log no error. Prize money stays outlined red."
+    },
+    {
+      "id": "OE-18",
+      "title": "API create with location + start + end date succeeds",
+      "area": "Event create",
+      "status": "FAIL",
+      "expected": "HTTP 201 (or 422 naming a field)",
+      "actual": "HTTP 500 \"Something went wrong on our side\" whenever location, start date and end date are all present; each field alone, and any two of them, return 201. Same with format, field size, prize money or start ≠ end."
+    },
+    {
+      "id": "OE-19",
+      "title": "API edit: adding the end date to a draft that has a location and start date",
+      "area": "Event create",
+      "status": "FAIL",
+      "expected": "HTTP 200",
+      "actual": "PUT /tour-manager/events/{id} → HTTP 500."
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "01a15faa-c736-73b8-861a-e0e550872fed",
+      "name": "Waikiki zsa Women's Classic",
+      "location": "Ala Moana Bowls, Oahu, Hawaii · Honolulu time",
+      "zone": "Pacific/Honolulu"
+    },
+    {
+      "id": "01a15faf-2e10-7591-b237-8487c794e7f1",
+      "name": "Avoca Beach Summer Women's Pro",
+      "start": "2026-12-31",
+      "location": "Avoca Beach, NSW, Australia · Sydney time",
+      "zone": "Australia/Sydney"
+    }
+  ],
+  "finishedAt": "2026-10-21T18:20:37.785Z",
+  "bugs": [
+    {
+      "id": "BUG-EVT-500",
+      "title": "Event create/edit returns HTTP 500 when location, start and end date are all set",
+      "cases": [
+        "OE-18",
+        "OE-19"
+      ],
+      "severity": "High"
+    },
+    {
+      "id": "BUG-EVT-CREATE-NOOP",
+      "title": "New event form: Create event does nothing for a complete form",
+      "cases": [
+        "OE-17"
+      ],
+      "severity": "High"
+    },
+    {
+      "id": "BUG-VENUE-TZ",
+      "title": "27 venues are stored with a time zone that shows the wrong local time (Hawaii, France, Portugal, Morocco, South Africa, Ireland)",
+      "cases": [
+        "OE-16"
+      ],
+      "severity": "Medium"
+    }
+  ],
+  "zoneMismatchesAll": [
+    "Himalayas, Oahu, Hawaii → America/Los_Angeles",
+    "Jaws, Maui, Hawaii → America/Los_Angeles",
+    "Outer Reef Kahului, Maui, Hawaii → America/Los_Angeles",
+    "Outer Reef Oahu, Oahu, Hawaii → America/Los_Angeles",
+    "Pyrenees, Pyrenees, France → WET",
+    "Avalanche, Guethary, France → America/Los_Angeles",
+    "Biscarrosse, Landes, France → America/Los_Angeles",
+    "Vendãe, Pays de la Loire, France → WET",
+    "County Donegal, Ulster Province, Ireland → Europe/London",
+    "Caparica, Lisbon District, Portugal → America/Los_Angeles",
+    "Gran Canaria, Canary Islands, Spain → Europe/London",
+    "Gironde, Nouvelle-Aquitaine, France → America/Los_Angeles",
+    "Las Palmas, Canary Islands, Spain → WET",
+    "Las Palmas, Canary Islands, Spain → WET",
+    "Las Palmas, Canary Islands, Spain → WET",
+    "Penmarch, Bretagne, France → America/Los_Angeles",
+    "Hossegor, Hossegor, France → America/Los_Angeles",
+    "Peniche, Leiria, Portugal → Europe/Paris",
+    "Mullaghmore Head, Ireland → Europe/London",
+    "Mundaka, Basque Country, Spain → Europe/Paris",
+    "Pantin, A Coruna, Spain → America/Los_Angeles",
+    "Gironde, Gironde, France → WET",
+    "O Grove, Galicia, Spain → Europe/Paris",
+    "Coruña, Galicia, Spain → Europe/Paris",
+    "Gijón, Principality of Asturias, Spain → Europe/Paris",
+    "Playa Pantin, Valdoviño, Galicia, Spain → Europe/Paris",
+    "Praia da Fragata, Ferrol, Galicia, Spain → Europe/Paris",
+    "Praia de Caparica, Lisbon, Portugal → Europe/London",
+    "Praia de Doniños, Ferrol, A Coruña, Galicia, Spain → Europe/Paris",
+    "Matosinhos, Porto, Portugal → America/Los_Angeles",
+    "Sintra, Sintra, Portugal → Europe/London",
+    "Prowlers, Ireland → America/Los_Angeles",
+    "Punta Galea, Getxo, Spain → Europe/Paris",
+    "Rokaputa, Spain → America/Los_Angeles",
+    "San Borondon, Spain → Atlantic/Azores",
+    "Lanzarote, Canary Islands, Spain → WET",
+    "San Sebastian, Basque Country, Spain → Europe/Paris",
+    "Santander, Cantabria, Spain → Europe/Paris",
+    "Sopela, Basque Country, Spain → Europe/Paris",
+    "Landes, Landes, France → WET",
+    "Tapia de Casariego, Asturias, Spain → Europe/Paris",
+    "Trois Bassins, Reunion, France → Asia/Dubai",
+    "Ain Diab, Casablanca, Morocco → WET",
+    "Anchor Point, Taghazout Bay, Morocco → Europe/Paris",
+    "agadir, Agadir, Morocco → America/Los_Angeles",
+    "Namakwaland, Northern Cape, South Africa → America/Los_Angeles",
+    "Herolds Bay, Western Cape, South Africa → America/Los_Angeles",
+    "Seal Reef, South Africa → America/Los_Angeles",
+    "Umhlunga Rocks, Durban, South Africa → America/Los_Angeles"
+  ],
+  "zoneEquivalentNames": [
+    "County Donegal, Ulster Province, Ireland → Europe/London (should be Europe/Dublin; off by )",
+    "Gran Canaria, Canary Islands, Spain → Europe/London (should be Atlantic/Canary; off by )",
+    "Las Palmas, Canary Islands, Spain → WET (should be Atlantic/Canary; off by )",
+    "Las Palmas, Canary Islands, Spain → WET (should be Atlantic/Canary; off by )",
+    "Las Palmas, Canary Islands, Spain → WET (should be Atlantic/Canary; off by )",
+    "Mullaghmore Head, Ireland → Europe/London (should be Europe/Dublin; off by )",
+    "Mundaka, Basque Country, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "O Grove, Galicia, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Coruña, Galicia, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Gijón, Principality of Asturias, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Playa Pantin, Valdoviño, Galicia, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Praia da Fragata, Ferrol, Galicia, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Praia de Caparica, Lisbon, Portugal → Europe/London (should be Europe/Lisbon; off by )",
+    "Praia de Doniños, Ferrol, A Coruña, Galicia, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Sintra, Sintra, Portugal → Europe/London (should be Europe/Lisbon; off by )",
+    "Punta Galea, Getxo, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Lanzarote, Canary Islands, Spain → WET (should be Atlantic/Canary; off by )",
+    "San Sebastian, Basque Country, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Santander, Cantabria, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Sopela, Basque Country, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Tapia de Casariego, Asturias, Spain → Europe/Paris (should be Europe/Madrid; off by )",
+    "Trois Bassins, Reunion, France → Asia/Dubai (should be Indian/Reunion; off by )"
+  ]
+}

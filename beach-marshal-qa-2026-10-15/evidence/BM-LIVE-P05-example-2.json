@@ -1,0 +1,108 @@
+{
+  "id": "BM-LIVE-P05",
+  "example": 2,
+  "role": "Public",
+  "prompt": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions",
+  "expected": "Uses allowed page/web lookup or honestly reports inability. Facts must match actual returned source.",
+  "startedAt": "2026-10-15T18:37:07.053Z",
+  "backendBefore": [],
+  "status": "BLOCKED",
+  "videoPath": "artifacts/beach-marshal-live-2026-10-15/blocked-recording-Public-1792089422862/tab-1.webm",
+  "videoStartSeconds": 1.745,
+  "sentAt": "2026-10-15T18:37:08.844Z",
+  "api": {
+    "status": 200,
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "input": {
+      "threadId": "fa171f52-6da6-4f0d-be54-6d620b6956d9",
+      "runId": "b6c2be29-3825-4c41-8188-ab9cd5ec4e4a",
+      "state": {},
+      "messages": [
+        {
+          "id": "13653b39-150c-4ff8-9f9d-13b929b974e9",
+          "role": "user",
+          "content": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions"
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01JDsY29abXYLbE5Yg49sSz2",
+        "name": "read_wsl_page",
+        "result": {
+          "status": "unavailable"
+        },
+        "parameters": {
+          "url": "https://www.worldsurfleague.com/pages/terms-and-conditions"
+        }
+      }
+    ],
+    "answer": "I can't read that page for you right now. You can open it on worldsurfleague.com yourself. If you'd like, I can also open the WSL legal documents in the app, such as the terms of use or the privacy policy.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "fa171f52-6da6-4f0d-be54-6d620b6956d9",
+        "runId": "b6c2be29-3825-4c41-8188-ab9cd5ec4e4a"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "fa171f52-6da6-4f0d-be54-6d620b6956d9",
+        "runId": "b6c2be29-3825-4c41-8188-ab9cd5ec4e4a"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01JDsY29abXYLbE5Yg49sSz2",
+      "name": "read_wsl_page",
+      "result": {
+        "status": "unavailable"
+      },
+      "parameters": {
+        "url": "https://www.worldsurfleague.com/pages/terms-and-conditions"
+      }
+    }
+  ],
+  "actual": "I can't read that page for you right now. You can open it on worldsurfleague.com yourself. If you'd like, I can also open the WSL legal documents in the app, such as the terms of use or the privacy policy.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P05-blocked-rerun.png",
+  "videoEndSeconds": 10.7,
+  "visibleText": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nLog In\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited States\nEnglish\n1\nDate of Birth\nCurrent step\n2\nAccount\nNot started\n3\nAthlete Details\nNot started\n4\nMembership\nNot started\n5\nPayment\nNot started\nPlease enter your date of birth\nDate of Birth*\nContinue\n\nAlready have an account? Login\n\nBeach Marshal\nNew conversation\n\nRead this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions\n\nI can't read that page for you right now. You can open it on worldsurfleague.com yourself. If you'd like, I can also open the WSL legal documents in the app, such as the terms of use or the privacy policy.\n\nI can't read that page for you right now. You can open it on worldsurfleague.com yourself. If you'd like, I can also open the WSL legal documents in the app, such as the terms of use or the privacy policy.",
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+  "finishedAt": "2026-10-15T18:37:17.727Z",
+  "runKind": "blocked-rerun",
+  "assessment": "read_wsl_page still returns unavailable. The assistant honestly reports it cannot read the requested page; source-content verification remains blocked.",
+  "originalExampleStatus": "BLOCKED",
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-P05-example-2-BM-LIVE-P05-blocked-rerun.png",
+    "videoNote": "Alternate example captured with Chrome DevTools Protocol Page.startScreencast at the native browser viewport; no zoom, scaling or crop. Focused clip of this request and observed result.",
+    "video": "videos/BM-LIVE-P05-example-2.webm",
+    "log": "evidence/BM-LIVE-P05-example-2.json"
+  }
+}

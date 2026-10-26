@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-22T14:19:19.255Z",
+  "environment": "staging",
+  "recordedBuild": "41685710eb0a41768af132c50d8f268f81c227f1-12147",
+  "commit": "41685710eb0a41768af132c50d8f268f81c227f1",
+  "fixPR": "https://github.com/worldsurfleague/wsl-web/pull/3936",
+  "fixMerge": "b40a64667f4810cda655dbefe65d162339d0e96b",
+  "comparison": {
+    "status": "diverged",
+    "ahead_by": 364,
+    "behind_by": 14
+  },
+  "sourceChecks": [
+    {
+      "file": "common/lib/Asp/Da/Heat.php",
+      "guardPresent": false
+    },
+    {
+      "file": "core/website/modules/postEventWatchHeatDetailsPopup.phtml",
+      "nullTabFallbackPresent": false
+    },
+    {
+      "file": "core/website/modules/postEventWatchHeatMatchupHeadToHead.phtml",
+      "fewerThanTwoAthletesGuardPresent": false
+    }
+  ],
+  "conclusion": "Recorded staging build does not contain WSL-9678 fix. Excluded from ticket verification and result totals; historical evidence retained without sign-off impact.",
+  "limit": "This verifies the build recorded by the test responses, not a newly sampled current staging deployment."
+}

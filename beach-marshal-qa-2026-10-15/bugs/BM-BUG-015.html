@@ -1,0 +1,2806 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{font:16px/1.6 system-ui;background:#f4f6fa;color:#17344c;margin:0;padding:20px;overflow-wrap:anywhere}main{max-width:1250px;margin:auto}section,article{padding:22px;margin:20px 0;background:white;border:1px solid #dbe2e9;border-radius:12px}h1{color:#073752}h2{color:#124d70}summary{cursor:pointer;font-weight:650}details{padding:12px;background:#f8fafc;border-radius:8px;margin:12px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf2f7;padding:14px}a{color:#075db0}table{width:100%;border-collapse:collapse;table-layout:fixed}td,th{padding:10px;border-bottom:1px solid #dbe2e9;text-align:left;vertical-align:top}img,video{max-width:100%;width:100%;height:auto;object-fit:contain}nav a{margin-right:18px}button,select,input{font:inherit;padding:8px;margin:4px}input{max-width:100%}.PASS{color:#186534}.FAIL{color:#a52323}.BLOCKED{color:#855b00}.NOT-VERIFIED{color:#555}.tag{font-weight:bold}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}.caption{background:#eef3f8;padding:12px}small{color:#506273}@media(max-width:650px){body{padding:8px}section,article{padding:12px}.pair{grid-template-columns:1fr}td,th{padding:5px;font-size:13px}}</style><title>BM-BUG-015 Incorrect catalogue count — BM-LIVE-T12</title><main><a href="index.html">All bug reports</a> · <a href="../index.html#BM-LIVE-T12">Linked check</a><h1>BM-BUG-015 — Incorrect catalogue count — BM-LIVE-T12</h1><p>Role: TourManager · Severity: Medium · Priority: P2 (proposed)</p><section><section><h4>Flow in simple steps</h4><ol><li>Use normal application role/session.</li><li>Open Beach Marshal.</li><li>Start a new conversation.</li><li>Send the exact recorded prompt.</li><li>Wait for the real stream and capture answer, tools and UI.</li></ol><p><strong>Passed on rerun.</strong> The failure below is the original result, retained for comparison.</p><details><summary>Original failed example</summary><p><strong>Prompt:</strong> Show available tours, regions and locations. Explain if any list is limited.</p><p><strong>Expected:</strong> Uses real catalogues and does not claim bounded first20 lists are exhaustive.</p><p><strong>Actual:</strong> All three lists came back in full, with no paging or cut-off. The one gap: no region is marked as international. Instead, the international tours simply have no home region.
+
+**Tours (50)**
+- International, men's and women's: Championship Tour, Challenger Series, International Qualifying Series and World Longboard Tour.
+- Regional, men's and women's in each of the 7 regions: Qualifying Series, Longboard Qualifying Series and Pro Junior Series.
+
+**Regions (7):** Africa, Asia, Australia/Oceania, Europe, Hawaii/Tahiti Nui, North America and South America.
+
+**Locations (69)**
+- **Africa:** Ain Diab (Casablanca), Anchor Point (Taghazout), East Beach (Port Alfred), New Pier (Durban), Supertubes (Jeffreys Bay), Victoria Bay (George), Willard Beach (Ballito)
+- **Asia:** Akabane Beach (Tahara), Cloud 9 (Siargao), Jinzun Harbor (Taitung), Kisakihama (Miyazaki), Mahabalipuram, Nakatajima Beach (Hamamatsu), Riyue Bay (Hainan), Sabang Beach (Baler), Siheung Wave Park, Surf Abu Dhabi, Ujung Bocur (Krui)
+- **Australia/Oceania:** Bells Beach, Burleigh Heads, Cape Woolamai, Cloudbreak (Fiji), Duranbah, Fitzroy Beach (New Plymouth), Lennox Point, Manly, Manu Bay (Raglan), Merewether, Newcastle Beach, Noosa Heads, North Narrabeen, Snapper Rocks, Surfers Point (Margaret River)
+- **Europe:** Costa da Caparica, Fistral Beach (Newquay), Lacanau Océan, La Piste (Capbreton), Leça da Palmeira, Pantín, Praia da Fragata (Ferrol), Praia de Razo (Carballo), Ribeira d'Ilhas (Ericeira), Supertubos (Peniche), The Peak (Bundoran)
+- **Hawaii/Tahiti Nui:** Ala Moana Bowls, Banzai Pipeline, Haleiwa Ali'i Beach Park, Sunset Beach, Papara, Rangiroa, Taapuna, Teahupo'o
+- **North America:** 1st Street Jetty (Virginia Beach), Huntington Beach Pier, La Marginal (Puerto Rico), Lower Trestles, Pismo Beach Pier, Punta Roca (El Salvador), Soup Bowl (Barbados)
+- **South America:** El Gringo (Arica), Itamambuca (Ubatuba), Itaúna (Saquarema), Joaquina (Florianópolis), Maresias, Ponta Negra (Natal), Praia da Taíba, Praia da Vila (Imbituba), Señoritas (Punta Hermosa)</p></details><h4>What went wrong</h4><p>The assistant reported 69 locations; the tool and reference API both returned 68.</p><details><summary>AWS logs and investigation</summary><p>Answer-generation counting error confirmed</p><p>The returned tool data and independent API both contain 68 locations. The stored assistant answer says 69. The mismatch occurs in answer generation, after correct tool data was returned.</p><p><strong>Suggested fix:</strong> Render a count calculated from the returned data rather than asking the model to count it.</p><pre>{
+  &quot;runIds&quot;: [
+    &quot;bdbd9f6f-a790-438c-a7dc-f298ad2e28a5&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;34b47394-5902-4ea1-ad2f-72abcc0b75e7&quot;
+  ],
+  &quot;logs&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:34.699930837Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:34+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;34b47394-5902-4ea1-ad2f-72abcc0b75e7&quot;,
+      &quot;run_id&quot;: &quot;bdbd9f6f-a790-438c-a7dc-f298ad2e28a5&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:36.472946268Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:36+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;34b47394-5902-4ea1-ad2f-72abcc0b75e7&quot;,
+      &quot;run_id&quot;: &quot;bdbd9f6f-a790-438c-a7dc-f298ad2e28a5&quot;
+    }
+  ]
+}</pre></details><section><h4>Example 2 — PASS</h4><p><strong>Original example:</strong> FAIL; its original evidence is retained below.</p><p><strong>Alternate flow:</strong> How many available locations are there in total? Count the returned locations precisely; also list the locations in Asia.</p><p><strong>Expected:</strong> Return the current location count and the actual Asia subset, verified against current API data.</p><p><strong>Observed:</strong> Tool and API both now contain 69 locations, including the previously added QA Live Flow 1510 location; the answer correctly reports 69 total and 11 in Asia. The original run had only 68, so its recorded answer of 69 remains a genuine historical mismatch.</p><p><strong>Exact answer:</strong> The hub has **69 locations** in total. **11** of them are in the Asia region:
+
+- Akabane Beach, Tahara, Aichi, Japan
+- Cloud 9, General Luna, Siargao, Philippines
+- Jinzun Harbor, Donghe, Taitung, Taiwan
+- Kisakihama, Miyazaki, Japan
+- Mahabalipuram, Tamil Nadu, India
+- Nakatajima Beach, Hamamatsu, Shizuoka, Japan
+- Riyue Bay, Wanning, Hainan, China
+- Sabang Beach, Baler, Aurora, Philippines
+- Siheung Wave Park, Siheung, Gyeonggi, South Korea
+- Surf Abu Dhabi, Hudayriat Island, Abu Dhabi, United Arab Emirates
+- Ujung Bocur, Krui, Lampung, Indonesia
+
+The 69 includes one that looks like a test entry: &quot;QA Live Flow 1510&quot; in San Diego.</p><details><summary>Alternate example recording and API evidence</summary><a href="../screenshots/BM-LIVE-T12-example-2-BM-LIVE-T12-alternate.png"><img loading="lazy" src="../screenshots/BM-LIVE-T12-example-2-BM-LIVE-T12-alternate.png" alt="Actual execution screenshot"></a><video controls preload="metadata" src="../videos/BM-LIVE-T12-example-2.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label></p><p class="caption">Alternate example captured with Chrome DevTools Protocol Page.startScreencast at the native browser viewport; no zoom, scaling or crop. Focused clip of this request and observed result.</p><a href="../evidence/BM-LIVE-T12-example-2.json">Full sanitized action log and API evidence</a><pre>{
+  &quot;api&quot;: {
+    &quot;status&quot;: 200,
+    &quot;endpoint&quot;: &quot;https://api.dev.worldsurfleague.com/api/assistant/run&quot;,
+    &quot;input&quot;: {
+      &quot;threadId&quot;: &quot;22575436-93a2-4dee-8d28-25666778f099&quot;,
+      &quot;runId&quot;: &quot;42628c2e-865e-4951-8efa-2cc43ef72e8c&quot;,
+      &quot;state&quot;: {},
+      &quot;messages&quot;: [
+        {
+          &quot;id&quot;: &quot;b9f27edb-2192-422d-9ec3-2155ec04bcd0&quot;,
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;How many available locations are there in total? Count the returned locations precisely; also list the locations in Asia.&quot;
+        }
+      ],
+      &quot;tools&quot;: [],
+      &quot;context&quot;: [],
+      &quot;forwardedProps&quot;: {}
+    }
+  },
+  &quot;runIds&quot;: [
+    {
+      &quot;type&quot;: &quot;RUN_STARTED&quot;,
+      &quot;threadId&quot;: &quot;22575436-93a2-4dee-8d28-25666778f099&quot;,
+      &quot;runId&quot;: &quot;42628c2e-865e-4951-8efa-2cc43ef72e8c&quot;
+    },
+    {
+      &quot;type&quot;: &quot;RUN_FINISHED&quot;,
+      &quot;threadId&quot;: &quot;22575436-93a2-4dee-8d28-25666778f099&quot;,
+      &quot;runId&quot;: &quot;42628c2e-865e-4951-8efa-2cc43ef72e8c&quot;
+    }
+  ],
+  &quot;tools&quot;: [
+    {
+      &quot;id&quot;: &quot;toolu_bdrk_01Xd5NjhwStF266957yQ9rAR&quot;,
+      &quot;name&quot;: &quot;list_locations&quot;,
+      &quot;result&quot;: {
+        &quot;status&quot;: &quot;ok&quot;,
+        &quot;locations&quot;: [
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6ef-7081-9e61-c5264418b262&quot;,
+            &quot;spot&quot;: &quot;1st Street Jetty&quot;,
+            &quot;town&quot;: &quot;Virginia Beach&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;VA&quot;,
+            &quot;country_code&quot;: &quot;US&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/New_York&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6e2-7336-a094-e7b8711530ca&quot;,
+            &quot;spot&quot;: &quot;Ain Diab&quot;,
+            &quot;town&quot;: &quot;Casablanca&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;MA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Casablanca&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a727-73c2-a703-3d3b8fa0b063&quot;,
+            &quot;spot&quot;: &quot;Akabane Beach&quot;,
+            &quot;town&quot;: &quot;Tahara&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Aichi&quot;,
+            &quot;country_code&quot;: &quot;JP&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a66b-750a-9570-052d6afd4785&quot;,
+            &quot;spot&quot;: &quot;Ala Moana Bowls&quot;,
+            &quot;town&quot;: &quot;Honolulu&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Oahu&quot;,
+            &quot;country_code&quot;: &quot;US-HI&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6df-73b1-836d-2a939b356cb5&quot;,
+            &quot;spot&quot;: &quot;Anchor Point&quot;,
+            &quot;town&quot;: &quot;Taghazout&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;MA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Casablanca&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a65b-74b1-b317-a77cae6a4afb&quot;,
+            &quot;spot&quot;: &quot;Banzai Pipeline&quot;,
+            &quot;town&quot;: &quot;Pupukea&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Oahu&quot;,
+            &quot;country_code&quot;: &quot;US-HI&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a67b-71ee-bcba-ae8627cdb6c5&quot;,
+            &quot;spot&quot;: &quot;Bells Beach&quot;,
+            &quot;town&quot;: &quot;Torquay&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;VIC&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Melbourne&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a684-7798-afb2-9a56dce66bce&quot;,
+            &quot;spot&quot;: &quot;Burleigh Heads&quot;,
+            &quot;town&quot;: &quot;Burleigh Heads&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;QLD&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a69f-7113-83a6-098b96b1464f&quot;,
+            &quot;spot&quot;: &quot;Cape Woolamai&quot;,
+            &quot;town&quot;: &quot;Phillip Island&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;VIC&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Melbourne&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a71b-728e-85f4-98ea33ac94cf&quot;,
+            &quot;spot&quot;: &quot;Cloud 9&quot;,
+            &quot;town&quot;: &quot;General Luna&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Siargao&quot;,
+            &quot;country_code&quot;: &quot;PH&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Manila&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6a9-75ca-b7a4-fd2ae9ee0762&quot;,
+            &quot;spot&quot;: &quot;Cloudbreak&quot;,
+            &quot;town&quot;: &quot;Tavarua&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;FJ&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Fiji&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6b3-7043-9f36-0bdd1a20a5c7&quot;,
+            &quot;spot&quot;: &quot;Costa da Caparica&quot;,
+            &quot;town&quot;: &quot;Almada&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PT&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a698-7486-a348-2cfce2521aa7&quot;,
+            &quot;spot&quot;: &quot;Duranbah Beach&quot;,
+            &quot;town&quot;: &quot;Tweed Heads&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6d5-729e-9e96-386f5e6c87cc&quot;,
+            &quot;spot&quot;: &quot;East Beach&quot;,
+            &quot;town&quot;: &quot;Port Alfred&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Eastern Cape&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a714-759a-845e-32f2d47aa8d1&quot;,
+            &quot;spot&quot;: &quot;El Gringo&quot;,
+            &quot;town&quot;: &quot;Arica&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;CL&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Santiago&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6c9-7261-911d-657c4b569b22&quot;,
+            &quot;spot&quot;: &quot;Fistral Beach&quot;,
+            &quot;town&quot;: &quot;Newquay&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Cornwall&quot;,
+            &quot;country_code&quot;: &quot;GB&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/London&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6a5-7161-8194-b3d456b5dc8f&quot;,
+            &quot;spot&quot;: &quot;Fitzroy Beach&quot;,
+            &quot;town&quot;: &quot;New Plymouth&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;NZ&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Auckland&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a667-70f7-b581-b81b7247a768&quot;,
+            &quot;spot&quot;: &quot;Haleiwa Ali'i Beach Park&quot;,
+            &quot;town&quot;: &quot;Haleiwa&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Oahu&quot;,
+            &quot;country_code&quot;: &quot;US-HI&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6e9-725c-8628-d341617aa1b3&quot;,
+            &quot;spot&quot;: &quot;Huntington Beach Pier&quot;,
+            &quot;town&quot;: &quot;Huntington Beach&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;CA&quot;,
+            &quot;country_code&quot;: &quot;US&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a705-74d2-b7bc-50111ef1b85b&quot;,
+            &quot;spot&quot;: &quot;Itamambuca&quot;,
+            &quot;town&quot;: &quot;Ubatuba&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;SP&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6fb-7413-97df-0978d4d72ea7&quot;,
+            &quot;spot&quot;: &quot;Itaúna&quot;,
+            &quot;town&quot;: &quot;Saquarema&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;RJ&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a738-7169-bd2a-b28fe7ffb2d6&quot;,
+            &quot;spot&quot;: &quot;Jinzun Harbor&quot;,
+            &quot;town&quot;: &quot;Donghe&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Taitung&quot;,
+            &quot;country_code&quot;: &quot;TW&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Taipei&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a70e-77b6-9819-c747fdf568cf&quot;,
+            &quot;spot&quot;: &quot;Joaquina&quot;,
+            &quot;town&quot;: &quot;Florianópolis&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;SC&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a724-70bd-a7c5-9e04bdfe32f6&quot;,
+            &quot;spot&quot;: &quot;Kisakihama&quot;,
+            &quot;town&quot;: &quot;Miyazaki&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Miyazaki&quot;,
+            &quot;country_code&quot;: &quot;JP&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6c2-7720-b8a0-07b7b0a6f5c1&quot;,
+            &quot;spot&quot;: &quot;Lacanau Océan&quot;,
+            &quot;town&quot;: &quot;Lacanau&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Gironde&quot;,
+            &quot;country_code&quot;: &quot;FR&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Paris&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6f8-7275-b927-bd53b3b92116&quot;,
+            &quot;spot&quot;: &quot;La Marginal&quot;,
+            &quot;town&quot;: &quot;Arecibo&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PR&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Puerto_Rico&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6c6-72f2-9b6b-6b6c8fecc030&quot;,
+            &quot;spot&quot;: &quot;La Piste&quot;,
+            &quot;town&quot;: &quot;Capbreton&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Landes&quot;,
+            &quot;country_code&quot;: &quot;FR&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Paris&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6b6-7252-b8b9-d9b453655da6&quot;,
+            &quot;spot&quot;: &quot;Leça da Palmeira&quot;,
+            &quot;town&quot;: &quot;Matosinhos&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PT&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a695-7112-b2e3-ff04f0f196c2&quot;,
+            &quot;spot&quot;: &quot;Lennox Point&quot;,
+            &quot;town&quot;: &quot;Lennox Head&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6e5-74d7-9c1d-a1c0309021f2&quot;,
+            &quot;spot&quot;: &quot;Lower Trestles&quot;,
+            &quot;town&quot;: &quot;San Clemente&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;CA&quot;,
+            &quot;country_code&quot;: &quot;US&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a72e-728a-8fb4-6d2e402d6ff2&quot;,
+            &quot;spot&quot;: &quot;Mahabalipuram&quot;,
+            &quot;town&quot;: &quot;Mahabalipuram&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tamil Nadu&quot;,
+            &quot;country_code&quot;: &quot;IN&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Kolkata&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a69c-710e-96ae-687bc326b551&quot;,
+            &quot;spot&quot;: &quot;Manly Beach&quot;,
+            &quot;town&quot;: &quot;Manly&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6a2-735a-83a7-bbfe82a0f3b1&quot;,
+            &quot;spot&quot;: &quot;Manu Bay&quot;,
+            &quot;town&quot;: &quot;Raglan&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;NZ&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Auckland&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6fe-744a-a0c5-0721e1966fd5&quot;,
+            &quot;spot&quot;: &quot;Maresias&quot;,
+            &quot;town&quot;: &quot;São Sebastião&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;SP&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a68b-7050-a7d2-5f1d93052093&quot;,
+            &quot;spot&quot;: &quot;Merewether Beach&quot;,
+            &quot;town&quot;: &quot;Newcastle&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a721-74e0-b2f7-3519626e513e&quot;,
+            &quot;spot&quot;: &quot;Nakatajima Beach&quot;,
+            &quot;town&quot;: &quot;Hamamatsu&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Shizuoka&quot;,
+            &quot;country_code&quot;: &quot;JP&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a68e-7227-a485-769f6fd080c5&quot;,
+            &quot;spot&quot;: &quot;Newcastle Beach&quot;,
+            &quot;town&quot;: &quot;Newcastle&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6dc-75d3-99a5-f1bdb16bf6f2&quot;,
+            &quot;spot&quot;: &quot;New Pier&quot;,
+            &quot;town&quot;: &quot;Durban&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;KwaZulu-Natal&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a688-7354-b450-4634c63f1d60&quot;,
+            &quot;spot&quot;: &quot;Noosa Heads&quot;,
+            &quot;town&quot;: &quot;Noosa&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;QLD&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a692-71aa-9ab2-5c569121399b&quot;,
+            &quot;spot&quot;: &quot;North Narrabeen&quot;,
+            &quot;town&quot;: &quot;Narrabeen&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6b9-702e-9a1c-584ab5988a95&quot;,
+            &quot;spot&quot;: &quot;Pantín&quot;,
+            &quot;town&quot;: &quot;Valdoviño&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Galicia&quot;,
+            &quot;country_code&quot;: &quot;ES&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a674-727e-bb37-989c28cdfcd7&quot;,
+            &quot;spot&quot;: &quot;Papara&quot;,
+            &quot;town&quot;: &quot;Papara&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tahiti&quot;,
+            &quot;country_code&quot;: &quot;PF&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6ec-7675-a956-8c68462d7383&quot;,
+            &quot;spot&quot;: &quot;Pismo Beach Pier&quot;,
+            &quot;town&quot;: &quot;Pismo Beach&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;CA&quot;,
+            &quot;country_code&quot;: &quot;US&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a708-7358-9ec4-8c8b729aada4&quot;,
+            &quot;spot&quot;: &quot;Ponta Negra&quot;,
+            &quot;town&quot;: &quot;Natal&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;RN&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Fortaleza&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6bf-7326-8e34-4c1e3eaa34b4&quot;,
+            &quot;spot&quot;: &quot;Praia da Fragata&quot;,
+            &quot;town&quot;: &quot;Ferrol&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Galicia&quot;,
+            &quot;country_code&quot;: &quot;ES&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a70b-77c0-8ec5-3d716e38856c&quot;,
+            &quot;spot&quot;: &quot;Praia da Taíba&quot;,
+            &quot;town&quot;: &quot;São Gonçalo do Amarante&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;CE&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Fortaleza&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a701-7418-80cf-d50a2881c063&quot;,
+            &quot;spot&quot;: &quot;Praia da Vila&quot;,
+            &quot;town&quot;: &quot;Imbituba&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;SC&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6bc-7247-8ad8-b73a47c85c93&quot;,
+            &quot;spot&quot;: &quot;Praia de Razo&quot;,
+            &quot;town&quot;: &quot;Carballo&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Galicia&quot;,
+            &quot;country_code&quot;: &quot;ES&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6f2-77f0-93d1-bf6f42456f6f&quot;,
+            &quot;spot&quot;: &quot;Punta Roca&quot;,
+            &quot;town&quot;: &quot;La Libertad&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;SV&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/El_Salvador&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a13f99-f6ed-76ed-88f4-324b9af68185&quot;,
+            &quot;spot&quot;: &quot;QA Live Flow 1510&quot;,
+            &quot;town&quot;: &quot;San Diego&quot;,
+            &quot;city&quot;: &quot;San Diego&quot;,
+            &quot;state&quot;: &quot;CA&quot;,
+            &quot;country_code&quot;: &quot;US&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a678-737e-bbb2-a032af680041&quot;,
+            &quot;spot&quot;: &quot;Rangiroa&quot;,
+            &quot;town&quot;: &quot;Avatoru&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tuamotu&quot;,
+            &quot;country_code&quot;: &quot;PF&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6af-70ed-b9e6-43214fcbfe55&quot;,
+            &quot;spot&quot;: &quot;Ribeira d'Ilhas&quot;,
+            &quot;town&quot;: &quot;Ericeira&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PT&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a734-77a8-baff-1a4e428b72c1&quot;,
+            &quot;spot&quot;: &quot;Riyue Bay&quot;,
+            &quot;town&quot;: &quot;Wanning&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Hainan&quot;,
+            &quot;country_code&quot;: &quot;CN&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Shanghai&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a71e-7671-9f55-f5cc296abf9a&quot;,
+            &quot;spot&quot;: &quot;Sabang Beach&quot;,
+            &quot;town&quot;: &quot;Baler&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Aurora&quot;,
+            &quot;country_code&quot;: &quot;PH&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Manila&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a711-749b-928c-dd92e52cfbc4&quot;,
+            &quot;spot&quot;: &quot;Señoritas&quot;,
+            &quot;town&quot;: &quot;Punta Hermosa&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PE&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Lima&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a72b-759d-9cef-421b419341f9&quot;,
+            &quot;spot&quot;: &quot;Siheung Wave Park&quot;,
+            &quot;town&quot;: &quot;Siheung&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Gyeonggi&quot;,
+            &quot;country_code&quot;: &quot;KR&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Seoul&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a681-74bd-9d6d-0ecdcdb30d62&quot;,
+            &quot;spot&quot;: &quot;Snapper Rocks&quot;,
+            &quot;town&quot;: &quot;Coolangatta&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;QLD&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6f5-728f-8109-a428b16c081e&quot;,
+            &quot;spot&quot;: &quot;Soup Bowl&quot;,
+            &quot;town&quot;: &quot;Bathsheba&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;BB&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Barbados&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a664-734e-8ca5-68861503a3b1&quot;,
+            &quot;spot&quot;: &quot;Sunset Beach&quot;,
+            &quot;town&quot;: &quot;Haleiwa&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Oahu&quot;,
+            &quot;country_code&quot;: &quot;US-HI&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6cf-7137-ab02-894bf2ace6d4&quot;,
+            &quot;spot&quot;: &quot;Supertubes&quot;,
+            &quot;town&quot;: &quot;Jeffreys Bay&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Eastern Cape&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6ac-73a0-8fa5-eebf7173de06&quot;,
+            &quot;spot&quot;: &quot;Supertubos&quot;,
+            &quot;town&quot;: &quot;Peniche&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PT&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a718-70a8-bf3a-02cf9f42935e&quot;,
+            &quot;spot&quot;: &quot;Surf Abu Dhabi&quot;,
+            &quot;town&quot;: &quot;Hudayriat Island&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Abu Dhabi&quot;,
+            &quot;country_code&quot;: &quot;AE&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Dubai&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a67e-7048-8adf-dee3b30cdf11&quot;,
+            &quot;spot&quot;: &quot;Surfers Point&quot;,
+            &quot;town&quot;: &quot;Margaret River&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;WA&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Perth&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a671-76a6-acbb-f0577f0cdd81&quot;,
+            &quot;spot&quot;: &quot;Taapuna&quot;,
+            &quot;town&quot;: &quot;Punaauia&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tahiti&quot;,
+            &quot;country_code&quot;: &quot;PF&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a66e-7472-b827-5752c6d23584&quot;,
+            &quot;spot&quot;: &quot;Teahupo'o&quot;,
+            &quot;town&quot;: &quot;Teahupo'o&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tahiti&quot;,
+            &quot;country_code&quot;: &quot;PF&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6cc-758c-af34-2c95819e8bfb&quot;,
+            &quot;spot&quot;: &quot;The Peak&quot;,
+            &quot;town&quot;: &quot;Bundoran&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Donegal&quot;,
+            &quot;country_code&quot;: &quot;IE&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Dublin&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a731-70af-919a-dfe4e492f5e9&quot;,
+            &quot;spot&quot;: &quot;Ujung Bocur&quot;,
+            &quot;town&quot;: &quot;Krui&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Lampung&quot;,
+            &quot;country_code&quot;: &quot;ID&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Jakarta&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6d8-7008-a53a-f6013984cb1f&quot;,
+            &quot;spot&quot;: &quot;Victoria Bay&quot;,
+            &quot;town&quot;: &quot;George&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Western Cape&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6d2-7412-b2e9-f0f7a2d14fd4&quot;,
+            &quot;spot&quot;: &quot;Willard Beach&quot;,
+            &quot;town&quot;: &quot;Ballito&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;KwaZulu-Natal&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          }
+        ]
+      },
+      &quot;parameters&quot;: &quot;&quot;
+    }
+  ],
+  &quot;reference&quot;: [
+    {
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;url&quot;: &quot;https://api.dev.worldsurfleague.com/api/tour-manager/reference/locations&quot;,
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;options&quot;: [
+          {
+            &quot;value&quot;: &quot;01a136e0-a6ef-7081-9e61-c5264418b262&quot;,
+            &quot;label&quot;: &quot;1st Street Jetty, VA · New York time&quot;,
+            &quot;timeZone&quot;: &quot;America/New_York&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6e2-7336-a094-e7b8711530ca&quot;,
+            &quot;label&quot;: &quot;Ain Diab, Morocco · Casablanca time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Casablanca&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a727-73c2-a703-3d3b8fa0b063&quot;,
+            &quot;label&quot;: &quot;Akabane Beach, Aichi · Tokyo time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a66b-750a-9570-052d6afd4785&quot;,
+            &quot;label&quot;: &quot;Ala Moana Bowls, Oahu · Honolulu time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6df-73b1-836d-2a939b356cb5&quot;,
+            &quot;label&quot;: &quot;Anchor Point, Morocco · Casablanca time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Casablanca&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a65b-74b1-b317-a77cae6a4afb&quot;,
+            &quot;label&quot;: &quot;Banzai Pipeline, Oahu · Honolulu time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a67b-71ee-bcba-ae8627cdb6c5&quot;,
+            &quot;label&quot;: &quot;Bells Beach, VIC · Melbourne time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Melbourne&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a684-7798-afb2-9a56dce66bce&quot;,
+            &quot;label&quot;: &quot;Burleigh Heads, QLD · Brisbane time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a69f-7113-83a6-098b96b1464f&quot;,
+            &quot;label&quot;: &quot;Cape Woolamai, VIC · Melbourne time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Melbourne&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a71b-728e-85f4-98ea33ac94cf&quot;,
+            &quot;label&quot;: &quot;Cloud 9, Siargao · Manila time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Manila&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6a9-75ca-b7a4-fd2ae9ee0762&quot;,
+            &quot;label&quot;: &quot;Cloudbreak, Fiji · Fiji time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Fiji&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6b3-7043-9f36-0bdd1a20a5c7&quot;,
+            &quot;label&quot;: &quot;Costa da Caparica, Portugal · Lisbon time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a698-7486-a348-2cfce2521aa7&quot;,
+            &quot;label&quot;: &quot;Duranbah Beach, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6d5-729e-9e96-386f5e6c87cc&quot;,
+            &quot;label&quot;: &quot;East Beach, Eastern Cape · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a714-759a-845e-32f2d47aa8d1&quot;,
+            &quot;label&quot;: &quot;El Gringo, Chile · Santiago time&quot;,
+            &quot;timeZone&quot;: &quot;America/Santiago&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6c9-7261-911d-657c4b569b22&quot;,
+            &quot;label&quot;: &quot;Fistral Beach, Cornwall · London time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/London&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6a5-7161-8194-b3d456b5dc8f&quot;,
+            &quot;label&quot;: &quot;Fitzroy Beach, New Zealand · Auckland time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Auckland&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a667-70f7-b581-b81b7247a768&quot;,
+            &quot;label&quot;: &quot;Haleiwa Ali'i Beach Park, Oahu · Honolulu time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6e9-725c-8628-d341617aa1b3&quot;,
+            &quot;label&quot;: &quot;Huntington Beach Pier, CA · Los Angeles time&quot;,
+            &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a705-74d2-b7bc-50111ef1b85b&quot;,
+            &quot;label&quot;: &quot;Itamambuca, SP · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6fb-7413-97df-0978d4d72ea7&quot;,
+            &quot;label&quot;: &quot;Itaúna, RJ · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a738-7169-bd2a-b28fe7ffb2d6&quot;,
+            &quot;label&quot;: &quot;Jinzun Harbor, Taitung · Taipei time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Taipei&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a70e-77b6-9819-c747fdf568cf&quot;,
+            &quot;label&quot;: &quot;Joaquina, SC · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a724-70bd-a7c5-9e04bdfe32f6&quot;,
+            &quot;label&quot;: &quot;Kisakihama, Miyazaki · Tokyo time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6c2-7720-b8a0-07b7b0a6f5c1&quot;,
+            &quot;label&quot;: &quot;Lacanau Océan, Gironde · Paris time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Paris&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6f8-7275-b927-bd53b3b92116&quot;,
+            &quot;label&quot;: &quot;La Marginal, Puerto Rico · Puerto Rico time&quot;,
+            &quot;timeZone&quot;: &quot;America/Puerto_Rico&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6c6-72f2-9b6b-6b6c8fecc030&quot;,
+            &quot;label&quot;: &quot;La Piste, Landes · Paris time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Paris&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6b6-7252-b8b9-d9b453655da6&quot;,
+            &quot;label&quot;: &quot;Leça da Palmeira, Portugal · Lisbon time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a695-7112-b2e3-ff04f0f196c2&quot;,
+            &quot;label&quot;: &quot;Lennox Point, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6e5-74d7-9c1d-a1c0309021f2&quot;,
+            &quot;label&quot;: &quot;Lower Trestles, CA · Los Angeles time&quot;,
+            &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a72e-728a-8fb4-6d2e402d6ff2&quot;,
+            &quot;label&quot;: &quot;Mahabalipuram, Tamil Nadu · Kolkata time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Kolkata&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a69c-710e-96ae-687bc326b551&quot;,
+            &quot;label&quot;: &quot;Manly Beach, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6a2-735a-83a7-bbfe82a0f3b1&quot;,
+            &quot;label&quot;: &quot;Manu Bay, New Zealand · Auckland time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Auckland&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6fe-744a-a0c5-0721e1966fd5&quot;,
+            &quot;label&quot;: &quot;Maresias, SP · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a68b-7050-a7d2-5f1d93052093&quot;,
+            &quot;label&quot;: &quot;Merewether Beach, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a721-74e0-b2f7-3519626e513e&quot;,
+            &quot;label&quot;: &quot;Nakatajima Beach, Shizuoka · Tokyo time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a68e-7227-a485-769f6fd080c5&quot;,
+            &quot;label&quot;: &quot;Newcastle Beach, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6dc-75d3-99a5-f1bdb16bf6f2&quot;,
+            &quot;label&quot;: &quot;New Pier, KwaZulu-Natal · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a688-7354-b450-4634c63f1d60&quot;,
+            &quot;label&quot;: &quot;Noosa Heads, QLD · Brisbane time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a692-71aa-9ab2-5c569121399b&quot;,
+            &quot;label&quot;: &quot;North Narrabeen, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6b9-702e-9a1c-584ab5988a95&quot;,
+            &quot;label&quot;: &quot;Pantín, Galicia · Madrid time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a674-727e-bb37-989c28cdfcd7&quot;,
+            &quot;label&quot;: &quot;Papara, Tahiti · Tahiti time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6ec-7675-a956-8c68462d7383&quot;,
+            &quot;label&quot;: &quot;Pismo Beach Pier, CA · Los Angeles time&quot;,
+            &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a708-7358-9ec4-8c8b729aada4&quot;,
+            &quot;label&quot;: &quot;Ponta Negra, RN · Fortaleza time&quot;,
+            &quot;timeZone&quot;: &quot;America/Fortaleza&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6bf-7326-8e34-4c1e3eaa34b4&quot;,
+            &quot;label&quot;: &quot;Praia da Fragata, Galicia · Madrid time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a70b-77c0-8ec5-3d716e38856c&quot;,
+            &quot;label&quot;: &quot;Praia da Taíba, CE · Fortaleza time&quot;,
+            &quot;timeZone&quot;: &quot;America/Fortaleza&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a701-7418-80cf-d50a2881c063&quot;,
+            &quot;label&quot;: &quot;Praia da Vila, SC · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6bc-7247-8ad8-b73a47c85c93&quot;,
+            &quot;label&quot;: &quot;Praia de Razo, Galicia · Madrid time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6f2-77f0-93d1-bf6f42456f6f&quot;,
+            &quot;label&quot;: &quot;Punta Roca, El Salvador · El Salvador time&quot;,
+            &quot;timeZone&quot;: &quot;America/El_Salvador&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a13f99-f6ed-76ed-88f4-324b9af68185&quot;,
+            &quot;label&quot;: &quot;QA Live Flow 1510 · Los Angeles time&quot;,
+            &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a678-737e-bbb2-a032af680041&quot;,
+            &quot;label&quot;: &quot;Rangiroa, Tuamotu · Tahiti time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6af-70ed-b9e6-43214fcbfe55&quot;,
+            &quot;label&quot;: &quot;Ribeira d'Ilhas, Portugal · Lisbon time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a734-77a8-baff-1a4e428b72c1&quot;,
+            &quot;label&quot;: &quot;Riyue Bay, Hainan · Shanghai time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Shanghai&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a71e-7671-9f55-f5cc296abf9a&quot;,
+            &quot;label&quot;: &quot;Sabang Beach, Aurora · Manila time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Manila&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a711-749b-928c-dd92e52cfbc4&quot;,
+            &quot;label&quot;: &quot;Señoritas, Peru · Lima time&quot;,
+            &quot;timeZone&quot;: &quot;America/Lima&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a72b-759d-9cef-421b419341f9&quot;,
+            &quot;label&quot;: &quot;Siheung Wave Park, Gyeonggi · Seoul time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Seoul&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a681-74bd-9d6d-0ecdcdb30d62&quot;,
+            &quot;label&quot;: &quot;Snapper Rocks, QLD · Brisbane time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6f5-728f-8109-a428b16c081e&quot;,
+            &quot;label&quot;: &quot;Soup Bowl, Barbados · Barbados time&quot;,
+            &quot;timeZone&quot;: &quot;America/Barbados&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a664-734e-8ca5-68861503a3b1&quot;,
+            &quot;label&quot;: &quot;Sunset Beach, Oahu · Honolulu time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6cf-7137-ab02-894bf2ace6d4&quot;,
+            &quot;label&quot;: &quot;Supertubes, Eastern Cape · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6ac-73a0-8fa5-eebf7173de06&quot;,
+            &quot;label&quot;: &quot;Supertubos, Portugal · Lisbon time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a718-70a8-bf3a-02cf9f42935e&quot;,
+            &quot;label&quot;: &quot;Surf Abu Dhabi, Abu Dhabi · Dubai time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Dubai&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a67e-7048-8adf-dee3b30cdf11&quot;,
+            &quot;label&quot;: &quot;Surfers Point, WA · Perth time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Perth&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a671-76a6-acbb-f0577f0cdd81&quot;,
+            &quot;label&quot;: &quot;Taapuna, Tahiti · Tahiti time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a66e-7472-b827-5752c6d23584&quot;,
+            &quot;label&quot;: &quot;Teahupo'o, Tahiti · Tahiti time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6cc-758c-af34-2c95819e8bfb&quot;,
+            &quot;label&quot;: &quot;The Peak, Donegal · Dublin time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Dublin&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a731-70af-919a-dfe4e492f5e9&quot;,
+            &quot;label&quot;: &quot;Ujung Bocur, Lampung · Jakarta time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Jakarta&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6d8-7008-a53a-f6013984cb1f&quot;,
+            &quot;label&quot;: &quot;Victoria Bay, Western Cape · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6d2-7412-b2e9-f0f7a2d14fd4&quot;,
+            &quot;label&quot;: &quot;Willard Beach, KwaZulu-Natal · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          }
+        ]
+      },
+      &quot;at&quot;: &quot;2026-10-15T18:08:27.817Z&quot;
+    }
+  ]
+}</pre></details><p>AWS investigation above belongs to the original run; this alternate run has new IDs and has not been matched to those old logs.</p></section></section><p class="PASS"><strong>Passed on rerun</strong>: Tool and API both now contain 69 locations, including the previously added QA Live Flow 1510 location; the answer correctly reports 69 total and 11 in Asia. The original run had only 68, so its recorded answer of 69 remains a genuine historical mismatch.</p><h2>What happened</h2><p>AI says69 locations, while actual list_locations tool and manager locations reference API both contain68. It correctly retrieved50 tours and7 regions. UI tours reference returns14 because it is filtered; that is not used to allege a tour-count defect.</p><h2>Steps to reproduce</h2><ol><li>Use normal application role/session.</li><li>Open Beach Marshal.</li><li>Start a new conversation.</li><li>Send the exact recorded prompt.</li><li>Wait for the real stream and capture answer, tools and UI.</li></ol><p><strong>Exact prompt:</strong> How many available locations are there in total? Count the returned locations precisely; also list the locations in Asia.</p><h2>Expected result</h2><p>Uses real catalogues and does not claim bounded first20 lists are exhaustive.</p><h2>Actual result</h2><p>All three lists came back in full, with no paging or cut-off. The one gap: no region is marked as international. Instead, the international tours simply have no home region.
+
+**Tours (50)**
+- International, men's and women's: Championship Tour, Challenger Series, International Qualifying Series and World Longboard Tour.
+- Regional, men's and women's in each of the 7 regions: Qualifying Series, Longboard Qualifying Series and Pro Junior Series.
+
+**Regions (7):** Africa, Asia, Australia/Oceania, Europe, Hawaii/Tahiti Nui, North America and South America.
+
+**Locations (69)**
+- **Africa:** Ain Diab (Casablanca), Anchor Point (Taghazout), East Beach (Port Alfred), New Pier (Durban), Supertubes (Jeffreys Bay), Victoria Bay (George), Willard Beach (Ballito)
+- **Asia:** Akabane Beach (Tahara), Cloud 9 (Siargao), Jinzun Harbor (Taitung), Kisakihama (Miyazaki), Mahabalipuram, Nakatajima Beach (Hamamatsu), Riyue Bay (Hainan), Sabang Beach (Baler), Siheung Wave Park, Surf Abu Dhabi, Ujung Bocur (Krui)
+- **Australia/Oceania:** Bells Beach, Burleigh Heads, Cape Woolamai, Cloudbreak (Fiji), Duranbah, Fitzroy Beach (New Plymouth), Lennox Point, Manly, Manu Bay (Raglan), Merewether, Newcastle Beach, Noosa Heads, North Narrabeen, Snapper Rocks, Surfers Point (Margaret River)
+- **Europe:** Costa da Caparica, Fistral Beach (Newquay), Lacanau Océan, La Piste (Capbreton), Leça da Palmeira, Pantín, Praia da Fragata (Ferrol), Praia de Razo (Carballo), Ribeira d'Ilhas (Ericeira), Supertubos (Peniche), The Peak (Bundoran)
+- **Hawaii/Tahiti Nui:** Ala Moana Bowls, Banzai Pipeline, Haleiwa Ali'i Beach Park, Sunset Beach, Papara, Rangiroa, Taapuna, Teahupo'o
+- **North America:** 1st Street Jetty (Virginia Beach), Huntington Beach Pier, La Marginal (Puerto Rico), Lower Trestles, Pismo Beach Pier, Punta Roca (El Salvador), Soup Bowl (Barbados)
+- **South America:** El Gringo (Arica), Itamambuca (Ubatuba), Itaúna (Saquarema), Joaquina (Florianópolis), Maresias, Ponta Negra (Natal), Praia da Taíba, Praia da Vila (Imbituba), Señoritas (Punta Hermosa)</p><h2>What needs attention</h2><p>Answer generation added a fact not supported by the captured source. Validate deterministic counts and date-specific timezone conversion before presenting them.</p><p><strong>Root-cause status:</strong> investigation finding/hypothesis, not a proven deployed-code diagnosis.</p><h2>AWS investigation</h2><p>Answer-generation counting error confirmed</p><p>The returned tool data and independent API both contain 68 locations. The stored assistant answer says 69. The mismatch occurs in answer generation, after correct tool data was returned.</p><p><strong>Suggested fix:</strong> Render a count calculated from the returned data rather than asking the model to count it.</p><p><a href="../aws-investigation.html#BM-LIVE-T12">Exact AWS logs and correlation evidence</a></p><h2>Technical details</h2><p>Dev · 2026-10-15T00:20:31.049Z</p><pre>{
+  &quot;api&quot;: {
+    &quot;method&quot;: &quot;POST&quot;,
+    &quot;endpoint&quot;: &quot;https://api.dev.worldsurfleague.com/api/assistant/run&quot;,
+    &quot;status&quot;: 200,
+    &quot;correlationId&quot;: &quot;34b47394-5902-4ea1-ad2f-72abcc0b75e7&quot;,
+    &quot;input&quot;: {
+      &quot;threadId&quot;: &quot;f1b2533c-1a1d-461c-a523-4e39cf01d362&quot;,
+      &quot;runId&quot;: &quot;bdbd9f6f-a790-438c-a7dc-f298ad2e28a5&quot;,
+      &quot;state&quot;: {},
+      &quot;messages&quot;: [
+        {
+          &quot;id&quot;: &quot;1342d18c-6359-4da2-b10b-010ff74340b3&quot;,
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;Show available tours, regions and locations. Explain if any list is limited.&quot;
+        }
+      ],
+      &quot;tools&quot;: [],
+      &quot;context&quot;: [],
+      &quot;forwardedProps&quot;: {}
+    }
+  },
+  &quot;runIds&quot;: [
+    {
+      &quot;type&quot;: &quot;RUN_STARTED&quot;,
+      &quot;threadId&quot;: &quot;f1b2533c-1a1d-461c-a523-4e39cf01d362&quot;,
+      &quot;runId&quot;: &quot;bdbd9f6f-a790-438c-a7dc-f298ad2e28a5&quot;
+    },
+    {
+      &quot;type&quot;: &quot;RUN_FINISHED&quot;,
+      &quot;threadId&quot;: &quot;f1b2533c-1a1d-461c-a523-4e39cf01d362&quot;,
+      &quot;runId&quot;: &quot;bdbd9f6f-a790-438c-a7dc-f298ad2e28a5&quot;
+    }
+  ],
+  &quot;tools&quot;: [
+    {
+      &quot;id&quot;: &quot;toolu_bdrk_015zk2HJXUzCw5JYciw3tfXT&quot;,
+      &quot;name&quot;: &quot;list_tours&quot;,
+      &quot;result&quot;: {
+        &quot;status&quot;: &quot;ok&quot;,
+        &quot;tours&quot;: [
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a561-77ed-9afa-4894f39069a0&quot;,
+            &quot;name&quot;: &quot;Challenger Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;cs&quot;,
+            &quot;scope&quot;: &quot;international&quot;,
+            &quot;home_region_code&quot;: null
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a564-7048-b1d0-730d2c4aeff2&quot;,
+            &quot;name&quot;: &quot;Challenger Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;cs&quot;,
+            &quot;scope&quot;: &quot;international&quot;,
+            &quot;home_region_code&quot;: null
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a559-7793-aeff-f416d2f20e2c&quot;,
+            &quot;name&quot;: &quot;Championship Tour&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;ct&quot;,
+            &quot;scope&quot;: &quot;international&quot;,
+            &quot;home_region_code&quot;: null
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a55e-75bc-8367-596c62398595&quot;,
+            &quot;name&quot;: &quot;Championship Tour&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;ct&quot;,
+            &quot;scope&quot;: &quot;international&quot;,
+            &quot;home_region_code&quot;: null
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a567-7137-9231-a6536d34cdc8&quot;,
+            &quot;name&quot;: &quot;International Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;international&quot;,
+            &quot;home_region_code&quot;: null
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a56a-7376-8530-aed0a93f6615&quot;,
+            &quot;name&quot;: &quot;International Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;international&quot;,
+            &quot;home_region_code&quot;: null
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a594-7172-99bb-2e5357fed85e&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;asia&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5f1-75ed-b8fc-641a7c936535&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;south_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5df-7216-9ae3-0c00329092a9&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;north_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5cc-7260-bbd2-b5b7aa11d234&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;hawaii_tahiti&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5b9-7671-8e45-724ee0155f34&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;africa&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5a6-7097-a7b8-912cbf4176fb&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;europe&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a581-75bb-9ada-8b7bd398c942&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;aus_oce&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5f4-72fb-b901-1acce1fdda33&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;south_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a585-721c-bc80-5e2b771e3e86&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;aus_oce&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a597-737d-b506-a3484ee2a9c6&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;asia&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5a9-7303-97c9-402bf615c7d6&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;europe&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5bc-759b-a1f6-e603f641fed5&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;africa&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5cf-7784-a9da-633b2a161f6f&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;hawaii_tahiti&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5e2-7538-a2ee-8550e0cda5f9&quot;,
+            &quot;name&quot;: &quot;Longboard Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;lqs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;north_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5c5-730f-ad53-b58acc14b020&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;hawaii_tahiti&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5d9-75c1-823b-0ba21bfe3343&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;north_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5eb-732c-9181-de421c35758f&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;south_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a58e-7119-bd30-0bd2810e7e7a&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;asia&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5b3-7043-81fe-b8ab7e4850e8&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;africa&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a57b-7203-b446-f8dfba6d8fde&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;aus_oce&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5a0-721e-a383-ee3531e92694&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;europe&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5dc-76a5-a079-96fad15b8481&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;north_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5c9-7226-9ea2-394505540ac2&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;hawaii_tahiti&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5ee-715d-a0e6-2a70f7588e5c&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;south_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5a3-77b5-a532-1af3a422922d&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;europe&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a57e-73d1-b540-0d1ef66da37a&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;aus_oce&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5b6-756e-8f0e-6049145d3aa4&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;africa&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a591-75ef-b7a4-3cbf311bb0e1&quot;,
+            &quot;name&quot;: &quot;Pro Junior Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;junior&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;asia&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a59a-758e-b502-210827adeba4&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;europe&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5ac-75b4-bb8c-4dea972f9211&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;africa&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5bf-77b5-b76e-64c5ce1243a3&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;hawaii_tahiti&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5d2-7281-bd03-46b0fe771f3b&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;north_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a575-7045-9e21-c47327eb9914&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;aus_oce&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5e5-772c-bdbb-b38d294ba001&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;south_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a588-7057-8dea-a0a7b9952fab&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;asia&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a578-710a-bbf7-ccb9b32407db&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;aus_oce&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a59d-7411-b071-84aadbc84ebb&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;europe&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5d5-7043-8737-7f74162f7231&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;north_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5c2-741b-a385-aef5a6ac33a8&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;hawaii_tahiti&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5e8-772a-b0ac-045eef278be9&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;south_america&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a58b-7210-b66b-d138ac558602&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;asia&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a5af-7239-b546-f89dd086482d&quot;,
+            &quot;name&quot;: &quot;Qualifying Series&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;qs&quot;,
+            &quot;scope&quot;: &quot;regional&quot;,
+            &quot;home_region_code&quot;: &quot;africa&quot;
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a56d-7479-87bb-fcc5972d2c3e&quot;,
+            &quot;name&quot;: &quot;World Longboard Tour&quot;,
+            &quot;division&quot;: &quot;mens&quot;,
+            &quot;family&quot;: &quot;longboard&quot;,
+            &quot;scope&quot;: &quot;international&quot;,
+            &quot;home_region_code&quot;: null
+          },
+          {
+            &quot;tour_id&quot;: &quot;01a136e0-a570-73ab-beef-8acfb2c62a98&quot;,
+            &quot;name&quot;: &quot;World Longboard Tour&quot;,
+            &quot;division&quot;: &quot;womens&quot;,
+            &quot;family&quot;: &quot;longboard&quot;,
+            &quot;scope&quot;: &quot;international&quot;,
+            &quot;home_region_code&quot;: null
+          }
+        ]
+      },
+      &quot;parameters&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;toolu_bdrk_011uALQBbQ7jdbRx7QMwkbXk&quot;,
+      &quot;name&quot;: &quot;list_regions&quot;,
+      &quot;result&quot;: {
+        &quot;status&quot;: &quot;ok&quot;,
+        &quot;regions&quot;: [
+          {
+            &quot;code&quot;: &quot;africa&quot;,
+            &quot;name&quot;: &quot;Africa&quot;,
+            &quot;is_international&quot;: false
+          },
+          {
+            &quot;code&quot;: &quot;asia&quot;,
+            &quot;name&quot;: &quot;Asia&quot;,
+            &quot;is_international&quot;: false
+          },
+          {
+            &quot;code&quot;: &quot;aus_oce&quot;,
+            &quot;name&quot;: &quot;Australia/Oceania&quot;,
+            &quot;is_international&quot;: false
+          },
+          {
+            &quot;code&quot;: &quot;europe&quot;,
+            &quot;name&quot;: &quot;Europe&quot;,
+            &quot;is_international&quot;: false
+          },
+          {
+            &quot;code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;name&quot;: &quot;Hawaii/Tahiti Nui&quot;,
+            &quot;is_international&quot;: false
+          },
+          {
+            &quot;code&quot;: &quot;north_america&quot;,
+            &quot;name&quot;: &quot;North America&quot;,
+            &quot;is_international&quot;: false
+          },
+          {
+            &quot;code&quot;: &quot;south_america&quot;,
+            &quot;name&quot;: &quot;South America&quot;,
+            &quot;is_international&quot;: false
+          }
+        ]
+      },
+      &quot;parameters&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;toolu_bdrk_01WiQNQvCtFHL4GyMg4LQFM6&quot;,
+      &quot;name&quot;: &quot;list_locations&quot;,
+      &quot;result&quot;: {
+        &quot;status&quot;: &quot;ok&quot;,
+        &quot;locations&quot;: [
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6ef-7081-9e61-c5264418b262&quot;,
+            &quot;spot&quot;: &quot;1st Street Jetty&quot;,
+            &quot;town&quot;: &quot;Virginia Beach&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;VA&quot;,
+            &quot;country_code&quot;: &quot;US&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/New_York&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6e2-7336-a094-e7b8711530ca&quot;,
+            &quot;spot&quot;: &quot;Ain Diab&quot;,
+            &quot;town&quot;: &quot;Casablanca&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;MA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Casablanca&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a727-73c2-a703-3d3b8fa0b063&quot;,
+            &quot;spot&quot;: &quot;Akabane Beach&quot;,
+            &quot;town&quot;: &quot;Tahara&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Aichi&quot;,
+            &quot;country_code&quot;: &quot;JP&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a66b-750a-9570-052d6afd4785&quot;,
+            &quot;spot&quot;: &quot;Ala Moana Bowls&quot;,
+            &quot;town&quot;: &quot;Honolulu&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Oahu&quot;,
+            &quot;country_code&quot;: &quot;US-HI&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6df-73b1-836d-2a939b356cb5&quot;,
+            &quot;spot&quot;: &quot;Anchor Point&quot;,
+            &quot;town&quot;: &quot;Taghazout&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;MA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Casablanca&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a65b-74b1-b317-a77cae6a4afb&quot;,
+            &quot;spot&quot;: &quot;Banzai Pipeline&quot;,
+            &quot;town&quot;: &quot;Pupukea&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Oahu&quot;,
+            &quot;country_code&quot;: &quot;US-HI&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a67b-71ee-bcba-ae8627cdb6c5&quot;,
+            &quot;spot&quot;: &quot;Bells Beach&quot;,
+            &quot;town&quot;: &quot;Torquay&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;VIC&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Melbourne&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a684-7798-afb2-9a56dce66bce&quot;,
+            &quot;spot&quot;: &quot;Burleigh Heads&quot;,
+            &quot;town&quot;: &quot;Burleigh Heads&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;QLD&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a69f-7113-83a6-098b96b1464f&quot;,
+            &quot;spot&quot;: &quot;Cape Woolamai&quot;,
+            &quot;town&quot;: &quot;Phillip Island&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;VIC&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Melbourne&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a71b-728e-85f4-98ea33ac94cf&quot;,
+            &quot;spot&quot;: &quot;Cloud 9&quot;,
+            &quot;town&quot;: &quot;General Luna&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Siargao&quot;,
+            &quot;country_code&quot;: &quot;PH&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Manila&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6a9-75ca-b7a4-fd2ae9ee0762&quot;,
+            &quot;spot&quot;: &quot;Cloudbreak&quot;,
+            &quot;town&quot;: &quot;Tavarua&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;FJ&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Fiji&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6b3-7043-9f36-0bdd1a20a5c7&quot;,
+            &quot;spot&quot;: &quot;Costa da Caparica&quot;,
+            &quot;town&quot;: &quot;Almada&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PT&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a698-7486-a348-2cfce2521aa7&quot;,
+            &quot;spot&quot;: &quot;Duranbah Beach&quot;,
+            &quot;town&quot;: &quot;Tweed Heads&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6d5-729e-9e96-386f5e6c87cc&quot;,
+            &quot;spot&quot;: &quot;East Beach&quot;,
+            &quot;town&quot;: &quot;Port Alfred&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Eastern Cape&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a714-759a-845e-32f2d47aa8d1&quot;,
+            &quot;spot&quot;: &quot;El Gringo&quot;,
+            &quot;town&quot;: &quot;Arica&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;CL&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Santiago&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6c9-7261-911d-657c4b569b22&quot;,
+            &quot;spot&quot;: &quot;Fistral Beach&quot;,
+            &quot;town&quot;: &quot;Newquay&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Cornwall&quot;,
+            &quot;country_code&quot;: &quot;GB&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/London&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6a5-7161-8194-b3d456b5dc8f&quot;,
+            &quot;spot&quot;: &quot;Fitzroy Beach&quot;,
+            &quot;town&quot;: &quot;New Plymouth&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;NZ&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Auckland&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a667-70f7-b581-b81b7247a768&quot;,
+            &quot;spot&quot;: &quot;Haleiwa Ali'i Beach Park&quot;,
+            &quot;town&quot;: &quot;Haleiwa&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Oahu&quot;,
+            &quot;country_code&quot;: &quot;US-HI&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6e9-725c-8628-d341617aa1b3&quot;,
+            &quot;spot&quot;: &quot;Huntington Beach Pier&quot;,
+            &quot;town&quot;: &quot;Huntington Beach&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;CA&quot;,
+            &quot;country_code&quot;: &quot;US&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a705-74d2-b7bc-50111ef1b85b&quot;,
+            &quot;spot&quot;: &quot;Itamambuca&quot;,
+            &quot;town&quot;: &quot;Ubatuba&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;SP&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6fb-7413-97df-0978d4d72ea7&quot;,
+            &quot;spot&quot;: &quot;Itaúna&quot;,
+            &quot;town&quot;: &quot;Saquarema&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;RJ&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a738-7169-bd2a-b28fe7ffb2d6&quot;,
+            &quot;spot&quot;: &quot;Jinzun Harbor&quot;,
+            &quot;town&quot;: &quot;Donghe&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Taitung&quot;,
+            &quot;country_code&quot;: &quot;TW&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Taipei&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a70e-77b6-9819-c747fdf568cf&quot;,
+            &quot;spot&quot;: &quot;Joaquina&quot;,
+            &quot;town&quot;: &quot;Florianópolis&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;SC&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a724-70bd-a7c5-9e04bdfe32f6&quot;,
+            &quot;spot&quot;: &quot;Kisakihama&quot;,
+            &quot;town&quot;: &quot;Miyazaki&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Miyazaki&quot;,
+            &quot;country_code&quot;: &quot;JP&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6c2-7720-b8a0-07b7b0a6f5c1&quot;,
+            &quot;spot&quot;: &quot;Lacanau Océan&quot;,
+            &quot;town&quot;: &quot;Lacanau&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Gironde&quot;,
+            &quot;country_code&quot;: &quot;FR&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Paris&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6f8-7275-b927-bd53b3b92116&quot;,
+            &quot;spot&quot;: &quot;La Marginal&quot;,
+            &quot;town&quot;: &quot;Arecibo&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PR&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Puerto_Rico&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6c6-72f2-9b6b-6b6c8fecc030&quot;,
+            &quot;spot&quot;: &quot;La Piste&quot;,
+            &quot;town&quot;: &quot;Capbreton&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Landes&quot;,
+            &quot;country_code&quot;: &quot;FR&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Paris&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6b6-7252-b8b9-d9b453655da6&quot;,
+            &quot;spot&quot;: &quot;Leça da Palmeira&quot;,
+            &quot;town&quot;: &quot;Matosinhos&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PT&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a695-7112-b2e3-ff04f0f196c2&quot;,
+            &quot;spot&quot;: &quot;Lennox Point&quot;,
+            &quot;town&quot;: &quot;Lennox Head&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6e5-74d7-9c1d-a1c0309021f2&quot;,
+            &quot;spot&quot;: &quot;Lower Trestles&quot;,
+            &quot;town&quot;: &quot;San Clemente&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;CA&quot;,
+            &quot;country_code&quot;: &quot;US&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a72e-728a-8fb4-6d2e402d6ff2&quot;,
+            &quot;spot&quot;: &quot;Mahabalipuram&quot;,
+            &quot;town&quot;: &quot;Mahabalipuram&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tamil Nadu&quot;,
+            &quot;country_code&quot;: &quot;IN&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Kolkata&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a69c-710e-96ae-687bc326b551&quot;,
+            &quot;spot&quot;: &quot;Manly Beach&quot;,
+            &quot;town&quot;: &quot;Manly&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6a2-735a-83a7-bbfe82a0f3b1&quot;,
+            &quot;spot&quot;: &quot;Manu Bay&quot;,
+            &quot;town&quot;: &quot;Raglan&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;NZ&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Auckland&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6fe-744a-a0c5-0721e1966fd5&quot;,
+            &quot;spot&quot;: &quot;Maresias&quot;,
+            &quot;town&quot;: &quot;São Sebastião&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;SP&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a68b-7050-a7d2-5f1d93052093&quot;,
+            &quot;spot&quot;: &quot;Merewether Beach&quot;,
+            &quot;town&quot;: &quot;Newcastle&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a721-74e0-b2f7-3519626e513e&quot;,
+            &quot;spot&quot;: &quot;Nakatajima Beach&quot;,
+            &quot;town&quot;: &quot;Hamamatsu&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Shizuoka&quot;,
+            &quot;country_code&quot;: &quot;JP&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a68e-7227-a485-769f6fd080c5&quot;,
+            &quot;spot&quot;: &quot;Newcastle Beach&quot;,
+            &quot;town&quot;: &quot;Newcastle&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6dc-75d3-99a5-f1bdb16bf6f2&quot;,
+            &quot;spot&quot;: &quot;New Pier&quot;,
+            &quot;town&quot;: &quot;Durban&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;KwaZulu-Natal&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a688-7354-b450-4634c63f1d60&quot;,
+            &quot;spot&quot;: &quot;Noosa Heads&quot;,
+            &quot;town&quot;: &quot;Noosa&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;QLD&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a692-71aa-9ab2-5c569121399b&quot;,
+            &quot;spot&quot;: &quot;North Narrabeen&quot;,
+            &quot;town&quot;: &quot;Narrabeen&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;NSW&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6b9-702e-9a1c-584ab5988a95&quot;,
+            &quot;spot&quot;: &quot;Pantín&quot;,
+            &quot;town&quot;: &quot;Valdoviño&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Galicia&quot;,
+            &quot;country_code&quot;: &quot;ES&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a674-727e-bb37-989c28cdfcd7&quot;,
+            &quot;spot&quot;: &quot;Papara&quot;,
+            &quot;town&quot;: &quot;Papara&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tahiti&quot;,
+            &quot;country_code&quot;: &quot;PF&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6ec-7675-a956-8c68462d7383&quot;,
+            &quot;spot&quot;: &quot;Pismo Beach Pier&quot;,
+            &quot;town&quot;: &quot;Pismo Beach&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;CA&quot;,
+            &quot;country_code&quot;: &quot;US&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a708-7358-9ec4-8c8b729aada4&quot;,
+            &quot;spot&quot;: &quot;Ponta Negra&quot;,
+            &quot;town&quot;: &quot;Natal&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;RN&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Fortaleza&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6bf-7326-8e34-4c1e3eaa34b4&quot;,
+            &quot;spot&quot;: &quot;Praia da Fragata&quot;,
+            &quot;town&quot;: &quot;Ferrol&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Galicia&quot;,
+            &quot;country_code&quot;: &quot;ES&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a70b-77c0-8ec5-3d716e38856c&quot;,
+            &quot;spot&quot;: &quot;Praia da Taíba&quot;,
+            &quot;town&quot;: &quot;São Gonçalo do Amarante&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;CE&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Fortaleza&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a701-7418-80cf-d50a2881c063&quot;,
+            &quot;spot&quot;: &quot;Praia da Vila&quot;,
+            &quot;town&quot;: &quot;Imbituba&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;SC&quot;,
+            &quot;country_code&quot;: &quot;BR&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6bc-7247-8ad8-b73a47c85c93&quot;,
+            &quot;spot&quot;: &quot;Praia de Razo&quot;,
+            &quot;town&quot;: &quot;Carballo&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Galicia&quot;,
+            &quot;country_code&quot;: &quot;ES&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6f2-77f0-93d1-bf6f42456f6f&quot;,
+            &quot;spot&quot;: &quot;Punta Roca&quot;,
+            &quot;town&quot;: &quot;La Libertad&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;SV&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/El_Salvador&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a678-737e-bbb2-a032af680041&quot;,
+            &quot;spot&quot;: &quot;Rangiroa&quot;,
+            &quot;town&quot;: &quot;Avatoru&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tuamotu&quot;,
+            &quot;country_code&quot;: &quot;PF&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6af-70ed-b9e6-43214fcbfe55&quot;,
+            &quot;spot&quot;: &quot;Ribeira d'Ilhas&quot;,
+            &quot;town&quot;: &quot;Ericeira&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PT&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a734-77a8-baff-1a4e428b72c1&quot;,
+            &quot;spot&quot;: &quot;Riyue Bay&quot;,
+            &quot;town&quot;: &quot;Wanning&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Hainan&quot;,
+            &quot;country_code&quot;: &quot;CN&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Shanghai&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a71e-7671-9f55-f5cc296abf9a&quot;,
+            &quot;spot&quot;: &quot;Sabang Beach&quot;,
+            &quot;town&quot;: &quot;Baler&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Aurora&quot;,
+            &quot;country_code&quot;: &quot;PH&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Manila&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a711-749b-928c-dd92e52cfbc4&quot;,
+            &quot;spot&quot;: &quot;Señoritas&quot;,
+            &quot;town&quot;: &quot;Punta Hermosa&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PE&quot;,
+            &quot;region_code&quot;: &quot;south_america&quot;,
+            &quot;timezone&quot;: &quot;America/Lima&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a72b-759d-9cef-421b419341f9&quot;,
+            &quot;spot&quot;: &quot;Siheung Wave Park&quot;,
+            &quot;town&quot;: &quot;Siheung&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Gyeonggi&quot;,
+            &quot;country_code&quot;: &quot;KR&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Seoul&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a681-74bd-9d6d-0ecdcdb30d62&quot;,
+            &quot;spot&quot;: &quot;Snapper Rocks&quot;,
+            &quot;town&quot;: &quot;Coolangatta&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;QLD&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6f5-728f-8109-a428b16c081e&quot;,
+            &quot;spot&quot;: &quot;Soup Bowl&quot;,
+            &quot;town&quot;: &quot;Bathsheba&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;BB&quot;,
+            &quot;region_code&quot;: &quot;north_america&quot;,
+            &quot;timezone&quot;: &quot;America/Barbados&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a664-734e-8ca5-68861503a3b1&quot;,
+            &quot;spot&quot;: &quot;Sunset Beach&quot;,
+            &quot;town&quot;: &quot;Haleiwa&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Oahu&quot;,
+            &quot;country_code&quot;: &quot;US-HI&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6cf-7137-ab02-894bf2ace6d4&quot;,
+            &quot;spot&quot;: &quot;Supertubes&quot;,
+            &quot;town&quot;: &quot;Jeffreys Bay&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Eastern Cape&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6ac-73a0-8fa5-eebf7173de06&quot;,
+            &quot;spot&quot;: &quot;Supertubos&quot;,
+            &quot;town&quot;: &quot;Peniche&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;country_code&quot;: &quot;PT&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a718-70a8-bf3a-02cf9f42935e&quot;,
+            &quot;spot&quot;: &quot;Surf Abu Dhabi&quot;,
+            &quot;town&quot;: &quot;Hudayriat Island&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Abu Dhabi&quot;,
+            &quot;country_code&quot;: &quot;AE&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Dubai&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a67e-7048-8adf-dee3b30cdf11&quot;,
+            &quot;spot&quot;: &quot;Surfers Point&quot;,
+            &quot;town&quot;: &quot;Margaret River&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;WA&quot;,
+            &quot;country_code&quot;: &quot;AU&quot;,
+            &quot;region_code&quot;: &quot;aus_oce&quot;,
+            &quot;timezone&quot;: &quot;Australia/Perth&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a671-76a6-acbb-f0577f0cdd81&quot;,
+            &quot;spot&quot;: &quot;Taapuna&quot;,
+            &quot;town&quot;: &quot;Punaauia&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tahiti&quot;,
+            &quot;country_code&quot;: &quot;PF&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a66e-7472-b827-5752c6d23584&quot;,
+            &quot;spot&quot;: &quot;Teahupo'o&quot;,
+            &quot;town&quot;: &quot;Teahupo'o&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Tahiti&quot;,
+            &quot;country_code&quot;: &quot;PF&quot;,
+            &quot;region_code&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;timezone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6cc-758c-af34-2c95819e8bfb&quot;,
+            &quot;spot&quot;: &quot;The Peak&quot;,
+            &quot;town&quot;: &quot;Bundoran&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Donegal&quot;,
+            &quot;country_code&quot;: &quot;IE&quot;,
+            &quot;region_code&quot;: &quot;europe&quot;,
+            &quot;timezone&quot;: &quot;Europe/Dublin&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a731-70af-919a-dfe4e492f5e9&quot;,
+            &quot;spot&quot;: &quot;Ujung Bocur&quot;,
+            &quot;town&quot;: &quot;Krui&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Lampung&quot;,
+            &quot;country_code&quot;: &quot;ID&quot;,
+            &quot;region_code&quot;: &quot;asia&quot;,
+            &quot;timezone&quot;: &quot;Asia/Jakarta&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6d8-7008-a53a-f6013984cb1f&quot;,
+            &quot;spot&quot;: &quot;Victoria Bay&quot;,
+            &quot;town&quot;: &quot;George&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;Western Cape&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;location_id&quot;: &quot;01a136e0-a6d2-7412-b2e9-f0f7a2d14fd4&quot;,
+            &quot;spot&quot;: &quot;Willard Beach&quot;,
+            &quot;town&quot;: &quot;Ballito&quot;,
+            &quot;city&quot;: null,
+            &quot;state&quot;: &quot;KwaZulu-Natal&quot;,
+            &quot;country_code&quot;: &quot;ZA&quot;,
+            &quot;region_code&quot;: &quot;africa&quot;,
+            &quot;timezone&quot;: &quot;Africa/Johannesburg&quot;
+          }
+        ]
+      },
+      &quot;parameters&quot;: &quot;&quot;
+    }
+  ],
+  &quot;backend&quot;: [
+    {
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;url&quot;: &quot;https://api.dev.worldsurfleague.com/api/tour-manager/reference/tours&quot;,
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;options&quot;: [
+          {
+            &quot;value&quot;: &quot;01a136e0-a561-77ed-9afa-4894f39069a0&quot;,
+            &quot;label&quot;: &quot;Challenger Series (CS) · Men&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a564-7048-b1d0-730d2c4aeff2&quot;,
+            &quot;label&quot;: &quot;Challenger Series (CS) · Women&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a559-7793-aeff-f416d2f20e2c&quot;,
+            &quot;label&quot;: &quot;Championship Tour (CT) · Men&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a55e-75bc-8367-596c62398595&quot;,
+            &quot;label&quot;: &quot;Championship Tour (CT) · Women&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a567-7137-9231-a6536d34cdc8&quot;,
+            &quot;label&quot;: &quot;International Qualifying Series (QS) · Men&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a56a-7376-8530-aed0a93f6615&quot;,
+            &quot;label&quot;: &quot;International Qualifying Series (QS) · Women&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a581-75bb-9ada-8b7bd398c942&quot;,
+            &quot;label&quot;: &quot;Longboard Qualifying Series (LQS) · Men&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a585-721c-bc80-5e2b771e3e86&quot;,
+            &quot;label&quot;: &quot;Longboard Qualifying Series (LQS) · Women&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a57b-7203-b446-f8dfba6d8fde&quot;,
+            &quot;label&quot;: &quot;Pro Junior Series (PJ) · Men&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a57e-73d1-b540-0d1ef66da37a&quot;,
+            &quot;label&quot;: &quot;Pro Junior Series (PJ) · Women&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a575-7045-9e21-c47327eb9914&quot;,
+            &quot;label&quot;: &quot;Qualifying Series (QS) · Men&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a578-710a-bbf7-ccb9b32407db&quot;,
+            &quot;label&quot;: &quot;Qualifying Series (QS) · Women&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a56d-7479-87bb-fcc5972d2c3e&quot;,
+            &quot;label&quot;: &quot;World Longboard Tour (LT) · Men&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a570-73ab-beef-8acfb2c62a98&quot;,
+            &quot;label&quot;: &quot;World Longboard Tour (LT) · Women&quot;
+          }
+        ]
+      },
+      &quot;at&quot;: &quot;2026-10-15T00:20:31.352Z&quot;
+    },
+    {
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;url&quot;: &quot;https://api.dev.worldsurfleague.com/api/tour-manager/reference/regions&quot;,
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;options&quot;: [
+          {
+            &quot;value&quot;: &quot;africa&quot;,
+            &quot;label&quot;: &quot;Africa&quot;
+          },
+          {
+            &quot;value&quot;: &quot;asia&quot;,
+            &quot;label&quot;: &quot;Asia&quot;
+          },
+          {
+            &quot;value&quot;: &quot;aus_oce&quot;,
+            &quot;label&quot;: &quot;Australia/Oceania&quot;
+          },
+          {
+            &quot;value&quot;: &quot;europe&quot;,
+            &quot;label&quot;: &quot;Europe&quot;
+          },
+          {
+            &quot;value&quot;: &quot;hawaii_tahiti&quot;,
+            &quot;label&quot;: &quot;Hawaii/Tahiti Nui&quot;
+          },
+          {
+            &quot;value&quot;: &quot;north_america&quot;,
+            &quot;label&quot;: &quot;North America&quot;
+          },
+          {
+            &quot;value&quot;: &quot;south_america&quot;,
+            &quot;label&quot;: &quot;South America&quot;
+          }
+        ]
+      },
+      &quot;at&quot;: &quot;2026-10-15T00:20:31.652Z&quot;
+    },
+    {
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;url&quot;: &quot;https://api.dev.worldsurfleague.com/api/tour-manager/reference/locations&quot;,
+      &quot;status&quot;: 200,
+      &quot;body&quot;: {
+        &quot;options&quot;: [
+          {
+            &quot;value&quot;: &quot;01a136e0-a6ef-7081-9e61-c5264418b262&quot;,
+            &quot;label&quot;: &quot;1st Street Jetty, VA · New York time&quot;,
+            &quot;timeZone&quot;: &quot;America/New_York&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6e2-7336-a094-e7b8711530ca&quot;,
+            &quot;label&quot;: &quot;Ain Diab, Morocco · Casablanca time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Casablanca&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a727-73c2-a703-3d3b8fa0b063&quot;,
+            &quot;label&quot;: &quot;Akabane Beach, Aichi · Tokyo time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a66b-750a-9570-052d6afd4785&quot;,
+            &quot;label&quot;: &quot;Ala Moana Bowls, Oahu · Honolulu time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6df-73b1-836d-2a939b356cb5&quot;,
+            &quot;label&quot;: &quot;Anchor Point, Morocco · Casablanca time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Casablanca&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a65b-74b1-b317-a77cae6a4afb&quot;,
+            &quot;label&quot;: &quot;Banzai Pipeline, Oahu · Honolulu time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a67b-71ee-bcba-ae8627cdb6c5&quot;,
+            &quot;label&quot;: &quot;Bells Beach, VIC · Melbourne time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Melbourne&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a684-7798-afb2-9a56dce66bce&quot;,
+            &quot;label&quot;: &quot;Burleigh Heads, QLD · Brisbane time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a69f-7113-83a6-098b96b1464f&quot;,
+            &quot;label&quot;: &quot;Cape Woolamai, VIC · Melbourne time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Melbourne&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a71b-728e-85f4-98ea33ac94cf&quot;,
+            &quot;label&quot;: &quot;Cloud 9, Siargao · Manila time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Manila&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6a9-75ca-b7a4-fd2ae9ee0762&quot;,
+            &quot;label&quot;: &quot;Cloudbreak, Fiji · Fiji time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Fiji&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6b3-7043-9f36-0bdd1a20a5c7&quot;,
+            &quot;label&quot;: &quot;Costa da Caparica, Portugal · Lisbon time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a698-7486-a348-2cfce2521aa7&quot;,
+            &quot;label&quot;: &quot;Duranbah Beach, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6d5-729e-9e96-386f5e6c87cc&quot;,
+            &quot;label&quot;: &quot;East Beach, Eastern Cape · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a714-759a-845e-32f2d47aa8d1&quot;,
+            &quot;label&quot;: &quot;El Gringo, Chile · Santiago time&quot;,
+            &quot;timeZone&quot;: &quot;America/Santiago&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6c9-7261-911d-657c4b569b22&quot;,
+            &quot;label&quot;: &quot;Fistral Beach, Cornwall · London time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/London&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6a5-7161-8194-b3d456b5dc8f&quot;,
+            &quot;label&quot;: &quot;Fitzroy Beach, New Zealand · Auckland time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Auckland&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a667-70f7-b581-b81b7247a768&quot;,
+            &quot;label&quot;: &quot;Haleiwa Ali'i Beach Park, Oahu · Honolulu time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6e9-725c-8628-d341617aa1b3&quot;,
+            &quot;label&quot;: &quot;Huntington Beach Pier, CA · Los Angeles time&quot;,
+            &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a705-74d2-b7bc-50111ef1b85b&quot;,
+            &quot;label&quot;: &quot;Itamambuca, SP · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6fb-7413-97df-0978d4d72ea7&quot;,
+            &quot;label&quot;: &quot;Itaúna, RJ · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a738-7169-bd2a-b28fe7ffb2d6&quot;,
+            &quot;label&quot;: &quot;Jinzun Harbor, Taitung · Taipei time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Taipei&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a70e-77b6-9819-c747fdf568cf&quot;,
+            &quot;label&quot;: &quot;Joaquina, SC · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a724-70bd-a7c5-9e04bdfe32f6&quot;,
+            &quot;label&quot;: &quot;Kisakihama, Miyazaki · Tokyo time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6c2-7720-b8a0-07b7b0a6f5c1&quot;,
+            &quot;label&quot;: &quot;Lacanau Océan, Gironde · Paris time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Paris&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6f8-7275-b927-bd53b3b92116&quot;,
+            &quot;label&quot;: &quot;La Marginal, Puerto Rico · Puerto Rico time&quot;,
+            &quot;timeZone&quot;: &quot;America/Puerto_Rico&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6c6-72f2-9b6b-6b6c8fecc030&quot;,
+            &quot;label&quot;: &quot;La Piste, Landes · Paris time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Paris&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6b6-7252-b8b9-d9b453655da6&quot;,
+            &quot;label&quot;: &quot;Leça da Palmeira, Portugal · Lisbon time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a695-7112-b2e3-ff04f0f196c2&quot;,
+            &quot;label&quot;: &quot;Lennox Point, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6e5-74d7-9c1d-a1c0309021f2&quot;,
+            &quot;label&quot;: &quot;Lower Trestles, CA · Los Angeles time&quot;,
+            &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a72e-728a-8fb4-6d2e402d6ff2&quot;,
+            &quot;label&quot;: &quot;Mahabalipuram, Tamil Nadu · Kolkata time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Kolkata&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a69c-710e-96ae-687bc326b551&quot;,
+            &quot;label&quot;: &quot;Manly Beach, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6a2-735a-83a7-bbfe82a0f3b1&quot;,
+            &quot;label&quot;: &quot;Manu Bay, New Zealand · Auckland time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Auckland&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6fe-744a-a0c5-0721e1966fd5&quot;,
+            &quot;label&quot;: &quot;Maresias, SP · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a68b-7050-a7d2-5f1d93052093&quot;,
+            &quot;label&quot;: &quot;Merewether Beach, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a721-74e0-b2f7-3519626e513e&quot;,
+            &quot;label&quot;: &quot;Nakatajima Beach, Shizuoka · Tokyo time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Tokyo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a68e-7227-a485-769f6fd080c5&quot;,
+            &quot;label&quot;: &quot;Newcastle Beach, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6dc-75d3-99a5-f1bdb16bf6f2&quot;,
+            &quot;label&quot;: &quot;New Pier, KwaZulu-Natal · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a688-7354-b450-4634c63f1d60&quot;,
+            &quot;label&quot;: &quot;Noosa Heads, QLD · Brisbane time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a692-71aa-9ab2-5c569121399b&quot;,
+            &quot;label&quot;: &quot;North Narrabeen, NSW · Sydney time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Sydney&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6b9-702e-9a1c-584ab5988a95&quot;,
+            &quot;label&quot;: &quot;Pantín, Galicia · Madrid time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a674-727e-bb37-989c28cdfcd7&quot;,
+            &quot;label&quot;: &quot;Papara, Tahiti · Tahiti time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6ec-7675-a956-8c68462d7383&quot;,
+            &quot;label&quot;: &quot;Pismo Beach Pier, CA · Los Angeles time&quot;,
+            &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a708-7358-9ec4-8c8b729aada4&quot;,
+            &quot;label&quot;: &quot;Ponta Negra, RN · Fortaleza time&quot;,
+            &quot;timeZone&quot;: &quot;America/Fortaleza&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6bf-7326-8e34-4c1e3eaa34b4&quot;,
+            &quot;label&quot;: &quot;Praia da Fragata, Galicia · Madrid time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a70b-77c0-8ec5-3d716e38856c&quot;,
+            &quot;label&quot;: &quot;Praia da Taíba, CE · Fortaleza time&quot;,
+            &quot;timeZone&quot;: &quot;America/Fortaleza&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a701-7418-80cf-d50a2881c063&quot;,
+            &quot;label&quot;: &quot;Praia da Vila, SC · Sao Paulo time&quot;,
+            &quot;timeZone&quot;: &quot;America/Sao_Paulo&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6bc-7247-8ad8-b73a47c85c93&quot;,
+            &quot;label&quot;: &quot;Praia de Razo, Galicia · Madrid time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Madrid&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6f2-77f0-93d1-bf6f42456f6f&quot;,
+            &quot;label&quot;: &quot;Punta Roca, El Salvador · El Salvador time&quot;,
+            &quot;timeZone&quot;: &quot;America/El_Salvador&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a678-737e-bbb2-a032af680041&quot;,
+            &quot;label&quot;: &quot;Rangiroa, Tuamotu · Tahiti time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6af-70ed-b9e6-43214fcbfe55&quot;,
+            &quot;label&quot;: &quot;Ribeira d'Ilhas, Portugal · Lisbon time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a734-77a8-baff-1a4e428b72c1&quot;,
+            &quot;label&quot;: &quot;Riyue Bay, Hainan · Shanghai time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Shanghai&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a71e-7671-9f55-f5cc296abf9a&quot;,
+            &quot;label&quot;: &quot;Sabang Beach, Aurora · Manila time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Manila&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a711-749b-928c-dd92e52cfbc4&quot;,
+            &quot;label&quot;: &quot;Señoritas, Peru · Lima time&quot;,
+            &quot;timeZone&quot;: &quot;America/Lima&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a72b-759d-9cef-421b419341f9&quot;,
+            &quot;label&quot;: &quot;Siheung Wave Park, Gyeonggi · Seoul time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Seoul&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a681-74bd-9d6d-0ecdcdb30d62&quot;,
+            &quot;label&quot;: &quot;Snapper Rocks, QLD · Brisbane time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Brisbane&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6f5-728f-8109-a428b16c081e&quot;,
+            &quot;label&quot;: &quot;Soup Bowl, Barbados · Barbados time&quot;,
+            &quot;timeZone&quot;: &quot;America/Barbados&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a664-734e-8ca5-68861503a3b1&quot;,
+            &quot;label&quot;: &quot;Sunset Beach, Oahu · Honolulu time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Honolulu&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6cf-7137-ab02-894bf2ace6d4&quot;,
+            &quot;label&quot;: &quot;Supertubes, Eastern Cape · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6ac-73a0-8fa5-eebf7173de06&quot;,
+            &quot;label&quot;: &quot;Supertubos, Portugal · Lisbon time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Lisbon&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a718-70a8-bf3a-02cf9f42935e&quot;,
+            &quot;label&quot;: &quot;Surf Abu Dhabi, Abu Dhabi · Dubai time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Dubai&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a67e-7048-8adf-dee3b30cdf11&quot;,
+            &quot;label&quot;: &quot;Surfers Point, WA · Perth time&quot;,
+            &quot;timeZone&quot;: &quot;Australia/Perth&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a671-76a6-acbb-f0577f0cdd81&quot;,
+            &quot;label&quot;: &quot;Taapuna, Tahiti · Tahiti time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a66e-7472-b827-5752c6d23584&quot;,
+            &quot;label&quot;: &quot;Teahupo'o, Tahiti · Tahiti time&quot;,
+            &quot;timeZone&quot;: &quot;Pacific/Tahiti&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6cc-758c-af34-2c95819e8bfb&quot;,
+            &quot;label&quot;: &quot;The Peak, Donegal · Dublin time&quot;,
+            &quot;timeZone&quot;: &quot;Europe/Dublin&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a731-70af-919a-dfe4e492f5e9&quot;,
+            &quot;label&quot;: &quot;Ujung Bocur, Lampung · Jakarta time&quot;,
+            &quot;timeZone&quot;: &quot;Asia/Jakarta&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6d8-7008-a53a-f6013984cb1f&quot;,
+            &quot;label&quot;: &quot;Victoria Bay, Western Cape · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          },
+          {
+            &quot;value&quot;: &quot;01a136e0-a6d2-7412-b2e9-f0f7a2d14fd4&quot;,
+            &quot;label&quot;: &quot;Willard Beach, KwaZulu-Natal · Johannesburg time&quot;,
+            &quot;timeZone&quot;: &quot;Africa/Johannesburg&quot;
+          }
+        ]
+      },
+      &quot;at&quot;: &quot;2026-10-15T00:20:31.990Z&quot;
+    }
+  ]
+}</pre><h2>Evidence</h2><a href="../screenshots/BM-LIVE-T12-BM-LIVE-T12.png"><img loading="lazy" src="../screenshots/BM-LIVE-T12-BM-LIVE-T12.png" alt="Actual execution screenshot"></a><video controls preload="metadata" src="../videos/BM-LIVE-T12.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label></p><p class="caption">Focused original browser-content viewport, no zoom, resize or crop. Chrome toolbar/OS tabs are not recorded by Playwright. Clip includes the actual sent prompt and observed result.</p><h4>Read-only review of the original saved answer</h4><p>This is the same stored conversation, opened later to keep the wrong count visible. It is not a new model response or a substitute for the original recording above. Reference API returned68 locations.</p><img loading="lazy" src="../screenshots/BM-LIVE-T12-BM-LIVE-T12-count-review.png"><video controls preload="metadata" src="../videos/BM-LIVE-T12-history-review.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label></p><p class="caption">History review of actual saved answer: Locations (69); independently counted reference options:68.</p><a href="../evidence/BM-LIVE-T12.json">Full sanitized action log and API evidence</a></section></main></html>

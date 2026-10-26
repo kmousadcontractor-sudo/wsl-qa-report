@@ -1,0 +1,91 @@
+{
+  "scope": "Actual scheduler function and domain scheduling rules with advanced clock and in-memory stores; not a live dev worker",
+  "rules": {
+    "gracePeriodHours": 168,
+    "notificationOffsetsHours": [
+      24,
+      72,
+      120,
+      168
+    ],
+    "retryOffsetsHours": [
+      24,
+      72
+    ],
+    "shortNoticeDays": 10
+  },
+  "checks": [
+    {
+      "name": "No automatic retry at 23 hours",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "First retry fires at 24 hours without waiting a real day",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS"
+    },
+    {
+      "name": "In-flight first retry is not dispatched twice",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "First command identity retains charge reference",
+      "expected": "retry-isolated-charge-1",
+      "actual": "retry-isolated-charge-1",
+      "status": "PASS"
+    },
+    {
+      "name": "Retryable failure schedules next configured retry",
+      "expected": "2026-10-23T12:00:00+00:00",
+      "actual": "2026-10-23T12:00:00+00:00",
+      "status": "PASS"
+    },
+    {
+      "name": "Second retry does not fire at 71 hours",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "Second retry fires at 72 hours without waiting three real days",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS"
+    },
+    {
+      "name": "Second command has a distinct attempt key",
+      "expected": "retry-isolated-charge-2",
+      "actual": "retry-isolated-charge-2",
+      "status": "PASS"
+    },
+    {
+      "name": "Withdrawal stops a due scheduled retry",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS"
+    },
+    {
+      "name": "No command sent for withdrawn athlete",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS"
+    },
+    {
+      "name": "Non-retryable decline schedules no automatic attempt",
+      "expected": null,
+      "actual": null,
+      "status": "PASS"
+    },
+    {
+      "name": "Long-overdue retry is not sent after deadline tolerance",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    }
+  ]
+}

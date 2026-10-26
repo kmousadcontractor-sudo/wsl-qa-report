@@ -1,0 +1,27 @@
+{
+  "excluded": [
+    {
+      "source": "artifacts/WSL-9678-firefox-regression-2026-10-22/staging/page@004aabb2fbc18c509143d3f78de2a642.webm",
+      "reason": "Zero-byte headed Firefox crash; no completed test recording."
+    },
+    {
+      "source": "artifacts/WSL-9790-per-test-recordings-2026-10-22/staging/empty-default/page@7dc4cd7208d329b8df4a30f2eb9ea7f7.webm",
+      "reason": "Zero-byte interrupted setup/recording attempt. A separate completed staging empty-default recording is linked in the primary cases."
+    }
+  ],
+  "setupHistory": [
+    {
+      "browser": "Firefox revision 1538",
+      "outcome": "Protocol mismatch while creating context; no product request executed."
+    },
+    {
+      "browser": "Firefox revision 1511",
+      "outcome": "Viewport protocol mismatch; no product request executed."
+    },
+    {
+      "browser": "Firefox revision 1555 / Firefox 157",
+      "outcome": "Matching browser installed. Headed attempt ended before tests; headless execution used for recorded runs."
+    }
+  ],
+  "notes": "Only completed, fully decoded videos are published. An interrupted attempt is not silently relabelled as a completed retest."
+}

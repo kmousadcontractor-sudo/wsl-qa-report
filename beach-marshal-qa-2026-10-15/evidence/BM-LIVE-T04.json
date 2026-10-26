@@ -1,0 +1,401 @@
+{
+  "id": "BM-LIVE-T04",
+  "role": "TourManager",
+  "action": "Read",
+  "prompt": "Find the event QA Main Flow 6a41a52a and show its dates, venue, status, entry fee and currency.",
+  "expected": "Identity and fields match dedicated QA event API.",
+  "expectedTools": [
+    "find_events",
+    "get_event"
+  ],
+  "referencePaths": [
+    "/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+  ],
+  "startedAt": "2026-10-15T00:19:15.229Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+          "status": {
+            "code": "closed-for-entries",
+            "label": "Closed for entries",
+            "tone": "warning"
+          },
+          "statusOptions": [
+            {
+              "code": "ready-for-entries",
+              "label": "Ready for entries",
+              "destructive": false
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true
+            }
+          ],
+          "fields": {
+            "name": "QA Main Flow 6a41a52a",
+            "tour": "01a136e0-a575-7045-9e21-c47327eb9914",
+            "rating": "01a136e0-a604-7170-9191-e87921200f63",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a136e0-a6ef-7081-9e61-c5264418b262",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "format": "01a136e0-a633-76a4-a652-f22ee216e757",
+            "prizeMoney": {
+              "amount": 3000000,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "2026-10-14",
+            "registrationOpensTime": "17:09",
+            "registrationClosesDate": "2026-10-14",
+            "registrationClosesTime": "17:10",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 22500,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": false,
+          "version": 5
+        }
+      },
+      "at": "2026-10-15T00:19:15.571Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:19:16.391Z",
+  "videoStartSeconds": 257.953,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "b0d21a4a-f886-4774-a2fc-91d7f5eb60f2",
+    "input": {
+      "threadId": "0cca38fd-d5f0-4d47-bde5-00e5bc23d642",
+      "runId": "a44f8de8-3d82-464f-b6cb-fc3b89cdffe1",
+      "state": {},
+      "messages": [
+        {
+          "id": "ed6a964f-09c6-4a96-86d0-316d55c9b306",
+          "role": "user",
+          "content": "Find the event QA Main Flow 6a41a52a and show its dates, venue, status, entry fee and currency."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01Wu8sZAjY7wfvS3FpABYwhJ",
+        "name": "find_events",
+        "result": {
+          "status": "ok",
+          "events": [
+            {
+              "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "name": "QA Main Flow 6a41a52a",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-19",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "score": 1
+            },
+            {
+              "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+              "name": "QA Checklist 20261014081146624-d9f105 21",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "International Qualifying Series",
+              "division": "mens",
+              "score": 0.85
+            },
+            {
+              "eventId": "01a1379a-f4bc-71b3-843b-d1803dd3c70c",
+              "name": "QA Checklist 20261013232959688-1bbfb4 7",
+              "startDate": "2026-11-28",
+              "endDate": "2026-11-28",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "International Qualifying Series",
+              "division": "mens",
+              "score": 0.85
+            },
+            {
+              "eventId": "01a13797-8b8f-75aa-b242-6a5c12a31707",
+              "name": "QA Checklist 20261013232241307-227859 11",
+              "startDate": "2026-12-02",
+              "endDate": "2026-12-02",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "International Qualifying Series",
+              "division": "mens",
+              "score": 0.85
+            },
+            {
+              "eventId": "01a13750-abdf-7176-8755-894318f996b8",
+              "name": "QA Checklist 20261013215825672-09e54b 19",
+              "startDate": "2026-12-10",
+              "endDate": "2026-12-10",
+              "venue": "1st Street Jetty, Virginia Beach, VA, US",
+              "tour": "International Qualifying Series",
+              "division": "mens",
+              "score": 0.85
+            }
+          ],
+          "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+        },
+        "parameters": {
+          "text": "QA Main Flow 6a41a52a"
+        }
+      },
+      {
+        "id": "toolu_bdrk_01Jcw8jn4yjxuLXzcoeHQ9DF",
+        "name": "get_event",
+        "result": {
+          "status": "ok",
+          "event": {
+            "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "season_id": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+            "name": "QA Main Flow 6a41a52a",
+            "status": "closed_for_entries",
+            "start_date": "2026-12-19",
+            "end_date": "2026-12-19",
+            "tour_id": "01a136e0-a5d2-7281-bd03-46b0fe771f3b",
+            "location_id": "01a136e0-a6ef-7081-9e61-c5264418b262",
+            "region_codes": [
+              "north_america"
+            ],
+            "prize_money": {
+              "amount_minor": 3000000,
+              "currency": "USD"
+            },
+            "entry_fee": {
+              "amount_minor": 22500,
+              "currency": "USD"
+            },
+            "registration_opens_date": "2026-10-14",
+            "registration_opens_time": "17:09",
+            "registration_closes_date": "2026-10-14",
+            "registration_closes_time": "17:10"
+          }
+        },
+        "parameters": {
+          "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+        }
+      }
+    ],
+    "answer": "I found QA Main Flow 6a41a52a. It's a one-day men's Qualifying Series event on Saturday, 19 December 2026, at 1st Street Jetty in Virginia Beach, Virginia, US. Registration is closed. The entry fee is US$225.00, and the event is set in US dollars.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "0cca38fd-d5f0-4d47-bde5-00e5bc23d642",
+        "runId": "a44f8de8-3d82-464f-b6cb-fc3b89cdffe1"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "0cca38fd-d5f0-4d47-bde5-00e5bc23d642",
+        "runId": "a44f8de8-3d82-464f-b6cb-fc3b89cdffe1"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01Wu8sZAjY7wfvS3FpABYwhJ",
+      "name": "find_events",
+      "result": {
+        "status": "ok",
+        "events": [
+          {
+            "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+            "name": "QA Main Flow 6a41a52a",
+            "startDate": "2026-12-19",
+            "endDate": "2026-12-19",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "score": 1
+          },
+          {
+            "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+            "name": "QA Checklist 20261014081146624-d9f105 21",
+            "startDate": "2026-11-23",
+            "endDate": "2026-11-23",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "International Qualifying Series",
+            "division": "mens",
+            "score": 0.85
+          },
+          {
+            "eventId": "01a1379a-f4bc-71b3-843b-d1803dd3c70c",
+            "name": "QA Checklist 20261013232959688-1bbfb4 7",
+            "startDate": "2026-11-28",
+            "endDate": "2026-11-28",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "International Qualifying Series",
+            "division": "mens",
+            "score": 0.85
+          },
+          {
+            "eventId": "01a13797-8b8f-75aa-b242-6a5c12a31707",
+            "name": "QA Checklist 20261013232241307-227859 11",
+            "startDate": "2026-12-02",
+            "endDate": "2026-12-02",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "International Qualifying Series",
+            "division": "mens",
+            "score": 0.85
+          },
+          {
+            "eventId": "01a13750-abdf-7176-8755-894318f996b8",
+            "name": "QA Checklist 20261013215825672-09e54b 19",
+            "startDate": "2026-12-10",
+            "endDate": "2026-12-10",
+            "venue": "1st Street Jetty, Virginia Beach, VA, US",
+            "tour": "International Qualifying Series",
+            "division": "mens",
+            "score": 0.85
+          }
+        ],
+        "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+      },
+      "parameters": {
+        "text": "QA Main Flow 6a41a52a"
+      }
+    },
+    {
+      "id": "toolu_bdrk_01Jcw8jn4yjxuLXzcoeHQ9DF",
+      "name": "get_event",
+      "result": {
+        "status": "ok",
+        "event": {
+          "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+          "season_id": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+          "name": "QA Main Flow 6a41a52a",
+          "status": "closed_for_entries",
+          "start_date": "2026-12-19",
+          "end_date": "2026-12-19",
+          "tour_id": "01a136e0-a5d2-7281-bd03-46b0fe771f3b",
+          "location_id": "01a136e0-a6ef-7081-9e61-c5264418b262",
+          "region_codes": [
+            "north_america"
+          ],
+          "prize_money": {
+            "amount_minor": 3000000,
+            "currency": "USD"
+          },
+          "entry_fee": {
+            "amount_minor": 22500,
+            "currency": "USD"
+          },
+          "registration_opens_date": "2026-10-14",
+          "registration_opens_time": "17:09",
+          "registration_closes_date": "2026-10-14",
+          "registration_closes_time": "17:10"
+        }
+      },
+      "parameters": {
+        "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+      }
+    }
+  ],
+  "aiResponse": "I found QA Main Flow 6a41a52a. It's a one-day men's Qualifying Series event on Saturday, 19 December 2026, at 1st Street Jetty in Virginia Beach, Virginia, US. Registration is closed. The entry fee is US$225.00, and the event is set in US dollars.",
+  "actual": "I found QA Main Flow 6a41a52a. It's a one-day men's Qualifying Series event on Saturday, 19 December 2026, at 1st Street Jetty in Virginia Beach, Virginia, US. Registration is closed. The entry fee is US$225.00, and the event is set in US dollars.",
+  "durationMs": 9069,
+  "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nFind the event QA Main Flow 6a41a52a and show its dates, venue, status, entry fee and currency.\n\nQA Main Flow 6a41a52a\n\nI found QA Main Flow 6a41a52a. It's a one-day men's Qualifying Series event on Saturday, 19 December 2026, at 1st Street Jetty in Virginia Beach, Virginia, US. Registration is closed. The entry fee is US$225.00, and the event is set in US dollars.\n\nI found QA Main Flow 6a41a52a. It's a one-day men's Qualifying Series event on Saturday, 19 December 2026, at 1st Street Jetty in Virginia Beach, Virginia, US. Registration is closed. The entry fee is US$225.00, and the event is set in US dollars.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-T04.png",
+  "videoEndSeconds": 267.69,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:19:16.415Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:19:26.128Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Resolved exact QA event and used get_event;19 Dec2026, closed registration, USD225 fee and venue identity match current manager data.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Manager normal sign-in verified by session API",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "Actual returned QA event match inspected",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Identity and fields match dedicated QA event API.",
+    "observed": "I found QA Main Flow 6a41a52a. It's a one-day men's Qualifying Series event on Saturday, 19 December 2026, at 1st Street Jetty in Virginia Beach, Virginia, US. Registration is closed. The entry fee is US$225.00, and the event is set in US dollars.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-T04-BM-LIVE-T04.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

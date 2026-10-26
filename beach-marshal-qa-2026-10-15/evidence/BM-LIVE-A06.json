@@ -1,0 +1,672 @@
+{
+  "id": "BM-LIVE-A06",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "What insurance options can Junior Consent buy now?",
+  "expected": "Matches insurance offers and eligibility; acknowledges inability if unavailable.",
+  "expectedTools": [
+    "get_insurance_offer"
+  ],
+  "referencePaths": [],
+  "startedAt": "2026-10-15T00:16:42.234Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:16:42.341Z",
+  "videoStartSeconds": 103.903,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "d2c2dde0-7b33-4cc2-af0a-92754f870565",
+    "input": {
+      "threadId": "77d9da72-b34f-4913-82a0-69731d7bd0c7",
+      "runId": "74c43d52-3433-4c60-8864-f6b90a264127",
+      "state": {},
+      "messages": [
+        {
+          "id": "530a5390-50fc-4a8a-9943-7202a7cde18b",
+          "role": "user",
+          "content": "What insurance options can Junior Consent buy now?"
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01LatwYY31DrWf1b8tXo84vS",
+        "name": "list_my_athletes",
+        "result": {
+          "status": "ok",
+          "athletes": [
+            {
+              "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "first_name": "Junior",
+              "last_name": "Consent",
+              "status": "active",
+              "registered_by": "guardian",
+              "membership": {
+                "product_code": "junior",
+                "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+                "status": "active",
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31",
+                "amount": {
+                  "amount_minor": 17500,
+                  "currency": "USD"
+                }
+              }
+            }
+          ]
+        },
+        "parameters": ""
+      },
+      {
+        "id": "toolu_bdrk_01UW8jsxL9x3r6gPZRm3mSYK",
+        "name": "get_insurance_offer",
+        "result": {
+          "status": "ok",
+          "offer": {
+            "policy_year": 2026,
+            "region_code": "north_america",
+            "products": [
+              {
+                "code": "1-event-basic-cover-all-regions",
+                "cover_type": "basic",
+                "cover_summary": "From first training to elimination",
+                "event_credits": 1,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 22000,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 22000,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "code": "2-event-basic-cover-all-regions",
+                "cover_type": "basic",
+                "cover_summary": "From first training to elimination",
+                "event_credits": 2,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 32000,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 32000,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "code": "2-event-comprehensive-travel-cover",
+                "cover_type": "comprehensive",
+                "cover_summary": "90-day journey limit",
+                "event_credits": 2,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 36000,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 36000,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "code": "4-event-comprehensive-travel-cover",
+                "cover_type": "comprehensive",
+                "cover_summary": "180-day journey limit",
+                "event_credits": 4,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 70000,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 70000,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "code": "6-event-comprehensive-travel-cover",
+                "cover_type": "comprehensive",
+                "cover_summary": "180-day journey limit",
+                "event_credits": 6,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 102000,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 102000,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "code": "domestic-event-medical-cover",
+                "cover_type": "domestic_medical",
+                "cover_summary": "Country of domicile only · capped at USD 10,000",
+                "event_credits": 1,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 2600,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 2600,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "code": "jqs-lqs-annual-basic-event-cover",
+                "cover_type": "basic",
+                "cover_summary": "As above, Junior and Longboard athletes",
+                "event_credits": null,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 32500,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 32500,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "code": "jqs-lqs-annual-comprehensive-travel-event-cover",
+                "cover_type": "comprehensive",
+                "cover_summary": "As above, Junior and Longboard athletes",
+                "event_credits": null,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 57000,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 57000,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "code": "qs-cs-annual-basic-event-cover",
+                "cover_type": "basic",
+                "cover_summary": "Training and competition only · no travel cover",
+                "event_credits": null,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 51500,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 51500,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              },
+              {
+                "code": "qs-cs-annual-comprehensive-travel-event-cover",
+                "cover_type": "comprehensive",
+                "cover_summary": "Travel, competition and return journey · 180-day journey limit",
+                "event_credits": null,
+                "eligible": true,
+                "reason_code": null,
+                "price": {
+                  "amount_minor": 120000,
+                  "currency": "USD"
+                },
+                "handling_fee": {
+                  "amount_minor": 0,
+                  "currency": "USD"
+                },
+                "amount": {
+                  "amount_minor": 120000,
+                  "currency": "USD"
+                },
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31"
+              }
+            ]
+          }
+        },
+        "parameters": {
+          "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3"
+        }
+      }
+    ],
+    "answer": "Junior Consent can buy any of these 10 policies for 2026. None of them has a handling fee, and all of them run until December 31, 2026:\n\n**Per-event cover (event credits)**\n- Domestic event medical cover, 1 event: $26. Covers your home country only, up to $10,000.\n- Basic cover, 1 event in any region: $220. Covers you from first training until you're knocked out.\n- Basic cover, 2 events in any region: $320.\n- Comprehensive travel cover, 2 events: $360. Covers trips of up to 90 days.\n- Comprehensive travel cover, 4 events: $700. Covers trips of up to 180 days.\n- Comprehensive travel cover, 6 events: $1,020. Covers trips of up to 180 days.\n\n**Annual cover**\n- Junior and Longboard tour annual basic cover: $325\n- Junior and Longboard tour annual comprehensive travel cover: $570\n- Qualifying Series and Challenger Series annual basic cover: $515. Covers training and competition, but not travel.\n- Qualifying Series and Challenger Series annual comprehensive travel cover: $1,200. Covers travel, competition and the trip home, for trips of up to 180 days.\n\nSince 2026 ends in about 2½ months, you could cover just the events you have left with per-event credits. That may cost less than an annual policy. You can buy insurance on the WSL website, including from an event's insurance page.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "77d9da72-b34f-4913-82a0-69731d7bd0c7",
+        "runId": "74c43d52-3433-4c60-8864-f6b90a264127"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "77d9da72-b34f-4913-82a0-69731d7bd0c7",
+        "runId": "74c43d52-3433-4c60-8864-f6b90a264127"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TOOL_CALL_ARGS",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01LatwYY31DrWf1b8tXo84vS",
+      "name": "list_my_athletes",
+      "result": {
+        "status": "ok",
+        "athletes": [
+          {
+            "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+            "first_name": "Junior",
+            "last_name": "Consent",
+            "status": "active",
+            "registered_by": "guardian",
+            "membership": {
+              "product_code": "junior",
+              "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+              "status": "active",
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31",
+              "amount": {
+                "amount_minor": 17500,
+                "currency": "USD"
+              }
+            }
+          }
+        ]
+      },
+      "parameters": ""
+    },
+    {
+      "id": "toolu_bdrk_01UW8jsxL9x3r6gPZRm3mSYK",
+      "name": "get_insurance_offer",
+      "result": {
+        "status": "ok",
+        "offer": {
+          "policy_year": 2026,
+          "region_code": "north_america",
+          "products": [
+            {
+              "code": "1-event-basic-cover-all-regions",
+              "cover_type": "basic",
+              "cover_summary": "From first training to elimination",
+              "event_credits": 1,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 22000,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 22000,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "code": "2-event-basic-cover-all-regions",
+              "cover_type": "basic",
+              "cover_summary": "From first training to elimination",
+              "event_credits": 2,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 32000,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 32000,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "code": "2-event-comprehensive-travel-cover",
+              "cover_type": "comprehensive",
+              "cover_summary": "90-day journey limit",
+              "event_credits": 2,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 36000,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 36000,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "code": "4-event-comprehensive-travel-cover",
+              "cover_type": "comprehensive",
+              "cover_summary": "180-day journey limit",
+              "event_credits": 4,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 70000,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 70000,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "code": "6-event-comprehensive-travel-cover",
+              "cover_type": "comprehensive",
+              "cover_summary": "180-day journey limit",
+              "event_credits": 6,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 102000,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 102000,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "code": "domestic-event-medical-cover",
+              "cover_type": "domestic_medical",
+              "cover_summary": "Country of domicile only · capped at USD 10,000",
+              "event_credits": 1,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 2600,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 2600,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "code": "jqs-lqs-annual-basic-event-cover",
+              "cover_type": "basic",
+              "cover_summary": "As above, Junior and Longboard athletes",
+              "event_credits": null,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 32500,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 32500,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "code": "jqs-lqs-annual-comprehensive-travel-event-cover",
+              "cover_type": "comprehensive",
+              "cover_summary": "As above, Junior and Longboard athletes",
+              "event_credits": null,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 57000,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 57000,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "code": "qs-cs-annual-basic-event-cover",
+              "cover_type": "basic",
+              "cover_summary": "Training and competition only · no travel cover",
+              "event_credits": null,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 51500,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 51500,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            },
+            {
+              "code": "qs-cs-annual-comprehensive-travel-event-cover",
+              "cover_type": "comprehensive",
+              "cover_summary": "Travel, competition and return journey · 180-day journey limit",
+              "event_credits": null,
+              "eligible": true,
+              "reason_code": null,
+              "price": {
+                "amount_minor": 120000,
+                "currency": "USD"
+              },
+              "handling_fee": {
+                "amount_minor": 0,
+                "currency": "USD"
+              },
+              "amount": {
+                "amount_minor": 120000,
+                "currency": "USD"
+              },
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31"
+            }
+          ]
+        }
+      },
+      "parameters": {
+        "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3"
+      }
+    }
+  ],
+  "aiResponse": "Junior Consent can buy any of these 10 policies for 2026. None of them has a handling fee, and all of them run until December 31, 2026:\n\n**Per-event cover (event credits)**\n- Domestic event medical cover, 1 event: $26. Covers your home country only, up to $10,000.\n- Basic cover, 1 event in any region: $220. Covers you from first training until you're knocked out.\n- Basic cover, 2 events in any region: $320.\n- Comprehensive travel cover, 2 events: $360. Covers trips of up to 90 days.\n- Comprehensive travel cover, 4 events: $700. Covers trips of up to 180 days.\n- Comprehensive travel cover, 6 events: $1,020. Covers trips of up to 180 days.\n\n**Annual cover**\n- Junior and Longboard tour annual basic cover: $325\n- Junior and Longboard tour annual comprehensive travel cover: $570\n- Qualifying Series and Challenger Series annual basic cover: $515. Covers training and competition, but not travel.\n- Qualifying Series and Challenger Series annual comprehensive travel cover: $1,200. Covers travel, competition and the trip home, for trips of up to 180 days.\n\nSince 2026 ends in about 2½ months, you could cover just the events you have left with per-event credits. That may cost less than an annual policy. You can buy insurance on the WSL website, including from an event's insurance page.",
+  "actual": "Junior Consent can buy any of these 10 policies for 2026. None of them has a handling fee, and all of them run until December 31, 2026:\n\n**Per-event cover (event credits)**\n- Domestic event medical cover, 1 event: $26. Covers your home country only, up to $10,000.\n- Basic cover, 1 event in any region: $220. Covers you from first training until you're knocked out.\n- Basic cover, 2 events in any region: $320.\n- Comprehensive travel cover, 2 events: $360. Covers trips of up to 90 days.\n- Comprehensive travel cover, 4 events: $700. Covers trips of up to 180 days.\n- Comprehensive travel cover, 6 events: $1,020. Covers trips of up to 180 days.\n\n**Annual cover**\n- Junior and Longboard tour annual basic cover: $325\n- Junior and Longboard tour annual comprehensive travel cover: $570\n- Qualifying Series and Challenger Series annual basic cover: $515. Covers training and competition, but not travel.\n- Qualifying Series and Challenger Series annual comprehensive travel cover: $1,200. Covers travel, competition and the trip home, for trips of up to 180 days.\n\nSince 2026 ends in about 2½ months, you could cover just the events you have left with per-event credits. That may cost less than an annual policy. You can buy insurance on the WSL website, including from an event's insurance page.",
+  "durationMs": 10203,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWhat insurance options can Junior Consent buy now?\n\nJunior Consent can buy any of these 10 policies for 2026. None of them has a handling fee, and all of them run until December 31, 2026:\n\nPer-event cover (event credits)\n\nDomestic event medical cover, 1 event: $26. Covers your home country only, up to $10,000.\nBasic cover, 1 event in any region: $220. Covers you from first training until you're knocked out.\nBasic cover, 2 events in any region: $320.\nComprehensive travel cover, 2 events: $360. Covers trips of up to 90 days.\nComprehensive travel cover, 4 events: $700. Covers trips of up to 180 days.\nComprehensive travel cover, 6 events: $1,020. Covers trips of up to 180 days.\n\nAnnual cover\n\nJunior and Longboard tour annual basic cover: $325\nJunior and Longboard tour annual comprehensive travel cover: $570\nQualifying Series and Challenger Series annual basic cover: $515. Covers training and competition, but not travel.\nQualifying Series and Challenger Series annual comprehensive travel cover: $1,200. Covers travel, competition and the trip home, for trips of up to 180 days.\n\nSince 2026 ends in about 2½ months, you could cover just the events you have left with per-event credits. That may cost less than an annual policy. You can buy insurance on the WSL website, including from an event's insurance page.\n\nJunior Consent can buy any of these 10 policies for 2026. None of them has a handling fee, and all of them run until December 31, 2026: **Per-event cover (event credits)** - Domestic event medical cover, 1 event: $26. Covers your home country only, up to $10,000. - Basic cover, 1 event in any region: $220. Covers you from first training until you're knocked out. - Basic cover, 2 events in any region: $320. - Comprehensive travel cover, 2 events: $360. Covers trips of up to 90 days. - Comprehensive travel cover, 4 events: $700. Covers trips of up to 180 days. - Comprehensive travel cover, 6 events: $1,020. Covers trips of up to 180 days. **Annual cover** - Junior and Longboard tour annual basic cover: $325 - Junior and Longboard tour annual comprehensive travel cover: $570 - Qualifying Series and Challenger Series annual basic cover: $515. Covers training and competition, but not travel. - Qualifying Series and Challenger Series annual comprehensive travel cover: $1,200. Covers travel, competition and the trip home, for trips of up to 180 days. Since 2026 ends in about 2½ months, you could cover just the events you have left with per-event credits. That may cost less than an annual policy. You can buy insurance on the WSL website, including from an event's insurance page.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A06.png",
+  "videoEndSeconds": 114.779,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:16:42.400Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:16:53.217Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "All ten eligible insurance products, prices, credit quantities, validity and zero handling match captured service-backed offer. No purchase claimed. Independent BFF insurance-offer snapshot not captured.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Own-athlete scope; direct foreign holdings403 verified in A16/S02",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "Captured athlete parameter compared with owned QA identity",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Matches insurance offers and eligibility; acknowledges inability if unavailable.",
+    "observed": "Junior Consent can buy any of these 10 policies for 2026. None of them has a handling fee, and all of them run until December 31, 2026:\n\n**Per-event cover (event credits)**\n- Domestic event medical cover, 1 event: $26. Covers your home country only, up to $10,000.\n- Basic cover, 1 event in any region: $220. Covers you from first training until you're knocked out.\n- Basic cover, 2 events in any region: $320.\n- Comprehensive travel cover, 2 events: $360. Covers trips of up to 90 days.\n- Comprehensive travel cover, 4 events: $700. Covers trips of up to 180 days.\n- Comprehensive travel cover, 6 events: $1,020. Covers trips of up to 180 days.\n\n**Annual cover**\n- Junior and Longboard tour annual basic cover: $325\n- Junior and Longboard tour annual comprehensive travel cover: $570\n- Qualifying Series and Challenger Series annual basic cover: $515. Covers training and competition, but not travel.\n- Qualifying Series and Challenger Series annual comprehensive travel cover: $1,200. Covers travel, competition and the trip home, for trips of up to 180 days.\n\nSince 2026 ends in about 2½ months, you could cover just the events you have left with per-event credits. That may cost less than an annual policy. You can buy insurance on the WSL website, including from an event's insurance page.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A06-BM-LIVE-A06.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

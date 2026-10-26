@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="24" time="1.147" timestamp="2026-10-21T00:13:55.730196+03:00" hostname="DESKTOP-TDKA2AL"><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_worker_dispatch_exact_due_boundaries[-1-24]" time="0.009" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_worker_dispatch_exact_due_boundaries[-1-72]" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_worker_dispatch_exact_due_boundaries[0-24]" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_worker_dispatch_exact_due_boundaries[0-72]" time="0.005" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_worker_dispatch_exact_due_boundaries[1-24]" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_worker_dispatch_exact_due_boundaries[1-72]" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_deadline_boundary_without_inflight[-1]" time="0.006" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_deadline_boundary_without_inflight[0]" time="0.006" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_deadline_boundary_without_inflight[1]" time="0.007" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_lateness_tolerance_boundary[-1]" time="0.005" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_lateness_tolerance_boundary[0]" time="0.005" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_lateness_tolerance_boundary[1]" time="0.006" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_terminal_entry_must_not_prepare_manual_retry[withdrawn]" time="0.005"><failure message="AssertionError: Terminal entry withdrawn was allowed to claim retry&#10;assert True is False&#10; +  where True = RetryPaymentFacts(entry_id=UUID('01a15b29-eb7e-7469-bf85-ae933a314753'), chargeable=True, account_holder_iam_user_id=UUID('01a15b29-eb04-753a-a0c8-e0fcbff39ce2')).chargeable">status = &lt;EntryStatus.WITHDRAWN: 'withdrawn'&gt;
+
+    @pytest.mark.parametrize('status',[EntryStatus.WITHDRAWN,EntryStatus.REMOVED,EntryStatus.NOT_SELECTED,EntryStatus.EXPIRED])
+    async def test_matrix_terminal_entry_must_not_prepare_manual_retry(status):
+        entry=_detail(status=status,retryable_charge=True)
+        facts=await _prepare(entry,_charge_for(entry))
+&gt;       assert facts.chargeable is False, f'Terminal entry {status} was allowed to claim retry'
+E       AssertionError: Terminal entry withdrawn was allowed to claim retry
+E       assert True is False
+E        +  where True = RetryPaymentFacts(entry_id=UUID('01a15b29-eb7e-7469-bf85-ae933a314753'), chargeable=True, account_holder_iam_user_id=UUID('01a15b29-eb04-753a-a0c8-e0fcbff39ce2')).chargeable
+
+tests\unit\test_retry_matrix_lifecycle.py:46: AssertionError</failure></testcase><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_terminal_entry_must_not_prepare_manual_retry[removed]" time="0.004"><failure message="AssertionError: Terminal entry removed was allowed to claim retry&#10;assert True is False&#10; +  where True = RetryPaymentFacts(entry_id=UUID('01a15b29-ed34-728d-a53e-c344005dd2f8'), chargeable=True, account_holder_iam_user_id=UUID('01a15b29-eb04-753a-a0c8-e0fcbff39ce2')).chargeable">status = &lt;EntryStatus.REMOVED: 'removed'&gt;
+
+    @pytest.mark.parametrize('status',[EntryStatus.WITHDRAWN,EntryStatus.REMOVED,EntryStatus.NOT_SELECTED,EntryStatus.EXPIRED])
+    async def test_matrix_terminal_entry_must_not_prepare_manual_retry(status):
+        entry=_detail(status=status,retryable_charge=True)
+        facts=await _prepare(entry,_charge_for(entry))
+&gt;       assert facts.chargeable is False, f'Terminal entry {status} was allowed to claim retry'
+E       AssertionError: Terminal entry removed was allowed to claim retry
+E       assert True is False
+E        +  where True = RetryPaymentFacts(entry_id=UUID('01a15b29-ed34-728d-a53e-c344005dd2f8'), chargeable=True, account_holder_iam_user_id=UUID('01a15b29-eb04-753a-a0c8-e0fcbff39ce2')).chargeable
+
+tests\unit\test_retry_matrix_lifecycle.py:46: AssertionError</failure></testcase><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_terminal_entry_must_not_prepare_manual_retry[not_selected]" time="0.005"><failure message="AssertionError: Terminal entry not_selected was allowed to claim retry&#10;assert True is False&#10; +  where True = RetryPaymentFacts(entry_id=UUID('01a15b29-ed43-74a2-aece-9ef188e266c9'), chargeable=True, account_holder_iam_user_id=UUID('01a15b29-eb04-753a-a0c8-e0fcbff39ce2')).chargeable">status = &lt;EntryStatus.NOT_SELECTED: 'not_selected'&gt;
+
+    @pytest.mark.parametrize('status',[EntryStatus.WITHDRAWN,EntryStatus.REMOVED,EntryStatus.NOT_SELECTED,EntryStatus.EXPIRED])
+    async def test_matrix_terminal_entry_must_not_prepare_manual_retry(status):
+        entry=_detail(status=status,retryable_charge=True)
+        facts=await _prepare(entry,_charge_for(entry))
+&gt;       assert facts.chargeable is False, f'Terminal entry {status} was allowed to claim retry'
+E       AssertionError: Terminal entry not_selected was allowed to claim retry
+E       assert True is False
+E        +  where True = RetryPaymentFacts(entry_id=UUID('01a15b29-ed43-74a2-aece-9ef188e266c9'), chargeable=True, account_holder_iam_user_id=UUID('01a15b29-eb04-753a-a0c8-e0fcbff39ce2')).chargeable
+
+tests\unit\test_retry_matrix_lifecycle.py:46: AssertionError</failure></testcase><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_terminal_entry_must_not_prepare_manual_retry[expired]" time="0.005"><failure message="AssertionError: Terminal entry expired was allowed to claim retry&#10;assert True is False&#10; +  where True = RetryPaymentFacts(entry_id=UUID('01a15b29-ed52-76b4-bd22-531686aac529'), chargeable=True, account_holder_iam_user_id=UUID('01a15b29-eb04-753a-a0c8-e0fcbff39ce2')).chargeable">status = &lt;EntryStatus.EXPIRED: 'expired'&gt;
+
+    @pytest.mark.parametrize('status',[EntryStatus.WITHDRAWN,EntryStatus.REMOVED,EntryStatus.NOT_SELECTED,EntryStatus.EXPIRED])
+    async def test_matrix_terminal_entry_must_not_prepare_manual_retry(status):
+        entry=_detail(status=status,retryable_charge=True)
+        facts=await _prepare(entry,_charge_for(entry))
+&gt;       assert facts.chargeable is False, f'Terminal entry {status} was allowed to claim retry'
+E       AssertionError: Terminal entry expired was allowed to claim retry
+E       assert True is False
+E        +  where True = RetryPaymentFacts(entry_id=UUID('01a15b29-ed52-76b4-bd22-531686aac529'), chargeable=True, account_holder_iam_user_id=UUID('01a15b29-eb04-753a-a0c8-e0fcbff39ce2')).chargeable
+
+tests\unit\test_retry_matrix_lifecycle.py:46: AssertionError</failure></testcase><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_retry_exactly_at_cutoff_current_code" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_due_retry_after_cutoff_within_late_window_current_code" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_no_third_retry_under_version16" time="0.006" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_no_first_failure_timestamp_does_not_dispatch" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_terminal_entry_stops_scheduled_retry_and_notices[withdrawn]" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_terminal_entry_stops_scheduled_retry_and_notices[removed]" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_terminal_entry_stops_scheduled_retry_and_notices[not_selected]" time="0.004" /><testcase classname="tests.unit.test_retry_matrix_lifecycle" name="test_matrix_terminal_entry_stops_scheduled_retry_and_notices[expired]" time="0.005" /></testsuite></testsuites>

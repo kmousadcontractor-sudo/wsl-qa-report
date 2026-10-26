@@ -1,0 +1,820 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:16px/1.6 system-ui;color:#17344c;background:#f4f6fa;margin:20px}main{max-width:1100px;margin:auto}article,section{background:white;border:1px solid #dde3ea;padding:24px;margin:20px 0;border-radius:12px;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#075db0}</style><title>Beach Marshal AWS failure investigation</title><main><a href="index.html">Back to test report</a><h1>Beach Marshal: AWS failure investigation</h1><section><p>Read-only CloudWatch investigation of all 17 original failed checks. Statuses and original screenshots/videos remain unchanged.</p><p>AWS dev, us-west-2 · /wsl/wsl-dev/pods · 2026-10-15 00:15:00–00:30:00 UTC</p><p>Reviewed 336 AI log records and 952 athlete, competition and BFF log records. All 17 failed runs correlate to successful Bedrock HTTP responses. No correlated tool exception identifies the unavailable-tool cause.</p><ul><li>No successful per-RPC request/duration records were present for the failed correlations; absence of logs is not proof the RPC was not called.</li><li>No deployed application SHA, model stop reason or full distributed trace was obtained.</li><li>AWS HTTP 200 confirms transport, not tool success or answer correctness.</li><li>Read-only investigation; no new model runs, domain writes or application changes. Original results and recordings retained.</li></ul><p><a href="evidence/aws-trace/investigation.json">Structured findings</a> · <a href="evidence/aws-trace/ai-window-parsed.json">Sanitized AI logs</a> · <a href="evidence/aws-trace/owner-window-parsed.json">Sanitized owner-service/BFF logs</a></p><p>The two athlete forbidden warnings were deliberate ownership probes. The Serper 404 belongs to a separate public-page lookup; the conversation-not-found warning belongs to the foreign-history probe. These are not evidence for the 18 failures.</p></section><article id="BM-LIVE-P02"><h2>BM-LIVE-P02</h2><p><strong>Confidence:</strong> Answer error confirmed; internal model reasoning unavailable</p><h3>What the evidence shows</h3><p>The assistant supplied 04:00 Cairo for the November deadline; the date-specific timezone oracle gives 03:00. No conversion tool was called in this follow-up. Model transport succeeded; this is an unsupported date/DST conversion in the answer.</p><h3>Suggested fix / next diagnostic</h3><p>Calculate conversions with IANA time zones for the actual event date; do not infer a constant offset.</p><p><a href="index.html#BM-LIVE-P02">Original failed check and recording</a> · <a href="bugs/BM-BUG-001.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-P02&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-001&quot;,
+  &quot;confidence&quot;: &quot;Answer error confirmed; internal model reasoning unavailable&quot;,
+  &quot;finding&quot;: &quot;The assistant supplied 04:00 Cairo for the November deadline; the date-specific timezone oracle gives 03:00. No conversion tool was called in this follow-up. Model transport succeeded; this is an unsupported date/DST conversion in the answer.&quot;,
+  &quot;suggestedFix&quot;: &quot;Calculate conversions with IANA time zones for the actual event date; do not infer a constant offset.&quot;,
+  &quot;runIds&quot;: [
+    &quot;ed483c45-cfaf-4726-9217-87cc7966f712&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;64d4c1f3-c292-472c-bfa7-d00d5fb3c266&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:15:16.341249554Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:15:16+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;64d4c1f3-c292-472c-bfa7-d00d5fb3c266&quot;,
+      &quot;run_id&quot;: &quot;ed483c45-cfaf-4726-9217-87cc7966f712&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-A08"><h2>BM-LIVE-A08</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-A08">Original failed check and recording</a> · <a href="bugs/BM-BUG-002.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-A08&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-002&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;f6f0e5a5-f17a-4340-9d91-a7b63fe66f93&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;ba66a6ec-b0c3-40a6-8b3a-c316c95dcb0a&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:05.071550647Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:05+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;ba66a6ec-b0c3-40a6-8b3a-c316c95dcb0a&quot;,
+      &quot;run_id&quot;: &quot;f6f0e5a5-f17a-4340-9d91-a7b63fe66f93&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:06.467983377Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:06+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;ba66a6ec-b0c3-40a6-8b3a-c316c95dcb0a&quot;,
+      &quot;run_id&quot;: &quot;f6f0e5a5-f17a-4340-9d91-a7b63fe66f93&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:08.867719231Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:08+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;ba66a6ec-b0c3-40a6-8b3a-c316c95dcb0a&quot;,
+      &quot;run_id&quot;: &quot;f6f0e5a5-f17a-4340-9d91-a7b63fe66f93&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-A09"><h2>BM-LIVE-A09</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-A09">Original failed check and recording</a> · <a href="bugs/BM-BUG-003.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-A09&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-003&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;1309b4a5-5896-4203-b3ae-4daad5afe1ac&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;fc4715d6-b91c-4649-ad61-523e682ce118&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:11.86201638Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:11+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;fc4715d6-b91c-4649-ad61-523e682ce118&quot;,
+      &quot;run_id&quot;: &quot;1309b4a5-5896-4203-b3ae-4daad5afe1ac&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:13.461554767Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:13+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;fc4715d6-b91c-4649-ad61-523e682ce118&quot;,
+      &quot;run_id&quot;: &quot;1309b4a5-5896-4203-b3ae-4daad5afe1ac&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:15.235822126Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:15+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;fc4715d6-b91c-4649-ad61-523e682ce118&quot;,
+      &quot;run_id&quot;: &quot;1309b4a5-5896-4203-b3ae-4daad5afe1ac&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-A10"><h2>BM-LIVE-A10</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-A10">Original failed check and recording</a> · <a href="bugs/BM-BUG-004.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-A10&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-004&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;c9b5ad9f-d65e-4f8d-81c0-31648f940a80&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;bf712a4c-7643-48bd-b351-a9f5ee80d4ad&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:20.086936487Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:20+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;bf712a4c-7643-48bd-b351-a9f5ee80d4ad&quot;,
+      &quot;run_id&quot;: &quot;c9b5ad9f-d65e-4f8d-81c0-31648f940a80&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:21.778753258Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:21+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;bf712a4c-7643-48bd-b351-a9f5ee80d4ad&quot;,
+      &quot;run_id&quot;: &quot;c9b5ad9f-d65e-4f8d-81c0-31648f940a80&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:24.090759291Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:24+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;bf712a4c-7643-48bd-b351-a9f5ee80d4ad&quot;,
+      &quot;run_id&quot;: &quot;c9b5ad9f-d65e-4f8d-81c0-31648f940a80&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-A11"><h2>BM-LIVE-A11</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-A11">Original failed check and recording</a> · <a href="bugs/BM-BUG-005.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-A11&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-005&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;5814a435-09f5-4540-b350-c26a8ffe164a&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;16a89345-72d3-4261-af66-87d90c4f8df1&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:27.654525395Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:27+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;16a89345-72d3-4261-af66-87d90c4f8df1&quot;,
+      &quot;run_id&quot;: &quot;5814a435-09f5-4540-b350-c26a8ffe164a&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:29.312712716Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:29+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;16a89345-72d3-4261-af66-87d90c4f8df1&quot;,
+      &quot;run_id&quot;: &quot;5814a435-09f5-4540-b350-c26a8ffe164a&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:31.43787689Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:31+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;16a89345-72d3-4261-af66-87d90c4f8df1&quot;,
+      &quot;run_id&quot;: &quot;5814a435-09f5-4540-b350-c26a8ffe164a&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:35.431427189Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:35+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;16a89345-72d3-4261-af66-87d90c4f8df1&quot;,
+      &quot;run_id&quot;: &quot;5814a435-09f5-4540-b350-c26a8ffe164a&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:37.283073223Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:37+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;16a89345-72d3-4261-af66-87d90c4f8df1&quot;,
+      &quot;run_id&quot;: &quot;5814a435-09f5-4540-b350-c26a8ffe164a&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-A13"><h2>BM-LIVE-A13</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-A13">Original failed check and recording</a> · <a href="bugs/BM-BUG-006.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-A13&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-006&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:53.903206039Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:53+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;,
+      &quot;run_id&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:55.58580099Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:55+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;,
+      &quot;run_id&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:17:57.728019291Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:17:57+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;,
+      &quot;run_id&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:18:00.865190908Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:18:00+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;013ac19a-ae2a-4cae-bc77-06ea3122035f&quot;,
+      &quot;run_id&quot;: &quot;fd8d1959-bd38-400b-9a56-bb6035ef4243&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T01"><h2>BM-LIVE-T01</h2><p><strong>Confidence:</strong> Observed truncation; matching source cause</p><h3>What the evidence shows</h3><p>The tool returned only 20 seasons while the reference API contained 22, omitting the active 2026–27 season. Checked source tools.py:347 slices found.seasons[:MAX_ROWS] (MAX_ROWS=20) without exposing completeness. This explains the incomplete answer; the deployed source revision was not independently verified.</p><h3>Suggested fix / next diagnostic</h3><p>Add pagination or total/hasMore metadata and ensure current-season lookup is not limited to the first 20 rows.</p><p><a href="index.html#BM-LIVE-T01">Original failed check and recording</a> · <a href="bugs/BM-BUG-007.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T01&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-007&quot;,
+  &quot;confidence&quot;: &quot;Observed truncation; matching source cause&quot;,
+  &quot;finding&quot;: &quot;The tool returned only 20 seasons while the reference API contained 22, omitting the active 2026–27 season. Checked source tools.py:347 slices found.seasons[:MAX_ROWS] (MAX_ROWS=20) without exposing completeness. This explains the incomplete answer; the deployed source revision was not independently verified.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add pagination or total/hasMore metadata and ensure current-season lookup is not limited to the first 20 rows.&quot;,
+  &quot;runIds&quot;: [
+    &quot;d49e7a17-b1d3-4af6-8e9a-e8bda91f0396&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;27ad3e32-5dbe-4c3d-8edc-5fbb811a4be5&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:18:54.387106597Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:18:54+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;27ad3e32-5dbe-4c3d-8edc-5fbb811a4be5&quot;,
+      &quot;run_id&quot;: &quot;d49e7a17-b1d3-4af6-8e9a-e8bda91f0396&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:18:55.65806417Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:18:55+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;27ad3e32-5dbe-4c3d-8edc-5fbb811a4be5&quot;,
+      &quot;run_id&quot;: &quot;d49e7a17-b1d3-4af6-8e9a-e8bda91f0396&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T02"><h2>BM-LIVE-T02</h2><p><strong>Confidence:</strong> Observed truncation; matching source cause</p><h3>What the evidence shows</h3><p>The tool returned only 20 seasons while the reference API contained 22, omitting the active 2026–27 season. Checked source tools.py:347 slices found.seasons[:MAX_ROWS] (MAX_ROWS=20) without exposing completeness. This explains the incomplete answer; the deployed source revision was not independently verified.</p><h3>Suggested fix / next diagnostic</h3><p>Add pagination or total/hasMore metadata and ensure current-season lookup is not limited to the first 20 rows.</p><p><a href="index.html#BM-LIVE-T02">Original failed check and recording</a> · <a href="bugs/BM-BUG-008.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T02&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-008&quot;,
+  &quot;confidence&quot;: &quot;Observed truncation; matching source cause&quot;,
+  &quot;finding&quot;: &quot;The tool returned only 20 seasons while the reference API contained 22, omitting the active 2026–27 season. Checked source tools.py:347 slices found.seasons[:MAX_ROWS] (MAX_ROWS=20) without exposing completeness. This explains the incomplete answer; the deployed source revision was not independently verified.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add pagination or total/hasMore metadata and ensure current-season lookup is not limited to the first 20 rows.&quot;,
+  &quot;runIds&quot;: [
+    &quot;0fae5b81-3b91-42e1-bfcd-0e85e42e0aef&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;7dd1f23e-3137-4a34-b5c9-b0859dbe41c3&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:03.698641377Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:03+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;7dd1f23e-3137-4a34-b5c9-b0859dbe41c3&quot;,
+      &quot;run_id&quot;: &quot;0fae5b81-3b91-42e1-bfcd-0e85e42e0aef&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:04.940360004Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:04+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;7dd1f23e-3137-4a34-b5c9-b0859dbe41c3&quot;,
+      &quot;run_id&quot;: &quot;0fae5b81-3b91-42e1-bfcd-0e85e42e0aef&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T03"><h2>BM-LIVE-T03</h2><p><strong>Confidence:</strong> Observed truncation; matching source cause</p><h3>What the evidence shows</h3><p>The tool returned only 20 seasons while the reference API contained 22, omitting the active 2026–27 season. Checked source tools.py:347 slices found.seasons[:MAX_ROWS] (MAX_ROWS=20) without exposing completeness. This explains the incomplete answer; the deployed source revision was not independently verified.</p><h3>Suggested fix / next diagnostic</h3><p>Add pagination or total/hasMore metadata and ensure current-season lookup is not limited to the first 20 rows.</p><p><a href="index.html#BM-LIVE-T03">Original failed check and recording</a> · <a href="bugs/BM-BUG-009.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T03&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-009&quot;,
+  &quot;confidence&quot;: &quot;Observed truncation; matching source cause&quot;,
+  &quot;finding&quot;: &quot;The tool returned only 20 seasons while the reference API contained 22, omitting the active 2026–27 season. Checked source tools.py:347 slices found.seasons[:MAX_ROWS] (MAX_ROWS=20) without exposing completeness. This explains the incomplete answer; the deployed source revision was not independently verified.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add pagination or total/hasMore metadata and ensure current-season lookup is not limited to the first 20 rows.&quot;,
+  &quot;runIds&quot;: [
+    &quot;b658c309-ce49-4d85-b1b3-95e8c9b713a4&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;17ce31dc-e911-4e07-bd66-c19d0446436a&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:10.791002345Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:10+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;17ce31dc-e911-4e07-bd66-c19d0446436a&quot;,
+      &quot;run_id&quot;: &quot;b658c309-ce49-4d85-b1b3-95e8c9b713a4&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:11.992546773Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:11+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;17ce31dc-e911-4e07-bd66-c19d0446436a&quot;,
+      &quot;run_id&quot;: &quot;b658c309-ce49-4d85-b1b3-95e8c9b713a4&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T06"><h2>BM-LIVE-T06</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-T06">Original failed check and recording</a> · <a href="bugs/BM-BUG-010.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T06&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-010&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;323fd23a-12ce-4fe8-8569-0e89c303b417&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;aba5abdf-dc4c-40de-83a3-f53a6e0d0eb6&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:41.478505988Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:41+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;aba5abdf-dc4c-40de-83a3-f53a6e0d0eb6&quot;,
+      &quot;run_id&quot;: &quot;323fd23a-12ce-4fe8-8569-0e89c303b417&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:45.181094132Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:45+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;aba5abdf-dc4c-40de-83a3-f53a6e0d0eb6&quot;,
+      &quot;run_id&quot;: &quot;323fd23a-12ce-4fe8-8569-0e89c303b417&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:46.591901899Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:46+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;aba5abdf-dc4c-40de-83a3-f53a6e0d0eb6&quot;,
+      &quot;run_id&quot;: &quot;323fd23a-12ce-4fe8-8569-0e89c303b417&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T07"><h2>BM-LIVE-T07</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-T07">Original failed check and recording</a> · <a href="bugs/BM-BUG-011.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T07&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-011&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;736293fc-ce9b-4fa7-a28d-761fc04aece9&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;be3b6788-4461-4b57-a872-d03d9b831ed9&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:50.729699691Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:50+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;be3b6788-4461-4b57-a872-d03d9b831ed9&quot;,
+      &quot;run_id&quot;: &quot;736293fc-ce9b-4fa7-a28d-761fc04aece9&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:52.777535669Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:52+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;be3b6788-4461-4b57-a872-d03d9b831ed9&quot;,
+      &quot;run_id&quot;: &quot;736293fc-ce9b-4fa7-a28d-761fc04aece9&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:53.971613931Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:53+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;be3b6788-4461-4b57-a872-d03d9b831ed9&quot;,
+      &quot;run_id&quot;: &quot;736293fc-ce9b-4fa7-a28d-761fc04aece9&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T08"><h2>BM-LIVE-T08</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-T08">Original failed check and recording</a> · <a href="bugs/BM-BUG-012.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T08&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-012&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;646a4fd9-5d45-4997-aeb9-e0c15f132f28&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;904f888e-9791-4300-b2d0-7d9f4ece395f&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:58.065837454Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:58+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;904f888e-9791-4300-b2d0-7d9f4ece395f&quot;,
+      &quot;run_id&quot;: &quot;646a4fd9-5d45-4997-aeb9-e0c15f132f28&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:19:59.804677266Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:19:59+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;904f888e-9791-4300-b2d0-7d9f4ece395f&quot;,
+      &quot;run_id&quot;: &quot;646a4fd9-5d45-4997-aeb9-e0c15f132f28&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:02.377290144Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:02+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;904f888e-9791-4300-b2d0-7d9f4ece395f&quot;,
+      &quot;run_id&quot;: &quot;646a4fd9-5d45-4997-aeb9-e0c15f132f28&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T09"><h2>BM-LIVE-T09</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-T09">Original failed check and recording</a> · <a href="bugs/BM-BUG-013.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T09&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-013&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;51499e37-f65c-4d1f-a1f6-b8ae0fdac996&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;d7d6d2e1-7815-4e93-afde-2edae8799aad&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:05.160756681Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:05+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;d7d6d2e1-7815-4e93-afde-2edae8799aad&quot;,
+      &quot;run_id&quot;: &quot;51499e37-f65c-4d1f-a1f6-b8ae0fdac996&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:06.781943052Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:06+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;d7d6d2e1-7815-4e93-afde-2edae8799aad&quot;,
+      &quot;run_id&quot;: &quot;51499e37-f65c-4d1f-a1f6-b8ae0fdac996&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:08.307472995Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:08+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;d7d6d2e1-7815-4e93-afde-2edae8799aad&quot;,
+      &quot;run_id&quot;: &quot;51499e37-f65c-4d1f-a1f6-b8ae0fdac996&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:11.729561412Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:11+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;d7d6d2e1-7815-4e93-afde-2edae8799aad&quot;,
+      &quot;run_id&quot;: &quot;51499e37-f65c-4d1f-a1f6-b8ae0fdac996&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T10"><h2>BM-LIVE-T10</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-T10">Original failed check and recording</a> · <a href="bugs/BM-BUG-014.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T10&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-014&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;10d4ebb3-89a7-4b87-b55b-e3aa573bd483&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;ba3b2e6e-7339-444f-aa94-bb23ef0c316b&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:16.092761635Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:16+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;ba3b2e6e-7339-444f-aa94-bb23ef0c316b&quot;,
+      &quot;run_id&quot;: &quot;10d4ebb3-89a7-4b87-b55b-e3aa573bd483&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:17.766064394Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:17+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;ba3b2e6e-7339-444f-aa94-bb23ef0c316b&quot;,
+      &quot;run_id&quot;: &quot;10d4ebb3-89a7-4b87-b55b-e3aa573bd483&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:19.538151114Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:19+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;ba3b2e6e-7339-444f-aa94-bb23ef0c316b&quot;,
+      &quot;run_id&quot;: &quot;10d4ebb3-89a7-4b87-b55b-e3aa573bd483&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T12"><h2>BM-LIVE-T12</h2><p><strong>Confidence:</strong> Answer-generation counting error confirmed</p><h3>What the evidence shows</h3><p>The returned tool data and independent API both contain 68 locations. The stored assistant answer says 69. The mismatch occurs in answer generation, after correct tool data was returned.</p><h3>Suggested fix / next diagnostic</h3><p>Render a count calculated from the returned data rather than asking the model to count it.</p><p><a href="index.html#BM-LIVE-T12">Original failed check and recording</a> · <a href="bugs/BM-BUG-015.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T12&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-015&quot;,
+  &quot;confidence&quot;: &quot;Answer-generation counting error confirmed&quot;,
+  &quot;finding&quot;: &quot;The returned tool data and independent API both contain 68 locations. The stored assistant answer says 69. The mismatch occurs in answer generation, after correct tool data was returned.&quot;,
+  &quot;suggestedFix&quot;: &quot;Render a count calculated from the returned data rather than asking the model to count it.&quot;,
+  &quot;runIds&quot;: [
+    &quot;bdbd9f6f-a790-438c-a7dc-f298ad2e28a5&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;34b47394-5902-4ea1-ad2f-72abcc0b75e7&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:34.699930837Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:34+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;34b47394-5902-4ea1-ad2f-72abcc0b75e7&quot;,
+      &quot;run_id&quot;: &quot;bdbd9f6f-a790-438c-a7dc-f298ad2e28a5&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:20:36.472946268Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:20:36+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;34b47394-5902-4ea1-ad2f-72abcc0b75e7&quot;,
+      &quot;run_id&quot;: &quot;bdbd9f6f-a790-438c-a7dc-f298ad2e28a5&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T14"><h2>BM-LIVE-T14</h2><p><strong>Confidence:</strong> Empty-answer defect confirmed; precise internal cause unresolved</p><h3>What the evidence shows</h3><p>The original stream completed with no assistant text and no tool call. AWS shows a successful Bedrock HTTP 200 for this exact run and no correlated exception. Logs do not include model stop reason or final content, so they cannot distinguish an empty model completion from content discarded by stream handling. There is no evidence of a cross-organisation data leak.</p><h3>Suggested fix / next diagnostic</h3><p>Trace stop reason and emitted text length safely; return a visible refusal/fallback when a completed stream has no text.</p><p><a href="index.html#BM-LIVE-T14">Original failed check and recording</a> · <a href="bugs/BM-BUG-017.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T14&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-017&quot;,
+  &quot;confidence&quot;: &quot;Empty-answer defect confirmed; precise internal cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The original stream completed with no assistant text and no tool call. AWS shows a successful Bedrock HTTP 200 for this exact run and no correlated exception. Logs do not include model stop reason or final content, so they cannot distinguish an empty model completion from content discarded by stream handling. There is no evidence of a cross-organisation data leak.&quot;,
+  &quot;suggestedFix&quot;: &quot;Trace stop reason and emitted text length safely; return a visible refusal/fallback when a completed stream has no text.&quot;,
+  &quot;runIds&quot;: [
+    &quot;57c46502-6b51-4459-8fb7-eb302a41ef71&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;756ff7c8-b243-44ab-a9b4-c368cb6f32b8&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:22:13.987905888Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:22:13+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;756ff7c8-b243-44ab-a9b4-c368cb6f32b8&quot;,
+      &quot;run_id&quot;: &quot;57c46502-6b51-4459-8fb7-eb302a41ef71&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article><article id="BM-LIVE-T15"><h2>BM-LIVE-T15</h2><p><strong>Confidence:</strong> Tool-path failure confirmed; exact runtime cause unresolved</p><h3>What the evidence shows</h3><p>The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.</p><h3>Suggested fix / next diagnostic</h3><p>Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.</p><p><a href="index.html#BM-LIVE-T15">Original failed check and recording</a> · <a href="bugs/BM-BUG-018.html">Bug report</a></p><details><summary>Exact AWS run and correlation evidence</summary><pre>{
+  &quot;testId&quot;: &quot;BM-LIVE-T15&quot;,
+  &quot;bugId&quot;: &quot;BM-BUG-018&quot;,
+  &quot;confidence&quot;: &quot;Tool-path failure confirmed; exact runtime cause unresolved&quot;,
+  &quot;finding&quot;: &quot;The AI tool returned unavailable while the corresponding normal API returned usable data. AWS records successful Bedrock requests for this exact run, with no correlated tool exception or downstream error. The available owner-service logs contain no matching correlation records. Checked tools.py catches TimeoutError without logging; ask.py also maps service failures to unavailable. Timeout, RPC response and DTO conversion remain candidates, not confirmed causes.&quot;,
+  &quot;suggestedFix&quot;: &quot;Add safe per-tool duration/outcome and RPC correlation logging, then inspect the exact failed subject and response schema. Check the 1.5-second tool budget and list-item enrichment before changing timeouts. For Taiwan, exact-ID lookup succeeds while the event-list tool fails, narrowing the issue to the list path.&quot;,
+  &quot;runIds&quot;: [
+    &quot;b9813995-4e42-42bc-8f99-82c15bc347f9&quot;
+  ],
+  &quot;correlationIds&quot;: [
+    &quot;3b022144-6cd2-4799-a5d7-8d9a32079f26&quot;
+  ],
+  &quot;awsRecords&quot;: [
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:24:36.054383124Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:24:36+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;3b022144-6cd2-4799-a5d7-8d9a32079f26&quot;,
+      &quot;run_id&quot;: &quot;b9813995-4e42-42bc-8f99-82c15bc347f9&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:24:37.659765162Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:24:37+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;3b022144-6cd2-4799-a5d7-8d9a32079f26&quot;,
+      &quot;run_id&quot;: &quot;b9813995-4e42-42bc-8f99-82c15bc347f9&quot;
+    },
+    {
+      &quot;time&quot;: &quot;2026-10-15T00:24:39.625719974Z&quot;,
+      &quot;namespace&quot;: &quot;ai&quot;,
+      &quot;container&quot;: &quot;api&quot;,
+      &quot;ts&quot;: &quot;2026-10-15T00:24:39+0000&quot;,
+      &quot;level&quot;: &quot;INFO&quot;,
+      &quot;logger&quot;: &quot;httpx2&quot;,
+      &quot;msg&quot;: &quot;HTTP Request: POST https://bedrock-runtime.us-west-2.amazonaws.com/model/us.anthropic.claude-opus-5-5/invoke-with-response-stream \&quot;HTTP/1.1 200 OK\&quot;&quot;,
+      &quot;service&quot;: &quot;ai&quot;,
+      &quot;correlation_id&quot;: &quot;3b022144-6cd2-4799-a5d7-8d9a32079f26&quot;,
+      &quot;run_id&quot;: &quot;b9813995-4e42-42bc-8f99-82c15bc347f9&quot;
+    }
+  ],
+  &quot;downstreamCorrelatedRecords&quot;: []
+}</pre></details></article></main></html>

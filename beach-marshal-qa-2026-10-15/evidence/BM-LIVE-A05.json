@@ -1,0 +1,270 @@
+{
+  "id": "BM-LIVE-A05",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "What insurance does Junior Consent have? Are there insurance credits available, and has a Single Event insurance credit been used?",
+  "expected": "Coverage and credits must match holdings; no invented consumed credit or insurance.",
+  "expectedTools": [
+    "get_athlete_holdings"
+  ],
+  "referencePaths": [
+    "/athletes/01a13c43-c421-74a4-b266-58d419d278a3/holdings"
+  ],
+  "startedAt": "2026-10-15T00:16:31.349Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/athletes/01a13c43-c421-74a4-b266-58d419d278a3/holdings",
+      "status": 200,
+      "body": {
+        "memberships": [
+          {
+            "membershipId": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+            "productCode": "junior",
+            "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+            "status": "active",
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31",
+            "eventCount": null
+          }
+        ],
+        "insurances": [],
+        "credits": []
+      },
+      "at": "2026-10-15T00:16:31.634Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:16:31.732Z",
+  "videoStartSeconds": 93.294,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "96e32e2b-696e-4672-b939-4c8b2d153e30",
+    "input": {
+      "threadId": "05fa63d2-88f0-4bec-802a-4c1b18723b45",
+      "runId": "66ab7377-ebf4-45c9-b05f-fd351a250ccc",
+      "state": {},
+      "messages": [
+        {
+          "id": "e4f6d564-2b58-485d-ac22-a3286644c4fa",
+          "role": "user",
+          "content": "What insurance does Junior Consent have? Are there insurance credits available, and has a Single Event insurance credit been used?"
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01XBSx8vRwALTZeRgCSYo2RK",
+        "name": "list_my_athletes",
+        "result": {
+          "status": "ok",
+          "athletes": [
+            {
+              "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+              "first_name": "Junior",
+              "last_name": "Consent",
+              "status": "active",
+              "registered_by": "guardian",
+              "membership": {
+                "product_code": "junior",
+                "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+                "status": "active",
+                "valid_from": "2026-01-01",
+                "valid_to": "2026-12-31",
+                "amount": {
+                  "amount_minor": 17500,
+                  "currency": "USD"
+                }
+              }
+            }
+          ]
+        },
+        "parameters": ""
+      },
+      {
+        "id": "toolu_bdrk_01VbYxBtyg2e5dnXiEdcYyTZ",
+        "name": "get_athlete_holdings",
+        "result": {
+          "status": "ok",
+          "memberships": [
+            {
+              "product_code": "junior",
+              "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+              "status": "active",
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31",
+              "event_count": null
+            }
+          ],
+          "insurances": [],
+          "credits": [],
+          "credit_count": 0
+        },
+        "parameters": {
+          "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3"
+        }
+      }
+    ],
+    "answer": "Junior Consent has no insurance right now: no annual cover, no event credits, and no insurance credits, so no Single Event insurance credit has been used. Junior does have an active Junior membership for the 2026 season, valid from January 1 to December 31, 2026. If you'd like to buy cover, I can check which insurance Junior can get and what it costs.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "05fa63d2-88f0-4bec-802a-4c1b18723b45",
+        "runId": "66ab7377-ebf4-45c9-b05f-fd351a250ccc"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "05fa63d2-88f0-4bec-802a-4c1b18723b45",
+        "runId": "66ab7377-ebf4-45c9-b05f-fd351a250ccc"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TOOL_CALL_ARGS",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01XBSx8vRwALTZeRgCSYo2RK",
+      "name": "list_my_athletes",
+      "result": {
+        "status": "ok",
+        "athletes": [
+          {
+            "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3",
+            "first_name": "Junior",
+            "last_name": "Consent",
+            "status": "active",
+            "registered_by": "guardian",
+            "membership": {
+              "product_code": "junior",
+              "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+              "status": "active",
+              "valid_from": "2026-01-01",
+              "valid_to": "2026-12-31",
+              "amount": {
+                "amount_minor": 17500,
+                "currency": "USD"
+              }
+            }
+          }
+        ]
+      },
+      "parameters": ""
+    },
+    {
+      "id": "toolu_bdrk_01VbYxBtyg2e5dnXiEdcYyTZ",
+      "name": "get_athlete_holdings",
+      "result": {
+        "status": "ok",
+        "memberships": [
+          {
+            "product_code": "junior",
+            "season_id": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+            "status": "active",
+            "valid_from": "2026-01-01",
+            "valid_to": "2026-12-31",
+            "event_count": null
+          }
+        ],
+        "insurances": [],
+        "credits": [],
+        "credit_count": 0
+      },
+      "parameters": {
+        "athlete_id": "01a13c43-c421-74a4-b266-58d419d278a3"
+      }
+    }
+  ],
+  "aiResponse": "Junior Consent has no insurance right now: no annual cover, no event credits, and no insurance credits, so no Single Event insurance credit has been used. Junior does have an active Junior membership for the 2026 season, valid from January 1 to December 31, 2026. If you'd like to buy cover, I can check which insurance Junior can get and what it costs.",
+  "actual": "Junior Consent has no insurance right now: no annual cover, no event credits, and no insurance credits, so no Single Event insurance credit has been used. Junior does have an active Junior membership for the 2026 season, valid from January 1 to December 31, 2026. If you'd like to buy cover, I can check which insurance Junior can get and what it costs.",
+  "durationMs": 9782,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWhat insurance does Junior Consent have? Are there insurance credits available, and has a Single Event insurance credit been used?\n\nJunior Consent has no insurance right now: no annual cover, no event credits, and no insurance credits, so no Single Event insurance credit has been used. Junior does have an active Junior membership for the 2026 season, valid from January 1 to December 31, 2026. If you'd like to buy cover, I can check which insurance Junior can get and what it costs.\n\nJunior Consent has no insurance right now: no annual cover, no event credits, and no insurance credits, so no Single Event insurance credit has been used. Junior does have an active Junior membership for the 2026 season, valid from January 1 to December 31, 2026. If you'd like to buy cover, I can check which insurance Junior can get and what it costs.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A05.png",
+  "videoEndSeconds": 103.788,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:16:31.779Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:16:42.226Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Current holdings show no insurance policies or credits and an active Junior membership. Response matches current holdings; this is not a test of historical expired-credit retention.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Own-athlete scope; direct foreign holdings403 verified in A16/S02",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "Captured athlete parameter compared with owned QA identity",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Coverage and credits must match holdings; no invented consumed credit or insurance.",
+    "observed": "Junior Consent has no insurance right now: no annual cover, no event credits, and no insurance credits, so no Single Event insurance credit has been used. Junior does have an active Junior membership for the 2026 season, valid from January 1 to December 31, 2026. If you'd like to buy cover, I can check which insurance Junior can get and what it costs.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A05-BM-LIVE-A05.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

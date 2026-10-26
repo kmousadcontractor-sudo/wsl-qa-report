@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="0" tests="8" time="1.868" timestamp="2026-10-21T16:57:07.239241+03:00" hostname="DESKTOP-TDKA2AL"><testcase classname="tests.unit.test_retry_short_notice_strict" name="test_overdue_pending_retry_must_stop_at_short_notice_cutoff[48]" time="0.012"><failure message="AssertionError: Automatic retry dispatched after entering short-notice window&#10;assert 1 == 0&#10; +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries">hours = 48
+
+    @pytest.mark.parametrize('hours',[48,48.00000027777778,49,71.999,72])
+    async def test_overdue_pending_retry_must_stop_at_short_notice_cutoff(hours):
+        w=await world(event_starts_at=FIRST+dt.timedelta(days=12))
+        await w.decline(0)
+        assert w.now_row.deadline_at==FIRST+dt.timedelta(hours=48)
+        assert w.now_row.next_attempt_at==FIRST+dt.timedelta(hours=24)
+        result=await w.tick(hours)
+        print(f'hours={hours}; deadline={w.now_row.deadline_at}; retries={result.retries}; flagged={result.flagged}; commands={len(w.commands.sent)}')
+&gt;       assert result.retries==0,'Automatic retry dispatched after entering short-notice window'
+E       AssertionError: Automatic retry dispatched after entering short-notice window
+E       assert 1 == 0
+E        +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries
+
+wsl-local\wsl-competition-service\tests\unit\test_retry_short_notice_strict.py:15: AssertionError</failure></testcase><testcase classname="tests.unit.test_retry_short_notice_strict" name="test_overdue_pending_retry_must_stop_at_short_notice_cutoff[48.00000027777778]" time="0.006"><failure message="AssertionError: Automatic retry dispatched after entering short-notice window&#10;assert 1 == 0&#10; +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries">hours = 48.00000027777778
+
+    @pytest.mark.parametrize('hours',[48,48.00000027777778,49,71.999,72])
+    async def test_overdue_pending_retry_must_stop_at_short_notice_cutoff(hours):
+        w=await world(event_starts_at=FIRST+dt.timedelta(days=12))
+        await w.decline(0)
+        assert w.now_row.deadline_at==FIRST+dt.timedelta(hours=48)
+        assert w.now_row.next_attempt_at==FIRST+dt.timedelta(hours=24)
+        result=await w.tick(hours)
+        print(f'hours={hours}; deadline={w.now_row.deadline_at}; retries={result.retries}; flagged={result.flagged}; commands={len(w.commands.sent)}')
+&gt;       assert result.retries==0,'Automatic retry dispatched after entering short-notice window'
+E       AssertionError: Automatic retry dispatched after entering short-notice window
+E       assert 1 == 0
+E        +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries
+
+wsl-local\wsl-competition-service\tests\unit\test_retry_short_notice_strict.py:15: AssertionError</failure></testcase><testcase classname="tests.unit.test_retry_short_notice_strict" name="test_overdue_pending_retry_must_stop_at_short_notice_cutoff[49]" time="0.007"><failure message="AssertionError: Automatic retry dispatched after entering short-notice window&#10;assert 1 == 0&#10; +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries">hours = 49
+
+    @pytest.mark.parametrize('hours',[48,48.00000027777778,49,71.999,72])
+    async def test_overdue_pending_retry_must_stop_at_short_notice_cutoff(hours):
+        w=await world(event_starts_at=FIRST+dt.timedelta(days=12))
+        await w.decline(0)
+        assert w.now_row.deadline_at==FIRST+dt.timedelta(hours=48)
+        assert w.now_row.next_attempt_at==FIRST+dt.timedelta(hours=24)
+        result=await w.tick(hours)
+        print(f'hours={hours}; deadline={w.now_row.deadline_at}; retries={result.retries}; flagged={result.flagged}; commands={len(w.commands.sent)}')
+&gt;       assert result.retries==0,'Automatic retry dispatched after entering short-notice window'
+E       AssertionError: Automatic retry dispatched after entering short-notice window
+E       assert 1 == 0
+E        +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries
+
+wsl-local\wsl-competition-service\tests\unit\test_retry_short_notice_strict.py:15: AssertionError</failure></testcase><testcase classname="tests.unit.test_retry_short_notice_strict" name="test_overdue_pending_retry_must_stop_at_short_notice_cutoff[71.999]" time="0.006"><failure message="AssertionError: Automatic retry dispatched after entering short-notice window&#10;assert 1 == 0&#10; +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries">hours = 71.999
+
+    @pytest.mark.parametrize('hours',[48,48.00000027777778,49,71.999,72])
+    async def test_overdue_pending_retry_must_stop_at_short_notice_cutoff(hours):
+        w=await world(event_starts_at=FIRST+dt.timedelta(days=12))
+        await w.decline(0)
+        assert w.now_row.deadline_at==FIRST+dt.timedelta(hours=48)
+        assert w.now_row.next_attempt_at==FIRST+dt.timedelta(hours=24)
+        result=await w.tick(hours)
+        print(f'hours={hours}; deadline={w.now_row.deadline_at}; retries={result.retries}; flagged={result.flagged}; commands={len(w.commands.sent)}')
+&gt;       assert result.retries==0,'Automatic retry dispatched after entering short-notice window'
+E       AssertionError: Automatic retry dispatched after entering short-notice window
+E       assert 1 == 0
+E        +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries
+
+wsl-local\wsl-competition-service\tests\unit\test_retry_short_notice_strict.py:15: AssertionError</failure></testcase><testcase classname="tests.unit.test_retry_short_notice_strict" name="test_overdue_pending_retry_must_stop_at_short_notice_cutoff[72]" time="0.008" /><testcase classname="tests.unit.test_retry_short_notice_strict" name="test_normal_sequence_stops_before_72h_retry" time="0.006" /><testcase classname="tests.unit.test_retry_short_notice_strict" name="test_retry_exactly_on_short_notice_cutoff_must_not_dispatch[24]" time="0.006"><failure message="AssertionError: Retry at the cutoff must stop under strict short-notice requirement&#10;assert 1 == 0&#10; +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries">cutoff = 24
+
+    @pytest.mark.parametrize('cutoff',[24,72])
+    async def test_retry_exactly_on_short_notice_cutoff_must_not_dispatch(cutoff):
+        w=await world(event_starts_at=FIRST+dt.timedelta(days=10,hours=cutoff))
+        await w.decline(0)
+        if cutoff==72:
+            await w.tick(24)
+            await w.decline(24.001)
+        result=await w.tick(cutoff)
+        print(f'cutoff={cutoff}; retries={result.retries}; flagged={result.flagged}')
+&gt;       assert result.retries==0,'Retry at the cutoff must stop under strict short-notice requirement'
+E       AssertionError: Retry at the cutoff must stop under strict short-notice requirement
+E       assert 1 == 0
+E        +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries
+
+wsl-local\wsl-competition-service\tests\unit\test_retry_short_notice_strict.py:37: AssertionError</failure></testcase><testcase classname="tests.unit.test_retry_short_notice_strict" name="test_retry_exactly_on_short_notice_cutoff_must_not_dispatch[72]" time="0.007"><failure message="AssertionError: Retry at the cutoff must stop under strict short-notice requirement&#10;assert 1 == 0&#10; +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries">cutoff = 72
+
+    @pytest.mark.parametrize('cutoff',[24,72])
+    async def test_retry_exactly_on_short_notice_cutoff_must_not_dispatch(cutoff):
+        w=await world(event_starts_at=FIRST+dt.timedelta(days=10,hours=cutoff))
+        await w.decline(0)
+        if cutoff==72:
+            await w.tick(24)
+            await w.decline(24.001)
+        result=await w.tick(cutoff)
+        print(f'cutoff={cutoff}; retries={result.retries}; flagged={result.flagged}')
+&gt;       assert result.retries==0,'Retry at the cutoff must stop under strict short-notice requirement'
+E       AssertionError: Retry at the cutoff must stop under strict short-notice requirement
+E       assert 1 == 0
+E        +  where 1 = TickResult(retries=1, notices=1, flagged=0, stopped=0, failed=0).retries
+
+wsl-local\wsl-competition-service\tests\unit\test_retry_short_notice_strict.py:37: AssertionError</failure></testcase></testsuite></testsuites>

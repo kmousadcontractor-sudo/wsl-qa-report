@@ -1,0 +1,50 @@
+# Dev email investigation through GitHub — 14 October 2026
+
+Inspected authenticated GitHub repositories and downloaded deployment/infra workflow logs. This investigation concerns dev only; local Docker health is not used as evidence for the dev failure.
+
+## Findings
+
+1. **A previous dev email failure has a confirmed SES authorization cause.** [Infra PR #15](https://github.com/worldsurfleague/wsl-platform-infra/pull/15) documents an end-to-end trace: BFF staged emails, the outbox published them, NATS delivered/acknowledged them, and notification persisted failed deliveries because its role could not perform `ses:SendEmail` against recipient identities. This is evidence reported in that PR, not runtime logs collected from our own test.
+
+2. **That fix was applied before our failed test.** The [Terraform apply run](https://github.com/worldsurfleague/wsl-platform-infra/actions/runs/38471153684) changed the notification SES policy at **00:35:34 Cairo on 14 October** (13 October 21:35:34 UTC), adding the account's `identity/*` resources. The workflow reports two changes and no additions/destructions. Our fixed-recipient registration started at **02:41:36 Cairo**, after this apply. Therefore the earlier missing-recipient-policy issue cannot be claimed as the current root cause without fresh runtime evidence.
+
+3. **Dev still declares SES sandbox mode.** `wsl-platform-infra/envs/dev/platform/terraform.tfvars` sets `ses_sandbox = true`. Repository setup instructions state that sandbox recipients must be verified. No committed configuration establishes that `captured-large@btj5keea.mailosaur.net` is verified; it could have been verified directly in AWS. Verification status remains unknown.
+
+4. **Notification was successfully rolled out before the test.** The [notification publish/deploy run](https://github.com/worldsurfleague/wsl-notification-service/actions/runs/38482785175) reports a successful dev deployment of commit `faf8a05767137bdfec7ee1135533f3c10f01e435` at approximately **02:14 Cairo on 14 October**. This establishes a successful rollout, not a successful provider send.
+
+5. **BFF/athlete deployment versions need runtime verification.** Their latest queried publish jobs succeeded, but had no deploy job; `AUTO_DEPLOY` was not configured and their queried dev deployment histories were empty. Manual deployments may exist, so this is not proof those services are stale or undeployed. The inspected current BFF source contains the guardian email trigger before payment; a source checkout alone does not establish the running image version.
+
+6. **Runtime log access remains unavailable.** GitHub repository/workflow access works, but there are no local AWS credentials/configuration, AWS environment credentials or Kubernetes contexts. The infra Terraform plan role explicitly denies CloudWatch log-content access. No existing GitHub workflow providing a read-only runtime log export was found in the inspected deployment/infra repositories. No workflow was modified or dispatched to obtain elevated access.
+
+## Repositories cloned for this investigation
+
+Under `.local/dev-trace-repos/`:
+
+- `worldsurfleague/wsl-platform-infra` — infrastructure, SES role permissions and access model.
+- `worldsurfleague/wsl-platform-deploy` — EKS namespace/process definitions, dev configuration and rollout workflow.
+- `worldsurfleague/wsl-notification-service`, branch `dev` — email command handler and provider integration.
+- `worldsurfleague/wsl-django-bff`, branch `dev` — guardian event handling and email staging.
+
+These are isolated clones. Existing application working trees were not reset or replaced. No deployment, IAM change, service restart or database write was performed in this investigation. The user's browser was left open.
+
+## What is needed to complete the runtime trace
+
+An authorized AWS dev session/Kubernetes context, or an existing dev runtime log export, must establish:
+
+- Running BFF, athlete and notification image digests.
+- Guardian request/contact snapshot and staged command for athlete `01a137a4-b1db-7009-914d-5e68e078de6e`.
+- BFF outbox command ID and bus publication result.
+- Notification `email_delivery` status/reason and provider message ID, if any.
+- Live SES account mode and verification status of the requested recipient.
+
+The relevant deployment is EKS cluster `wsl-dev`, region `us-west-2`, account `692820222632`; namespaces are `bff`, `athlete` and `notification`. Repository runbooks require an authorized cluster principal; GitHub login alone does not supply that AWS session.
+
+## Saved evidence
+
+- `artifacts/dev-notification-deploy-github.log` — actual GitHub deployment log.
+- `artifacts/dev-infra-terraform-github.log` — actual Terraform apply log.
+- `artifacts/dev-ses-sandbox-pr15.json` — historical incident/fix description.
+- `artifacts/dev-github-email-trace-2026-10-14/github-deployment-evidence.json` — queried deployment history and auto-deploy flags.
+- `artifacts/mailosaur-delivery-2026-10-14/results.json` and `recheck.json` — our failed email attempt and delayed inbox check.
+
+The original request trace remains in `docs/guardian-email-service-trace-2026-10-14.md`. The exact cause of our failed guardian email is still unconfirmed; the actionable leads are recipient verification and actual BFF/athlete image/runtime processing.

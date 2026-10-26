@@ -1,0 +1,335 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{overflow-wrap:anywhere}td{overflow-wrap:anywhere}body{font:16px/1.6 system-ui;max-width:1100px;margin:30px auto;padding:20px;color:#172637}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f8;padding:16px}img,video{max-width:100%;height:auto;object-fit:contain}table{width:100%;border-collapse:collapse}td,th{padding:12px;border-bottom:1px solid #ddd;text-align:left}a{color:#075ca8}</style><title>WSL-BUG-024 — Age 13–17 — event cards are visible before guardian consent</title><a href="index.html">All bug reports</a> · <a href="../results-of-testcases.html#check-3a5245fcce7f49d2">View failed check and run</a><h1>WSL-BUG-024 — Age 13–17 — event cards are visible before guardian consent</h1><div id="status-banner" style="background:#fdecec;border-left:4px solid #c62828;padding:12px 16px;margin:12px 0"><strong>Status: Failed</strong> — tracked in Jira <a href="https://wslproduct.atlassian.net/browse/WSL-9587">WSL-9587</a> (Teen event access is available before guardian consent).</div><p><strong>Test case:</strong> com.worldsurfleague.registration.tests.SignupAgeThirteenToSeventeenE2ETest.registerAsThirteenToSeventeenAndCompleteGuardianFlow</p><p><strong>Severity / Priority:</strong> High / P1 (proposed)</p><p><strong>Classification:</strong> Observed application failure; root cause requires developer confirmation</p><h2>What happened</h2><p>The Events list displayed 31 cards while guardian consent was still pending.</p><h2>What should happen</h2><p>Before guardian consent, display no event cards.</p><h2>Why it matters</h2><p>A minor can view events before the required guardian approval.</p><h2>What needs to be done</h2><p>Enforce the pending-consent restriction in the Events list and the API that supplies it. Verify both under-13 and 13–17 sessions after the correction.</p><h2>Steps to reproduce</h2><ol><li>Register a 13–17-year-old athlete and send the guardian consent email.</li><li>Keep consent pending: do not open or approve the guardian link.</li><li>Continue through the membership steps used by the test.</li><li>Open the Events list.</li><li>Inspect the event cards.</li></ol><p><strong>Environment:</strong> WSL dev. <strong>Run started:</strong> 2026-10-14T21:12:25.025056900Z. Results and evidence are retained from that execution; this wording update did not rerun the test.</p><details><summary>Original check result and recorded scenario steps</summary><p><strong>Original expected:</strong> While guardian consent is pending, the Events list shows zero event cards.</p><p><strong>Original actual:</strong> The Events list displayed 31 event cards before guardian consent.</p><ol><li>Opened Age gate</li><li>Entered date of birth 03/10/2011</li><li>Clicked Continue on Age gate</li><li>Age gate accepted the date of birth and opened Account creation</li><li>Entered account details and accepted the WSL Terms of Use</li><li>Submitted Create Account</li><li>Reached Athlete details after account creation</li><li>Entered Athlete details, residence and [name redacted]</li><li>Submitted Athlete details, attempt 1</li><li>Reached the next registration stage after Athlete details</li><li>Entered guardian details for the secure review link</li><li>Clicked Save and Send Secure Link for Guardian consent</li><li>Saved the minor athlete; captured its returned ID for consent and event access checks</li><li>Selected membership tier Junior Membership</li><li>Clicked Continue to Payment after signing the four required documents</li><li>Stripe test card form appeared</li><li>Entered a Stripe test card for membership payment</li><li>Submitted membership payment with a Stripe test card</li><li>Before consent, checked the actual Events list and known open-event detail/registration routes. No consent link has been consumed yet.</li><li>Mailosaur delivered the consent message; opening its real secure action in a guardian tab</li><li>Guardian tab: reviewing the child identity and children privacy/consent statements from the real email link</li><li>Guardian tab: accepted the displayed parent verification, privacy consent and withdrawal acknowledgements</li></ol></details><h2>Technical details</h2><p>Logs are from the same scenario, not necessarily a single request attributable to this assertion. Missing payloads, service logs and deployment revision are not inferred.</p><pre>{
+  &quot;environment&quot;: &quot;WSL dev: app.dev.worldsurfleague.com / api.dev.worldsurfleague.com&quot;,
+  &quot;executionStarted&quot;: &quot;2026-10-14T21:12:25.025056900Z&quot;,
+  &quot;checkTimestamp&quot;: &quot;2026-10-14T21:13:01.007717100Z&quot;,
+  &quot;checkId&quot;: &quot;3a5245fcce7f49d2&quot;,
+  &quot;recordedMessage&quot;: &quot;Observed 31 event cards after the Events request completed. Headings: [Events Pay Can Enter, Taiwan Open of Surfing· INTL QS 6,000Upgrade your membership plan to access this event., North Shore Open· QS 2,000Upgrade your membership plan to access this event., Central Coast Pro Junior· JR 1,000, Tahara Pacific Open· QS 2,000Upgrade your membership plan to access this event., Mid-Atlantic Pro· QS 4,000, Lexus Pipe Masters· Championship TourUpgrade your membership plan to access this event., Mid-Atlantic Longboard Classic· LQS 1,000Upgrade your membership plan to access this event., Lacanau Atlantic Pro· QS 2,000Upgrade your membership plan to access this event., QA Main Flow 6e301a29· QS 2,000, Surf City Open· QS 1,000, Saquarema International Pro· INTL QS 6,000Upgrade your membership plan to access this event., Edommo Pro Razo· QS 2,000, MEO Rip Curl Pro Portugal· Championship Tour, Siargao International Surfing Cup· INTL QS 6,000, Sunset Pro· QS 2,000, Philippines Pro· Championship Tour, Orange County Classic· QS 2,000, HTA Haleiwa Pro· QS 2,000, Miyazaki Pro· QS 2,000, Costa da Caparica Pro· QS 1,000, Central Coast Open· QS 2,000, QA Main Flow 93ae6bbc· QS 2,000, QA Main Flow d4207e61· INTL QS 6,000, QA Main Flow 2722138a· INTL QS 6,000, QA Main Flow 6a41a52a· QS 4,000, QA Main Flow b145bd93· QS 2,000, QA Main Flow 5b1837d0· INTL QS 6,000, QA Main Flow d762b574· INTL QS 6,000, QA Main Flow df3398fa· QS 2,000, QA Main Flow d86e79d4· QS 2,000, QA Main Flow dc1df295· QS 2,000, Beach Marshal]&quot;,
+  &quot;requests&quot;: [],
+  &quot;scenarioHttpAndErrorLog&quot;: [
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:28.893498300Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:28.896499300Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:28.922073800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:29.153397900Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:29.182398Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:29.354397900Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:29.403473200Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;POST https://api.dev.world[redacted]league.com/api/age-gate → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:30.077179100Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/terms-of-use → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:30.449786200Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/privacy-policy → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:30.486335500Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/terms-of-use → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:30.855378500Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/privacy-policy → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:30.950377300Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;POST https://api.dev.world[redacted]league.com/api/auth/register → 201&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:32.643176400Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/session → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:32.956511600Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/tour-manager/session → 403&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:33.772862700Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 403 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:33.775861800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/reference/countries → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:33.820863Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:33.876863300Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/reference/genders → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:34.422470200Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:35.826861800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:36.458587200Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/reference/countries/US/states → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:36.999766700Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:37.227821300Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:37.449809500Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:37.861590800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:38.338183700Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:38.563734900Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:38.828110800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:39.076867800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;PUT https://api.dev.world[redacted]league.com/api/registration/draft → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:39.368899500Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;POST https://api.dev.world[redacted]league.com/api/athletes → 201&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:39.971081400Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/tour-manager/session → 403&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:40.219745600Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 403 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:40.220742700Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/session → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:40.326939400Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:40.699355100Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/membership/offer → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:40.738360Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;POST https://api.dev.world[redacted]league.com/api/membership/checkout → 201&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:46.808089500Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/payments/intents/01a13c42-b280-7579-aa49-a1c403fbb204 → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:47.048103600Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/payments/intents/01a13c42-b280-7579-aa49-a1c403fbb204 → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:48.420463800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/payments/intents/01a13c42-b280-7579-aa49-a1c403fbb204 → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:49.697531700Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/payments/intents/01a13c42-b280-7579-aa49-a1c403fbb204 → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:50.962139800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/payments/intents/01a13c42-b280-7579-aa49-a1c403fbb204 → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:52.294854800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;POST https://api.dev.world[redacted]league.com/api/membership/checkout/01a13c42-b280-7579-aa49-a1c403fbb204/secret → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:52.832635200Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/payments/intents/01a13c42-b280-7579-aa49-a1c403fbb204 → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:54.378436300Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/payments/intents/01a13c42-b280-7579-aa49-a1c403fbb204 → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:56.410728300Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/payments/intents/01a13c42-b280-7579-aa49-a1c403fbb204 → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:56.699875300Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/session → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:56.833876400Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/session → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:57.042002600Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/tour-manager/session → 403&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:57.150010400Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 403 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:12:57.152009800Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/session → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:02.378800700Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/session → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:07.828023Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/session → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:14.689861100Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/session → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:18.488495Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.083442700Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.087441900Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.096444200Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/session → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.155445300Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.308446700Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.312443700Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.318440600Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/tour-manager/session → 403&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.394415600Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 403 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.396417400Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.556033600Z&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;detail&quot;: &quot;GET https://api.dev.world[redacted]league.com/api/events → 200&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:13:23.559033600Z&quot;
+    }
+  ]
+}</pre><h2>Evidence</h2><h3>Screenshot</h3><a href="../screenshots/3a5245fcce7f49d2-b69a1fe2-bc2a-45b2-8a44-7a5c9548de39.png"><img loading="lazy" src="../screenshots/3a5245fcce7f49d2-b69a1fe2-bc2a-45b2-8a44-7a5c9548de39.png"></a><p>Focused recording unavailable. Focused recording unavailable: the relevant card/probe tab was not visible in the captured interval. The actual screenshot and recorded observation are retained; no unrelated video is substituted.</p>

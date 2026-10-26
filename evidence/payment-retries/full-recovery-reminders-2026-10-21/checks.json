@@ -1,0 +1,126 @@
+{
+  "checks": [
+    {
+      "id": "FR-01",
+      "name": "Two genuinely declined entry fixtures",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-02",
+      "name": "Every payment email reached the exact supplied inbox",
+      "expected": true,
+      "actual": true,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-03",
+      "name": "Recovery fixture received two scheduled reminders",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-04",
+      "name": "Expiry fixture received four scheduled reminders",
+      "expected": 4,
+      "actual": 4,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-05",
+      "name": "Expiry escalation delivered",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-06",
+      "name": "All seven notifications persisted as sent with SES IDs",
+      "expected": 7,
+      "actual": 7,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-07",
+      "name": "Stripe independently confirms test-mode full recovery",
+      "expected": [
+        "succeeded",
+        false,
+        15000,
+        "usd"
+      ],
+      "actual": [
+        "succeeded",
+        false,
+        15000,
+        "usd"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "FR-08",
+      "name": "Manager recovery row is Confirmed/Collected",
+      "expected": true,
+      "actual": true,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-09",
+      "name": "No notices after recovery at 120h/168h",
+      "expected": true,
+      "actual": true,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-10",
+      "name": "Expiry row reaches four notices and a flag",
+      "expected": true,
+      "actual": true,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-11",
+      "name": "Repeated 24h and 168h ticks produce no new notices",
+      "expected": true,
+      "actual": true,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-12",
+      "name": "Expiry fixture remains unpaid in Stripe",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-13",
+      "name": "Shared payment-rule version remains 16",
+      "expected": 16,
+      "actual": 16,
+      "status": "PASS"
+    },
+    {
+      "id": "FR-14",
+      "name": "Received recovery link opens athlete dashboard",
+      "expected": [
+        200,
+        "/athlete-registration/events"
+      ],
+      "actual": [
+        200,
+        "/athlete-registration/events"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "FR-15",
+      "name": "Card-update control available on the inspected recovery destination",
+      "expected": true,
+      "actual": false,
+      "status": "FAIL"
+    }
+  ],
+  "scope": "Live fixture-clock scheduler, actual outbox/bus/SES/inbox and real Stripe test-mode recovery; UI card-update gap retained"
+}

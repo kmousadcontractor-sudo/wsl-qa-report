@@ -1,0 +1,26 @@
+[
+  {
+    "ts": "2026-10-21T20:17:14+0000",
+    "level": "WARNING",
+    "logger": "wsl.consumer",
+    "msg": "handler failed",
+    "service": "competition",
+    "subject": "evt.payment.paid",
+    "correlation_id": "01a1601c-6086-7507-8007-a88960bd9f70",
+    "attempt": "1",
+    "action": "dlq-term",
+    "reason": "terminal: ValidationFailedError"
+  },
+  {
+    "ts": "2026-10-21T20:36:16+0000",
+    "level": "WARNING",
+    "logger": "wsl.consumer",
+    "msg": "handler failed",
+    "service": "competition",
+    "subject": "evt.payment.paid",
+    "correlation_id": "01a1602d-caf1-76a1-9007-b7b18ac68f6d",
+    "attempt": "1",
+    "action": "dlq-term",
+    "reason": "terminal: ValidationFailedError"
+  }
+]

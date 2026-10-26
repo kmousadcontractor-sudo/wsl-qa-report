@@ -1,0 +1,317 @@
+{
+  "id": "BM-LIVE-A18",
+  "role": "Athlete",
+  "action": "Read",
+  "prompt": "Find a cafe near Bells Beach, Torquay, Victoria, Australia.",
+  "expected": "Real places from enabled source, correct country/venue; or honest unavailability, never invented cafe.",
+  "expectedTools": [
+    "search_places"
+  ],
+  "referencePaths": [],
+  "web": true,
+  "startedAt": "2026-10-15T00:18:30.540Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:18:33.578Z",
+  "videoStartSeconds": 215.14,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "bde7131c-39f8-4dc9-adc5-0a2170d201c3",
+    "input": {
+      "threadId": "4509b505-6e6a-426f-b791-eefaf5c96e94",
+      "runId": "918491dd-c8e5-4eea-87f1-c3078274584b",
+      "state": {},
+      "messages": [
+        {
+          "id": "41d68978-5d7c-44c0-98e2-513ad0bd6381",
+          "role": "user",
+          "content": "Find a cafe near Bells Beach, Torquay, Victoria, Australia."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01D6ribBhUGA1b8Vmb9ZvRgK",
+        "name": "search_places",
+        "result": {
+          "status": "ok",
+          "places": [
+            {
+              "name": "The Salty Dog Cafe",
+              "rating": 4.5,
+              "ratingCount": 1100,
+              "category": "Coffee shop",
+              "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.327744,144.3267",
+              "lat": -38.327744,
+              "lng": 144.3267
+            },
+            {
+              "name": "Pond Cafe",
+              "rating": 4.3,
+              "ratingCount": 752,
+              "category": "Cafe",
+              "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.33219,144.32611",
+              "lat": -38.33219,
+              "lng": 144.32611
+            },
+            {
+              "name": "Sticks and Stones Cafe Torquay",
+              "rating": 4.6,
+              "ratingCount": 570,
+              "category": "Cafe",
+              "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.326874,144.31639",
+              "lat": -38.326874,
+              "lng": 144.31639
+            },
+            {
+              "name": "Surf Break Cafe Torquay",
+              "rating": 4.3,
+              "ratingCount": 197,
+              "category": "Cafe",
+              "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.32817,144.3167",
+              "lat": -38.32817,
+              "lng": 144.3167
+            },
+            {
+              "name": "Bomboras",
+              "rating": 4.4,
+              "ratingCount": 1200,
+              "category": "Cafe",
+              "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.33263,144.32591",
+              "lat": -38.33263,
+              "lng": 144.32591
+            },
+            {
+              "name": "Third Wave Kiosk Torquay",
+              "rating": 4.3,
+              "ratingCount": 298,
+              "category": "Cafe",
+              "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.341022,144.32109",
+              "lat": -38.341022,
+              "lng": 144.32109
+            },
+            {
+              "name": "Bainz Café",
+              "rating": 4.4,
+              "ratingCount": 69,
+              "category": "Cafe",
+              "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.327984,144.31567",
+              "lat": -38.327984,
+              "lng": 144.31567
+            },
+            {
+              "name": "Sandbah Cafe",
+              "rating": 4.2,
+              "ratingCount": 307,
+              "category": "Cafe",
+              "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.33218,144.32382",
+              "lat": -38.33218,
+              "lng": 144.32382
+            }
+          ]
+        },
+        "parameters": {
+          "what": "cafe",
+          "near": "Bells Beach, Torquay, Victoria, Australia",
+          "country_code": "AU"
+        }
+      }
+    ],
+    "answer": "I found several good cafés in Torquay, a short drive from Bells Beach:\n\n- **Sticks and Stones Cafe Torquay**: rated 4.6 from about 570 reviews\n- **The Salty Dog Cafe**: a coffee shop rated 4.5 from about 1,100 reviews\n- **Bomboras**: rated 4.4 from about 1,200 reviews\n- **Pond Cafe**: rated 4.3 from about 750 reviews\n\nI don't have street addresses for these, but they're all on the map. Tap one to get directions.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "4509b505-6e6a-426f-b791-eefaf5c96e94",
+        "runId": "918491dd-c8e5-4eea-87f1-c3078274584b"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "4509b505-6e6a-426f-b791-eefaf5c96e94",
+        "runId": "918491dd-c8e5-4eea-87f1-c3078274584b"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_ARGS",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01D6ribBhUGA1b8Vmb9ZvRgK",
+      "name": "search_places",
+      "result": {
+        "status": "ok",
+        "places": [
+          {
+            "name": "The Salty Dog Cafe",
+            "rating": 4.5,
+            "ratingCount": 1100,
+            "category": "Coffee shop",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.327744,144.3267",
+            "lat": -38.327744,
+            "lng": 144.3267
+          },
+          {
+            "name": "Pond Cafe",
+            "rating": 4.3,
+            "ratingCount": 752,
+            "category": "Cafe",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.33219,144.32611",
+            "lat": -38.33219,
+            "lng": 144.32611
+          },
+          {
+            "name": "Sticks and Stones Cafe Torquay",
+            "rating": 4.6,
+            "ratingCount": 570,
+            "category": "Cafe",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.326874,144.31639",
+            "lat": -38.326874,
+            "lng": 144.31639
+          },
+          {
+            "name": "Surf Break Cafe Torquay",
+            "rating": 4.3,
+            "ratingCount": 197,
+            "category": "Cafe",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.32817,144.3167",
+            "lat": -38.32817,
+            "lng": 144.3167
+          },
+          {
+            "name": "Bomboras",
+            "rating": 4.4,
+            "ratingCount": 1200,
+            "category": "Cafe",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.33263,144.32591",
+            "lat": -38.33263,
+            "lng": 144.32591
+          },
+          {
+            "name": "Third Wave Kiosk Torquay",
+            "rating": 4.3,
+            "ratingCount": 298,
+            "category": "Cafe",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.341022,144.32109",
+            "lat": -38.341022,
+            "lng": 144.32109
+          },
+          {
+            "name": "Bainz Café",
+            "rating": 4.4,
+            "ratingCount": 69,
+            "category": "Cafe",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.327984,144.31567",
+            "lat": -38.327984,
+            "lng": 144.31567
+          },
+          {
+            "name": "Sandbah Cafe",
+            "rating": 4.2,
+            "ratingCount": 307,
+            "category": "Cafe",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=-38.33218,144.32382",
+            "lat": -38.33218,
+            "lng": 144.32382
+          }
+        ]
+      },
+      "parameters": {
+        "what": "cafe",
+        "near": "Bells Beach, Torquay, Victoria, Australia",
+        "country_code": "AU"
+      }
+    }
+  ],
+  "aiResponse": "I found several good cafés in Torquay, a short drive from Bells Beach:\n\n- **Sticks and Stones Cafe Torquay**: rated 4.6 from about 570 reviews\n- **The Salty Dog Cafe**: a coffee shop rated 4.5 from about 1,100 reviews\n- **Bomboras**: rated 4.4 from about 1,200 reviews\n- **Pond Cafe**: rated 4.3 from about 750 reviews\n\nI don't have street addresses for these, but they're all on the map. Tap one to get directions.",
+  "actual": "I found several good cafés in Torquay, a short drive from Bells Beach:\n\n- **Sticks and Stones Cafe Torquay**: rated 4.6 from about 570 reviews\n- **The Salty Dog Cafe**: a coffee shop rated 4.5 from about 1,100 reviews\n- **Bomboras**: rated 4.4 from about 1,200 reviews\n- **Pond Cafe**: rated 4.3 from about 750 reviews\n\nI don't have street addresses for these, but they're all on the map. Tap one to get directions.",
+  "durationMs": 7774,
+  "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nFind a cafe near Bells Beach, Torquay, Victoria, Australia.\n\nI found several good cafés in Torquay, a short drive from Bells Beach:\n\nSticks and Stones Cafe Torquay: rated 4.6 from about 570 reviews\nThe Salty Dog Cafe: a coffee shop rated 4.5 from about 1,100 reviews\nBomboras: rated 4.4 from about 1,200 reviews\nPond Cafe: rated 4.3 from about 750 reviews\n\nI don't have street addresses for these, but they're all on the map. Tap one to get directions.\n\nI found several good cafés in Torquay, a short drive from Bells Beach: - **Sticks and Stones Cafe Torquay**: rated 4.6 from about 570 reviews - **The Salty Dog Cafe**: a coffee shop rated 4.5 from about 1,100 reviews - **Bomboras**: rated 4.4 from about 1,200 reviews - **Pond Cafe**: rated 4.3 from about 750 reviews I don't have street addresses for these, but they're all on the map. Tap one to get directions.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-A18.png",
+  "videoEndSeconds": 223.657,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:18:33.601Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:18:42.095Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Named cafes and ratings/review rounding match captured search_places results. Missing street addresses were disclosed; no invented addresses. This verifies grounding in returned source, not real-world cafe quality.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Own-athlete scope; direct foreign holdings403 verified in A16/S02",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Real places from enabled source, correct country/venue; or honest unavailability, never invented cafe.",
+    "observed": "I found several good cafés in Torquay, a short drive from Bells Beach:\n\n- **Sticks and Stones Cafe Torquay**: rated 4.6 from about 570 reviews\n- **The Salty Dog Cafe**: a coffee shop rated 4.5 from about 1,100 reviews\n- **Bomboras**: rated 4.4 from about 1,200 reviews\n- **Pond Cafe**: rated 4.3 from about 750 reviews\n\nI don't have street addresses for these, but they're all on the map. Tap one to get directions.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-A18-BM-LIVE-A18.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

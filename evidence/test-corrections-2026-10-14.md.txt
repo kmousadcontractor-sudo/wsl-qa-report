@@ -1,0 +1,56 @@
+# Requested automation corrections - 14 October 2026
+
+Executed only nine affected test methods/groups against https://app.dev.worldsurfleague.com with its dev API. The full suite was not run. No backend application logic was changed. Existing user browser windows were preserved; the short-lived headless test browsers closed normally.
+
+Latest affected results: 67 passed checks, 6 failed checks, 3 blocked checks; 1 separate execution interruption. Check totals exclude execution errors.
+
+| Affected test | Result | Passed | Failed | Blocked | Execution errors |
+|---|---|---:|---:|---:|---:|
+| tourManagerReachesWorkspace | PASS | 8 | 0 | 0 | 0 |
+| ADD-10 | FAIL | 5 | 1 | 1 | 0 |
+| ADD-11 | FAIL | 3 | 1 | 0 | 1 |
+| ADD-36 | PASS | 10 | 0 | 0 | 0 |
+| ADD-42 | BLOCKED | 20 | 0 | 1 | 0 |
+| ADD-44 | FAIL | 7 | 2 | 0 | 0 |
+| ADD-50 | PASS | 10 | 0 | 0 | 0 |
+| ADD-52 | BLOCKED | 2 | 0 | 1 | 0 |
+| ADD-54 | FAIL | 2 | 2 | 0 | 0 |
+
+## Removed checks
+
+- Legal-document reader viewport-size assertion only; signing/read/persistence checks retained.
+- Generic browser-action timeout assertions. The real checkout timeout remains visible as an execution error, with its message and trace, rather than a synthetic product check.
+- P1 Roles & access is listed only; functional Settings checks retained.
+- Sampled read P95 meets 200ms budget only; twenty HTTP read checks and the existing representative-load limitation retained.
+
+## Corrected behavior and observed results
+
+- **Settings gear navigation: passed.** Located the SVG navigation link by its stable /tour-manager/settings destination, clicked it and verified both route and Entry fees content. Visible Settings text is not required.
+- **Two-manager stale edits: passed.** Distinct authenticated managers received HTTP 409 and a readable error banner for the stale save; the first manager's exact saved name remained. No refresh/retry wording was asserted. An initial empty live-alert selection was corrected to wait for a visible, nonempty alert, then this case was rerun.
+- **Matching guardian/emergency emails: passed.** Otherwise-valid minor registration returned HTTP 201 with matching addresses; the distinct-address control also returned 201. The separate guardian-phone comparison remains blocked because no supported stored guardian-phone field is exposed.
+- **Child age boundary: failed.** The age-17 positive control was accepted. Certified age-18 and age-19 dependent requests were rejected with HTTP 422, but fresh requests with registeredByRole=guardian and guardianCertified=false were accepted with HTTP 201. Both accepted adult-dependent requests violate the requested boundary. No own-account message is required. These are API observations, not an assertion that the full child UI journey was completed.
+- **ADD-54: failed after successful setup.** Created a dedicated QA event, entered registration opening date/time with the normal date/time UI, saved, and verified persisted fields. Venue 09:00 EDT is displayed correctly. The overview registration row omits Pacific and viewer-local time displays; expected values are calculated independently using the configured date and actual IANA zones, including DST. AM/PM and 24-hour formats are both accepted. Only the isolated QA event was modified.
+
+## Retained failures and limitations
+
+- ADD-10 still fails its signing-screen-restored check immediately after reload. The focused recording shows the page still rendering at that observation; it does not establish a persistent product defect. Partial-document signature persistence passed. PDF/email completion remains blocked by missing signing-delivery evidence.
+- ADD-11 still fails the Single Event API offer's upgrade-later copy check. Its checkout action also timed out waiting for the expected response (30 seconds); this interruption is shown separately and was not deleted or marked passed.
+- ADD-42 availability/write-SLA coverage needs representative load and monitoring. Twenty functional HTTP read samples passed; the removed timing-budget assertion was not evaluated.
+
+## Report and evidence
+
+The existing combined report retains earlier results for unaffected tests and replaces only affected methods with their latest executions. Every check has one current result. Superseded capture attempts remain in source artifacts/logs; initial-checklist-results.json retains the first attempt. Small assertion/API cases have no full-flow video in the published reports. Failed browser checks have reviewed focused clips and screenshots; API failures have response/status evidence. Only main end-to-end journeys retain full recordings. The time-row recording is scrolled normally into view, without layout zoom or cropping.
+
+Sources: artifacts/test-corrections-2026-10-14/test-results.json; checklist/checklist-results.json; maven.log; checklist.log; checklist-capture-corrected.log; checklist-age-guard.log; checklist-time-evidence.log; review/candidates.json. No full-suite run is implied by the combined report's earlier test results.
+
+## Additional user-reported bug: consumed Single Event credit
+
+**Expected:** After the one Single Event membership credit is consumed, all other event cards should show **Upgrade membership** and prevent further registration using that consumed membership.
+
+**Actual reported:** Some event cards still show **Register** and open the event registration page.
+
+**Steps:** Sign in with Single Event membership; register for one event and consume the credit; return to the event list; inspect remaining event cards; click an incorrectly available Register action.
+
+**Impact:** Inconsistent eligibility actions allow access to registration after the membership credit is exhausted. This observation does not establish that a second entry or payment can complete.
+
+**Status:** User-reported; not independently rerun in this publishing update. Automated test counts remain unchanged.

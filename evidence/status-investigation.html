@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8"><pre># Entry status investigation and parent/under-13 recording
+
+Local review only. No application logic changed and no report was pushed or published.
+
+## Exact records verified
+
+| Scenario | Event | Athlete | Entry | Confirmation reference |
+|---|---|---|---|---|
+| Single Event | QA Main Flow dc1df295 (`01a13bce-bd5f-7339-a30c-80fbc91acc43`) | `01a13bcc-e928-7135-afa5-cbb347b1f5ab` | `01a13bcf-37e7-72fd-b37f-d8190fef1f89` | `QS-2026-M-071-001` |
+| Regional | QA Main Flow d762b574 (`01a13bd2-4eee-7331-97bf-35b4d7472b46`) | `01a13bd1-3f70-745e-8d25-8ba53d25bff9` | `01a13bd2-a872-703a-a1c4-9e165924358e` | `QS-2026-M-072-001` |
+
+The roster entry IDs match the IDs recorded during the original successful entry/closure checks. Event IDs and names match. Each athlete belongs to its original retained athlete session, verified with GET /session and GET /athletes/{id}. GET /entries/{reference} also answers HTTP 200 with Confirmed insured. A manager roster intentionally exposes name/country rather than athlete ID, so the investigation did not assume its display row contained an athlete ID.
+
+## 1. Waitlisted on the already-open event card
+
+**Verified backend behavior:** the original exact-entry API assertion recorded `waitlisted` before manager confirmation: 19:07:11 UTC for Single Event and 19:10:55 UTC for Regional. Both checks passed. These are historical states; the now-confirmed entries were not changed back to recreate a waitlist.
+
+**Observed UI:** the already-mounted card remained Ready for entries/Register during the original 20-second check. Later retained-tab recordings showed Waitlisted. The original failed checks and both recording stages remain available.
+
+**Classification:** an application cache/update gap across separately mounted pages, not evidence that entry creation failed. The test used the correct record. Each browser page has its own query client; invalidating the registration page's event query does not invalidate another open page's cache. The inspected `useAthleteEvents` has no polling, and the query-client defaults disable window-focus refetch. No automatic event/roster request was observed in the regional diagnostic's bounded 10-second window. One late request occurred in the adult observation, so the report does not claim every window had zero requests.
+
+**Suggested fix:** propagate entry updates to mounted Event Lists (for example, a status notification/subscription or bounded polling while entries are pending). Invalidate the affected athlete/event query after entry mutations and arrange cross-tab updates if other open tabs must update. Do not insert refresh into the no-refresh assertion; refresh is a separate diagnostic.
+
+## 2. Collected on Tour Manager roster
+
+**Verified backend behavior:** GET /tour-manager/events/{eventId}/entries returned HTTP 200, with the exact entries `entry.code=confirmed` and `payment.code=collected`, for both scenarios. The original manager confirmation and backend collection checks also passed.
+
+**Before/after refresh:** the retained Regional roster still displayed Pending while its live API already returned Collected. Explicitly refreshing that same event and reopening its Athletes tab displayed Collected/Confirmed. The original Single Event manager window had been closed, so that comparison uses its original Pending recording against a fresh exact-event load and refresh; it is not described as a refresh of that original window.
+
+**Classification:** application refresh gap after asynchronous collection. `useConfirmField` invalidates the roster once when the command succeeds. Collection finishes later; `useSeedList` has no follow-up polling/subscription. The roster can therefore retain the initial Pending response even though the payment service has completed collection. The fresh page correctly renders Collected, ruling out the original payment-failed interpretation and a simple Pending/Collected selector error.
+
+**Suggested fix:** refetch or subscribe to roster/payment updates until all affected charges reach a terminal state. Keep retries bounded, stop polling on terminal outcomes, and surface genuine provider failures independently.
+
+## 3. Confirmed on athlete event card
+
+**Verified backend behavior:** both exact manager entries are confirmed; both athlete confirmation-reference endpoints answer Confirmed insured. The event list's current response contains `selected: Selected` and `ready_to_compete: Ready to Compete`, with no Register action.
+
+**Before/after refresh:** the retained Regional card still showed Waitlisted/Coverage Confirmed before refresh. Refresh changed it to Selected/Ready to Compete, matching the live event-list response, and removed Register. The earlier original recording showed the still older Ready for entries/Register state.
+
+**Classification:** two distinct findings. The stale Register/Waitlisted card is an application update/cache issue. Requiring the exact visible text Confirmed is also an automation/contract wording mismatch against the current response: this API presents a confirmed entry as Selected/Ready to Compete. The test should validate the agreed status code/mapping rather than assuming the manager and athlete screens use identical wording. If the product requires the literal label Confirmed, that is a separate copy/contract change. The original failure is preserved and has not been relabelled passed simply because refresh fixes it.
+
+**Suggested fix:** deliver live event-list updates as above, and align the assertion with the documented athlete-card status mapping. A refresh-only diagnostic passed for both records; the original no-refresh checks remain failed.
+
+## Investigation scope and automation corrections
+
+- API and refreshed UI observations, exact IDs, timestamps and request paths are in `artifacts/status-investigation-2026-10-14/final-status-trace.json`.
+- The source paths supporting the cache diagnosis are `wsl-local/wsl-frontend/src/features/athlete-registration/hooks/use-events.ts`, `hooks/use-entries.ts`, `src/lib/query-client.ts` and `features/tour-manager/hooks/use-tour-manager.ts` (`useSeedList` / `useConfirmField`). The deployed source revision was not pinned; these explain the observed mechanism but are not a claim that a specific checked-out line is the exact deployed revision.
+- Initial diagnostic attempts encountered expired API access cookies, a manager window that had been closed, an invalid confirmation lookup using entry ID instead of confirmation reference, and Overview being selected after document reload. Those are investigation/automation setup problems, not additional product failures. The final trace renews normal authentication, uses the real reference, and explicitly opens the Athletes tab after refresh. Their raw attempts remain separate and do not replace original test results.
+- Screenshots record before/after state without changing zoom or page dimensions. Original focused and full-flow recordings remain attached. No additional event entry or payment was submitted during the refresh investigation.
+
+## Parent can create under-13 child — full browser recording
+
+At the user's request, `bicycle-compare@btj5keea.mailosaur.net` was created as an email identity in AWS SES, account 692820222632, region us-west-2. The AWS verification message was received in Mailosaur, its real Amazon verification action succeeded, and SES displayed Verified. The exact address was then used for the parent test.
+
+**Executed browser flow:** under-13 age gate → parent/guardian choice → adult parent DOB verification → account creation with Terms/Privacy acceptance → child details → COPPA email-verification screen → real Mailosaur consent link → child privacy/data-use and withdrawal acknowledgements → drawn test-parent signature → parental consent submission → Consent has been recorded for Junior / COPPA Verified.
+
+The final API verification returned HTTP 200 and COPPA `status=active`. The saved child is `pending_documents` and membership is `pending_payment`, as expected before membership documents/payment. Creating the child and verifying parental consent do not require purchasing membership in this test.
+
+The first final assertion incorrectly expected the overall athlete to be active. That was an automation error: it conflated COPPA approval with membership/document completion. The parent-only assertion now checks the real COPPA API status, and that corrected final check was executed against the same child and real consent link. The original raw run and its incorrect assertion remain archived; the report explicitly identifies the corrected final verification and timestamp. No consent state was edited in a database.
+
+**Evidence:** full native-viewport recordings of the parent registration tab and guardian privacy/consent tab are attached to ADD-08 itself. Both include captions and playback speed controls. The second video shows the verified result; it also retains the initial run's wait for the overly strict final assertion rather than hiding that execution. `parent-bicycle/final-api-check.json` records the subsequent correct API verification without private consent tokens.
+
+SES verification: `artifacts/status-investigation-2026-10-14/ses-bicycle.json`. Parent result: `parent-bicycle/test-results.json`. Both the Mailosaur preflight and consent receipt succeeded after this recipient was verified; this does not retroactively prove the precise provider rejection for every older missing email.
+
+## Requested removal
+The post-COPPA primary-phone and WhatsApp lock assertions were removed from the automation and current local report at the user's request. Their earlier failures are withdrawn checks, not product fixes. Other phone/WhatsApp behavior and primary-email, identity, address and emergency-contact checks remain in scope. Original raw execution files remain historical.
+
+</pre>

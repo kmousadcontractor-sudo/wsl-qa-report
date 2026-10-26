@@ -1,0 +1,170 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{overflow-wrap:anywhere}td{overflow-wrap:anywhere}body{font:16px/1.6 system-ui;max-width:1100px;margin:30px auto;padding:20px;color:#172637}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f8;padding:16px}img,video{max-width:100%;height:auto;object-fit:contain}table{width:100%;border-collapse:collapse}td,th{padding:12px;border-bottom:1px solid #ddd;text-align:left}a{color:#075ca8}</style><title>WSL-BUG-014 — Password is cleared after refreshing registration</title><a href="index.html">All bug reports</a> · <a href="../results-of-testcases.html#check-cd9b319ce76bd5b1">View failed check and run</a><h1>WSL-BUG-014 — Password is cleared after refreshing registration</h1><div id="status-banner" style="background:#fdecec;border-left:4px solid #c62828;padding:12px 16px;margin:12px 0"><strong>Status: Failed</strong> — tracked in Jira <a href="https://wslproduct.atlassian.net/browse/WSL-9582">WSL-9582</a> (Registration details are cleared after page refresh).</div><p><strong>Test case:</strong> com.worldsurfleague.registration.tests.BackRefreshE2ETest.refreshPreservesEnteredData</p><p><strong>Severity / Priority:</strong> Medium / P2 (proposed)</p><p><strong>Classification:</strong> Observed application failure; root cause requires developer confirmation</p><h2>What happened</h2><p>The assertion did not find the originally entered password in the field.</p><h2>What should happen</h2><p>Under the current test expectation, the entered password remains available. Confirm whether retaining it is intended before changing the application.</p><h2>Why it matters</h2><p>The user must re-enter information or select consent again to continue.</p><h2>What needs to be done</h2><p>Confirm the password-retention requirement and align the assertion with the agreed secure behavior. Do not persist passwords solely to satisfy this check.</p><h2>Steps to reproduce</h2><ol><li>Open athlete registration and enter date of birth 07/07/2000.</li><li>Continue to Account creation, fill the required account fields and accept Terms.</li><li>Refresh the page. If it returns to Age gate, inspect the date of birth and continue back to Account creation.</li><li>Inspect password.</li></ol><p><strong>Environment:</strong> WSL dev. <strong>Run started:</strong> 2026-10-14T21:03:17.023320300Z. Results and evidence are retained from that execution; this wording update did not rerun the test.</p><details><summary>Original check result and recorded scenario steps</summary><p><strong>Original expected:</strong> Password remains entered after refresh.</p><p><strong>Original actual:</strong> Not observed: Password remains entered after refresh. Expected the originally entered password to remain in its field.</p><ol><li>Cleared cookies and registration browser state for an independent age flow</li><li>Opened Age gate</li><li>Entered date of birth 07/07/2000</li><li>Clicked Continue on Age gate</li><li>Age gate accepted the date of birth and opened Account creation</li><li>Entered account details and accepted the WSL Terms of Use</li><li>Inspected visible FIRST_NAME field for the recording</li><li>Inspected visible LAST_NAME field for the recording</li><li>Inspected visible EMAIL field for the recording</li><li>Inspected visible PASSWORD field for the recording</li><li>Inspected visible TERMS field for the recording</li><li>Refreshed registration and observed the rendered step</li><li>Refresh returned to Age gate</li><li>Date of birth was lost after refresh; re-entered it to inspect the remaining values</li></ol></details><h2>Technical details</h2><p>Logs are from the same scenario, not necessarily a single request attributable to this assertion. Missing payloads, service logs and deployment revision are not inferred.</p><pre>{
+  &quot;environment&quot;: &quot;WSL dev: app.dev.worldsurfleague.com / api.dev.worldsurfleague.com&quot;,
+  &quot;executionStarted&quot;: &quot;2026-10-14T21:03:17.023320300Z&quot;,
+  &quot;checkTimestamp&quot;: &quot;2026-10-14T21:03:40.075574500Z&quot;,
+  &quot;checkId&quot;: &quot;cd9b319ce76bd5b1&quot;,
+  &quot;recordedMessage&quot;: &quot;Expected the originally entered password to remain in its field.&quot;,
+  &quot;requests&quot;: [],
+  &quot;scenarioHttpAndErrorLog&quot;: [
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:22.047700100Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:22.049700700Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:22.051701100Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:22.309363200Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:22.322363400Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:22.534855800Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:22.535854600Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;POST https://api.dev.world[redacted]league.com/api/age-gate → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:23.394244400Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/terms-of-use → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:23.734724700Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/privacy-policy → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:23.738724200Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/marketing-consent → 404&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:24.029663800Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:24.031177200Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/terms-of-use → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:24.032164500Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/privacy-policy → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:24.211926400Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/marketing-consent → 404&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:25.471852400Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:25.471852400Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:29.895986500Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:29.896985400Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:29.897986600Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:30.230777100Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:30.232780Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:30.433363Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:30.443360700Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;POST https://api.dev.world[redacted]league.com/api/age-gate → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:32.775555300Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/terms-of-use → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:32.823555900Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/privacy-policy → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:32.845558Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/terms-of-use → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:32.849559500Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/privacy-policy → 200&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:32.855557600Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/marketing-consent → 404&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:33.025694200Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:33.026694300Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;GET https://app.dev.world[redacted]league.com/api/legal/marketing-consent → 404&quot;,
+      &quot;kind&quot;: &quot;HTTP&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:34.453604600Z&quot;
+    },
+    {
+      &quot;detail&quot;: &quot;Failed to load resource: the server responded with a status of 404 ()&quot;,
+      &quot;kind&quot;: &quot;Console error&quot;,
+      &quot;at&quot;: &quot;2026-10-14T21:03:34.454604600Z&quot;
+    }
+  ]
+}</pre><h2>Evidence</h2><h3>Screenshot</h3><a href="../screenshots/cd9b319ce76bd5b1-f4591203-8da5-4dea-9e78-e0846c9b5966-f73b3275-0453-4ebf-916b-ea07fcd47ff3.png"><img loading="lazy" src="../screenshots/cd9b319ce76bd5b1-f4591203-8da5-4dea-9e78-e0846c9b5966-f73b3275-0453-4ebf-916b-ea07fcd47ff3.png"></a><h3>Focused failure recording</h3><video controls preload="metadata" src="../videos/focused-cd9b319ce76bd5b1-cd9b319ce76bd5b1-1792011820075-clear-v2-0-24510.webm"></video><p><label>Playback speed <select onchange="this.parentElement.parentElement.previousElementSibling.playbackRate=Number(this.value)"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option selected value="1">1×</option><option value="1.5">1.5×</option></select></label></p>

@@ -1,0 +1,169 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.600
+Athlete registration tab — Started independent adult registration before Event entry
+
+00:00:03.600 --> 00:00:03.800
+Athlete registration tab — Opened Age gate
+
+00:00:03.800 --> 00:00:04.000
+Athlete registration tab — Entered date of birth 07/07/2000
+
+00:00:04.000 --> 00:00:05.400
+Athlete registration tab — Clicked Continue on Age gate
+
+00:00:05.400 --> 00:00:07.800
+Athlete registration tab — Age gate accepted the date of birth and opened Account creation
+
+00:00:07.800 --> 00:00:08.000
+Athlete registration tab — Entered account details and accepted the WSL Terms of Use
+
+00:00:08.000 --> 00:00:09.800
+Athlete registration tab — Submitted Create Account
+
+00:00:09.800 --> 00:00:13.800
+Athlete registration tab — Selected Myself for Athlete details
+
+00:00:13.800 --> 00:00:14.200
+Athlete registration tab — Entered Athlete details, residence and [name redacted]
+
+00:00:14.200 --> 00:00:15.200
+Athlete registration tab — Submitted Athlete details, attempt 1
+
+00:00:15.200 --> 00:00:16.000
+Athlete registration tab — Reached the next registration stage after Athlete details
+
+00:00:16.000 --> 00:00:16.200
+Athlete registration tab — Selected membership tier Single Event
+
+00:00:16.200 --> 00:00:17.200
+Athlete registration tab — Opened required document 1 of 4
+
+00:00:17.200 --> 00:00:18.200
+Athlete registration tab — Certified and closed required document 1
+
+00:00:18.200 --> 00:00:19.600
+Athlete registration tab — Opened required document 2 of 4
+
+00:00:19.600 --> 00:00:20.600
+Athlete registration tab — Certified and closed required document 2
+
+00:00:20.600 --> 00:00:21.600
+Athlete registration tab — Opened required document 3 of 4
+
+00:00:21.600 --> 00:00:22.400
+Athlete registration tab — Certified and closed required document 3
+
+00:00:22.400 --> 00:00:23.000
+Athlete registration tab — Opened required document 4 of 4
+
+00:00:23.000 --> 00:00:24.000
+Athlete registration tab — Certified and closed required document 4
+
+00:00:24.000 --> 00:00:24.200
+Athlete registration tab — Clicked Continue to Payment after signing the four required documents
+
+00:00:24.200 --> 00:00:27.000
+Athlete registration tab — Stripe test card form appeared
+
+00:00:27.000 --> 00:00:27.200
+Athlete registration tab — Entered a Stripe test card for membership payment
+
+00:00:27.200 --> 00:00:38.400
+Athlete registration tab — Submitted membership payment with a Stripe test card
+
+00:00:38.400 --> 00:00:39.000
+Athlete registration tab — Clicked See Events from Membership confirmation
+
+00:00:39.000 --> 00:00:39.200
+Athlete event-list tab — Clicked See Events from Membership confirmation
+
+00:00:39.200 --> 00:00:40.600
+Athlete event-list tab — Events list appeared after See Events
+
+00:00:40.600 --> 00:00:41.200
+Athlete event-list tab — Clicked the first eligible event's entry action
+
+00:00:41.200 --> 00:00:59.200
+Athlete registration tab — Clicked the first eligible event's entry action
+
+00:00:59.200 --> 00:00:59.400
+Athlete registration tab — Opened WSL login
+
+00:00:59.400 --> 00:01:15.600
+Athlete registration tab — Entered configured login credentials
+
+00:01:15.600 --> 00:01:16.600
+Athlete registration tab — Submitted WSL login; server returned HTTP 200
+
+00:01:16.600 --> 00:01:17.000
+Athlete registration tab — Tour Manager API GET /tour-manager/events/01a136e0-da95-7757-9197-8159ef60e816 returned HTTP 200
+
+00:01:17.000 --> 00:01:17.600
+Athlete registration tab — Tour Manager API POST /tour-manager/events returned HTTP 409
+
+00:01:17.600 --> 00:01:17.800
+Athlete registration tab — Tour Manager API POST /tour-manager/events returned HTTP 201
+
+00:01:17.800 --> 00:01:18.200
+Athlete registration tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e returned HTTP 200
+
+00:01:18.200 --> 00:01:18.600
+Athlete registration tab — Tour Manager API PUT /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/status returned HTTP 200
+
+00:01:18.600 --> 00:01:19.000
+Athlete registration tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e returned HTTP 200
+
+00:01:19.000 --> 00:01:19.200
+Athlete registration tab — Tour Manager API PUT /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/status returned HTTP 200
+
+00:01:19.200 --> 00:01:19.600
+Athlete registration tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e returned HTTP 200
+
+00:01:19.600 --> 00:01:23.600
+Athlete registration tab — Tour Manager API PUT /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/status returned HTTP 200
+
+00:01:23.600 --> 00:01:24.400
+Athlete registration tab — Athlete event-list tab opened before registration; it will remain mounted to check live card updates without refresh.
+
+00:01:24.400 --> 00:01:24.600
+Athlete registration tab — Prepared one isolated QA event through the real manager API and opened its athlete registration form; manager tab remains open.
+
+00:01:24.600 --> 00:01:28.600
+Athlete registration tab — Event entry did not offer an insurance option on this screen
+
+00:01:28.600 --> 00:01:29.000
+Athlete registration tab — Entered a Stripe test card for Event entry
+
+00:01:29.000 --> 00:01:39.400
+Athlete registration tab — Submitted Event entry
+
+00:01:39.400 --> 00:01:40.400
+Athlete registration tab — Athlete tab: event registration accepted with HTTP 201; matched the returned entry ID.
+
+00:01:40.400 --> 00:02:04.800
+Athlete registration tab — Athlete event-list tab: waiting for Waitlisted to render on its already-open event card, without navigation or refresh.
+
+00:02:04.800 --> 00:02:05.000
+Athlete event-list tab — Athlete event-list tab: waiting for Waitlisted to render on its already-open event card, without navigation or refresh.
+
+00:02:05.000 --> 00:02:14.600
+Athlete event-list tab — Back returned to the Event List. No repeat registration is expected in the corrected scenario.
+
+00:02:14.600 --> 00:02:15.400
+Athlete event-list tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries returned HTTP 200
+
+00:02:15.400 --> 00:02:17.400
+Athlete event-list tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e returned HTTP 200
+
+00:02:17.400 --> 00:02:17.800
+Athlete event-list tab — After entries closed, the retained entry status was pending; waitlisted was verified before closure.
+
+00:02:17.800 --> 00:02:21.000
+Athlete event-list tab — Tour Manager API GET /tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/entries returned HTTP 200
+
+00:02:21.000 --> 00:03:04.600
+Athlete event-list tab — Tour Manager tab: backend is confirmed/collected; waiting for the visible row to show Confirmed and Collected without refreshing or changing tabs.
+
+00:03:04.600 --> 00:03:05.600
+Athlete event-list tab — E2E phase summary: Athlete Registration: PASSED; Membership Payment: PASSED; Membership Confirmation: PASSED; Event Registration: PASSED; Insurance: PASSED; Event Payment: PASSED;

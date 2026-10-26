@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Staging vs Dev</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a report column. Summary first, then real differences (by severity), then what is not a difference, then the runs. */
+:root{
+  --bg:#f3f6f8; --surface:#fff; --ink:#10212e; --soft:#536673; --line:#d7e1e7;
+  --sea:#0b6e7d; --sea-soft:#dcf0f2; --ok:#1d7447; --ok-soft:#e0f2e8; --warn:#9a5b00; --warn-soft:#fbefd9; --bad:#b3341f; --bad-soft:#fbe5e0; --mute:#6b7c88; --mute-soft:#eaeff2;
+  --display:"Archivo","Segoe UI",system-ui,sans-serif; --body:"Source Sans 3","Segoe UI",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1820;--surface:#12232e;--ink:#e5eef3;--soft:#9cb0bd;--line:#24394a;--sea:#4cc0cf;--sea-soft:#123741;--ok:#6fd29b;--ok-soft:#173527;--warn:#e8b25a;--warn-soft:#3a2d14;--bad:#f28b78;--bad-soft:#3d1c17;--mute:#9aabb6;--mute-soft:#1f2f3b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1820;--surface:#12232e;--ink:#e5eef3;--soft:#9cb0bd;--line:#24394a;--sea:#4cc0cf;--sea-soft:#123741;--ok:#6fd29b;--ok-soft:#173527;--warn:#e8b25a;--warn-soft:#3a2d14;--bad:#f28b78;--bad-soft:#3d1c17;--mute:#9aabb6;--mute-soft:#1f2f3b;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16.5px/1.6 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:920px;margin:0 auto;padding-block:36px 72px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(32px,5.5vw,46px);font-weight:800;letter-spacing:-.015em}
+h2{font-size:clamp(22px,3vw,28px);font-weight:800;margin-top:52px}
+h3{font-size:18px;font-weight:600}
+p{margin:0;max-width:68ch}
+.kicker{font:700 12.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--sea)}
+.lede{color:var(--soft);font-size:19px;margin-top:12px}
+.meta{color:var(--soft);font-size:14px;margin-top:10px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:22px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.tile b{display:block;font:800 30px/1 var(--display);font-variant-numeric:tabular-nums}
+.tile span{color:var(--soft);font-size:14px}
+.tile.ok b{color:var(--ok)}.tile.bad b{color:var(--bad)}.tile.warn b{color:var(--warn)}.tile.mute b{color:var(--mute)}
+.finding{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-top:12px;display:grid;gap:8px}
+.finding.high{border-left:5px solid var(--bad)}.finding.med{border-left:5px solid var(--warn)}.finding.good{border-left:5px solid var(--ok)}
+.sev{align-self:start;justify-self:start;font-size:12.5px;font-weight:700;border-radius:99px;padding:2px 10px}
+.sev.high{background:var(--bad-soft);color:var(--bad)}.sev.med{background:var(--warn-soft);color:var(--warn)}.sev.good{background:var(--ok-soft);color:var(--ok)}.sev.mute{background:var(--mute-soft);color:var(--mute)}
+.finding ul{margin:0;padding-left:18px}.finding li{margin:3px 0}
+.ev{color:var(--soft);font-size:14.5px}
+code,.mono{font:500 13px var(--mono);background:var(--mute-soft);padding:1px 5px;border-radius:5px;word-break:break-word}
+.tablewrap{overflow-x:auto;margin-top:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--mute-soft);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+tr:last-child td{border-bottom:0}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;border-radius:99px;padding:2px 9px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.p-dev{background:var(--ok-soft);color:var(--ok)}.p-stg{background:var(--bad-soft);color:var(--bad)}
+.note{margin-top:16px;background:var(--sea-soft);border-radius:12px;padding:14px 16px}
+.note p{max-width:none}
+footer{margin-top:48px;color:var(--soft);font-size:14px}
+</style>
+</head>
+<body>
+
+<main>
+  <p class="kicker">QA · staging01 vs dev · 22–24 Oct 2026</p>
+  <h1>Staging vs Dev</h1>
+  <p class="lede">The full master suite run on staging01, compared check by check with dev, after removing network noise, test-setup issues and known configuration differences.</p>
+  <p class="meta">staging01 = P0 build · dev = P1 build (since 21 Oct) · 166 tests, 2,536 checks · five staging runs on 24 Oct, plus a smoke run on 22 Oct</p>
+
+  <div class="tiles">
+    <div class="tile"><b>166</b><span>tests run on staging</span></div>
+    <div class="tile ok"><b>130</b><span>behave the same as dev</span></div>
+    <div class="tile bad"><b>3</b><span>real problems on staging</span></div>
+    <div class="tile warn"><b>5</b><span>staging does better than dev</span></div>
+    <div class="tile mute"><b>3</b><span>still to rerun (network)</span></div>
+  </div>
+  <p class="meta">The other ~25 differences are test setup or deliberate staging limits, explained below. None of them is an app problem.</p>
+
+  <h2>Real problems on staging</h2>
+
+  <div class="finding high">
+    <span class="sev high">High · bug report written</span>
+    <h3>Declined card payments and retries never settle; they stay "pending"</h3>
+    <p>A successful first charge works (Collected, Confirmed). Everything after it never comes back: a card that declines on Confirm &amp; charge stays pending forever, with no "declined" line in History, and Retry payment is never offered. A retry after the athlete changes card also stays pending. In one case a payment was <b>collected but the entry stayed pending</b>.</p>
+    <ul>
+      <li>AUTO-PAY-002: Payment shows Declined. Dev PASS, staging "pending"; History has no decline line.</li>
+      <li>AUTO-PAY-010: the declining athlete is Declined. Dev PASS, staging "pending".</li>
+      <li>AUTO-RET-005: Collected with the new card. Dev PASS, staging "pending" with 0 captures.</li>
+      <li>AUTO-RET-006 / 008: failed retries recorded and Retry still offered. Dev PASS; staging records nothing and offers only Send message and Withdraw entry.</li>
+    </ul>
+    <p class="ev">Evidence: event La Marginal Classic <code>01a16e79-2dc0-754a-b10f-15a27c35b3cf</code>, charged 15:13 UTC; entry <code>01a16e79-4bce-…</code> still pending two hours later. Likely cause: staging doesn't process Stripe's failed and retried payment results (webhook or worker). Report: <span class="mono">artifacts/bugs/staging-declines-and-retries-stay-pending-2026-10-24.md</span></p>
+  </div>
+
+  <div class="finding med">
+    <span class="sev med">Medium</span>
+    <h3>Tentative is refused for an event with no rating and no entry fee, and the error names no field</h3>
+    <p>Staging accepts Tentative when the event has a rating or a fee, but refuses it when both are blank: "Some of the event's details do not fit together. Check the dates, the registration window and the fee". Dev's earlier P0 build accepted this, and the reply lists no field, so the Tour Manager can't tell what to fix.</p>
+    <p class="ev">Reproduced directly on staging with three events (fee only: 200, rating only: 200, both: 200, neither: 422 <code>competition.event_invalid</code>, <code>fields: {}</code>). The ADD-25/47/48 checks were blocked by this; their setup now adds a rating so the checks themselves can run.</p>
+  </div>
+
+  <div class="finding med">
+    <span class="sev med">Medium · to investigate</span>
+    <h3>Registration window in the venue's local time is refused, and the Overview shows no time zone</h3>
+    <p>ADD-33: saving a registration window entered in venue wall-clock time returns 422 on staging (dev 200). The event Overview also shows no time-zone label on staging. Consistent across two runs.</p>
+  </div>
+
+  <div class="note"><p><b>Fixed during the run:</b> on 22 Oct staging had <b>no Stripe key</b> ("Payments are not configured"), which blocked every payment test. By 24 Oct it was fixed: a Regional membership was paid with test card 4242 and both emails arrived. Report: <span class="mono">artifacts/staging-payment-2026-10-22/</span></p></div>
+
+  <h2>Where staging does better than dev</h2>
+  <div class="finding good">
+    <span class="sev good">Pass on staging, fail on dev</span>
+    <ul>
+      <li>Adult registration through membership, event entry, insurance and event payment (smoke).</li>
+      <li>Date of birth and dates follow the selected country (US, UK, Australia).</li>
+      <li>Payment retries: valid-card change, withdrawal and retry (live).</li>
+      <li>Payment: full recovery and scheduled reminder emails (live).</li>
+      <li>AUTO-AST-007: AL answers a calendar date query.</li>
+    </ul>
+    <p class="ev">Most likely because staging still runs P0: these flows changed on dev with the P1 build, or dev has regressions there.</p>
+  </div>
+
+  <h2>Same on both (known bugs, not a staging difference)</h2>
+  <div class="finding">
+    <ul>
+      <li><b>13–17 and under-13 athletes see events before guardian consent</b> (6 event cards). Same on dev and staging.</li>
+      <li><b>A child's email can't equal the guardian's</b> (new rule on both). ADD-08 used the parent's email for the child; the test now leaves the child's email empty, as parents do in the app.</li>
+      <li><b>Eligibility isn't re-checked at Confirm &amp; charge</b>: an athlete who became ineligible is still charged. Open question Q2, seen on dev 19 Oct.</li>
+    </ul>
+  </div>
+
+  <h2>Not app differences</h2>
+  <p style="margin-top:10px">These showed up as differences in the raw comparison, but each has a setup or configuration cause.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>What showed</th><th>Why it isn't an app difference</th><th>Done</th></tr></thead>
+    <tbody>
+      <tr><td>Settings writes blocked (ADD-37, 38, 39, 56, 57) and season-overlap fixture (ADD-46)</td><td>The runner changes shared Settings only on dev or a local stack, never on staging</td><td>By design</td></tr>
+      <tr><td>Copy season gets 409 (ADD-19)</td><td>The test's dates overlapped the current season (staging's 2026-27 runs to 31 Mar 2027)</td><td>Test uses dates after the last season; the real copy runs on dev only</td></tr>
+      <tr><td>Event create gets 409 (ADD-20, ADD-78)</td><td>Staging already has events on the test's dates</td><td>Test moves to the next free day</td></tr>
+      <tr><td>Messages and guardian emails don't arrive (AUTO-EVT-006/007, 4 name tests)</td><td>Staging's email service only delivers to its own verified inboxes, not dev's</td><td>Tests now use staging inboxes on staging; all pass</td></tr>
+      <tr><td>Google address suggestions unavailable (ADD-45)</td><td>No Google Places integration configured on staging</td><td>Configuration</td></tr>
+      <tr><td>Tour Manager Settings icon not found</td><td>The link and icon exist on staging; the page loaded slowly</td><td>Timing</td></tr>
+      <tr><td>AUTO-PAY-001/002 "fetch failed" (first runs)</td><td>The test's Stripe key lookup dropped one of 22 script downloads on the slow connection</td><td>Downloads now retried</td></tr>
+      <tr><td>Payment-retry backend tests (10) and executive demo takes (2)</td><td>Local unit tests and dev video recordings; they don't touch staging</td><td>Left out of the comparison</td></tr>
+      <tr><td>"Skipped" on dev vs "Blocked" on staging</td><td>Same outcome, two labels</td><td>Treated as equal</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Still to rerun</h2>
+  <div class="finding">
+    <ul>
+      <li>3 tests still hit by this computer's network on their last run (DNS failures).</li>
+      <li>ADD-05 (unique contacts), AUTO-RET-002/003 (schedules), AUTO-AST-008 (AL bulk star): checks not reached; their runs ended early.</li>
+      <li>Java: the duplicate-email test was skipped and the regional back-navigation test didn't run; both to rerun.</li>
+    </ul>
+  </div>
+
+  <h2>The runs</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Run</th><th>When (UTC)</th><th>Tests</th><th>What it was for</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">20261022T190642</td><td class="n">22 Oct</td><td class="n">13</td><td>Smoke. Found payments not configured</td></tr>
+      <tr><td class="mono">20261024T115717</td><td class="n">24 Oct 11:57–12:18</td><td class="n">13</td><td>Smoke after the payment fix</td></tr>
+      <tr><td class="mono">20261024T122305</td><td class="n">24 Oct 12:23–13:03</td><td class="n">166</td><td>Full suite, including tests blocked on dev</td></tr>
+      <tr><td class="mono">20261024T135840</td><td class="n">24 Oct 13:58–14:50</td><td class="n">84</td><td>Rerun of network-hit tests</td></tr>
+      <tr><td class="mono">20261024T150802</td><td class="n">24 Oct 15:08–17:20</td><td class="n">40</td><td>Second rerun, plus the payment checks to confirm "stays pending"</td></tr>
+      <tr><td class="mono">20261024T173257</td><td class="n">24 Oct 17:32–17:53</td><td class="n">8</td><td>Email tests with staging's own inboxes, ADD-33</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>How it was compared</h2>
+  <div class="finding">
+    <ul>
+      <li>Every check's staging result was compared with its last result in the dev master report (<span class="mono">tests/compare-env.mjs</span>).</li>
+      <li>Failures caused by this computer's network (DNS lookups, dropped connections, timeouts) were rerun until they ran cleanly, or are listed under "Still to rerun".</li>
+      <li>Each remaining difference was checked by hand, often reproduced directly against the staging API, before it was called real.</li>
+      <li>Staging used its own accounts: two Tour Manager accounts and 20 SES-verified athlete inboxes. All payments in Stripe test mode.</li>
+    </ul>
+  </div>
+
+  <footer>Raw results: tests/results/&lt;run&gt;/ (summary.json, diff.md, diff.json, logs). Prepared 25 Oct 2026.</footer>
+</main>
+</body>
+</html>

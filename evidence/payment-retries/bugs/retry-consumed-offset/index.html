@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Retry scheduler selects the completed 24-hour slot again at the exact boundary</title><style>
+  :root { --bg:#f4f7f8; --surface:#fff; --ink:#0f2230; --muted:#536877; --line:#d6e0e5; --accent:#0b6e8a; --ok:#1b7a4b; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0c171f; --surface:#12212c; --ink:#e3edf2; --muted:#9bb0bd; --line:#233846; --accent:#5cc3dd; --ok:#7fd3a6; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:28px 16px 56px; display:grid; gap:18px; }
+  h1 { font-size:26px; line-height:1.2; margin:0; }
+  h2 { font-size:18px; margin:0; }
+  p { margin:0; max-width:78ch; }
+  .muted { color:var(--muted); font-size:14px; }
+  .verdict { color:var(--ok); font-weight:700; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px; display:grid; gap:10px; min-width:0; }
+  video, img { width:100%; height:auto; border:1px solid var(--line); border-radius:6px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  .box { overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:8px; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size:.9em; }
+  a { color:var(--accent); }
+li{margin:8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.5 Consolas,monospace}p,td,code{overflow-wrap:anywhere}.fail{color:#c33939;font-weight:700}.scope{border-left:4px solid #bb8119}.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}p{max-width:none}summary{cursor:pointer}h3{font-size:16px}</style></head><body><main><header><p class="muted">Payment retries · QA-RETRY-01 · Bug report · Tracked in WSL-9742</p><h1>Retry scheduler selects the completed 24-hour slot again at the exact boundary</h1><p class="muted">21 October 2026 · P2 suggested · Local source / domain function</p><p><a href="../">All four bug reports</a> · <a href="../../execution-2026-10-21/">Full 110-case execution</a> · <a href="report.md">Download bug report</a></p></header><section class="card" id="jira-tracking" style="overflow-wrap:anywhere"><h2>Jira ticket and complete evidence report</h2><p><a href="https://wslproduct.atlassian.net/browse/WSL-9742"><strong>WSL-9742</strong> — Payment retries: completed 24-hour slot is selected again and dispatches an extra execute at the exact boundary</a></p><p>Priority: Medium · Created 21 October 2026 · <a href="jira-report.md">Download the complete Jira description with logs, test results and acceptance criteria</a></p><p><a href="../rerun-ui-impact-2026-10-21/retry-consumed-offset.txt">Domain failure log</a> · <a href="../rerun-ui-impact-2026-10-21/retry-worker-impact.txt">Worker failure and +1ms control log</a> · <a href="../rerun-ui-impact-2026-10-21/retry-worker-impact.xml">Worker JUnit results</a> · <a href="../rerun-ui-impact-2026-10-21/worker-probe.py">Executable worker probe</a> · <a href="../rerun-ui-impact-2026-10-21/retry-slot-flow.svg">Flow graph</a></p></section><section class="card" id="latest-ui-rerun"><h2>Latest rerun: simple result and flow graph</h2><p>The scheduler can reuse the first retry time. In the exact-time local worker test it sent a second execute command. Moving the result just 1 millisecond later avoided that extra command.</p><p><a href="../rerun-ui-impact-2026-10-21/#retry-slot">Open fresh recordings, UI results and flow graphs</a></p><a href="../rerun-ui-impact-2026-10-21/retry-slot-flow.svg"><img style="max-width:640px" src="../rerun-ui-impact-2026-10-21/retry-slot-flow.svg" alt="Latest rerun flow graph"></a></section>
+ <section class="card"><h2>Summary</h2><p class="fail">Reproduced: RET-028</p><p>After one configured retry is marked sent, next_retry_at can return the already-used 24-hour timestamp instead of the next 72-hour timestamp.</p><p><strong>Impact:</strong> The scheduling calculation can reuse a completed slot. Whether this produces an extra provider attempt remains unproven; downstream claim and idempotency controls were not bypassed.</p></section>
+ <section class="card scope"><h2>Evidence scope and limits</h2><p>No duplicate Stripe collection was reproduced. This page records an exact-boundary function failure, not an observed customer double charge.</p><p>Priorities are QA suggestions. Jira tracking is linked above. No application fix, refund or shared dev database/policy modification was made during execution.</p></section>
+ <section class="card"><h2>Recording and execution record</h2><p><strong>Actual backend test execution recording.</strong> This records a fresh pytest run with output streamed into a browser terminal viewer. It is not the dev application UI or a live processor attempt.</p><p>Started 2026-10-21T12:15:03.983Z; finished 2026-10-21T12:15:18.922Z. Exit code 1 is expected because the acceptance assertion reproduces the defect.</p><video controls preload="metadata" src="reproduction.webm"></video><p><a href="recorded-output.txt">Recorded output</a> · <a href="rerun.xml">Fresh rerun XML</a> · <a href="recorded-run.json">Execution metadata</a></p><details><summary>Command and exact captured output</summary><pre>python -m pytest tests/unit/test_retry_matrix_boundaries.py::test_completed_retry_offset_is_not_rescheduled_at_same_instant -q --tb=short --color=no --junitxml=C:\Users\hp\Desktop\wsl-qa-automation\artifacts\retry-bugs-2026-10-21\retry-consumed-offset\rerun.xml
+
+F                                                                        [100%]
+================================== FAILURES ===================================
+_______ test_completed_retry_offset_is_not_rescheduled_at_same_instant ________
+tests\unit\test_retry_matrix_boundaries.py:65: in test_completed_retry_offset_is_not_rescheduled_at_same_instant
+    assert due==T0+dt.timedelta(hours=72), 'Already sent 24h offset was selected again at its exact timestamp'
+E   AssertionError: Already sent 24h offset was selected again at its exact timestamp
+E   assert datetime.datetime(2026, 10, 21, 12, 0, tzinfo=datetime.timezone.utc) == (datetime.datetime(2026, 10, 20, 12, 0, tzinfo=datetime.timezone.utc) + datetime.timedelta(days=3))
+E    +  where datetime.timedelta(days=3) = &lt;class 'datetime.timedelta'&gt;(hours=72)
+E    +    where &lt;class 'datetime.timedelta'&gt; = dt.timedelta
+============================== warnings summary ===============================
+..\wsl-service-core\src\wsl_service_core\testing\fixtures.py:26
+  C:\Users\hp\Desktop\wsl-qa-automation\wsl-local\wsl-service-core\src\wsl_service_core\testing\fixtures.py:26: DeprecationWarning: testcontainers.postgres is deprecated, use testcontainers.community.postgres instead
+    from testcontainers.postgres import PostgresContainer
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/unit/test_retry_matrix_boundaries.py::test_completed_retry_offset_is_not_rescheduled_at_same_instant
+1 failed, 1 warning in 0.59s
+
+Process exit code: 1
+</pre></details></section>
+ <section class="card"><h2>Steps to reproduce</h2><ol><li>Use version-16 rules: retries 24/72h, notices 24/72/120/168h, grace 168h, short-notice cutoff 10 days.</li><li>Set first_failed_at to 2026-10-20 12:00 UTC, failure_class to retryable, retries_sent to 1, and deadline to T0+168h.</li><li>Invoke the real next_retry_at function with now exactly T0+24h.</li><li>Compare the returned due timestamp with T0+72h.</li></ol></section>
+ <section class="card"><h2>Expected versus actual</h2><table><tr><th>Expected</th><th>Actual</th></tr><tr><td>T0 + 72 hours: 2026-10-23 12:00 UTC.</td><td>T0 + 24 hours: 2026-10-21 12:00 UTC, despite retries_sent=1.</td></tr></table></section>
+ <section class="card"><h2>Technical investigation</h2><p><strong>Source:</strong> <code>competition/domain/payment_retries.py:80 — next_retry_at</code></p><pre>F-01 — Completed retry offset can be selected again at exact boundary
+
+- Matrix: RET-028. Suggested priority: P2, pending confirmation of impact through the complete result-consumer path.
+- Source: `wsl-competition-service/src/competition/domain/payment_retries.py:80`, `next_retry_at`.
+- Preconditions: version-16 policy, retryable failure, T0 = 20 October 2026 12:00 UTC, retry offsets 24 and 72 hours, grace 168 hours, `retries_sent=1`.
+- Reproduction: call the real function with `now=T0+24h` after the first retry is recorded as sent.
+- Expected: next due is 23 October 2026 12:00 UTC (T0+72h).
+- Actual: next due is 21 October 2026 12:00 UTC (T0+24h), the already-used offset.
+- Cause: the count only guards schedule exhaustion; the loop starts from the first configured offset and accepts `due &gt;= now`.
+- Evidence: `boundaries.xml`, `test_completed_retry_offset_is_not_rescheduled_at_same_instant`, failed assertion retained.
+- Impact limit: this proves a scheduling calculation defect. A second provider charge was not demonstrated; worker claim/idempotency gates may reduce the end-to-end impact.
+- Backend direction: track consumed schedule positions explicitly and preserve skip-past behavior. Test first-failure handling, delayed answers, manual failures, skipped offsets, and exact-time redeliveries before changing count semantics.
+</pre></section>
+ <section class="card"><h2>Visual evidence</h2><a href="assertion.png"><img loading="lazy" src="assertion.png" alt="Captured acceptance assertion from the recorded backend test run"></a></section>
+ <section class="card"><h2>Acceptance criteria for a fix</h2><ul><li>At the exact consumed offset, select the next unconsumed slot.</li><li>Verify minus/exact/plus 1ms, exhausted schedules, skipped offsets, delayed outcomes, manual failures and idempotent dispatch.</li></ul></section>
+ <section class="card"><h2>Raw evidence and matrix traceability</h2><ul><li><a href="../../execution-2026-10-21/boundaries.xml">boundaries.xml</a></li><li><a href="../../execution-2026-10-21/test_retry_matrix_boundaries.py">test_retry_matrix_boundaries.py</a></li><li><a href="../../execution-2026-10-21/#RET-028">RET-028: complete matrix result</a></li></ul><details><summary>1 original failed native assertions</summary><h3>test_completed_retry_offset_is_not_rescheduled_at_same_instant</h3><pre>def test_completed_retry_offset_is_not_rescheduled_at_same_instant():
+        &quot;&quot;&quot;Acceptance criterion RET-028: an already-sent offset must not be chosen again.&quot;&quot;&quot;
+        due=next_retry_at(RULES,first_failed_at=T0,retries_sent=1,failure_class='retryable',deadline=D,now=T0+dt.timedelta(hours=24))
+&gt;       assert due==T0+dt.timedelta(hours=72), 'Already sent 24h offset was selected again at its exact timestamp'
+E       AssertionError: Already sent 24h offset was selected again at its exact timestamp
+E       assert datetime.datetime(2026, 10, 21, 12, 0, tzinfo=datetime.timezone.utc) == (datetime.datetime(2026, 10, 20, 12, 0, tzinfo=datetime.timezone.utc) + datetime.timedelta(days=3))
+E        +  where datetime.timedelta(days=3) = &lt;class 'datetime.timedelta'&gt;(hours=72)
+E        +    where &lt;class 'datetime.timedelta'&gt; = dt.timedelta
+
+tests\unit\test_retry_matrix_boundaries.py:65: AssertionError</pre></details></section></main></body></html>

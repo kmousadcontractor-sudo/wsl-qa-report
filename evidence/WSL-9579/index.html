@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WSL-9579 rerun evidence</title>
+<style>
+  :root { --bg:#f4f7f8; --surface:#fff; --ink:#0f2230; --muted:#536877; --line:#d6e0e5; --accent:#0b6e8a; --ok:#1b7a4b; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0c171f; --surface:#12212c; --ink:#e3edf2; --muted:#9bb0bd; --line:#233846; --accent:#5cc3dd; --ok:#7fd3a6; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:28px 16px 56px; display:grid; gap:18px; }
+  h1 { font-size:26px; line-height:1.2; margin:0; }
+  h2 { font-size:18px; margin:0; }
+  p { margin:0; max-width:78ch; }
+  .muted { color:var(--muted); font-size:14px; }
+  .verdict { color:var(--ok); font-weight:700; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px; display:grid; gap:10px; min-width:0; }
+  video, img { width:100%; height:auto; border:1px solid var(--line); border-radius:6px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  .box { overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:8px; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size:.9em; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <div>
+    <h1>WSL-9579 rerun · Event cards after the Single Event credit is used</h1>
+    <p class="muted">Rerun on dev, 19 Oct 2026, after wsl-django-bff #114 (commit 73d8200) · <a href="https://wslproduct.atlassian.net/browse/WSL-9579">Jira WSL-9579</a></p>
+  </div>
+  <p><span class="verdict">Fixed on dev.</span> After the athlete's only Single Event credit is used, the Events page shows the "No credit left" pill and the No Credit Left banner, and every open event card shows Upgrade Membership instead of Register. No card on screen offers Register.</p>
+
+  <section class="card">
+    <h2>Recording</h2>
+    <video controls preload="metadata" src="recording.webm"></video>
+    <p class="muted">Events list before the entry, then after the credit is used. Caption bar at the bottom names each step.</p>
+  </section>
+
+  <div class="grid">
+    <section class="card"><h2>Before — credit unused</h2><img src="before-events.png" alt="Events list before the entry: open cards offer Register"></section>
+    <section class="card"><h2>After — credit used</h2><img src="after-events.png" alt="Events list after the entry: No credit left banner, every open card shows Upgrade Membership"></section>
+  </div>
+
+  <div class="box"><table>
+    <thead><tr><th>What</th><th>Before the entry</th><th>After one entry</th></tr></thead>
+    <tbody>
+      <tr><td>Membership</td><td>Single Event, active, credit unused</td><td>Credit used (eventCount 1)</td></tr>
+      <tr><td>Banner</td><td>None</td><td>No Credit Left, with Upgrade Membership (disabled)</td></tr>
+      <tr><td>Open cards, API (all regions)</td><td>22 cards offer Register</td><td>The 21 other open cards return Register disabled with no link (the plan lock; the frontend shows Upgrade Membership)</td></tr>
+      <tr><td>Open cards on screen (Home region tab)</td><td>Register</td><td>6 of 6 show Upgrade Membership and "Upgrade your membership plan to access this event"; 0 show Register</td></tr>
+      <tr><td>Entered event</td><td>—</td><td>Waitlisted (QS-2026-M-087-001); no Register</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="muted">Data: <a href="results.json">results.json</a> (API before and after, cards on screen, counts and checks; no credentials). Test account <code>qa.checklist.account.95958e8685a542a9b952e0eb99e28e2f@btj5keea.mailosaur.net</code>. Upgrade Membership is disabled and opens nothing yet, as stated in the ticket.</p>
+</main>
+</body>
+</html>

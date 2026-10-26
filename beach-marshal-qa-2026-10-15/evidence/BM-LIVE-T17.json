@@ -1,0 +1,3389 @@
+{
+  "id": "BM-LIVE-T17",
+  "role": "TourManager",
+  "action": "Read",
+  "prompt": "List the first page of events in the season named 2027. Include total count and whether there is a next page. Do not use the current season.",
+  "expected": "Resolves the explicitly named2027 season, uses search_events, and accurately reports source total and next_offset.",
+  "expectedTools": [
+    "search_events"
+  ],
+  "referencePaths": [
+    "/tour-manager/events?season=01a13751-29bf-72d2-a9a4-2dc7f258bb7b&view=all&sort=dates:asc&cursor=0"
+  ],
+  "startedAt": "2026-10-15T00:30:00.635Z",
+  "status": "PASS",
+  "evaluation": "Pending evidence-based semantic review",
+  "backendBefore": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events?season=01a13751-29bf-72d2-a9a4-2dc7f258bb7b&view=all&sort=dates:asc&cursor=0",
+      "status": 200,
+      "body": {
+        "events": [
+          {
+            "id": "01a1375a-eb0f-76d8-a80d-0d4d86b946d1",
+            "name": "Rip Curl Pro Bells Beach",
+            "place": "Pismo Beach Pier, CA",
+            "tour": "Championship Tour (CT) · Women",
+            "rating": null,
+            "dates": "Thu 1 – Sun 11 Apr 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-eb10-7068-85af-8b13cfd7991a",
+            "name": "Rip Curl Pro Bells Beach - MK QA",
+            "place": "Lower Trestles, CA",
+            "tour": "Championship Tour (CT) · Men",
+            "rating": null,
+            "dates": "Thu 1 – Sun 11 Apr 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-ecbb-70f3-94e0-a800be593114",
+            "name": "Royal St Andrew's Hotel Rip Curl Cup",
+            "place": "East Beach, Eastern Cape",
+            "tour": "Qualifying Series (QS) · Women",
+            "rating": "2,000",
+            "dates": "Sat 3 – Tue 6 Apr 2027",
+            "registered": null,
+            "country": "South Africa",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-ed39-7165-b549-e7173bc8faf2",
+            "name": "Royal St Andrew's Hotel Rip Curl Cup",
+            "place": "East Beach, Eastern Cape",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "4,000",
+            "dates": "Sat 3 – Tue 6 Apr 2027",
+            "registered": null,
+            "country": "South Africa",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-e935-729b-a36f-2aa3ac832320",
+            "name": "Bioglan Bells Beach Longboard Classic",
+            "place": "La Marginal, Puerto Rico",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Mon 5 – Mon 5 Apr 2027",
+            "registered": null,
+            "country": "Puerto Rico",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-eef9-7422-9a70-ed5a3e2aae5f",
+            "name": "WSL Uruguay Natural Longboard Festival - LQS1,000",
+            "place": "Maresias, SP",
+            "tour": "World Longboard Tour (LT) · Men",
+            "rating": null,
+            "dates": "Thu 8 – Mon 12 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-ef24-7138-8e65-8520551d9dde",
+            "name": "WSL Uruguay Natural Longboard Festival",
+            "place": "Ponta Negra, RN",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Thu 8 – Mon 12 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f0f8-7539-bf7e-d0dbe6d70a44",
+            "name": "eThekwini Surf Pro",
+            "place": "New Pier, KwaZulu-Natal",
+            "tour": "Qualifying Series (QS) · Women",
+            "rating": "2,000",
+            "dates": "Fri 9 – Mon 12 Apr 2027",
+            "registered": null,
+            "country": "South Africa",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f0fc-7358-a9ca-650a0862f127",
+            "name": "eThekwini Surf Pro",
+            "place": "New Pier, KwaZulu-Natal",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "2,000",
+            "dates": "Fri 9 – Mon 12 Apr 2027",
+            "registered": null,
+            "country": "South Africa",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f32d-71ca-984e-065c336f20f2",
+            "name": "REMA Saquarema Surf Festival - Pro Junior",
+            "place": "Señoritas, Peru",
+            "tour": "Pro Junior Series (PJ) · Men",
+            "rating": "1,000",
+            "dates": "Sun 11 – Mon 19 Apr 2027",
+            "registered": null,
+            "country": "Peru",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f35e-753c-bf92-fc26f7b945cb",
+            "name": "REMA Saquarema Surf Festival - Pro Junior",
+            "place": "El Gringo, Chile",
+            "tour": "Pro Junior Series (PJ) · Women",
+            "rating": "1,000",
+            "dates": "Sun 11 – Mon 19 Apr 2027",
+            "registered": null,
+            "country": "Chile",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f866-76a5-aec2-f109256a6f9f",
+            "name": "REMA Saquarema Surf Festival - Longboard",
+            "place": "Itamambuca, SP",
+            "tour": "World Longboard Tour (LT) · Men",
+            "rating": null,
+            "dates": "Sun 11 – Mon 19 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f873-711c-8a8f-43339f5f8352",
+            "name": "REMA Saquarema Surf Festival - Longboard",
+            "place": "Itaúna, RJ",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Sun 11 – Mon 19 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f75c-758f-aa46-9a76e2a3c9ea",
+            "name": "Western Australia Margaret River Pro",
+            "place": "Huntington Beach Pier, CA",
+            "tour": "Championship Tour (CT) · Men",
+            "rating": null,
+            "dates": "Fri 16 – Mon 26 Apr 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          }
+        ],
+        "nextCursor": 14,
+        "counts": {
+          "all": 166,
+          "readyForEntries": 0,
+          "completed": 0,
+          "archived": 0
+        },
+        "filters": [
+          {
+            "code": "region",
+            "label": "Region",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "africa",
+                "label": "Africa"
+              },
+              {
+                "value": "asia",
+                "label": "Asia"
+              },
+              {
+                "value": "aus_oce",
+                "label": "Australia/Oceania"
+              },
+              {
+                "value": "europe",
+                "label": "Europe"
+              },
+              {
+                "value": "hawaii_tahiti",
+                "label": "Hawaii/Tahiti Nui"
+              },
+              {
+                "value": "north_america",
+                "label": "North America"
+              },
+              {
+                "value": "south_america",
+                "label": "South America"
+              }
+            ]
+          },
+          {
+            "code": "country",
+            "label": "Country",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "AE",
+                "label": "United Arab Emirates"
+              },
+              {
+                "value": "AU",
+                "label": "Australia"
+              },
+              {
+                "value": "BB",
+                "label": "Barbados"
+              },
+              {
+                "value": "BR",
+                "label": "Brazil"
+              },
+              {
+                "value": "CL",
+                "label": "Chile"
+              },
+              {
+                "value": "ES",
+                "label": "Spain"
+              },
+              {
+                "value": "FR",
+                "label": "France"
+              },
+              {
+                "value": "GB",
+                "label": "United Kingdom"
+              },
+              {
+                "value": "ID",
+                "label": "Indonesia"
+              },
+              {
+                "value": "IE",
+                "label": "Ireland"
+              },
+              {
+                "value": "IN",
+                "label": "India"
+              },
+              {
+                "value": "JP",
+                "label": "Japan"
+              },
+              {
+                "value": "KR",
+                "label": "South Korea"
+              },
+              {
+                "value": "MA",
+                "label": "Morocco"
+              },
+              {
+                "value": "PE",
+                "label": "Peru"
+              },
+              {
+                "value": "PF",
+                "label": "French Polynesia"
+              },
+              {
+                "value": "PH",
+                "label": "Philippines"
+              },
+              {
+                "value": "PR",
+                "label": "Puerto Rico"
+              },
+              {
+                "value": "PT",
+                "label": "Portugal"
+              },
+              {
+                "value": "SV",
+                "label": "El Salvador"
+              },
+              {
+                "value": "US",
+                "label": "United States"
+              },
+              {
+                "value": "US-HI",
+                "label": "Hawaii"
+              },
+              {
+                "value": "ZA",
+                "label": "South Africa"
+              }
+            ]
+          },
+          {
+            "code": "tour",
+            "label": "Tour",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "Challenger Series",
+                "label": "Challenger Series (CS)"
+              },
+              {
+                "value": "Championship Tour",
+                "label": "Championship Tour (CT)"
+              },
+              {
+                "value": "Pro Junior Series",
+                "label": "Pro Junior Series (PJ)"
+              },
+              {
+                "value": "Qualifying Series",
+                "label": "Qualifying Series (QS)"
+              },
+              {
+                "value": "World Longboard Tour",
+                "label": "World Longboard Tour (LT)"
+              }
+            ]
+          },
+          {
+            "code": "rating",
+            "label": "Rating",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "1000",
+                "label": "1,000"
+              },
+              {
+                "value": "2000",
+                "label": "2,000"
+              },
+              {
+                "value": "4000",
+                "label": "4,000"
+              },
+              {
+                "value": "6000",
+                "label": "6,000"
+              }
+            ]
+          },
+          {
+            "code": "gender",
+            "label": "Gender",
+            "kind": "toggle",
+            "options": [
+              {
+                "value": "men",
+                "label": "Men"
+              },
+              {
+                "value": "women",
+                "label": "Women"
+              }
+            ]
+          }
+        ],
+        "bands": [
+          {
+            "band": "draft",
+            "label": "DRAFT · 166 events"
+          }
+        ],
+        "summary": "30 tours · 166 events",
+        "progress": "Showing 14 of 166 events · the rest load as you scroll"
+      },
+      "at": "2026-10-15T00:30:00.994Z"
+    }
+  ],
+  "backendAfter": [],
+  "steps": [
+    "Use normal application role/session.",
+    "Open Beach Marshal.",
+    "Start a new conversation.",
+    "Send the exact recorded prompt.",
+    "Wait for the real stream and capture answer, tools and UI."
+  ],
+  "sentAt": "2026-10-15T00:30:01.153Z",
+  "videoStartSeconds": 25.992,
+  "api": {
+    "method": "POST",
+    "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+    "status": 200,
+    "correlationId": "29637228-0367-4426-a696-6b6a9212b437",
+    "input": {
+      "threadId": "78c231d8-651b-4299-8957-ac885daee53f",
+      "runId": "2a98f106-67ba-4e02-b4f3-582edabe7527",
+      "state": {},
+      "messages": [
+        {
+          "id": "714d35d9-6a32-46fa-b0e1-1f6256bd77d4",
+          "role": "user",
+          "content": "List the first page of events in the season named 2027. Include total count and whether there is a next page. Do not use the current season."
+        }
+      ],
+      "tools": [],
+      "context": [],
+      "forwardedProps": {}
+    }
+  },
+  "stream": {
+    "tools": [
+      {
+        "id": "toolu_bdrk_01DhVVmjhWwDQGS4H3joQRrN",
+        "name": "list_seasons",
+        "result": {
+          "status": "ok",
+          "seasons": [
+            {
+              "season_id": "01a13c3b-ee31-728d-864f-d3f600a32b7a",
+              "name": "2046",
+              "start_date": "2046-01-01",
+              "end_date": "2046-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 1
+            },
+            {
+              "season_id": "01a13bcc-9675-7797-97a0-cf6b8248ba76",
+              "name": "2045",
+              "start_date": "2045-01-01",
+              "end_date": "2045-12-31",
+              "status": "draft",
+              "tour_count": 0,
+              "event_count": 0
+            },
+            {
+              "season_id": "01a13b4b-8617-7294-8a34-06cd9c6a7768",
+              "name": "2044",
+              "start_date": "2044-01-01",
+              "end_date": "2044-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 1
+            },
+            {
+              "season_id": "01a13b49-5d59-7085-8c75-6fc4a19f22a3",
+              "name": "2043",
+              "start_date": "2043-01-01",
+              "end_date": "2043-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 2
+            },
+            {
+              "season_id": "01a13b44-9826-7263-a3d8-9388c1b03a29",
+              "name": "2042",
+              "start_date": "2042-01-01",
+              "end_date": "2042-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 2
+            },
+            {
+              "season_id": "01a13b05-d40e-742a-acfc-0e694db2d1e5",
+              "name": "2041",
+              "start_date": "2041-01-01",
+              "end_date": "2041-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 1
+            },
+            {
+              "season_id": "01a13b03-8d98-744c-a56b-69282b30ea4e",
+              "name": "2040",
+              "start_date": "2040-01-01",
+              "end_date": "2040-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 3
+            },
+            {
+              "season_id": "01a13b00-5a3d-76d0-96d3-ec28778a006f",
+              "name": "2039",
+              "start_date": "2039-01-01",
+              "end_date": "2039-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 3
+            },
+            {
+              "season_id": "01a13ad0-17be-7096-adaf-8dceb1161d9c",
+              "name": "2038",
+              "start_date": "2038-01-01",
+              "end_date": "2038-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 4
+            },
+            {
+              "season_id": "01a139b6-1bdd-7728-a39a-d4d786d24b0a",
+              "name": "2037",
+              "start_date": "2037-01-01",
+              "end_date": "2037-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 4
+            },
+            {
+              "season_id": "01a1397a-dd22-71cb-b060-7de3fea2a9f6",
+              "name": "2036",
+              "start_date": "2036-01-01",
+              "end_date": "2036-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 2
+            },
+            {
+              "season_id": "01a1397a-b68b-715a-895c-efb87440ae83",
+              "name": "2035",
+              "start_date": "2035-01-01",
+              "end_date": "2035-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 24
+            },
+            {
+              "season_id": "01a1379c-e07f-75e5-afd8-4bb141fed8b8",
+              "name": "2034",
+              "start_date": "2034-01-01",
+              "end_date": "2034-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 2
+            },
+            {
+              "season_id": "01a1379a-0fd8-72c4-92c4-d7d3b34a1622",
+              "name": "2033",
+              "start_date": "2033-01-01",
+              "end_date": "2033-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 7
+            },
+            {
+              "season_id": "01a13794-c29e-77f4-8c70-0bd84eebba1d",
+              "name": "2032",
+              "start_date": "2032-01-01",
+              "end_date": "2032-12-31",
+              "status": "draft",
+              "tour_count": 2,
+              "event_count": 16
+            },
+            {
+              "season_id": "01a13774-6fe4-751f-bdf7-4f5393b06071",
+              "name": "2031",
+              "start_date": "2031-01-01",
+              "end_date": "2031-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 2
+            },
+            {
+              "season_id": "01a13774-4b9f-75f1-a85d-6644fe4ad707",
+              "name": "2030",
+              "start_date": "2030-01-01",
+              "end_date": "2030-12-31",
+              "status": "draft",
+              "tour_count": 2,
+              "event_count": 25
+            },
+            {
+              "season_id": "01a1374b-43d8-7205-b217-87b8c95b0c25",
+              "name": "2029",
+              "start_date": "2029-01-01",
+              "end_date": "2029-12-31",
+              "status": "draft",
+              "tour_count": 1,
+              "event_count": 2
+            },
+            {
+              "season_id": "01a1374b-139c-7030-8311-34e67a299df8",
+              "name": "2028",
+              "start_date": "2028-01-01",
+              "end_date": "2028-12-31",
+              "status": "draft",
+              "tour_count": 2,
+              "event_count": 25
+            },
+            {
+              "season_id": "01a13751-29bf-72d2-a9a4-2dc7f258bb7b",
+              "name": "2027",
+              "start_date": "2027-04-01",
+              "end_date": "2027-12-31",
+              "status": "draft",
+              "tour_count": 30,
+              "event_count": 166
+            }
+          ]
+        },
+        "parameters": ""
+      },
+      {
+        "id": "toolu_bdrk_01FwutCeg23hcupYJPPqGsRd",
+        "name": "search_events",
+        "result": {
+          "status": "ok",
+          "events": [
+            {
+              "event_id": "01a1375a-eb0f-76d8-a80d-0d4d86b946d1",
+              "name": "Rip Curl Pro Bells Beach",
+              "status": "draft",
+              "start_date": "2027-04-01",
+              "end_date": "2027-04-11",
+              "tour": "Championship Tour",
+              "division": "womens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a6ec-7675-a956-8c68462d7383",
+                "spot": "Pismo Beach Pier",
+                "town": "Pismo Beach",
+                "city": null,
+                "state": "CA",
+                "country_code": "US",
+                "region_code": "north_america",
+                "timezone": "America/Los_Angeles"
+              },
+              "region_codes": [
+                "north_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-eb10-7068-85af-8b13cfd7991a",
+              "name": "Rip Curl Pro Bells Beach - MK QA",
+              "status": "draft",
+              "start_date": "2027-04-01",
+              "end_date": "2027-04-11",
+              "tour": "Championship Tour",
+              "division": "mens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a6e5-74d7-9c1d-a1c0309021f2",
+                "spot": "Lower Trestles",
+                "town": "San Clemente",
+                "city": null,
+                "state": "CA",
+                "country_code": "US",
+                "region_code": "north_america",
+                "timezone": "America/Los_Angeles"
+              },
+              "region_codes": [
+                "north_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-ecbb-70f3-94e0-a800be593114",
+              "name": "Royal St Andrew's Hotel Rip Curl Cup",
+              "status": "draft",
+              "start_date": "2027-04-03",
+              "end_date": "2027-04-06",
+              "tour": "Qualifying Series",
+              "division": "womens",
+              "rating": "QS 2,000",
+              "location": {
+                "location_id": "01a136e0-a6d5-729e-9e96-386f5e6c87cc",
+                "spot": "East Beach",
+                "town": "Port Alfred",
+                "city": null,
+                "state": "Eastern Cape",
+                "country_code": "ZA",
+                "region_code": "africa",
+                "timezone": "Africa/Johannesburg"
+              },
+              "region_codes": [
+                "africa"
+              ]
+            },
+            {
+              "event_id": "01a1375a-ed39-7165-b549-e7173bc8faf2",
+              "name": "Royal St Andrew's Hotel Rip Curl Cup",
+              "status": "draft",
+              "start_date": "2027-04-03",
+              "end_date": "2027-04-06",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "rating": "QS 4,000",
+              "location": {
+                "location_id": "01a136e0-a6d5-729e-9e96-386f5e6c87cc",
+                "spot": "East Beach",
+                "town": "Port Alfred",
+                "city": null,
+                "state": "Eastern Cape",
+                "country_code": "ZA",
+                "region_code": "africa",
+                "timezone": "Africa/Johannesburg"
+              },
+              "region_codes": [
+                "africa"
+              ]
+            },
+            {
+              "event_id": "01a1375b-e935-729b-a36f-2aa3ac832320",
+              "name": "Bioglan Bells Beach Longboard Classic",
+              "status": "draft",
+              "start_date": "2027-04-05",
+              "end_date": "2027-04-05",
+              "tour": "World Longboard Tour",
+              "division": "womens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a6f8-7275-b927-bd53b3b92116",
+                "spot": "La Marginal",
+                "town": "Arecibo",
+                "city": null,
+                "state": null,
+                "country_code": "PR",
+                "region_code": "north_america",
+                "timezone": "America/Puerto_Rico"
+              },
+              "region_codes": [
+                "north_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-eef9-7422-9a70-ed5a3e2aae5f",
+              "name": "WSL Uruguay Natural Longboard Festival - LQS1,000",
+              "status": "draft",
+              "start_date": "2027-04-08",
+              "end_date": "2027-04-12",
+              "tour": "World Longboard Tour",
+              "division": "mens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a6fe-744a-a0c5-0721e1966fd5",
+                "spot": "Maresias",
+                "town": "São Sebastião",
+                "city": null,
+                "state": "SP",
+                "country_code": "BR",
+                "region_code": "south_america",
+                "timezone": "America/Sao_Paulo"
+              },
+              "region_codes": [
+                "south_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-ef24-7138-8e65-8520551d9dde",
+              "name": "WSL Uruguay Natural Longboard Festival",
+              "status": "draft",
+              "start_date": "2027-04-08",
+              "end_date": "2027-04-12",
+              "tour": "World Longboard Tour",
+              "division": "womens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a708-7358-9ec4-8c8b729aada4",
+                "spot": "Ponta Negra",
+                "town": "Natal",
+                "city": null,
+                "state": "RN",
+                "country_code": "BR",
+                "region_code": "south_america",
+                "timezone": "America/Fortaleza"
+              },
+              "region_codes": [
+                "south_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-f0f8-7539-bf7e-d0dbe6d70a44",
+              "name": "eThekwini Surf Pro",
+              "status": "draft",
+              "start_date": "2027-04-09",
+              "end_date": "2027-04-12",
+              "tour": "Qualifying Series",
+              "division": "womens",
+              "rating": "QS 2,000",
+              "location": {
+                "location_id": "01a136e0-a6dc-75d3-99a5-f1bdb16bf6f2",
+                "spot": "New Pier",
+                "town": "Durban",
+                "city": null,
+                "state": "KwaZulu-Natal",
+                "country_code": "ZA",
+                "region_code": "africa",
+                "timezone": "Africa/Johannesburg"
+              },
+              "region_codes": [
+                "africa"
+              ]
+            },
+            {
+              "event_id": "01a1375a-f0fc-7358-a9ca-650a0862f127",
+              "name": "eThekwini Surf Pro",
+              "status": "draft",
+              "start_date": "2027-04-09",
+              "end_date": "2027-04-12",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "rating": "QS 2,000",
+              "location": {
+                "location_id": "01a136e0-a6dc-75d3-99a5-f1bdb16bf6f2",
+                "spot": "New Pier",
+                "town": "Durban",
+                "city": null,
+                "state": "KwaZulu-Natal",
+                "country_code": "ZA",
+                "region_code": "africa",
+                "timezone": "Africa/Johannesburg"
+              },
+              "region_codes": [
+                "africa"
+              ]
+            },
+            {
+              "event_id": "01a1375a-f32d-71ca-984e-065c336f20f2",
+              "name": "REMA Saquarema Surf Festival - Pro Junior",
+              "status": "draft",
+              "start_date": "2027-04-11",
+              "end_date": "2027-04-19",
+              "tour": "Pro Junior Series",
+              "division": "mens",
+              "rating": "JR 1,000",
+              "location": {
+                "location_id": "01a136e0-a711-749b-928c-dd92e52cfbc4",
+                "spot": "Señoritas",
+                "town": "Punta Hermosa",
+                "city": null,
+                "state": null,
+                "country_code": "PE",
+                "region_code": "south_america",
+                "timezone": "America/Lima"
+              },
+              "region_codes": [
+                "south_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-f35e-753c-bf92-fc26f7b945cb",
+              "name": "REMA Saquarema Surf Festival - Pro Junior",
+              "status": "draft",
+              "start_date": "2027-04-11",
+              "end_date": "2027-04-19",
+              "tour": "Pro Junior Series",
+              "division": "womens",
+              "rating": "JR 1,000",
+              "location": {
+                "location_id": "01a136e0-a714-759a-845e-32f2d47aa8d1",
+                "spot": "El Gringo",
+                "town": "Arica",
+                "city": null,
+                "state": null,
+                "country_code": "CL",
+                "region_code": "south_america",
+                "timezone": "America/Santiago"
+              },
+              "region_codes": [
+                "south_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-f866-76a5-aec2-f109256a6f9f",
+              "name": "REMA Saquarema Surf Festival - Longboard",
+              "status": "draft",
+              "start_date": "2027-04-11",
+              "end_date": "2027-04-19",
+              "tour": "World Longboard Tour",
+              "division": "mens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a705-74d2-b7bc-50111ef1b85b",
+                "spot": "Itamambuca",
+                "town": "Ubatuba",
+                "city": null,
+                "state": "SP",
+                "country_code": "BR",
+                "region_code": "south_america",
+                "timezone": "America/Sao_Paulo"
+              },
+              "region_codes": [
+                "south_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-f873-711c-8a8f-43339f5f8352",
+              "name": "REMA Saquarema Surf Festival - Longboard",
+              "status": "draft",
+              "start_date": "2027-04-11",
+              "end_date": "2027-04-19",
+              "tour": "World Longboard Tour",
+              "division": "womens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a6fb-7413-97df-0978d4d72ea7",
+                "spot": "Itaúna",
+                "town": "Saquarema",
+                "city": null,
+                "state": "RJ",
+                "country_code": "BR",
+                "region_code": "south_america",
+                "timezone": "America/Sao_Paulo"
+              },
+              "region_codes": [
+                "south_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-f75c-758f-aa46-9a76e2a3c9ea",
+              "name": "Western Australia Margaret River Pro",
+              "status": "draft",
+              "start_date": "2027-04-16",
+              "end_date": "2027-04-26",
+              "tour": "Championship Tour",
+              "division": "mens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a6e9-725c-8628-d341617aa1b3",
+                "spot": "Huntington Beach Pier",
+                "town": "Huntington Beach",
+                "city": null,
+                "state": "CA",
+                "country_code": "US",
+                "region_code": "north_america",
+                "timezone": "America/Los_Angeles"
+              },
+              "region_codes": [
+                "north_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-f865-76f7-a86a-b75d0953fb8b",
+              "name": "Western Australia Margaret River Pro",
+              "status": "draft",
+              "start_date": "2027-04-16",
+              "end_date": "2027-04-26",
+              "tour": "Championship Tour",
+              "division": "womens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a6f8-7275-b927-bd53b3b92116",
+                "spot": "La Marginal",
+                "town": "Arecibo",
+                "city": null,
+                "state": null,
+                "country_code": "PR",
+                "region_code": "north_america",
+                "timezone": "America/Puerto_Rico"
+              },
+              "region_codes": [
+                "north_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-fba5-708e-aecf-1b1b951c968b",
+              "name": "WSL Latam Sâo Sebastião Pro LQS1,000",
+              "status": "draft",
+              "start_date": "2027-04-21",
+              "end_date": "2027-04-26",
+              "tour": "World Longboard Tour",
+              "division": "mens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a708-7358-9ec4-8c8b729aada4",
+                "spot": "Ponta Negra",
+                "town": "Natal",
+                "city": null,
+                "state": "RN",
+                "country_code": "BR",
+                "region_code": "south_america",
+                "timezone": "America/Fortaleza"
+              },
+              "region_codes": [
+                "south_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-fc02-744e-ad70-63f03c1b7719",
+              "name": "WSL Latam Sâo Sebastião Pro LQS1,000",
+              "status": "draft",
+              "start_date": "2027-04-21",
+              "end_date": "2027-04-26",
+              "tour": "World Longboard Tour",
+              "division": "womens",
+              "rating": null,
+              "location": {
+                "location_id": "01a136e0-a70b-77c0-8ec5-3d716e38856c",
+                "spot": "Praia da Taíba",
+                "town": "São Gonçalo do Amarante",
+                "city": null,
+                "state": "CE",
+                "country_code": "BR",
+                "region_code": "south_america",
+                "timezone": "America/Fortaleza"
+              },
+              "region_codes": [
+                "south_america"
+              ]
+            },
+            {
+              "event_id": "01a13751-9d15-7401-9122-b55901ffcf7a",
+              "name": "Vans Jack's Surfboards Pro",
+              "status": "draft",
+              "start_date": "2027-04-22",
+              "end_date": "2027-04-26",
+              "tour": "Qualifying Series",
+              "division": "womens",
+              "rating": "QS 4,000",
+              "location": {
+                "location_id": "01a136e0-a6e9-725c-8628-d341617aa1b3",
+                "spot": "Huntington Beach Pier",
+                "town": "Huntington Beach",
+                "city": null,
+                "state": "CA",
+                "country_code": "US",
+                "region_code": "north_america",
+                "timezone": "America/Los_Angeles"
+              },
+              "region_codes": [
+                "north_america"
+              ]
+            },
+            {
+              "event_id": "01a13751-a3ba-7172-8361-310686df115d",
+              "name": "Vans Jack's Surfboards Pro",
+              "status": "draft",
+              "start_date": "2027-04-22",
+              "end_date": "2027-04-26",
+              "tour": "Qualifying Series",
+              "division": "mens",
+              "rating": "QS 4,000",
+              "location": {
+                "location_id": "01a136e0-a6e9-725c-8628-d341617aa1b3",
+                "spot": "Huntington Beach Pier",
+                "town": "Huntington Beach",
+                "city": null,
+                "state": "CA",
+                "country_code": "US",
+                "region_code": "north_america",
+                "timezone": "America/Los_Angeles"
+              },
+              "region_codes": [
+                "north_america"
+              ]
+            },
+            {
+              "event_id": "01a1375a-fc50-715c-bedb-517c3337bbd5",
+              "name": "Surfboard Empire North Narrabeen Pro Junior Pres. by Florence",
+              "status": "draft",
+              "start_date": "2027-04-22",
+              "end_date": "2027-04-26",
+              "tour": "Pro Junior Series",
+              "division": "mens",
+              "rating": "JR 1,000",
+              "location": {
+                "location_id": "01a136e0-a692-71aa-9ab2-5c569121399b",
+                "spot": "North Narrabeen",
+                "town": "Narrabeen",
+                "city": null,
+                "state": "NSW",
+                "country_code": "AU",
+                "region_code": "aus_oce",
+                "timezone": "Australia/Sydney"
+              },
+              "region_codes": [
+                "aus_oce"
+              ]
+            }
+          ],
+          "total": 166,
+          "next_offset": 20
+        },
+        "parameters": {
+          "season_id": "01a13751-29bf-72d2-a9a4-2dc7f258bb7b"
+        }
+      }
+    ],
+    "answer": "The 2027 season has **166 events**. Here are the first 20, all still in draft, and there are more pages after this one. Dates are local to each venue.\n\n1. Rip Curl Pro Bells Beach, Championship Tour, women's: April 1–11, Pismo Beach Pier, California\n2. Rip Curl Pro Bells Beach – MK QA, Championship Tour, men's: April 1–11, Lower Trestles, San Clemente, California\n3. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 2,000, women's: April 3–6, East Beach, Port Alfred, South Africa\n4. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 4,000, men's: April 3–6, East Beach, Port Alfred, South Africa\n5. Bioglan Bells Beach Longboard Classic, World Longboard Tour, women's: April 5, La Marginal, Arecibo, Puerto Rico\n6. WSL Uruguay Natural Longboard Festival – LQS1,000, World Longboard Tour, men's: April 8–12, Maresias, São Sebastião, Brazil\n7. WSL Uruguay Natural Longboard Festival, World Longboard Tour, women's: April 8–12, Ponta Negra, Natal, Brazil\n8. eThekwini Surf Pro, Qualifying Series 2,000, women's: April 9–12, New Pier, Durban, South Africa\n9. eThekwini Surf Pro, Qualifying Series 2,000, men's: April 9–12, New Pier, Durban, South Africa\n10. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, men's: April 11–19, Señoritas, Punta Hermosa, Peru\n11. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, women's: April 11–19, El Gringo, Arica, Chile\n12. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, men's: April 11–19, Itamambuca, Ubatuba, Brazil\n13. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, women's: April 11–19, Itaúna, Saquarema, Brazil\n14. Western Australia Margaret River Pro, Championship Tour, men's: April 16–26, Huntington Beach Pier, California\n15. Western Australia Margaret River Pro, Championship Tour, women's: April 16–26, La Marginal, Arecibo, Puerto Rico\n16. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, men's: April 21–26, Ponta Negra, Natal, Brazil\n17. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, women's: April 21–26, Praia da Taíba, São Gonçalo do Amarante, Brazil\n18. Vans Jack's Surfboards Pro, Qualifying Series 4,000, women's: April 22–26, Huntington Beach Pier, California\n19. Vans Jack's Surfboards Pro, Qualifying Series 4,000, men's: April 22–26, Huntington Beach Pier, California\n20. Surfboard Empire North Narrabeen Pro Junior Pres. by Florence, Junior 1,000, men's: April 22–26, North Narrabeen, New South Wales, Australia\n\nSeveral venues don't match the event names. For example, Bells Beach is set at Pismo Beach, and Margaret River at Huntington Beach and Arecibo. You may want to check those drafts.",
+    "finished": true,
+    "errors": [],
+    "runIds": [
+      {
+        "type": "RUN_STARTED",
+        "threadId": "78c231d8-651b-4299-8957-ac885daee53f",
+        "runId": "2a98f106-67ba-4e02-b4f3-582edabe7527"
+      },
+      {
+        "type": "RUN_FINISHED",
+        "threadId": "78c231d8-651b-4299-8957-ac885daee53f",
+        "runId": "2a98f106-67ba-4e02-b4f3-582edabe7527"
+      }
+    ],
+    "eventTypes": [
+      "RUN_STARTED",
+      "STEP_STARTED",
+      "STEP_FINISHED",
+      "TOOL_CALL_START",
+      "TOOL_CALL_END",
+      "STATE_SNAPSHOT",
+      "TOOL_CALL_RESULT",
+      "TOOL_CALL_ARGS",
+      "REASONING_START",
+      "REASONING_MESSAGE_START",
+      "REASONING_MESSAGE_CONTENT",
+      "REASONING_MESSAGE_END",
+      "REASONING_END",
+      "TEXT_MESSAGE_START",
+      "TEXT_MESSAGE_CONTENT",
+      "TEXT_MESSAGE_END",
+      "MESSAGES_SNAPSHOT",
+      "RUN_FINISHED"
+    ]
+  },
+  "tools": [
+    {
+      "id": "toolu_bdrk_01DhVVmjhWwDQGS4H3joQRrN",
+      "name": "list_seasons",
+      "result": {
+        "status": "ok",
+        "seasons": [
+          {
+            "season_id": "01a13c3b-ee31-728d-864f-d3f600a32b7a",
+            "name": "2046",
+            "start_date": "2046-01-01",
+            "end_date": "2046-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 1
+          },
+          {
+            "season_id": "01a13bcc-9675-7797-97a0-cf6b8248ba76",
+            "name": "2045",
+            "start_date": "2045-01-01",
+            "end_date": "2045-12-31",
+            "status": "draft",
+            "tour_count": 0,
+            "event_count": 0
+          },
+          {
+            "season_id": "01a13b4b-8617-7294-8a34-06cd9c6a7768",
+            "name": "2044",
+            "start_date": "2044-01-01",
+            "end_date": "2044-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 1
+          },
+          {
+            "season_id": "01a13b49-5d59-7085-8c75-6fc4a19f22a3",
+            "name": "2043",
+            "start_date": "2043-01-01",
+            "end_date": "2043-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 2
+          },
+          {
+            "season_id": "01a13b44-9826-7263-a3d8-9388c1b03a29",
+            "name": "2042",
+            "start_date": "2042-01-01",
+            "end_date": "2042-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 2
+          },
+          {
+            "season_id": "01a13b05-d40e-742a-acfc-0e694db2d1e5",
+            "name": "2041",
+            "start_date": "2041-01-01",
+            "end_date": "2041-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 1
+          },
+          {
+            "season_id": "01a13b03-8d98-744c-a56b-69282b30ea4e",
+            "name": "2040",
+            "start_date": "2040-01-01",
+            "end_date": "2040-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 3
+          },
+          {
+            "season_id": "01a13b00-5a3d-76d0-96d3-ec28778a006f",
+            "name": "2039",
+            "start_date": "2039-01-01",
+            "end_date": "2039-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 3
+          },
+          {
+            "season_id": "01a13ad0-17be-7096-adaf-8dceb1161d9c",
+            "name": "2038",
+            "start_date": "2038-01-01",
+            "end_date": "2038-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 4
+          },
+          {
+            "season_id": "01a139b6-1bdd-7728-a39a-d4d786d24b0a",
+            "name": "2037",
+            "start_date": "2037-01-01",
+            "end_date": "2037-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 4
+          },
+          {
+            "season_id": "01a1397a-dd22-71cb-b060-7de3fea2a9f6",
+            "name": "2036",
+            "start_date": "2036-01-01",
+            "end_date": "2036-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 2
+          },
+          {
+            "season_id": "01a1397a-b68b-715a-895c-efb87440ae83",
+            "name": "2035",
+            "start_date": "2035-01-01",
+            "end_date": "2035-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 24
+          },
+          {
+            "season_id": "01a1379c-e07f-75e5-afd8-4bb141fed8b8",
+            "name": "2034",
+            "start_date": "2034-01-01",
+            "end_date": "2034-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 2
+          },
+          {
+            "season_id": "01a1379a-0fd8-72c4-92c4-d7d3b34a1622",
+            "name": "2033",
+            "start_date": "2033-01-01",
+            "end_date": "2033-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 7
+          },
+          {
+            "season_id": "01a13794-c29e-77f4-8c70-0bd84eebba1d",
+            "name": "2032",
+            "start_date": "2032-01-01",
+            "end_date": "2032-12-31",
+            "status": "draft",
+            "tour_count": 2,
+            "event_count": 16
+          },
+          {
+            "season_id": "01a13774-6fe4-751f-bdf7-4f5393b06071",
+            "name": "2031",
+            "start_date": "2031-01-01",
+            "end_date": "2031-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 2
+          },
+          {
+            "season_id": "01a13774-4b9f-75f1-a85d-6644fe4ad707",
+            "name": "2030",
+            "start_date": "2030-01-01",
+            "end_date": "2030-12-31",
+            "status": "draft",
+            "tour_count": 2,
+            "event_count": 25
+          },
+          {
+            "season_id": "01a1374b-43d8-7205-b217-87b8c95b0c25",
+            "name": "2029",
+            "start_date": "2029-01-01",
+            "end_date": "2029-12-31",
+            "status": "draft",
+            "tour_count": 1,
+            "event_count": 2
+          },
+          {
+            "season_id": "01a1374b-139c-7030-8311-34e67a299df8",
+            "name": "2028",
+            "start_date": "2028-01-01",
+            "end_date": "2028-12-31",
+            "status": "draft",
+            "tour_count": 2,
+            "event_count": 25
+          },
+          {
+            "season_id": "01a13751-29bf-72d2-a9a4-2dc7f258bb7b",
+            "name": "2027",
+            "start_date": "2027-04-01",
+            "end_date": "2027-12-31",
+            "status": "draft",
+            "tour_count": 30,
+            "event_count": 166
+          }
+        ]
+      },
+      "parameters": ""
+    },
+    {
+      "id": "toolu_bdrk_01FwutCeg23hcupYJPPqGsRd",
+      "name": "search_events",
+      "result": {
+        "status": "ok",
+        "events": [
+          {
+            "event_id": "01a1375a-eb0f-76d8-a80d-0d4d86b946d1",
+            "name": "Rip Curl Pro Bells Beach",
+            "status": "draft",
+            "start_date": "2027-04-01",
+            "end_date": "2027-04-11",
+            "tour": "Championship Tour",
+            "division": "womens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a6ec-7675-a956-8c68462d7383",
+              "spot": "Pismo Beach Pier",
+              "town": "Pismo Beach",
+              "city": null,
+              "state": "CA",
+              "country_code": "US",
+              "region_code": "north_america",
+              "timezone": "America/Los_Angeles"
+            },
+            "region_codes": [
+              "north_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-eb10-7068-85af-8b13cfd7991a",
+            "name": "Rip Curl Pro Bells Beach - MK QA",
+            "status": "draft",
+            "start_date": "2027-04-01",
+            "end_date": "2027-04-11",
+            "tour": "Championship Tour",
+            "division": "mens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a6e5-74d7-9c1d-a1c0309021f2",
+              "spot": "Lower Trestles",
+              "town": "San Clemente",
+              "city": null,
+              "state": "CA",
+              "country_code": "US",
+              "region_code": "north_america",
+              "timezone": "America/Los_Angeles"
+            },
+            "region_codes": [
+              "north_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-ecbb-70f3-94e0-a800be593114",
+            "name": "Royal St Andrew's Hotel Rip Curl Cup",
+            "status": "draft",
+            "start_date": "2027-04-03",
+            "end_date": "2027-04-06",
+            "tour": "Qualifying Series",
+            "division": "womens",
+            "rating": "QS 2,000",
+            "location": {
+              "location_id": "01a136e0-a6d5-729e-9e96-386f5e6c87cc",
+              "spot": "East Beach",
+              "town": "Port Alfred",
+              "city": null,
+              "state": "Eastern Cape",
+              "country_code": "ZA",
+              "region_code": "africa",
+              "timezone": "Africa/Johannesburg"
+            },
+            "region_codes": [
+              "africa"
+            ]
+          },
+          {
+            "event_id": "01a1375a-ed39-7165-b549-e7173bc8faf2",
+            "name": "Royal St Andrew's Hotel Rip Curl Cup",
+            "status": "draft",
+            "start_date": "2027-04-03",
+            "end_date": "2027-04-06",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "rating": "QS 4,000",
+            "location": {
+              "location_id": "01a136e0-a6d5-729e-9e96-386f5e6c87cc",
+              "spot": "East Beach",
+              "town": "Port Alfred",
+              "city": null,
+              "state": "Eastern Cape",
+              "country_code": "ZA",
+              "region_code": "africa",
+              "timezone": "Africa/Johannesburg"
+            },
+            "region_codes": [
+              "africa"
+            ]
+          },
+          {
+            "event_id": "01a1375b-e935-729b-a36f-2aa3ac832320",
+            "name": "Bioglan Bells Beach Longboard Classic",
+            "status": "draft",
+            "start_date": "2027-04-05",
+            "end_date": "2027-04-05",
+            "tour": "World Longboard Tour",
+            "division": "womens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a6f8-7275-b927-bd53b3b92116",
+              "spot": "La Marginal",
+              "town": "Arecibo",
+              "city": null,
+              "state": null,
+              "country_code": "PR",
+              "region_code": "north_america",
+              "timezone": "America/Puerto_Rico"
+            },
+            "region_codes": [
+              "north_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-eef9-7422-9a70-ed5a3e2aae5f",
+            "name": "WSL Uruguay Natural Longboard Festival - LQS1,000",
+            "status": "draft",
+            "start_date": "2027-04-08",
+            "end_date": "2027-04-12",
+            "tour": "World Longboard Tour",
+            "division": "mens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a6fe-744a-a0c5-0721e1966fd5",
+              "spot": "Maresias",
+              "town": "São Sebastião",
+              "city": null,
+              "state": "SP",
+              "country_code": "BR",
+              "region_code": "south_america",
+              "timezone": "America/Sao_Paulo"
+            },
+            "region_codes": [
+              "south_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-ef24-7138-8e65-8520551d9dde",
+            "name": "WSL Uruguay Natural Longboard Festival",
+            "status": "draft",
+            "start_date": "2027-04-08",
+            "end_date": "2027-04-12",
+            "tour": "World Longboard Tour",
+            "division": "womens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a708-7358-9ec4-8c8b729aada4",
+              "spot": "Ponta Negra",
+              "town": "Natal",
+              "city": null,
+              "state": "RN",
+              "country_code": "BR",
+              "region_code": "south_america",
+              "timezone": "America/Fortaleza"
+            },
+            "region_codes": [
+              "south_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-f0f8-7539-bf7e-d0dbe6d70a44",
+            "name": "eThekwini Surf Pro",
+            "status": "draft",
+            "start_date": "2027-04-09",
+            "end_date": "2027-04-12",
+            "tour": "Qualifying Series",
+            "division": "womens",
+            "rating": "QS 2,000",
+            "location": {
+              "location_id": "01a136e0-a6dc-75d3-99a5-f1bdb16bf6f2",
+              "spot": "New Pier",
+              "town": "Durban",
+              "city": null,
+              "state": "KwaZulu-Natal",
+              "country_code": "ZA",
+              "region_code": "africa",
+              "timezone": "Africa/Johannesburg"
+            },
+            "region_codes": [
+              "africa"
+            ]
+          },
+          {
+            "event_id": "01a1375a-f0fc-7358-a9ca-650a0862f127",
+            "name": "eThekwini Surf Pro",
+            "status": "draft",
+            "start_date": "2027-04-09",
+            "end_date": "2027-04-12",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "rating": "QS 2,000",
+            "location": {
+              "location_id": "01a136e0-a6dc-75d3-99a5-f1bdb16bf6f2",
+              "spot": "New Pier",
+              "town": "Durban",
+              "city": null,
+              "state": "KwaZulu-Natal",
+              "country_code": "ZA",
+              "region_code": "africa",
+              "timezone": "Africa/Johannesburg"
+            },
+            "region_codes": [
+              "africa"
+            ]
+          },
+          {
+            "event_id": "01a1375a-f32d-71ca-984e-065c336f20f2",
+            "name": "REMA Saquarema Surf Festival - Pro Junior",
+            "status": "draft",
+            "start_date": "2027-04-11",
+            "end_date": "2027-04-19",
+            "tour": "Pro Junior Series",
+            "division": "mens",
+            "rating": "JR 1,000",
+            "location": {
+              "location_id": "01a136e0-a711-749b-928c-dd92e52cfbc4",
+              "spot": "Señoritas",
+              "town": "Punta Hermosa",
+              "city": null,
+              "state": null,
+              "country_code": "PE",
+              "region_code": "south_america",
+              "timezone": "America/Lima"
+            },
+            "region_codes": [
+              "south_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-f35e-753c-bf92-fc26f7b945cb",
+            "name": "REMA Saquarema Surf Festival - Pro Junior",
+            "status": "draft",
+            "start_date": "2027-04-11",
+            "end_date": "2027-04-19",
+            "tour": "Pro Junior Series",
+            "division": "womens",
+            "rating": "JR 1,000",
+            "location": {
+              "location_id": "01a136e0-a714-759a-845e-32f2d47aa8d1",
+              "spot": "El Gringo",
+              "town": "Arica",
+              "city": null,
+              "state": null,
+              "country_code": "CL",
+              "region_code": "south_america",
+              "timezone": "America/Santiago"
+            },
+            "region_codes": [
+              "south_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-f866-76a5-aec2-f109256a6f9f",
+            "name": "REMA Saquarema Surf Festival - Longboard",
+            "status": "draft",
+            "start_date": "2027-04-11",
+            "end_date": "2027-04-19",
+            "tour": "World Longboard Tour",
+            "division": "mens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a705-74d2-b7bc-50111ef1b85b",
+              "spot": "Itamambuca",
+              "town": "Ubatuba",
+              "city": null,
+              "state": "SP",
+              "country_code": "BR",
+              "region_code": "south_america",
+              "timezone": "America/Sao_Paulo"
+            },
+            "region_codes": [
+              "south_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-f873-711c-8a8f-43339f5f8352",
+            "name": "REMA Saquarema Surf Festival - Longboard",
+            "status": "draft",
+            "start_date": "2027-04-11",
+            "end_date": "2027-04-19",
+            "tour": "World Longboard Tour",
+            "division": "womens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a6fb-7413-97df-0978d4d72ea7",
+              "spot": "Itaúna",
+              "town": "Saquarema",
+              "city": null,
+              "state": "RJ",
+              "country_code": "BR",
+              "region_code": "south_america",
+              "timezone": "America/Sao_Paulo"
+            },
+            "region_codes": [
+              "south_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-f75c-758f-aa46-9a76e2a3c9ea",
+            "name": "Western Australia Margaret River Pro",
+            "status": "draft",
+            "start_date": "2027-04-16",
+            "end_date": "2027-04-26",
+            "tour": "Championship Tour",
+            "division": "mens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a6e9-725c-8628-d341617aa1b3",
+              "spot": "Huntington Beach Pier",
+              "town": "Huntington Beach",
+              "city": null,
+              "state": "CA",
+              "country_code": "US",
+              "region_code": "north_america",
+              "timezone": "America/Los_Angeles"
+            },
+            "region_codes": [
+              "north_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-f865-76f7-a86a-b75d0953fb8b",
+            "name": "Western Australia Margaret River Pro",
+            "status": "draft",
+            "start_date": "2027-04-16",
+            "end_date": "2027-04-26",
+            "tour": "Championship Tour",
+            "division": "womens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a6f8-7275-b927-bd53b3b92116",
+              "spot": "La Marginal",
+              "town": "Arecibo",
+              "city": null,
+              "state": null,
+              "country_code": "PR",
+              "region_code": "north_america",
+              "timezone": "America/Puerto_Rico"
+            },
+            "region_codes": [
+              "north_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-fba5-708e-aecf-1b1b951c968b",
+            "name": "WSL Latam Sâo Sebastião Pro LQS1,000",
+            "status": "draft",
+            "start_date": "2027-04-21",
+            "end_date": "2027-04-26",
+            "tour": "World Longboard Tour",
+            "division": "mens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a708-7358-9ec4-8c8b729aada4",
+              "spot": "Ponta Negra",
+              "town": "Natal",
+              "city": null,
+              "state": "RN",
+              "country_code": "BR",
+              "region_code": "south_america",
+              "timezone": "America/Fortaleza"
+            },
+            "region_codes": [
+              "south_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-fc02-744e-ad70-63f03c1b7719",
+            "name": "WSL Latam Sâo Sebastião Pro LQS1,000",
+            "status": "draft",
+            "start_date": "2027-04-21",
+            "end_date": "2027-04-26",
+            "tour": "World Longboard Tour",
+            "division": "womens",
+            "rating": null,
+            "location": {
+              "location_id": "01a136e0-a70b-77c0-8ec5-3d716e38856c",
+              "spot": "Praia da Taíba",
+              "town": "São Gonçalo do Amarante",
+              "city": null,
+              "state": "CE",
+              "country_code": "BR",
+              "region_code": "south_america",
+              "timezone": "America/Fortaleza"
+            },
+            "region_codes": [
+              "south_america"
+            ]
+          },
+          {
+            "event_id": "01a13751-9d15-7401-9122-b55901ffcf7a",
+            "name": "Vans Jack's Surfboards Pro",
+            "status": "draft",
+            "start_date": "2027-04-22",
+            "end_date": "2027-04-26",
+            "tour": "Qualifying Series",
+            "division": "womens",
+            "rating": "QS 4,000",
+            "location": {
+              "location_id": "01a136e0-a6e9-725c-8628-d341617aa1b3",
+              "spot": "Huntington Beach Pier",
+              "town": "Huntington Beach",
+              "city": null,
+              "state": "CA",
+              "country_code": "US",
+              "region_code": "north_america",
+              "timezone": "America/Los_Angeles"
+            },
+            "region_codes": [
+              "north_america"
+            ]
+          },
+          {
+            "event_id": "01a13751-a3ba-7172-8361-310686df115d",
+            "name": "Vans Jack's Surfboards Pro",
+            "status": "draft",
+            "start_date": "2027-04-22",
+            "end_date": "2027-04-26",
+            "tour": "Qualifying Series",
+            "division": "mens",
+            "rating": "QS 4,000",
+            "location": {
+              "location_id": "01a136e0-a6e9-725c-8628-d341617aa1b3",
+              "spot": "Huntington Beach Pier",
+              "town": "Huntington Beach",
+              "city": null,
+              "state": "CA",
+              "country_code": "US",
+              "region_code": "north_america",
+              "timezone": "America/Los_Angeles"
+            },
+            "region_codes": [
+              "north_america"
+            ]
+          },
+          {
+            "event_id": "01a1375a-fc50-715c-bedb-517c3337bbd5",
+            "name": "Surfboard Empire North Narrabeen Pro Junior Pres. by Florence",
+            "status": "draft",
+            "start_date": "2027-04-22",
+            "end_date": "2027-04-26",
+            "tour": "Pro Junior Series",
+            "division": "mens",
+            "rating": "JR 1,000",
+            "location": {
+              "location_id": "01a136e0-a692-71aa-9ab2-5c569121399b",
+              "spot": "North Narrabeen",
+              "town": "Narrabeen",
+              "city": null,
+              "state": "NSW",
+              "country_code": "AU",
+              "region_code": "aus_oce",
+              "timezone": "Australia/Sydney"
+            },
+            "region_codes": [
+              "aus_oce"
+            ]
+          }
+        ],
+        "total": 166,
+        "next_offset": 20
+      },
+      "parameters": {
+        "season_id": "01a13751-29bf-72d2-a9a4-2dc7f258bb7b"
+      }
+    }
+  ],
+  "aiResponse": "The 2027 season has **166 events**. Here are the first 20, all still in draft, and there are more pages after this one. Dates are local to each venue.\n\n1. Rip Curl Pro Bells Beach, Championship Tour, women's: April 1–11, Pismo Beach Pier, California\n2. Rip Curl Pro Bells Beach – MK QA, Championship Tour, men's: April 1–11, Lower Trestles, San Clemente, California\n3. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 2,000, women's: April 3–6, East Beach, Port Alfred, South Africa\n4. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 4,000, men's: April 3–6, East Beach, Port Alfred, South Africa\n5. Bioglan Bells Beach Longboard Classic, World Longboard Tour, women's: April 5, La Marginal, Arecibo, Puerto Rico\n6. WSL Uruguay Natural Longboard Festival – LQS1,000, World Longboard Tour, men's: April 8–12, Maresias, São Sebastião, Brazil\n7. WSL Uruguay Natural Longboard Festival, World Longboard Tour, women's: April 8–12, Ponta Negra, Natal, Brazil\n8. eThekwini Surf Pro, Qualifying Series 2,000, women's: April 9–12, New Pier, Durban, South Africa\n9. eThekwini Surf Pro, Qualifying Series 2,000, men's: April 9–12, New Pier, Durban, South Africa\n10. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, men's: April 11–19, Señoritas, Punta Hermosa, Peru\n11. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, women's: April 11–19, El Gringo, Arica, Chile\n12. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, men's: April 11–19, Itamambuca, Ubatuba, Brazil\n13. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, women's: April 11–19, Itaúna, Saquarema, Brazil\n14. Western Australia Margaret River Pro, Championship Tour, men's: April 16–26, Huntington Beach Pier, California\n15. Western Australia Margaret River Pro, Championship Tour, women's: April 16–26, La Marginal, Arecibo, Puerto Rico\n16. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, men's: April 21–26, Ponta Negra, Natal, Brazil\n17. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, women's: April 21–26, Praia da Taíba, São Gonçalo do Amarante, Brazil\n18. Vans Jack's Surfboards Pro, Qualifying Series 4,000, women's: April 22–26, Huntington Beach Pier, California\n19. Vans Jack's Surfboards Pro, Qualifying Series 4,000, men's: April 22–26, Huntington Beach Pier, California\n20. Surfboard Empire North Narrabeen Pro Junior Pres. by Florence, Junior 1,000, men's: April 22–26, North Narrabeen, New South Wales, Australia\n\nSeveral venues don't match the event names. For example, Bells Beach is set at Pismo Beach, and Margaret River at Huntington Beach and Arecibo. You may want to check those drafts.",
+  "actual": "The 2027 season has **166 events**. Here are the first 20, all still in draft, and there are more pages after this one. Dates are local to each venue.\n\n1. Rip Curl Pro Bells Beach, Championship Tour, women's: April 1–11, Pismo Beach Pier, California\n2. Rip Curl Pro Bells Beach – MK QA, Championship Tour, men's: April 1–11, Lower Trestles, San Clemente, California\n3. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 2,000, women's: April 3–6, East Beach, Port Alfred, South Africa\n4. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 4,000, men's: April 3–6, East Beach, Port Alfred, South Africa\n5. Bioglan Bells Beach Longboard Classic, World Longboard Tour, women's: April 5, La Marginal, Arecibo, Puerto Rico\n6. WSL Uruguay Natural Longboard Festival – LQS1,000, World Longboard Tour, men's: April 8–12, Maresias, São Sebastião, Brazil\n7. WSL Uruguay Natural Longboard Festival, World Longboard Tour, women's: April 8–12, Ponta Negra, Natal, Brazil\n8. eThekwini Surf Pro, Qualifying Series 2,000, women's: April 9–12, New Pier, Durban, South Africa\n9. eThekwini Surf Pro, Qualifying Series 2,000, men's: April 9–12, New Pier, Durban, South Africa\n10. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, men's: April 11–19, Señoritas, Punta Hermosa, Peru\n11. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, women's: April 11–19, El Gringo, Arica, Chile\n12. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, men's: April 11–19, Itamambuca, Ubatuba, Brazil\n13. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, women's: April 11–19, Itaúna, Saquarema, Brazil\n14. Western Australia Margaret River Pro, Championship Tour, men's: April 16–26, Huntington Beach Pier, California\n15. Western Australia Margaret River Pro, Championship Tour, women's: April 16–26, La Marginal, Arecibo, Puerto Rico\n16. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, men's: April 21–26, Ponta Negra, Natal, Brazil\n17. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, women's: April 21–26, Praia da Taíba, São Gonçalo do Amarante, Brazil\n18. Vans Jack's Surfboards Pro, Qualifying Series 4,000, women's: April 22–26, Huntington Beach Pier, California\n19. Vans Jack's Surfboards Pro, Qualifying Series 4,000, men's: April 22–26, Huntington Beach Pier, California\n20. Surfboard Empire North Narrabeen Pro Junior Pres. by Florence, Junior 1,000, men's: April 22–26, North Narrabeen, New South Wales, Australia\n\nSeveral venues don't match the event names. For example, Bells Beach is set at Pismo Beach, and Margaret River at Huntington Beach and Arecibo. You may want to check those drafts.",
+  "durationMs": 13462,
+  "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events",
+  "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nList the first page of events in the season named 2027. Include total count and whether there is a next page. Do not use the current season.\n\nRip Curl Pro Bells Beach\nRip Curl Pro Bells Beach - MK QA\nRoyal St Andrew's Hotel Rip Curl Cup\nRoyal St Andrew's Hotel Rip Curl Cup\nBioglan Bells Beach Longboard Classic\nWSL Uruguay Natural Longboard Festival - LQS1,000\nWSL Uruguay Natural Longboard Festival\neThekwini Surf Pro\neThekwini Surf Pro\nREMA Saquarema Surf Festival - Pro Junior\nREMA Saquarema Surf Festival - Pro Junior\nREMA Saquarema Surf Festival - Longboard\nREMA Saquarema Surf Festival - Longboard\nWestern Australia Margaret River Pro\nWestern Australia Margaret River Pro\nWSL Latam Sâo Sebastião Pro LQS1,000\nWSL Latam Sâo Sebastião Pro LQS1,000\nVans Jack's Surfboards Pro\nVans Jack's Surfboards Pro\nSurfboard Empire North Narrabeen Pro Junior Pres. by Florence\n\nThe 2027 season has 166 events. Here are the first 20, all still in draft, and there are more pages after this one. Dates are local to each venue.\n\nRip Curl Pro Bells Beach, Championship Tour, women's: April 1–11, Pismo Beach Pier, California\nRip Curl Pro Bells Beach – MK QA, Championship Tour, men's: April 1–11, Lower Trestles, San Clemente, California\nRoyal St Andrew's Hotel Rip Curl Cup, Qualifying Series 2,000, women's: April 3–6, East Beach, Port Alfred, South Africa\nRoyal St Andrew's Hotel Rip Curl Cup, Qualifying Series 4,000, men's: April 3–6, East Beach, Port Alfred, South Africa\nBioglan Bells Beach Longboard Classic, World Longboard Tour, women's: April 5, La Marginal, Arecibo, Puerto Rico\nWSL Uruguay Natural Longboard Festival – LQS1,000, World Longboard Tour, men's: April 8–12, Maresias, São Sebastião, Brazil\nWSL Uruguay Natural Longboard Festival, World Longboard Tour, women's: April 8–12, Ponta Negra, Natal, Brazil\neThekwini Surf Pro, Qualifying Series 2,000, women's: April 9–12, New Pier, Durban, South Africa\neThekwini Surf Pro, Qualifying Series 2,000, men's: April 9–12, New Pier, Durban, South Africa\nREMA Saquarema Surf Festival – Pro Junior, Junior 1,000, men's: April 11–19, Señoritas, Punta Hermosa, Peru\nREMA Saquarema Surf Festival – Pro Junior, Junior 1,000, women's: April 11–19, El Gringo, Arica, Chile\nREMA Saquarema Surf Festival – Longboard, World Longboard Tour, men's: April 11–19, Itamambuca, Ubatuba, Brazil\nREMA Saquarema Surf Festival – Longboard, World Longboard Tour, women's: April 11–19, Itaúna, Saquarema, Brazil\nWestern Australia Margaret River Pro, Championship Tour, men's: April 16–26, Huntington Beach Pier, California\nWestern Australia Margaret River Pro, Championship Tour, women's: April 16–26, La Marginal, Arecibo, Puerto Rico\nWSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, men's: April 21–26, Ponta Negra, Natal, Brazil\nWSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, women's: April 21–26, Praia da Taíba, São Gonçalo do Amarante, Brazil\nVans Jack's Surfboards Pro, Qualifying Series 4,000, women's: April 22–26, Huntington Beach Pier, California\nVans Jack's Surfboards Pro, Qualifying Series 4,000, men's: April 22–26, Huntington Beach Pier, California\nSurfboard Empire North Narrabeen Pro Junior Pres. by Florence, Junior 1,000, men's: April 22–26, North Narrabeen, New South Wales, Australia\n\nSeveral venues don't match the event names. For example, Bells Beach is set at Pismo Beach, and Margaret River at Huntington Beach and Arecibo. You may want to check those drafts.\n\nThe 2027 season has **166 events**. Here are the first 20, all still in draft, and there are more pages after this one. Dates are local to each venue. 1. Rip Curl Pro Bells Beach, Championship Tour, women's: April 1–11, Pismo Beach Pier, California 2. Rip Curl Pro Bells Beach – MK QA, Championship Tour, men's: April 1–11, Lower Trestles, San Clemente, California 3. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 2,000, women's: April 3–6, East Beach, Port Alfred, South Africa 4. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 4,000, men's: April 3–6, East Beach, Port Alfred, South Africa 5. Bioglan Bells Beach Longboard Classic, World Longboard Tour, women's: April 5, La Marginal, Arecibo, Puerto Rico 6. WSL Uruguay Natural Longboard Festival – LQS1,000, World Longboard Tour, men's: April 8–12, Maresias, São Sebastião, Brazil 7. WSL Uruguay Natural Longboard Festival, World Longboard Tour, women's: April 8–12, Ponta Negra, Natal, Brazil 8. eThekwini Surf Pro, Qualifying Series 2,000, women's: April 9–12, New Pier, Durban, South Africa 9. eThekwini Surf Pro, Qualifying Series 2,000, men's: April 9–12, New Pier, Durban, South Africa 10. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, men's: April 11–19, Señoritas, Punta Hermosa, Peru 11. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, women's: April 11–19, El Gringo, Arica, Chile 12. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, men's: April 11–19, Itamambuca, Ubatuba, Brazil 13. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, women's: April 11–19, Itaúna, Saquarema, Brazil 14. Western Australia Margaret River Pro, Championship Tour, men's: April 16–26, Huntington Beach Pier, California 15. Western Australia Margaret River Pro, Championship Tour, women's: April 16–26, La Marginal, Arecibo, Puerto Rico 16. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, men's: April 21–26, Ponta Negra, Natal, Brazil 17. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, women's: April 21–26, Praia da Taíba, São Gonçalo do Amarante, Brazil 18. Vans Jack's Surfboards Pro, Qualifying Series 4,000, women's: April 22–26, Huntington Beach Pier, California 19. Vans Jack's Surfboards Pro, Qualifying Series 4,000, men's: April 22–26, Huntington Beach Pier, California 20. Surfboard Empire North Narrabeen Pro Junior Pres. by Florence, Junior 1,000, men's: April 22–26, North Narrabeen, New South Wales, Australia Several venues don't match the event names. For example, Bells Beach is set at Pismo Beach, and Margaret River at Huntington Beach and Arecibo. You may want to check those drafts.",
+  "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-T17.png",
+  "videoEndSeconds": 40.167,
+  "proposal": null,
+  "network": [
+    {
+      "method": "POST",
+      "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+      "at": "2026-10-15T00:30:01.249Z"
+    }
+  ],
+  "finishedAt": "2026-10-15T00:30:15.328Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]",
+  "review": {
+    "classification": "Observed behavior",
+    "verification": "Resolved explicitly named2027 season; search_events returned first20, total166 and next_offset20. First20 event IDs match the normal manager API first page. Synthetic venue/name mismatches exist in the configured migration test data and were not invented by the assistant.",
+    "method": "Evidence-based semantic review of actual answer, tools and captured reference data; no fixed-wording requirement",
+    "identity": "Same QA session and actual tool parameters inspected",
+    "permissions": "Manager normal sign-in verified by session API",
+    "limitations": null,
+    "aiEvaluation": {
+      "accuracy": "Verified for the supported facts/behavior described in this check",
+      "relevance": "Response addresses the recorded question or its capability limit",
+      "completeness": "Evaluated against the check’s scoped expected result; not a claim of full product coverage",
+      "identity": "No new identity assertion, or identity limits explicitly described in review",
+      "toolSelection": "Actual tool names/parameters captured; dependency failures and valid alternative tools described in review",
+      "permissions": "Checked actual selected tools against allowed persona; concrete foreign-owner403/history404 checks linked separately",
+      "currencyDatesStatuses": "Only source-backed monetary/date/status facts accepted; not applicable when answer makes none",
+      "grounding": "Captured service/page/rule data or explicit capability restriction used; see limitations",
+      "hallucination": "No invented action/payment/entry success in the scoped check",
+      "followup": "Not a follow-up; new conversation used",
+      "consistency": "Repeated-run consistency not evaluated in this turn; no general consistency claim",
+      "errorHandling": "No unhandled error in this observed turn; not a fault-injection claim"
+    }
+  },
+  "backendVerificationPages": [
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events?season=01a13751-29bf-72d2-a9a4-2dc7f258bb7b&view=all&sort=dates:asc&cursor=0",
+      "status": 200,
+      "body": {
+        "events": [
+          {
+            "id": "01a1375a-eb0f-76d8-a80d-0d4d86b946d1",
+            "name": "Rip Curl Pro Bells Beach",
+            "place": "Pismo Beach Pier, CA",
+            "tour": "Championship Tour (CT) · Women",
+            "rating": null,
+            "dates": "Thu 1 – Sun 11 Apr 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-eb10-7068-85af-8b13cfd7991a",
+            "name": "Rip Curl Pro Bells Beach - MK QA",
+            "place": "Lower Trestles, CA",
+            "tour": "Championship Tour (CT) · Men",
+            "rating": null,
+            "dates": "Thu 1 – Sun 11 Apr 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-ecbb-70f3-94e0-a800be593114",
+            "name": "Royal St Andrew's Hotel Rip Curl Cup",
+            "place": "East Beach, Eastern Cape",
+            "tour": "Qualifying Series (QS) · Women",
+            "rating": "2,000",
+            "dates": "Sat 3 – Tue 6 Apr 2027",
+            "registered": null,
+            "country": "South Africa",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-ed39-7165-b549-e7173bc8faf2",
+            "name": "Royal St Andrew's Hotel Rip Curl Cup",
+            "place": "East Beach, Eastern Cape",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "4,000",
+            "dates": "Sat 3 – Tue 6 Apr 2027",
+            "registered": null,
+            "country": "South Africa",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-e935-729b-a36f-2aa3ac832320",
+            "name": "Bioglan Bells Beach Longboard Classic",
+            "place": "La Marginal, Puerto Rico",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Mon 5 – Mon 5 Apr 2027",
+            "registered": null,
+            "country": "Puerto Rico",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-eef9-7422-9a70-ed5a3e2aae5f",
+            "name": "WSL Uruguay Natural Longboard Festival - LQS1,000",
+            "place": "Maresias, SP",
+            "tour": "World Longboard Tour (LT) · Men",
+            "rating": null,
+            "dates": "Thu 8 – Mon 12 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-ef24-7138-8e65-8520551d9dde",
+            "name": "WSL Uruguay Natural Longboard Festival",
+            "place": "Ponta Negra, RN",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Thu 8 – Mon 12 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f0f8-7539-bf7e-d0dbe6d70a44",
+            "name": "eThekwini Surf Pro",
+            "place": "New Pier, KwaZulu-Natal",
+            "tour": "Qualifying Series (QS) · Women",
+            "rating": "2,000",
+            "dates": "Fri 9 – Mon 12 Apr 2027",
+            "registered": null,
+            "country": "South Africa",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f0fc-7358-a9ca-650a0862f127",
+            "name": "eThekwini Surf Pro",
+            "place": "New Pier, KwaZulu-Natal",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "2,000",
+            "dates": "Fri 9 – Mon 12 Apr 2027",
+            "registered": null,
+            "country": "South Africa",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f32d-71ca-984e-065c336f20f2",
+            "name": "REMA Saquarema Surf Festival - Pro Junior",
+            "place": "Señoritas, Peru",
+            "tour": "Pro Junior Series (PJ) · Men",
+            "rating": "1,000",
+            "dates": "Sun 11 – Mon 19 Apr 2027",
+            "registered": null,
+            "country": "Peru",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f35e-753c-bf92-fc26f7b945cb",
+            "name": "REMA Saquarema Surf Festival - Pro Junior",
+            "place": "El Gringo, Chile",
+            "tour": "Pro Junior Series (PJ) · Women",
+            "rating": "1,000",
+            "dates": "Sun 11 – Mon 19 Apr 2027",
+            "registered": null,
+            "country": "Chile",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f866-76a5-aec2-f109256a6f9f",
+            "name": "REMA Saquarema Surf Festival - Longboard",
+            "place": "Itamambuca, SP",
+            "tour": "World Longboard Tour (LT) · Men",
+            "rating": null,
+            "dates": "Sun 11 – Mon 19 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f873-711c-8a8f-43339f5f8352",
+            "name": "REMA Saquarema Surf Festival - Longboard",
+            "place": "Itaúna, RJ",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Sun 11 – Mon 19 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-f75c-758f-aa46-9a76e2a3c9ea",
+            "name": "Western Australia Margaret River Pro",
+            "place": "Huntington Beach Pier, CA",
+            "tour": "Championship Tour (CT) · Men",
+            "rating": null,
+            "dates": "Fri 16 – Mon 26 Apr 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          }
+        ],
+        "nextCursor": 14,
+        "counts": {
+          "all": 166,
+          "readyForEntries": 0,
+          "completed": 0,
+          "archived": 0
+        },
+        "filters": [
+          {
+            "code": "region",
+            "label": "Region",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "africa",
+                "label": "Africa"
+              },
+              {
+                "value": "asia",
+                "label": "Asia"
+              },
+              {
+                "value": "aus_oce",
+                "label": "Australia/Oceania"
+              },
+              {
+                "value": "europe",
+                "label": "Europe"
+              },
+              {
+                "value": "hawaii_tahiti",
+                "label": "Hawaii/Tahiti Nui"
+              },
+              {
+                "value": "north_america",
+                "label": "North America"
+              },
+              {
+                "value": "south_america",
+                "label": "South America"
+              }
+            ]
+          },
+          {
+            "code": "country",
+            "label": "Country",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "AE",
+                "label": "United Arab Emirates"
+              },
+              {
+                "value": "AU",
+                "label": "Australia"
+              },
+              {
+                "value": "BB",
+                "label": "Barbados"
+              },
+              {
+                "value": "BR",
+                "label": "Brazil"
+              },
+              {
+                "value": "CL",
+                "label": "Chile"
+              },
+              {
+                "value": "ES",
+                "label": "Spain"
+              },
+              {
+                "value": "FR",
+                "label": "France"
+              },
+              {
+                "value": "GB",
+                "label": "United Kingdom"
+              },
+              {
+                "value": "ID",
+                "label": "Indonesia"
+              },
+              {
+                "value": "IE",
+                "label": "Ireland"
+              },
+              {
+                "value": "IN",
+                "label": "India"
+              },
+              {
+                "value": "JP",
+                "label": "Japan"
+              },
+              {
+                "value": "KR",
+                "label": "South Korea"
+              },
+              {
+                "value": "MA",
+                "label": "Morocco"
+              },
+              {
+                "value": "PE",
+                "label": "Peru"
+              },
+              {
+                "value": "PF",
+                "label": "French Polynesia"
+              },
+              {
+                "value": "PH",
+                "label": "Philippines"
+              },
+              {
+                "value": "PR",
+                "label": "Puerto Rico"
+              },
+              {
+                "value": "PT",
+                "label": "Portugal"
+              },
+              {
+                "value": "SV",
+                "label": "El Salvador"
+              },
+              {
+                "value": "US",
+                "label": "United States"
+              },
+              {
+                "value": "US-HI",
+                "label": "Hawaii"
+              },
+              {
+                "value": "ZA",
+                "label": "South Africa"
+              }
+            ]
+          },
+          {
+            "code": "tour",
+            "label": "Tour",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "Challenger Series",
+                "label": "Challenger Series (CS)"
+              },
+              {
+                "value": "Championship Tour",
+                "label": "Championship Tour (CT)"
+              },
+              {
+                "value": "Pro Junior Series",
+                "label": "Pro Junior Series (PJ)"
+              },
+              {
+                "value": "Qualifying Series",
+                "label": "Qualifying Series (QS)"
+              },
+              {
+                "value": "World Longboard Tour",
+                "label": "World Longboard Tour (LT)"
+              }
+            ]
+          },
+          {
+            "code": "rating",
+            "label": "Rating",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "1000",
+                "label": "1,000"
+              },
+              {
+                "value": "2000",
+                "label": "2,000"
+              },
+              {
+                "value": "4000",
+                "label": "4,000"
+              },
+              {
+                "value": "6000",
+                "label": "6,000"
+              }
+            ]
+          },
+          {
+            "code": "gender",
+            "label": "Gender",
+            "kind": "toggle",
+            "options": [
+              {
+                "value": "men",
+                "label": "Men"
+              },
+              {
+                "value": "women",
+                "label": "Women"
+              }
+            ]
+          }
+        ],
+        "bands": [
+          {
+            "band": "draft",
+            "label": "DRAFT · 166 events"
+          }
+        ],
+        "summary": "30 tours · 166 events",
+        "progress": "Showing 14 of 166 events · the rest load as you scroll"
+      },
+      "at": "2026-10-15T00:33:29.822Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events?season=01a13751-29bf-72d2-a9a4-2dc7f258bb7b&view=all&sort=dates:asc&cursor=14",
+      "status": 200,
+      "body": {
+        "events": [
+          {
+            "id": "01a1375a-f865-76f7-a86a-b75d0953fb8b",
+            "name": "Western Australia Margaret River Pro",
+            "place": "La Marginal, Puerto Rico",
+            "tour": "Championship Tour (CT) · Women",
+            "rating": null,
+            "dates": "Fri 16 – Mon 26 Apr 2027",
+            "registered": null,
+            "country": "Puerto Rico",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-fba5-708e-aecf-1b1b951c968b",
+            "name": "WSL Latam Sâo Sebastião Pro LQS1,000",
+            "place": "Ponta Negra, RN",
+            "tour": "World Longboard Tour (LT) · Men",
+            "rating": null,
+            "dates": "Wed 21 – Mon 26 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-fc02-744e-ad70-63f03c1b7719",
+            "name": "WSL Latam Sâo Sebastião Pro LQS1,000",
+            "place": "Praia da Taíba, CE",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Wed 21 – Mon 26 Apr 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a13751-9d15-7401-9122-b55901ffcf7a",
+            "name": "Vans Jack's Surfboards Pro",
+            "place": "Huntington Beach Pier, CA",
+            "tour": "Qualifying Series (QS) · Women",
+            "rating": "4,000",
+            "dates": "Thu 22 – Mon 26 Apr 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a13751-a3ba-7172-8361-310686df115d",
+            "name": "Vans Jack's Surfboards Pro",
+            "place": "Huntington Beach Pier, CA",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "4,000",
+            "dates": "Thu 22 – Mon 26 Apr 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-fc50-715c-bedb-517c3337bbd5",
+            "name": "Surfboard Empire North Narrabeen Pro Junior Pres. by Florence",
+            "place": "North Narrabeen, NSW",
+            "tour": "Pro Junior Series (PJ) · Men",
+            "rating": "1,000",
+            "dates": "Thu 22 – Mon 26 Apr 2027",
+            "registered": null,
+            "country": "Australia",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-fc82-726a-9a96-ae5e42b4c3a1",
+            "name": "Surfboard Empire North Narrabeen Pro Junior Pres. by Florence",
+            "place": "North Narrabeen, NSW",
+            "tour": "Pro Junior Series (PJ) · Women",
+            "rating": "1,000",
+            "dates": "Thu 22 – Mon 26 Apr 2027",
+            "registered": null,
+            "country": "Australia",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-0020-744a-aaa7-c3c7e613072f",
+            "name": "Circuito Banco do Brasil de Surfe - Ubatuba",
+            "place": "Joaquina, SC",
+            "tour": "Qualifying Series (QS) · Women",
+            "rating": "4,000",
+            "dates": "Fri 30 Apr – Mon 3 May 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-0058-770c-a76f-9b5c105db6fd",
+            "name": "Circuito Banco do Brasil de Surfe - Ubatuba",
+            "place": "Maresias, SP",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "4,000",
+            "dates": "Fri 30 Apr – Mon 3 May 2027",
+            "registered": null,
+            "country": "Brazil",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-ffe8-7748-8889-38b917328007",
+            "name": "Kirra vs Snapper Surfriders Superheat",
+            "place": "La Marginal, Puerto Rico",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "2,000",
+            "dates": "Fri 30 Apr – Tue 11 May 2027",
+            "registered": null,
+            "country": "Puerto Rico",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-0051-75f3-9ef8-2c063e854883",
+            "name": "Bonsoy Gold Coast Pro",
+            "place": "Punta Roca, El Salvador",
+            "tour": "Championship Tour (CT) · Men",
+            "rating": null,
+            "dates": "Sat 1 – Tue 11 May 2027",
+            "registered": null,
+            "country": "El Salvador",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-036b-73e4-89b3-5e05ca14a483",
+            "name": "Bonsoy Gold Coast Pro",
+            "place": "Soup Bowl, Barbados",
+            "tour": "Championship Tour (CT) · Women",
+            "rating": null,
+            "dates": "Sat 1 – Tue 11 May 2027",
+            "registered": null,
+            "country": "Barbados",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-03c7-7733-9048-1b12eeb0e2fd",
+            "name": "Surf Emporium SA Longboard Championship",
+            "place": "Ain Diab, Morocco",
+            "tour": "World Longboard Tour (LT) · Men",
+            "rating": null,
+            "dates": "Sun 2 – Sun 2 May 2027",
+            "registered": null,
+            "country": "Morocco",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-04f1-715e-86d5-dc341a478c18",
+            "name": "Surf Emporium SA Longboard Championship",
+            "place": "Anchor Point, Morocco",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Sun 2 – Sun 2 May 2027",
+            "registered": null,
+            "country": "Morocco",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          }
+        ],
+        "nextCursor": 28,
+        "counts": {
+          "all": 166,
+          "readyForEntries": 0,
+          "completed": 0,
+          "archived": 0
+        },
+        "filters": [
+          {
+            "code": "region",
+            "label": "Region",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "africa",
+                "label": "Africa"
+              },
+              {
+                "value": "asia",
+                "label": "Asia"
+              },
+              {
+                "value": "aus_oce",
+                "label": "Australia/Oceania"
+              },
+              {
+                "value": "europe",
+                "label": "Europe"
+              },
+              {
+                "value": "hawaii_tahiti",
+                "label": "Hawaii/Tahiti Nui"
+              },
+              {
+                "value": "north_america",
+                "label": "North America"
+              },
+              {
+                "value": "south_america",
+                "label": "South America"
+              }
+            ]
+          },
+          {
+            "code": "country",
+            "label": "Country",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "AE",
+                "label": "United Arab Emirates"
+              },
+              {
+                "value": "AU",
+                "label": "Australia"
+              },
+              {
+                "value": "BB",
+                "label": "Barbados"
+              },
+              {
+                "value": "BR",
+                "label": "Brazil"
+              },
+              {
+                "value": "CL",
+                "label": "Chile"
+              },
+              {
+                "value": "ES",
+                "label": "Spain"
+              },
+              {
+                "value": "FR",
+                "label": "France"
+              },
+              {
+                "value": "GB",
+                "label": "United Kingdom"
+              },
+              {
+                "value": "ID",
+                "label": "Indonesia"
+              },
+              {
+                "value": "IE",
+                "label": "Ireland"
+              },
+              {
+                "value": "IN",
+                "label": "India"
+              },
+              {
+                "value": "JP",
+                "label": "Japan"
+              },
+              {
+                "value": "KR",
+                "label": "South Korea"
+              },
+              {
+                "value": "MA",
+                "label": "Morocco"
+              },
+              {
+                "value": "PE",
+                "label": "Peru"
+              },
+              {
+                "value": "PF",
+                "label": "French Polynesia"
+              },
+              {
+                "value": "PH",
+                "label": "Philippines"
+              },
+              {
+                "value": "PR",
+                "label": "Puerto Rico"
+              },
+              {
+                "value": "PT",
+                "label": "Portugal"
+              },
+              {
+                "value": "SV",
+                "label": "El Salvador"
+              },
+              {
+                "value": "US",
+                "label": "United States"
+              },
+              {
+                "value": "US-HI",
+                "label": "Hawaii"
+              },
+              {
+                "value": "ZA",
+                "label": "South Africa"
+              }
+            ]
+          },
+          {
+            "code": "tour",
+            "label": "Tour",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "Challenger Series",
+                "label": "Challenger Series (CS)"
+              },
+              {
+                "value": "Championship Tour",
+                "label": "Championship Tour (CT)"
+              },
+              {
+                "value": "Pro Junior Series",
+                "label": "Pro Junior Series (PJ)"
+              },
+              {
+                "value": "Qualifying Series",
+                "label": "Qualifying Series (QS)"
+              },
+              {
+                "value": "World Longboard Tour",
+                "label": "World Longboard Tour (LT)"
+              }
+            ]
+          },
+          {
+            "code": "rating",
+            "label": "Rating",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "1000",
+                "label": "1,000"
+              },
+              {
+                "value": "2000",
+                "label": "2,000"
+              },
+              {
+                "value": "4000",
+                "label": "4,000"
+              },
+              {
+                "value": "6000",
+                "label": "6,000"
+              }
+            ]
+          },
+          {
+            "code": "gender",
+            "label": "Gender",
+            "kind": "toggle",
+            "options": [
+              {
+                "value": "men",
+                "label": "Men"
+              },
+              {
+                "value": "women",
+                "label": "Women"
+              }
+            ]
+          }
+        ],
+        "bands": [
+          {
+            "band": "draft",
+            "label": "DRAFT · 166 events"
+          }
+        ],
+        "summary": "30 tours · 166 events",
+        "progress": "Showing 28 of 166 events · the rest load as you scroll"
+      },
+      "at": "2026-10-15T00:33:30.168Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events?season=01a13751-29bf-72d2-a9a4-2dc7f258bb7b&view=all&sort=dates:asc&cursor=28",
+      "status": 200,
+      "body": {
+        "events": [
+          {
+            "id": "01a1375b-0551-72c4-92a2-1c29d099b705",
+            "name": "Morocco Mall Junior Pro Casablanca",
+            "place": "Praia da Fragata, Galicia",
+            "tour": "Pro Junior Series (PJ) · Men",
+            "rating": "1,000",
+            "dates": "Thu 6 – Mon 10 May 2027",
+            "registered": null,
+            "country": "Spain",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-073d-7229-ad64-540b0882812a",
+            "name": "Morocco Mall Junior Pro Casablanca",
+            "place": "Praia de Razo, Galicia",
+            "tour": "Pro Junior Series (PJ) · Women",
+            "rating": "1,000",
+            "dates": "Thu 6 – Mon 10 May 2027",
+            "registered": null,
+            "country": "Spain",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a13751-a6bf-7238-96cd-521b58e6905b",
+            "name": "Hamamatsu Open QS2000",
+            "place": "Nakatajima Beach, Shizuoka",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "2,000",
+            "dates": "Thu 13 – Mon 17 May 2027",
+            "registered": null,
+            "country": "Japan",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-07ae-7178-b73f-9d0942ee532b",
+            "name": "Hamamatsu Open LQS1000",
+            "place": "Nakatajima Beach, Shizuoka",
+            "tour": "World Longboard Tour (LT) · Men",
+            "rating": null,
+            "dates": "Thu 13 – Mon 17 May 2027",
+            "registered": null,
+            "country": "Japan",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-0a5e-70aa-bb60-bfa02450203d",
+            "name": "Hamamatsu Open LQS1000",
+            "place": "Nakatajima Beach, Shizuoka",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Thu 13 – Mon 17 May 2027",
+            "registered": null,
+            "country": "Japan",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-0aa3-7220-98a3-9df8a1b8b19b",
+            "name": "Hamamatsu Open QS2000",
+            "place": "Nakatajima Beach, Shizuoka",
+            "tour": "Qualifying Series (QS) · Women",
+            "rating": "2,000",
+            "dates": "Thu 13 – Mon 17 May 2027",
+            "registered": null,
+            "country": "Japan",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-e8bf-71a0-8c20-9e02331cb217",
+            "name": "Caparica Surf Fest 2026",
+            "place": "The Peak, Donegal",
+            "tour": "Qualifying Series (QS) · Women",
+            "rating": "2,000",
+            "dates": "Fri 14 – Fri 14 May 2027",
+            "registered": null,
+            "country": "Ireland",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375a-e8bf-71a0-8c20-9e03ca39aeb8",
+            "name": "Caparica Surf Fest 2026",
+            "place": "Costa da Caparica, Portugal",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "4,000",
+            "dates": "Sat 15 – Sat 15 May 2027",
+            "registered": null,
+            "country": "Portugal",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-0c88-750b-ae74-983451ea15aa",
+            "name": "New Zealand Pro",
+            "place": "Huntington Beach Pier, CA",
+            "tour": "Championship Tour (CT) · Men",
+            "rating": null,
+            "dates": "Sat 15 – Tue 25 May 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-0ca1-74c8-beab-b89331fc1561",
+            "name": "New Zealand Pro",
+            "place": "La Marginal, Puerto Rico",
+            "tour": "Championship Tour (CT) · Women",
+            "rating": null,
+            "dates": "Sat 15 – Tue 25 May 2027",
+            "registered": null,
+            "country": "Puerto Rico",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a13751-a9cb-74ae-b731-ac129ceb31d9",
+            "name": "Toa Pro Punaauia",
+            "place": "Taapuna, Tahiti",
+            "tour": "Qualifying Series (QS) · Men",
+            "rating": "2,000",
+            "dates": "Tue 18 – Mon 24 May 2027",
+            "registered": null,
+            "country": "French Polynesia",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-0eb0-708e-bcc3-72fb00ea775f",
+            "name": "Toa Pro Punaauia",
+            "place": "Taapuna, Tahiti",
+            "tour": "Qualifying Series (QS) · Women",
+            "rating": "2,000",
+            "dates": "Tue 18 – Mon 24 May 2027",
+            "registered": null,
+            "country": "French Polynesia",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-0eba-739b-84b5-ef601a2d11a0",
+            "name": "Coastal Edge Steel Pier Classic",
+            "place": "1st Street Jetty, VA",
+            "tour": "World Longboard Tour (LT) · Men",
+            "rating": null,
+            "dates": "Sun 23 – Tue 25 May 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          },
+          {
+            "id": "01a1375b-10a0-7316-a014-efdf7ccf52d3",
+            "name": "Coastal Edge Steel Pier Classic",
+            "place": "1st Street Jetty, VA",
+            "tour": "World Longboard Tour (LT) · Women",
+            "rating": null,
+            "dates": "Sun 23 – Tue 25 May 2027",
+            "registered": null,
+            "country": "United States",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "starred": false,
+            "band": "draft",
+            "archived": false
+          }
+        ],
+        "nextCursor": 42,
+        "counts": {
+          "all": 166,
+          "readyForEntries": 0,
+          "completed": 0,
+          "archived": 0
+        },
+        "filters": [
+          {
+            "code": "region",
+            "label": "Region",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "africa",
+                "label": "Africa"
+              },
+              {
+                "value": "asia",
+                "label": "Asia"
+              },
+              {
+                "value": "aus_oce",
+                "label": "Australia/Oceania"
+              },
+              {
+                "value": "europe",
+                "label": "Europe"
+              },
+              {
+                "value": "hawaii_tahiti",
+                "label": "Hawaii/Tahiti Nui"
+              },
+              {
+                "value": "north_america",
+                "label": "North America"
+              },
+              {
+                "value": "south_america",
+                "label": "South America"
+              }
+            ]
+          },
+          {
+            "code": "country",
+            "label": "Country",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "AE",
+                "label": "United Arab Emirates"
+              },
+              {
+                "value": "AU",
+                "label": "Australia"
+              },
+              {
+                "value": "BB",
+                "label": "Barbados"
+              },
+              {
+                "value": "BR",
+                "label": "Brazil"
+              },
+              {
+                "value": "CL",
+                "label": "Chile"
+              },
+              {
+                "value": "ES",
+                "label": "Spain"
+              },
+              {
+                "value": "FR",
+                "label": "France"
+              },
+              {
+                "value": "GB",
+                "label": "United Kingdom"
+              },
+              {
+                "value": "ID",
+                "label": "Indonesia"
+              },
+              {
+                "value": "IE",
+                "label": "Ireland"
+              },
+              {
+                "value": "IN",
+                "label": "India"
+              },
+              {
+                "value": "JP",
+                "label": "Japan"
+              },
+              {
+                "value": "KR",
+                "label": "South Korea"
+              },
+              {
+                "value": "MA",
+                "label": "Morocco"
+              },
+              {
+                "value": "PE",
+                "label": "Peru"
+              },
+              {
+                "value": "PF",
+                "label": "French Polynesia"
+              },
+              {
+                "value": "PH",
+                "label": "Philippines"
+              },
+              {
+                "value": "PR",
+                "label": "Puerto Rico"
+              },
+              {
+                "value": "PT",
+                "label": "Portugal"
+              },
+              {
+                "value": "SV",
+                "label": "El Salvador"
+              },
+              {
+                "value": "US",
+                "label": "United States"
+              },
+              {
+                "value": "US-HI",
+                "label": "Hawaii"
+              },
+              {
+                "value": "ZA",
+                "label": "South Africa"
+              }
+            ]
+          },
+          {
+            "code": "tour",
+            "label": "Tour",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "Challenger Series",
+                "label": "Challenger Series (CS)"
+              },
+              {
+                "value": "Championship Tour",
+                "label": "Championship Tour (CT)"
+              },
+              {
+                "value": "Pro Junior Series",
+                "label": "Pro Junior Series (PJ)"
+              },
+              {
+                "value": "Qualifying Series",
+                "label": "Qualifying Series (QS)"
+              },
+              {
+                "value": "World Longboard Tour",
+                "label": "World Longboard Tour (LT)"
+              }
+            ]
+          },
+          {
+            "code": "rating",
+            "label": "Rating",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "1000",
+                "label": "1,000"
+              },
+              {
+                "value": "2000",
+                "label": "2,000"
+              },
+              {
+                "value": "4000",
+                "label": "4,000"
+              },
+              {
+                "value": "6000",
+                "label": "6,000"
+              }
+            ]
+          },
+          {
+            "code": "gender",
+            "label": "Gender",
+            "kind": "toggle",
+            "options": [
+              {
+                "value": "men",
+                "label": "Men"
+              },
+              {
+                "value": "women",
+                "label": "Women"
+              }
+            ]
+          }
+        ],
+        "bands": [
+          {
+            "band": "draft",
+            "label": "DRAFT · 166 events"
+          }
+        ],
+        "summary": "30 tours · 166 events",
+        "progress": "Showing 42 of 166 events · the rest load as you scroll"
+      },
+      "at": "2026-10-15T00:33:30.528Z"
+    }
+  ],
+  "simpleSummary": {
+    "flow": [
+      "Use normal application role/session.",
+      "Open Beach Marshal.",
+      "Start a new conversation.",
+      "Send the exact recorded prompt.",
+      "Wait for the real stream and capture answer, tools and UI."
+    ],
+    "whatWentWrong": null,
+    "expected": "Resolves the explicitly named2027 season, uses search_events, and accurately reports source total and next_offset.",
+    "observed": "The 2027 season has **166 events**. Here are the first 20, all still in draft, and there are more pages after this one. Dates are local to each venue.\n\n1. Rip Curl Pro Bells Beach, Championship Tour, women's: April 1–11, Pismo Beach Pier, California\n2. Rip Curl Pro Bells Beach – MK QA, Championship Tour, men's: April 1–11, Lower Trestles, San Clemente, California\n3. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 2,000, women's: April 3–6, East Beach, Port Alfred, South Africa\n4. Royal St Andrew's Hotel Rip Curl Cup, Qualifying Series 4,000, men's: April 3–6, East Beach, Port Alfred, South Africa\n5. Bioglan Bells Beach Longboard Classic, World Longboard Tour, women's: April 5, La Marginal, Arecibo, Puerto Rico\n6. WSL Uruguay Natural Longboard Festival – LQS1,000, World Longboard Tour, men's: April 8–12, Maresias, São Sebastião, Brazil\n7. WSL Uruguay Natural Longboard Festival, World Longboard Tour, women's: April 8–12, Ponta Negra, Natal, Brazil\n8. eThekwini Surf Pro, Qualifying Series 2,000, women's: April 9–12, New Pier, Durban, South Africa\n9. eThekwini Surf Pro, Qualifying Series 2,000, men's: April 9–12, New Pier, Durban, South Africa\n10. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, men's: April 11–19, Señoritas, Punta Hermosa, Peru\n11. REMA Saquarema Surf Festival – Pro Junior, Junior 1,000, women's: April 11–19, El Gringo, Arica, Chile\n12. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, men's: April 11–19, Itamambuca, Ubatuba, Brazil\n13. REMA Saquarema Surf Festival – Longboard, World Longboard Tour, women's: April 11–19, Itaúna, Saquarema, Brazil\n14. Western Australia Margaret River Pro, Championship Tour, men's: April 16–26, Huntington Beach Pier, California\n15. Western Australia Margaret River Pro, Championship Tour, women's: April 16–26, La Marginal, Arecibo, Puerto Rico\n16. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, men's: April 21–26, Ponta Negra, Natal, Brazil\n17. WSL Latam Sâo Sebastião Pro LQS1,000, World Longboard Tour, women's: April 21–26, Praia da Taíba, São Gonçalo do Amarante, Brazil\n18. Vans Jack's Surfboards Pro, Qualifying Series 4,000, women's: April 22–26, Huntington Beach Pier, California\n19. Vans Jack's Surfboards Pro, Qualifying Series 4,000, men's: April 22–26, Huntington Beach Pier, California\n20. Surfboard Empire North Narrabeen Pro Junior Pres. by Florence, Junior 1,000, men's: April 22–26, North Narrabeen, New South Wales, Australia\n\nSeveral venues don't match the event names. For example, Bells Beach is set at Pismo Beach, and Margaret River at Huntington Beach and Arecibo. You may want to check those drafts.",
+    "awsStatus": "No per-case AWS diagnosis attached; see original execution evidence."
+  },
+  "evidenceLinks": {
+    "screenshot": "screenshots/BM-LIVE-T17-BM-LIVE-T17.png",
+    "cancelScreenshot": null,
+    "proposalScreenshot": null
+  }
+}

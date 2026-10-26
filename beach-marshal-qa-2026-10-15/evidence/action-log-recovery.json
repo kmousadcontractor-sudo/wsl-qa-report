@@ -1,0 +1,1444 @@
+{
+  "startedAt": "2026-10-15T00:23:12.512Z",
+  "environment": {
+    "app": "https://app.dev.worldsurfleague.com",
+    "api": "https://api.dev.worldsurfleague.com/api",
+    "timezone": "Africa/Cairo"
+  },
+  "fixture": {
+    "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+    "eventName": "QA Main Flow 6a41a52a",
+    "entryId": "01a13c40-3648-72cb-b13b-396818758d87",
+    "athleteName": "Pay Tester",
+    "entryState": {
+      "code": "confirmed",
+      "label": "Confirmed",
+      "tone": "neutral"
+    },
+    "payment": {
+      "code": "collected",
+      "label": "Collected",
+      "tone": "neutral"
+    },
+    "insurance": {
+      "state": "ok",
+      "label": "Insurance: verified",
+      "code": "verified"
+    },
+    "memberAthlete": {
+      "id": "01a13c43-c421-74a4-b266-58d419d278a3",
+      "name": "Junior Consent",
+      "firstName": "Junior",
+      "lastName": "Consent",
+      "initials": "JC",
+      "status": "active",
+      "signedCodes": [
+        "age_and_authority_certification",
+        "membership_terms_and_conditions",
+        "waiver_release_indemnity",
+        "health_insurance_authorization",
+        "coppa_verification",
+        "guardian_certification"
+      ],
+      "registeredByRole": "guardian",
+      "membership": {
+        "id": "01a13c44-1146-7098-be9e-b92ef8b398dd",
+        "productCode": "junior",
+        "status": {
+          "code": "active",
+          "label": "Membership active",
+          "tone": "success"
+        },
+        "validTo": "2026-12-31"
+      }
+    },
+    "otherOwnerAthlete": {
+      "id": "01a13c42-9891-71a5-b144-1b5687a5c929",
+      "name": "Pay Tester",
+      "firstName": "Pay",
+      "lastName": "Tester",
+      "initials": "PT",
+      "status": "active",
+      "signedCodes": [
+        "age_and_authority_certification",
+        "guardian_certification",
+        "health_insurance_authorization",
+        "membership_terms_and_conditions",
+        "waiver_release_indemnity"
+      ],
+      "registeredByRole": "self",
+      "membership": {
+        "id": "01a13c42-b280-7579-aa49-a1c403fbb204",
+        "productCode": "junior",
+        "status": {
+          "code": "active",
+          "label": "Membership active",
+          "tone": "success"
+        },
+        "validTo": "2026-12-31"
+      }
+    }
+  },
+  "actions": [
+    {
+      "id": "BM-LIVE-P05",
+      "role": "Public",
+      "action": "Read",
+      "prompt": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions",
+      "expected": "Uses allowed page/web lookup or honestly reports inability. Facts must match actual returned source.",
+      "expectedTools": [
+        "read_wsl_page"
+      ],
+      "referencePaths": [],
+      "web": true,
+      "startedAt": "2026-10-15T00:23:22.045Z",
+      "status": "NOT VERIFIED",
+      "evaluation": "Pending evidence-based semantic review",
+      "backendBefore": [],
+      "backendAfter": [],
+      "steps": [
+        "Use normal application role/session.",
+        "Open Beach Marshal.",
+        "Start a new conversation.",
+        "Send the exact recorded prompt.",
+        "Wait for the real stream and capture answer, tools and UI."
+      ],
+      "sentAt": "2026-10-15T00:23:22.397Z",
+      "videoStartSeconds": 6.449,
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "status": 200,
+        "correlationId": "8a203c76-bce8-4981-b33e-ac722f887f0f",
+        "input": {
+          "threadId": "16c9789d-190b-439e-a3b1-1f4ebaed3cdd",
+          "runId": "94bbad4c-9af5-44ba-a43b-bc06901c4c44",
+          "state": {},
+          "messages": [
+            {
+              "id": "85d6bf55-4057-42db-8b67-c6667ee56d40",
+              "role": "user",
+              "content": "Read this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions"
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [
+          {
+            "id": "toolu_bdrk_01Hahh4ZzqMH8UgFZzTZzD9A",
+            "name": "read_wsl_page",
+            "result": {
+              "status": "unavailable"
+            },
+            "parameters": {
+              "url": "https://www.worldsurfleague.com/pages/terms-and-conditions"
+            }
+          }
+        ],
+        "answer": "I can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.",
+        "finished": true,
+        "errors": [],
+        "runIds": [
+          {
+            "type": "RUN_STARTED",
+            "threadId": "16c9789d-190b-439e-a3b1-1f4ebaed3cdd",
+            "runId": "94bbad4c-9af5-44ba-a43b-bc06901c4c44"
+          },
+          {
+            "type": "RUN_FINISHED",
+            "threadId": "16c9789d-190b-439e-a3b1-1f4ebaed3cdd",
+            "runId": "94bbad4c-9af5-44ba-a43b-bc06901c4c44"
+          }
+        ],
+        "eventTypes": [
+          "RUN_STARTED",
+          "STEP_STARTED",
+          "STEP_FINISHED",
+          "TOOL_CALL_START",
+          "TOOL_CALL_ARGS",
+          "TOOL_CALL_END",
+          "STATE_SNAPSHOT",
+          "TOOL_CALL_RESULT",
+          "REASONING_START",
+          "REASONING_MESSAGE_START",
+          "REASONING_MESSAGE_CONTENT",
+          "REASONING_MESSAGE_END",
+          "REASONING_END",
+          "TEXT_MESSAGE_START",
+          "TEXT_MESSAGE_CONTENT",
+          "TEXT_MESSAGE_END",
+          "MESSAGES_SNAPSHOT",
+          "RUN_FINISHED"
+        ]
+      },
+      "tools": [
+        {
+          "id": "toolu_bdrk_01Hahh4ZzqMH8UgFZzTZzD9A",
+          "name": "read_wsl_page",
+          "result": {
+            "status": "unavailable"
+          },
+          "parameters": {
+            "url": "https://www.worldsurfleague.com/pages/terms-and-conditions"
+          }
+        }
+      ],
+      "aiResponse": "I can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.",
+      "actual": "I can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.",
+      "durationMs": 7179,
+      "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+      "visibleText": "Beach Marshal\nNew conversation\n\nRead this WSL page and tell me what it covers: https://www.worldsurfleague.com/pages/terms-and-conditions\n\nI can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.\n\nI can't read that page right now. You can open it straight from worldsurfleague.com. If it helps, I can also open the WSL legal documents in the app for you, such as the Terms of Use or the Privacy Policy.",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P05.png",
+      "videoEndSeconds": 14.727,
+      "proposal": null,
+      "network": [
+        {
+          "method": "POST",
+          "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+          "at": "2026-10-15T00:23:22.510Z"
+        }
+      ],
+      "finishedAt": "2026-10-15T00:23:30.675Z"
+    },
+    {
+      "id": "BM-LIVE-P06",
+      "role": "Public",
+      "action": "Read",
+      "prompt": "What are the latest WSL rankings? Use the official source and tell me if you cannot verify them.",
+      "expected": "Verified official source and timestamp or honest unavailability; no fabricated live rankings.",
+      "expectedTools": [
+        "search_web"
+      ],
+      "referencePaths": [],
+      "web": true,
+      "startedAt": "2026-10-15T00:23:30.679Z",
+      "status": "NOT VERIFIED",
+      "evaluation": "Pending evidence-based semantic review",
+      "backendBefore": [],
+      "backendAfter": [],
+      "steps": [
+        "Use normal application role/session.",
+        "Open Beach Marshal.",
+        "Start a new conversation.",
+        "Send the exact recorded prompt.",
+        "Wait for the real stream and capture answer, tools and UI."
+      ],
+      "sentAt": "2026-10-15T00:23:36.399Z",
+      "videoStartSeconds": 20.451,
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "status": 200,
+        "correlationId": "0f2aea53-6635-4cb2-ab9a-3a376fd12929",
+        "input": {
+          "threadId": "2d84912d-4a37-48a2-9dbc-bdf7c1c39b77",
+          "runId": "e7c01977-b3dd-456a-8684-ae83089ab124",
+          "state": {},
+          "messages": [
+            {
+              "id": "a8931d53-7a36-421e-ab7f-5582f3915115",
+              "role": "user",
+              "content": "What are the latest WSL rankings? Use the official source and tell me if you cannot verify them."
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [
+          {
+            "id": "toolu_bdrk_01FyLNVAoh31p7v6YveYCfNF",
+            "name": "read_wsl_page",
+            "result": {
+              "status": "ok",
+              "page": {
+                "url": "https://www.worldsurfleague.com/athletes/tour/mct",
+                "text": "Men's Championship Tour Rankings\n\n1 27,8004,7451,0006,0853,32010,0001,0004,7456,085--- 42,780 2 14,7453,3204,7453,32010,0007,8001,0006,0851,000--- 40,015 3 13,3206,0853,32010,0007,8003,3206,0853,3203,320--- 39,930 4 110,0003,3203,3204,7451,0004,7453,3203,32010,000--- 39,450 5 16,0857,8003,3203,3206,0851,0001,0007,8001,000--- 35,410 6-6,0853,3201,0006,0851,0001,0007,8006,0853,320--- 33,695 7 34,7453,3201,0003,3206,0853,3201,0003,3207,800--- 31,910 8 11,0004,74510,0001,0001,0006,0854,7451,0003,320--- 30,895 9 14,7456,0854,7451,0003,3204,7451,0003,3201,000--- 27,960 10 13,32010,0003,3201,0001,0003,3204,7451,0001,000--- 26,705 11-1,0001,0004,7451,0004,7454,7453,3204,7453,320--- 26,620 12-5003,3206,0853,3203,3203,3203,3201,0003,320--- 26,005 13 41,0001,0001,0004,7451,0001,0001,00010,0006,085--- 24,830 14 11,0003,3203,3203,3203,3203,3204,7451,0003,320--- 24,665 15-3,3201,0003,3203,3204,7453,3201,0001,0004,745--- 23,770 16 35005003,3201,0004,7453,3201,0004,7454,745--- 22,875 17 31,0003,3207,8001,0001,0001,0003,3204,7451,000--- 22,185 18 21,0001,0001,0007,8001,0004,7451,0003,3201,000--- 19,865 19 11,0003,3201,0001,0003,3206,0853,3201,0001,000--- 19,045 20-1,0001,0001,0001,0001,00050010,0003,3201,000--- 18,320 21-3,3201,0006,0854,7451,0001,0001,0001,0001,000--- 18,150 22 33,3201,0003,3201,0001,0001,0001,0003,3204,745--- 17,705\n\nPostseason Qualification Line\n\n23 14,7451,0001,0001,0003,3201,0003,3203,3201,000--- 17,705 24-1,0001,0001,0001,0004,7451,0004,7451,0003,320--- 16,810 25 21,0004,7451,0003,3203,3201,0001,0001,0001,000--- 15,385 26 31,0005004,7451,0001,0001,0001,0001,0004,745--- 14,490 27 13,3201,0001,0003,3201,0001,0003,3201,0001,000--- 13,960 28 13,3201,0001,0004,7451,0001,0001,0001,0001,000--- 13,065 29 15001,0005005001,0001,0006,0851,0001,000--- 11,585 30-1,0004,7451,0001,0001,0001,0001,0001,000500--- 10,745 31-1,0001,0001,0001,0003,3201,0005001,0001,000--- 9,320 32 11,0005001,0001,0001,0005001,0005003,320--- 8,820 33 13,3201,0001,0001,000500500500500500--- 7,820 34-----500*3,320*500*1,000*500*--- 5,820 35-5005005005005005005005001,000--- 4,000",
+                "truncated": false
+              }
+            },
+            "parameters": {
+              "url": "https://www.worldsurfleague.com/athletes/tour/mct"
+            }
+          }
+        ],
+        "answer": "I couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where.\n\nFrom that page, the top of the table is:\n1. 42,780 points\n2. 40,015 points\n3. 39,930 points\n4. 39,450 points\n5. 35,410 points\n\nThe page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.",
+        "finished": true,
+        "errors": [],
+        "runIds": [
+          {
+            "type": "RUN_STARTED",
+            "threadId": "2d84912d-4a37-48a2-9dbc-bdf7c1c39b77",
+            "runId": "e7c01977-b3dd-456a-8684-ae83089ab124"
+          },
+          {
+            "type": "RUN_FINISHED",
+            "threadId": "2d84912d-4a37-48a2-9dbc-bdf7c1c39b77",
+            "runId": "e7c01977-b3dd-456a-8684-ae83089ab124"
+          }
+        ],
+        "eventTypes": [
+          "RUN_STARTED",
+          "STEP_STARTED",
+          "STEP_FINISHED",
+          "TEXT_MESSAGE_START",
+          "TEXT_MESSAGE_CONTENT",
+          "TEXT_MESSAGE_END",
+          "TOOL_CALL_START",
+          "TOOL_CALL_ARGS",
+          "TOOL_CALL_END",
+          "STATE_SNAPSHOT",
+          "TOOL_CALL_RESULT",
+          "REASONING_START",
+          "REASONING_MESSAGE_START",
+          "REASONING_MESSAGE_CONTENT",
+          "REASONING_MESSAGE_END",
+          "REASONING_END",
+          "MESSAGES_SNAPSHOT",
+          "RUN_FINISHED"
+        ]
+      },
+      "tools": [
+        {
+          "id": "toolu_bdrk_01FyLNVAoh31p7v6YveYCfNF",
+          "name": "read_wsl_page",
+          "result": {
+            "status": "ok",
+            "page": {
+              "url": "https://www.worldsurfleague.com/athletes/tour/mct",
+              "text": "Men's Championship Tour Rankings\n\n1 27,8004,7451,0006,0853,32010,0001,0004,7456,085--- 42,780 2 14,7453,3204,7453,32010,0007,8001,0006,0851,000--- 40,015 3 13,3206,0853,32010,0007,8003,3206,0853,3203,320--- 39,930 4 110,0003,3203,3204,7451,0004,7453,3203,32010,000--- 39,450 5 16,0857,8003,3203,3206,0851,0001,0007,8001,000--- 35,410 6-6,0853,3201,0006,0851,0001,0007,8006,0853,320--- 33,695 7 34,7453,3201,0003,3206,0853,3201,0003,3207,800--- 31,910 8 11,0004,74510,0001,0001,0006,0854,7451,0003,320--- 30,895 9 14,7456,0854,7451,0003,3204,7451,0003,3201,000--- 27,960 10 13,32010,0003,3201,0001,0003,3204,7451,0001,000--- 26,705 11-1,0001,0004,7451,0004,7454,7453,3204,7453,320--- 26,620 12-5003,3206,0853,3203,3203,3203,3201,0003,320--- 26,005 13 41,0001,0001,0004,7451,0001,0001,00010,0006,085--- 24,830 14 11,0003,3203,3203,3203,3203,3204,7451,0003,320--- 24,665 15-3,3201,0003,3203,3204,7453,3201,0001,0004,745--- 23,770 16 35005003,3201,0004,7453,3201,0004,7454,745--- 22,875 17 31,0003,3207,8001,0001,0001,0003,3204,7451,000--- 22,185 18 21,0001,0001,0007,8001,0004,7451,0003,3201,000--- 19,865 19 11,0003,3201,0001,0003,3206,0853,3201,0001,000--- 19,045 20-1,0001,0001,0001,0001,00050010,0003,3201,000--- 18,320 21-3,3201,0006,0854,7451,0001,0001,0001,0001,000--- 18,150 22 33,3201,0003,3201,0001,0001,0001,0003,3204,745--- 17,705\n\nPostseason Qualification Line\n\n23 14,7451,0001,0001,0003,3201,0003,3203,3201,000--- 17,705 24-1,0001,0001,0001,0004,7451,0004,7451,0003,320--- 16,810 25 21,0004,7451,0003,3203,3201,0001,0001,0001,000--- 15,385 26 31,0005004,7451,0001,0001,0001,0001,0004,745--- 14,490 27 13,3201,0001,0003,3201,0001,0003,3201,0001,000--- 13,960 28 13,3201,0001,0004,7451,0001,0001,0001,0001,000--- 13,065 29 15001,0005005001,0001,0006,0851,0001,000--- 11,585 30-1,0004,7451,0001,0001,0001,0001,0001,000500--- 10,745 31-1,0001,0001,0001,0003,3201,0005001,0001,000--- 9,320 32 11,0005001,0001,0001,0005001,0005003,320--- 8,820 33 13,3201,0001,0001,000500500500500500--- 7,820 34-----500*3,320*500*1,000*500*--- 5,820 35-5005005005005005005005001,000--- 4,000",
+              "truncated": false
+            }
+          },
+          "parameters": {
+            "url": "https://www.worldsurfleague.com/athletes/tour/mct"
+          }
+        }
+      ],
+      "aiResponse": "I couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where.\n\nFrom that page, the top of the table is:\n1. 42,780 points\n2. 40,015 points\n3. 39,930 points\n4. 39,450 points\n5. 35,410 points\n\nThe page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.",
+      "actual": "I couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where.\n\nFrom that page, the top of the table is:\n1. 42,780 points\n2. 40,015 points\n3. 39,930 points\n4. 39,450 points\n5. 35,410 points\n\nThe page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.",
+      "durationMs": 6532,
+      "urlAfter": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+      "visibleText": "Beach Marshal\nNew conversation\n\nWhat are the latest WSL rankings? Use the official source and tell me if you cannot verify them.\n\nChecking the official WSL rankings…\n\nI couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where.\n\nFrom that page, the top of the table is:\n\n42,780 points\n40,015 points\n39,930 points\n39,450 points\n35,410 points\n\nThe page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.\n\nI couldn't fully verify them. The official Men's Championship Tour rankings page on worldsurfleague.com loaded, but the text I can read shows only positions and points, with no surfer names. So I can't tell you who is where. From that page, the top of the table is: 1. 42,780 points 2. 40,015 points 3. 39,930 points 4. 39,450 points 5. 35,410 points The page also shows a postseason qualification line after 22nd place, which is on 17,705 points. I didn't check the women's tour. For names and the women's rankings, the rankings pages on worldsurfleague.com have the full list.",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P06.png",
+      "videoEndSeconds": 27.882,
+      "proposal": null,
+      "network": [
+        {
+          "method": "POST",
+          "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+          "at": "2026-10-15T00:23:36.423Z"
+        }
+      ],
+      "finishedAt": "2026-10-15T00:23:43.831Z"
+    },
+    {
+      "id": "BM-LIVE-P07",
+      "role": "Public",
+      "action": "Navigation",
+      "prompt": "Open the sign-in page. Do not sign in for me.",
+      "expected": "Allowed login navigation; no account or domain changes.",
+      "expectedTools": [
+        "open_page"
+      ],
+      "referencePaths": [],
+      "navigation": "/login",
+      "startedAt": "2026-10-15T00:23:43.835Z",
+      "status": "NOT VERIFIED",
+      "evaluation": "Pending evidence-based semantic review",
+      "backendBefore": [],
+      "backendAfter": [],
+      "steps": [
+        "Use normal application role/session.",
+        "Open Beach Marshal.",
+        "Start a new conversation.",
+        "Send the exact recorded prompt.",
+        "Wait for the real stream and capture answer, tools and UI."
+      ],
+      "sentAt": "2026-10-15T00:23:50.400Z",
+      "videoStartSeconds": 34.452,
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "status": 200,
+        "correlationId": "1d693265-08dc-4247-bec7-c19e753d91de",
+        "input": {
+          "threadId": "fcffc107-dbef-4e8e-8ffc-c48496b07865",
+          "runId": "d9ef1cf4-eb6e-4eaf-b226-f976faab6cd5",
+          "state": {},
+          "messages": [
+            {
+              "id": "ef84f191-d390-4478-9ea5-187389a174ac",
+              "role": "user",
+              "content": "Open the sign-in page. Do not sign in for me."
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [
+          {
+            "id": "toolu_bdrk_016K35grWuWQoGQim9ZMZpYB",
+            "name": "open_page",
+            "result": {
+              "status": "ok",
+              "navigate": {
+                "page": "login",
+                "params": {},
+                "label": "Sign-in page"
+              }
+            },
+            "parameters": {
+              "page": "login",
+              "label": "Sign-in page"
+            }
+          }
+        ],
+        "answer": "I've opened the sign-in page, and I haven't signed you in. You can enter your details there whenever you want.",
+        "finished": true,
+        "errors": [],
+        "runIds": [
+          {
+            "type": "RUN_STARTED",
+            "threadId": "fcffc107-dbef-4e8e-8ffc-c48496b07865",
+            "runId": "d9ef1cf4-eb6e-4eaf-b226-f976faab6cd5"
+          },
+          {
+            "type": "RUN_FINISHED",
+            "threadId": "fcffc107-dbef-4e8e-8ffc-c48496b07865",
+            "runId": "d9ef1cf4-eb6e-4eaf-b226-f976faab6cd5"
+          }
+        ],
+        "eventTypes": [
+          "RUN_STARTED",
+          "STEP_STARTED",
+          "STEP_FINISHED",
+          "TOOL_CALL_START",
+          "TOOL_CALL_ARGS",
+          "TOOL_CALL_END",
+          "STATE_SNAPSHOT",
+          "TOOL_CALL_RESULT",
+          "TEXT_MESSAGE_START",
+          "TEXT_MESSAGE_CONTENT",
+          "TEXT_MESSAGE_END",
+          "MESSAGES_SNAPSHOT",
+          "RUN_FINISHED"
+        ]
+      },
+      "tools": [
+        {
+          "id": "toolu_bdrk_016K35grWuWQoGQim9ZMZpYB",
+          "name": "open_page",
+          "result": {
+            "status": "ok",
+            "navigate": {
+              "page": "login",
+              "params": {},
+              "label": "Sign-in page"
+            }
+          },
+          "parameters": {
+            "page": "login",
+            "label": "Sign-in page"
+          }
+        }
+      ],
+      "aiResponse": "I've opened the sign-in page, and I haven't signed you in. You can enter your details there whenever you want.",
+      "actual": "I've opened the sign-in page, and I haven't signed you in. You can enter your details there whenever you want.",
+      "durationMs": 3746,
+      "urlAfter": "https://app.dev.worldsurfleague.com/login",
+      "visibleText": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nLog In\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited States\nEnglish\nLog In to WSL\nEmail Address\nPassword\nLog In\nOr Continue With\n\nDon't have an account? Create one",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-P07.png",
+      "videoEndSeconds": 69.097,
+      "proposal": null,
+      "network": [
+        {
+          "method": "POST",
+          "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+          "at": "2026-10-15T00:23:50.423Z"
+        }
+      ],
+      "finishedAt": "2026-10-15T00:24:25.045Z"
+    },
+    {
+      "id": "BM-LIVE-T15",
+      "role": "TourManager",
+      "action": "Read",
+      "prompt": "Without opening another page, tell me the readiness blockers and readiness counts returned for QA Main Flow 6a41a52a. Read its event overview data.",
+      "expected": "Answer uses the actual overview response and identifies any readiness blockers; navigation alone is not an answer.",
+      "expectedTools": [
+        "get_event_overview"
+      ],
+      "referencePaths": [
+        "/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/overview"
+      ],
+      "startedAt": "2026-10-15T00:24:33.699Z",
+      "status": "NOT VERIFIED",
+      "evaluation": "Pending evidence-based semantic review",
+      "backendBefore": [
+        {
+          "method": "GET",
+          "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/overview",
+          "status": 200,
+          "body": {
+            "overview": {
+              "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+              "name": "QA Main Flow 6a41a52a",
+              "starred": false,
+              "status": {
+                "code": "closed-for-entries",
+                "label": "Closed for entries",
+                "tone": "warning"
+              },
+              "statusOptions": [
+                {
+                  "code": "ready-for-entries",
+                  "label": "Ready for entries",
+                  "destructive": false
+                },
+                {
+                  "code": "cancelled",
+                  "label": "Cancel event",
+                  "destructive": true
+                },
+                {
+                  "code": "archived",
+                  "label": "Archive",
+                  "destructive": true
+                }
+              ],
+              "seasonName": "2026-27",
+              "seasonId": "01a136e0-c369-7630-a1ca-28af6b2b216e",
+              "tourName": "Qualifying Series (QS) · Men",
+              "tour": "01a136e0-a5d2-7281-bd03-46b0fe771f3b",
+              "tourFilter": "Qualifying Series",
+              "readOnly": false,
+              "version": 5,
+              "summary": "4,000 · Sat 19 – Sat 19 Dec 2026 · 1st Street Jetty, VA",
+              "athletes": 1,
+              "divisions": [
+                {
+                  "id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                  "name": "This event",
+                  "registered": 1,
+                  "field": 96,
+                  "alternates": 0,
+                  "toReview": null,
+                  "status": {
+                    "code": "closed-for-entries",
+                    "label": "Closed for entries",
+                    "tone": "warning"
+                  }
+                }
+              ],
+              "details": {
+                "seasonTour": "2026-27 · Qualifying Series (QS) · Men",
+                "dates": "Sat 19 – Sat 19 Dec 2026",
+                "location": "1st Street Jetty, VA · EST",
+                "regions": "North America (primary)",
+                "registrationOpened": "14 Oct 2026 · 17:09 EDT",
+                "registrationClosed": "14 Oct 2026 · 17:10 EDT",
+                "entryFee": "USD 225 from N. AMERICA"
+              }
+            }
+          },
+          "at": "2026-10-15T00:24:34.023Z"
+        }
+      ],
+      "backendAfter": [],
+      "steps": [
+        "Use normal application role/session.",
+        "Open Beach Marshal.",
+        "Start a new conversation.",
+        "Send the exact recorded prompt.",
+        "Wait for the real stream and capture answer, tools and UI."
+      ],
+      "sentAt": "2026-10-15T00:24:34.216Z",
+      "videoStartSeconds": 78.268,
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "status": 200,
+        "correlationId": "3b022144-6cd2-4799-a5d7-8d9a32079f26",
+        "input": {
+          "threadId": "a9e7d21f-1eb0-457c-a4b1-9042db973973",
+          "runId": "b9813995-4e42-42bc-8f99-82c15bc347f9",
+          "state": {},
+          "messages": [
+            {
+              "id": "fa699a66-f2c4-4d42-84cc-5debd6158d59",
+              "role": "user",
+              "content": "Without opening another page, tell me the readiness blockers and readiness counts returned for QA Main Flow 6a41a52a. Read its event overview data."
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [
+          {
+            "id": "toolu_bdrk_01DZdRrHK6f4TnBnmYrEeprs",
+            "name": "find_events",
+            "result": {
+              "status": "ok",
+              "events": [
+                {
+                  "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                  "name": "QA Main Flow 6a41a52a",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 1
+                },
+                {
+                  "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+                  "name": "QA Main Flow 93ae6bbc",
+                  "startDate": "2026-12-18",
+                  "endDate": "2026-12-18",
+                  "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 0.8
+                },
+                {
+                  "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+                  "name": "QA Main Flow 6e301a29",
+                  "startDate": "2026-12-20",
+                  "endDate": "2026-12-20",
+                  "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 0.82
+                },
+                {
+                  "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+                  "name": "QA Main Flow b145bd93",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 0.79
+                },
+                {
+                  "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+                  "name": "QA Checklist 20261014081146624-d9f105 21",
+                  "startDate": "2026-11-23",
+                  "endDate": "2026-11-23",
+                  "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                  "tour": "International Qualifying Series",
+                  "division": "mens",
+                  "score": 0.73
+                }
+              ],
+              "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+            },
+            "parameters": {
+              "text": "QA Main Flow 6a41a52a"
+            }
+          },
+          {
+            "id": "toolu_bdrk_011ppaqyFyhtR2BTgRRD7Em5",
+            "name": "get_event_overview",
+            "result": {
+              "status": "unavailable"
+            },
+            "parameters": {
+              "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+            }
+          }
+        ],
+        "answer": "I can't read the event overview for QA Main Flow 6a41a52a right now, so I don't have its readiness blockers or counts. The event itself is there: a men's Qualifying Series event on December 19, 2026 at 1st Street Jetty in Virginia Beach. You can ask me again in a bit, or check the event's overview tab in the hub.",
+        "finished": true,
+        "errors": [],
+        "runIds": [
+          {
+            "type": "RUN_STARTED",
+            "threadId": "a9e7d21f-1eb0-457c-a4b1-9042db973973",
+            "runId": "b9813995-4e42-42bc-8f99-82c15bc347f9"
+          },
+          {
+            "type": "RUN_FINISHED",
+            "threadId": "a9e7d21f-1eb0-457c-a4b1-9042db973973",
+            "runId": "b9813995-4e42-42bc-8f99-82c15bc347f9"
+          }
+        ],
+        "eventTypes": [
+          "RUN_STARTED",
+          "STEP_STARTED",
+          "STEP_FINISHED",
+          "TOOL_CALL_START",
+          "TOOL_CALL_ARGS",
+          "TOOL_CALL_END",
+          "STATE_SNAPSHOT",
+          "TOOL_CALL_RESULT",
+          "REASONING_START",
+          "REASONING_MESSAGE_START",
+          "REASONING_MESSAGE_CONTENT",
+          "REASONING_MESSAGE_END",
+          "REASONING_END",
+          "TEXT_MESSAGE_START",
+          "TEXT_MESSAGE_CONTENT",
+          "TEXT_MESSAGE_END",
+          "MESSAGES_SNAPSHOT",
+          "RUN_FINISHED"
+        ]
+      },
+      "tools": [
+        {
+          "id": "toolu_bdrk_01DZdRrHK6f4TnBnmYrEeprs",
+          "name": "find_events",
+          "result": {
+            "status": "ok",
+            "events": [
+              {
+                "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "name": "QA Main Flow 6a41a52a",
+                "startDate": "2026-12-19",
+                "endDate": "2026-12-19",
+                "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 1
+              },
+              {
+                "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+                "name": "QA Main Flow 93ae6bbc",
+                "startDate": "2026-12-18",
+                "endDate": "2026-12-18",
+                "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 0.8
+              },
+              {
+                "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+                "name": "QA Main Flow 6e301a29",
+                "startDate": "2026-12-20",
+                "endDate": "2026-12-20",
+                "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 0.82
+              },
+              {
+                "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+                "name": "QA Main Flow b145bd93",
+                "startDate": "2026-12-19",
+                "endDate": "2026-12-19",
+                "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 0.79
+              },
+              {
+                "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+                "name": "QA Checklist 20261014081146624-d9f105 21",
+                "startDate": "2026-11-23",
+                "endDate": "2026-11-23",
+                "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                "tour": "International Qualifying Series",
+                "division": "mens",
+                "score": 0.73
+              }
+            ],
+            "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+          },
+          "parameters": {
+            "text": "QA Main Flow 6a41a52a"
+          }
+        },
+        {
+          "id": "toolu_bdrk_011ppaqyFyhtR2BTgRRD7Em5",
+          "name": "get_event_overview",
+          "result": {
+            "status": "unavailable"
+          },
+          "parameters": {
+            "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+          }
+        }
+      ],
+      "aiResponse": "I can't read the event overview for QA Main Flow 6a41a52a right now, so I don't have its readiness blockers or counts. The event itself is there: a men's Qualifying Series event on December 19, 2026 at 1st Street Jetty in Virginia Beach. You can ask me again in a bit, or check the event's overview tab in the hub.",
+      "actual": "I can't read the event overview for QA Main Flow 6a41a52a right now, so I don't have its readiness blockers or counts. The event itself is there: a men's Qualifying Series event on December 19, 2026 at 1st Street Jetty in Virginia Beach. You can ask me again in a bit, or check the event's overview tab in the hub.",
+      "durationMs": 6780,
+      "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events",
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWithout opening another page, tell me the readiness blockers and readiness counts returned for QA Main Flow 6a41a52a. Read its event overview data.\n\nI can't read the event overview for QA Main Flow 6a41a52a right now, so I don't have its readiness blockers or counts. The event itself is there: a men's Qualifying Series event on December 19, 2026 at 1st Street Jetty in Virginia Beach. You can ask me again in a bit, or check the event's overview tab in the hub.\n\nI can't read the event overview for QA Main Flow 6a41a52a right now, so I don't have its readiness blockers or counts. The event itself is there: a men's Qualifying Series event on December 19, 2026 at 1st Street Jetty in Virginia Beach. You can ask me again in a bit, or check the event's overview tab in the hub.",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-T15.png",
+      "videoEndSeconds": 85.837,
+      "proposal": null,
+      "network": [
+        {
+          "method": "POST",
+          "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+          "at": "2026-10-15T00:24:34.364Z"
+        }
+      ],
+      "finishedAt": "2026-10-15T00:24:41.785Z"
+    },
+    {
+      "id": "BM-LIVE-T16",
+      "role": "TourManager",
+      "action": "Read",
+      "prompt": "Without opening another page, summarize the last three audit-history changes for QA Main Flow 6a41a52a. Read its event history data.",
+      "expected": "Actual history changes are reported, or a lookup failure is disclosed. Navigation alone does not verify history facts.",
+      "expectedTools": [
+        "get_event_history"
+      ],
+      "referencePaths": [
+        "/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/history"
+      ],
+      "startedAt": "2026-10-15T00:24:41.789Z",
+      "status": "NOT VERIFIED",
+      "evaluation": "Pending evidence-based semantic review",
+      "backendBefore": [
+        {
+          "method": "GET",
+          "url": "https://api.dev.worldsurfleague.com/api/tour-manager/events/01a13c3f-e1ac-7363-81aa-30e22cf9164e/history",
+          "status": 200,
+          "body": {
+            "entries": [
+              {
+                "id": "01a13c40-d905-7073-9d77-e12a32d8fc6c",
+                "at": "14 Oct 21:10 UTC",
+                "actor": "System · Scheduler",
+                "action": "Charge attempt",
+                "athlete": "Pay Tester"
+              },
+              {
+                "id": "01a13c40-d18e-7399-be1f-1175b85b206b",
+                "at": "14 Oct 21:10 UTC",
+                "actor": "T. Manager 101",
+                "action": "Charge attempt",
+                "athlete": "Pay Tester"
+              },
+              {
+                "id": "01a13c40-ca6b-761c-bd5f-0ce78e3d34c1",
+                "at": "14 Oct 21:10 UTC",
+                "actor": "T. Manager 101",
+                "action": "Status · Ready for entries → Closed for entries · by hand, replacing the scheduled time",
+                "athlete": null
+              },
+              {
+                "id": "01a13c3f-e9db-737f-a313-7878325dd38a",
+                "at": "14 Oct 21:09 UTC",
+                "actor": "T. Manager 101",
+                "action": "Status · Confirmed → Ready for entries · by hand, replacing the scheduled time",
+                "athlete": null
+              },
+              {
+                "id": "01a13c3f-e72c-7410-a361-4ab912452ff0",
+                "at": "14 Oct 21:09 UTC",
+                "actor": "T. Manager 101",
+                "action": "Status · Tentative → Confirmed",
+                "athlete": null
+              },
+              {
+                "id": "01a13c3f-e462-70aa-a156-273b0e1d55a3",
+                "at": "14 Oct 21:09 UTC",
+                "actor": "T. Manager 101",
+                "action": "Status · Draft → Tentative",
+                "athlete": null
+              },
+              {
+                "id": "01a13c3f-e1d8-7037-a219-12498b4d1917",
+                "at": "14 Oct 21:09 UTC",
+                "actor": "T. Manager 101",
+                "action": "Event created as Draft",
+                "athlete": null
+              }
+            ]
+          },
+          "at": "2026-10-15T00:24:42.093Z"
+        }
+      ],
+      "backendAfter": [],
+      "steps": [
+        "Use normal application role/session.",
+        "Open Beach Marshal.",
+        "Start a new conversation.",
+        "Send the exact recorded prompt.",
+        "Wait for the real stream and capture answer, tools and UI."
+      ],
+      "sentAt": "2026-10-15T00:24:42.253Z",
+      "videoStartSeconds": 86.305,
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.dev.worldsurfleague.com/api/assistant/run",
+        "status": 200,
+        "correlationId": "84cc8c11-639d-4087-a91c-3c436efb5ac5",
+        "input": {
+          "threadId": "63cf5a83-9d3f-4446-b994-6ff684bbf622",
+          "runId": "5e0ee610-f274-4f49-b921-9047219af618",
+          "state": {},
+          "messages": [
+            {
+              "id": "817f310f-724f-4911-a9b5-7dd8f6952afb",
+              "role": "user",
+              "content": "Without opening another page, summarize the last three audit-history changes for QA Main Flow 6a41a52a. Read its event history data."
+            }
+          ],
+          "tools": [],
+          "context": [],
+          "forwardedProps": {}
+        }
+      },
+      "stream": {
+        "tools": [
+          {
+            "id": "toolu_bdrk_01UDhEwuGaiTTgQE1ob35VEF",
+            "name": "find_events",
+            "result": {
+              "status": "ok",
+              "events": [
+                {
+                  "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                  "name": "QA Main Flow 6a41a52a",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 1
+                },
+                {
+                  "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+                  "name": "QA Main Flow 93ae6bbc",
+                  "startDate": "2026-12-18",
+                  "endDate": "2026-12-18",
+                  "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 0.8
+                },
+                {
+                  "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+                  "name": "QA Main Flow 6e301a29",
+                  "startDate": "2026-12-20",
+                  "endDate": "2026-12-20",
+                  "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 0.82
+                },
+                {
+                  "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+                  "name": "QA Main Flow b145bd93",
+                  "startDate": "2026-12-19",
+                  "endDate": "2026-12-19",
+                  "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                  "tour": "Qualifying Series",
+                  "division": "mens",
+                  "score": 0.79
+                },
+                {
+                  "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+                  "name": "QA Checklist 20261014081146624-d9f105 21",
+                  "startDate": "2026-11-23",
+                  "endDate": "2026-11-23",
+                  "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                  "tour": "International Qualifying Series",
+                  "division": "mens",
+                  "score": 0.73
+                }
+              ],
+              "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+            },
+            "parameters": {
+              "text": "QA Main Flow 6a41a52a"
+            }
+          },
+          {
+            "id": "toolu_bdrk_01F7jnnevH5ovGsjdttax3Vq",
+            "name": "get_event_history",
+            "result": {
+              "status": "ok",
+              "history": [
+                {
+                  "occurred_at": "2026-10-14T21:10:45.047617+00:00",
+                  "actor": "",
+                  "change_type": "charge_attempt",
+                  "changes": [],
+                  "reason": "succeeded",
+                  "athlete_name": "Pay Tester",
+                  "channel": null
+                },
+                {
+                  "occurred_at": "2026-10-14T21:10:43.303110+00:00",
+                  "actor": "T. Manager 101",
+                  "change_type": "charge_attempt",
+                  "changes": [],
+                  "reason": "charge started",
+                  "athlete_name": "Pay Tester",
+                  "channel": null
+                },
+                {
+                  "occurred_at": "2026-10-14T21:10:41.464864+00:00",
+                  "actor": "T. Manager 101",
+                  "change_type": "status_change",
+                  "changes": [
+                    {
+                      "field": "status",
+                      "before": "ready_for_entries",
+                      "after": "closed_for_entries"
+                    },
+                    {
+                      "field": "registration_closes_at",
+                      "before": "2026-10-22T21:00:00+00:00",
+                      "after": "2026-10-14T21:10:41.499942+00:00"
+                    }
+                  ],
+                  "reason": null,
+                  "athlete_name": null,
+                  "channel": null
+                },
+                {
+                  "occurred_at": "2026-10-14T21:09:43.994595+00:00",
+                  "actor": "T. Manager 101",
+                  "change_type": "status_change",
+                  "changes": [
+                    {
+                      "field": "status",
+                      "before": "confirmed",
+                      "after": "ready_for_entries"
+                    },
+                    {
+                      "field": "registration_opens_at",
+                      "before": "2026-10-14T04:00:00+00:00",
+                      "after": "2026-10-14T21:09:44.005141+00:00"
+                    }
+                  ],
+                  "reason": null,
+                  "athlete_name": null,
+                  "channel": null
+                },
+                {
+                  "occurred_at": "2026-10-14T21:09:43.314618+00:00",
+                  "actor": "T. Manager 101",
+                  "change_type": "status_change",
+                  "changes": [
+                    {
+                      "field": "status",
+                      "before": "tentative",
+                      "after": "confirmed"
+                    }
+                  ],
+                  "reason": null,
+                  "athlete_name": null,
+                  "channel": null
+                },
+                {
+                  "occurred_at": "2026-10-14T21:09:42.600538+00:00",
+                  "actor": "T. Manager 101",
+                  "change_type": "status_change",
+                  "changes": [
+                    {
+                      "field": "status",
+                      "before": "draft",
+                      "after": "tentative"
+                    }
+                  ],
+                  "reason": null,
+                  "athlete_name": null,
+                  "channel": null
+                },
+                {
+                  "occurred_at": "2026-10-14T21:09:41.838396+00:00",
+                  "actor": "T. Manager 101",
+                  "change_type": "event_created",
+                  "changes": [],
+                  "reason": null,
+                  "athlete_name": null,
+                  "channel": null
+                }
+              ],
+              "total": 7
+            },
+            "parameters": {
+              "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+            }
+          }
+        ],
+        "answer": "Here are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step.\n2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester.\n3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+        "finished": true,
+        "errors": [],
+        "runIds": [
+          {
+            "type": "RUN_STARTED",
+            "threadId": "63cf5a83-9d3f-4446-b994-6ff684bbf622",
+            "runId": "5e0ee610-f274-4f49-b921-9047219af618"
+          },
+          {
+            "type": "RUN_FINISHED",
+            "threadId": "63cf5a83-9d3f-4446-b994-6ff684bbf622",
+            "runId": "5e0ee610-f274-4f49-b921-9047219af618"
+          }
+        ],
+        "eventTypes": [
+          "RUN_STARTED",
+          "STEP_STARTED",
+          "STEP_FINISHED",
+          "TOOL_CALL_START",
+          "TOOL_CALL_ARGS",
+          "TOOL_CALL_END",
+          "STATE_SNAPSHOT",
+          "TOOL_CALL_RESULT",
+          "REASONING_START",
+          "REASONING_MESSAGE_START",
+          "REASONING_MESSAGE_CONTENT",
+          "REASONING_MESSAGE_END",
+          "REASONING_END",
+          "TEXT_MESSAGE_START",
+          "TEXT_MESSAGE_CONTENT",
+          "TEXT_MESSAGE_END",
+          "MESSAGES_SNAPSHOT",
+          "RUN_FINISHED"
+        ]
+      },
+      "tools": [
+        {
+          "id": "toolu_bdrk_01UDhEwuGaiTTgQE1ob35VEF",
+          "name": "find_events",
+          "result": {
+            "status": "ok",
+            "events": [
+              {
+                "eventId": "01a13c3f-e1ac-7363-81aa-30e22cf9164e",
+                "name": "QA Main Flow 6a41a52a",
+                "startDate": "2026-12-19",
+                "endDate": "2026-12-19",
+                "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 1
+              },
+              {
+                "eventId": "01a139e1-8ab3-75ea-acc4-b46b391c816f",
+                "name": "QA Main Flow 93ae6bbc",
+                "startDate": "2026-12-18",
+                "endDate": "2026-12-18",
+                "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 0.8
+              },
+              {
+                "eventId": "01a139e9-d260-751f-9760-9cd2b159240e",
+                "name": "QA Main Flow 6e301a29",
+                "startDate": "2026-12-20",
+                "endDate": "2026-12-20",
+                "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 0.82
+              },
+              {
+                "eventId": "01a139e6-31ff-7258-b9de-1cd2f0100bcf",
+                "name": "QA Main Flow b145bd93",
+                "startDate": "2026-12-19",
+                "endDate": "2026-12-19",
+                "venue": "Pismo Beach Pier, Pismo Beach, CA, US",
+                "tour": "Qualifying Series",
+                "division": "mens",
+                "score": 0.79
+              },
+              {
+                "eventId": "01a1397f-8c3b-7745-a048-d84d15885d49",
+                "name": "QA Checklist 20261014081146624-d9f105 21",
+                "startDate": "2026-11-23",
+                "endDate": "2026-11-23",
+                "venue": "1st Street Jetty, Virginia Beach, VA, US",
+                "tour": "International Qualifying Series",
+                "division": "mens",
+                "score": 0.73
+              }
+            ],
+            "best": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+          },
+          "parameters": {
+            "text": "QA Main Flow 6a41a52a"
+          }
+        },
+        {
+          "id": "toolu_bdrk_01F7jnnevH5ovGsjdttax3Vq",
+          "name": "get_event_history",
+          "result": {
+            "status": "ok",
+            "history": [
+              {
+                "occurred_at": "2026-10-14T21:10:45.047617+00:00",
+                "actor": "",
+                "change_type": "charge_attempt",
+                "changes": [],
+                "reason": "succeeded",
+                "athlete_name": "Pay Tester",
+                "channel": null
+              },
+              {
+                "occurred_at": "2026-10-14T21:10:43.303110+00:00",
+                "actor": "T. Manager 101",
+                "change_type": "charge_attempt",
+                "changes": [],
+                "reason": "charge started",
+                "athlete_name": "Pay Tester",
+                "channel": null
+              },
+              {
+                "occurred_at": "2026-10-14T21:10:41.464864+00:00",
+                "actor": "T. Manager 101",
+                "change_type": "status_change",
+                "changes": [
+                  {
+                    "field": "status",
+                    "before": "ready_for_entries",
+                    "after": "closed_for_entries"
+                  },
+                  {
+                    "field": "registration_closes_at",
+                    "before": "2026-10-22T21:00:00+00:00",
+                    "after": "2026-10-14T21:10:41.499942+00:00"
+                  }
+                ],
+                "reason": null,
+                "athlete_name": null,
+                "channel": null
+              },
+              {
+                "occurred_at": "2026-10-14T21:09:43.994595+00:00",
+                "actor": "T. Manager 101",
+                "change_type": "status_change",
+                "changes": [
+                  {
+                    "field": "status",
+                    "before": "confirmed",
+                    "after": "ready_for_entries"
+                  },
+                  {
+                    "field": "registration_opens_at",
+                    "before": "2026-10-14T04:00:00+00:00",
+                    "after": "2026-10-14T21:09:44.005141+00:00"
+                  }
+                ],
+                "reason": null,
+                "athlete_name": null,
+                "channel": null
+              },
+              {
+                "occurred_at": "2026-10-14T21:09:43.314618+00:00",
+                "actor": "T. Manager 101",
+                "change_type": "status_change",
+                "changes": [
+                  {
+                    "field": "status",
+                    "before": "tentative",
+                    "after": "confirmed"
+                  }
+                ],
+                "reason": null,
+                "athlete_name": null,
+                "channel": null
+              },
+              {
+                "occurred_at": "2026-10-14T21:09:42.600538+00:00",
+                "actor": "T. Manager 101",
+                "change_type": "status_change",
+                "changes": [
+                  {
+                    "field": "status",
+                    "before": "draft",
+                    "after": "tentative"
+                  }
+                ],
+                "reason": null,
+                "athlete_name": null,
+                "channel": null
+              },
+              {
+                "occurred_at": "2026-10-14T21:09:41.838396+00:00",
+                "actor": "T. Manager 101",
+                "change_type": "event_created",
+                "changes": [],
+                "reason": null,
+                "athlete_name": null,
+                "channel": null
+              }
+            ],
+            "total": 7
+          },
+          "parameters": {
+            "event_id": "01a13c3f-e1ac-7363-81aa-30e22cf9164e"
+          }
+        }
+      ],
+      "aiResponse": "Here are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step.\n2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester.\n3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+      "actual": "Here are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step.\n2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester.\n3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+      "durationMs": 7696,
+      "urlAfter": "https://app.dev.worldsurfleague.com/tour-manager/events",
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nWithout opening another page, summarize the last three audit-history changes for QA Main Flow 6a41a52a. Read its event history data.\n\nHere are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n12:10:45 am your time: A charge for Pay Tester went through. No user is recorded for this step.\n12:10:43 am your time: T. Manager 101 started that charge for Pay Tester.\n12:10:41 am your time: T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.\nHere are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo). 1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step. 2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester. 3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+      "screenshot": "artifacts/beach-marshal-live-2026-10-15/screenshots/BM-LIVE-T16.png",
+      "videoEndSeconds": 94.68,
+      "proposal": null,
+      "network": [
+        {
+          "method": "POST",
+          "url": "https://api.dev.worldsurfleague.com/api/assistant/run",
+          "at": "2026-10-15T00:24:42.317Z"
+        }
+      ],
+      "finishedAt": "2026-10-15T00:24:50.628Z"
+    }
+  ],
+  "roles": {
+    "Public": {
+      "panelInitial": "Beach Marshal\nNew conversation\n\nHow can I help?\n\nAsk about events, entries, rules or what's nearby.\n\nWhere can I stay near the Bells Beach event?\nWhat happens if I cancel an entry after the closing date?\nHow does priority work?",
+      "history": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/assistant/conversations?limit=1",
+        "status": 401,
+        "body": {
+          "title": "Something went wrong",
+          "message": "Please sign in and try again.",
+          "reason": null,
+          "fields": {},
+          "retryable": false
+        },
+        "at": "2026-10-15T00:24:26.175Z"
+      }
+    },
+    "TourManager": {
+      "login": {
+        "http": 200,
+        "url": "https://app.dev.worldsurfleague.com/athlete-registration/register",
+        "sessionHint": "1"
+      },
+      "session": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/session",
+        "status": 200,
+        "body": {
+          "user": {
+            "id": "01a13678-65bd-7793-aa12-f6448c46e1e2",
+            "name": "Tour Manager 101",
+            "firstName": "Tour",
+            "lastName": "Manager 101",
+            "email": "[email redacted]",
+            "dateOfBirth": "1985-06-15"
+          },
+          "athletes": [],
+          "athletesUnavailable": false,
+          "activeAthleteId": null,
+          "passwordChangeRequired": false
+        },
+        "at": "2026-10-15T00:24:30.613Z"
+      },
+      "managerSession": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/tour-manager/session",
+        "status": 200,
+        "body": {
+          "workspace": {
+            "name": "World Surf League",
+            "product": "Tour Manager"
+          },
+          "user": {
+            "initials": "TM",
+            "name": "Tour Manager 101",
+            "meta": "Tour Manager · All regions"
+          }
+        },
+        "at": "2026-10-15T00:24:30.951Z"
+      },
+      "panelInitial": "Beach Marshal\nNew conversation\nConversations\n\nHow can I help?\n\nAsk about events, entries, rules or what's nearby.\n\nWhat's left before I can confirm the field for an event?\nWho is on the waitlist for an event?\nWithdraw an athlete from an event",
+      "history": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/assistant/conversations?limit=1",
+        "status": 200,
+        "body": {
+          "conversations": [
+            {
+              "id": "63cf5a83-9d3f-4446-b994-6ff684bbf622",
+              "title": "Without opening another page, summarize the last three audit-history changes for",
+              "persona": "tour_manager",
+              "messageCount": 2,
+              "createdAt": "2026-10-15T00:24:49.979338+00:00",
+              "lastMessageAt": "2026-10-15T00:24:49.951572+00:00"
+            }
+          ],
+          "nextBefore": "2026-10-15T00:24:49.951572+00:00"
+        },
+        "at": "2026-10-15T00:24:50.904Z"
+      },
+      "historyDetail": {
+        "method": "GET",
+        "url": "https://api.dev.worldsurfleague.com/api/assistant/conversations/63cf5a83-9d3f-4446-b994-6ff684bbf622",
+        "status": 200,
+        "body": {
+          "conversation": {
+            "id": "63cf5a83-9d3f-4446-b994-6ff684bbf622",
+            "title": "Without opening another page, summarize the last three audit-history changes for",
+            "persona": "tour_manager",
+            "messageCount": 2,
+            "createdAt": "2026-10-15T00:24:49.979338+00:00",
+            "lastMessageAt": "2026-10-15T00:24:49.951572+00:00"
+          },
+          "messages": [
+            {
+              "id": "01a13cf2-884b-77f3-87e1-bf26620ad95d",
+              "seq": 1,
+              "role": "user",
+              "text": "Without opening another page, summarize the last three audit-history changes for QA Main Flow 6a41a52a. Read its event history data.",
+              "toolCalls": [],
+              "proposals": [],
+              "createdAt": "2026-10-15T00:24:49.979338+00:00"
+            },
+            {
+              "id": "01a13cf2-884b-77f3-87e1-bf276a4436f0",
+              "seq": 2,
+              "role": "assistant",
+              "text": "Here are the three latest changes to QA Main Flow 6a41a52a. All of them happened yesterday evening, 14 October UTC, which was just after midnight on 15 October your time (Cairo).\n\n1. **12:10:45 am your time:** A charge for Pay Tester went through. No user is recorded for this step.\n2. **12:10:43 am your time:** T. Manager 101 started that charge for Pay Tester.\n3. **12:10:41 am your time:** T. Manager 101 closed the event for entries. Registration had been open and was set to close on 23 October at midnight your time. Instead it closed right then.",
+              "toolCalls": [
+                {
+                  "name": "find_events",
+                  "status": "ok"
+                },
+                {
+                  "name": "get_event_history",
+                  "status": "ok"
+                }
+              ],
+              "proposals": [],
+              "createdAt": "2026-10-15T00:24:49.979338+00:00"
+            }
+          ]
+        },
+        "at": "2026-10-15T00:24:51.173Z"
+      }
+    }
+  },
+  "mutationAttempts": [],
+  "safety": "No confirmations allowed. Browser routes block non-read domain requests; allowed POST only assistant/run and auth login/logout/refresh. Reference API helper uses GET only.",
+  "recording": {
+    "size": {
+      "width": 1366,
+      "height": 641
+    },
+    "nativeViewport": true,
+    "noZoom": true,
+    "noCrop": true
+  },
+  "finishedAt": "2026-10-15T00:24:51.177Z",
+  "videoPath": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\beach-marshal-live-2026-10-15\\videos\\conversation-run\\[email redacted]"
+}

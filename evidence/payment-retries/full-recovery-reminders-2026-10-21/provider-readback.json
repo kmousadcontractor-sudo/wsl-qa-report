@@ -1,0 +1,48 @@
+[
+  {
+    "id": "01a15ee5-2481-7681-9d33-14518ef0c2cf",
+    "reference_id": "01a15ee5-22f2-71c3-82c7-62abb84e0d79",
+    "status": "paid",
+    "amount_minor": "15000",
+    "currency": "USD",
+    "attempt_count": "2",
+    "provider_payment_intent_id": "pi_3UT0kDHma49jszOG0ArqOn20",
+    "failure_class": null,
+    "decline_code": null,
+    "last_attempt_at": "2026-10-21 14:43:57.746617+00:00",
+    "last_event_at": "2026-10-21 14:43:58+00:00",
+    "stripe": {
+      "id": "pi_3UT0kDHma49jszOG0ArqOn20",
+      "status": "succeeded",
+      "livemode": false,
+      "amount": 15000,
+      "amount_received": 15000,
+      "currency": "usd",
+      "created": 1792593837,
+      "latest_charge": "ch_3UT0kDHma49jszOG0grpW5GC"
+    }
+  },
+  {
+    "id": "01a15ee5-7186-7044-8d53-47be1a88961b",
+    "reference_id": "01a15ee5-6fe7-753a-acef-1b72f9ea0c0f",
+    "status": "needs_new_method",
+    "amount_minor": "15000",
+    "currency": "USD",
+    "attempt_count": "1",
+    "provider_payment_intent_id": "pi_3UT0e7Hma49jszOG1jalQUTK",
+    "failure_class": "needs_new_method",
+    "decline_code": "generic_decline",
+    "last_attempt_at": "2026-10-21 14:37:39.389574+00:00",
+    "last_event_at": "2026-10-21 14:37:39+00:00",
+    "stripe": {
+      "id": "pi_3UT0e7Hma49jszOG1jalQUTK",
+      "status": "requires_payment_method",
+      "livemode": false,
+      "amount": 15000,
+      "amount_received": 0,
+      "currency": "usd",
+      "created": 1792593459,
+      "latest_charge": "ch_3UT0e7Hma49jszOG1GQORZTw"
+    }
+  }
+]

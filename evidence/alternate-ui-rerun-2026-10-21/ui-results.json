@@ -1,0 +1,4954 @@
+{
+  "startedAt": "2026-10-21T18:11:04.310Z",
+  "steps": [
+    {
+      "at": "2026-10-21T18:11:25.529Z",
+      "path": "/tour-manager/events/01a1566a-e21c-71f6-ab88-e0f84251d501/charge",
+      "status": 200,
+      "body": {
+        "confirmationId": "01a15fa9-3274-70aa-91aa-4d12fc7cbbb7",
+        "charged": 1,
+        "skipped": [
+          {
+            "entryId": "01a15672-58c4-764d-9ef6-fb938d9cfa32",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-5b8c-710e-8153-875dae33b9fd",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-5e5f-723a-8850-fb69de669839",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-618c-74a8-b322-3c7e65f92a9b",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-646e-7197-ac13-627b8a3a7185",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-6857-702a-86f5-1ffe72bd117f",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-6b71-73f5-9631-c2a126be5c51",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-6e66-74ef-b8ce-09c1ac249b9d",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-71cf-71d9-9d9c-db9978435e49",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-74b1-7604-9d2d-4c214720a7dd",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-775b-77ce-82f8-cd78820c8463",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-7e50-7140-9cbc-7d1f052fa39b",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-8279-71b9-890e-935aaa688fec",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-8564-745e-9264-15bc4d011aa4",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-8825-7331-b5dd-407b70376b96",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-8ddb-76db-97a0-f6f152ddfcb8",
+            "reason": "already_charged",
+            "message": "Already charged."
+          },
+          {
+            "entryId": "01a15672-93ba-76c5-b5ea-a70ae6939be1",
+            "reason": "already_charged",
+            "message": "Already charged."
+          }
+        ]
+      }
+    }
+  ],
+  "preparationUndo": {
+    "status": 200,
+    "body": {
+      "stage": "charged",
+      "field": 18,
+      "cutLine": "Field of 18 ends here. Alternates stay seeded in order until a seat opens.",
+      "openSeats": [],
+      "seatsFilled": {
+        "filled": 17,
+        "capacity": 18,
+        "note": "1 seat open"
+      },
+      "summary": [
+        {
+          "count": 0,
+          "label": "ready to confirm",
+          "tone": "default"
+        },
+        {
+          "count": 17,
+          "label": "confirmed",
+          "tone": "success"
+        },
+        {
+          "count": 1,
+          "label": "needs attention",
+          "tone": "warning",
+          "detail": "1 moving up"
+        }
+      ],
+      "summaryBar": [
+        {
+          "code": "ready",
+          "count": 0,
+          "label": "Ready to confirm",
+          "detail": "Charged when you confirm",
+          "tone": "default"
+        },
+        {
+          "code": "confirmed",
+          "count": 17,
+          "label": "Confirmed",
+          "detail": "Not charged again",
+          "tone": "success"
+        },
+        {
+          "code": "attention",
+          "count": 1,
+          "label": "Needs attention",
+          "detail": "1 moving up",
+          "tone": "warning"
+        },
+        {
+          "code": "seats",
+          "count": 17,
+          "label": "Seats filled",
+          "detail": "17 / 18",
+          "tone": "default"
+        }
+      ],
+      "primaryAction": null,
+      "publish": null,
+      "filters": [
+        {
+          "code": "entry",
+          "label": "Entry status",
+          "options": [
+            {
+              "value": "moving_up",
+              "label": "Moving up"
+            },
+            {
+              "value": "confirmed",
+              "label": "Confirmed"
+            },
+            {
+              "value": "withdrawn",
+              "label": "Withdrawn"
+            }
+          ]
+        },
+        {
+          "code": "region",
+          "label": "All regions",
+          "options": [
+            {
+              "value": "north_america",
+              "label": "N. AMERICA"
+            }
+          ]
+        },
+        {
+          "code": "payment",
+          "label": "Payment",
+          "options": [
+            {
+              "value": "collected",
+              "label": "Collected"
+            },
+            {
+              "value": "not_charged",
+              "label": "Not charged"
+            }
+          ]
+        },
+        {
+          "code": "insurance",
+          "label": "Insurance",
+          "options": [
+            {
+              "value": "third-party",
+              "label": "Third-party"
+            }
+          ]
+        },
+        {
+          "code": "entryType",
+          "label": "Entry type",
+          "options": [
+            {
+              "value": "regular",
+              "label": "Regular"
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "id": "01a15672-58c4-764d-9ef6-fb938d9cfa32",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL1c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 1 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 1,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-5b8c-710e-8153-875dae33b9fd",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL2c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 2 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 2,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-5e5f-723a-8850-fb69de669839",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL3c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 3 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 3,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-618c-74a8-b322-3c7e65f92a9b",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL4c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 4 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 4,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-646e-7197-ac13-627b8a3a7185",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL5c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 5 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 5,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-6857-702a-86f5-1ffe72bd117f",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL6c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 6 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 6,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-6b71-73f5-9631-c2a126be5c51",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL7c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 7 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 7,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-6e66-74ef-b8ce-09c1ac249b9d",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL8c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 8 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 8,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-71cf-71d9-9d9c-db9978435e49",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL9c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 9 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 9,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-74b1-7604-9d2d-4c214720a7dd",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL10c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 10 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 10,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-775b-77ce-82f8-cd78820c8463",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL11c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 11 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 11,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-7e50-7140-9cbc-7d1f052fa39b",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL12c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 12 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 12,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-8279-71b9-890e-935aaa688fec",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL13c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 13 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 13,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-8564-745e-9264-15bc4d011aa4",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL14c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 14 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 14,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-8825-7331-b5dd-407b70376b96",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL15c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 15 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 15,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-8ddb-76db-97a0-f6f152ddfcb8",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL16c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 16 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 16,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-93ba-76c5-b5ea-a70ae6939be1",
+          "group": "field",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL18c2b1",
+            "country": "United States"
+          },
+          "ranking": "Seed 17 · N. AMERICA",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "collected",
+            "label": "Collected",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": 17,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-96f4-7560-a7fa-af424786d8cc",
+          "group": "alternate",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL19c2b1",
+            "country": "United States"
+          },
+          "ranking": "Moved up from A1",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": {
+            "code": "not_charged",
+            "label": "Not charged",
+            "tone": "neutral"
+          },
+          "entry": {
+            "code": "moving_up",
+            "label": "Moving up",
+            "tone": "info"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [
+            {
+              "code": "message",
+              "label": "Send message",
+              "destructive": false
+            },
+            {
+              "code": "withdraw",
+              "label": "Withdraw entry",
+              "destructive": true
+            }
+          ],
+          "movable": true,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": null,
+          "alternatePosition": 1,
+          "moveUpSeat": 18,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-5602-77c0-a0b7-208dd438b6cc",
+          "group": "withdrawn",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtPMc2b1",
+            "country": "United States"
+          },
+          "ranking": "Withdrawn 19 Oct · Athlete request",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": null,
+          "entry": {
+            "code": "withdrawn",
+            "label": "Withdrawn",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [],
+          "movable": false,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": null,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        },
+        {
+          "id": "01a15672-90b2-7069-a91b-14198697908e",
+          "group": "withdrawn",
+          "athlete": {
+            "initials": "CE",
+            "name": "Checklist ExtL17c2b1",
+            "country": "United States"
+          },
+          "ranking": "Withdrawn 21 Oct · Athlete request",
+          "region": "north_america",
+          "highlight": null,
+          "insurance": {
+            "state": "warn",
+            "label": "Third-party",
+            "code": "third-party"
+          },
+          "entryType": {
+            "code": "regular",
+            "label": "Regular"
+          },
+          "payment": null,
+          "entry": {
+            "code": "withdrawn",
+            "label": "Withdrawn",
+            "tone": "neutral"
+          },
+          "waivable": {
+            "fee": false
+          },
+          "actions": [],
+          "movable": false,
+          "pinned": false,
+          "hasHistory": true,
+          "seedRank": null,
+          "alternatePosition": null,
+          "moveUpSeat": null,
+          "movedUpFrom": null
+        }
+      ],
+      "version": 11,
+      "chargesInFlight": false
+    }
+  },
+  "ready": {
+    "stage": "charged",
+    "field": 18,
+    "cutLine": "Field of 18 ends here. Alternates stay seeded in order until a seat opens.",
+    "openSeats": [],
+    "seatsFilled": {
+      "filled": 17,
+      "capacity": 18,
+      "note": "1 seat open"
+    },
+    "summary": [
+      {
+        "count": 0,
+        "label": "ready to confirm",
+        "tone": "default"
+      },
+      {
+        "count": 17,
+        "label": "confirmed",
+        "tone": "success"
+      },
+      {
+        "count": 1,
+        "label": "needs attention",
+        "tone": "warning",
+        "detail": "1 moving up"
+      }
+    ],
+    "summaryBar": [
+      {
+        "code": "ready",
+        "count": 0,
+        "label": "Ready to confirm",
+        "detail": "Charged when you confirm",
+        "tone": "default"
+      },
+      {
+        "code": "confirmed",
+        "count": 17,
+        "label": "Confirmed",
+        "detail": "Not charged again",
+        "tone": "success"
+      },
+      {
+        "code": "attention",
+        "count": 1,
+        "label": "Needs attention",
+        "detail": "1 moving up",
+        "tone": "warning"
+      },
+      {
+        "code": "seats",
+        "count": 17,
+        "label": "Seats filled",
+        "detail": "17 / 18",
+        "tone": "default"
+      }
+    ],
+    "primaryAction": null,
+    "publish": null,
+    "filters": [
+      {
+        "code": "entry",
+        "label": "Entry status",
+        "options": [
+          {
+            "value": "moving_up",
+            "label": "Moving up"
+          },
+          {
+            "value": "confirmed",
+            "label": "Confirmed"
+          },
+          {
+            "value": "withdrawn",
+            "label": "Withdrawn"
+          }
+        ]
+      },
+      {
+        "code": "region",
+        "label": "All regions",
+        "options": [
+          {
+            "value": "north_america",
+            "label": "N. AMERICA"
+          }
+        ]
+      },
+      {
+        "code": "payment",
+        "label": "Payment",
+        "options": [
+          {
+            "value": "collected",
+            "label": "Collected"
+          },
+          {
+            "value": "not_charged",
+            "label": "Not charged"
+          }
+        ]
+      },
+      {
+        "code": "insurance",
+        "label": "Insurance",
+        "options": [
+          {
+            "value": "third-party",
+            "label": "Third-party"
+          }
+        ]
+      },
+      {
+        "code": "entryType",
+        "label": "Entry type",
+        "options": [
+          {
+            "value": "regular",
+            "label": "Regular"
+          }
+        ]
+      }
+    ],
+    "entries": [
+      {
+        "id": "01a15672-58c4-764d-9ef6-fb938d9cfa32",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL1c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 1 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 1,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-5b8c-710e-8153-875dae33b9fd",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL2c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 2 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 2,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-5e5f-723a-8850-fb69de669839",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL3c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 3 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 3,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-618c-74a8-b322-3c7e65f92a9b",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL4c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 4 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 4,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-646e-7197-ac13-627b8a3a7185",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL5c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 5 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 5,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-6857-702a-86f5-1ffe72bd117f",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL6c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 6 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 6,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-6b71-73f5-9631-c2a126be5c51",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL7c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 7 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 7,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-6e66-74ef-b8ce-09c1ac249b9d",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL8c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 8 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 8,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-71cf-71d9-9d9c-db9978435e49",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL9c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 9 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 9,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-74b1-7604-9d2d-4c214720a7dd",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL10c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 10 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 10,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-775b-77ce-82f8-cd78820c8463",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL11c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 11 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 11,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-7e50-7140-9cbc-7d1f052fa39b",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL12c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 12 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 12,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8279-71b9-890e-935aaa688fec",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL13c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 13 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 13,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8564-745e-9264-15bc4d011aa4",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL14c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 14 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 14,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8825-7331-b5dd-407b70376b96",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL15c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 15 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 15,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8ddb-76db-97a0-f6f152ddfcb8",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL16c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 16 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 16,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-93ba-76c5-b5ea-a70ae6939be1",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL18c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 17 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 17,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-96f4-7560-a7fa-af424786d8cc",
+        "group": "alternate",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL19c2b1",
+          "country": "United States"
+        },
+        "ranking": "Moved up from A1",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "not_charged",
+          "label": "Not charged",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "moving_up",
+          "label": "Moving up",
+          "tone": "info"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": null,
+        "alternatePosition": 1,
+        "moveUpSeat": 18,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-5602-77c0-a0b7-208dd438b6cc",
+        "group": "withdrawn",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtPMc2b1",
+          "country": "United States"
+        },
+        "ranking": "Withdrawn 19 Oct · Athlete request",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": null,
+        "entry": {
+          "code": "withdrawn",
+          "label": "Withdrawn",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [],
+        "movable": false,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": null,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-90b2-7069-a91b-14198697908e",
+        "group": "withdrawn",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL17c2b1",
+          "country": "United States"
+        },
+        "ranking": "Withdrawn 21 Oct · Athlete request",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": null,
+        "entry": {
+          "code": "withdrawn",
+          "label": "Withdrawn",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [],
+        "movable": false,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": null,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      }
+    ],
+    "version": 11,
+    "chargesInFlight": false
+  },
+  "09-ui-move-up-control": {
+    "at": "2026-10-21T18:11:16.359Z",
+    "text": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nTM\nTour Manager 101\nTour Manager · All regions\nEvents\n/\nQA Checklist 20261019230345875-54c2b1 3\n/\nAthletes\nQA Checklist 20261019230345875-54c2b1 3\n\nThu 3 – Thu 3 Dec 2026 · Cabarete, Sosúa, DO\n\nClosed for entries\nOverview\nAthletes\n18\nHistory\nEntry status\nAll regions\nPayment\nInsurance\nEntry type\nClear\n\nReady to confirm\n\n0\nCharged when you confirm\n\nConfirmed\n\n17\nNot charged again\n\nNeeds attention\n\n1\n1 moving up\n\nSeats filled\n\n17\n17 / 18\n\nUse the up and down arrow keys to move this athlete one seat.\n\nSEED NO.\n↑\n\tATHLETE\n\tRANK · POINTS · REGION\n\tINSURANCE\n\tPAYMENT\n\tENTRY\n\tACTION\n\n1\n\t\nCE\nChecklist ExtL1c2b1\nUnited States\n\tSeed 1 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n2\n\t\nCE\nChecklist ExtL2c2b1\nUnited States\n\tSeed 2 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n3\n\t\nCE\nChecklist ExtL3c2b1\nUnited States\n\tSeed 3 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n4\n\t\nCE\nChecklist ExtL4c2b1\nUnited States\n\tSeed 4 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n5\n\t\nCE\nChecklist ExtL5c2b1\nUnited States\n\tSeed 5 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n6\n\t\nCE\nChecklist ExtL6c2b1\nUnited States\n\tSeed 6 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n7\n\t\nCE\nChecklist ExtL7c2b1\nUnited States\n\tSeed 7 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n8\n\t\nCE\nChecklist ExtL8c2b1\nUnited States\n\tSeed 8 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n9\n\t\nCE\nChecklist ExtL9c2b1\nUnited States\n\tSeed 9 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n10\n\t\nCE\nChecklist ExtL10c2b1\nUnited States\n\tSeed 10 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n11\n\t\nCE\nChecklist ExtL11c2b1\nUnited States\n\tSeed 11 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n12\n\t\nCE\nChecklist ExtL12c2b1\nUnited States\n\tSeed 12 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n13\n\t\nCE\nChecklist ExtL13c2b1\nUnited States\n\tSeed 13 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n14\n\t\nCE\nChecklist ExtL14c2b1\nUnited States\n\tSeed 14 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n15\n\t\nCE\nChecklist ExtL15c2b1\nUnited States\n\tSeed 15 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n16\n\t\nCE\nChecklist ExtL16c2b1\nUnited States\n\tSeed 16 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n17\n\t\nCE\nChecklist ExtL18c2b1\nUnited States\n\tSeed 17 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\nReady to move up\nChecklist ExtL19c2b1 fills seat 18. Moving them up does not charge them.\nMove up all (1)\n\n\n18\n\t\nCE\nChecklist ExtL19c2b1\nUnited States\n\tMoved up from A1\t\nThird-party\n\t\nNot charged\n\t\nMoving up\n\t\n\n\nCUT LINE\nField of 18 ends here. Alternates stay seeded in order until a seat opens.\n\n\n—\n\t\nCE\nChecklist ExtPMc2b1\nUnited States\n\tWithdrawn 19 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t\n\n\n—\n\t\nCE\nChecklist ExtL17c2b1\nUnited States\n\tWithdrawn 21 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t"
+  },
+  "10-move-up-dialog-or-result": {
+    "at": "2026-10-21T18:11:17.947Z",
+    "text": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nTM\nTour Manager 101\nTour Manager · All regions\nEvents\n/\nQA Checklist 20261019230345875-54c2b1 3\n/\nAthletes\nQA Checklist 20261019230345875-54c2b1 3\n\nThu 3 – Thu 3 Dec 2026 · Cabarete, Sosúa, DO\n\nClosed for entries\nOverview\nAthletes\n18\nHistory\nEntry status\nAll regions\nPayment\nInsurance\nEntry type\nClear\n\nReady to confirm\n\n1\nCharged when you confirm\n\nConfirmed\n\n17\nNot charged again\n\nNeeds attention\n\n0\n\nSeats filled\n\n18\n18 / 18 · Field is full\n\nConfirm field & charge 1\n\nUse the up and down arrow keys to move this athlete one seat.\n\nSEED NO.\n↑\n\tATHLETE\n\tRANK · POINTS · REGION\n\tINSURANCE\n\tPAYMENT\n\tENTRY\n\tACTION\n\n1\n\t\nCE\nChecklist ExtL1c2b1\nUnited States\n\tSeed 1 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n2\n\t\nCE\nChecklist ExtL2c2b1\nUnited States\n\tSeed 2 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n3\n\t\nCE\nChecklist ExtL3c2b1\nUnited States\n\tSeed 3 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n4\n\t\nCE\nChecklist ExtL4c2b1\nUnited States\n\tSeed 4 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n5\n\t\nCE\nChecklist ExtL5c2b1\nUnited States\n\tSeed 5 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n6\n\t\nCE\nChecklist ExtL6c2b1\nUnited States\n\tSeed 6 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n7\n\t\nCE\nChecklist ExtL7c2b1\nUnited States\n\tSeed 7 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n8\n\t\nCE\nChecklist ExtL8c2b1\nUnited States\n\tSeed 8 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n9\n\t\nCE\nChecklist ExtL9c2b1\nUnited States\n\tSeed 9 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n10\n\t\nCE\nChecklist ExtL10c2b1\nUnited States\n\tSeed 10 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n11\n\t\nCE\nChecklist ExtL11c2b1\nUnited States\n\tSeed 11 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n12\n\t\nCE\nChecklist ExtL12c2b1\nUnited States\n\tSeed 12 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n13\n\t\nCE\nChecklist ExtL13c2b1\nUnited States\n\tSeed 13 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n14\n\t\nCE\nChecklist ExtL14c2b1\nUnited States\n\tSeed 14 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n15\n\t\nCE\nChecklist ExtL15c2b1\nUnited States\n\tSeed 15 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n16\n\t\nCE\nChecklist ExtL16c2b1\nUnited States\n\tSeed 16 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n17\n\t\nCE\nChecklist ExtL18c2b1\nUnited States\n\tSeed 17 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n18\n\t\nCE\nChecklist ExtL19c2b1\nUnited States\n\tSeed 18 · N. AMERICA\t\nThird-party\n\t\nAuthorized\n\t\nWaitlisted\n\t\n\n\nCUT LINE\nField of 18 ends here. Nobody is waiting behind it.\n\n\n—\n\t\nCE\nChecklist ExtPMc2b1\nUnited States\n\tWithdrawn 19 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t\n\n\n—\n\t\nCE\nChecklist ExtL17c2b1\nUnited States\n\tWithdrawn 21 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t"
+  },
+  "promoted": {
+    "stage": "charged",
+    "field": 18,
+    "cutLine": "Field of 18 ends here. Nobody is waiting behind it.",
+    "openSeats": [],
+    "seatsFilled": {
+      "filled": 18,
+      "capacity": 18,
+      "note": "Field is full"
+    },
+    "summary": [
+      {
+        "count": 1,
+        "label": "ready to confirm",
+        "tone": "default"
+      },
+      {
+        "count": 17,
+        "label": "confirmed",
+        "tone": "success"
+      },
+      {
+        "count": 0,
+        "label": "needs attention",
+        "tone": "muted",
+        "detail": null
+      }
+    ],
+    "summaryBar": [
+      {
+        "code": "ready",
+        "count": 1,
+        "label": "Ready to confirm",
+        "detail": "Charged when you confirm",
+        "tone": "default"
+      },
+      {
+        "code": "confirmed",
+        "count": 17,
+        "label": "Confirmed",
+        "detail": "Not charged again",
+        "tone": "success"
+      },
+      {
+        "code": "attention",
+        "count": 0,
+        "label": "Needs attention",
+        "detail": "",
+        "tone": "muted"
+      },
+      {
+        "code": "seats",
+        "count": 18,
+        "label": "Seats filled",
+        "detail": "18 / 18 · Field is full",
+        "tone": "default"
+      }
+    ],
+    "primaryAction": {
+      "code": "confirm",
+      "label": "Confirm field & charge 1"
+    },
+    "publish": null,
+    "filters": [
+      {
+        "code": "entry",
+        "label": "Entry status",
+        "options": [
+          {
+            "value": "waitlisted",
+            "label": "Waitlisted"
+          },
+          {
+            "value": "confirmed",
+            "label": "Confirmed"
+          },
+          {
+            "value": "withdrawn",
+            "label": "Withdrawn"
+          }
+        ]
+      },
+      {
+        "code": "region",
+        "label": "All regions",
+        "options": [
+          {
+            "value": "north_america",
+            "label": "N. AMERICA"
+          }
+        ]
+      },
+      {
+        "code": "payment",
+        "label": "Payment",
+        "options": [
+          {
+            "value": "authorized",
+            "label": "Authorized"
+          },
+          {
+            "value": "collected",
+            "label": "Collected"
+          }
+        ]
+      },
+      {
+        "code": "insurance",
+        "label": "Insurance",
+        "options": [
+          {
+            "value": "third-party",
+            "label": "Third-party"
+          }
+        ]
+      },
+      {
+        "code": "entryType",
+        "label": "Entry type",
+        "options": [
+          {
+            "value": "regular",
+            "label": "Regular"
+          }
+        ]
+      }
+    ],
+    "entries": [
+      {
+        "id": "01a15672-58c4-764d-9ef6-fb938d9cfa32",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL1c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 1 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 1,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-5b8c-710e-8153-875dae33b9fd",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL2c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 2 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 2,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-5e5f-723a-8850-fb69de669839",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL3c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 3 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 3,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-618c-74a8-b322-3c7e65f92a9b",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL4c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 4 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 4,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-646e-7197-ac13-627b8a3a7185",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL5c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 5 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 5,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-6857-702a-86f5-1ffe72bd117f",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL6c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 6 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 6,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-6b71-73f5-9631-c2a126be5c51",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL7c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 7 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 7,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-6e66-74ef-b8ce-09c1ac249b9d",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL8c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 8 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 8,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-71cf-71d9-9d9c-db9978435e49",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL9c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 9 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 9,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-74b1-7604-9d2d-4c214720a7dd",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL10c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 10 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 10,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-775b-77ce-82f8-cd78820c8463",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL11c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 11 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 11,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-7e50-7140-9cbc-7d1f052fa39b",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL12c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 12 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 12,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8279-71b9-890e-935aaa688fec",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL13c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 13 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 13,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8564-745e-9264-15bc4d011aa4",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL14c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 14 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 14,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8825-7331-b5dd-407b70376b96",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL15c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 15 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 15,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8ddb-76db-97a0-f6f152ddfcb8",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL16c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 16 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 16,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-93ba-76c5-b5ea-a70ae6939be1",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL18c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 17 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 17,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-96f4-7560-a7fa-af424786d8cc",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL19c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 18 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "authorized",
+          "label": "Authorized",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "waitlisted",
+          "label": "Waitlisted",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": true
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "confirm_and_charge",
+            "label": "Confirm and charge",
+            "destructive": false
+          },
+          {
+            "code": "waive",
+            "label": "Waive fee",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 18,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": 1
+      },
+      {
+        "id": "01a15672-5602-77c0-a0b7-208dd438b6cc",
+        "group": "withdrawn",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtPMc2b1",
+          "country": "United States"
+        },
+        "ranking": "Withdrawn 19 Oct · Athlete request",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": null,
+        "entry": {
+          "code": "withdrawn",
+          "label": "Withdrawn",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [],
+        "movable": false,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": null,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-90b2-7069-a91b-14198697908e",
+        "group": "withdrawn",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL17c2b1",
+          "country": "United States"
+        },
+        "ranking": "Withdrawn 21 Oct · Athlete request",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": null,
+        "entry": {
+          "code": "withdrawn",
+          "label": "Withdrawn",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [],
+        "movable": false,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": null,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      }
+    ],
+    "version": 12,
+    "chargesInFlight": false
+  },
+  "11-ui-promoted": {
+    "at": "2026-10-21T18:11:20.984Z",
+    "text": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nTM\nTour Manager 101\nTour Manager · All regions\nEvents\n/\nQA Checklist 20261019230345875-54c2b1 3\n/\nAthletes\nQA Checklist 20261019230345875-54c2b1 3\n\nThu 3 – Thu 3 Dec 2026 · Cabarete, Sosúa, DO\n\nClosed for entries\nOverview\nAthletes\n18\nHistory\nEntry status\nAll regions\nPayment\nInsurance\nEntry type\nClear\n\nReady to confirm\n\n1\nCharged when you confirm\n\nConfirmed\n\n17\nNot charged again\n\nNeeds attention\n\n0\n\nSeats filled\n\n18\n18 / 18 · Field is full\n\nConfirm field & charge 1\n\nUse the up and down arrow keys to move this athlete one seat.\n\nSEED NO.\n↑\n\tATHLETE\n\tRANK · POINTS · REGION\n\tINSURANCE\n\tPAYMENT\n\tENTRY\n\tACTION\n\n1\n\t\nCE\nChecklist ExtL1c2b1\nUnited States\n\tSeed 1 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n2\n\t\nCE\nChecklist ExtL2c2b1\nUnited States\n\tSeed 2 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n3\n\t\nCE\nChecklist ExtL3c2b1\nUnited States\n\tSeed 3 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n4\n\t\nCE\nChecklist ExtL4c2b1\nUnited States\n\tSeed 4 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n5\n\t\nCE\nChecklist ExtL5c2b1\nUnited States\n\tSeed 5 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n6\n\t\nCE\nChecklist ExtL6c2b1\nUnited States\n\tSeed 6 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n7\n\t\nCE\nChecklist ExtL7c2b1\nUnited States\n\tSeed 7 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n8\n\t\nCE\nChecklist ExtL8c2b1\nUnited States\n\tSeed 8 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n9\n\t\nCE\nChecklist ExtL9c2b1\nUnited States\n\tSeed 9 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n10\n\t\nCE\nChecklist ExtL10c2b1\nUnited States\n\tSeed 10 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n11\n\t\nCE\nChecklist ExtL11c2b1\nUnited States\n\tSeed 11 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n12\n\t\nCE\nChecklist ExtL12c2b1\nUnited States\n\tSeed 12 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n13\n\t\nCE\nChecklist ExtL13c2b1\nUnited States\n\tSeed 13 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n14\n\t\nCE\nChecklist ExtL14c2b1\nUnited States\n\tSeed 14 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n15\n\t\nCE\nChecklist ExtL15c2b1\nUnited States\n\tSeed 15 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n16\n\t\nCE\nChecklist ExtL16c2b1\nUnited States\n\tSeed 16 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n17\n\t\nCE\nChecklist ExtL18c2b1\nUnited States\n\tSeed 17 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n18\n\t\nCE\nChecklist ExtL19c2b1\nUnited States\n\tSeed 18 · N. AMERICA\t\nThird-party\n\t\nAuthorized\n\t\nWaitlisted\n\t\n\n\nCUT LINE\nField of 18 ends here. Nobody is waiting behind it.\n\n\n—\n\t\nCE\nChecklist ExtPMc2b1\nUnited States\n\tWithdrawn 19 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t\n\n\n—\n\t\nCE\nChecklist ExtL17c2b1\nUnited States\n\tWithdrawn 21 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t"
+  },
+  "undoButtons": [],
+  "13-ui-confirm-action": {
+    "at": "2026-10-21T18:11:23.233Z",
+    "text": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nTM\nTour Manager 101\nTour Manager · All regions\nEvents\n/\nQA Checklist 20261019230345875-54c2b1 3\n/\nAthletes\nQA Checklist 20261019230345875-54c2b1 3\n\nThu 3 – Thu 3 Dec 2026 · Cabarete, Sosúa, DO\n\nClosed for entries\nOverview\nAthletes\n18\nHistory\nEntry status\nAll regions\nPayment\nInsurance\nEntry type\nClear\n\nReady to confirm\n\n1\nCharged when you confirm\n\nConfirmed\n\n17\nNot charged again\n\nNeeds attention\n\n0\n\nSeats filled\n\n18\n18 / 18 · Field is full\n\nConfirm field & charge 1\n\nUse the up and down arrow keys to move this athlete one seat.\n\nSEED NO.\n↑\n\tATHLETE\n\tRANK · POINTS · REGION\n\tINSURANCE\n\tPAYMENT\n\tENTRY\n\tACTION\n\n1\n\t\nCE\nChecklist ExtL1c2b1\nUnited States\n\tSeed 1 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n2\n\t\nCE\nChecklist ExtL2c2b1\nUnited States\n\tSeed 2 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n3\n\t\nCE\nChecklist ExtL3c2b1\nUnited States\n\tSeed 3 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n4\n\t\nCE\nChecklist ExtL4c2b1\nUnited States\n\tSeed 4 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n5\n\t\nCE\nChecklist ExtL5c2b1\nUnited States\n\tSeed 5 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n6\n\t\nCE\nChecklist ExtL6c2b1\nUnited States\n\tSeed 6 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n7\n\t\nCE\nChecklist ExtL7c2b1\nUnited States\n\tSeed 7 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n8\n\t\nCE\nChecklist ExtL8c2b1\nUnited States\n\tSeed 8 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n9\n\t\nCE\nChecklist ExtL9c2b1\nUnited States\n\tSeed 9 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n10\n\t\nCE\nChecklist ExtL10c2b1\nUnited States\n\tSeed 10 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n11\n\t\nCE\nChecklist ExtL11c2b1\nUnited States\n\tSeed 11 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n12\n\t\nCE\nChecklist ExtL12c2b1\nUnited States\n\tSeed 12 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n13\n\t\nCE\nChecklist ExtL13c2b1\nUnited States\n\tSeed 13 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n14\n\t\nCE\nChecklist ExtL14c2b1\nUnited States\n\tSeed 14 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n15\n\t\nCE\nChecklist ExtL15c2b1\nUnited States\n\tSeed 15 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n16\n\t\nCE\nChecklist ExtL16c2b1\nUnited States\n\tSeed 16 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n17\n\t\nCE\nChecklist ExtL18c2b1\nUnited States\n\tSeed 17 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n18\n\t\nCE\nChecklist ExtL19c2b1\nUnited States\n\tSeed 18 · N. AMERICA\t\nThird-party\n\t\nAuthorized\n\t\nWaitlisted\n\t\n\n\nCUT LINE\nField of 18 ends here. Nobody is waiting behind it.\n\n\n—\n\t\nCE\nChecklist ExtPMc2b1\nUnited States\n\tWithdrawn 19 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t\n\n\n—\n\t\nCE\nChecklist ExtL17c2b1\nUnited States\n\tWithdrawn 21 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t"
+  },
+  "chargePreview": "Cancel",
+  "14-ui-charge-preview": {
+    "at": "2026-10-21T18:11:24.797Z",
+    "text": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nTM\nTour Manager 101\nTour Manager · All regions\nEvents\n/\nQA Checklist 20261019230345875-54c2b1 3\n/\nAthletes\nQA Checklist 20261019230345875-54c2b1 3\n\nThu 3 – Thu 3 Dec 2026 · Cabarete, Sosúa, DO\n\nClosed for entries\nOverview\nAthletes\n18\nHistory\nEntry status\nAll regions\nPayment\nInsurance\nEntry type\nClear\n\nReady to confirm\n\n1\nCharged when you confirm\n\nConfirmed\n\n17\nNot charged again\n\nNeeds attention\n\n0\n\nSeats filled\n\n18\n18 / 18 · Field is full\n\nConfirm field & charge 1\n\nUse the up and down arrow keys to move this athlete one seat.\n\nSEED NO.\n↑\n\tATHLETE\n\tRANK · POINTS · REGION\n\tINSURANCE\n\tPAYMENT\n\tENTRY\n\tACTION\n\n1\n\t\nCE\nChecklist ExtL1c2b1\nUnited States\n\tSeed 1 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n2\n\t\nCE\nChecklist ExtL2c2b1\nUnited States\n\tSeed 2 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n3\n\t\nCE\nChecklist ExtL3c2b1\nUnited States\n\tSeed 3 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n4\n\t\nCE\nChecklist ExtL4c2b1\nUnited States\n\tSeed 4 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n5\n\t\nCE\nChecklist ExtL5c2b1\nUnited States\n\tSeed 5 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n6\n\t\nCE\nChecklist ExtL6c2b1\nUnited States\n\tSeed 6 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n7\n\t\nCE\nChecklist ExtL7c2b1\nUnited States\n\tSeed 7 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n8\n\t\nCE\nChecklist ExtL8c2b1\nUnited States\n\tSeed 8 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n9\n\t\nCE\nChecklist ExtL9c2b1\nUnited States\n\tSeed 9 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n10\n\t\nCE\nChecklist ExtL10c2b1\nUnited States\n\tSeed 10 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n11\n\t\nCE\nChecklist ExtL11c2b1\nUnited States\n\tSeed 11 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n12\n\t\nCE\nChecklist ExtL12c2b1\nUnited States\n\tSeed 12 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n13\n\t\nCE\nChecklist ExtL13c2b1\nUnited States\n\tSeed 13 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n14\n\t\nCE\nChecklist ExtL14c2b1\nUnited States\n\tSeed 14 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n15\n\t\nCE\nChecklist ExtL15c2b1\nUnited States\n\tSeed 15 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n16\n\t\nCE\nChecklist ExtL16c2b1\nUnited States\n\tSeed 16 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n17\n\t\nCE\nChecklist ExtL18c2b1\nUnited States\n\tSeed 17 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n18\n\t\nCE\nChecklist ExtL19c2b1\nUnited States\n\tSeed 18 · N. AMERICA\t\nThird-party\n\t\nAuthorized\n\t\nWaitlisted\n\t\n\n\nCUT LINE\nField of 18 ends here. Nobody is waiting behind it.\n\n\n—\n\t\nCE\nChecklist ExtPMc2b1\nUnited States\n\tWithdrawn 19 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t\n\n\n—\n\t\nCE\nChecklist ExtL17c2b1\nUnited States\n\tWithdrawn 21 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t\nConfirm and charge 1 athlete?\n\nQA Checklist 20261019230345875-54c2b1 3 · field of 18\n\nWILL BE CHARGED\n1\nReady to confirm\nUSD 150 each\nWON'T BE CHARGED\n17\nAlready confirmed\nEstimated entry fees\nUSD 150 × 1 ready to confirm · via Stripe\nUSD 150 est.\n\nFinal amount depends on which cards clear\n\nExpected number of athletes in event after charge\n18 athletes\n\nAll surfers below the line will not be confirmed and charged. You can confirm a partial field and leave seats empty, and you can run this again later, for example after declined cards are updated.\n\nCancel\nConfirm & charge 1"
+  },
+  "charge": {
+    "at": "2026-10-21T18:11:25.529Z",
+    "path": "/tour-manager/events/01a1566a-e21c-71f6-ab88-e0f84251d501/charge",
+    "status": 200,
+    "body": {
+      "confirmationId": "01a15fa9-3274-70aa-91aa-4d12fc7cbbb7",
+      "charged": 1,
+      "skipped": [
+        {
+          "entryId": "01a15672-58c4-764d-9ef6-fb938d9cfa32",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-5b8c-710e-8153-875dae33b9fd",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-5e5f-723a-8850-fb69de669839",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-618c-74a8-b322-3c7e65f92a9b",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-646e-7197-ac13-627b8a3a7185",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-6857-702a-86f5-1ffe72bd117f",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-6b71-73f5-9631-c2a126be5c51",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-6e66-74ef-b8ce-09c1ac249b9d",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-71cf-71d9-9d9c-db9978435e49",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-74b1-7604-9d2d-4c214720a7dd",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-775b-77ce-82f8-cd78820c8463",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-7e50-7140-9cbc-7d1f052fa39b",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-8279-71b9-890e-935aaa688fec",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-8564-745e-9264-15bc4d011aa4",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-8825-7331-b5dd-407b70376b96",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-8ddb-76db-97a0-f6f152ddfcb8",
+          "reason": "already_charged",
+          "message": "Already charged."
+        },
+        {
+          "entryId": "01a15672-93ba-76c5-b5ea-a70ae6939be1",
+          "reason": "already_charged",
+          "message": "Already charged."
+        }
+      ]
+    }
+  },
+  "final": {
+    "stage": "charged",
+    "field": 18,
+    "cutLine": "Field of 18 ends here. Nobody is waiting behind it.",
+    "openSeats": [],
+    "seatsFilled": {
+      "filled": 18,
+      "capacity": 18,
+      "note": "Field is full"
+    },
+    "summary": [
+      {
+        "count": 0,
+        "label": "ready to confirm",
+        "tone": "default"
+      },
+      {
+        "count": 18,
+        "label": "confirmed",
+        "tone": "success"
+      },
+      {
+        "count": 0,
+        "label": "needs attention",
+        "tone": "muted",
+        "detail": null
+      }
+    ],
+    "summaryBar": [
+      {
+        "code": "ready",
+        "count": 0,
+        "label": "Ready to confirm",
+        "detail": "Charged when you confirm",
+        "tone": "default"
+      },
+      {
+        "code": "confirmed",
+        "count": 18,
+        "label": "Confirmed",
+        "detail": "Not charged again",
+        "tone": "success"
+      },
+      {
+        "code": "attention",
+        "count": 0,
+        "label": "Needs attention",
+        "detail": "",
+        "tone": "muted"
+      },
+      {
+        "code": "seats",
+        "count": 18,
+        "label": "Seats filled",
+        "detail": "18 / 18 · Field is full",
+        "tone": "default"
+      }
+    ],
+    "primaryAction": null,
+    "publish": null,
+    "filters": [
+      {
+        "code": "entry",
+        "label": "Entry status",
+        "options": [
+          {
+            "value": "confirmed",
+            "label": "Confirmed"
+          },
+          {
+            "value": "withdrawn",
+            "label": "Withdrawn"
+          }
+        ]
+      },
+      {
+        "code": "region",
+        "label": "All regions",
+        "options": [
+          {
+            "value": "north_america",
+            "label": "N. AMERICA"
+          }
+        ]
+      },
+      {
+        "code": "payment",
+        "label": "Payment",
+        "options": [
+          {
+            "value": "collected",
+            "label": "Collected"
+          }
+        ]
+      },
+      {
+        "code": "insurance",
+        "label": "Insurance",
+        "options": [
+          {
+            "value": "third-party",
+            "label": "Third-party"
+          }
+        ]
+      },
+      {
+        "code": "entryType",
+        "label": "Entry type",
+        "options": [
+          {
+            "value": "regular",
+            "label": "Regular"
+          }
+        ]
+      }
+    ],
+    "entries": [
+      {
+        "id": "01a15672-58c4-764d-9ef6-fb938d9cfa32",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL1c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 1 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 1,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-5b8c-710e-8153-875dae33b9fd",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL2c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 2 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 2,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-5e5f-723a-8850-fb69de669839",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL3c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 3 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 3,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-618c-74a8-b322-3c7e65f92a9b",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL4c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 4 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 4,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-646e-7197-ac13-627b8a3a7185",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL5c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 5 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 5,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-6857-702a-86f5-1ffe72bd117f",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL6c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 6 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 6,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-6b71-73f5-9631-c2a126be5c51",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL7c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 7 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 7,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-6e66-74ef-b8ce-09c1ac249b9d",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL8c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 8 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 8,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-71cf-71d9-9d9c-db9978435e49",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL9c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 9 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 9,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-74b1-7604-9d2d-4c214720a7dd",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL10c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 10 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 10,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-775b-77ce-82f8-cd78820c8463",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL11c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 11 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 11,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-7e50-7140-9cbc-7d1f052fa39b",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL12c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 12 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 12,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8279-71b9-890e-935aaa688fec",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL13c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 13 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 13,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8564-745e-9264-15bc4d011aa4",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL14c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 14 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 14,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8825-7331-b5dd-407b70376b96",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL15c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 15 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 15,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-8ddb-76db-97a0-f6f152ddfcb8",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL16c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 16 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 16,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-93ba-76c5-b5ea-a70ae6939be1",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL18c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 17 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 17,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-96f4-7560-a7fa-af424786d8cc",
+        "group": "field",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL19c2b1",
+          "country": "United States"
+        },
+        "ranking": "Seed 18 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": {
+          "code": "collected",
+          "label": "Collected",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "confirmed",
+          "label": "Confirmed",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 18,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-5602-77c0-a0b7-208dd438b6cc",
+        "group": "withdrawn",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtPMc2b1",
+          "country": "United States"
+        },
+        "ranking": "Withdrawn 19 Oct · Athlete request",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": null,
+        "entry": {
+          "code": "withdrawn",
+          "label": "Withdrawn",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [],
+        "movable": false,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": null,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      },
+      {
+        "id": "01a15672-90b2-7069-a91b-14198697908e",
+        "group": "withdrawn",
+        "athlete": {
+          "initials": "CE",
+          "name": "Checklist ExtL17c2b1",
+          "country": "United States"
+        },
+        "ranking": "Withdrawn 21 Oct · Athlete request",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "warn",
+          "label": "Third-party",
+          "code": "third-party"
+        },
+        "entryType": {
+          "code": "regular",
+          "label": "Regular"
+        },
+        "payment": null,
+        "entry": {
+          "code": "withdrawn",
+          "label": "Withdrawn",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [],
+        "movable": false,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": null,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      }
+    ],
+    "version": 12,
+    "chargesInFlight": false
+  },
+  "history": {
+    "status": 200,
+    "body": {
+      "summary": "1 card attempt",
+      "items": [
+        {
+          "id": "01a15fa9-3af6-7187-a0e4-faa6add69498",
+          "when": "21 Oct 18:11 UTC",
+          "what": "Card payment succeeded",
+          "channel": "Stripe",
+          "by": "System"
+        },
+        {
+          "id": "01a15fa9-3285-7274-b2c1-c6685de702af",
+          "when": "21 Oct 18:11 UTC",
+          "what": "Card payment charge started",
+          "channel": "Stripe",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15fa9-1367-7150-b58b-76d27ea207ff",
+          "when": "21 Oct 18:11 UTC",
+          "what": "Alternate promoted · to #18 · moved up from A1",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15fa8-e8c6-71e1-ab50-4491741ec1c8",
+          "when": "21 Oct 18:11 UTC",
+          "what": "Back to the alternates · was #18 · move up undone",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15fa7-aa2c-71a8-a9f5-2eb774d840f1",
+          "when": "21 Oct 18:09 UTC",
+          "what": "Alternate promoted · to #18 · moved up from A1",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15fa7-99da-705b-9d48-37e5351b4358",
+          "when": "21 Oct 18:09 UTC",
+          "what": "Back to the alternates · was #18 · move up undone",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15fa7-8a05-7504-9309-8f615e216245",
+          "when": "21 Oct 18:09 UTC",
+          "what": "Alternate promoted · to #18 · moved up from A1",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15673-b7f8-759e-8dc8-c6e5f149a91d",
+          "when": "19 Oct 23:16 UTC",
+          "what": "Seed · up from alternate 2 to alternate 1 · after alternates moved up",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15673-abb2-717b-ae5b-89949602fcb5",
+          "when": "19 Oct 23:16 UTC",
+          "what": "Seed · down from alternate 1 to alternate 2 · after a move up was undone",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15673-9c21-7252-aac7-661fb9ab1865",
+          "when": "19 Oct 23:16 UTC",
+          "what": "Seed · up from alternate 2 to alternate 1 · after alternates moved up",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        },
+        {
+          "id": "01a15672-a6e0-7539-818e-d0c4288a166e",
+          "when": "19 Oct 23:15 UTC",
+          "what": "Seed · to alternate 2",
+          "channel": "Tour Manager",
+          "by": "T. Manager 101"
+        }
+      ]
+    }
+  },
+  "15-ui-collected": {
+    "at": "2026-10-21T18:11:31.127Z",
+    "text": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nTM\nTour Manager 101\nTour Manager · All regions\nEvents\n/\nQA Checklist 20261019230345875-54c2b1 3\n/\nAthletes\nQA Checklist 20261019230345875-54c2b1 3\n\nThu 3 – Thu 3 Dec 2026 · Cabarete, Sosúa, DO\n\nClosed for entries\nOverview\nAthletes\n18\nHistory\nEntry status\nAll regions\nPayment\nInsurance\nEntry type\nClear\n\nReady to confirm\n\n0\nCharged when you confirm\n\nConfirmed\n\n18\nNot charged again\n\nNeeds attention\n\n0\n\nSeats filled\n\n18\n18 / 18 · Field is full\n\nUse the up and down arrow keys to move this athlete one seat.\n\nSEED NO.\n↑\n\tATHLETE\n\tRANK · POINTS · REGION\n\tINSURANCE\n\tPAYMENT\n\tENTRY\n\tACTION\n\n1\n\t\nCE\nChecklist ExtL1c2b1\nUnited States\n\tSeed 1 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n2\n\t\nCE\nChecklist ExtL2c2b1\nUnited States\n\tSeed 2 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n3\n\t\nCE\nChecklist ExtL3c2b1\nUnited States\n\tSeed 3 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n4\n\t\nCE\nChecklist ExtL4c2b1\nUnited States\n\tSeed 4 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n5\n\t\nCE\nChecklist ExtL5c2b1\nUnited States\n\tSeed 5 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n6\n\t\nCE\nChecklist ExtL6c2b1\nUnited States\n\tSeed 6 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n7\n\t\nCE\nChecklist ExtL7c2b1\nUnited States\n\tSeed 7 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n8\n\t\nCE\nChecklist ExtL8c2b1\nUnited States\n\tSeed 8 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n9\n\t\nCE\nChecklist ExtL9c2b1\nUnited States\n\tSeed 9 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n10\n\t\nCE\nChecklist ExtL10c2b1\nUnited States\n\tSeed 10 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n11\n\t\nCE\nChecklist ExtL11c2b1\nUnited States\n\tSeed 11 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n12\n\t\nCE\nChecklist ExtL12c2b1\nUnited States\n\tSeed 12 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n13\n\t\nCE\nChecklist ExtL13c2b1\nUnited States\n\tSeed 13 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n14\n\t\nCE\nChecklist ExtL14c2b1\nUnited States\n\tSeed 14 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n15\n\t\nCE\nChecklist ExtL15c2b1\nUnited States\n\tSeed 15 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n16\n\t\nCE\nChecklist ExtL16c2b1\nUnited States\n\tSeed 16 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n17\n\t\nCE\nChecklist ExtL18c2b1\nUnited States\n\tSeed 17 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\n18\n\t\nCE\nChecklist ExtL19c2b1\nUnited States\n\tSeed 18 · N. AMERICA\t\nThird-party\n\t\nCollected\n\t\nConfirmed\n\t\n\n\nCUT LINE\nField of 18 ends here. Nobody is waiting behind it.\n\n\n—\n\t\nCE\nChecklist ExtPMc2b1\nUnited States\n\tWithdrawn 19 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t\n\n\n—\n\t\nCE\nChecklist ExtL17c2b1\nUnited States\n\tWithdrawn 21 Oct · Athlete request\t\nThird-party\n\t\n—\n\t\nWithdrawn\n\t"
+  },
+  "status": "COMPLETED",
+  "finishedAt": "2026-10-21T18:11:31.135Z"
+}

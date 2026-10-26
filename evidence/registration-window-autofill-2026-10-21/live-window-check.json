@@ -1,0 +1,408 @@
+{
+  "at": "2026-10-21T18:37:06.818Z",
+  "endpoint": "GET /tour-manager/reference/registration-window-default",
+  "pass": 25,
+  "fail": 0,
+  "rows": [
+    {
+      "status": "PASS",
+      "venue": "Ala Moana Bowls, Oahu, Hawaii",
+      "zone": "Pacific/Honolulu",
+      "start": "2026-12-31",
+      "note": "month-end clamp (Sep has 30 days)",
+      "api": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-01 15:00"
+      },
+      "expected": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-01 15:00"
+      },
+      "why": "anchor 2026-12-03 → Tue 2026-12-01 17:00 LA (UTC-8) = Tue 15:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Ala Moana Bowls, Oahu, Hawaii",
+      "zone": "Pacific/Honolulu",
+      "start": "2026-11-05",
+      "note": "close Tuesday in Oct (daylight time in LA)",
+      "api": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-06 14:00"
+      },
+      "expected": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-06 14:00"
+      },
+      "why": "anchor 2026-10-08 → Tue 2026-10-06 17:00 LA (UTC-7) = Tue 14:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Ala Moana Bowls, Oahu, Hawaii",
+      "zone": "Pacific/Honolulu",
+      "start": "2026-12-29",
+      "note": "start − 28 days is a Tuesday",
+      "api": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-01 15:00"
+      },
+      "expected": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-01 15:00"
+      },
+      "why": "anchor 2026-12-01 → Tue 2026-12-01 17:00 LA (UTC-8) = Tue 15:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Ala Moana Bowls, Oahu, Hawaii",
+      "zone": "Pacific/Honolulu",
+      "start": "2026-12-28",
+      "note": "start − 28 days is a Monday",
+      "api": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-24 15:00"
+      },
+      "expected": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-24 15:00"
+      },
+      "why": "anchor 2026-11-30 → Tue 2026-11-24 17:00 LA (UTC-8) = Tue 15:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Ala Moana Bowls, Oahu, Hawaii",
+      "zone": "Pacific/Honolulu",
+      "start": "2028-05-31",
+      "note": "leap-year clamp to 29 Feb",
+      "api": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-02 14:00"
+      },
+      "expected": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-02 14:00"
+      },
+      "why": "anchor 2028-05-03 → Tue 2028-05-02 17:00 LA (UTC-7) = Tue 14:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avoca Beach, NSW, Australia",
+      "zone": "Australia/Sydney",
+      "start": "2026-12-31",
+      "note": "month-end clamp (Sep has 30 days)",
+      "api": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-02 12:00"
+      },
+      "expected": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-02 12:00"
+      },
+      "why": "anchor 2026-12-03 → Tue 2026-12-01 17:00 LA (UTC-8) = Wed 12:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avoca Beach, NSW, Australia",
+      "zone": "Australia/Sydney",
+      "start": "2026-11-05",
+      "note": "close Tuesday in Oct (daylight time in LA)",
+      "api": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-07 11:00"
+      },
+      "expected": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-07 11:00"
+      },
+      "why": "anchor 2026-10-08 → Tue 2026-10-06 17:00 LA (UTC-7) = Wed 11:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avoca Beach, NSW, Australia",
+      "zone": "Australia/Sydney",
+      "start": "2026-12-29",
+      "note": "start − 28 days is a Tuesday",
+      "api": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-02 12:00"
+      },
+      "expected": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-02 12:00"
+      },
+      "why": "anchor 2026-12-01 → Tue 2026-12-01 17:00 LA (UTC-8) = Wed 12:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avoca Beach, NSW, Australia",
+      "zone": "Australia/Sydney",
+      "start": "2026-12-28",
+      "note": "start − 28 days is a Monday",
+      "api": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-25 12:00"
+      },
+      "expected": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-25 12:00"
+      },
+      "why": "anchor 2026-11-30 → Tue 2026-11-24 17:00 LA (UTC-8) = Wed 12:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avoca Beach, NSW, Australia",
+      "zone": "Australia/Sydney",
+      "start": "2028-05-31",
+      "note": "leap-year clamp to 29 Feb",
+      "api": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-03 10:00"
+      },
+      "expected": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-03 10:00"
+      },
+      "why": "anchor 2028-05-03 → Tue 2028-05-02 17:00 LA (UTC-7) = Wed 10:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avalon Beach, Mandurah, Western Australia",
+      "zone": "Australia/Perth",
+      "start": "2026-12-31",
+      "note": "month-end clamp (Sep has 30 days)",
+      "api": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-02 09:00"
+      },
+      "expected": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-02 09:00"
+      },
+      "why": "anchor 2026-12-03 → Tue 2026-12-01 17:00 LA (UTC-8) = Wed 09:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avalon Beach, Mandurah, Western Australia",
+      "zone": "Australia/Perth",
+      "start": "2026-11-05",
+      "note": "close Tuesday in Oct (daylight time in LA)",
+      "api": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-07 08:00"
+      },
+      "expected": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-07 08:00"
+      },
+      "why": "anchor 2026-10-08 → Tue 2026-10-06 17:00 LA (UTC-7) = Wed 08:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avalon Beach, Mandurah, Western Australia",
+      "zone": "Australia/Perth",
+      "start": "2026-12-29",
+      "note": "start − 28 days is a Tuesday",
+      "api": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-02 09:00"
+      },
+      "expected": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-02 09:00"
+      },
+      "why": "anchor 2026-12-01 → Tue 2026-12-01 17:00 LA (UTC-8) = Wed 09:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avalon Beach, Mandurah, Western Australia",
+      "zone": "Australia/Perth",
+      "start": "2026-12-28",
+      "note": "start − 28 days is a Monday",
+      "api": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-25 09:00"
+      },
+      "expected": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-25 09:00"
+      },
+      "why": "anchor 2026-11-30 → Tue 2026-11-24 17:00 LA (UTC-8) = Wed 09:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Avalon Beach, Mandurah, Western Australia",
+      "zone": "Australia/Perth",
+      "start": "2028-05-31",
+      "note": "leap-year clamp to 29 Feb",
+      "api": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-03 08:00"
+      },
+      "expected": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-03 08:00"
+      },
+      "why": "anchor 2028-05-03 → Tue 2028-05-02 17:00 LA (UTC-7) = Wed 08:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Hossegor, Hossegor, France",
+      "zone": "America/Los_Angeles",
+      "start": "2026-12-31",
+      "note": "month-end clamp (Sep has 30 days)",
+      "api": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-01 17:00"
+      },
+      "expected": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-01 17:00"
+      },
+      "why": "anchor 2026-12-03 → Tue 2026-12-01 17:00 LA (UTC-8) = Tue 17:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Hossegor, Hossegor, France",
+      "zone": "America/Los_Angeles",
+      "start": "2026-11-05",
+      "note": "close Tuesday in Oct (daylight time in LA)",
+      "api": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-06 17:00"
+      },
+      "expected": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-06 17:00"
+      },
+      "why": "anchor 2026-10-08 → Tue 2026-10-06 17:00 LA (UTC-7) = Tue 17:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Hossegor, Hossegor, France",
+      "zone": "America/Los_Angeles",
+      "start": "2026-12-29",
+      "note": "start − 28 days is a Tuesday",
+      "api": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-01 17:00"
+      },
+      "expected": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-01 17:00"
+      },
+      "why": "anchor 2026-12-01 → Tue 2026-12-01 17:00 LA (UTC-8) = Tue 17:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Hossegor, Hossegor, France",
+      "zone": "America/Los_Angeles",
+      "start": "2026-12-28",
+      "note": "start − 28 days is a Monday",
+      "api": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-24 17:00"
+      },
+      "expected": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-24 17:00"
+      },
+      "why": "anchor 2026-11-30 → Tue 2026-11-24 17:00 LA (UTC-8) = Tue 17:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Hossegor, Hossegor, France",
+      "zone": "America/Los_Angeles",
+      "start": "2028-05-31",
+      "note": "leap-year clamp to 29 Feb",
+      "api": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-02 17:00"
+      },
+      "expected": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-02 17:00"
+      },
+      "why": "anchor 2028-05-03 → Tue 2028-05-02 17:00 LA (UTC-7) = Tue 17:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Peniche, Leiria, Portugal",
+      "zone": "Europe/Paris",
+      "start": "2026-12-31",
+      "note": "month-end clamp (Sep has 30 days)",
+      "api": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-02 02:00"
+      },
+      "expected": {
+        "opens": "2026-09-30 09:00",
+        "closes": "2026-12-02 02:00"
+      },
+      "why": "anchor 2026-12-03 → Tue 2026-12-01 17:00 LA (UTC-8) = Wed 02:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Peniche, Leiria, Portugal",
+      "zone": "Europe/Paris",
+      "start": "2026-11-05",
+      "note": "close Tuesday in Oct (daylight time in LA)",
+      "api": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-07 02:00"
+      },
+      "expected": {
+        "opens": "2026-08-05 09:00",
+        "closes": "2026-10-07 02:00"
+      },
+      "why": "anchor 2026-10-08 → Tue 2026-10-06 17:00 LA (UTC-7) = Wed 02:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Peniche, Leiria, Portugal",
+      "zone": "Europe/Paris",
+      "start": "2026-12-29",
+      "note": "start − 28 days is a Tuesday",
+      "api": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-02 02:00"
+      },
+      "expected": {
+        "opens": "2026-09-29 09:00",
+        "closes": "2026-12-02 02:00"
+      },
+      "why": "anchor 2026-12-01 → Tue 2026-12-01 17:00 LA (UTC-8) = Wed 02:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Peniche, Leiria, Portugal",
+      "zone": "Europe/Paris",
+      "start": "2026-12-28",
+      "note": "start − 28 days is a Monday",
+      "api": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-25 02:00"
+      },
+      "expected": {
+        "opens": "2026-09-28 09:00",
+        "closes": "2026-11-25 02:00"
+      },
+      "why": "anchor 2026-11-30 → Tue 2026-11-24 17:00 LA (UTC-8) = Wed 02:00 venue"
+    },
+    {
+      "status": "PASS",
+      "venue": "Peniche, Leiria, Portugal",
+      "zone": "Europe/Paris",
+      "start": "2028-05-31",
+      "note": "leap-year clamp to 29 Feb",
+      "api": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-03 02:00"
+      },
+      "expected": {
+        "opens": "2028-02-29 09:00",
+        "closes": "2028-05-03 02:00"
+      },
+      "why": "anchor 2028-05-03 → Tue 2028-05-02 17:00 LA (UTC-7) = Wed 02:00 venue"
+    }
+  ]
+}

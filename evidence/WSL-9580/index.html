@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WSL-9580 evidence</title>
+<style>
+  :root { --bg:#f4f7f8; --surface:#fff; --ink:#0f2230; --muted:#536877; --line:#d6e0e5; --accent:#0b6e8a; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0c171f; --surface:#12212c; --ink:#e3edf2; --muted:#9bb0bd; --line:#233846; --accent:#5cc3dd; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:28px 16px 56px; display:grid; gap:18px; }
+  h1 { font-size:26px; line-height:1.2; margin:0; }
+  h2 { font-size:18px; margin:0; }
+  p { margin:0; max-width:75ch; }
+  .muted { color:var(--muted); font-size:14px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px; display:grid; gap:10px; min-width:0; }
+  video, img { width:100%; height:auto; border:1px solid var(--line); border-radius:6px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  .box { overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:8px; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size:.9em; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <div>
+    <h1>WSL-9580 · Same event registered twice from two open tabs</h1>
+    <p class="muted">Recorded on dev, 19 Oct 2026 · Event <code>01a1553a-a180-743d-8e72-778dca575879</code> · Entry <code>01a1553b-82cd-77cb-a983-5bb808dc0d0c</code> (QS-2026-M-086-001) · <a href="https://wslproduct.atlassian.net/browse/WSL-9580">Jira WSL-9580</a></p>
+  </div>
+  <p>The same athlete account is signed in on two tabs, both on the registration form for the same event. Tab 1 submits. Tab 2 is not refreshed: it still shows the form with Submit enabled, and its submit is accepted with a normal confirmation for the same entry. The backend answers both requests with <b>201 Created</b>.</p>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Tab 1 — registers first</h2>
+      <video controls preload="metadata" src="tab-1.webm"></video>
+      <img src="tab-1-after-submit.png" alt="Tab 1 confirmation: You are on the waitlist, reference QS-2026-M-086-001">
+    </section>
+    <section class="card">
+      <h2>Tab 2 — not refreshed, submits again</h2>
+      <video controls preload="metadata" src="tab-2.webm"></video>
+      <img src="tab-2-after-submit.png" alt="Tab 2 confirmation for the same reference QS-2026-M-086-001">
+    </section>
+  </div>
+
+  <div class="box"><table>
+    <thead><tr><th>Request</th><th>Time (UTC)</th><th>Response</th></tr></thead>
+    <tbody>
+      <tr><td>Tab 1 <code>POST /api/entries</code></td><td>17:35:26</td><td>201 Created — entry 01a1553b…, ref QS-2026-M-086-001, charge "requested"</td></tr>
+      <tr><td>Tab 2 <code>POST /api/entries</code> (same event and athlete)</td><td>17:36:07</td><td>201 Created — same entry and reference, charge "agreed"</td></tr>
+      <tr><td>Tour Manager roster</td><td>after both</td><td>One entry for the athlete (Waitlisted, Authorized); one charge record of USD 150; one saved card</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="muted">Full request log for both tabs: <a href="api-log.json">api-log.json</a> (paths, status codes and entry responses; no credentials or cookies). Each video has a caption bar naming the step.</p>
+</main>
+</body>
+</html>

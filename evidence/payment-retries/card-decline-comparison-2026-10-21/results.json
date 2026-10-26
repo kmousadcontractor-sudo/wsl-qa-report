@@ -1,0 +1,190 @@
+{
+  "startedAt": "2026-10-21T14:16:11.832Z",
+  "email": "heavy-actually+card-compare-1792592171840@btj5keea.mailosaur.net",
+  "originalRecipient": "heavy-actually@btj5keea.mailosaur.net",
+  "checks": [
+    {
+      "at": "2026-10-21T14:19:50.882Z",
+      "name": "generic-decline",
+      "expectedDecline": "generic_decline",
+      "provider": {
+        "at": "2026-10-21T14:19:47.661Z",
+        "http": 402,
+        "id": "pi_3UT0MjHma49jszOG1fMOrwWE",
+        "status": "requires_payment_method",
+        "livemode": false,
+        "error": {
+          "code": "card_declined",
+          "decline_code": "generic_decline",
+          "message": "Your card was declined."
+        }
+      },
+      "application": {
+        "status": 200,
+        "body": {
+          "intentId": "01a15ed5-04df-761b-81f8-fb20d0264abc",
+          "status": "attempt_ready",
+          "membershipStatus": null,
+          "amount": 250,
+          "amountMinor": 25000,
+          "currency": "USD",
+          "fulfilment": "declined",
+          "failureClass": "needs_new_method",
+          "message": "This card cannot be used. Please use another card."
+        }
+      },
+      "newCheckout": true,
+      "membershipId": "01a15ed5-04df-761b-81f8-fb20d0264abc",
+      "screenshot": "generic-decline-after.png",
+      "visibleError": [
+        "Your card has been declined."
+      ],
+      "status": "PASS"
+    },
+    {
+      "at": "2026-10-21T14:20:02.522Z",
+      "name": "insufficient-funds",
+      "expectedDecline": "insufficient_funds",
+      "provider": {
+        "at": "2026-10-21T14:19:57.995Z",
+        "http": 402,
+        "id": "pi_3UT0MvHma49jszOG1UXomQIJ",
+        "status": "requires_payment_method",
+        "livemode": false,
+        "error": {
+          "code": "card_declined",
+          "decline_code": "insufficient_funds",
+          "message": "Your card has insufficient funds. Use a different payment method to complete this purchase."
+        }
+      },
+      "application": {
+        "status": 200,
+        "body": {
+          "intentId": "01a15ed5-33c0-7541-b0df-2b467cc11c75",
+          "status": "attempt_ready",
+          "membershipStatus": null,
+          "amount": 250,
+          "amountMinor": 25000,
+          "currency": "USD",
+          "fulfilment": "declined",
+          "failureClass": "retryable",
+          "message": "Your card was declined. Please try again or use another card."
+        }
+      },
+      "newCheckout": true,
+      "membershipId": "01a15ed5-33c0-7541-b0df-2b467cc11c75",
+      "screenshot": "insufficient-funds-after.png",
+      "visibleError": [
+        "Your card has insufficient funds. Try a different card."
+      ],
+      "status": "PASS"
+    },
+    {
+      "at": "2026-10-21T14:20:12.673Z",
+      "name": "valid-card-recovery",
+      "expectedDecline": null,
+      "provider": {
+        "at": "2026-10-21T14:20:09.074Z",
+        "http": 200,
+        "id": "pi_3UT0N7Hma49jszOG0qGTVSIS",
+        "status": "succeeded",
+        "livemode": false,
+        "error": null
+      },
+      "application": {
+        "status": 200,
+        "body": {
+          "intentId": "01a15ed5-61ae-719b-b9da-f43bd87c6e46",
+          "status": "complete",
+          "membershipStatus": "active",
+          "amount": 250,
+          "amountMinor": 25000,
+          "currency": "USD",
+          "fulfilment": "complete",
+          "failureClass": null,
+          "message": null
+        }
+      },
+      "newCheckout": true,
+      "membershipId": "01a15ed5-61ae-719b-b9da-f43bd87c6e46",
+      "screenshot": "valid-card-recovery-after.png",
+      "visibleError": [],
+      "status": "PASS"
+    }
+  ],
+  "provider": [
+    {
+      "at": "2026-10-21T14:16:32.740Z",
+      "http": 402,
+      "id": "pi_3UT0JdHma49jszOG0d2CfYDr",
+      "status": "requires_payment_method",
+      "livemode": false,
+      "error": {
+        "code": "card_declined",
+        "decline_code": "generic_decline",
+        "message": "Your card was declined."
+      }
+    },
+    {
+      "at": "2026-10-21T14:19:47.661Z",
+      "http": 402,
+      "id": "pi_3UT0MjHma49jszOG1fMOrwWE",
+      "status": "requires_payment_method",
+      "livemode": false,
+      "error": {
+        "code": "card_declined",
+        "decline_code": "generic_decline",
+        "message": "Your card was declined."
+      }
+    },
+    {
+      "at": "2026-10-21T14:19:57.995Z",
+      "http": 402,
+      "id": "pi_3UT0MvHma49jszOG1UXomQIJ",
+      "status": "requires_payment_method",
+      "livemode": false,
+      "error": {
+        "code": "card_declined",
+        "decline_code": "insufficient_funds",
+        "message": "Your card has insufficient funds. Use a different payment method to complete this purchase."
+      }
+    },
+    {
+      "at": "2026-10-21T14:20:09.074Z",
+      "http": 200,
+      "id": "pi_3UT0N7Hma49jszOG0qGTVSIS",
+      "status": "succeeded",
+      "livemode": false,
+      "error": null
+    }
+  ],
+  "checkouts": [
+    {
+      "at": "2026-10-21T14:16:28.680Z",
+      "http": 201,
+      "membershipId": "01a15ed2-17fc-75e6-ae57-1317a82fce4e"
+    },
+    {
+      "at": "2026-10-21T14:19:40.297Z",
+      "http": 201,
+      "membershipId": "01a15ed5-04df-761b-81f8-fb20d0264abc"
+    },
+    {
+      "at": "2026-10-21T14:19:52.407Z",
+      "http": 201,
+      "membershipId": "01a15ed5-33c0-7541-b0df-2b467cc11c75"
+    },
+    {
+      "at": "2026-10-21T14:20:04.372Z",
+      "http": 201,
+      "membershipId": "01a15ed5-61ae-719b-b9da-f43bd87c6e46"
+    }
+  ],
+  "athleteId": "01a15ed1-e7f1-756f-a31e-bb2648c73ed8",
+  "status": "MEMBERSHIP_COMPARISON_COMPLETED",
+  "finishedAt": "2026-10-21T14:20:12.678Z",
+  "video": "C:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\card-decline-comparison-2026-10-21\\page@0829837f2b71689366ba6b1bacf698ab.webm",
+  "toolingDiagnostics": [
+    "locator.waitFor: Timeout 35000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: 'Select WSL Pro Membership', exact: true }) to be visible\u001b[22m\n\n    at C:\\Users\\hp\\Desktop\\wsl-qa-automation\\scripts\\demo\\compare-decline-cards.mjs:22:80"
+  ]
+}
