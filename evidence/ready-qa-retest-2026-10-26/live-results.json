@@ -1,0 +1,1853 @@
+{
+  "startedAt": "2026-10-26T15:30:05.561Z",
+  "environment": {
+    "app": "https://app.dev.worldsurfleague.com",
+    "api": "https://api.dev.worldsurfleague.com/api"
+  },
+  "checks": [
+    {
+      "key": "WSL-9585",
+      "name": "Actual Google selection fills Mountain View and ZIP",
+      "status": "PASS",
+      "actual": {
+        "city": "Mountain View",
+        "zip": "94043"
+      }
+    },
+    {
+      "key": "WSL-9585",
+      "name": "Timezone auto-populates America/Los_Angeles",
+      "status": "PASS",
+      "actual": "UTC-07:00 · America/Los_Angeles"
+    },
+    {
+      "key": "WSL-9695",
+      "name": "past-past create status",
+      "status": "PASS",
+      "actual": {
+        "status": 422,
+        "reason": "competition.event_start_in_past",
+        "fields": {
+          "startDate": {
+            "code": "competition.event_start_in_past",
+            "message": "The event's start date must not be in the past. Choose a date from today onward."
+          }
+        }
+      }
+    },
+    {
+      "key": "WSL-9695",
+      "name": "past-past identifies a date field and no created event",
+      "status": "PASS",
+      "actual": {
+        "fields": {
+          "startDate": {
+            "code": "competition.event_start_in_past",
+            "message": "The event's start date must not be in the past. Choose a date from today onward."
+          }
+        }
+      }
+    },
+    {
+      "key": "WSL-9695",
+      "name": "past-future create status",
+      "status": "PASS",
+      "actual": {
+        "status": 422,
+        "reason": "competition.event_start_in_past",
+        "fields": {
+          "startDate": {
+            "code": "competition.event_start_in_past",
+            "message": "The event's start date must not be in the past. Choose a date from today onward."
+          }
+        }
+      }
+    },
+    {
+      "key": "WSL-9695",
+      "name": "past-future identifies a date field and no created event",
+      "status": "PASS",
+      "actual": {
+        "fields": {
+          "startDate": {
+            "code": "competition.event_start_in_past",
+            "message": "The event's start date must not be in the past. Choose a date from today onward."
+          }
+        }
+      }
+    },
+    {
+      "key": "WSL-9695",
+      "name": "future-same-day create status",
+      "status": "PASS",
+      "actual": {
+        "status": 201
+      }
+    }
+  ],
+  "api": [
+    {
+      "at": "2026-10-26T15:30:21.436Z",
+      "path": "/tour-manager/seasons",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "seasons": [
+          {
+            "id": "01a1733f-7a5e-72f8-873a-014a5ddd33df",
+            "dates": "1 Apr 2029 – 31 Mar 2030",
+            "tours": 36,
+            "events": 133,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1733f-7a5e-72f8-873a-014a5ddd33df",
+            "name": "2029-30",
+            "startDate": "2029-04-01",
+            "endDate": "2030-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 133,
+            "version": 1
+          },
+          {
+            "id": "01a1733e-8662-74ec-adbd-c9f43a19a8e9",
+            "dates": "1 Apr 2028 – 31 Mar 2029",
+            "tours": 36,
+            "events": 133,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1733e-8662-74ec-adbd-c9f43a19a8e9",
+            "name": "2028-29",
+            "startDate": "2028-04-01",
+            "endDate": "2029-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 133,
+            "version": 1
+          },
+          {
+            "id": "01a16545-06bc-718d-8d86-0bc7284e6434",
+            "dates": "1 Apr 2027 – 31 Mar 2028",
+            "tours": 36,
+            "events": 133,
+            "current": false,
+            "open": true,
+            "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+            "name": "2027-28",
+            "startDate": "2027-04-01",
+            "endDate": "2028-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 133,
+            "version": 1
+          },
+          {
+            "id": "01a16500-d18a-7089-9f93-87136db1daf5",
+            "dates": "1 Apr 2026 – 31 Mar 2027",
+            "tours": 38,
+            "events": 399,
+            "current": true,
+            "open": true,
+            "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+            "name": "2026-27",
+            "startDate": "2026-04-01",
+            "endDate": "2027-03-31",
+            "status": "active",
+            "tourCount": 38,
+            "eventCount": 399,
+            "version": 1
+          },
+          {
+            "id": "01a16500-a8cf-7628-bffd-0d485905ddbd",
+            "dates": "1 Jan 2025 – 31 Mar 2026",
+            "tours": 26,
+            "events": 130,
+            "current": false,
+            "open": false,
+            "seasonId": "01a16500-a8cf-7628-bffd-0d485905ddbd",
+            "name": "2025-26",
+            "startDate": "2025-01-01",
+            "endDate": "2026-03-31",
+            "status": "closed",
+            "tourCount": 26,
+            "eventCount": 130,
+            "version": 1
+          }
+        ],
+        "next": {
+          "name": "2030-31",
+          "startDate": "2030-04-01",
+          "endDate": "2031-03-31"
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T15:30:21.659Z",
+      "path": "/tour-manager/reference/tours",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a689-76d6-bacf-97db2d06d288",
+            "label": "Challenger Series (CS) · Men"
+          },
+          {
+            "value": "01a16500-a68e-7211-b990-8b674dcc4b4e",
+            "label": "Challenger Series (CS) · Women"
+          },
+          {
+            "value": "01a16500-a67e-76ce-bbb9-29f148f96885",
+            "label": "Championship Tour (CT) · Men"
+          },
+          {
+            "value": "01a16500-a685-7257-8b94-62e498f3f829",
+            "label": "Championship Tour (CT) · Women"
+          },
+          {
+            "value": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "label": "International Qualifying Series (QS) · Men"
+          },
+          {
+            "value": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "label": "International Qualifying Series (QS) · Women"
+          },
+          {
+            "value": "01a16500-a6ba-722e-a688-0c770cac410d",
+            "label": "Longboard Qualifying Series (LQS) · Men"
+          },
+          {
+            "value": "01a16500-a6be-7785-8f8e-a0bcebff613e",
+            "label": "Longboard Qualifying Series (LQS) · Women"
+          },
+          {
+            "value": "01a16500-a6b0-741b-87d7-2349d131a6c7",
+            "label": "Pro Junior Series (PJ) · Men"
+          },
+          {
+            "value": "01a16500-a6b5-74ca-8822-61940bc8c64a",
+            "label": "Pro Junior Series (PJ) · Women"
+          },
+          {
+            "value": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "label": "Qualifying Series (QS) · Men"
+          },
+          {
+            "value": "01a16500-a6ac-73e7-bd07-b5636015959e",
+            "label": "Qualifying Series (QS) · Women"
+          },
+          {
+            "value": "01a16500-a69b-74a1-9b2b-c02b0bcd0c85",
+            "label": "World Longboard Tour (LT) · Men"
+          },
+          {
+            "value": "01a16500-a6a0-740e-9040-800ba320cb75",
+            "label": "World Longboard Tour (LT) · Women"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-26T15:30:21.887Z",
+      "path": "/tour-manager/reference/locations?region=north_america",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+            "label": "56th Street, Newport Beach, California · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "label": "Arecibo, La Marginal, Arecibo, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "label": "Atlantic City, New Jersey, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd8c31d4834a",
+            "label": "Atlantic Park Surf, Virginia Beach, VA · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cceee2805fb9",
+            "label": "Barra de la Cruz, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9a30ae9fd9",
+            "label": "Basse Pointe, Martinique, French West Indies · Martinique time",
+            "timeZone": "America/Martinique"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd239cc0fbc2",
+            "label": "Bathsheba, St. Josephs, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc6ceab1b630",
+            "label": "Belmar, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd0ba5cd1084",
+            "label": "Brandens, Hastings, Christ Church, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd287157175a",
+            "label": "Cortes Bank, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd7d9947715",
+            "label": "Deerfield Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd2239d805d3",
+            "label": "Domes Beach, Rincon, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccdd051fc834",
+            "label": "Dorney Park Wave Pool, Pennsylvania, Pennsylvania, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccc77e0b7943",
+            "label": "Drill Hall Beach, St. Michael, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7fac184d23",
+            "label": "El Rastrial · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd6d7485f77e",
+            "label": "El Sunzal, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5d3aa77374",
+            "label": "Encuentro Beach, Puerto Plata, DO · Santo Domingo time",
+            "timeZone": "America/Santo_Domingo"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccbc8ec0a562",
+            "label": "Esterillos Este, Parrita, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e72e9de987ca",
+            "label": "Huntington Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd161ab5106b",
+            "label": "Jaco Beach, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5ceecb2278",
+            "label": "Jax Beach Pier, Jacksonville, Florida · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9ba700d41a",
+            "label": "Jennette's Pier, Nags Head, North Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd60ad3b6d9",
+            "label": "Jensen Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc84af3ebdf9",
+            "label": "Jobo's Beach, Puerto Rico, Isabela, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd8b8e620c76",
+            "label": "La Bocana, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5f3da529c5",
+            "label": "La Izquierda, Cabarete, Sosúa, DO · Santo Domingo time",
+            "timeZone": "America/Santo_Domingo"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd025c63242f",
+            "label": "Lemoore, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78c4cf20fa0",
+            "label": "Long Beach, Nassau County, New York, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7ecf3f71b9",
+            "label": "Los Cerritos Beach, Cerritos, Baja California Sur, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e7310e0e815a",
+            "label": "Lower Trestles, San Clemente, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd301fa10cf",
+            "label": "Manhattan Beach, California, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccfb2022c719",
+            "label": "Mavericks, Half Moon Bay, California · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e794ad6b9849",
+            "label": "Mazatlan, Sinaloa, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e77e0761ecc2",
+            "label": "Middles Beach, Isabela, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd40aacad41a",
+            "label": "Morro Bay, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd9e6bab6a7",
+            "label": "Myrtle Beach, South Carolina, South Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cca5609c5e99",
+            "label": "Nelscott Reef, Lincoln City, Oregon, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd8a0369c43",
+            "label": "Neptune Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78790e45790",
+            "label": "New Smyrna Beach, Volusia County, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc714cfc74bc",
+            "label": "Ocean Beach, San Francisco, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccda883cd430",
+            "label": "Ocean City, Maryland, Maryland, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e79a10b74487",
+            "label": "Oceanside, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e73410b5e9a1",
+            "label": "Oceanside Harbor, Oceanside, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc808bb864c3",
+            "label": "Oceanside Pier, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccf43c28c485",
+            "label": "Pismo Beach Pier, Pismo Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccc5a3bdde6f",
+            "label": "Playa Hermosa, Garabito, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc7c64e0a9da",
+            "label": "Playa Revolcadero, Acapulco, Guerrero, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd3e6ca98718",
+            "label": "Playa Zicatela, Puerto Escondido, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e748bdf7c6fd",
+            "label": "Ponto, Carlsbad, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e75a24bdaa15",
+            "label": "Puerto Escondido, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e795c7644a10",
+            "label": "Punta Roca, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd24b3d68fe5",
+            "label": "Rincon, Rincon Stella, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd21037dc4ea",
+            "label": "Rincon, Puerto · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd4a431cca9",
+            "label": "San Diego, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e75819e585df",
+            "label": "San Onofre, San Clemente, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e7554d6dd0b7",
+            "label": "Santa Cruz, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cccb3f9f98df",
+            "label": "Seaside Heights, New Jersey, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78a40b83ced",
+            "label": "Seaside Reef, Solana Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e727a4a226ff",
+            "label": "Sebastian Inlet, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc859089d150",
+            "label": "Shepard Beach Park, Cocoa Beach, Florida · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc933e349b1e",
+            "label": "Soup Bowl, Bathsheba, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccf34e7bab74",
+            "label": "Southampton, New York, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cce16af62612",
+            "label": "Steamer Lane, Santa Cruz, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd1c6131e336",
+            "label": "Surf Ranch, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd050e53bde",
+            "label": "Surfrider Beach, Malibu, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd170fdb5a57",
+            "label": "TBA · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd3a95159fbd",
+            "label": "The Cape, Monuments Beach, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cca706274c32",
+            "label": "Todos Santos, Baja California, Mexico · Tijuana time",
+            "timeZone": "America/Tijuana"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e76d0db2e221",
+            "label": "Tofino, Vancouver Island, British Columbia, Canada · Vancouver time",
+            "timeZone": "America/Vancouver"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc6990899ea9",
+            "label": "Virginia Beach, Virginia, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccdbf3190934",
+            "label": "Wrightsville Beach, North Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9844502fbd",
+            "label": "Zippers, San Jose del Cabo, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-26T15:30:22.281Z",
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "request": {
+        "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+        "name": "QA WSL-9695 past-past 1793028621890",
+        "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+        "startDate": "2026-10-21",
+        "endDate": "2026-10-22",
+        "fieldSize": 48,
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "acknowledgedConflicts": []
+      },
+      "status": 422,
+      "body": {
+        "title": "Check these details",
+        "message": "The event's start date must not be in the past. Choose a date from today onward.",
+        "reason": "competition.event_start_in_past",
+        "fields": {
+          "startDate": {
+            "code": "competition.event_start_in_past",
+            "message": "The event's start date must not be in the past. Choose a date from today onward."
+          }
+        },
+        "retryable": false
+      }
+    },
+    {
+      "at": "2026-10-26T15:30:22.658Z",
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "request": {
+        "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+        "name": "QA WSL-9695 past-future 1793028622287",
+        "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+        "startDate": "2026-10-25",
+        "endDate": "2026-10-28",
+        "fieldSize": 48,
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "acknowledgedConflicts": []
+      },
+      "status": 422,
+      "body": {
+        "title": "Check these details",
+        "message": "The event's start date must not be in the past. Choose a date from today onward.",
+        "reason": "competition.event_start_in_past",
+        "fields": {
+          "startDate": {
+            "code": "competition.event_start_in_past",
+            "message": "The event's start date must not be in the past. Choose a date from today onward."
+          }
+        },
+        "retryable": false
+      }
+    },
+    {
+      "at": "2026-10-26T15:30:23.128Z",
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "request": {
+        "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+        "name": "QA WSL-9695 future-same-day 1793028622661",
+        "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+        "startDate": "2026-11-05",
+        "endDate": "2026-11-05",
+        "fieldSize": 48,
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "acknowledgedConflicts": []
+      },
+      "status": 201,
+      "body": {
+        "event": {
+          "id": "01a178d5-8f66-771c-a6f1-c93e045fb327",
+          "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA WSL-9695 future-same-day 1793028622661",
+            "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "rating": "",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+            "startDate": "2026-11-05",
+            "endDate": "2026-11-05",
+            "fieldSize": 48,
+            "prizeMoney": null,
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "",
+            "entryFee": null
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T15:30:23.462Z",
+      "path": "/tour-manager/events/01a178d5-8f66-771c-a6f1-c93e045fb327",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a178d5-8f66-771c-a6f1-c93e045fb327",
+          "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA WSL-9695 future-same-day 1793028622661",
+            "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "rating": "",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+            "startDate": "2026-11-05",
+            "endDate": "2026-11-05",
+            "fieldSize": 48,
+            "prizeMoney": null,
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "",
+            "entryFee": null
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T15:30:23.897Z",
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "request": {
+        "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+        "name": "QA WSL-9695 today-tomorrow 1793028623464",
+        "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-27",
+        "fieldSize": 48,
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "acknowledgedConflicts": []
+      },
+      "status": 201,
+      "body": {
+        "event": {
+          "id": "01a178d5-9268-7684-a141-e333b0edb102",
+          "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA WSL-9695 today-tomorrow 1793028623464",
+            "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "rating": "",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+            "startDate": "2026-10-26",
+            "endDate": "2026-10-27",
+            "fieldSize": 48,
+            "prizeMoney": null,
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "",
+            "entryFee": null
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T15:30:24.230Z",
+      "path": "/tour-manager/events/01a178d5-9268-7684-a141-e333b0edb102",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a178d5-9268-7684-a141-e333b0edb102",
+          "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA WSL-9695 today-tomorrow 1793028623464",
+            "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "rating": "",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+            "startDate": "2026-10-26",
+            "endDate": "2026-10-27",
+            "fieldSize": 48,
+            "prizeMoney": null,
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "",
+            "entryFee": null
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      }
+    }
+  ],
+  "locationInitial": "New location\nName*\nCountry*\n \nTime zone*\n \nFind the location\nFills in Town, City, State and Zip below — all stay editable.\nTown\nCity\nState\nFormat\nChoose what shows, and in what order\n\nPreview: The location's name alone\n\nCancel\nSave",
+  "googleSuggestion": "1600 Amphitheatre Parkway, Mountain View, CA, USA",
+  "location": {
+    "city": "Mountain View",
+    "zip": "94043",
+    "zone": "UTC-07:00 · America/Los_Angeles",
+    "text": "New location\nName*\nCountry*\nUnited States\nTime zone*\nUTC-07:00 · America/Los_Angeles\nFind the location\nFills in Town, City, State and Zip below — all stay editable.\nTown\nCity\nState\nZip code\nFormat\nChoose what shows, and in what order\n\nPreview: The location's name alone\n\nCancel\nSave"
+  },
+  "dateFixtures": [
+    {
+      "name": "past-past",
+      "expected": 422,
+      "at": "2026-10-26T15:30:22.281Z",
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "request": {
+        "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+        "name": "QA WSL-9695 past-past 1793028621890",
+        "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+        "startDate": "2026-10-21",
+        "endDate": "2026-10-22",
+        "fieldSize": 48,
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "acknowledgedConflicts": []
+      },
+      "status": 422,
+      "body": {
+        "title": "Check these details",
+        "message": "The event's start date must not be in the past. Choose a date from today onward.",
+        "reason": "competition.event_start_in_past",
+        "fields": {
+          "startDate": {
+            "code": "competition.event_start_in_past",
+            "message": "The event's start date must not be in the past. Choose a date from today onward."
+          }
+        },
+        "retryable": false
+      }
+    },
+    {
+      "name": "past-future",
+      "expected": 422,
+      "at": "2026-10-26T15:30:22.658Z",
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "request": {
+        "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+        "name": "QA WSL-9695 past-future 1793028622287",
+        "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+        "startDate": "2026-10-25",
+        "endDate": "2026-10-28",
+        "fieldSize": 48,
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "acknowledgedConflicts": []
+      },
+      "status": 422,
+      "body": {
+        "title": "Check these details",
+        "message": "The event's start date must not be in the past. Choose a date from today onward.",
+        "reason": "competition.event_start_in_past",
+        "fields": {
+          "startDate": {
+            "code": "competition.event_start_in_past",
+            "message": "The event's start date must not be in the past. Choose a date from today onward."
+          }
+        },
+        "retryable": false
+      }
+    },
+    {
+      "name": "future-same-day",
+      "expected": 201,
+      "at": "2026-10-26T15:30:23.128Z",
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "request": {
+        "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+        "name": "QA WSL-9695 future-same-day 1793028622661",
+        "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+        "startDate": "2026-11-05",
+        "endDate": "2026-11-05",
+        "fieldSize": 48,
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "acknowledgedConflicts": []
+      },
+      "status": 201,
+      "body": {
+        "event": {
+          "id": "01a178d5-8f66-771c-a6f1-c93e045fb327",
+          "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA WSL-9695 future-same-day 1793028622661",
+            "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "rating": "",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+            "startDate": "2026-11-05",
+            "endDate": "2026-11-05",
+            "fieldSize": 48,
+            "prizeMoney": null,
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "",
+            "entryFee": null
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      },
+      "readback": {
+        "at": "2026-10-26T15:30:23.462Z",
+        "path": "/tour-manager/events/01a178d5-8f66-771c-a6f1-c93e045fb327",
+        "method": "GET",
+        "status": 200,
+        "body": {
+          "event": {
+            "id": "01a178d5-8f66-771c-a6f1-c93e045fb327",
+            "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "statusOptions": [
+              {
+                "code": "draft",
+                "label": "Draft",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "current",
+                  "label": "This is the event's status now"
+                },
+                "missingFields": []
+              },
+              {
+                "code": "tentative",
+                "label": "Tentative",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "prerequisites_missing",
+                  "label": "Fill in what is missing first"
+                },
+                "missingFields": [
+                  {
+                    "code": "rating",
+                    "label": "Event rating"
+                  }
+                ]
+              },
+              {
+                "code": "confirmed",
+                "label": "Confirmed",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "prerequisites_missing",
+                  "label": "Fill in what is missing first"
+                },
+                "missingFields": [
+                  {
+                    "code": "rating",
+                    "label": "Event rating"
+                  }
+                ]
+              },
+              {
+                "code": "open-for-entries",
+                "label": "Open for entries",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "not_from_here",
+                  "label": "Not available from this status"
+                },
+                "missingFields": []
+              },
+              {
+                "code": "closed-for-entries",
+                "label": "Closed for entries",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "not_from_here",
+                  "label": "Not available from this status"
+                },
+                "missingFields": []
+              },
+              {
+                "code": "cancelled",
+                "label": "Cancel event",
+                "destructive": true,
+                "available": false,
+                "reason": {
+                  "code": "not_from_here",
+                  "label": "Not available from this status"
+                },
+                "missingFields": []
+              },
+              {
+                "code": "archived",
+                "label": "Archive",
+                "destructive": true,
+                "available": true,
+                "reason": null,
+                "missingFields": []
+              }
+            ],
+            "fields": {
+              "name": "QA WSL-9695 future-same-day 1793028622661",
+              "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+              "rating": "",
+              "regions": [
+                "north_america"
+              ],
+              "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+              "startDate": "2026-11-05",
+              "endDate": "2026-11-05",
+              "fieldSize": 48,
+              "prizeMoney": null,
+              "registrationOpensDate": "",
+              "registrationOpensTime": "",
+              "registrationClosesDate": "",
+              "registrationClosesTime": "",
+              "currency": "",
+              "entryFee": null
+            },
+            "readOnly": false,
+            "feeFromGrid": true,
+            "version": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "today-tomorrow",
+      "expected": null,
+      "at": "2026-10-26T15:30:23.897Z",
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "request": {
+        "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+        "name": "QA WSL-9695 today-tomorrow 1793028623464",
+        "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+        "startDate": "2026-10-26",
+        "endDate": "2026-10-27",
+        "fieldSize": 48,
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "acknowledgedConflicts": []
+      },
+      "status": 201,
+      "body": {
+        "event": {
+          "id": "01a178d5-9268-7684-a141-e333b0edb102",
+          "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "prerequisites_missing",
+                "label": "Fill in what is missing first"
+              },
+              "missingFields": [
+                {
+                  "code": "rating",
+                  "label": "Event rating"
+                }
+              ]
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA WSL-9695 today-tomorrow 1793028623464",
+            "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "rating": "",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+            "startDate": "2026-10-26",
+            "endDate": "2026-10-27",
+            "fieldSize": 48,
+            "prizeMoney": null,
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "",
+            "entryFee": null
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      },
+      "readback": {
+        "at": "2026-10-26T15:30:24.230Z",
+        "path": "/tour-manager/events/01a178d5-9268-7684-a141-e333b0edb102",
+        "method": "GET",
+        "status": 200,
+        "body": {
+          "event": {
+            "id": "01a178d5-9268-7684-a141-e333b0edb102",
+            "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+            "status": {
+              "code": "draft",
+              "label": "Draft",
+              "tone": "muted"
+            },
+            "statusOptions": [
+              {
+                "code": "draft",
+                "label": "Draft",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "current",
+                  "label": "This is the event's status now"
+                },
+                "missingFields": []
+              },
+              {
+                "code": "tentative",
+                "label": "Tentative",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "prerequisites_missing",
+                  "label": "Fill in what is missing first"
+                },
+                "missingFields": [
+                  {
+                    "code": "rating",
+                    "label": "Event rating"
+                  }
+                ]
+              },
+              {
+                "code": "confirmed",
+                "label": "Confirmed",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "prerequisites_missing",
+                  "label": "Fill in what is missing first"
+                },
+                "missingFields": [
+                  {
+                    "code": "rating",
+                    "label": "Event rating"
+                  }
+                ]
+              },
+              {
+                "code": "open-for-entries",
+                "label": "Open for entries",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "not_from_here",
+                  "label": "Not available from this status"
+                },
+                "missingFields": []
+              },
+              {
+                "code": "closed-for-entries",
+                "label": "Closed for entries",
+                "destructive": false,
+                "available": false,
+                "reason": {
+                  "code": "not_from_here",
+                  "label": "Not available from this status"
+                },
+                "missingFields": []
+              },
+              {
+                "code": "cancelled",
+                "label": "Cancel event",
+                "destructive": true,
+                "available": false,
+                "reason": {
+                  "code": "not_from_here",
+                  "label": "Not available from this status"
+                },
+                "missingFields": []
+              },
+              {
+                "code": "archived",
+                "label": "Archive",
+                "destructive": true,
+                "available": true,
+                "reason": null,
+                "missingFields": []
+              }
+            ],
+            "fields": {
+              "name": "QA WSL-9695 today-tomorrow 1793028623464",
+              "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+              "rating": "",
+              "regions": [
+                "north_america"
+              ],
+              "location": "01a16500-a867-74e9-8dbf-e74c30a4a864",
+              "startDate": "2026-10-26",
+              "endDate": "2026-10-27",
+              "fieldSize": 48,
+              "prizeMoney": null,
+              "registrationOpensDate": "",
+              "registrationOpensTime": "",
+              "registrationClosesDate": "",
+              "registrationClosesTime": "",
+              "currency": "",
+              "entryFee": null
+            },
+            "readOnly": false,
+            "feeFromGrid": true,
+            "version": 1
+          }
+        }
+      }
+    }
+  ],
+  "createForm": {
+    "url": "https://app.dev.worldsurfleague.com/tour-manager/events/create",
+    "text": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nTM\nTour Manager 101\nTour Manager · All regions\n!\n\nUnexpected network error"
+  },
+  "status": "COMPLETED",
+  "finishedAt": "2026-10-26T15:30:27.871Z"
+}
