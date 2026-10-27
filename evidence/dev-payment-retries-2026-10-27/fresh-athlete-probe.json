@@ -1,0 +1,36 @@
+{
+  "startedAt": "2026-10-27T08:14:50.015Z",
+  "email": "qa.dev.retry.1793088890015@btj5keea.mailosaur.net",
+  "calls": [
+    {
+      "path": "/age-gate",
+      "status": 200,
+      "body": {
+        "eligible": true
+      }
+    },
+    {
+      "path": "/auth/register",
+      "status": 201,
+      "body": {
+        "registered": true
+      }
+    },
+    {
+      "path": "/athletes",
+      "status": 201,
+      "body": {
+        "athlete": {
+          "id": "01a17c6d-3bbe-7705-98e5-3588d944e244",
+          "status": "pending_documents",
+          "homeRegion": "north_america"
+        },
+        "next": {
+          "title": "Details saved",
+          "body": "Next, the membership terms, the waiver, the insurance authorisation and the age certification all need signing before this athlete can compete."
+        }
+      }
+    }
+  ],
+  "finishedAt": "2026-10-27T08:14:54.844Z"
+}

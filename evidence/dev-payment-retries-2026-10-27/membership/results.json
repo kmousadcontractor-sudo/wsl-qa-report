@@ -1,0 +1,29 @@
+{
+  "startedAt": "2026-10-27T08:15:33.024Z",
+  "app": "https://app.dev.worldsurfleague.com",
+  "api": "https://api.dev.worldsurfleague.com/api",
+  "cardLast4": "0341",
+  "email": "qa.dev.retry.1793088890015@btj5keea.mailosaur.net",
+  "calls": [
+    {
+      "at": "2026-10-27T08:15:46.551Z",
+      "path": "/membership/documents?athlete=01a17c6d-3bbe-7705-98e5-3588d944e244",
+      "method": "GET",
+      "status": 503,
+      "body": {
+        "title": "Something is not responding",
+        "message": "That took too long. Please try again.",
+        "reason": null,
+        "fields": {},
+        "retryable": true
+      }
+    }
+  ],
+  "provider": [],
+  "observations": [],
+  "stripeKeyMode": "pk_test",
+  "athleteId": "01a17c6d-3bbe-7705-98e5-3588d944e244",
+  "status": "BLOCKED",
+  "error": "Error: Documents HTTP 503 That took too long. Please try again.\n    at need (file:///C:/Users/hp/Desktop/wsl-qa-automation/scripts/bugs/dev-membership-rerun-20261027.mjs:9:82)\n    at file:///C:/Users/hp/Desktop/wsl-qa-automation/scripts/bugs/dev-membership-rerun-20261027.mjs:21:13",
+  "finishedAt": "2026-10-27T08:15:46.717Z"
+}

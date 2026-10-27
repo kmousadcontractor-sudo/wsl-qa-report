@@ -1,0 +1,32 @@
+{
+  "capturedAt": "2026-10-27T08:16:47.535Z",
+  "readOnly": true,
+  "services": [
+    {
+      "service": "athlete-api",
+      "exitCode": 0,
+      "errorLines": "{\"ts\": \"2026-10-27T08:08:58+0000\", \"level\": \"ERROR\", \"logger\": \"wsl_service_core.nats_options\", \"msg\": \"nats permission refused\", \"service\": \"athlete\", \"error\": \"nats: permissions violation for publish to \\\"svc.competition.year_on_sale.get\\\"\"}\n{\"ts\": \"2026-10-27T08:09:00+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.athlete.list\", \"correlation_id\": \"9bd8a327-a471-429a-a3c1-b9402dfdfb6f\", \"code\": \"upstream_failed\", \"retryable\": true, \"error\": \"svc.competition.year_on_sale.get did not answer within 2.0s\"}\n{\"ts\": \"2026-10-27T08:11:27+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.entry.register\", \"correlation_id\": \"d799e4b8-485b-4b6a-a0a0-a51cae094ebc\", \"code\": \"forbidden\", \"retryable\": false, \"error\": \"entry.register requires an athlete the caller owns\"}\n{\"ts\": \"2026-10-27T08:11:27+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.event.list\", \"correlation_id\": \"d799e4b8-485b-4b6a-a0a0-a51cae094ebc\", \"code\": \"forbidden\", \"retryable\": false, \"error\": \"event.list requires an athlete the caller owns\"}\n{\"ts\": \"2026-10-27T08:13:46+0000\", \"level\": \"ERROR\", \"logger\": \"wsl_service_core.nats_options\", \"msg\": \"nats permission refused\", \"service\": \"athlete\", \"error\": \"nats: permissions violation for publish to \\\"svc.competition.year_on_sale.get\\\"\"}\n{\"ts\": \"2026-10-27T08:13:48+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.athlete.list\", \"correlation_id\": \"17a7932c-cae4-4e88-a1a1-66f455f21c24\", \"code\": \"upstream_failed\", \"retryable\": true, \"error\": \"svc.competition.year_on_sale.get did not answer within 2.0s\"}\n{\"ts\": \"2026-10-27T08:15:45+0000\", \"level\": \"ERROR\", \"logger\": \"wsl_service_core.nats_options\", \"msg\": \"nats permission refused\", \"service\": \"athlete\", \"error\": \"nats: permissions violation for publish to \\\"svc.competition.year_on_sale.get\\\"\"}\n{\"ts\": \"2026-10-27T08:15:47+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.athlete.list\", \"correlation_id\": \"0e7d1926-f35b-4af0-a8cc-0049b347cadb\", \"code\": \"upstream_failed\", \"retryable\": true, \"error\": \"svc.competition.year_on_sale.get did not answer within 2.0s\"}",
+      "stderr": ""
+    },
+    {
+      "service": "athlete-consumer",
+      "exitCode": 0,
+      "errorLines": "",
+      "stderr": ""
+    }
+  ],
+  "readiness": [
+    {
+      "service": "athlete-api",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "service": "athlete-consumer",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0
+    }
+  ]
+}

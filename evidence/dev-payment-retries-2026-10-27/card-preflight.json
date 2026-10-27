@@ -1,0 +1,40 @@
+{
+  "startedAt": "2026-10-27T08:07:20.199Z",
+  "cards": [
+    {
+      "kind": "valid",
+      "token": "tok_visa",
+      "http": 200,
+      "id": "seti_1UV5PsHma49jszOG8x88Qdn1",
+      "status": "succeeded",
+      "livemode": false,
+      "error": null,
+      "savedPaymentMethodId": "01a17c66-7950-76b2-bc94-76ef80709cc6"
+    },
+    {
+      "kind": "insufficient-funds",
+      "token": "tok_visa_chargeDeclinedInsufficientFunds",
+      "http": 402,
+      "id": "seti_1UV5Q1Hma49jszOGYr7nH5uq",
+      "status": "requires_payment_method",
+      "livemode": false,
+      "error": {
+        "code": "card_declined",
+        "declineCode": "insufficient_funds",
+        "message": "Your card has insufficient funds. Use a different payment method to complete this purchase."
+      }
+    }
+  ],
+  "methods": {
+    "methods": [
+      {
+        "id": "01a17c66-7950-76b2-bc94-76ef80709cc6",
+        "status": "active",
+        "cardBrand": "visa",
+        "cardLast4": "4242"
+      }
+    ]
+  },
+  "status": "COMPLETE",
+  "finishedAt": "2026-10-27T08:07:47.133Z"
+}

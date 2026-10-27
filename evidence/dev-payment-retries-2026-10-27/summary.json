@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-27",
+  "environment": "dev",
+  "app": "https://app.dev.worldsurfleague.com",
+  "api": "https://api.dev.worldsurfleague.com/api",
+  "outcome": "BLOCKED_BEFORE_PAYMENT_CHECKOUT",
+  "checks": [
+    {
+      "name": "Valid Visa 4242 save",
+      "status": "PASS",
+      "detail": {
+        "kind": "valid",
+        "token": "tok_visa",
+        "http": 200,
+        "id": "seti_1UV5PsHma49jszOG8x88Qdn1",
+        "status": "succeeded",
+        "livemode": false,
+        "error": null,
+        "savedPaymentMethodId": "01a17c66-7950-76b2-bc94-76ef80709cc6"
+      }
+    },
+    {
+      "name": "Insufficient-funds card rejected during setup",
+      "status": "PASS",
+      "detail": {
+        "kind": "insufficient-funds",
+        "token": "tok_visa_chargeDeclinedInsufficientFunds",
+        "http": 402,
+        "id": "seti_1UV5Q1Hma49jszOGYr7nH5uq",
+        "status": "requires_payment_method",
+        "livemode": false,
+        "error": {
+          "code": "card_declined",
+          "declineCode": "insufficient_funds",
+          "message": "Your card has insufficient funds. Use a different payment method to complete this purchase."
+        }
+      }
+    },
+    {
+      "name": "Fresh account and athlete creation",
+      "status": "PASS"
+    },
+    {
+      "name": "Membership documents",
+      "status": "BLOCKED",
+      "detail": {
+        "at": "2026-10-27T08:18:06.014Z",
+        "status": 503,
+        "body": {
+          "title": "Something is not responding",
+          "message": "That took too long. Please try again.",
+          "reason": null,
+          "fields": {},
+          "retryable": true
+        }
+      }
+    },
+    {
+      "name": "Membership payment completion",
+      "status": "BLOCKED",
+      "reason": "Documents prerequisite unavailable"
+    },
+    {
+      "name": "Confirm & charge / event decline",
+      "status": "BLOCKED",
+      "reason": "No new eligible athlete entry established"
+    },
+    {
+      "name": "Manual Retry payment",
+      "status": "NOT_RUN",
+      "reason": "No fresh declined entry exists"
+    },
+    {
+      "name": "Valid-card event recovery",
+      "status": "NOT_RUN",
+      "reason": "No fresh declined entry exists"
+    },
+    {
+      "name": "Scheduled reminder worker / inbox delivery",
+      "status": "NOT_RUN",
+      "reason": "No fresh declined charge exists; worker not executed"
+    }
+  ],
+  "backend": {
+    "capturedAt": "2026-10-27T08:16:47.535Z",
+    "readOnly": true,
+    "services": [
+      {
+        "service": "athlete-api",
+        "exitCode": 0,
+        "errorLines": "{\"ts\": \"2026-10-27T08:08:58+0000\", \"level\": \"ERROR\", \"logger\": \"wsl_service_core.nats_options\", \"msg\": \"nats permission refused\", \"service\": \"athlete\", \"error\": \"nats: permissions violation for publish to \\\"svc.competition.year_on_sale.get\\\"\"}\n{\"ts\": \"2026-10-27T08:09:00+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.athlete.list\", \"correlation_id\": \"9bd8a327-a471-429a-a3c1-b9402dfdfb6f\", \"code\": \"upstream_failed\", \"retryable\": true, \"error\": \"svc.competition.year_on_sale.get did not answer within 2.0s\"}\n{\"ts\": \"2026-10-27T08:11:27+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.entry.register\", \"correlation_id\": \"d799e4b8-485b-4b6a-a0a0-a51cae094ebc\", \"code\": \"forbidden\", \"retryable\": false, \"error\": \"entry.register requires an athlete the caller owns\"}\n{\"ts\": \"2026-10-27T08:11:27+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.event.list\", \"correlation_id\": \"d799e4b8-485b-4b6a-a0a0-a51cae094ebc\", \"code\": \"forbidden\", \"retryable\": false, \"error\": \"event.list requires an athlete the caller owns\"}\n{\"ts\": \"2026-10-27T08:13:46+0000\", \"level\": \"ERROR\", \"logger\": \"wsl_service_core.nats_options\", \"msg\": \"nats permission refused\", \"service\": \"athlete\", \"error\": \"nats: permissions violation for publish to \\\"svc.competition.year_on_sale.get\\\"\"}\n{\"ts\": \"2026-10-27T08:13:48+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.athlete.list\", \"correlation_id\": \"17a7932c-cae4-4e88-a1a1-66f455f21c24\", \"code\": \"upstream_failed\", \"retryable\": true, \"error\": \"svc.competition.year_on_sale.get did not answer within 2.0s\"}\n{\"ts\": \"2026-10-27T08:15:45+0000\", \"level\": \"ERROR\", \"logger\": \"wsl_service_core.nats_options\", \"msg\": \"nats permission refused\", \"service\": \"athlete\", \"error\": \"nats: permissions violation for publish to \\\"svc.competition.year_on_sale.get\\\"\"}\n{\"ts\": \"2026-10-27T08:15:47+0000\", \"level\": \"WARNING\", \"logger\": \"wsl.rpc\", \"msg\": \"svc handler failed\", \"service\": \"athlete\", \"subject\": \"svc.athlete.athlete.list\", \"correlation_id\": \"0e7d1926-f35b-4af0-a8cc-0049b347cadb\", \"code\": \"upstream_failed\", \"retryable\": true, \"error\": \"svc.competition.year_on_sale.get did not answer within 2.0s\"}",
+        "stderr": ""
+      },
+      {
+        "service": "athlete-consumer",
+        "exitCode": 0,
+        "errorLines": "",
+        "stderr": ""
+      }
+    ],
+    "readiness": [
+      {
+        "service": "athlete-api",
+        "phase": "Running",
+        "ready": true,
+        "restarts": 0
+      },
+      {
+        "service": "athlete-consumer",
+        "phase": "Running",
+        "ready": true,
+        "restarts": 0
+      }
+    ]
+  },
+  "quota": {
+    "capturedAt": "2026-10-27T08:14:25.300Z",
+    "ProductionAccessEnabled": true,
+    "SendingEnabled": true,
+    "SendQuota": {
+      "Max24HourSend": 50000,
+      "MaxSendRate": 14,
+      "SentLast24Hours": 74
+    }
+  },
+  "fixture": {
+    "email": "qa.dev.retry.1793088890015@btj5keea.mailosaur.net",
+    "athleteId": "01a17c6d-3bbe-7705-98e5-3588d944e244"
+  },
+  "limits": [
+    "No service permissions, deployments or shared settings changed.",
+    "No card charge or payment retry submitted. No reminder worker mutation executed.",
+    "The older HeavyQA fixture was rejected for ownership and was not reused. A separate fresh account reproduced the documents blocker.",
+    "NATS permission denial observed in the matching time window is consistent with athlete-list timeouts; no infrastructure fix or full end-to-end payment outcome is asserted."
+  ]
+}
