@@ -1,0 +1,518 @@
+{
+  "date": "2026-10-27",
+  "environment": "staging01",
+  "email": "adam.carter@btj5keea.mailosaur.net",
+  "outcome": {
+    "initialDecline": "PASS",
+    "validCardRecovery": "PASS",
+    "reminderScheduling": "PASS",
+    "duplicateSuppression": "PASS",
+    "emailDelivery": "BLOCKED_SES_DAILY_QUOTA",
+    "manualManagerRetry": "NOT_EXECUTED"
+  },
+  "reminderFixture": {
+    "eventId": "01a17c55-ec70-7333-af02-76705f0a39e5",
+    "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+    "firstFailure": "2026-10-27 07:50:26.164221+00:00"
+  },
+  "recoveryFixture": {
+    "eventId": "01a17c58-a5cf-7720-a229-4afd85fc106f",
+    "entryId": "01a17c59-420c-72d4-9d2f-adfdc51fc8db",
+    "cardChange": {
+      "at": "2026-10-27T07:54:53.891Z",
+      "status": 202,
+      "body": {
+        "entryId": "01a17c59-420c-72d4-9d2f-adfdc51fc8db",
+        "status": "agreed",
+        "reason": null,
+        "message": null,
+        "total": {
+          "amount": 150,
+          "amountMinor": 15000,
+          "currency": "USD"
+        },
+        "savedPaymentMethodId": "01a17c59-1454-72ce-a813-3cdaf4fdede3",
+        "cardChange": {
+          "status": "requested",
+          "reason": null,
+          "message": null
+        }
+      },
+      "scope": "Authenticated athlete card-change API, Visa 4242; setup succeeded in Stripe test mode. Card update itself initiates recovery; no manager retry is submitted."
+    },
+    "final": {
+      "id": "01a17c59-420c-72d4-9d2f-adfdc51fc8db",
+      "group": "field",
+      "athlete": {
+        "initials": "SC",
+        "name": "Staging Card0341QA",
+        "country": "United States"
+      },
+      "ranking": "Seed 1 · N. AMERICA",
+      "region": "north_america",
+      "highlight": null,
+      "insurance": {
+        "state": "ok",
+        "label": "Insurance: verified",
+        "code": "verified"
+      },
+      "payment": {
+        "code": "collected",
+        "label": "Collected",
+        "tone": "neutral"
+      },
+      "entry": {
+        "code": "confirmed",
+        "label": "Confirmed",
+        "tone": "neutral"
+      },
+      "waivable": {
+        "fee": false
+      },
+      "actions": [
+        {
+          "code": "message",
+          "label": "Send message",
+          "destructive": false
+        },
+        {
+          "code": "withdraw",
+          "label": "Withdraw entry",
+          "destructive": true
+        }
+      ],
+      "movable": true,
+      "pinned": false,
+      "hasHistory": true,
+      "seedRank": 1,
+      "alternatePosition": null,
+      "moveUpSeat": null,
+      "movedUpFrom": null
+    }
+  },
+  "mailbox": {
+    "capturedAt": "2026-10-27T07:55:33.669Z",
+    "email": "adam.carter@btj5keea.mailosaur.net",
+    "since": "2026-10-27T07:48:28.176Z",
+    "count": 0,
+    "messages": []
+  },
+  "quota": {
+    "ProductionAccessEnabled": false,
+    "SendingEnabled": true,
+    "SendQuota": {
+      "Max24HourSend": 200,
+      "MaxSendRate": 1,
+      "SentLast24Hours": 234
+    }
+  },
+  "deliveryAudit": {
+    "kind": "notification",
+    "items": [
+      {
+        "id": "01a17c56-632f-723a-ab08-0135fa5ad622",
+        "subject": "Your WSL Pro membership is active",
+        "template": "athlete.membership.active",
+        "createdAt": "2026-10-27 07:49:58.670805+00:00",
+        "status": "failed",
+        "providerMessageId": null,
+        "failure": "Daily message quota exceeded."
+      },
+      {
+        "id": "01a17c57-b2d6-72d6-89d5-81077ecae84f",
+        "subject": "Your entry fee for QA Staging 0341 verified reminders 1793087365207 could not be taken",
+        "template": "competition.entry.payment_action_required",
+        "createdAt": "2026-10-27 07:51:24.620918+00:00",
+        "status": "failed",
+        "providerMessageId": null,
+        "failure": "Daily message quota exceeded."
+      },
+      {
+        "id": "01a17c58-01da-7179-954d-21961b13bdce",
+        "subject": "Your entry fee for QA Staging 0341 verified reminders 1793087365207 could not be taken",
+        "template": "competition.entry.payment_action_required",
+        "createdAt": "2026-10-27 07:51:44.849822+00:00",
+        "status": "failed",
+        "providerMessageId": null,
+        "failure": "Daily message quota exceeded."
+      },
+      {
+        "id": "01a17c58-9e5d-726d-8587-f0c65ff63ed6",
+        "subject": "Your entry fee for QA Staging 0341 verified reminders 1793087365207 could not be taken",
+        "template": "competition.entry.payment_action_required",
+        "createdAt": "2026-10-27 07:52:24.917227+00:00",
+        "status": "failed",
+        "providerMessageId": null,
+        "failure": "Daily message quota exceeded."
+      },
+      {
+        "id": "01a17c58-b21c-7344-8446-026f11584706",
+        "subject": "Action needed: your place at QA Staging 0341 verified reminders 1793087365207 is at risk",
+        "template": "competition.entry.payment_action_required",
+        "createdAt": "2026-10-27 07:52:29.972533+00:00",
+        "status": "failed",
+        "providerMessageId": null,
+        "failure": "Daily message quota exceeded."
+      },
+      {
+        "id": "01a17c5b-bf12-756d-98aa-a0b714cb54ed",
+        "subject": "Your entry fee for QA Staging 0341 verified reminders 1793087365207 could not be taken",
+        "template": "competition.entry.payment_action_required",
+        "createdAt": "2026-10-27 07:55:49.897931+00:00",
+        "status": "failed",
+        "providerMessageId": null,
+        "failure": "Daily message quota exceeded."
+      }
+    ]
+  },
+  "checkpoints": [
+    {
+      "name": "24",
+      "environment": "staging",
+      "mode": "reminders_only",
+      "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+      "eventId": "01a17c55-ec70-7333-af02-76705f0a39e5",
+      "eventName": "QA Staging 0341 verified reminders 1793087365207",
+      "pinnedRules": {
+        "grace_period_hours": 168,
+        "notification_offsets_hours": [
+          24,
+          72,
+          120,
+          168
+        ],
+        "retry_offsets_hours": [
+          24,
+          72,
+          168
+        ],
+        "short_notice_days": 9
+      },
+      "actualTime": "2026-10-27T07:51:21.748927+00:00",
+      "fixtureClock": "2026-10-28T07:50:26.164221+00:00",
+      "before": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "0",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": null
+      },
+      "tick": {
+        "retries": 0,
+        "notices": 1,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "after": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "1",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": null
+      }
+    },
+    {
+      "name": "24-repeat",
+      "environment": "staging",
+      "mode": "reminders_only",
+      "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+      "eventId": "01a17c55-ec70-7333-af02-76705f0a39e5",
+      "eventName": "QA Staging 0341 verified reminders 1793087365207",
+      "pinnedRules": {
+        "grace_period_hours": 168,
+        "notification_offsets_hours": [
+          24,
+          72,
+          120,
+          168
+        ],
+        "retry_offsets_hours": [
+          24,
+          72,
+          168
+        ],
+        "short_notice_days": 9
+      },
+      "actualTime": "2026-10-27T07:51:28.922132+00:00",
+      "fixtureClock": "2026-10-28T07:50:26.164221+00:00",
+      "before": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "1",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": null
+      },
+      "tick": {
+        "retries": 0,
+        "notices": 0,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "after": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "1",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": null
+      }
+    },
+    {
+      "name": "72",
+      "environment": "staging",
+      "mode": "reminders_only",
+      "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+      "eventId": "01a17c55-ec70-7333-af02-76705f0a39e5",
+      "eventName": "QA Staging 0341 verified reminders 1793087365207",
+      "pinnedRules": {
+        "grace_period_hours": 168,
+        "notification_offsets_hours": [
+          24,
+          72,
+          120,
+          168
+        ],
+        "retry_offsets_hours": [
+          24,
+          72,
+          168
+        ],
+        "short_notice_days": 9
+      },
+      "actualTime": "2026-10-27T07:51:36.041235+00:00",
+      "fixtureClock": "2026-10-30T07:50:26.164221+00:00",
+      "before": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "1",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": null
+      },
+      "tick": {
+        "retries": 0,
+        "notices": 1,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "after": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "2",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": null
+      }
+    },
+    {
+      "name": "120",
+      "environment": "staging",
+      "mode": "reminders_only",
+      "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+      "eventId": "01a17c55-ec70-7333-af02-76705f0a39e5",
+      "eventName": "QA Staging 0341 verified reminders 1793087365207",
+      "pinnedRules": {
+        "grace_period_hours": 168,
+        "notification_offsets_hours": [
+          24,
+          72,
+          120,
+          168
+        ],
+        "retry_offsets_hours": [
+          24,
+          72,
+          168
+        ],
+        "short_notice_days": 9
+      },
+      "actualTime": "2026-10-27T07:51:42.648293+00:00",
+      "fixtureClock": "2026-11-01T07:50:26.164221+00:00",
+      "before": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "2",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": null
+      },
+      "tick": {
+        "retries": 0,
+        "notices": 1,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "after": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "3",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": null
+      }
+    },
+    {
+      "name": "168",
+      "environment": "staging",
+      "mode": "reminders_only",
+      "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+      "eventId": "01a17c55-ec70-7333-af02-76705f0a39e5",
+      "eventName": "QA Staging 0341 verified reminders 1793087365207",
+      "pinnedRules": {
+        "grace_period_hours": 168,
+        "notification_offsets_hours": [
+          24,
+          72,
+          120,
+          168
+        ],
+        "retry_offsets_hours": [
+          24,
+          72,
+          168
+        ],
+        "short_notice_days": 9
+      },
+      "actualTime": "2026-10-27T07:51:48.933800+00:00",
+      "fixtureClock": "2026-11-03T07:50:26.164221+00:00",
+      "before": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "3",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": null
+      },
+      "tick": {
+        "retries": 0,
+        "notices": 1,
+        "flagged": 1,
+        "stopped": 0,
+        "failed": 0
+      },
+      "after": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "4",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": "2026-11-03 07:50:26.164221+00:00"
+      }
+    },
+    {
+      "name": "168-repeat",
+      "environment": "staging",
+      "mode": "reminders_only",
+      "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+      "eventId": "01a17c55-ec70-7333-af02-76705f0a39e5",
+      "eventName": "QA Staging 0341 verified reminders 1793087365207",
+      "pinnedRules": {
+        "grace_period_hours": 168,
+        "notification_offsets_hours": [
+          24,
+          72,
+          120,
+          168
+        ],
+        "retry_offsets_hours": [
+          24,
+          72,
+          168
+        ],
+        "short_notice_days": 9
+      },
+      "actualTime": "2026-10-27T07:51:56.832882+00:00",
+      "fixtureClock": "2026-11-03T07:50:26.164221+00:00",
+      "before": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "4",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": "2026-11-03 07:50:26.164221+00:00"
+      },
+      "tick": {
+        "retries": 0,
+        "notices": 0,
+        "flagged": 0,
+        "stopped": 0,
+        "failed": 0
+      },
+      "after": {
+        "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+        "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "status": "failed",
+        "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+        "payment_rules_version": "2",
+        "last_failure_class": "needs_new_method",
+        "retries_sent": "0",
+        "notices_sent": "4",
+        "next_attempt_at": null,
+        "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+        "flagged_at": "2026-11-03 07:50:26.164221+00:00"
+      }
+    }
+  ]
+}

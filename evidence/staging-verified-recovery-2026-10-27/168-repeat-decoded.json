@@ -1,0 +1,59 @@
+[
+  {
+    "environment": "staging",
+    "mode": "reminders_only",
+    "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+    "eventId": "01a17c55-ec70-7333-af02-76705f0a39e5",
+    "eventName": "QA Staging 0341 verified reminders 1793087365207",
+    "pinnedRules": {
+      "grace_period_hours": 168,
+      "notification_offsets_hours": [
+        24,
+        72,
+        120,
+        168
+      ],
+      "retry_offsets_hours": [
+        24,
+        72,
+        168
+      ],
+      "short_notice_days": 9
+    },
+    "actualTime": "2026-10-27T07:51:56.832882+00:00",
+    "fixtureClock": "2026-11-03T07:50:26.164221+00:00",
+    "before": {
+      "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+      "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+      "status": "failed",
+      "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+      "payment_rules_version": "2",
+      "last_failure_class": "needs_new_method",
+      "retries_sent": "0",
+      "notices_sent": "4",
+      "next_attempt_at": null,
+      "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+      "flagged_at": "2026-11-03 07:50:26.164221+00:00"
+    },
+    "tick": {
+      "retries": 0,
+      "notices": 0,
+      "flagged": 0,
+      "stopped": 0,
+      "failed": 0
+    },
+    "after": {
+      "id": "01a17c56-c6a2-759f-b854-b2fa9e6eb02a",
+      "entry_id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+      "status": "failed",
+      "first_failed_at": "2026-10-27 07:50:26.164221+00:00",
+      "payment_rules_version": "2",
+      "last_failure_class": "needs_new_method",
+      "retries_sent": "0",
+      "notices_sent": "4",
+      "next_attempt_at": null,
+      "deadline_at": "2026-11-03 07:50:26.164221+00:00",
+      "flagged_at": "2026-11-03 07:50:26.164221+00:00"
+    }
+  }
+]

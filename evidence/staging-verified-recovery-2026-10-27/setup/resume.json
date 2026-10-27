@@ -1,0 +1,1208 @@
+{
+  "startedAt": "2026-10-27T07:48:28.176Z",
+  "app": "https://app.staging01.worldsurfleague.com",
+  "api": "https://api.staging01.worldsurfleague.com/api",
+  "cardLast4": "0341",
+  "email": "adam.carter@btj5keea.mailosaur.net",
+  "calls": [
+    {
+      "at": "2026-10-27T07:48:45.100Z",
+      "path": "/athletes",
+      "method": "POST",
+      "status": 201,
+      "body": {
+        "athlete": {
+          "id": "01a17c55-47da-7191-9f92-fc4dbc937291",
+          "status": "pending_documents",
+          "homeRegion": "north_america"
+        },
+        "next": {
+          "title": "Details saved",
+          "body": "Next, the membership terms, the waiver, the insurance authorisation and the age certification all need signing before this athlete can compete."
+        }
+      }
+    },
+    {
+      "at": "2026-10-27T07:48:45.427Z",
+      "path": "/membership/documents?athlete=01a17c55-47da-7191-9f92-fc4dbc937291",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "documents": [
+          {
+            "id": "age_and_authority_certification",
+            "title": "Age and authority certification",
+            "body": "Certifies the age given, and who is registering on this athlete's behalf.",
+            "signed": false
+          },
+          {
+            "id": "membership_terms_and_conditions",
+            "title": "Membership terms and conditions",
+            "body": "The rules of holding a WSL membership.",
+            "signed": false
+          },
+          {
+            "id": "waiver_release_indemnity",
+            "title": "Waiver, release and indemnity",
+            "body": "Acknowledges the risks of competitive surfing.",
+            "signed": false
+          },
+          {
+            "id": "health_insurance_authorization",
+            "title": "Health and insurance authorisation",
+            "body": "Authorises emergency medical care and insurance handling if needed.",
+            "signed": false
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-27T07:48:45.761Z",
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "at": "2026-10-27T07:48:46.101Z",
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "at": "2026-10-27T07:48:46.460Z",
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "waiver_release_indemnity",
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "at": "2026-10-27T07:48:46.890Z",
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "waiver_release_indemnity",
+          "health_insurance_authorization",
+          "age_and_authority_certification"
+        ],
+        "status": "active"
+      }
+    },
+    {
+      "at": "2026-10-27T07:48:55.022Z",
+      "path": "/api/membership/documents",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "documents": [
+          {
+            "id": "age_and_authority_certification",
+            "title": "Age and authority certification",
+            "body": "Certifies the age given, and who is registering on this athlete's behalf.",
+            "signed": true
+          },
+          {
+            "id": "membership_terms_and_conditions",
+            "title": "Membership terms and conditions",
+            "body": "The rules of holding a WSL membership.",
+            "signed": true
+          },
+          {
+            "id": "waiver_release_indemnity",
+            "title": "Waiver, release and indemnity",
+            "body": "Acknowledges the risks of competitive surfing.",
+            "signed": true
+          },
+          {
+            "id": "health_insurance_authorization",
+            "title": "Health and insurance authorisation",
+            "body": "Authorises emergency medical care and insurance handling if needed.",
+            "signed": true
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-27T07:48:55.024Z",
+      "path": "/api/membership/offer",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+        "homeRegion": {
+          "code": "north_america",
+          "label": "North America"
+        },
+        "products": [
+          {
+            "id": "01a156ff-14ae-728a-993f-01092b082212",
+            "code": "full_regional",
+            "name": "Regional Membership",
+            "description": "Enter events across all seven regions, not just the home region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 250,
+            "amountMinor": 25000,
+            "currency": "USD",
+            "priceMinor": 25000,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a156ff-14ec-77be-95d7-fa6b5da00cd0",
+            "code": "longboard",
+            "name": "Longboard Membership",
+            "description": "Enter Longboard and Longboard Qualifying Series events in any region. International tour events are by invitation.",
+            "compete": "All 7 regions, Longboard tours",
+            "includes": "Longboard Qualifying Series",
+            "details": "Longboard Qualifying Series events. Insurance is required when competing outside the country of residence. Regional ranking points only.",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 150,
+            "amountMinor": 15000,
+            "currency": "USD",
+            "priceMinor": 15000,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a156ff-1507-77e1-aa88-c4f2386505ca",
+            "code": "single_event",
+            "name": "Single Event",
+            "description": "Enter one event in any region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "One event only. Junior events need age eligibility. Insurance is required when competing outside the country of residence. Ranking points are only earned in events sanctioned by your home region & QS 6000 events",
+            "note": "You can upgrade later by paying the price difference.",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 75,
+            "amountMinor": 7500,
+            "currency": "USD",
+            "priceMinor": 7500,
+            "taxMinor": 0,
+            "handlingFeeMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:05.981Z",
+      "path": "/api/membership/checkout",
+      "method": "POST",
+      "status": 201,
+      "body": {
+        "membershipId": "01a17c55-9956-72ed-8cac-caffac537455",
+        "status": "awaiting_attempt",
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "lines": [
+          {
+            "id": "plan",
+            "label": "Membership",
+            "amount": 250,
+            "amountMinor": 25000,
+            "currency": "USD"
+          },
+          {
+            "id": "handling-fee",
+            "label": "Handling fee",
+            "amount": 0,
+            "amountMinor": 0,
+            "currency": "USD"
+          },
+          {
+            "id": "tax",
+            "label": "Tax",
+            "amount": 0,
+            "amountMinor": 0,
+            "currency": "USD"
+          }
+        ],
+        "total": {
+          "label": "Total",
+          "amount": 250,
+          "amountMinor": 25000,
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:06.250Z",
+      "path": "/api/payments/intents/01a17c55-9956-72ed-8cac-caffac537455",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-9956-72ed-8cac-caffac537455",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:07.546Z",
+      "path": "/api/payments/intents/01a17c55-9956-72ed-8cac-caffac537455",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-9956-72ed-8cac-caffac537455",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:08.815Z",
+      "path": "/api/payments/intents/01a17c55-9956-72ed-8cac-caffac537455",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-9956-72ed-8cac-caffac537455",
+        "status": "attempt_ready",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:09.236Z",
+      "path": "/api/membership/checkout/01a17c55-9956-72ed-8cac-caffac537455/secret",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "clientSecret": "[REDACTED_CLIENT_SECRET]"
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:14.538Z",
+      "path": "/api/membership/checkout",
+      "method": "POST",
+      "status": 201,
+      "body": {
+        "membershipId": "01a17c55-bae4-709b-bd26-da73573291ea",
+        "status": "awaiting_attempt",
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "lines": [
+          {
+            "id": "plan",
+            "label": "Membership",
+            "amount": 250,
+            "amountMinor": 25000,
+            "currency": "USD"
+          },
+          {
+            "id": "handling-fee",
+            "label": "Handling fee",
+            "amount": 0,
+            "amountMinor": 0,
+            "currency": "USD"
+          },
+          {
+            "id": "tax",
+            "label": "Tax",
+            "amount": 0,
+            "amountMinor": 0,
+            "currency": "USD"
+          }
+        ],
+        "total": {
+          "label": "Total",
+          "amount": 250,
+          "amountMinor": 25000,
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:14.806Z",
+      "path": "/api/payments/intents/01a17c55-bae4-709b-bd26-da73573291ea",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-bae4-709b-bd26-da73573291ea",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:16.061Z",
+      "path": "/api/payments/intents/01a17c55-bae4-709b-bd26-da73573291ea",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-bae4-709b-bd26-da73573291ea",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:17.448Z",
+      "path": "/api/payments/intents/01a17c55-bae4-709b-bd26-da73573291ea",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-bae4-709b-bd26-da73573291ea",
+        "status": "awaiting_payment",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:18.647Z",
+      "path": "/api/payments/intents/01a17c55-bae4-709b-bd26-da73573291ea",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-bae4-709b-bd26-da73573291ea",
+        "status": "attempt_ready",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:19.050Z",
+      "path": "/api/membership/checkout/01a17c55-bae4-709b-bd26-da73573291ea/secret",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "clientSecret": "[REDACTED_CLIENT_SECRET]"
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:20.713Z",
+      "path": "/api/payments/intents/01a17c55-bae4-709b-bd26-da73573291ea",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-bae4-709b-bd26-da73573291ea",
+        "status": "attempt_ready",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:22.448Z",
+      "path": "/api/payments/intents/01a17c55-bae4-709b-bd26-da73573291ea",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-bae4-709b-bd26-da73573291ea",
+        "status": "attempt_ready",
+        "membershipStatus": null,
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "pending",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:24.284Z",
+      "path": "/api/payments/intents/01a17c55-bae4-709b-bd26-da73573291ea",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-bae4-709b-bd26-da73573291ea",
+        "status": "complete",
+        "membershipStatus": "active",
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "complete",
+        "failureClass": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:24.556Z",
+      "path": "/api/payments/intents/01a17c55-bae4-709b-bd26-da73573291ea",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "intentId": "01a17c55-bae4-709b-bd26-da73573291ea",
+        "status": "complete",
+        "membershipStatus": "active",
+        "amount": 250,
+        "amountMinor": 25000,
+        "currency": "USD",
+        "fulfilment": "complete",
+        "failureClass": null,
+        "message": null
+      }
+    }
+  ],
+  "provider": [
+    {
+      "at": "2026-10-27T07:49:10.594Z",
+      "http": 402,
+      "id": "pi_3UV583Hma49jszOG1xweXMW9",
+      "status": "requires_payment_method",
+      "livemode": false,
+      "error": {
+        "code": "card_declined",
+        "decline_code": "generic_decline",
+        "message": "Your card was declined."
+      }
+    },
+    {
+      "at": "2026-10-27T07:49:20.436Z",
+      "http": 200,
+      "id": "pi_3UV58BHma49jszOG1W1SmSNd",
+      "status": "succeeded",
+      "livemode": false,
+      "error": null
+    }
+  ],
+  "observations": [
+    {
+      "at": "2026-10-27T07:50:23.516Z",
+      "row": {
+        "id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "group": "field",
+        "athlete": {
+          "initials": "SC",
+          "name": "Staging Card0341QA",
+          "country": "United States"
+        },
+        "ranking": "Seed 1 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "ok",
+          "label": "Insurance: verified",
+          "code": "verified"
+        },
+        "payment": {
+          "code": "pending",
+          "label": "Pending",
+          "tone": "neutral"
+        },
+        "entry": {
+          "code": "pending",
+          "label": "Pending",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": false
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 1,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      }
+    },
+    {
+      "at": "2026-10-27T07:50:29.000Z",
+      "row": {
+        "id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+        "group": "field",
+        "athlete": {
+          "initials": "SC",
+          "name": "Staging Card0341QA",
+          "country": "United States"
+        },
+        "ranking": "Seed 1 · N. AMERICA",
+        "region": "north_america",
+        "highlight": null,
+        "insurance": {
+          "state": "ok",
+          "label": "Insurance: verified",
+          "code": "verified"
+        },
+        "payment": {
+          "code": "declined",
+          "label": "Declined",
+          "tone": "error"
+        },
+        "entry": {
+          "code": "pending",
+          "label": "Pending",
+          "tone": "neutral"
+        },
+        "waivable": {
+          "fee": true
+        },
+        "actions": [
+          {
+            "code": "message",
+            "label": "Send message",
+            "destructive": false
+          },
+          {
+            "code": "waive",
+            "label": "Waive fee",
+            "destructive": false
+          },
+          {
+            "code": "withdraw",
+            "label": "Withdraw entry",
+            "destructive": true
+          },
+          {
+            "code": "retry",
+            "label": "Retry payment",
+            "destructive": false
+          }
+        ],
+        "movable": true,
+        "pinned": false,
+        "hasHistory": true,
+        "seedRank": 1,
+        "alternatePosition": null,
+        "moveUpSeat": null,
+        "movedUpFrom": null
+      }
+    }
+  ],
+  "stripeKeyMode": "pk_test",
+  "athleteId": "01a17c55-47da-7191-9f92-fc4dbc937291",
+  "membership0341": {
+    "text": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nStaging C.\nLog Out\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited States\nEnglish\n1\nDate of Birth\nCompleted\n2\nAccount\nCompleted\n3\nAthlete Details\nCompleted\n4\nMembership\nCompleted\n5\nPayment\nCurrent step\nMembership Checkout\n\nRegional Membership\n\n$250.00\n\nHandling\n\n$0.00\n\nTotal Today: Regional Membership\n\n$250.00\n\nCard Number\nEntered securely with Stripe. WSL never sees this number.\nExpiry Date\nSecurity Code\nSave this card for future payments, including insurance and entry fees.\nAuto-renew the membership each season. Cancel any time.\n\nYour card has been declined.\n\nPay $250.00\nBack",
+    "provider": [
+      {
+        "at": "2026-10-27T07:49:10.594Z",
+        "http": 402,
+        "id": "pi_3UV583Hma49jszOG1xweXMW9",
+        "status": "requires_payment_method",
+        "livemode": false,
+        "error": {
+          "code": "card_declined",
+          "decline_code": "generic_decline",
+          "message": "Your card was declined."
+        }
+      }
+    ]
+  },
+  "membershipRecovered": true,
+  "event": {
+    "id": "01a17c55-ec70-7333-af02-76705f0a39e5",
+    "name": "QA Staging 0341 verified reminders 1793087365207",
+    "start": "2026-12-11",
+    "location": "56th Street, Newport Beach, California · Los Angeles time",
+    "timeZone": "America/Los_Angeles"
+  },
+  "status": "PASS",
+  "finishedAt": "2026-10-27T07:49:28.001Z",
+  "eventReadback": {
+    "status": 200,
+    "body": {
+      "event": {
+        "id": "01a17c55-ec70-7333-af02-76705f0a39e5",
+        "seasonId": "01a156ff-6105-722e-8290-1f000c272dca",
+        "status": {
+          "code": "draft",
+          "label": "Draft",
+          "tone": "muted"
+        },
+        "statusOptions": [
+          {
+            "code": "tentative",
+            "label": "Tentative",
+            "destructive": false
+          },
+          {
+            "code": "archived",
+            "label": "Archive",
+            "destructive": true
+          }
+        ],
+        "fields": {
+          "name": "QA Staging 0341 verified reminders 1793087365207",
+          "tour": "01a156ff-0d91-7376-b989-fa71bcc684c4",
+          "rating": "01a156ff-0e34-76cc-81e5-720431e90df0",
+          "regions": [
+            "north_america"
+          ],
+          "location": "01a156ff-0ed0-7652-961f-bc47bbd9b36f",
+          "startDate": "2026-12-11",
+          "endDate": "2026-12-11",
+          "format": "01a156ff-0e75-7324-b5b7-507a924aa808",
+          "prizeMoney": {
+            "amount": 1500000,
+            "currency": "USD"
+          },
+          "registrationOpensDate": "",
+          "registrationOpensTime": "",
+          "registrationClosesDate": "",
+          "registrationClosesTime": "",
+          "currency": "USD",
+          "entryFee": {
+            "amount": 15000,
+            "currency": "USD"
+          }
+        },
+        "readOnly": false,
+        "feeFromGrid": true,
+        "version": 1
+      }
+    }
+  },
+  "rosterBefore": {
+    "status": 200,
+    "body": {
+      "stage": "waitlist",
+      "field": 48,
+      "cutLine": "Field of 48 ends here. Nobody is waiting behind it.",
+      "openSeats": [],
+      "summary": [
+        {
+          "count": 0,
+          "label": "ready to confirm",
+          "tone": "default"
+        },
+        {
+          "count": 0,
+          "label": "insurance needed",
+          "tone": "default"
+        },
+        {
+          "count": 0,
+          "label": "payments declined",
+          "tone": "error"
+        },
+        {
+          "count": 0,
+          "label": "wildcard",
+          "tone": "default"
+        },
+        {
+          "count": 0,
+          "label": "alternates · not charged",
+          "tone": "muted"
+        }
+      ],
+      "primaryAction": null,
+      "publish": null,
+      "filters": [
+        {
+          "code": "entry",
+          "label": "Entry status",
+          "options": []
+        },
+        {
+          "code": "region",
+          "label": "All regions",
+          "options": []
+        },
+        {
+          "code": "payment",
+          "label": "Payment",
+          "options": []
+        },
+        {
+          "code": "insurance",
+          "label": "Insurance",
+          "options": []
+        }
+      ],
+      "entries": [],
+      "version": 1,
+      "chargesInFlight": false
+    }
+  },
+  "setupTransitions": [
+    {
+      "code": "tentative",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a17c55-ec70-7333-af02-76705f0a39e5",
+          "seasonId": "01a156ff-6105-722e-8290-1f000c272dca",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true
+            }
+          ],
+          "fields": {
+            "name": "QA Staging 0341 verified reminders 1793087365207",
+            "tour": "01a156ff-0d91-7376-b989-fa71bcc684c4",
+            "rating": "01a156ff-0e34-76cc-81e5-720431e90df0",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a156ff-0ed0-7652-961f-bc47bbd9b36f",
+            "startDate": "2026-12-11",
+            "endDate": "2026-12-11",
+            "format": "01a156ff-0e75-7324-b5b7-507a924aa808",
+            "prizeMoney": {
+              "amount": 1500000,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 2
+        }
+      }
+    },
+    {
+      "code": "confirmed",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a17c55-ec70-7333-af02-76705f0a39e5",
+          "seasonId": "01a156ff-6105-722e-8290-1f000c272dca",
+          "status": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "ready-for-entries",
+              "label": "Ready for entries",
+              "destructive": false
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true
+            }
+          ],
+          "fields": {
+            "name": "QA Staging 0341 verified reminders 1793087365207",
+            "tour": "01a156ff-0d91-7376-b989-fa71bcc684c4",
+            "rating": "01a156ff-0e34-76cc-81e5-720431e90df0",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a156ff-0ed0-7652-961f-bc47bbd9b36f",
+            "startDate": "2026-12-11",
+            "endDate": "2026-12-11",
+            "format": "01a156ff-0e75-7324-b5b7-507a924aa808",
+            "prizeMoney": {
+              "amount": 1500000,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 3
+        }
+      }
+    },
+    {
+      "code": "ready-for-entries",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a17c55-ec70-7333-af02-76705f0a39e5",
+          "seasonId": "01a156ff-6105-722e-8290-1f000c272dca",
+          "status": {
+            "code": "ready-for-entries",
+            "label": "Ready for entries",
+            "tone": "success"
+          },
+          "statusOptions": [
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true
+            }
+          ],
+          "fields": {
+            "name": "QA Staging 0341 verified reminders 1793087365207",
+            "tour": "01a156ff-0d91-7376-b989-fa71bcc684c4",
+            "rating": "01a156ff-0e34-76cc-81e5-720431e90df0",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a156ff-0ed0-7652-961f-bc47bbd9b36f",
+            "startDate": "2026-12-11",
+            "endDate": "2026-12-11",
+            "format": "01a156ff-0e75-7324-b5b7-507a924aa808",
+            "prizeMoney": {
+              "amount": 1500000,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "2026-10-27",
+            "registrationOpensTime": "00:49",
+            "registrationClosesDate": "2026-11-10",
+            "registrationClosesTime": "17:00",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": false,
+          "version": 4
+        }
+      }
+    }
+  ],
+  "options": {
+    "at": "2026-10-27T07:49:42.250Z",
+    "path": "/entries/options?event=01a17c55-ec70-7333-af02-76705f0a39e5&athlete=01a17c55-47da-7191-9f92-fc4dbc937291",
+    "method": "GET",
+    "status": 200,
+    "body": {
+      "event": {
+        "id": "01a17c55-ec70-7333-af02-76705f0a39e5",
+        "name": "QA Staging 0341 verified reminders 1793087365207",
+        "meta": "Dec 11 · 56th Street, Newport Beach, California · Men’s",
+        "entryFee": 150,
+        "currency": "USD"
+      },
+      "membership": {
+        "title": "Current membership & insurance",
+        "rows": [
+          {
+            "id": "membership",
+            "label": "Membership",
+            "value": "Full regional"
+          },
+          {
+            "id": "event-credits",
+            "label": "Event credits",
+            "value": "Unlimited"
+          },
+          {
+            "id": "insurance-credits",
+            "label": "Insurance credits",
+            "value": "0"
+          }
+        ],
+        "note": ""
+      },
+      "insurance": {
+        "eyebrow": "INSURANCE",
+        "title": "Choose your coverage for QA Staging 0341 verified reminders 1793087365207",
+        "description": "Every athlete must have injury insurance in place before their first heat — WSL checks this at event check-in, not before. Cover bought through WSL is applied automatically, no proof needed. Cover from elsewhere must meet WSL's minimum coverage requirement, and you'll need to show proof of the policy at check-in.",
+        "includes": {
+          "title": "What cover includes",
+          "items": [
+            "Medical treatment at the event",
+            "Emergency evacuation"
+          ],
+          "note": ""
+        },
+        "options": [
+          {
+            "code": "use-credit",
+            "title": "Use an existing coverage credit",
+            "description": "Choose from eligible available products below",
+            "trailing": "",
+            "disabled": true,
+            "selectedCreditId": null,
+            "products": []
+          },
+          {
+            "code": "own-policy",
+            "title": "The athlete already has their own insurance",
+            "description": "For cover purchased outside WSL. Your entry submits now — bring proof of the policy to event check-in.",
+            "trailing": "No charge",
+            "disabled": false
+          },
+          {
+            "code": "none",
+            "title": "Continue without insurance for now",
+            "description": "Your entry submits with no cover in place. Add cover before competing — the spot may be released if it's still missing by the entry deadline.",
+            "trailing": "",
+            "disabled": false
+          }
+        ],
+        "defaultCode": "own-policy",
+        "addCoverage": {
+          "label": "Add/Upgrade Coverage",
+          "athleteId": "01a17c55-47da-7191-9f92-fc4dbc937291",
+          "eventId": "01a17c55-ec70-7333-af02-76705f0a39e5"
+        }
+      },
+      "insuranceBanner": null,
+      "reminders": {
+        "title": "Event reminders",
+        "description": "Get event updates on WhatsApp.",
+        "helperText": "",
+        "phoneCountry": "US",
+        "sameAsMembershipLabel": "Same as my membership phone",
+        "optInLabel": "Send me reminders on WhatsApp"
+      },
+      "attendingGuardian": null,
+      "confirm": {
+        "title": "Confirm your entry",
+        "note": {
+          "title": "What happens next",
+          "body": "This submits the event registration. Insurance must be in place before the athlete competes."
+        }
+      }
+    }
+  },
+  "entryPage": {
+    "url": "https://app.staging01.worldsurfleague.com/athlete-registration/events/01a17c55-ec70-7333-af02-76705f0a39e5/register?athlete=01a17c55-47da-7191-9f92-fc4dbc937291",
+    "text": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nStaging C.\nLog Out\nWSL Pro\nBack to Events\nRegister: QA Staging 0341 verified reminders 1793087365207\n\nDec 11 · 56th Street, Newport Beach, California · Men’s\n\nCurrent membership & insurance\n\nMembership\n\nFull regional\n\nEvent credits\n\nUnlimited\n\nInsurance credits\n\n0\n\nINSURANCE\n\nChoose your coverage for QA Staging 0341 verified reminders 1793087365207\n\nEvery athlete must have injury insurance in place before their first heat — WSL checks this at event check-in, not before. Cover bought through WSL is applied automatically, no proof needed. Cover from elsewhere must meet WSL's minimum coverage requirement, and you'll need to show proof of the policy at check-in.\n\nWhat cover includes\n\nMedical treatment at the event\nEmergency evacuation\n\nUse an existing coverage credit\nChoose from eligible available products below\nThe athlete already has their own insurance\n\nNo charge\n\nFor cover purchased outside WSL. Your entry submits now — bring proof of the policy to event check-in.\nContinue without insurance for now\nYour entry submits with no cover in place. Add cover before competing — the spot may be released if it's still missing by the entry deadline.\nAdd/Upgrade Coverage\nEvent reminders\n\nGet event updates on WhatsApp.\n\nPhone Number\n+1\nSame as my membership phone\nSend me reminders on WhatsApp\nConfirm your entry\n\nEvent entry fee (set aside, not charged yet)\n\nUSD 150\n\nTax\n\nUSD 0\n\nCharged today\n\n$0.00\n\nNo money is taken yet\n\nSet aside on your card\n\n$150.00\n\nCharged only if your place is confirmed\n\nUse a New Card\nCard Number\nEntered securely with Stripe. WSL never sees this number.\nExpiry Date\nSecurity Code\n\nWhat happens next\n\nThis submits the event registration. Insurance must be in place before the athlete competes.\n\nSubmit Event Registration"
+  },
+  "entryResponse": {
+    "status": 201,
+    "body": {
+      "reference": "QS-2026-M-111-001",
+      "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+      "total": {
+        "amount": 150,
+        "amountMinor": 15000,
+        "currency": "USD"
+      },
+      "chargeStatus": "requested"
+    }
+  },
+  "entryId": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+  "historyBefore": {
+    "summary": "1 history entry",
+    "items": [
+      {
+        "id": "01a17c56-a375-72c4-b3e4-d335b95afe96",
+        "when": "27 Oct 07:50 UTC",
+        "what": "Seed · to #1",
+        "channel": "Tour Manager",
+        "by": "Q. Staging Manager 1"
+      }
+    ]
+  },
+  "managerBefore": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nQS\nQA Staging Manager 1\nTour Manager · All regions\nEvents\n/\nQA Staging 0341 verified reminders 1793087365207\n/\nAthletes\nQA Staging 0341 verified reminders 1793087365207\nClosed for entries\n\n2,000 · Fri 11 – Fri 11 Dec 2026 · 56th Street, Newport Beach, California\n\nSave changes\nOverview\nAthletes\n1\nHistory\nEntry status\nAll regions\nPayment\nInsurance\nClear\n1\nready to confirm\n0\ninsurance needed\n0\npayments declined\n0\nwildcard\n0\nalternates · not charged\nConfirm field & charge 1\n\nUse the up and down arrow keys to move this athlete one seat.\n\nSEED NO.\n↑\n\tATHLETE\n\tRANK · POINTS · REGION\n\tINSURANCE\n\tPAYMENT\n\tENTRY\n\tACTION\n\n1\n\t\nSC\nStaging Card0341QA\nUnited States\n\tSeed 1 · N. AMERICA\t\n\t\nAuthorized\n\t\nWaitlisted\n\t\n\n\n2\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n3\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n4\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n5\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n6\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n7\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n8\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n9\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n10\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n11\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n12\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n13\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n14\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n15\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n16\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n17\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n18\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n19\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n20\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n21\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n22\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n23\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n24\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n25\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n26\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n27\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n28\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n29\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n30\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n31\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n32\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n33\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n34\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n35\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n36\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n37\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n38\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n39\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n40\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n41\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n42\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n43\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n44\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n45\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n46\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n47\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n48\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\nCUT LINE\nField of 48 ends here. Nobody is waiting behind it.\n\nNo alternates. Everyone on the waitlist has moved up, so seats 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47 and 48 stay open until a new entry comes in.",
+  "confirmDialog": "Confirm\n\nQA Staging 0341 verified reminders 1793087365207 · field of 48 · 1 registered\n\nThis charges the cards and publishes the seed list\n\nEvery athlete is emailed. After this, changes are one athlete at a time.\n\n1\nInsured\nUSD 150 each\nEstimated entry fees\nUSD 150 × 1 confirmed · via Stripe\nFinal amount depends on which cards clear\nUSD 150 est.\nI have reviewed the seed list and I'm ready to confirm and charge it.\nCancel\nConfirm & charge 1",
+  "charge": {
+    "at": "2026-10-27T07:50:23.044Z",
+    "status": 200,
+    "body": {
+      "confirmationId": "01a17c56-c699-735a-b8cc-60eaa22582bf",
+      "charged": 1,
+      "skipped": []
+    }
+  },
+  "final": {
+    "id": "01a17c56-9312-77d0-9ded-614b5a2f0ff0",
+    "group": "field",
+    "athlete": {
+      "initials": "SC",
+      "name": "Staging Card0341QA",
+      "country": "United States"
+    },
+    "ranking": "Seed 1 · N. AMERICA",
+    "region": "north_america",
+    "highlight": null,
+    "insurance": {
+      "state": "ok",
+      "label": "Insurance: verified",
+      "code": "verified"
+    },
+    "payment": {
+      "code": "declined",
+      "label": "Declined",
+      "tone": "error"
+    },
+    "entry": {
+      "code": "pending",
+      "label": "Pending",
+      "tone": "neutral"
+    },
+    "waivable": {
+      "fee": true
+    },
+    "actions": [
+      {
+        "code": "message",
+        "label": "Send message",
+        "destructive": false
+      },
+      {
+        "code": "waive",
+        "label": "Waive fee",
+        "destructive": false
+      },
+      {
+        "code": "withdraw",
+        "label": "Withdraw entry",
+        "destructive": true
+      },
+      {
+        "code": "retry",
+        "label": "Retry payment",
+        "destructive": false
+      }
+    ],
+    "movable": true,
+    "pinned": false,
+    "hasHistory": true,
+    "seedRank": 1,
+    "alternatePosition": null,
+    "moveUpSeat": null,
+    "movedUpFrom": null
+  },
+  "historyAfter": {
+    "summary": "1 card attempt · 1 declined",
+    "items": [
+      {
+        "id": "01a17c56-cea0-75d6-8b7f-ab575a4abb7e",
+        "when": "27 Oct 07:50 UTC",
+        "what": "Card payment declined (generic_decline)",
+        "channel": "Stripe",
+        "by": "System"
+      },
+      {
+        "id": "01a17c56-c6a6-7712-ba04-d8ffc7c49748",
+        "when": "27 Oct 07:50 UTC",
+        "what": "Card payment charge started",
+        "channel": "Stripe",
+        "by": "Q. Staging Manager 1"
+      },
+      {
+        "id": "01a17c56-a375-72c4-b3e4-d335b95afe96",
+        "when": "27 Oct 07:50 UTC",
+        "what": "Seed · to #1",
+        "channel": "Tour Manager",
+        "by": "Q. Staging Manager 1"
+      }
+    ]
+  },
+  "managerAfter": "World Surf League\nTour Manager\nSearch\n⌘K\n\nMANAGE\n\nEvents\n\nCONFIGURE\n\nSettings\nQS\nQA Staging Manager 1\nTour Manager · All regions\nEvents\n/\nQA Staging 0341 verified reminders 1793087365207\n/\nAthletes\nQA Staging 0341 verified reminders 1793087365207\nClosed for entries\n\n2,000 · Fri 11 – Fri 11 Dec 2026 · 56th Street, Newport Beach, California\n\nSave changes\nOverview\nAthletes\n1\nHistory\nEntry status\nAll regions\nPayment\nInsurance\nClear\n0\ncharged\n0\ninsurance needed\n1\ndeclined · your call\n0\nwildcard seats\n0\nalternates · not charged\n\nUse the up and down arrow keys to move this athlete one seat.\n\nSEED NO.\n↑\n\tATHLETE\n\tRANK · POINTS · REGION\n\tINSURANCE\n\tPAYMENT\n\tENTRY\n\tACTION\n\n1\n\t\nSC\nStaging Card0341QA\nUnited States\n\tSeed 1 · N. AMERICA\t\n\t\nDeclined\n\t\nPending\n\t\n\n\n2\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n3\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n4\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n5\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n6\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n7\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n8\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n9\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n10\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n11\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n12\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n13\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n14\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n15\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n16\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n17\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n18\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n19\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n20\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n21\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n22\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n23\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n24\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n25\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n26\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n27\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n28\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n29\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n30\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n31\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n32\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n33\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n34\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n35\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n36\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n37\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n38\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n39\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n40\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n41\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n42\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n43\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n44\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n45\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n46\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n47\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\n48\n\t\n—\nOpen seat\nno one assigned\n\tNo alternate available · the field runs at 1 until someone enters\t\t\t\nOpen seat\n\t\n\nCUT LINE\nField of 48 ends here. Nobody is waiting behind it.\n\nNo alternates. Everyone on the waitlist has moved up, so seats 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47 and 48 stay open until a new entry comes in.",
+  "resumedFinishedAt": "2026-10-27T07:50:32.940Z"
+}
