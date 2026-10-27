@@ -1,0 +1,55 @@
+{
+  "startedAt": "2026-10-27T12:25:07.183Z",
+  "runs": [
+    {
+      "id": "AL-oversized-body",
+      "assistant": "AL Hunt",
+      "category": "Validation",
+      "mode": "api-negative",
+      "bodyBytes": 524289,
+      "http": 413,
+      "durationMs": 1584.4437000000007,
+      "response": "{\"title\": \"Conversation too long\", \"message\": \"This conversation is too long. Start a new one.\", \"reason\": \"bff.payload_too_large\", \"fields\": {}, \"retryable\": false}",
+      "expected": "HTTP 413, body above 512 KiB rejected",
+      "passed": true
+    },
+    {
+      "id": "AL-malformed-json",
+      "assistant": "AL Hunt",
+      "category": "Validation",
+      "mode": "api-negative",
+      "bodyBytes": 1,
+      "http": 422,
+      "durationMs": 296.52260000000024,
+      "response": "{\"error\":{\"code\":\"invalid\",\"message\":\"That request is not one the assistant takes.\"}}",
+      "expected": "A 4xx validation response for malformed JSON",
+      "passed": true
+    },
+    {
+      "id": "BM-oversized-body",
+      "assistant": "Beach Marshal",
+      "category": "Validation",
+      "mode": "api-negative",
+      "bodyBytes": 524289,
+      "http": 413,
+      "durationMs": 1613.7185000000009,
+      "response": "{\"title\": \"Conversation too long\", \"message\": \"This conversation is too long. Start a new one.\", \"reason\": \"bff.payload_too_large\", \"fields\": {}, \"retryable\": false}",
+      "expected": "HTTP 413, body above 512 KiB rejected",
+      "passed": true
+    },
+    {
+      "id": "BM-malformed-json",
+      "assistant": "Beach Marshal",
+      "category": "Validation",
+      "mode": "api-negative",
+      "bodyBytes": 1,
+      "http": 422,
+      "durationMs": 246.15380000000005,
+      "response": "{\"error\":{\"code\":\"invalid\",\"message\":\"That request is not one the assistant takes.\"}}",
+      "expected": "A 4xx validation response for malformed JSON",
+      "passed": true
+    }
+  ],
+  "note": "Validation probes are excluded from normal model reliability and latency denominators.",
+  "finishedAt": "2026-10-27T12:25:15.675Z"
+}
