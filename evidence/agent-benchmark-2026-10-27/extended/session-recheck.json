@@ -1,0 +1,23 @@
+{
+  "startedAt": "2026-10-27T13:08:25.972Z",
+  "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+  "runs": [
+    {
+      "id": "AL-session-expiry",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:08:37.241Z",
+      "observations": {
+        "sessionHttpAfterCookieRemoval": 401,
+        "url": "https://app.dev.worldsurfleague.com/login?next=%2Ftour-manager%2Fevents",
+        "loginVisible": true,
+        "body": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nLog In\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited States\nEnglish\nLog in to WSL\n\nManage your athletes, memberships, insurance, and event entries.\n\nEmail Address\nPassword\nForgot password?\nLog In\nOr Continue With\n\nDon't have an account? Create one"
+      },
+      "status": "PASS",
+      "note": "Real isolated browser authentication cookies removed; reloaded protected page and checked login. This is forced session loss, not passage-of-time token expiry.",
+      "screenshot": "AL/AL-session-expiry-stream-ui.png",
+      "finishedAt": "2026-10-27T13:08:42.596Z"
+    }
+  ],
+  "finishedAt": "2026-10-27T13:08:45.261Z"
+}

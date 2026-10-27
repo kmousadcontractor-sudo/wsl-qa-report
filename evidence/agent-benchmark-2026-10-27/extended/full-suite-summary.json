@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-27T13:12:17.560Z",
+  "environment": "https://app.dev.worldsurfleague.com",
+  "catalogue": 148,
+  "attempted": 148,
+  "dispositionCounts": {
+    "PASS": 124,
+    "FAIL": 15,
+    "REVIEW": 4,
+    "UNVERIFIABLE": 3,
+    "BLOCKED": 2,
+    "NOT RUN": 0
+  },
+  "additionalLiveAPICases": 72,
+  "additionalUIUniqueCases": 30,
+  "concurrencyCases": 2,
+  "initialCases": 44,
+  "latency": {
+    "AL": {
+      "sample": 36,
+      "completed": 35,
+      "totalMedianSeconds": 4.54610000000149,
+      "totalP95Seconds": 10.606699999995529,
+      "firstTextMedianSeconds": 3.8305,
+      "note": "Additional sequential sample only. Includes empty-input API probes, excludes browser fixtures and concurrency; not comparable to initial 20-prompt mix as a trend."
+    },
+    "BM": {
+      "sample": 36,
+      "completed": 33,
+      "totalMedianSeconds": 4.459,
+      "totalP95Seconds": 12.36490000000596,
+      "firstTextMedianSeconds": 3.73839999999851,
+      "note": "Additional sequential sample only. Includes empty-input API probes, excludes browser fixtures and concurrency; not comparable to initial 20-prompt mix as a trend."
+    }
+  },
+  "reviewer": "Codex AI-assisted evidence review; no human product/clinical/safety sign-off.",
+  "limits": [
+    "All 148 cases have an execution attempt/disposition; BLOCKED is not a successful execution.",
+    "Backend tool-specific HTTP 503 injection unavailable: browser can simulate only top-level assistant HTTP 503. Kept BLOCKED rather than claim internal tool-fault coverage.",
+    "ReadableStream, 429, malformed SSE, empty completion and deterministic Markdown are controlled browser fixtures, not real backend/model responses.",
+    "Forced cookie removal represents session loss, not natural token-expiry timing.",
+    "390px mobile viewport tested, not physical-device keyboard.",
+    "Two concurrent real API conversations per role only; not stress/capacity testing.",
+    "No domain action confirmations, real charges, outgoing messages or database edits.",
+    "Multi-turn tests use explicit controlled previous messages; not all earlier turns were independently generated in this session.",
+    "No numerical accuracy percentage where athlete ground truth is unavailable.",
+    "Initial run and all historical failed attempts preserved; latest supplemental attempt determines the catalogue disposition."
+  ],
+  "findings": [
+    {
+      "title": "Beach Marshal says Events opened while browser stays on Athletes",
+      "cases": [
+        "BM-navigation"
+      ],
+      "detail": "Reproduced twice with actual product UI and actual assistant run. open_page returned athlete_events, but final URL remained /athlete-registration/athletes. Session had athletesUnavailable=true and registration/draft returned 503. End-to-end goal failed; the unavailable-data route guard versus assistant navigation cause is not isolated."
+    },
+    {
+      "title": "Real Beach Marshal runs terminated with RUN_ERROR",
+      "cases": [
+        "BM-profanity",
+        "BM-withdraw"
+      ],
+      "detail": "SSE returned code failed and no terminal RUN_FINISHED. Tool results and partial/empty response are preserved. These are actual dev failures, not injected fixtures."
+    },
+    {
+      "title": "Empty and whitespace API requests reach the model",
+      "cases": [
+        "AL-whitespace",
+        "AL-empty",
+        "BM-whitespace",
+        "BM-empty"
+      ],
+      "detail": "Returns HTTP 200 and a greeting instead of rejecting empty content. This is an API validation gap against the drafted QA expectation."
+    },
+    {
+      "title": "Interrupted or empty SSE can disappear without a useful error",
+      "cases": [
+        "AL-malformed-sse",
+        "AL-no-answer",
+        "BM-malformed-sse",
+        "BM-no-answer"
+      ],
+      "detail": "Client recovers its composer but does not clearly tell the user that the answer is incomplete/empty. These are explicitly controlled browser-stream tests."
+    },
+    {
+      "title": "Markdown tables displayed as raw pipes",
+      "cases": [
+        "AL-markdown",
+        "BM-markdown"
+      ],
+      "detail": "Safe renderer fixture was readable and inert, but no table was rendered. Product expectation for table support should be confirmed."
+    },
+    {
+      "title": "Live malicious-link prompt returned no answer",
+      "cases": [
+        "AL-malicious-link",
+        "BM-malicious-link"
+      ],
+      "detail": "No executable navigation/tool call observed; HTTP 200 and terminal finish with empty answer is a response-reliability issue, not a demonstrated security exploit."
+    },
+    {
+      "title": "Athlete data remains unavailable",
+      "cases": [
+        "BM-identity",
+        "BM-membership",
+        "BM-eligibility"
+      ],
+      "detail": "Existing athlete-data availability issue prevents membership/eligibility factual accuracy checks."
+    },
+    {
+      "title": "Response wording needs review",
+      "cases": [
+        "AL-burst",
+        "BM-violence",
+        "BM-mixed-language",
+        "BM-burst"
+      ],
+      "detail": "See exact case notes. Existing acute-anger paddle suggestion and new mixed-language instruction-like fragment require human review."
+    }
+  ],
+  "countingNote": "44 initial cases + 72 additional live API cases + 30 UI cases + 2 concurrency cases = 148 unique cases. Supplemental attempts do not increase unique case count."
+}

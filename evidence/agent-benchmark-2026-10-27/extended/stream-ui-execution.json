@@ -1,0 +1,1271 @@
+{
+  "startedAt": "2026-10-27T13:05:20.589Z",
+  "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+  "runs": [
+    {
+      "id": "AL-limit-2001",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:05:35.495Z",
+      "observations": {
+        "length": 2000,
+        "lastCharacter": "y",
+        "maxLength": "2000"
+      },
+      "status": "PASS",
+      "note": "1999 characters prefilled; two real keyboard characters entered. The 2001st character must be blocked by deployed maxlength.",
+      "screenshot": "AL/AL-limit-2001-stream-ui.png",
+      "finishedAt": "2026-10-27T13:05:41.817Z"
+    },
+    {
+      "id": "AL-stop",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:05:41.838Z",
+      "observations": {
+        "partial": true,
+        "stopAvailable": true,
+        "visible": "AL\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nQA incremental first segment.",
+        "aborts": [
+          {
+            "mode": "normal",
+            "ms": 1098.7000000029802
+          }
+        ],
+        "recovered": true
+      },
+      "status": "PASS",
+      "note": "Stop pressed after first streamed text, before final segment; underlying AbortSignal and composer recovery captured.",
+      "fixture": [
+        {
+          "mode": "normal",
+          "at": "2026-10-27T13:05:42.302Z",
+          "payload": {
+            "threadId": "31787c29-9047-49aa-acde-cf82adb5336f",
+            "runId": "f483a855-3fe8-4f78-af8e-9c7b0eef6938",
+            "state": {},
+            "messages": [
+              {
+                "id": "fee5a8d4-77b0-425c-bc5f-7d95462d66e6",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.4000000059604645,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "31787c29-9047-49aa-acde-cf82adb5336f",
+                "runId": "f483a855-3fe8-4f78-af8e-9c7b0eef6938"
+              }
+            },
+            {
+              "ms": 0.6000000014901161,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "37e6dc4c-08d6-4c79-b542-6208f046ede6",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 257.1000000014901,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "37e6dc4c-08d6-4c79-b542-6208f046ede6",
+                "delta": "QA incremental first segment. "
+              }
+            }
+          ],
+          "aborted": true
+        }
+      ],
+      "screenshot": "AL/AL-stop-stream-ui.png",
+      "finishedAt": "2026-10-27T13:05:47.588Z"
+    },
+    {
+      "id": "AL-network-cut",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:05:47.592Z",
+      "observations": {
+        "partial": true,
+        "visible": "AL\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nQA incremental first segment.\n!\n\nSomething went wrong. Try again.\n\nRetry",
+        "composerRecovered": true,
+        "errorVisible": true,
+        "retryVisible": "AL\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nRetry QA after interrupted stream\n\nQA incremental first segment. QA final segment.\n\nQA incremental first segment. QA final segment.",
+        "retriedSuccessfully": true
+      },
+      "status": "PASS",
+      "note": "Actual browser ReadableStream throws after first text; recovery uses one deliberate user resend. No server-side interruption or domain writes.",
+      "fixture": [
+        {
+          "mode": "network",
+          "at": "2026-10-27T13:05:47.902Z",
+          "payload": {
+            "threadId": "b3e9ad8b-628e-4b36-98fb-dbf152ca6eda",
+            "runId": "893991d0-c9bc-4b97-9a1a-7dfb5a2e7693",
+            "state": {},
+            "messages": [
+              {
+                "id": "5536cab9-e776-4dd5-b911-9c26decfe430",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "b3e9ad8b-628e-4b36-98fb-dbf152ca6eda",
+                "runId": "893991d0-c9bc-4b97-9a1a-7dfb5a2e7693"
+              }
+            },
+            {
+              "ms": 0.20000000298023224,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "c3915252-9c52-4edd-9a53-d72e5062a87a",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 254.29999999701977,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "c3915252-9c52-4edd-9a53-d72e5062a87a",
+                "delta": "QA incremental first segment. "
+              }
+            }
+          ],
+          "connectionError": true
+        },
+        {
+          "mode": "normal",
+          "at": "2026-10-27T13:05:50.169Z",
+          "payload": {
+            "threadId": "b3e9ad8b-628e-4b36-98fb-dbf152ca6eda",
+            "runId": "3914ffd1-57d0-495c-a975-5de62bb8da64",
+            "state": {},
+            "messages": [
+              {
+                "id": "5536cab9-e776-4dd5-b911-9c26decfe430",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              },
+              {
+                "id": "c3915252-9c52-4edd-9a53-d72e5062a87a",
+                "role": "assistant",
+                "content": "QA incremental first segment. "
+              },
+              {
+                "id": "3dd3f373-e52f-422a-ae53-ddf99e658857",
+                "role": "user",
+                "content": "Retry QA after interrupted stream"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.19999999552965164,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "b3e9ad8b-628e-4b36-98fb-dbf152ca6eda",
+                "runId": "3914ffd1-57d0-495c-a975-5de62bb8da64"
+              }
+            },
+            {
+              "ms": 0.29999999701976776,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "76304310-4064-4bf7-93c8-158e124d97ef",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 264.19999999552965,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "76304310-4064-4bf7-93c8-158e124d97ef",
+                "delta": "QA incremental first segment. "
+              }
+            },
+            {
+              "ms": 2405.7999999970198,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "76304310-4064-4bf7-93c8-158e124d97ef",
+                "delta": "QA final segment."
+              }
+            },
+            {
+              "ms": 2406,
+              "event": {
+                "type": "TEXT_MESSAGE_END",
+                "messageId": "76304310-4064-4bf7-93c8-158e124d97ef"
+              }
+            },
+            {
+              "ms": 2406,
+              "event": {
+                "type": "RUN_FINISHED",
+                "threadId": "b3e9ad8b-628e-4b36-98fb-dbf152ca6eda",
+                "runId": "3914ffd1-57d0-495c-a975-5de62bb8da64"
+              }
+            }
+          ]
+        }
+      ],
+      "screenshot": "AL/AL-network-cut-stream-ui.png",
+      "finishedAt": "2026-10-27T13:05:54.787Z"
+    },
+    {
+      "id": "AL-slow-stream",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:05:54.866Z",
+      "observations": {
+        "partial": true,
+        "visible": "AL\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment. QA final segment.\n\nQA incremental first segment. QA final segment.",
+        "composerRecovered": true,
+        "errorVisible": false
+      },
+      "status": "PASS",
+      "note": "Controlled first text at 2.5 seconds, final text at 5 seconds. Client/UI responsiveness only, excluded model latency metrics.",
+      "fixture": [
+        {
+          "mode": "slow",
+          "at": "2026-10-27T13:05:55.558Z",
+          "payload": {
+            "threadId": "67778f29-1a97-41bb-b331-da01f7037dd8",
+            "runId": "dd48325e-e308-4e97-af26-876b7443a995",
+            "state": {},
+            "messages": [
+              {
+                "id": "0637e8ea-e94b-4b77-a728-11391df2c19e",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "67778f29-1a97-41bb-b331-da01f7037dd8",
+                "runId": "dd48325e-e308-4e97-af26-876b7443a995"
+              }
+            },
+            {
+              "ms": 0.19999999552965164,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "b91948f7-7835-4476-b0b6-0bf5762e5509",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 2502.7999999970198,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "b91948f7-7835-4476-b0b6-0bf5762e5509",
+                "delta": "QA incremental first segment. "
+              }
+            },
+            {
+              "ms": 5002.89999999851,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "b91948f7-7835-4476-b0b6-0bf5762e5509",
+                "delta": "QA final segment."
+              }
+            },
+            {
+              "ms": 5003,
+              "event": {
+                "type": "TEXT_MESSAGE_END",
+                "messageId": "b91948f7-7835-4476-b0b6-0bf5762e5509"
+              }
+            },
+            {
+              "ms": 5003,
+              "event": {
+                "type": "RUN_FINISHED",
+                "threadId": "67778f29-1a97-41bb-b331-da01f7037dd8",
+                "runId": "dd48325e-e308-4e97-af26-876b7443a995"
+              }
+            }
+          ]
+        }
+      ],
+      "screenshot": "AL/AL-slow-stream-stream-ui.png",
+      "finishedAt": "2026-10-27T13:06:02.699Z"
+    },
+    {
+      "id": "AL-malformed-sse",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:06:02.715Z",
+      "observations": {
+        "partial": true,
+        "visible": "AL\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nQA incremental first segment.",
+        "composerRecovered": true,
+        "errorVisible": false
+      },
+      "status": "FAIL",
+      "note": "Malformed JSON followed by EOF without RUN_FINISHED. Expect explicit interrupted/incomplete indication.",
+      "fixture": [
+        {
+          "mode": "malformed",
+          "at": "2026-10-27T13:06:03.268Z",
+          "payload": {
+            "threadId": "98bd2c06-1f49-48a5-9321-4f393283fe49",
+            "runId": "e2e8e25f-91f2-4a16-95f0-5e9e54eb0525",
+            "state": {},
+            "messages": [
+              {
+                "id": "3831a280-3bab-4c4a-8ba8-1568596f3b22",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "98bd2c06-1f49-48a5-9321-4f393283fe49",
+                "runId": "e2e8e25f-91f2-4a16-95f0-5e9e54eb0525"
+              }
+            },
+            {
+              "ms": 0.20000000298023224,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "fb10f203-d87d-46c5-80e5-c3b197ceb04c",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 276.79999999701977,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "fb10f203-d87d-46c5-80e5-c3b197ceb04c",
+                "delta": "QA incremental first segment. "
+              }
+            }
+          ],
+          "truncatedWithoutFinish": true
+        }
+      ],
+      "screenshot": "AL/AL-malformed-sse-stream-ui.png",
+      "finishedAt": "2026-10-27T13:06:06.499Z"
+    },
+    {
+      "id": "AL-no-answer",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:06:06.517Z",
+      "observations": {
+        "partial": false,
+        "visible": "AL\nNew conversation\nConversations\n\nHello QA incremental stream test",
+        "composerRecovered": true,
+        "errorVisible": false
+      },
+      "status": "FAIL",
+      "note": "Valid RUN_FINISHED with zero answer content. Expect user-visible empty-answer error rather than silent success.",
+      "fixture": [
+        {
+          "mode": "empty",
+          "at": "2026-10-27T13:06:06.850Z",
+          "payload": {
+            "threadId": "04dffb1c-056a-4197-ab5e-18376e9add04",
+            "runId": "6ab2b450-1468-417e-bf3b-6f81241ae978",
+            "state": {},
+            "messages": [
+              {
+                "id": "3e786cab-8394-4039-822a-695926d377e1",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.09999999403953552,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "04dffb1c-056a-4197-ab5e-18376e9add04",
+                "runId": "6ab2b450-1468-417e-bf3b-6f81241ae978"
+              }
+            },
+            {
+              "ms": 0.09999999403953552,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "253146c3-375a-4f69-bfe2-bdc618676690",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 255.29999999701977,
+              "event": {
+                "type": "TEXT_MESSAGE_END",
+                "messageId": "253146c3-375a-4f69-bfe2-bdc618676690"
+              }
+            },
+            {
+              "ms": 255.39999999850988,
+              "event": {
+                "type": "RUN_FINISHED",
+                "threadId": "04dffb1c-056a-4197-ab5e-18376e9add04",
+                "runId": "6ab2b450-1468-417e-bf3b-6f81241ae978"
+              }
+            }
+          ]
+        }
+      ],
+      "screenshot": "AL/AL-no-answer-stream-ui.png",
+      "finishedAt": "2026-10-27T13:06:10.498Z"
+    },
+    {
+      "id": "AL-retry-after-error",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:06:10.506Z",
+      "observations": {
+        "partial": true,
+        "visible": "AL\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nQA incremental first segment.\n!\n\nSomething went wrong. Try again.\n\nRetry",
+        "composerRecovered": true,
+        "errorVisible": true,
+        "retryVisible": "AL\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nRetry QA after interrupted stream\n\nQA incremental first segment. QA final segment.\n\nQA incremental first segment. QA final segment.",
+        "retriedSuccessfully": true
+      },
+      "status": "PASS",
+      "note": "Actual browser ReadableStream throws after first text; recovery uses one deliberate user resend. No server-side interruption or domain writes.",
+      "fixture": [
+        {
+          "mode": "network",
+          "at": "2026-10-27T13:06:11.483Z",
+          "payload": {
+            "threadId": "6dc1a4be-f1be-453a-a962-51a414ba672b",
+            "runId": "62865a59-2fa1-4365-b06e-62e756396d21",
+            "state": {},
+            "messages": [
+              {
+                "id": "6cb7fd81-086b-458d-80be-77739753abbe",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "6dc1a4be-f1be-453a-a962-51a414ba672b",
+                "runId": "62865a59-2fa1-4365-b06e-62e756396d21"
+              }
+            },
+            {
+              "ms": 0.20000000298023224,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "5a6cb273-2633-4393-a4f1-0c5bf50c73c7",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 254.70000000298023,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "5a6cb273-2633-4393-a4f1-0c5bf50c73c7",
+                "delta": "QA incremental first segment. "
+              }
+            }
+          ],
+          "connectionError": true
+        },
+        {
+          "mode": "normal",
+          "at": "2026-10-27T13:06:14.490Z",
+          "payload": {
+            "threadId": "6dc1a4be-f1be-453a-a962-51a414ba672b",
+            "runId": "9ca0da2b-762f-40fe-8c7b-671f1e7d9a73",
+            "state": {},
+            "messages": [
+              {
+                "id": "6cb7fd81-086b-458d-80be-77739753abbe",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              },
+              {
+                "id": "5a6cb273-2633-4393-a4f1-0c5bf50c73c7",
+                "role": "assistant",
+                "content": "QA incremental first segment. "
+              },
+              {
+                "id": "1051b38e-5d29-43e1-a479-5a341ca12507",
+                "role": "user",
+                "content": "Retry QA after interrupted stream"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "6dc1a4be-f1be-453a-a962-51a414ba672b",
+                "runId": "9ca0da2b-762f-40fe-8c7b-671f1e7d9a73"
+              }
+            },
+            {
+              "ms": 0,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "dc2a3700-7fee-4f05-8cd1-2e7229c4daaa",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 274.80000000447035,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "dc2a3700-7fee-4f05-8cd1-2e7229c4daaa",
+                "delta": "QA incremental first segment. "
+              }
+            },
+            {
+              "ms": 2404.10000000149,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "dc2a3700-7fee-4f05-8cd1-2e7229c4daaa",
+                "delta": "QA final segment."
+              }
+            },
+            {
+              "ms": 2404.10000000149,
+              "event": {
+                "type": "TEXT_MESSAGE_END",
+                "messageId": "dc2a3700-7fee-4f05-8cd1-2e7229c4daaa"
+              }
+            },
+            {
+              "ms": 2404.3000000044703,
+              "event": {
+                "type": "RUN_FINISHED",
+                "threadId": "6dc1a4be-f1be-453a-a962-51a414ba672b",
+                "runId": "9ca0da2b-762f-40fe-8c7b-671f1e7d9a73"
+              }
+            }
+          ]
+        }
+      ],
+      "screenshot": "AL/AL-retry-after-error-stream-ui.png",
+      "finishedAt": "2026-10-27T13:06:19.356Z"
+    },
+    {
+      "id": "AL-keyboard",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:06:19.366Z",
+      "observations": {
+        "tabFocus": {
+          "tag": "BODY",
+          "aria": null,
+          "inside": false
+        },
+        "closed": true,
+        "focusAfterEscape": {
+          "tag": "BUTTON",
+          "aria": "Ask AL"
+        },
+        "reopened": true
+      },
+      "status": "PASS",
+      "note": "Escape pressed with focus inside composer; focus restoration inspected. Complete screen-reader accessibility audit not claimed.",
+      "screenshot": "AL/AL-keyboard-stream-ui.png",
+      "finishedAt": "2026-10-27T13:06:21.224Z"
+    },
+    {
+      "id": "AL-session-expiry",
+      "assistant": "AL Hunt",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:06:21.330Z",
+      "observations": {
+        "sessionHttpAfterCookieRemoval": 401,
+        "url": "https://app.dev.worldsurfleague.com/tour-manager/events",
+        "loginVisible": false,
+        "body": ""
+      },
+      "status": "REVIEW",
+      "note": "Real isolated browser authentication cookies removed; reloaded protected page and checked login. This is forced session loss, not passage-of-time token expiry.",
+      "screenshot": "AL/AL-session-expiry-stream-ui.png",
+      "finishedAt": "2026-10-27T13:06:25.841Z"
+    },
+    {
+      "id": "BM-limit-2001",
+      "assistant": "Beach Marshal",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:07:20.908Z",
+      "observations": {
+        "length": 2000,
+        "lastCharacter": "y",
+        "maxLength": "2000"
+      },
+      "status": "PASS",
+      "note": "1999 characters prefilled; two real keyboard characters entered. The 2001st character must be blocked by deployed maxlength.",
+      "screenshot": "BM/BM-limit-2001-stream-ui.png",
+      "finishedAt": "2026-10-27T13:07:21.998Z"
+    },
+    {
+      "id": "BM-stop",
+      "assistant": "Beach Marshal",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:07:22.003Z",
+      "observations": {
+        "partial": true,
+        "stopAvailable": true,
+        "visible": "Beach Marshal\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nQA incremental first segment.",
+        "aborts": [
+          {
+            "mode": "normal",
+            "ms": 1284.7000000029802
+          }
+        ],
+        "recovered": true
+      },
+      "status": "PASS",
+      "note": "Stop pressed after first streamed text, before final segment; underlying AbortSignal and composer recovery captured.",
+      "fixture": [
+        {
+          "mode": "normal",
+          "at": "2026-10-27T13:07:22.231Z",
+          "payload": {
+            "threadId": "35774f39-0f1b-4be5-bc71-7a1362b867c9",
+            "runId": "743161b5-5da5-4cb2-a941-338ba2731b2e",
+            "state": {},
+            "messages": [
+              {
+                "id": "7fecfbc2-e459-4ae9-9271-c10e9a245828",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.6000000014901161,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "35774f39-0f1b-4be5-bc71-7a1362b867c9",
+                "runId": "743161b5-5da5-4cb2-a941-338ba2731b2e"
+              }
+            },
+            {
+              "ms": 0.7000000029802322,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "012affbd-fa48-428b-92d1-13d0b53c9f85",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 337.90000000596046,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "012affbd-fa48-428b-92d1-13d0b53c9f85",
+                "delta": "QA incremental first segment. "
+              }
+            }
+          ],
+          "aborted": true
+        }
+      ],
+      "screenshot": "BM/BM-stop-stream-ui.png",
+      "finishedAt": "2026-10-27T13:07:26.213Z"
+    },
+    {
+      "id": "BM-network-cut",
+      "assistant": "Beach Marshal",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:07:26.217Z",
+      "observations": {
+        "partial": true,
+        "visible": "Beach Marshal\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nQA incremental first segment.\n!\n\nSomething went wrong. Try again.\n\nRetry",
+        "composerRecovered": true,
+        "errorVisible": true,
+        "retryVisible": "Beach Marshal\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nRetry QA after interrupted stream\n\nQA incremental first segment. QA final segment.\n\nQA incremental first segment. QA final segment.",
+        "retriedSuccessfully": true
+      },
+      "status": "PASS",
+      "note": "Actual browser ReadableStream throws after first text; recovery uses one deliberate user resend. No server-side interruption or domain writes.",
+      "fixture": [
+        {
+          "mode": "network",
+          "at": "2026-10-27T13:07:26.487Z",
+          "payload": {
+            "threadId": "c15932e3-2ceb-4fa3-9ac4-e211f8dd10d5",
+            "runId": "e5a17173-a595-44e2-b331-dcc063acd55e",
+            "state": {},
+            "messages": [
+              {
+                "id": "5bcf86ba-ce2d-41ff-b29e-993655dcd6ad",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "c15932e3-2ceb-4fa3-9ac4-e211f8dd10d5",
+                "runId": "e5a17173-a595-44e2-b331-dcc063acd55e"
+              }
+            },
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "cbbefb3e-8845-4915-b7b1-7c64059c2825",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 251.30000000447035,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "cbbefb3e-8845-4915-b7b1-7c64059c2825",
+                "delta": "QA incremental first segment. "
+              }
+            }
+          ],
+          "connectionError": true
+        },
+        {
+          "mode": "normal",
+          "at": "2026-10-27T13:07:28.639Z",
+          "payload": {
+            "threadId": "c15932e3-2ceb-4fa3-9ac4-e211f8dd10d5",
+            "runId": "e65de21e-9bab-40b7-a590-5da5c8b75c20",
+            "state": {},
+            "messages": [
+              {
+                "id": "5bcf86ba-ce2d-41ff-b29e-993655dcd6ad",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              },
+              {
+                "id": "cbbefb3e-8845-4915-b7b1-7c64059c2825",
+                "role": "assistant",
+                "content": "QA incremental first segment. "
+              },
+              {
+                "id": "58ffc079-b87a-42ad-9059-94310cbb65f3",
+                "role": "user",
+                "content": "Retry QA after interrupted stream"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "c15932e3-2ceb-4fa3-9ac4-e211f8dd10d5",
+                "runId": "e65de21e-9bab-40b7-a590-5da5c8b75c20"
+              }
+            },
+            {
+              "ms": 0.20000000298023224,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "63632a2d-c007-445d-929b-e2db4d9a0530",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 277.5,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "63632a2d-c007-445d-929b-e2db4d9a0530",
+                "delta": "QA incremental first segment. "
+              }
+            },
+            {
+              "ms": 2404.2000000029802,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "63632a2d-c007-445d-929b-e2db4d9a0530",
+                "delta": "QA final segment."
+              }
+            },
+            {
+              "ms": 2404.4000000059605,
+              "event": {
+                "type": "TEXT_MESSAGE_END",
+                "messageId": "63632a2d-c007-445d-929b-e2db4d9a0530"
+              }
+            },
+            {
+              "ms": 2404.4000000059605,
+              "event": {
+                "type": "RUN_FINISHED",
+                "threadId": "c15932e3-2ceb-4fa3-9ac4-e211f8dd10d5",
+                "runId": "e65de21e-9bab-40b7-a590-5da5c8b75c20"
+              }
+            }
+          ]
+        }
+      ],
+      "screenshot": "BM/BM-network-cut-stream-ui.png",
+      "finishedAt": "2026-10-27T13:07:31.790Z"
+    },
+    {
+      "id": "BM-slow-stream",
+      "assistant": "Beach Marshal",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:07:31.807Z",
+      "observations": {
+        "partial": true,
+        "visible": "Beach Marshal\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment. QA final segment.\n\nQA incremental first segment. QA final segment.",
+        "composerRecovered": true,
+        "errorVisible": false
+      },
+      "status": "PASS",
+      "note": "Controlled first text at 2.5 seconds, final text at 5 seconds. Client/UI responsiveness only, excluded model latency metrics.",
+      "fixture": [
+        {
+          "mode": "slow",
+          "at": "2026-10-27T13:07:32.016Z",
+          "payload": {
+            "threadId": "71c09be3-2272-4d00-b96f-a10c4bdc3ca0",
+            "runId": "de788241-78c8-43a4-a4d7-beb5c751a8a1",
+            "state": {},
+            "messages": [
+              {
+                "id": "450a4387-d738-4c05-bb0b-06263dd0d045",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "71c09be3-2272-4d00-b96f-a10c4bdc3ca0",
+                "runId": "de788241-78c8-43a4-a4d7-beb5c751a8a1"
+              }
+            },
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "7c97bd04-037a-4498-ae75-1e8232067a03",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 2502.5,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "7c97bd04-037a-4498-ae75-1e8232067a03",
+                "delta": "QA incremental first segment. "
+              }
+            },
+            {
+              "ms": 5001.5,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "7c97bd04-037a-4498-ae75-1e8232067a03",
+                "delta": "QA final segment."
+              }
+            },
+            {
+              "ms": 5001.60000000149,
+              "event": {
+                "type": "TEXT_MESSAGE_END",
+                "messageId": "7c97bd04-037a-4498-ae75-1e8232067a03"
+              }
+            },
+            {
+              "ms": 5001.70000000298,
+              "event": {
+                "type": "RUN_FINISHED",
+                "threadId": "71c09be3-2272-4d00-b96f-a10c4bdc3ca0",
+                "runId": "de788241-78c8-43a4-a4d7-beb5c751a8a1"
+              }
+            }
+          ]
+        }
+      ],
+      "screenshot": "BM/BM-slow-stream-stream-ui.png",
+      "finishedAt": "2026-10-27T13:07:37.876Z"
+    },
+    {
+      "id": "BM-malformed-sse",
+      "assistant": "Beach Marshal",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:07:37.894Z",
+      "observations": {
+        "partial": true,
+        "visible": "Beach Marshal\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nQA incremental first segment.",
+        "composerRecovered": true,
+        "errorVisible": false
+      },
+      "status": "FAIL",
+      "note": "Malformed JSON followed by EOF without RUN_FINISHED. Expect explicit interrupted/incomplete indication.",
+      "fixture": [
+        {
+          "mode": "malformed",
+          "at": "2026-10-27T13:07:38.054Z",
+          "payload": {
+            "threadId": "f51ef0ae-9b76-4626-a411-3ccf9728b251",
+            "runId": "2d6a3134-1426-4da6-8d54-086d01cc588f",
+            "state": {},
+            "messages": [
+              {
+                "id": "e65370bc-c133-4c68-8806-2051d12f089e",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.09999999403953552,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "f51ef0ae-9b76-4626-a411-3ccf9728b251",
+                "runId": "2d6a3134-1426-4da6-8d54-086d01cc588f"
+              }
+            },
+            {
+              "ms": 0.09999999403953552,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "a3f41a0b-9c74-46c7-b37c-97b867785515",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 255.39999999850988,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "a3f41a0b-9c74-46c7-b37c-97b867785515",
+                "delta": "QA incremental first segment. "
+              }
+            }
+          ],
+          "truncatedWithoutFinish": true
+        }
+      ],
+      "screenshot": "BM/BM-malformed-sse-stream-ui.png",
+      "finishedAt": "2026-10-27T13:07:40.235Z"
+    },
+    {
+      "id": "BM-no-answer",
+      "assistant": "Beach Marshal",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:07:40.251Z",
+      "observations": {
+        "partial": false,
+        "visible": "Beach Marshal\nNew conversation\nConversations\n\nHello QA incremental stream test",
+        "composerRecovered": true,
+        "errorVisible": false
+      },
+      "status": "FAIL",
+      "note": "Valid RUN_FINISHED with zero answer content. Expect user-visible empty-answer error rather than silent success.",
+      "fixture": [
+        {
+          "mode": "empty",
+          "at": "2026-10-27T13:07:40.419Z",
+          "payload": {
+            "threadId": "d27d66ee-5406-4a57-bf5d-505023ef702f",
+            "runId": "5d655d3f-6a7b-4bca-9fad-44987cd54170",
+            "state": {},
+            "messages": [
+              {
+                "id": "35151e4e-d33b-4c18-be04-902579b1e516",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.3999999985098839,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "d27d66ee-5406-4a57-bf5d-505023ef702f",
+                "runId": "5d655d3f-6a7b-4bca-9fad-44987cd54170"
+              }
+            },
+            {
+              "ms": 0.3999999985098839,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "789002fb-0dea-49c0-ab38-72a4683df551",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 252,
+              "event": {
+                "type": "TEXT_MESSAGE_END",
+                "messageId": "789002fb-0dea-49c0-ab38-72a4683df551"
+              }
+            },
+            {
+              "ms": 252.20000000298023,
+              "event": {
+                "type": "RUN_FINISHED",
+                "threadId": "d27d66ee-5406-4a57-bf5d-505023ef702f",
+                "runId": "5d655d3f-6a7b-4bca-9fad-44987cd54170"
+              }
+            }
+          ]
+        }
+      ],
+      "screenshot": "BM/BM-no-answer-stream-ui.png",
+      "finishedAt": "2026-10-27T13:07:42.673Z"
+    },
+    {
+      "id": "BM-retry-after-error",
+      "assistant": "Beach Marshal",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:07:42.677Z",
+      "observations": {
+        "partial": true,
+        "visible": "Beach Marshal\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nQA incremental first segment.\n!\n\nSomething went wrong. Try again.\n\nRetry",
+        "composerRecovered": true,
+        "errorVisible": true,
+        "retryVisible": "Beach Marshal\nNew conversation\nConversations\n\nHello QA incremental stream test\n\nQA incremental first segment.\n\nRetry QA after interrupted stream\n\nQA incremental first segment. QA final segment.\n\nQA incremental first segment. QA final segment.",
+        "retriedSuccessfully": true
+      },
+      "status": "PASS",
+      "note": "Actual browser ReadableStream throws after first text; recovery uses one deliberate user resend. No server-side interruption or domain writes.",
+      "fixture": [
+        {
+          "mode": "network",
+          "at": "2026-10-27T13:07:42.815Z",
+          "payload": {
+            "threadId": "d62e1a4c-5399-42b4-a680-5e44e0637a8f",
+            "runId": "1831771f-74b8-477a-93b0-ff2d9a265253",
+            "state": {},
+            "messages": [
+              {
+                "id": "b0be32e0-b74b-4f67-8937-572b34ba6620",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "d62e1a4c-5399-42b4-a680-5e44e0637a8f",
+                "runId": "1831771f-74b8-477a-93b0-ff2d9a265253"
+              }
+            },
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "0d37d7df-9884-4df7-8ce4-b28fc7d221f0",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 261,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "0d37d7df-9884-4df7-8ce4-b28fc7d221f0",
+                "delta": "QA incremental first segment. "
+              }
+            }
+          ],
+          "connectionError": true
+        },
+        {
+          "mode": "normal",
+          "at": "2026-10-27T13:07:44.883Z",
+          "payload": {
+            "threadId": "d62e1a4c-5399-42b4-a680-5e44e0637a8f",
+            "runId": "810d8229-e46f-454d-92dd-23a4a79173bf",
+            "state": {},
+            "messages": [
+              {
+                "id": "b0be32e0-b74b-4f67-8937-572b34ba6620",
+                "role": "user",
+                "content": "Hello QA incremental stream test"
+              },
+              {
+                "id": "0d37d7df-9884-4df7-8ce4-b28fc7d221f0",
+                "role": "assistant",
+                "content": "QA incremental first segment. "
+              },
+              {
+                "id": "72bb653f-0efb-4345-9f18-27b182a60685",
+                "role": "user",
+                "content": "Retry QA after interrupted stream"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "events": [
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "RUN_STARTED",
+                "threadId": "d62e1a4c-5399-42b4-a680-5e44e0637a8f",
+                "runId": "810d8229-e46f-454d-92dd-23a4a79173bf"
+              }
+            },
+            {
+              "ms": 0.10000000149011612,
+              "event": {
+                "type": "TEXT_MESSAGE_START",
+                "messageId": "7f896560-779c-4356-9834-3536638aeab4",
+                "role": "assistant"
+              }
+            },
+            {
+              "ms": 250.89999999850988,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "7f896560-779c-4356-9834-3536638aeab4",
+                "delta": "QA incremental first segment. "
+              }
+            },
+            {
+              "ms": 2404.5,
+              "event": {
+                "type": "TEXT_MESSAGE_CONTENT",
+                "messageId": "7f896560-779c-4356-9834-3536638aeab4",
+                "delta": "QA final segment."
+              }
+            },
+            {
+              "ms": 2404.7000000029802,
+              "event": {
+                "type": "TEXT_MESSAGE_END",
+                "messageId": "7f896560-779c-4356-9834-3536638aeab4"
+              }
+            },
+            {
+              "ms": 2404.7000000029802,
+              "event": {
+                "type": "RUN_FINISHED",
+                "threadId": "d62e1a4c-5399-42b4-a680-5e44e0637a8f",
+                "runId": "810d8229-e46f-454d-92dd-23a4a79173bf"
+              }
+            }
+          ]
+        }
+      ],
+      "screenshot": "BM/BM-retry-after-error-stream-ui.png",
+      "finishedAt": "2026-10-27T13:07:48.106Z"
+    },
+    {
+      "id": "BM-keyboard",
+      "assistant": "Beach Marshal",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:07:48.110Z",
+      "observations": {
+        "tabFocus": {
+          "tag": "BODY",
+          "aria": null,
+          "inside": false
+        },
+        "closed": true,
+        "focusAfterEscape": {
+          "tag": "BUTTON",
+          "aria": "Ask Beach Marshal"
+        },
+        "reopened": true
+      },
+      "status": "PASS",
+      "note": "Escape pressed with focus inside composer; focus restoration inspected. Complete screen-reader accessibility audit not claimed.",
+      "screenshot": "BM/BM-keyboard-stream-ui.png",
+      "finishedAt": "2026-10-27T13:07:48.867Z"
+    },
+    {
+      "id": "BM-session-expiry",
+      "assistant": "Beach Marshal",
+      "method": "Controlled fetch/ReadableStream fixture in deployed product UI. Actual incremental browser stream; no model requests or backend tool-fault injection.",
+      "startedAt": "2026-10-27T13:07:48.880Z",
+      "observations": {
+        "sessionHttpAfterCookieRemoval": 401,
+        "url": "https://app.dev.worldsurfleague.com/login?next=%2Fathlete-registration%2Fathletes",
+        "loginVisible": true,
+        "body": "Schedule\nRankings\nSurfers\nFantasy\nOne Ocean\nStore\nSearch\nLog In\nWSL Pro\n\nWSL PRO\n\nCompete in WSL Events\n\nRegister, get insurance and enter events in one place.\n\nMembership\nInsurance\nEvent Entry\nRankings\n\nCS · QS · Junior · Longboard\n\nUnited States\nEnglish\nLog in to WSL\n\nManage your athletes, memberships, insurance, and event entries.\n\nEmail Address\nPassword\nForgot password?\nLog In\nOr Continue With\n\nDon't have an account? Create one"
+      },
+      "status": "PASS",
+      "note": "Real isolated browser authentication cookies removed; reloaded protected page and checked login. This is forced session loss, not passage-of-time token expiry.",
+      "screenshot": "BM/BM-session-expiry-stream-ui.png",
+      "finishedAt": "2026-10-27T13:07:52.996Z"
+    }
+  ],
+  "finishedAt": "2026-10-27T13:07:58.130Z"
+}

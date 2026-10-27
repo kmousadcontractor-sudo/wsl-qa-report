@@ -1,0 +1,186 @@
+{
+  "startedAt": "2026-10-27T13:09:19.855Z",
+  "method": "Two concurrent real API conversations per role; bounded concurrency=2; independent fresh threads and unique canaries.",
+  "runs": [
+    {
+      "id": "AL-burst",
+      "assistant": "AL Hunt",
+      "results": [
+        {
+          "request": {
+            "threadId": "3688b929-a076-4d6a-98d0-d28bada76917",
+            "runId": "3f0be34b-fd58-43b9-b315-9a11d35d7a99",
+            "state": {},
+            "messages": [
+              {
+                "id": "8282ffda-f2ee-4384-91a7-aa80a5204edb",
+                "role": "user",
+                "content": "For this QA conversation only, repeat this reference exactly: b6598247-a70c-48d0-850e-61899cd90c5e. Do not fetch or change any account data."
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "http": 200,
+          "durationMs": 3872.728000000003,
+          "stream": {
+            "tools": [],
+            "answer": "Here's the reference, exactly as you gave it: b6598247-a70c-48d0-850e-61899cd90c5e\n\nI didn't look up or change any account data.",
+            "finished": true,
+            "errors": [],
+            "runIds": [
+              {
+                "type": "RUN_STARTED",
+                "threadId": "3688b929-a076-4d6a-98d0-d28bada76917",
+                "runId": "3f0be34b-fd58-43b9-b315-9a11d35d7a99"
+              },
+              {
+                "type": "RUN_FINISHED",
+                "threadId": "3688b929-a076-4d6a-98d0-d28bada76917",
+                "runId": "3f0be34b-fd58-43b9-b315-9a11d35d7a99"
+              }
+            ],
+            "eventTypes": [
+              "RUN_STARTED",
+              "STEP_STARTED",
+              "STEP_FINISHED",
+              "REASONING_START",
+              "REASONING_MESSAGE_START",
+              "REASONING_MESSAGE_CONTENT",
+              "REASONING_MESSAGE_END",
+              "REASONING_END",
+              "TEXT_MESSAGE_START",
+              "TEXT_MESSAGE_CONTENT",
+              "TEXT_MESSAGE_END",
+              "STATE_SNAPSHOT",
+              "MESSAGES_SNAPSHOT",
+              "RUN_FINISHED"
+            ]
+          },
+          "ownMarker": "b6598247-a70c-48d0-850e-61899cd90c5e",
+          "otherMarker": "99be4344-2a49-47f7-9c05-b9239e80d647"
+        },
+        {
+          "request": {
+            "threadId": "5a96ea86-4bbf-48e9-a5d4-cd4e5e41b7d5",
+            "runId": "00d25b12-0308-40c2-9011-76e8e7a608d2",
+            "state": {},
+            "messages": [
+              {
+                "id": "965194cb-146c-43c1-ad46-2323e1d7d464",
+                "role": "user",
+                "content": "For this QA conversation only, repeat this reference exactly: 99be4344-2a49-47f7-9c05-b9239e80d647. Do not fetch or change any account data."
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "http": 429,
+          "durationMs": 765.1791000000085,
+          "stream": {
+            "tools": [],
+            "answer": "",
+            "finished": false,
+            "errors": [],
+            "runIds": [],
+            "eventTypes": []
+          },
+          "ownMarker": "99be4344-2a49-47f7-9c05-b9239e80d647",
+          "otherMarker": "b6598247-a70c-48d0-850e-61899cd90c5e"
+        }
+      ],
+      "status": "REVIEW",
+      "note": "Only two simultaneous threads; no stress/load capacity claim. Canary echo distinguishes thread response isolation."
+    },
+    {
+      "id": "BM-burst",
+      "assistant": "Beach Marshal",
+      "results": [
+        {
+          "request": {
+            "threadId": "c177edcf-bbcb-45bb-9f85-48543841b771",
+            "runId": "ecb61c0b-a733-4325-9f11-9b26d95b070b",
+            "state": {},
+            "messages": [
+              {
+                "id": "ef6e7c41-1335-4805-890a-63dbe0548688",
+                "role": "user",
+                "content": "For this QA conversation only, repeat this reference exactly: fd990dd8-7b48-4846-b727-1f14cca6898e. Do not fetch or change any account data."
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "http": 200,
+          "durationMs": 1733.2258000000147,
+          "stream": {
+            "tools": [],
+            "answer": "fd990dd8-7b48-4846-b727-1f14cca6898e",
+            "finished": true,
+            "errors": [],
+            "runIds": [
+              {
+                "type": "RUN_STARTED",
+                "threadId": "c177edcf-bbcb-45bb-9f85-48543841b771",
+                "runId": "ecb61c0b-a733-4325-9f11-9b26d95b070b"
+              },
+              {
+                "type": "RUN_FINISHED",
+                "threadId": "c177edcf-bbcb-45bb-9f85-48543841b771",
+                "runId": "ecb61c0b-a733-4325-9f11-9b26d95b070b"
+              }
+            ],
+            "eventTypes": [
+              "RUN_STARTED",
+              "STEP_STARTED",
+              "STEP_FINISHED",
+              "TEXT_MESSAGE_START",
+              "TEXT_MESSAGE_CONTENT",
+              "TEXT_MESSAGE_END",
+              "STATE_SNAPSHOT",
+              "MESSAGES_SNAPSHOT",
+              "RUN_FINISHED"
+            ]
+          },
+          "ownMarker": "fd990dd8-7b48-4846-b727-1f14cca6898e",
+          "otherMarker": "b3cb581f-ae44-406c-9aed-7069872f466e"
+        },
+        {
+          "request": {
+            "threadId": "14c2adeb-f200-45f3-af46-190405602b41",
+            "runId": "eb249c44-bd42-4d9f-91e2-06733524f3ba",
+            "state": {},
+            "messages": [
+              {
+                "id": "75da5b66-2214-4191-8b4f-3c543b38b020",
+                "role": "user",
+                "content": "For this QA conversation only, repeat this reference exactly: b3cb581f-ae44-406c-9aed-7069872f466e. Do not fetch or change any account data."
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          },
+          "http": 429,
+          "durationMs": 766.9066000000457,
+          "stream": {
+            "tools": [],
+            "answer": "",
+            "finished": false,
+            "errors": [],
+            "runIds": [],
+            "eventTypes": []
+          },
+          "ownMarker": "b3cb581f-ae44-406c-9aed-7069872f466e",
+          "otherMarker": "fd990dd8-7b48-4846-b727-1f14cca6898e"
+        }
+      ],
+      "status": "REVIEW",
+      "note": "Only two simultaneous threads; no stress/load capacity claim. Canary echo distinguishes thread response isolation."
+    }
+  ],
+  "finishedAt": "2026-10-27T13:09:46.855Z"
+}

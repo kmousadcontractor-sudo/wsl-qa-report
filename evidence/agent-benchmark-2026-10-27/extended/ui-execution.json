@@ -1,0 +1,1419 @@
+{
+  "startedAt": "2026-10-27T13:01:12.953Z",
+  "environment": "https://app.dev.worldsurfleague.com",
+  "method": "Deployed product UI with explicitly labelled browser-side fault/response fixtures; not model/server fault injection.",
+  "runs": [
+    {
+      "id": "AL-limit-2001",
+      "assistant": "AL Hunt",
+      "expected": "Check the deployed composer limit separately from the API body limit; confirm the approved character-limit contract before assigning a failure.",
+      "mode": "ui-validation",
+      "startedAt": "2026-10-27T13:01:37.922Z",
+      "status": "BLOCKED",
+      "requests": [],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "maxLength": "2000",
+        "retainedCharacters": 2000
+      },
+      "note": "UI execution blocker: locator.pressSequentially: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('dialog[open] textarea')\u001b[22m\n\u001b[2m    - locator resolved to <textarea rows=\"2\" maxlength=\"2000\" aria-disabled=\"false\" placeholder=\"Ask AL…\" aria-label=\"Message AL\" class=\"text-body w-full min-w-0 border-none bg-transparent p-0 text-text-primary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-disabled min-w-0 flex-1 resize-none self-center overflow-y-auto py-1.5 aria-disabled:cursor-not-allowed\"></textarea>\u001b[22m\n\u001b[2m  - elementHandle.type(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\u001b[22m\n",
+      "screenshot": "AL/AL-limit-2001-ui.png",
+      "finishedAt": "2026-10-27T13:02:10.463Z"
+    },
+    {
+      "id": "AL-stop",
+      "assistant": "AL Hunt",
+      "expected": "Stop generation; partial response not falsely marked complete; composer recovers.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:02:10.542Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:02:11.303Z",
+          "body": {
+            "threadId": "42f1c855-9975-4165-86f5-87ce6ecf121c",
+            "runId": "226c029e-4876-4cf5-a724-f528529e4df7",
+            "state": {},
+            "messages": [
+              {
+                "id": "879f8ee8-2457-4fa5-9f82-c7bffd86e02f",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "buttons": [
+          {
+            "text": "New conversation",
+            "label": null
+          },
+          {
+            "text": "Conversations",
+            "label": null
+          },
+          {
+            "text": "",
+            "label": "Close AL"
+          },
+          {
+            "text": "",
+            "label": "Stop"
+          }
+        ],
+        "stopAvailable": true,
+        "composerDisabled": "false"
+      },
+      "note": "Cancellation while awaiting deliberately delayed response headers. Mid-token cancellation is not established by this fixture.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check",
+      "screenshot": "AL/AL-stop-ui.png",
+      "finishedAt": "2026-10-27T13:02:21.425Z"
+    },
+    {
+      "id": "AL-duplicate-send",
+      "assistant": "AL Hunt",
+      "expected": "Single active run; no duplicate action.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:02:21.443Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:02:22.115Z",
+          "body": {
+            "threadId": "173b971a-f867-427f-bd92-51362960d152",
+            "runId": "5c919743-e2d3-4504-921c-1ec0205ec500",
+            "state": {},
+            "messages": [
+              {
+                "id": "decf8baf-b53e-4b33-b710-51dbf6cbe47a",
+                "role": "user",
+                "content": "Hello QA duplicate check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "runRequests": 1
+      },
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA duplicate check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "AL/AL-duplicate-send-ui.png",
+      "finishedAt": "2026-10-27T13:02:31.459Z"
+    },
+    {
+      "id": "AL-close-reopen",
+      "assistant": "AL Hunt",
+      "expected": "Documented context and streaming behaviour; no duplicate run.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:02:31.467Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:02:32.001Z",
+          "body": {
+            "threadId": "58d6ad18-71e7-438c-a536-21a686a03d83",
+            "runId": "274184ba-116a-4a04-9bcc-7e81d1fa84d6",
+            "state": {},
+            "messages": [
+              {
+                "id": "9a2d4439-b225-4a62-96b4-e03cf34a2c54",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "closed": true,
+        "runRequests": 1,
+        "answerPresent": true
+      },
+      "note": "Close/reopen tested while waiting for controlled delayed response, not incremental live model tokens.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "AL/AL-close-reopen-ui.png",
+      "finishedAt": "2026-10-27T13:02:42.316Z"
+    },
+    {
+      "id": "AL-mobile",
+      "assistant": "AL Hunt",
+      "expected": "Readable response, keyboard/focus and composer; no horizontal overflow.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:02:42.344Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:02:43.014Z",
+          "body": {
+            "threadId": "06db6e96-b8fc-4816-b510-aba7d7b5552f",
+            "runId": "c28b4880-ec77-4c04-bc7b-07dc6b3449bd",
+            "state": {},
+            "messages": [
+              {
+                "id": "39cdfbad-620e-4e62-b8eb-fb87d7d0f58d",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "geometry": {
+          "viewport": 390,
+          "left": 0,
+          "right": 390,
+          "scrollWidth": 390,
+          "clientWidth": 390
+        },
+        "composerVisible": true
+      },
+      "note": "390 CSS-pixel viewport only; physical mobile keyboard was not tested.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "AL/AL-mobile-ui.png",
+      "finishedAt": "2026-10-27T13:02:44.551Z"
+    },
+    {
+      "id": "AL-keyboard",
+      "assistant": "AL Hunt",
+      "expected": "Keyboard accessible; focus restored correctly.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:02:44.576Z",
+      "status": "FAIL",
+      "requests": [],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialFocus": true,
+        "tabFocus": "TMLog OutWorld Surf LeagueTour ManagerSearch⌘KManageEventsConfigureSettingsTMTour Manager 101Tour Manager · All regionsLog OutEventsSeason 2026-27 · currentCopy season+ New eventOpen for entries42Ala Moana Bowls Women's Pro and 41 moreClosed · to confirm14Atlantic City Classic 234804 2 · Atlantic City Classic 000438 2 · Atlantic City Classic 001214 2Next event31 OctPhilippines Pro · in 4 daysNeeds attention44081 declined cards · 259 missing insurance · 11 wild cards to confirm · 100 open seatsRefund reviewsReview5Atlantic City Classic 000438 2 · Atlantic City Classic 010107 2 · Ala Moana Bowls Women's ProRegionAfricaAsiaAustralia/OceaniaEuropeHawaii/Tahiti NuiNorth AmericaSouth AmericaCountryAustraliaBarbadosBrazilCanadaCosta RicaDOSpainFijiFranceUnited KingdomIndiaJapanSouth KoreaMoroccoMQMexicoNew ZealandFrench PolynesiaPhilippinesPuerto RicoPortugalEl SalvadorTaiwanUnited StatesHawaiiSouth AfricaTourChallenger Series (CS)Championship Tour (CT)International Qualifying Series (QS)Longboard Qualifying Series (LQS)Pro Junior Series (PJ)Qualifying Series (QS)StatusDraftTentativeConfirmedOpen for entriesClosed for entriesLiveCompletedArchivedMen / WomenMenWomenRating1,0002,0004,0006,000Starred11All422Upcoming98Open42Completed92Archived225422 eventsStarredEventTourDates↑EntriesRatingStatusActionMEO Rip Curl Pro PortugalSupertubos, Peniche, PortugalChampionship Tour (CT) · Men16–25 Oct36 / 36full—In progressViewCopyEditArchiveMEO Rip Curl Pro PortugalSupertubos, Peniche, PortugalChampionship Tour (CT) · Women16–25 Oct24 / 24full—In progressViewCopyEditArchiveSiargao International Surfing CupCloud 9, Siargao Island, PhilippinesInternational Qualifying Series (QS) · Men16–25 Oct144 / 144full6,000In progressViewCopyEditArchiveQA WSL-9695 future-same-day 179302862266156th Street, Newport Beach, CaliforniaQualifying Series (QS) · Men21–22 Oct0 / 48not open—DraftViewCopyEditArchiveQA WSL-9695 today-tomorrow 179302862346456th Street, Newport Beach, CaliforniaQualifying Series (QS) · Men26–27 Oct0 / 48not open—DraftViewCopyEditArchiveSunset ProSunset Beach, Oahu, HawaiiQualifying Series (QS) · Men26 Oct – 2 Nov103 / 96+7 waitlist2,000In progressViewCopyEditArchiveSunset ProSunset Beach, Oahu, HawaiiQualifying Series (QS) · Women26 Oct – 2 Nov53 / 48+5 waitlist2,000In progressViewCopyEditArchiveUs open (co-sanction)Ain Diab, Casablanca, MoroccoChampionship Tour (CT) · Men28–30 Octtomorrow0 / 50not open—DraftViewCopyEditArchivePhilippines ProCloud 9, Siargao Island, PhilippinesChampionship Tour (CT) · Men31 Oct – 10 Novin 4 days42 / 36+6 waitlist—Closed for entriesViewCopyEditArchivePhilippines ProCloud 9, Siargao Island, PhilippinesChampionship Tour (CT) · Women31 Oct – 10 Novin 4 days32 / 24+8 waitlist—Closed for entriesViewCopyEditArchiveAtlantic City Classic 231925 2Atlantic City, New Jersey, New Jersey, United StatesInternational Qualifying Series (QS) · Men2 Novin 6 days2 / 48+2 waitlist6,000Closed for entriesViewCopyEditArchiveAtlantic City Classic 234804 2Atlantic City, New Jersey, New Jersey, United StatesInternational Qualifying Series (QS) · Men3 Novin 7 days4 / 48+4 waitlist6,000Closed for entriesViewCopyEditArchiveAtlantic City Classic 000438 2Atlantic City, New Jersey, New Jersey, United StatesInternational Qualifying Series (QS) · Men4 Novin 8 days2 / 4846 seats left6,000Closed for entriesViewCopyEditArchiveAtlantic City Classic 001214 2Atlantic City, New Jersey, New Jersey, United StatesInternational Qualifying Series (QS) · Men5 Novin 9 days4 / 48+4 waitlist6,000Closed for entriesViewCopyEditArchiveHTA Haleiwa ProAli'i Beach, Haleiwa, Hawaii, HawaiiQualifying Series (QS) · Men5–14 Novin 9 days105 / 96+9 waitlist2,000Closed for entriesViewCopyEditArchiveHTA Haleiwa ProAli'i Beach, Haleiwa, Hawaii, HawaiiQualifying Series (QS) · Women5–14 Novin 9 days53 / 48+5 waitlist2,000Closed for entriesViewCopyEditArchiveAtlantic City Classic 010107 2Atlantic City, New Jersey, New Jersey, United StatesInternational Qualifying Series (QS) · Men6 Novin 10 days2 / 4846 seats left6,000Closed for entriesViewCopyEditArchiveMiyazaki ProKisakihama Beach, Miyazaki, JapanQualifying Series (QS) · Men6–8 Novin 10 days105 / 96+9 waitlist2,000Closed for entriesViewCopyEditArchiveMiyazaki ProKisakihama Beach, Miyazaki, JapanQualifying Series (QS) · Women6–8 Novin 10 days57 / 48+9 waitlist2,000Closed for entriesViewCopyEditArchiveUS Testing (co-sanction)Avalanche, Guethary, FranceLongboard Qualifying Series (LQS) · Women7 Nov – 31 Decin 11 days0 / 20not open—DraftViewCopyEditArchivePe'ahi Pro JuniorPe'ahi, Maui, HawaiiPro Junior Series (PJ) · Men11 Novin 2 weeks1 / 48+1 waitlist1,000Closed for entriesViewCopyEditArchiveOrange County ClassicHuntington Beach, California, United StatesQualifying Series (QS) · Men11–14 Novin 2 weeks107 / 96+11 waitlist2,000Closed for entriesViewCopyEditArchiveOrange County ClassicHuntington Beach, California, United StatesQualifying Series (QS) · Women11–14 Novin 2 weeks53 / 48+5 waitlist2,000Closed for entriesViewCopyEditArchiveAla Moana Bowls Pro JuniorAla Moana Bowls, Oahu, HawaiiPro Junior Series (PJ) · Men12 Novin 2 weeks1 / 48+1 waitlist1,000Closed for entriesViewCopyEditArchiveTaiwan Open of SurfingJinzun Harbor, Taitung County, TaiwanInternational Qualifying Series (QS) · Men14–22 Novin 3 weeks151 / 144+7 waitlist6,000Closed for entriesViewCopyEditArchiveTaiwan Open of SurfingJinzun Harbor, Taitung County, TaiwanInternational Qualifying Series (QS) · Women14–22 Novin 3 weeks87 / 80+7 waitlist6,000Closed for entriesViewCopyEditArchiveAla Moana Bowls Women's ProAla Moana Bowls, Oahu, HawaiiQualifying Series (QS) · Women15 Novin 3 weeks0 / 4848 seats left2,000Open for entriesViewCopyEditArchiveHimalayas Women's ProHimalayas, Oahu, HawaiiQualifying Series (QS) · Women16 Novin 3 weeks0 / 4848 seats left2,000Open for entriesViewCopyEditArchiveLoading more events …Showing 28 of 422 events · the rest load as you scroll(globalThis[\"TURBOPACK\"] || (globalThis[\"TURBOPACK\"] = [])).push({\"otherChunks\":[\"static/chunks/0om590q-tq0l9.js\",\"static/chunks/3srfjz42u14tx.js\",\"static/chunks/2gvu8dyrhibpa.js\",\"static/chunks/1mdaa1iqcd9pl.js\"],\"runtimeModuleIds\":[94553]});(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:\\\"/_next/static/chunks/0o_65q4sr7t14.js\\\"\\n3:\\\"/_next/static/chunks/0j0d1jw_li70l.js\\\"\\n4:\\\"/_next/static/chunks/3pqcm_ajxhkuf.js\\\"\\n5:\\\"/_next/static/chunks/0_x_wgzc1uouq.js\\\"\\n6:\\\"/_next/static/chunks/38_5881qxhosm.js\\\"\\n7:\\\"/_next/static/chunks/30j532jj1bpka.js\\\"\\n8:\\\"/_next/static/chunks/0nk1u6t-9aixx.js\\\"\\n9:\\\"/_next/static/chunks/3i6cmec-dtoln.js\\\"\\na:\\\"/_next/static/chunks/3v9o2m258cwcq.js\\\"\\nb:I[20056,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"BootScript\\\"]\\nc:I[44636,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"Providers\\\"]\\nd:I[39756,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"default\\\"]\\ne:I[37457,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"default\\\"]\\nf:I[9742,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"AssistantRoot\\\"]\\n11:\\\"/_next/static/chunks/3kz91ow9cget0.js\\\"\\n12:I[88506,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\",\\\"$11\\\"],\\\"SignInGate\\\"]\\n13:I[98046,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\",\\\"$11\\\"],\\\"TourManagerOnly\\\"]\\n17:I[47257,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"ClientPageRoot\\\"]\\n18:\\\"/_next/static/chunks/0zmj3bj8nxdls.js\\\"\\n19:\\\"/_next/static/chunks/0zhggqo44znjh.js\\\"\\n1a:\\\"/_next/static/chunks/0yvz6bcszg9a6.js\\\"\\n1b:\\\"/_next/static/chunks/3iacj43x99945.js\\\"\\n1c:\\\"/_next/static/chunks/2pvtm6rw8l1lx.js\\\"\\n1d:I[70324,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\",\\\"$11\\\",\\\"$18\\\",\\\"$19\\\",\\\"$1a\\\",\\\"$1b\\\",\\\"$1c\\\"],\\\"default\\\"]\\n20:I[97367,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"OutletBoundary\\\"]\\n21:\\\"$Sreact.suspense\\\"\\n23:\\\"ViewportBoundary\\\"\\n24:I[97367,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"$23\\\"]\\n26:\\\"MetadataBoundary\\\"\\n27:I[97367,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"$26\\\"]\\n29:I[68027,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"default\\\",1]\\n:HL[\\\"/_next/static/chunks/13-kf0nop08ji.css\\\",\\\"style\\\"]\\n:HL[\\\"/_next/static/chunks/1ni0akaroe61g.css\\\",\\\"style\\\"]\\n:HL[\\\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n:HL[\\\"/_next/static/media/ce62453a442c7f35-s.p.0a0h245ktd4x0.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n15:X\\n16:[[\\\"children\\\",{\\\"s\\\":\\\"__PAGE__\\\",\\\"h\\\":512,\\\"d\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[\\\"$\\\",\\\"$L17\\\",null,{\\\"Component\\\":\\\"$1d\\\",\\\"serverProvidedParams\\\":{\\\"searchParams\\\":{},\\\"params\\\":{},\\\"promises\\\":[\\\"$@1e\\\",\\\"$@1f\\\"]}}],[[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/0zmj3bj8nxdls.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-1\\\",{\\\"src\\\":\\\"/_next/static/chunks/0zhggqo44znjh.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-2\\\",{\\\"src\\\":\\\"/_next/static/chunks/0yvz6bcszg9a6.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-3\\\",{\\\"src\\\":\\\"/_next/static/chunks/3iacj43x99945.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-4\\\",{\\\"src\\\":\\\"/_next/static/chunks/2pvtm6rw8l1lx.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}]],[\\\"$\\\",\\\"$L20\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$21\\\",null,{\\\"name\\\":\\\"Next.MetadataOutlet\\\",\\\"children\\\":\\\"$@22\\\"}]}]]}],\\\"p\\\":false,\\\"v\\\":null}}]]\\n14:[[\\\"children\\\",{\\\"s\\\":\\\"events\\\",\\\"h\\\":512,\\\"d\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[null,[\\\"$\\\",\\\"$Ld\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$Le\\\",null,{}],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":\\\"$undefined\\\",\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\"}]]}],\\\"p\\\":false,\\\"v\\\":\\\"$15\\\"},\\\"c\\\":\\\"$Q16\\\"}]]\\n10:[[\\\"children\\\",{\\\"s\\\":\\\"tour-manager\\\",\\\"h\\\":512,\\\"d\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/3kz91ow9cget0.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}]],[\\\"$\\\",\\\"$L12\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$L13\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Ld\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$Le\\\",null,{}],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":\\\"$undefined\\\",\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\"}]}]}]]}],\\\"p\\\":false,\\\"v\\\":null},\\\"c\\\":\\\"$Q14\\\"}]]\\n0:{\\\"P\\\":null,\\\"c\\\":[\\\"\\\",\\\"tour-manager\\\",\\\"events\\\"],\\\"q\\\":\\\"\\\",\\\"i\\\":false,\\\"t\\\":{\\\"t\\\":{\\\"s\\\":\\\"\\\",\\\"h\\\":528,\\\"d\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/chunks/13-kf0nop08ji.css\\\",\\\"precedence\\\":\\\"next\\\",\\\"crossOrigin\\\":\\\"$undefined\\\",\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"link\\\",\\\"1\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/chunks/1ni0akaroe61g.css\\\",\\\"precedence\\\":\\\"next\\\",\\\"crossOrigin\\\":\\\"$undefined\\\",\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/0o_65q4sr7t14.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-1\\\",{\\\"src\\\":\\\"/_next/static/chunks/0j0d1jw_li70l.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-2\\\",{\\\"src\\\":\\\"/_next/static/chunks/3pqcm_ajxhkuf.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-3\\\",{\\\"src\\\":\\\"/_next/static/chunks/0_x_wgzc1uouq.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-4\\\",{\\\"src\\\":\\\"/_next/static/chunks/38_5881qxhosm.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-5\\\",{\\\"src\\\":\\\"/_next/static/chunks/30j532jj1bpka.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-6\\\",{\\\"src\\\":\\\"/_next/static/chunks/0nk1u6t-9aixx.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-7\\\",{\\\"src\\\":\\\"/_next/static/chunks/3i6cmec-dtoln.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-8\\\",{\\\"src\\\":\\\"/_next/static/chunks/3v9o2m258cwcq.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}]],[\\\"$\\\",\\\"html\\\",null,{\\\"lang\\\":\\\"en\\\",\\\"className\\\":\\\"_5rWbla_variable _8Li5zG_variable ExejHa_variable h-full antialiased\\\",\\\"suppressHydrationWarning\\\":true,\\\"children\\\":[[\\\"$\\\",\\\"head\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lb\\\",null,{}]}],[\\\"$\\\",\\\"body\\\",null,{\\\"className\\\":\\\"min-h-full flex flex-col\\\",\\\"children\\\":[\\\"$\\\",\\\"$Lc\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"$Ld\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$Le\\\",null,{}],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":[[[\\\"$\\\",\\\"title\\\",null,{\\\"children\\\":\\\"404: This page could not be found.\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"fontFamily\\\":\\\"system-ui,\\\\\\\"Segoe UI\\\\\\\",Roboto,Helvetica,Arial,sans-serif,\\\\\\\"Apple Color Emoji\\\\\\\",\\\\\\\"Segoe UI Emoji\\\\\\\"\\\",\\\"height\\\":\\\"100vh\\\",\\\"textAlign\\\":\\\"center\\\",\\\"display\\\":\\\"flex\\\",\\\"flexDirection\\\":\\\"column\\\",\\\"alignItems\\\":\\\"center\\\",\\\"justifyContent\\\":\\\"center\\\"},\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"style\\\",null,{\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\\\"}}],[\\\"$\\\",\\\"h1\\\",null,{\\\"className\\\":\\\"next-error-h1\\\",\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\",\\\"margin\\\":\\\"0 20px 0 0\\\",\\\"padding\\\":\\\"0 23px 0 0\\\",\\\"fontSize\\\":24,\\\"fontWeight\\\":500,\\\"verticalAlign\\\":\\\"top\\\",\\\"lineHeight\\\":\\\"49px\\\"},\\\"children\\\":404}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\"},\\\"children\\\":[\\\"$\\\",\\\"h2\\\",null,{\\\"style\\\":{\\\"fontSize\\\":14,\\\"fontWeight\\\":400,\\\"lineHeight\\\":\\\"49px\\\",\\\"margin\\\":0},\\\"children\\\":\\\"This page could not be found.\\\"}]}]]}]}]],[]],\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"$Lf\\\",null,{}]]}]}]]}]]}],\\\"p\\\":false,\\\"v\\\":null},\\\"c\\\":\\\"$Q10\\\"},\\\"h\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"h\\\",{\\\"children\\\":[null,[\\\"$\\\",\\\"$L24\\\",null,{\\\"children\\\":\\\"$L25\\\"}],[\\\"$\\\",\\\"$L27\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"hidden\\\":true,\\\"children\\\":[\\\"$\\\",\\\"$21\\\",null,{\\\"name\\\":\\\"Next.Metadata\\\",\\\"children\\\":\\\"$L28\\\"}]}],null]}],[\\\"$\\\",\\\"meta\\\",null,{\\\"name\\\":\\\"next-size-adjust\\\",\\\"content\\\":\\\"\\\"}]]}],\\\"p\\\":false,\\\"v\\\":null}},\\\"m\\\":\\\"$undefined\\\",\\\"G\\\":[\\\"$29\\\",[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/chunks/13-kf0nop08ji.css\\\",\\\"precedence\\\":\\\"next\\\",\\\"crossOrigin\\\":\\\"$undefined\\\",\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"link\\\",\\\"1\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/chunks/1ni0akaroe61g.css\\\",\\\"precedence\\\":\\\"next\\\",\\\"crossOrigin\\\":\\\"$undefined\\\",\\\"nonce\\\":\\\"$undefined\\\"}]]],\\\"S\\\":true,\\\"r\\\":\\\"$undefined\\\",\\\"s\\\":\\\"$undefined\\\",\\\"a\\\":\\\"$undefined\\\",\\\"l\\\":\\\"$undefined\\\",\\\"p\\\":\\\"$undefined\\\",\\\"d\\\":\\\"$undefined\\\",\\\"b\\\":\\\"dbuBWmHuiXxtuoEFcESWy\\\"}\\n15:C\\n1e:{}\\n1f:\\\"$16:0:1:d:r:props:children:0:props:serverProvidedParams:params\\\"\\n25:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"charSet\\\":\\\"utf-8\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=1\\\"}]]\\n2a:I[27201,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"IconMark\\\"]\\n22:null\\n28:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"name\\\":\\\"description\\\",\\\"content\\\":\\\"wsl-app\\\"}],[\\\"$\\\",\\\"link\\\",\\\"1\\\",{\\\"rel\\\":\\\"icon\\\",\\\"href\\\":\\\"/favicon.ico?favicon.3nh4jkzwundgh.ico\\\",\\\"sizes\\\":\\\"32x32\\\",\\\"type\\\":\\\"image/x-icon\\\"}],[\\\"$\\\",\\\"link\\\",\\\"2\\\",{\\\"rel\\\":\\\"icon\\\",\\\"href\\\":\\\"/icon.png?icon.295o85x-4d56u.png\\\",\\\"sizes\\\":\\\"144x144\\\",\\\"type\\\":\\\"image/png\\\"}],[\\\"$\\\",\\\"link\\\",\\\"3\\\",{\\\"rel\\\":\\\"apple-touch-icon\\\",\\\"href\\\":\\\"/apple-icon.png?apple-icon.0j0x580coph9c.png\\\",\\\"sizes\\\":\\\"180x180\\\",\\\"type\\\":\\\"image/png\\\"}],[\\\"$\\\",\\\"$L2a\\\",\\\"4\\\",{}]]\\n\"])ALNew conversationConversationsHow can I help?Ask about events, entries, rules or what's nearby.What's left before I can confirm the field for an event?Who is on the waitlist for an event?Withdraw an athlete from an event",
+        "closed": false,
+        "focusAfterEscape": null,
+        "reopened": true
+      },
+      "httpRequests": 0,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHow can I help?\n\nAsk about events, entries, rules or what's nearby.\n\nWhat's left before I can confirm the field for an event?\nWho is on the waitlist for an event?\nWithdraw an athlete from an event",
+      "screenshot": "AL/AL-keyboard-ui.png",
+      "finishedAt": "2026-10-27T13:02:47.006Z"
+    },
+    {
+      "id": "AL-markdown",
+      "assistant": "AL Hunt",
+      "expected": "Markdown safely rendered; no clipped essential information.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:02:47.010Z",
+      "status": "FAIL",
+      "requests": [
+        {
+          "at": "2026-10-27T13:02:47.531Z",
+          "body": {
+            "threadId": "90841605-1cbe-40b6-8a94-f88e021ed0c1",
+            "runId": "1bf61877-41f6-40cc-abb9-34d511274f93",
+            "state": {},
+            "messages": [
+              {
+                "id": "cfbfc697-7781-4d81-bea9-c1099d0c7784",
+                "role": "user",
+                "content": "Show a small table with long links."
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "tables": 0,
+        "unsafeLinks": 0,
+        "scriptDialogs": 0,
+        "overflow": {
+          "scrollWidth": 420,
+          "clientWidth": 420
+        }
+      },
+      "note": "Deterministic renderer fixture, not a model instruction-following test.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nShow a small table with long links.\n\nQA controlled rendering fixture\n\n| Item | Link |\n| --- | --- |\n| Event | A long event URL |\n\n<script>alert(\"qa\")</script>\n\njavascript link)\n\nQA controlled rendering fixture | Item | Link | | --- | --- | | Event | [A long event URL](https://www.worldsurfleague.com/events/2026/qa-long-path-for-layout-checking-only) | <script>alert(\"qa\")</script> [javascript link](javascript:alert(document.cookie))",
+      "screenshot": "AL/AL-markdown-ui.png",
+      "finishedAt": "2026-10-27T13:02:49.273Z"
+    },
+    {
+      "id": "AL-session-expiry",
+      "assistant": "AL Hunt",
+      "expected": "Clear reauthentication; no private data shown after expiry.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:02:49.301Z",
+      "status": "REVIEW",
+      "requests": [
+        {
+          "at": "2026-10-27T13:02:49.789Z",
+          "body": {
+            "threadId": "642cf6d9-4da0-4a33-ab78-f7192e696adc",
+            "runId": "f1d9ac14-ccac-468e-b67f-33ab075b9153",
+            "state": {},
+            "messages": [
+              {
+                "id": "57d79406-61a8-451f-b212-66d9c63685c7",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        },
+        {
+          "at": "2026-10-27T13:02:50.953Z",
+          "body": {
+            "threadId": "642cf6d9-4da0-4a33-ab78-f7192e696adc",
+            "runId": "f1d9ac14-ccac-468e-b67f-33ab075b9153",
+            "state": {},
+            "messages": [
+              {
+                "id": "57d79406-61a8-451f-b212-66d9c63685c7",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nThinking…",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          ""
+        ],
+        "composerDisabled": "false",
+        "url": "https://app.dev.worldsurfleague.com/tour-manager/events"
+      },
+      "note": "Browser-injected assistant HTTP 401 only; real cookie expiry and full app-wide privacy require separate expiry fixture.",
+      "httpRequests": 2,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nPlease sign in again.\n\nLog in",
+      "screenshot": "AL/AL-session-expiry-ui.png",
+      "finishedAt": "2026-10-27T13:02:53.036Z"
+    },
+    {
+      "id": "AL-network-cut",
+      "assistant": "AL Hunt",
+      "expected": "Honest interruption, recoverable UI; no duplicate writes.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:02:53.041Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:02:53.447Z",
+          "body": {
+            "threadId": "18fcc938-1838-49ea-b048-a749a5e1928e",
+            "runId": "d1963fcb-3986-48d0-a7ec-1405aa45ff80",
+            "state": {},
+            "messages": [
+              {
+                "id": "538cd842-c383-497c-8de1-314f0070bc3e",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        },
+        {
+          "at": "2026-10-27T13:02:55.329Z",
+          "body": {
+            "threadId": "60366017-7420-49c7-8ea9-c806a75bfb29",
+            "runId": "462f23b3-2d9b-4408-bbab-f95692c6dfb7",
+            "state": {},
+            "messages": [
+              {
+                "id": "538cd842-c383-497c-8de1-314f0070bc3e",
+                "role": "user",
+                "content": "Hello QA interface check"
+              },
+              {
+                "id": "35e8bd0b-98ba-49c6-98f1-88eb4cd0a033",
+                "role": "user",
+                "content": "Hello after interrupted request"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nSomething went wrong. Try again.\n\nRetry",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          "Retry",
+          ""
+        ],
+        "composerDisabled": "false",
+        "recovered": true
+      },
+      "note": "Browser connection abort before response headers; resend/recovery exercised. Exact mid-stream disconnect remains unverified.",
+      "httpRequests": 2,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nHello after interrupted request\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "AL/AL-network-cut-ui.png",
+      "finishedAt": "2026-10-27T13:02:57.553Z"
+    },
+    {
+      "id": "AL-backend-503",
+      "assistant": "AL Hunt",
+      "expected": "Disclose unavailable source; no invented result.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:02:57.560Z",
+      "status": "BLOCKED",
+      "requests": [
+        {
+          "at": "2026-10-27T13:02:58.429Z",
+          "body": {
+            "threadId": "9a616a53-0618-4ab7-88a8-d759518f2cda",
+            "runId": "3c4bcded-34cc-47e8-83e7-8c0e9ead8faf",
+            "state": {},
+            "messages": [
+              {
+                "id": "d24c3388-0761-4a10-b7ce-e7a750c18235",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nService temporarily unavailable\n\nRetry"
+      },
+      "note": "Top-level HTTP 503 UI handling exercised. Per-tool 503 cannot be injected through the browser: assistant executes tools inside backend. Actual unavailable tool results are preserved in live API evidence; no claim this reproduces an exact tool HTTP 503.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nService temporarily unavailable\n\nRetry",
+      "screenshot": "AL/AL-backend-503-ui.png",
+      "finishedAt": "2026-10-27T13:03:00.796Z"
+    },
+    {
+      "id": "AL-rate-limit",
+      "assistant": "AL Hunt",
+      "expected": "Respect backoff; clear user-facing message; no request storm.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:03:00.841Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:03:01.240Z",
+          "body": {
+            "threadId": "f5405f8a-1988-4039-a49a-ff7c91301abe",
+            "runId": "26a8cd7c-fd65-4439-a6f5-91f88b01f825",
+            "state": {},
+            "messages": [
+              {
+                "id": "903d8436-8a90-429f-9e92-daeb51dcedb0",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nToo many requests. Please try again shortly.\n\nRetry",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          "Retry",
+          ""
+        ],
+        "composerDisabled": "false",
+        "requestsAfterRetryWindow": 1
+      },
+      "note": "Browser-injected HTTP 429 and Retry-After: 2. Does not measure server quota enforcement.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nToo many requests. Please try again shortly.\n\nRetry",
+      "screenshot": "AL/AL-rate-limit-ui.png",
+      "finishedAt": "2026-10-27T13:03:06.559Z"
+    },
+    {
+      "id": "AL-malformed-sse",
+      "assistant": "AL Hunt",
+      "expected": "No crash; incomplete run identified; UI recovers.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:03:06.565Z",
+      "status": "REVIEW",
+      "requests": [
+        {
+          "at": "2026-10-27T13:03:07.079Z",
+          "body": {
+            "threadId": "913a7872-a5f2-4976-8960-ea15af180632",
+            "runId": "225e6959-074d-4e10-9233-de4e1e9d4f46",
+            "state": {},
+            "messages": [
+              {
+                "id": "e21887e6-b160-448d-8a9a-de9eabd4bc52",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          ""
+        ],
+        "composerDisabled": "false"
+      },
+      "note": "Malformed/truncated or empty SSE fixture executed; inspect visible error/empty-run behaviour before sign-off.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "AL/AL-malformed-sse-ui.png",
+      "finishedAt": "2026-10-27T13:03:10.068Z"
+    },
+    {
+      "id": "AL-slow-stream",
+      "assistant": "AL Hunt",
+      "expected": "Measure header/first-text/finish separately; allow cancellation.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:03:10.105Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:03:10.536Z",
+          "body": {
+            "threadId": "2674f311-b421-423c-bc34-6c6275c5a374",
+            "runId": "c6443d85-3a54-443c-ae1b-e2f46f95f292",
+            "state": {},
+            "messages": [
+              {
+                "id": "86d29362-8a90-4e3d-ab10-f1c1827d2d17",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nThinking…",
+        "initialCalls": 1,
+        "pendingComposer": "true",
+        "finishedText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy."
+      },
+      "note": "Controlled 7-second header delay. Incremental slow-token streaming is not simulated.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "AL/AL-slow-stream-ui.png",
+      "finishedAt": "2026-10-27T13:03:20.178Z"
+    },
+    {
+      "id": "AL-burst",
+      "assistant": "AL Hunt",
+      "expected": "Bounded controlled concurrency, no cross-thread leakage; separate from sequential benchmark.",
+      "mode": "controlled-load",
+      "startedAt": "2026-10-27T13:03:20.198Z",
+      "status": "BLOCKED",
+      "requests": [],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {},
+      "note": "Two simultaneous real-model threads are scheduled in the separate live concurrency runner; browser fixture cannot establish backend isolation.",
+      "httpRequests": 0,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHow can I help?\n\nAsk about events, entries, rules or what's nearby.\n\nWhat's left before I can confirm the field for an event?\nWho is on the waitlist for an event?\nWithdraw an athlete from an event",
+      "screenshot": "AL/AL-burst-ui.png",
+      "finishedAt": "2026-10-27T13:03:21.923Z"
+    },
+    {
+      "id": "AL-no-answer",
+      "assistant": "AL Hunt",
+      "expected": "Do not count empty terminal finish as answer success.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:03:21.941Z",
+      "status": "REVIEW",
+      "requests": [
+        {
+          "at": "2026-10-27T13:03:22.566Z",
+          "body": {
+            "threadId": "b773bc2c-5c34-4088-8cc1-372cce0a3760",
+            "runId": "4ca796a3-b8a5-4807-abb3-47cd0f9622e0",
+            "state": {},
+            "messages": [
+              {
+                "id": "1637aa76-dc2e-44a2-a454-31d744cefd01",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          ""
+        ],
+        "composerDisabled": "false"
+      },
+      "note": "Malformed/truncated or empty SSE fixture executed; inspect visible error/empty-run behaviour before sign-off.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check",
+      "screenshot": "AL/AL-no-answer-ui.png",
+      "finishedAt": "2026-10-27T13:03:25.489Z"
+    },
+    {
+      "id": "AL-retry-after-error",
+      "assistant": "AL Hunt",
+      "expected": "No duplicate side effect; error history retained.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:03:25.539Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:03:26.240Z",
+          "body": {
+            "threadId": "dc40cb0b-8648-4212-b546-25306f550ea5",
+            "runId": "1de3ceb9-9cc4-4bb7-a0fa-6c772703cb55",
+            "state": {},
+            "messages": [
+              {
+                "id": "07715ba3-fa91-4def-9743-34398c6ff1f0",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        },
+        {
+          "at": "2026-10-27T13:03:28.168Z",
+          "body": {
+            "threadId": "dc250a42-7a1d-4db6-ae76-bb57f7225e32",
+            "runId": "f0743319-6781-43c3-8671-0f8875c1f648",
+            "state": {},
+            "messages": [
+              {
+                "id": "07715ba3-fa91-4def-9743-34398c6ff1f0",
+                "role": "user",
+                "content": "Hello QA interface check"
+              },
+              {
+                "id": "52ec3da5-b40e-4ecc-ad71-2af1ef1f16a0",
+                "role": "user",
+                "content": "Hello after interrupted request"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nSomething went wrong. Try again.\n\nRetry",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          "Retry",
+          ""
+        ],
+        "composerDisabled": "false",
+        "recovered": true
+      },
+      "note": "Browser connection abort before response headers; resend/recovery exercised. Exact mid-stream disconnect remains unverified.",
+      "httpRequests": 2,
+      "consoleErrors": [],
+      "visibleText": "AL\nNew conversation\nConversations\n\nHello QA interface check\n\nHello after interrupted request\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "AL/AL-retry-after-error-ui.png",
+      "finishedAt": "2026-10-27T13:03:30.294Z"
+    },
+    {
+      "id": "BM-limit-2001",
+      "assistant": "Beach Marshal",
+      "expected": "Check the deployed composer limit separately from the API body limit; confirm the approved character-limit contract before assigning a failure.",
+      "mode": "ui-validation",
+      "startedAt": "2026-10-27T13:04:44.690Z",
+      "status": "BLOCKED",
+      "requests": [],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "maxLength": "2000",
+        "retainedCharacters": 2000
+      },
+      "note": "UI execution blocker: locator.pressSequentially: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('dialog[open] textarea')\u001b[22m\n\u001b[2m    - locator resolved to <textarea rows=\"2\" maxlength=\"2000\" aria-disabled=\"false\" placeholder=\"Ask Beach Marshal…\" aria-label=\"Message Beach Marshal\" class=\"text-body w-full min-w-0 border-none bg-transparent p-0 text-text-primary outline-none placeholder:text-text-muted disabled:cursor-not-allowed disabled:text-text-disabled min-w-0 flex-1 resize-none self-center overflow-y-auto py-1.5 aria-disabled:cursor-not-allowed\"></textarea>\u001b[22m\n\u001b[2m  - elementHandle.type(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\u001b[22m\n",
+      "screenshot": "BM/BM-limit-2001-ui.png",
+      "finishedAt": "2026-10-27T13:05:15.649Z"
+    },
+    {
+      "id": "BM-stop",
+      "assistant": "Beach Marshal",
+      "expected": "Stop generation; partial response not falsely marked complete; composer recovers.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:05:15.716Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:05:16.111Z",
+          "body": {
+            "threadId": "e8a28507-e3e0-45ff-a83d-b5fd8a94b146",
+            "runId": "c4d13094-a6a6-47eb-a30b-78c255a94250",
+            "state": {},
+            "messages": [
+              {
+                "id": "4c18664e-a30e-4c48-97cc-8250574014b7",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "buttons": [
+          {
+            "text": "New conversation",
+            "label": null
+          },
+          {
+            "text": "Conversations",
+            "label": null
+          },
+          {
+            "text": "",
+            "label": "Close Beach Marshal"
+          },
+          {
+            "text": "",
+            "label": "Stop"
+          }
+        ],
+        "stopAvailable": true,
+        "composerDisabled": "false"
+      },
+      "note": "Cancellation while awaiting deliberately delayed response headers. Mid-token cancellation is not established by this fixture.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check",
+      "screenshot": "BM/BM-stop-ui.png",
+      "finishedAt": "2026-10-27T13:05:25.035Z"
+    },
+    {
+      "id": "BM-duplicate-send",
+      "assistant": "Beach Marshal",
+      "expected": "Single active run; no duplicate action.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:05:25.059Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:05:25.697Z",
+          "body": {
+            "threadId": "f3551909-1931-4766-85db-fa39f5da4bf4",
+            "runId": "23301b01-c940-4dd7-af8e-7ab4b0b2d427",
+            "state": {},
+            "messages": [
+              {
+                "id": "d8cb48fe-e110-4666-b7fe-5f0072a8c963",
+                "role": "user",
+                "content": "Hello QA duplicate check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "runRequests": 1
+      },
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA duplicate check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "BM/BM-duplicate-send-ui.png",
+      "finishedAt": "2026-10-27T13:05:33.742Z"
+    },
+    {
+      "id": "BM-close-reopen",
+      "assistant": "Beach Marshal",
+      "expected": "Documented context and streaming behaviour; no duplicate run.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:05:33.878Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:05:34.211Z",
+          "body": {
+            "threadId": "0b0b75f8-7ae3-45d0-af09-59eb25eeb08f",
+            "runId": "6c7834d9-e22d-44d5-80a0-377ba1fcef7d",
+            "state": {},
+            "messages": [
+              {
+                "id": "d2761b06-f8b1-4876-a187-bf4b37fc49bf",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "closed": true,
+        "runRequests": 1,
+        "answerPresent": true
+      },
+      "note": "Close/reopen tested while waiting for controlled delayed response, not incremental live model tokens.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "BM/BM-close-reopen-ui.png",
+      "finishedAt": "2026-10-27T13:05:43.523Z"
+    },
+    {
+      "id": "BM-mobile",
+      "assistant": "Beach Marshal",
+      "expected": "Readable response, keyboard/focus and composer; no horizontal overflow.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:05:43.537Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:05:44.073Z",
+          "body": {
+            "threadId": "ebb2a104-aa81-442d-a010-6600896da3eb",
+            "runId": "95ac6c0a-33ee-47c8-aa1e-104d2a3c9e20",
+            "state": {},
+            "messages": [
+              {
+                "id": "528ed96f-01e3-4cd5-8e8e-b5042c433385",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "geometry": {
+          "viewport": 390,
+          "left": 0,
+          "right": 390,
+          "scrollWidth": 390,
+          "clientWidth": 390
+        },
+        "composerVisible": true
+      },
+      "note": "390 CSS-pixel viewport only; physical mobile keyboard was not tested.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "BM/BM-mobile-ui.png",
+      "finishedAt": "2026-10-27T13:05:45.067Z"
+    },
+    {
+      "id": "BM-keyboard",
+      "assistant": "Beach Marshal",
+      "expected": "Keyboard accessible; focus restored correctly.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:05:45.095Z",
+      "status": "FAIL",
+      "requests": [],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialFocus": true,
+        "tabFocus": "ScheduleRankingsSurfersFantasyOne OceanStoreSearchQA A.Log OutWSL ProScheduleRankingsSurfersFantasyOne OceanStoreQA A.Log Out(globalThis[\"TURBOPACK\"] || (globalThis[\"TURBOPACK\"] = [])).push({\"otherChunks\":[\"static/chunks/0om590q-tq0l9.js\",\"static/chunks/3srfjz42u14tx.js\",\"static/chunks/2gvu8dyrhibpa.js\",\"static/chunks/1mdaa1iqcd9pl.js\"],\"runtimeModuleIds\":[94553]});(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:\\\"/_next/static/chunks/0o_65q4sr7t14.js\\\"\\n3:\\\"/_next/static/chunks/0j0d1jw_li70l.js\\\"\\n4:\\\"/_next/static/chunks/3pqcm_ajxhkuf.js\\\"\\n5:\\\"/_next/static/chunks/0_x_wgzc1uouq.js\\\"\\n6:\\\"/_next/static/chunks/38_5881qxhosm.js\\\"\\n7:\\\"/_next/static/chunks/30j532jj1bpka.js\\\"\\n8:\\\"/_next/static/chunks/0nk1u6t-9aixx.js\\\"\\n9:\\\"/_next/static/chunks/3i6cmec-dtoln.js\\\"\\na:\\\"/_next/static/chunks/3v9o2m258cwcq.js\\\"\\nb:I[20056,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"BootScript\\\"]\\nc:I[44636,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"Providers\\\"]\\nd:I[39756,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"default\\\"]\\ne:I[37457,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"default\\\"]\\nf:I[9742,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"AssistantRoot\\\"]\\n11:\\\"/_next/static/chunks/0s1cpazm0j809.js\\\"\\n12:I[91976,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\",\\\"$11\\\"],\\\"Navbar\\\"]\\n14:\\\"/_next/static/chunks/1dppt5qo25idh.js\\\"\\n15:I[76987,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\",\\\"$11\\\",\\\"$14\\\"],\\\"TourManagerGate\\\"]\\n17:\\\"/_next/static/chunks/02jyqjtsdbyva.js\\\"\\n18:I[88506,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\",\\\"$11\\\",\\\"$14\\\",\\\"$17\\\"],\\\"SignInGate\\\"]\\n1c:\\\"ViewportBoundary\\\"\\n1d:I[97367,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"$1c\\\"]\\n1f:\\\"MetadataBoundary\\\"\\n20:I[97367,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"$1f\\\"]\\n21:\\\"$Sreact.suspense\\\"\\n23:I[68027,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"default\\\",1]\\n:HL[\\\"/_next/static/chunks/13-kf0nop08ji.css\\\",\\\"style\\\"]\\n:HL[\\\"/_next/static/chunks/1ni0akaroe61g.css\\\",\\\"style\\\"]\\n:HL[\\\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n:HL[\\\"/_next/static/media/ce62453a442c7f35-s.p.0a0h245ktd4x0.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n1a:[[\\\"children\\\",{\\\"s\\\":\\\"__PAGE__\\\",\\\"d\\\":{\\\"r\\\":\\\"$L1b\\\",\\\"p\\\":false,\\\"v\\\":null}}]]\\n16:[[\\\"children\\\",{\\\"s\\\":\\\"athletes\\\",\\\"d\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/02jyqjtsdbyva.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}]],[\\\"$\\\",\\\"$L18\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Ld\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":\\\"$L19\\\",\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":\\\"$undefined\\\",\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\"}]}]]}],\\\"p\\\":false,\\\"v\\\":null},\\\"c\\\":\\\"$Q1a\\\"}]]\\n13:[[\\\"children\\\",{\\\"s\\\":\\\"athlete-registration\\\",\\\"d\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/1dppt5qo25idh.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}]],[\\\"$\\\",\\\"$L15\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Ld\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$Le\\\",null,{}],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":\\\"$undefined\\\",\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\"}]}]]}],\\\"p\\\":false,\\\"v\\\":null},\\\"c\\\":\\\"$Q16\\\"}]]\\n10:[[\\\"children\\\",{\\\"s\\\":\\\"(site)\\\",\\\"d\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/0s1cpazm0j809.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}]],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-1 flex-col\\\",\\\"children\\\":[[\\\"$\\\",\\\"$L12\\\",null,{}],[\\\"$\\\",\\\"$Ld\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$Le\\\",null,{}],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":[[[\\\"$\\\",\\\"title\\\",null,{\\\"children\\\":\\\"404: This page could not be found.\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":\\\"$0:t:t:d:r:props:children:1:props:children:1:props:children:props:children:0:props:notFound:0:1:props:style\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"style\\\",null,{\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\\\"}}],[\\\"$\\\",\\\"h1\\\",null,{\\\"className\\\":\\\"next-error-h1\\\",\\\"style\\\":\\\"$0:t:t:d:r:props:children:1:props:children:1:props:children:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style\\\",\\\"children\\\":404}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":\\\"$0:t:t:d:r:props:children:1:props:children:1:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style\\\",\\\"children\\\":[\\\"$\\\",\\\"h2\\\",null,{\\\"style\\\":\\\"$0:t:t:d:r:props:children:1:props:children:1:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style\\\",\\\"children\\\":\\\"This page could not be found.\\\"}]}]]}]}]],[]],\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\"}]]}]]}],\\\"p\\\":false,\\\"v\\\":null},\\\"c\\\":\\\"$Q13\\\"}]]\\n0:{\\\"P\\\":null,\\\"c\\\":[\\\"\\\",\\\"athlete-registration\\\",\\\"athletes\\\"],\\\"q\\\":\\\"\\\",\\\"i\\\":false,\\\"t\\\":{\\\"t\\\":{\\\"s\\\":\\\"\\\",\\\"h\\\":16,\\\"d\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/chunks/13-kf0nop08ji.css\\\",\\\"precedence\\\":\\\"next\\\",\\\"crossOrigin\\\":\\\"$undefined\\\",\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"link\\\",\\\"1\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/chunks/1ni0akaroe61g.css\\\",\\\"precedence\\\":\\\"next\\\",\\\"crossOrigin\\\":\\\"$undefined\\\",\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/0o_65q4sr7t14.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-1\\\",{\\\"src\\\":\\\"/_next/static/chunks/0j0d1jw_li70l.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-2\\\",{\\\"src\\\":\\\"/_next/static/chunks/3pqcm_ajxhkuf.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-3\\\",{\\\"src\\\":\\\"/_next/static/chunks/0_x_wgzc1uouq.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-4\\\",{\\\"src\\\":\\\"/_next/static/chunks/38_5881qxhosm.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-5\\\",{\\\"src\\\":\\\"/_next/static/chunks/30j532jj1bpka.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-6\\\",{\\\"src\\\":\\\"/_next/static/chunks/0nk1u6t-9aixx.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-7\\\",{\\\"src\\\":\\\"/_next/static/chunks/3i6cmec-dtoln.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-8\\\",{\\\"src\\\":\\\"/_next/static/chunks/3v9o2m258cwcq.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}]],[\\\"$\\\",\\\"html\\\",null,{\\\"lang\\\":\\\"en\\\",\\\"className\\\":\\\"_5rWbla_variable _8Li5zG_variable ExejHa_variable h-full antialiased\\\",\\\"suppressHydrationWarning\\\":true,\\\"children\\\":[[\\\"$\\\",\\\"head\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lb\\\",null,{}]}],[\\\"$\\\",\\\"body\\\",null,{\\\"className\\\":\\\"min-h-full flex flex-col\\\",\\\"children\\\":[\\\"$\\\",\\\"$Lc\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"$Ld\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$Le\\\",null,{}],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":[[[\\\"$\\\",\\\"title\\\",null,{\\\"children\\\":\\\"404: This page could not be found.\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"fontFamily\\\":\\\"system-ui,\\\\\\\"Segoe UI\\\\\\\",Roboto,Helvetica,Arial,sans-serif,\\\\\\\"Apple Color Emoji\\\\\\\",\\\\\\\"Segoe UI Emoji\\\\\\\"\\\",\\\"height\\\":\\\"100vh\\\",\\\"textAlign\\\":\\\"center\\\",\\\"display\\\":\\\"flex\\\",\\\"flexDirection\\\":\\\"column\\\",\\\"alignItems\\\":\\\"center\\\",\\\"justifyContent\\\":\\\"center\\\"},\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"style\\\",null,{\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\\\"}}],[\\\"$\\\",\\\"h1\\\",null,{\\\"className\\\":\\\"next-error-h1\\\",\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\",\\\"margin\\\":\\\"0 20px 0 0\\\",\\\"padding\\\":\\\"0 23px 0 0\\\",\\\"fontSize\\\":24,\\\"fontWeight\\\":500,\\\"verticalAlign\\\":\\\"top\\\",\\\"lineHeight\\\":\\\"49px\\\"},\\\"children\\\":404}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\"},\\\"children\\\":[\\\"$\\\",\\\"h2\\\",null,{\\\"style\\\":{\\\"fontSize\\\":14,\\\"fontWeight\\\":400,\\\"lineHeight\\\":\\\"49px\\\",\\\"margin\\\":0},\\\"children\\\":\\\"This page could not be found.\\\"}]}]]}]}]],[]],\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"$Lf\\\",null,{}]]}]}]]}]]}],\\\"p\\\":false,\\\"v\\\":null},\\\"c\\\":\\\"$Q10\\\"},\\\"h\\\":{\\\"r\\\":[\\\"$\\\",\\\"$1\\\",\\\"h\\\",{\\\"children\\\":[null,[\\\"$\\\",\\\"$L1d\\\",null,{\\\"children\\\":\\\"$L1e\\\"}],[\\\"$\\\",\\\"$L20\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"hidden\\\":true,\\\"children\\\":[\\\"$\\\",\\\"$21\\\",null,{\\\"name\\\":\\\"Next.Metadata\\\",\\\"children\\\":\\\"$L22\\\"}]}],null]}],[\\\"$\\\",\\\"meta\\\",null,{\\\"name\\\":\\\"next-size-adjust\\\",\\\"content\\\":\\\"\\\"}]]}],\\\"p\\\":false,\\\"v\\\":null}},\\\"m\\\":\\\"$undefined\\\",\\\"G\\\":[\\\"$23\\\",[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/chunks/13-kf0nop08ji.css\\\",\\\"precedence\\\":\\\"next\\\",\\\"crossOrigin\\\":\\\"$undefined\\\",\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"link\\\",\\\"1\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/chunks/1ni0akaroe61g.css\\\",\\\"precedence\\\":\\\"next\\\",\\\"crossOrigin\\\":\\\"$undefined\\\",\\\"nonce\\\":\\\"$undefined\\\"}]]],\\\"S\\\":false,\\\"r\\\":\\\"$undefined\\\",\\\"s\\\":\\\"$undefined\\\",\\\"a\\\":\\\"$undefined\\\",\\\"l\\\":\\\"$undefined\\\",\\\"p\\\":\\\"$undefined\\\",\\\"d\\\":\\\"$undefined\\\",\\\"b\\\":\\\"dbuBWmHuiXxtuoEFcESWy\\\"}\\n24:I[47257,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"ClientPageRoot\\\"]\\n25:\\\"/_next/static/chunks/1k4tlbw1x0nlm.js\\\"\\n26:\\\"/_next/static/chunks/16tu2uaicfufe.js\\\"\\n27:\\\"/_next/static/chunks/35d3060dmqqdc.js\\\"\\n28:I[4119,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\",\\\"$11\\\",\\\"$14\\\",\\\"$17\\\",\\\"$25\\\",\\\"$26\\\",\\\"$27\\\"],\\\"default\\\"]\\n29:I[97367,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"OutletBoundary\\\"]\\n19:[\\\"$\\\",\\\"$Le\\\",null,{}]\\n1b:[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[\\\"$\\\",\\\"$L24\\\",null,{\\\"Component\\\":\\\"$28\\\",\\\"serverProvidedParams\\\":{\\\"searchParams\\\":{},\\\"params\\\":{},\\\"promises\\\":null}}],[[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/1k4tlbw1x0nlm.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-1\\\",{\\\"src\\\":\\\"/_next/static/chunks/16tu2uaicfufe.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"script\\\",\\\"script-2\\\",{\\\"src\\\":\\\"/_next/static/chunks/35d3060dmqqdc.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"}]],[\\\"$\\\",\\\"$L29\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$21\\\",null,{\\\"name\\\":\\\"Next.MetadataOutlet\\\",\\\"children\\\":\\\"$@2a\\\"}]}]]}]\\n1e:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"charSet\\\":\\\"utf-8\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=1\\\"}]]\\n2b:I[27201,[\\\"$2\\\",\\\"$3\\\",\\\"$4\\\",\\\"$5\\\",\\\"$6\\\",\\\"$7\\\",\\\"$8\\\",\\\"$9\\\",\\\"$a\\\"],\\\"IconMark\\\"]\\n22:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"name\\\":\\\"description\\\",\\\"content\\\":\\\"wsl-app\\\"}],[\\\"$\\\",\\\"link\\\",\\\"1\\\",{\\\"rel\\\":\\\"icon\\\",\\\"href\\\":\\\"/favicon.ico?favicon.3nh4jkzwundgh.ico\\\",\\\"sizes\\\":\\\"32x32\\\",\\\"type\\\":\\\"image/x-icon\\\"}],[\\\"$\\\",\\\"link\\\",\\\"2\\\",{\\\"rel\\\":\\\"icon\\\",\\\"href\\\":\\\"/icon.png?icon.295o85x-4d56u.png\\\",\\\"sizes\\\":\\\"144x144\\\",\\\"type\\\":\\\"image/png\\\"}],[\\\"$\\\",\\\"link\\\",\\\"3\\\",{\\\"rel\\\":\\\"apple-touch-icon\\\",\\\"href\\\":\\\"/apple-icon.png?apple-icon.0j0x580coph9c.png\\\",\\\"sizes\\\":\\\"180x180\\\",\\\"type\\\":\\\"image/png\\\"}],[\\\"$\\\",\\\"$L2b\\\",\\\"4\\\",{}]]\\n2a:null\\n\"])Beach MarshalNew conversationConversationsHow can I help?Ask about events, entries, rules or what's nearby.Which events can I enter?What does my membership cover?What's near the venue of my next event?",
+        "closed": false,
+        "focusAfterEscape": null,
+        "reopened": true
+      },
+      "httpRequests": 0,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHow can I help?\n\nAsk about events, entries, rules or what's nearby.\n\nWhich events can I enter?\nWhat does my membership cover?\nWhat's near the venue of my next event?",
+      "screenshot": "BM/BM-keyboard-ui.png",
+      "finishedAt": "2026-10-27T13:05:46.163Z"
+    },
+    {
+      "id": "BM-markdown",
+      "assistant": "Beach Marshal",
+      "expected": "Markdown safely rendered; no clipped essential information.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T13:05:46.201Z",
+      "status": "FAIL",
+      "requests": [
+        {
+          "at": "2026-10-27T13:05:47.228Z",
+          "body": {
+            "threadId": "8c6bc649-d59f-4f2f-903b-4e0fdd3609c3",
+            "runId": "51902023-8a49-486e-9cb6-6269d19d1b20",
+            "state": {},
+            "messages": [
+              {
+                "id": "eeaf9f11-24d3-4f5c-9f1b-86609cc719a3",
+                "role": "user",
+                "content": "Show a small table with long links."
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "tables": 0,
+        "unsafeLinks": 0,
+        "scriptDialogs": 0,
+        "overflow": {
+          "scrollWidth": 420,
+          "clientWidth": 420
+        }
+      },
+      "note": "Deterministic renderer fixture, not a model instruction-following test.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nShow a small table with long links.\n\nQA controlled rendering fixture\n\n| Item | Link |\n| --- | --- |\n| Event | A long event URL |\n\n<script>alert(\"qa\")</script>\n\njavascript link)\n\nQA controlled rendering fixture | Item | Link | | --- | --- | | Event | [A long event URL](https://www.worldsurfleague.com/events/2026/qa-long-path-for-layout-checking-only) | <script>alert(\"qa\")</script> [javascript link](javascript:alert(document.cookie))",
+      "screenshot": "BM/BM-markdown-ui.png",
+      "finishedAt": "2026-10-27T13:05:48.248Z"
+    },
+    {
+      "id": "BM-session-expiry",
+      "assistant": "Beach Marshal",
+      "expected": "Clear reauthentication; no private data shown after expiry.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:05:48.379Z",
+      "status": "REVIEW",
+      "requests": [
+        {
+          "at": "2026-10-27T13:05:48.834Z",
+          "body": {
+            "threadId": "ba162769-acb6-4122-8e77-ed699dbe1638",
+            "runId": "22f91644-ad84-416a-b846-b4e0c1f31cfc",
+            "state": {},
+            "messages": [
+              {
+                "id": "cd65bb38-0685-4701-9b79-82868634b0d8",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        },
+        {
+          "at": "2026-10-27T13:05:49.465Z",
+          "body": {
+            "threadId": "ba162769-acb6-4122-8e77-ed699dbe1638",
+            "runId": "22f91644-ad84-416a-b846-b4e0c1f31cfc",
+            "state": {},
+            "messages": [
+              {
+                "id": "cd65bb38-0685-4701-9b79-82868634b0d8",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nPlease sign in again.\n\nLog in",
+        "initialCalls": 2,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          ""
+        ],
+        "composerDisabled": "false",
+        "url": "https://app.dev.worldsurfleague.com/athlete-registration/athletes"
+      },
+      "note": "Browser-injected assistant HTTP 401 only; real cookie expiry and full app-wide privacy require separate expiry fixture.",
+      "httpRequests": 2,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nPlease sign in again.\n\nLog in",
+      "screenshot": "BM/BM-session-expiry-ui.png",
+      "finishedAt": "2026-10-27T13:05:51.748Z"
+    },
+    {
+      "id": "BM-network-cut",
+      "assistant": "Beach Marshal",
+      "expected": "Honest interruption, recoverable UI; no duplicate writes.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:05:51.878Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:05:52.709Z",
+          "body": {
+            "threadId": "0fe56acf-ba16-4425-9219-1e72fdbfb13c",
+            "runId": "acc14d99-10f4-4d6a-811e-5bd07590dfb9",
+            "state": {},
+            "messages": [
+              {
+                "id": "6f741e00-c30c-4ef0-85e8-e58f52e053ff",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        },
+        {
+          "at": "2026-10-27T13:05:54.470Z",
+          "body": {
+            "threadId": "aab8fdce-2411-4cdb-b480-29788f10ba26",
+            "runId": "cfcbb2f1-04db-43c1-b186-0efaec6a4dd5",
+            "state": {},
+            "messages": [
+              {
+                "id": "6f741e00-c30c-4ef0-85e8-e58f52e053ff",
+                "role": "user",
+                "content": "Hello QA interface check"
+              },
+              {
+                "id": "ee624965-1449-4c89-8df7-5eb160d1cdb3",
+                "role": "user",
+                "content": "Hello after interrupted request"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nSomething went wrong. Try again.\n\nRetry",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          "Retry",
+          ""
+        ],
+        "composerDisabled": "false",
+        "recovered": true
+      },
+      "note": "Browser connection abort before response headers; resend/recovery exercised. Exact mid-stream disconnect remains unverified.",
+      "httpRequests": 2,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\nHello after interrupted request\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "BM/BM-network-cut-ui.png",
+      "finishedAt": "2026-10-27T13:05:55.771Z"
+    },
+    {
+      "id": "BM-backend-503",
+      "assistant": "Beach Marshal",
+      "expected": "Disclose unavailable source; no invented result.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:05:55.802Z",
+      "status": "BLOCKED",
+      "requests": [
+        {
+          "at": "2026-10-27T13:05:56.589Z",
+          "body": {
+            "threadId": "36bb4191-0d1b-4cf8-a14b-ffd6c2871bdb",
+            "runId": "1e5bf14b-a651-4f38-a675-dbb830dba437",
+            "state": {},
+            "messages": [
+              {
+                "id": "cd1a07da-f1dc-42ec-accf-ccc85a5be094",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nService temporarily unavailable\n\nRetry"
+      },
+      "note": "Top-level HTTP 503 UI handling exercised. Per-tool 503 cannot be injected through the browser: assistant executes tools inside backend. Actual unavailable tool results are preserved in live API evidence; no claim this reproduces an exact tool HTTP 503.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nService temporarily unavailable\n\nRetry",
+      "screenshot": "BM/BM-backend-503-ui.png",
+      "finishedAt": "2026-10-27T13:05:58.319Z"
+    },
+    {
+      "id": "BM-rate-limit",
+      "assistant": "Beach Marshal",
+      "expected": "Respect backoff; clear user-facing message; no request storm.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:05:58.329Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:05:58.862Z",
+          "body": {
+            "threadId": "ebe82aff-5764-4a70-a87a-1fa4c525e17c",
+            "runId": "759d9b4c-88aa-424c-b1fb-6f3fb080f9c4",
+            "state": {},
+            "messages": [
+              {
+                "id": "54aab386-ebc4-4ccf-96a9-881d371d1a05",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nToo many requests. Please try again shortly.\n\nRetry",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          "Retry",
+          ""
+        ],
+        "composerDisabled": "false",
+        "requestsAfterRetryWindow": 1
+      },
+      "note": "Browser-injected HTTP 429 and Retry-After: 2. Does not measure server quota enforcement.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nToo many requests. Please try again shortly.\n\nRetry",
+      "screenshot": "BM/BM-rate-limit-ui.png",
+      "finishedAt": "2026-10-27T13:06:03.750Z"
+    },
+    {
+      "id": "BM-malformed-sse",
+      "assistant": "Beach Marshal",
+      "expected": "No crash; incomplete run identified; UI recovers.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:06:03.797Z",
+      "status": "REVIEW",
+      "requests": [
+        {
+          "at": "2026-10-27T13:06:04.849Z",
+          "body": {
+            "threadId": "1e9eb393-0b12-43cb-b1e0-3f369946484b",
+            "runId": "85415442-0872-41b4-b521-2c3ef4a88984",
+            "state": {},
+            "messages": [
+              {
+                "id": "5c8e4678-5299-46bf-ba4d-e3c0a951eefb",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          ""
+        ],
+        "composerDisabled": "false"
+      },
+      "note": "Malformed/truncated or empty SSE fixture executed; inspect visible error/empty-run behaviour before sign-off.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "BM/BM-malformed-sse-ui.png",
+      "finishedAt": "2026-10-27T13:06:07.229Z"
+    },
+    {
+      "id": "BM-slow-stream",
+      "assistant": "Beach Marshal",
+      "expected": "Measure header/first-text/finish separately; allow cancellation.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:06:07.377Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:06:07.917Z",
+          "body": {
+            "threadId": "26bb34c4-f089-414e-89f1-f2bf2b0e213a",
+            "runId": "43fe4f6c-9e0f-4343-8dff-99fd51627c44",
+            "state": {},
+            "messages": [
+              {
+                "id": "5e0d2f7b-0ae9-402c-b4a8-018f471878fc",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\nThinking…",
+        "initialCalls": 1,
+        "pendingComposer": "true",
+        "finishedText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy."
+      },
+      "note": "Controlled 7-second header delay. Incremental slow-token streaming is not simulated.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "BM/BM-slow-stream-ui.png",
+      "finishedAt": "2026-10-27T13:06:16.789Z"
+    },
+    {
+      "id": "BM-burst",
+      "assistant": "Beach Marshal",
+      "expected": "Bounded controlled concurrency, no cross-thread leakage; separate from sequential benchmark.",
+      "mode": "controlled-load",
+      "startedAt": "2026-10-27T13:06:16.817Z",
+      "status": "BLOCKED",
+      "requests": [],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {},
+      "note": "Two simultaneous real-model threads are scheduled in the separate live concurrency runner; browser fixture cannot establish backend isolation.",
+      "httpRequests": 0,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHow can I help?\n\nAsk about events, entries, rules or what's nearby.\n\nWhich events can I enter?\nWhat does my membership cover?\nWhat's near the venue of my next event?",
+      "screenshot": "BM/BM-burst-ui.png",
+      "finishedAt": "2026-10-27T13:06:17.315Z"
+    },
+    {
+      "id": "BM-no-answer",
+      "assistant": "Beach Marshal",
+      "expected": "Do not count empty terminal finish as answer success.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:06:17.344Z",
+      "status": "REVIEW",
+      "requests": [
+        {
+          "at": "2026-10-27T13:06:17.664Z",
+          "body": {
+            "threadId": "42f9165b-593c-491a-822c-8014cc4c8be1",
+            "runId": "785f16aa-cb02-4366-ba8e-715dfa4e79c7",
+            "state": {},
+            "messages": [
+              {
+                "id": "7932c30b-4d77-4320-adca-3ff760f161a2",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          ""
+        ],
+        "composerDisabled": "false"
+      },
+      "note": "Malformed/truncated or empty SSE fixture executed; inspect visible error/empty-run behaviour before sign-off.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check",
+      "screenshot": "BM/BM-no-answer-ui.png",
+      "finishedAt": "2026-10-27T13:06:19.682Z"
+    },
+    {
+      "id": "BM-retry-after-error",
+      "assistant": "Beach Marshal",
+      "expected": "No duplicate side effect; error history retained.",
+      "mode": "controlled-fault",
+      "startedAt": "2026-10-27T13:06:19.727Z",
+      "status": "PASS",
+      "requests": [
+        {
+          "at": "2026-10-27T13:06:20.085Z",
+          "body": {
+            "threadId": "e24333f3-9fff-4ff5-ae20-d3170f5a5d29",
+            "runId": "325ee5ce-abb0-452c-858f-57392244f91b",
+            "state": {},
+            "messages": [
+              {
+                "id": "bc18df8c-42ad-4c6f-a86a-4797b831eaf4",
+                "role": "user",
+                "content": "Hello QA interface check"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        },
+        {
+          "at": "2026-10-27T13:06:21.883Z",
+          "body": {
+            "threadId": "6a0de3a0-df00-4c13-862e-25e69ee9cacf",
+            "runId": "c87ba3c6-e153-4fd0-a672-a6b2ee255008",
+            "state": {},
+            "messages": [
+              {
+                "id": "bc18df8c-42ad-4c6f-a86a-4797b831eaf4",
+                "role": "user",
+                "content": "Hello QA interface check"
+              },
+              {
+                "id": "4163b2f5-376b-42bc-8bec-71ab21bc7509",
+                "role": "user",
+                "content": "Hello after interrupted request"
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "initialVisibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\n!\n\nSomething went wrong. Try again.\n\nRetry",
+        "initialCalls": 1,
+        "buttons": [
+          "New conversation",
+          "Conversations",
+          "",
+          "Retry",
+          ""
+        ],
+        "composerDisabled": "false",
+        "recovered": true
+      },
+      "note": "Browser connection abort before response headers; resend/recovery exercised. Exact mid-stream disconnect remains unverified.",
+      "httpRequests": 2,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\nNew conversation\nConversations\n\nHello QA interface check\n\nHello after interrupted request\n\nQA controlled response: this tests the product interface, not model accuracy.\n\nQA controlled response: this tests the product interface, not model accuracy.",
+      "screenshot": "BM/BM-retry-after-error-ui.png",
+      "finishedAt": "2026-10-27T13:06:22.969Z"
+    }
+  ],
+  "blockedWrites": [],
+  "finishedAt": "2026-10-27T13:06:50.246Z"
+}
