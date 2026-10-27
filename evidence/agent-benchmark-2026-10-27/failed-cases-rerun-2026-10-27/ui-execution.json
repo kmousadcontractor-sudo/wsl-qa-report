@@ -1,0 +1,37 @@
+{
+  "startedAt": "2026-10-27T16:16:46.034Z",
+  "environment": "https://app.dev.worldsurfleague.com",
+  "method": "Deployed product UI with explicitly labelled browser-side fault/response fixtures; not model/server fault injection.",
+  "runs": [
+    {
+      "id": "AL-markdown",
+      "assistant": "AL Hunt",
+      "expected": "Markdown safely rendered; no clipped essential information.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T16:16:58.693Z",
+      "status": "BLOCKED",
+      "requests": [],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {},
+      "note": "UI execution blocker: locator.isEnabled: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('dialog[open]').getByRole('button', { name: 'New conversation', exact: true })\u001b[22m\n",
+      "screenshot": "AL/AL-markdown-ui.png",
+      "finishedAt": "2026-10-27T16:17:29.745Z"
+    },
+    {
+      "id": "BM-markdown",
+      "assistant": "Beach Marshal",
+      "expected": "Markdown safely rendered; no clipped essential information.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T16:17:42.476Z",
+      "status": "BLOCKED",
+      "requests": [],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {},
+      "note": "UI execution blocker: locator.isEnabled: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('dialog[open]').getByRole('button', { name: 'New conversation', exact: true })\u001b[22m\n",
+      "screenshot": "BM/BM-markdown-ui.png",
+      "finishedAt": "2026-10-27T16:18:13.297Z"
+    }
+  ],
+  "blockedWrites": [],
+  "finishedAt": "2026-10-27T16:18:14.992Z"
+}

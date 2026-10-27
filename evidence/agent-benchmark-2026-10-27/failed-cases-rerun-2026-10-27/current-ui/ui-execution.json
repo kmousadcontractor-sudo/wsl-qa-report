@@ -1,0 +1,97 @@
+{
+  "startedAt": "2026-10-27T16:18:52.260Z",
+  "environment": "https://app.dev.worldsurfleague.com",
+  "method": "Deployed product UI with explicitly labelled browser-side fault/response fixtures; not model/server fault injection.",
+  "runs": [
+    {
+      "id": "AL-markdown",
+      "assistant": "AL Hunt",
+      "expected": "Markdown safely rendered; no clipped essential information.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T16:19:05.993Z",
+      "status": "FAIL",
+      "requests": [
+        {
+          "at": "2026-10-27T16:19:06.746Z",
+          "body": {
+            "threadId": "62995b8c-eedd-4e6a-97f2-5b887ca1835f",
+            "runId": "5797ab53-d7c7-4d3a-b646-2a7e25e68cc0",
+            "state": {},
+            "messages": [
+              {
+                "id": "49fa05a2-9e90-47a9-8402-70bd3a96d4bf",
+                "role": "user",
+                "content": "Show a small table with long links."
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "tables": 0,
+        "unsafeLinks": 0,
+        "scriptDialogs": 0,
+        "overflow": {
+          "scrollWidth": 398,
+          "clientWidth": 398
+        }
+      },
+      "note": "Deterministic renderer fixture, not a model instruction-following test.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "AL\n\nWSL AI assistant\n\nNew Conversation\nConversations\n\nShow a small table with long links.\n\nQA controlled rendering fixture\n\n| Item | Link |\n| --- | --- |\n| Event | A long event URL |\n\n<script>alert(\"qa\")</script>\n\njavascript link)\n\nQA controlled rendering fixture | Item | Link | | --- | --- | | Event | [A long event URL](https://www.worldsurfleague.com/events/2026/qa-long-path-for-layout-checking-only) | <script>alert(\"qa\")</script> [javascript link](javascript:alert(document.cookie))",
+      "screenshot": "AL/AL-markdown-ui.png",
+      "finishedAt": "2026-10-27T16:19:08.556Z"
+    },
+    {
+      "id": "BM-markdown",
+      "assistant": "Beach Marshal",
+      "expected": "Markdown safely rendered; no clipped essential information.",
+      "mode": "ui",
+      "startedAt": "2026-10-27T16:19:24.543Z",
+      "status": "FAIL",
+      "requests": [
+        {
+          "at": "2026-10-27T16:19:25.077Z",
+          "body": {
+            "threadId": "03a3d5bd-da6a-45d2-8560-bf153f5f6ac6",
+            "runId": "5589ee6c-278e-403e-a19b-bf78acd8f3bc",
+            "state": {},
+            "messages": [
+              {
+                "id": "f0e4c3a7-6faa-4fa4-a866-a535844bc56d",
+                "role": "user",
+                "content": "Show a small table with long links."
+              }
+            ],
+            "tools": [],
+            "context": [],
+            "forwardedProps": {}
+          }
+        }
+      ],
+      "method": "Browser-side controlled fixture in deployed product UI",
+      "observations": {
+        "tables": 0,
+        "unsafeLinks": 0,
+        "scriptDialogs": 0,
+        "overflow": {
+          "scrollWidth": 398,
+          "clientWidth": 398
+        }
+      },
+      "note": "Deterministic renderer fixture, not a model instruction-following test.",
+      "httpRequests": 1,
+      "consoleErrors": [],
+      "visibleText": "Beach Marshal\n\nWSL AI assistant\n\nNew Conversation\nConversations\n\nShow a small table with long links.\n\nQA controlled rendering fixture\n\n| Item | Link |\n| --- | --- |\n| Event | A long event URL |\n\n<script>alert(\"qa\")</script>\n\njavascript link)\n\nQA controlled rendering fixture | Item | Link | | --- | --- | | Event | [A long event URL](https://www.worldsurfleague.com/events/2026/qa-long-path-for-layout-checking-only) | <script>alert(\"qa\")</script> [javascript link](javascript:alert(document.cookie))",
+      "screenshot": "BM/BM-markdown-ui.png",
+      "finishedAt": "2026-10-27T16:19:26.455Z"
+    }
+  ],
+  "blockedWrites": [],
+  "finishedAt": "2026-10-27T16:19:31.266Z"
+}
