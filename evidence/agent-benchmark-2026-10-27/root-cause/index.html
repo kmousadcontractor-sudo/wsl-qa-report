@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>Beach Marshal navigation: root cause</title><style>body{font:17px/1.6 system-ui;max-width:1100px;margin:35px auto;padding:20px;background:#f4f7fa;color:#123}section{background:white;padding:24px;margin:20px 0;border-radius:12px}img{max-width:100%;max-height:750px;object-fit:contain}pre{white-space:pre-wrap;background:#eaf0f5;padding:20px}</style><h1>Events navigation: correct route, unavailable data</h1><section><p><b>Correction:</b> The earlier test expected an obsolete URL. Beach Marshal correctly targets <code>/athlete-registration/athletes</code>. The page remains blank because its registration-data dependency fails.</p><pre>Ask to open Events
+        |
+        v
+open_page: athlete_events
+        |
+        v
+/athlete-registration/athletes  [correct]
+        |
+        v
+Athletes unavailable + draft HTTP 503
+        |
+        v
+Blank content; useful page error missing</pre><p><b>QA result:</b> Routing resolution PASS; end-to-end Events verification BLOCKED by backend data failure.</p></section><section><h2>Original UI � real failing backend</h2><a href="original-draft-503.png"><img src="original-draft-503.png"></a></section><section><h2>Labelled control tab � draft GET replaced with 200</h2><p>Browser-only response fixture; no backend/database changes. Setup screen now renders. This is a diagnostic control, not proof of working real athlete data.</p><a href="control-draft-200.png"><img src="control-draft-200.png"></a></section><section><h2>Technical detail</h2><p>AthletesEntryPage gates rendering on !account.progress.isLoading, while its rendered AthleteShell mounts another useAthleteAccount/useRegistrationProgress observer. The draft query has staleTime:0 and the page handles session.error but not progress.error. Repeated 503 requests and blank/loading content are consistent with a retry/remount feedback loop; exact lifecycle sequence was not independently instrumented.</p><p>Prior WSL-9990 investigation found NATS publish permission denial to svc.competition.year_on_sale.get. This run confirms dependency failure but does not capture new AWS logs proving that underlying permission fault is still the cause.</p><p>Source commit: 69734f04898ea46ff3aeca10b1b270de5f0da6ac. Exact deployed SHA unverified.</p><p><a href="root-cause.json">Root-cause record</a> � <a href="execution.json">Real request and browser history evidence</a> � <a href="control.json">Control evidence</a> � <a href="root-cause.md">Readable explanation</a></p></section>

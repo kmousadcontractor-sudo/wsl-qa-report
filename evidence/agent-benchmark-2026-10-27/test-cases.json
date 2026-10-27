@@ -2105,9 +2105,9 @@
     "expected": "Correct member Events navigation; no registration claim.",
     "mode": "single-turn",
     "execute": false,
-    "status": "FAIL",
-    "actual": "I've opened the Events page for you.",
-    "note": "Actual browser navigation checked, not inferred from open_page tool result. Actual session had athletesUnavailable=true; registration/draft GETs returned 503. Endpoint-to-browser goal failed; unavailable-data redirect/guard versus assistant-client navigation cause is not isolated."
+    "status": "BLOCKED",
+    "actual": "Routing target is correct. Real backend data: athletesUnavailable=true, registration/draft HTTP 503; page content blank. End-to-end Events view remains blocked.",
+    "note": "Correction: the expected /athlete-registration/events URL was obsolete. open_page correctly maps athlete_events to /athlete-registration/athletes. Routing PASS; the page is blank because athlete data is unavailable and registration/draft returns 503. Labelled browser-only draft-200 control renders setup content. Internal backend cause needs fresh logs; earlier NATS permission finding is not re-proved here."
   },
   {
     "id": "BM-withdraw",

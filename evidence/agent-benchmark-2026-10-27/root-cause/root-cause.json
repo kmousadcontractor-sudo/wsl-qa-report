@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-10-27T13:55:58.496Z",
+  "sourceCommit": "69734f04898ea46ff3aeca10b1b270de5f0da6ac",
+  "deployedCommit": "Exact runtime SHA not exposed/verified; current dev source matches observed route contract.",
+  "classification": "BLOCKED for end-to-end Events view; navigation resolution PASS. Previous hardcoded /athlete-registration/events assertion was obsolete.",
+  "confirmed": [
+    "open_page athlete_events maps to /athlete-registration/athletes by design.",
+    "Legacy /athlete-registration/events redirects to /athlete-registration/athletes.",
+    "Live assistant returned the correct athlete_events target and the browser handled navigation to the canonical route.",
+    "Real session: athletesUnavailable=true, athletes=[], activeAthleteId=null.",
+    "Real registration/draft requests repeatedly return 503: Something is not responding / That took too long.",
+    "Only replacing draft GET with HTTP 200 {draft:null,resume:null} in a labelled control tab makes the setup screen render. Original tab remains unmodified and blank."
+  ],
+  "sourceExplanation": "AthletesEntryPage gates rendering on !account.progress.isLoading, while its rendered AthleteShell mounts another useAthleteAccount/useRegistrationProgress observer. The draft query has staleTime:0 and the page handles session.error but not progress.error. Repeated 503 requests and blank/loading content are consistent with a retry/remount feedback loop; exact lifecycle sequence was not independently instrumented.",
+  "backendRootLimit": "Prior WSL-9990 investigation found NATS publish permission denial to svc.competition.year_on_sale.get. This run confirms dependency failure but does not capture new AWS logs proving that underlying permission fault is still the cause.",
+  "browser": "Original reproduction tab left open; separate labelled control tab also available.",
+  "sources": [
+    {
+      "path": "src/lib/assistant/navigation.ts",
+      "snapshot": "source/src__lib__assistant__navigation.ts",
+      "lines": 209
+    },
+    {
+      "path": "src/lib/assistant/navigation.test.ts",
+      "snapshot": "source/src__lib__assistant__navigation.test.ts",
+      "lines": 103
+    },
+    {
+      "path": "src/components/assistant/assistant-root.tsx",
+      "snapshot": "source/src__components__assistant__assistant-root.tsx",
+      "lines": 78
+    },
+    {
+      "path": "src/hooks/use-assistant.ts",
+      "snapshot": "source/src__hooks__use-assistant.ts",
+      "lines": 675
+    },
+    {
+      "path": "src/app/(site)/athlete-registration/athletes/page.tsx",
+      "snapshot": "source/src__app__(site)__athlete-registration__athletes__page.tsx",
+      "lines": 68
+    },
+    {
+      "path": "src/features/athlete-registration/hooks/use-athlete-account.ts",
+      "snapshot": "source/src__features__athlete-registration__hooks__use-athlete-account.ts",
+      "lines": 59
+    },
+    {
+      "path": "src/features/athlete-registration/hooks/use-registration-progress.ts",
+      "snapshot": "source/src__features__athlete-registration__hooks__use-registration-progress.ts",
+      "lines": 22
+    },
+    {
+      "path": "src/lib/query-client.ts",
+      "snapshot": "source/src__lib__query-client.ts",
+      "lines": 18
+    },
+    {
+      "path": "next.config.ts",
+      "snapshot": "source/next.config.ts",
+      "lines": 82
+    }
+  ]
+}

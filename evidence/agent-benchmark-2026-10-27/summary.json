@@ -5,10 +5,10 @@
   "attempted": 148,
   "dispositionCounts": {
     "PASS": 124,
-    "FAIL": 15,
+    "FAIL": 14,
     "REVIEW": 4,
     "UNVERIFIABLE": 3,
-    "BLOCKED": 2,
+    "BLOCKED": 3,
     "NOT RUN": 0
   },
   "additionalLiveAPICases": 72,
@@ -48,11 +48,11 @@
   ],
   "findings": [
     {
-      "title": "Beach Marshal says Events opened while browser stays on Athletes",
+      "title": "Events view blocked by backend data failure; earlier URL assertion corrected",
       "cases": [
         "BM-navigation"
       ],
-      "detail": "Reproduced twice with actual product UI and actual assistant run. open_page returned athlete_events, but final URL remained /athlete-registration/athletes. Session had athletesUnavailable=true and registration/draft returned 503. End-to-end goal failed; the unavailable-data route guard versus assistant navigation cause is not isolated."
+      "detail": "Correction: the expected /athlete-registration/events URL was obsolete. open_page correctly maps athlete_events to /athlete-registration/athletes. Routing PASS; the page is blank because athlete data is unavailable and registration/draft returns 503. Labelled browser-only draft-200 control renders setup content. Internal backend cause needs fresh logs; earlier NATS permission finding is not re-proved here."
     },
     {
       "title": "Real Beach Marshal runs terminated with RUN_ERROR",
@@ -118,5 +118,12 @@
       "detail": "See exact case notes. Existing acute-anger paddle suggestion and new mixed-language instruction-like fragment require human review."
     }
   ],
-  "countingNote": "44 initial cases + 72 additional live API cases + 30 UI cases + 2 concurrency cases = 148 unique cases. Supplemental attempts do not increase unique case count."
+  "countingNote": "44 initial cases + 72 additional live API cases + 30 UI cases + 2 concurrency cases = 148 unique cases. Supplemental attempts do not increase unique case count.",
+  "correction": {
+    "case": "BM-navigation",
+    "routing": "PASS",
+    "endToEnd": "BLOCKED",
+    "detail": "Correction: the expected /athlete-registration/events URL was obsolete. open_page correctly maps athlete_events to /athlete-registration/athletes. Routing PASS; the page is blank because athlete data is unavailable and registration/draft returns 503. Labelled browser-only draft-200 control renders setup content. Internal backend cause needs fresh logs; earlier NATS permission finding is not re-proved here.",
+    "report": "root-cause/index.html"
+  }
 }
