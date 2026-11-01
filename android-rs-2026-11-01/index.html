@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WSL Android R/S Report</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--fg:#1d1d1b;--muted:#6b6b66;--line:#e4e4df;--pass:#1a7f37;--pass-bg:#e6f4ea;--fail:#c62828;--fail-bg:#fdecea;--nr:#8a6d00;--nr-bg:#fff6d6;--man:#4f5b66;--man-bg:#eceff1}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--card:#1f1f1d;--fg:#ecece8;--muted:#a3a39c;--line:#33332f;--pass:#6fd08c;--pass-bg:#183323;--fail:#ff8a80;--fail-bg:#3a1d1b;--nr:#f2cc60;--nr-bg:#352c10;--man:#b0bec5;--man-bg:#263238}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px}h1{font-size:22px;margin:0 0 4px}.muted{color:var(--muted);font-size:12.5px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 20px;margin:8px 0 20px}.verdict{font-weight:700;padding:2px 10px;border-radius:6px}
+.verdict.PASS{background:var(--pass-bg);color:var(--pass)}.verdict.FAIL{background:var(--fail-bg);color:var(--fail)}.verdict.NO{background:var(--nr-bg);color:var(--nr)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:20px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}.tile b{display:block;font-size:26px;font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.filters button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:4px 12px;cursor:pointer}
+.filters button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
+.wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;min-width:640px}th,td{text-align:left;padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+th{border-top:0;font-size:12px;color:var(--muted);font-weight:600}.id{font-family:ui-monospace,Consolas,monospace;white-space:nowrap}.title{font-weight:600}.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill.pass{background:var(--pass-bg);color:var(--pass)}.pill.fail{background:var(--fail-bg);color:var(--fail)}.pill.not-run{background:var(--nr-bg);color:var(--nr)}.pill.manual{background:var(--man-bg);color:var(--man)}
+pre.err{white-space:pre-wrap;background:var(--fail-bg);color:var(--fail);padding:8px;border-radius:6px;font-size:12px;margin:6px 0}
+.rec video{display:block;width:100%;max-width:280px;margin-top:6px;border-radius:8px;background:#000}
+.shot{max-width:160px;border:1px solid var(--line);border-radius:6px;margin:4px 6px 0 0}details{margin-top:6px}summary{cursor:pointer;color:var(--muted);font-size:12.5px}ol{margin:4px 0;padding-left:20px}
+</style></head><body><main>
+<h1>WSL R/S Test Library · Android</h1>
+<div class="meta"><span class="verdict FAIL">FAIL</span>
+<span><span class="muted">Build</span> 9.1.197-5188 (282)</span><span><span class="muted">App</span> com.wsl.android</span>
+<span><span class="muted">Device</span> sdk_gphone64_x86_64 · Android API 34</span><span><span class="muted">Run</span> 2026-11-01 07:56 UTC</span>
+<span><span class="muted">Tags</span> rerun of JEP-004 (merged with the previous run)</span><span><span class="muted">Tester</span> Automation (Maestro)</span>
+</div>
+<div class="tiles"><div class="tile"><span class="muted">Pass</span><b>18</b></div><div class="tile"><span class="muted">Fail</span><b>1</b></div><div class="tile"><span class="muted">Not run</span><b>2</b></div><div class="tile"><span class="muted">Manual</span><b>16</b></div><div class="tile"><span class="muted">Total</span><b>37</b></div></div>
+<div class="filters" role="group" aria-label="Filter by status"><button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="fail">Fail</button><button aria-pressed="false" data-f="pass">Pass</button><button aria-pressed="false" data-f="not-run">Not run</button><button aria-pressed="false" data-f="manual">Manual</button></div>
+<div class="wrap"><table><thead><tr><th>ID</th><th>Case</th><th>Priority</th><th>Status</th><th class="num">Time</th></tr></thead>
+<tbody><tr class="row-pass">
+  <td class="id">HDR-001</td>
+  <td><div class="title">Rankings strip</div><div class="muted">Homepage - Header · Regression</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/HDR-001.mp4" target="_blank">HDR-001.mp4</a></summary><video src="recordings/HDR-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>View the rankings strip</li><li>Swipe the carousel</li><li>Select several athletes</li><li>Open the kebab menu and switch between Men's and Women's rankings</li></ol>
+    <p class="muted">Expected:</p><ol><li>Rank, name, points and photo display correctly</li><li>Carousel is swipeable</li><li>Each athlete opens their athlete page</li><li>Kebab menu drawer opens and Men's/Women's rankings can be selected</li></ol>
+    <p class="muted">automatable: Rankings strip kebab (rankings_overflow) opens Women's / Men's Rankings, as in the case (9.1.197).</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">287.4s</td>
+</tr><tr class="row-pass">
+  <td class="id">HDR-002</td>
+  <td><div class="title">Event strip</div><div class="muted">Homepage - Header · Smoke</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/HDR-002.mp4" target="_blank">HDR-002.mp4</a></summary><video src="recordings/HDR-002.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Scroll through the event strip</li><li>Check each event</li><li>Open the kebab menu</li></ol>
+    <p class="muted">Expected:</p><ol><li>Dates, event number, name, sponsor, location and flag display correctly</li><li>Completed events show Completed</li><li>Kebab menu drawer opens and links to Full Schedule</li></ol>
+    <p class="muted">automatable: Event strip details, kebab (events_overflow) and Full Schedule are required. The COMPLETED label is checked only when the strip lets you reach a past event: on 27 Oct 2026 it showed only the featured upcoming event (countdown, no arrows).</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">202.6s</td>
+</tr><tr class="row-pass">
+  <td class="id">HDR-005</td>
+  <td><div class="title">CT/CS toggle</div><div class="muted">Homepage - Header · Regression</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/HDR-005.mp4" target="_blank">HDR-005.mp4</a></summary><video src="recordings/HDR-005.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Select CT</li><li>Select CS</li></ol>
+    <p class="muted">Expected:</p><ol><li>Rankings and event strip update to the selected tour</li></ol>
+    <p class="muted">automatable: CT/CS buttons have no selected state; checks the CT leader disappears on CS and the strip reloads on CT.</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">96.9s</td>
+</tr><tr class="row-manual">
+  <td class="id">STO-001</td>
+  <td><div class="title">WSC Stories</div><div class="muted">Homepage - WSC Stories · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Open a story and let it play through</li><li>Play through to the ad</li><li>Select a story CTA</li></ol>
+    <p class="muted">Expected:</p><ol><li>Stories play and advance as expected</li><li>Ad plays through fully and the next story loads</li><li>CTA opens the correct page</li></ol>
+    <p class="muted">manual: Ad slot playthrough and story timing need visual verification</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">JE-001</td>
+  <td><div class="title">Joint Event in HPC</div><div class="muted">Homepage - JE in HPC · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Load the homepage in each state</li><li>Check the JE hero</li><li>Check the status message on the JE, Live video page and BDL</li><li>Select the CTA in each state</li></ol>
+    <p class="muted">Expected:</p><ol><li>Key art and animated looper display correctly</li><li>Status message displays correctly and matches across the JE, Live video page and BDL in each state</li><li>Upcoming - Event Details button displays and opens the event page</li><li>Standby - Results button displays and opens results</li><li>Completed - Results button displays and opens results</li></ol>
+    <p class="muted">manual: Needs the event moved through Upcoming/Standby/Completed in the CMS</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">JE-007</td>
+  <td><div class="title">2 x Joint Event in HPC</div><div class="muted">Homepage - JE in HPC · Regression</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Load the homepage</li><li>Move between both joint events in the HPC</li><li>Check each joint event</li><li>Select the CTA on each</li></ol>
+    <p class="muted">Expected:</p><ol><li>Both joint events display in the HPC</li><li>Key art and animated looper display correctly on each</li><li>Status message and CTA are correct for each event's state</li><li>Each CTA opens the correct event</li></ol>
+    <p class="muted">manual: Needs two joint events configured in the HPC at once</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-pass">
+  <td class="id">NEWS-001</td>
+  <td><div class="title">Latest news carousel</div><div class="muted">Homepage - Latest News Carousel · Smoke</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/NEWS-001.mp4" target="_blank">NEWS-001.mp4</a></summary><video src="recordings/NEWS-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Scroll through the carousel</li><li>Select several items</li></ol>
+    <p class="muted">Expected:</p><ol><li>Loopers and key art display correctly</li><li>Titles and descriptions display correctly</li><li>Each item opens the correct content</li></ol>
+    <p class="muted">automatable: No &quot;Latest News&quot; label in the app (server title); matched on cards_view</p></details></td>
+  <td>Medium</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">246.5s</td>
+</tr><tr class="row-pass">
+  <td class="id">PL-001</td>
+  <td><div class="title">Playlists</div><div class="muted">Homepage - Playlists · Regression</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/PL-001.mp4" target="_blank">PL-001.mp4</a></summary><video src="recordings/PL-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Scroll to the playlists</li><li>Select a video</li><li>Select Watch All</li></ol>
+    <p class="muted">Expected:</p><ol><li>Playlist titles, thumbnails and labels display correctly</li><li>Video plays correctly</li><li>Watch All plays from the first video</li></ol>
+    <p class="muted">automatable: Playlists are 12x1 video rows from hub 503710 (no Watch All in 9.1.197); plays the first video of &quot;Inside Pro Surfing&quot;.</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">223.4s</td>
+</tr><tr class="row-pass">
+  <td class="id">UPC-001</td>
+  <td><div class="title">Upcoming events module</div><div class="muted">Homepage - Upcoming Events · Regression</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/UPC-001.mp4" target="_blank">UPC-001.mp4</a></summary><video src="recordings/UPC-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Select the Qualifying Series tab</li><li>Select the Junior Tour tab</li><li>Select several events</li></ol>
+    <p class="muted">Expected:</p><ol><li>QS events display correctly</li><li>Junior Tour events display correctly</li><li>Each event opens the correct event page</li></ol>
+    <p class="muted">automatable: Blocked by content: no Upcoming Events (Qualifying Series / Junior Tour) section on the staging app homepage (27 Oct 2026, 9.1.197).</p></details></td>
+  <td>Medium</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">254.6s</td>
+</tr><tr class="row-pass">
+  <td class="id">HOT-001</td>
+  <td><div class="title">Hot drops</div><div class="muted">Homepage - Hot Drops · Regression</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/HOT-001.mp4" target="_blank">HOT-001.mp4</a></summary><video src="recordings/HOT-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Scroll to Hot Drops</li><li>Select each tile</li></ol>
+    <p class="muted">Expected:</p><ol><li>Tiles display correctly</li><li>Each tile opens the correct destination</li></ol>
+    <p class="muted">automatable: Blocked: Hot Drops hub 450938 is published in the staging CMS but the 9.1.197 app homepage does not show it (27 Oct 2026). App/content team to confirm.</p></details></td>
+  <td>Medium</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">300.2s</td>
+</tr><tr class="row-pass">
+  <td class="id">FA-001</td>
+  <td><div class="title">Featured athlete</div><div class="muted">Homepage - Featured Athlete · Regression</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/FA-001.mp4" target="_blank">FA-001.mp4</a></summary><video src="recordings/FA-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Scroll to Featured Athlete</li><li>Play the video</li><li>Select the surf bio link</li></ol>
+    <p class="muted">Expected:</p><ol><li>Description and athlete picture display correctly</li><li>Video plays correctly</li><li>Surf bio link opens the correct athlete bio</li></ol>
+    <p class="muted">automatable: Featured Athlete is the last section of hub 503710; anchored on Surfer Bio because athlete_name is also used by the rankings strip.</p></details></td>
+  <td>Medium</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">992.5s</td>
+</tr><tr class="row-manual">
+  <td class="id">VOD-001</td>
+  <td><div class="title">VOD playback and ads</div><div class="muted">VOD · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Play a VOD</li><li>Watch past the ad marker</li><li>Repeat in full screen</li></ol>
+    <p class="muted">Expected:</p><ol><li>VOD starts promptly and plays without stalling</li><li>Mid-roll plays at the marker and the VOD resumes where it left off</li><li>Mid-roll plays in full screen and the VOD resumes in full screen</li></ol>
+    <p class="muted">manual: Mid-roll at the ad marker and resume position need visual verification</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-fail">
+  <td class="id">VOD-006</td>
+  <td><div class="title">YouTube embed in article</div><div class="muted">VOD · Smoke</div>
+    <pre class="err">No visible element found: &quot;(?i).*(youtube|play video).*&quot;</pre>
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/VOD-006.mp4" target="_blank">VOD-006.mp4</a></summary><video src="recordings/VOD-006.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Open the article</li><li>Play the embedded YouTube video</li></ol>
+    <p class="muted">Expected:</p><ol><li>YouTube embed loads in the article</li><li>Video plays correctly</li></ol>
+    <p class="muted">automatable: Needs DATA_ARTICLE_WITH_YOUTUBE_URL set to a real article with a YouTube embed in the APK environment (not configured yet).</p></details></td>
+  <td>Medium</td>
+  <td><span class="pill fail">Fail</span></td>
+  <td class="num">222.6s</td>
+</tr><tr class="row-manual">
+  <td class="id">VOD-004</td>
+  <td><div class="title">Chromecast VOD</div><div class="muted">VOD · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Play a VOD</li><li>Cast to Chromecast</li><li>Stop casting</li></ol>
+    <p class="muted">Expected:</p><ol><li>VOD plays on the TV from the same position</li><li>Controls work from the device</li><li>Playback returns to the device when casting stops</li></ol>
+    <p class="muted">manual: Needs a physical Chromecast on the network</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">REP-001</td>
+  <td><div class="title">Replay playback and ads</div><div class="muted">Replay · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Play a heat replay</li><li>Watch past the ad marker</li><li>Repeat in full screen</li><li>Select a different replay</li></ol>
+    <p class="muted">Expected:</p><ol><li>Replay starts promptly and plays without stalling</li><li>Mid-roll plays at the marker and the replay resumes where it left off</li><li>Mid-roll plays in full screen and the replay resumes in full screen</li><li>Selected replay loads and plays</li></ol>
+    <p class="muted">manual: Mid-roll ads and resume position need visual verification</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-pass">
+  <td class="id">REP-006</td>
+  <td><div class="title">Hide/show scores</div><div class="muted">Replay · Smoke</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/REP-006.mp4" target="_blank">REP-006.mp4</a></summary><video src="recordings/REP-006.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Open the Replay page</li><li>Hide scores</li><li>Show scores</li></ol>
+    <p class="muted">Expected:</p><ol><li>Scores are hidden when toggled off</li><li>Scores return when toggled on</li></ol>
+    <p class="muted">automatable: Watch &gt; featured completed event &gt; Replay, then the score reveal (icon-only eye, one-way).</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">254.6s</td>
+</tr><tr class="row-manual">
+  <td class="id">REP-004</td>
+  <td><div class="title">Chromecast replay</div><div class="muted">Replay · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Play a heat replay</li><li>Cast to Chromecast</li><li>Stop casting</li></ol>
+    <p class="muted">Expected:</p><ol><li>Replay plays on the TV from the same position</li><li>Controls work from the device</li><li>Playback returns to the device when casting stops</li></ol>
+    <p class="muted">manual: Needs a physical Chromecast on the network</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-pass">
+  <td class="id">FAN-001</td>
+  <td><div class="title">Fantasy</div><div class="muted">Fantasy · Smoke</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/FAN-001.mp4" target="_blank">FAN-001.mp4</a></summary><video src="recordings/FAN-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Open Fantasy</li><li>Pick or edit a team</li><li>Save and reload</li></ol>
+    <p class="muted">Expected:</p><ol><li>Fantasy loads</li><li>Picks save</li><li>Saved team shows after reload</li></ol>
+    <p class="muted">automatable: Fantasy is a Compose SDK with no testTags: flow checks load + persistence; add pick/save steps after a maestro studio session</p></details></td>
+  <td>Medium</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">433.7s</td>
+</tr><tr class="row-pass">
+  <td class="id">SCH-001</td>
+  <td><div class="title">Schedule page</div><div class="muted">Schedule · Regression</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/SCH-001.mp4" target="_blank">SCH-001.mp4</a></summary><video src="recordings/SCH-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Open the Schedule page</li><li>Check Full year view and Monthly view</li><li>Change the year and tour filters</li><li>Select several linked events</li></ol>
+    <p class="muted">Expected:</p><ol><li>Dates, event name, sponsor, location, tour and event number or tier display correctly</li><li>Both views display correctly and update with the filters</li><li>Completed and upcoming statuses display correctly</li><li>Each linked event opens the correct event page</li></ol>
+    <p class="muted">automatable: Views, year/tour filters and opening an event by its name.</p></details></td>
+  <td>Medium</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">225.3s</td>
+</tr><tr class="row-pass">
+  <td class="id">JEP-002</td>
+  <td><div class="title">Joint Event page - Main tab</div><div class="muted">Joint Event Page · Smoke</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/JEP-002.mp4" target="_blank">JEP-002.mp4</a></summary><video src="recordings/JEP-002.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Open the Joint Event page</li><li>Check the Main tab</li></ol>
+    <p class="muted">Expected:</p><ol><li>Main tab renders correctly</li></ol>
+    <p class="muted">automatable: Single-tour joint events have no tour tabs in 9.1.197; checks name, status and Men/Women.</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">159.4s</td>
+</tr><tr class="row-pass">
+  <td class="id">JEP-004</td>
+  <td><div class="title">Joint Event page - Results</div><div class="muted">Joint Event Page · Smoke</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/JEP-004.mp4" target="_blank">JEP-004.mp4</a></summary><video src="recordings/JEP-004.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Open the results</li><li>Check the heat draw and results</li><li>Select replay links from the heat draw</li><li>Hide scores, then show scores</li></ol>
+    <p class="muted">Expected:</p><ol><li>Heat draw and results look correct for each division</li><li>Replays are linked from the heat draw</li><li>Replay links open the correct replay page</li><li>Scores hide when toggled off and return when toggled on</li></ol>
+    <p class="muted">automatable: Reached from the Schedule: completed event &gt; See results &gt; a round &gt; heat draw. Checks Men/Women, the heat draw with scores, the HEAT REPLAY link and that the replay player opens. 9.1.197 shows completed-heat scores by default; the eye toggle only appears on hidden heats, so hide/show is covered only when it is present.</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">2316.3s</td>
+</tr><tr class="row-pass">
+  <td class="id">RANK-001</td>
+  <td><div class="title">Rankings landing page</div><div class="muted">Rankings - Landing Page · Smoke</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/RANK-001.mp4" target="_blank">RANK-001.mp4</a></summary><video src="recordings/RANK-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Open Rankings and scroll through every section</li><li>Switch between CT, CS, QS and LT</li><li>Select a previous year for each tour</li></ol>
+    <p class="muted">Expected:</p><ol><li>All top athletes and sections display correctly, with correct names, photos, ranks and points</li><li>Each tour shows the correct current rankings for each division</li><li>Previous years display correctly for each tour</li></ol>
+    <p class="muted">automatable: Season is the first #year filter label (&quot;2026&quot;), the second is gender (9.1.197); LT = LONGBOARD tab.</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">258.5s</td>
+</tr><tr class="row-pass">
+  <td class="id">ATH-002</td>
+  <td><div class="title">Athlete page</div><div class="muted">Athletes - Athlete Page · Regression</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/ATH-002.mp4" target="_blank">ATH-002.mp4</a></summary><video src="recordings/ATH-002.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Open several athlete pages</li><li>Select the Instagram link</li><li>Play a video</li><li>Select Follow, reload, then Unfollow</li></ol>
+    <p class="muted">Expected:</p><ol><li>All athlete details are correct</li><li>Instagram link opens the correct account</li><li>Video plays correctly</li><li>Follow and unfollow work and the state is kept after reload</li></ol>
+    <p class="muted">automatable: App has no athlete Instagram link and no Follow text (heart icon); Instagram step stays manual</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">390.0s</td>
+</tr><tr class="row-pass">
+  <td class="id">ACC-001</td>
+  <td><div class="title">Log in and sign up</div><div class="muted">Account · Smoke</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/ACC-001.mp4" target="_blank">ACC-001.mp4</a></summary><video src="recordings/ACC-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Log in with each supported log in type</li><li>Sign up with each supported sign up type</li><li>Start log in from a gated feature, complete it, then close and reopen</li><li>Log out</li></ol>
+    <p class="muted">Expected:</p><ol><li>Each log in type works</li><li>Each sign up type creates an account and logs the user in</li><li>User returns to where they started and stays logged in after reopening</li><li>Log out works</li></ol>
+    <p class="muted">automatable: Email log in/sign up/log out automated; Google/Apple/Facebook stay manual</p></details></td>
+  <td>Critical</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">852.8s</td>
+</tr><tr class="row-pass">
+  <td class="id">NOT-001</td>
+  <td><div class="title">Notifications page</div><div class="muted">Notifications · Regression</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/NOT-001.mp4" target="_blank">NOT-001.mp4</a></summary><video src="recordings/NOT-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Open the Notifications page</li><li>Change settings and save</li><li>Reload or reopen</li></ol>
+    <p class="muted">Expected:</p><ol><li>Changes save and still show after reload</li></ol>
+    <p class="muted">automatable: Settings are checkmarks saved on tap (no Save button); persistence evidenced by screenshots</p></details></td>
+  <td>High</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">440.9s</td>
+</tr><tr class="row-manual">
+  <td class="id">NOT-003</td>
+  <td><div class="title">Braze Fantasy notifications</div><div class="muted">Notifications · Regression</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Trigger or wait for a Fantasy notification</li><li>Select the notification</li></ol>
+    <p class="muted">Expected:</p><ol><li>Notification is received with the correct content</li><li>Opens the correct page</li></ol>
+    <p class="muted">manual: Needs a Braze push trigger and a real notification</p></details></td>
+  <td>Medium</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-not-run">
+  <td class="id">HDR-003</td>
+  <td><div class="title">Event strip - Live</div><div class="muted">Homepage - Header · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Find the live event in the event strip</li><li>Select Watch Live</li></ol>
+    <p class="muted">Expected:</p><ol><li>Watch Live button displays on the live event</li><li>Opens the live stream</li></ol>
+    <p class="muted">automatable: Only runs with the live tag while a Sim test is running</p></details></td>
+  <td>Critical</td>
+  <td><span class="pill not-run">Not run</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">HDR-004</td>
+  <td><div class="title">Event strip - Event ON</div><div class="muted">Homepage - Header · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Find the event in the event strip</li></ol>
+    <p class="muted">Expected:</p><ol><li>It's ON icon displays on the event</li></ol>
+    <p class="muted">manual: Needs an event with a call of ON; icon check is visual</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">JE-003</td>
+  <td><div class="title">Joint Event in HPC - Live</div><div class="muted">Homepage - JE in HPC · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Load the homepage</li><li>Check the status message on the JE, Live video page and BDL</li><li>Select Watch Live</li><li>Select Replay once a replay is available</li></ol>
+    <p class="muted">Expected:</p><ol><li>Status message displays correctly and matches across the JE, Live video page and BDL, including overlapping heats</li><li>Watch Live button displays and opens the live stream</li><li>Replay button displays when a replay is available and plays it</li></ol>
+    <p class="muted">manual: Live state with overlapping heats; status message matching across screens</p></details></td>
+  <td>Critical</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">LIVE-001</td>
+  <td><div class="title">Live stream playback</div><div class="muted">Live Video · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Go to the live event</li><li>Start the AWS live stream</li><li>Start the YouTube embedded stream (not CTV)</li></ol>
+    <p class="muted">Expected:</p><ol><li>AWS stream starts within a few seconds with video and audio in sync</li><li>Playback continues without stalling</li><li>YouTube embed loads and plays live (not CTV)</li></ol>
+    <p class="muted">manual: Stream start time and A/V sync need human verification</p></details></td>
+  <td>Critical</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">LIVE-003</td>
+  <td><div class="title">Live video area</div><div class="muted">Live Video · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Watch scores below the player through a wave score</li><li>Enter and exit full screen</li><li>Switch the gender toggle</li><li>Change the language</li><li>Select See all</li><li>Hide and show scores</li></ol>
+    <p class="muted">Expected:</p><ol><li>Scores update below the player without a refresh</li><li>Full screen enters and exits cleanly with correct orientation on mobile</li><li>Gender toggle switches to the selected division</li><li>Stream switches language without restarting</li><li>See all opens the full content list</li><li>Scores hide and show correctly</li></ol>
+    <p class="muted">manual: Live score updates, orientation and language switching need a live event</p></details></td>
+  <td>Critical</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">LIVE-008</td>
+  <td><div class="title">Live ads</div><div class="muted">Live Video · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Start the live stream from a fresh session (not CTV)</li><li>Watch through an ad break</li><li>Repeat the ad break in full screen (not CTV)</li></ol>
+    <p class="muted">Expected:</p><ol><li>Pre-roll plays in full before the stream starts (not CTV)</li><li>Mid-roll plays in full and the stream resumes at the live edge</li><li>Mid-roll plays in full screen and the stream resumes in full screen (not CTV)</li></ol>
+    <p class="muted">manual: Pre/mid-roll ads during a live break need visual verification</p></details></td>
+  <td>Critical</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">LIVE-011</td>
+  <td><div class="title">Chromecast live stream</div><div class="muted">Live Video · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Start the live stream</li><li>Cast to Chromecast</li><li>Stop casting</li></ol>
+    <p class="muted">Expected:</p><ol><li>Stream plays on the TV</li><li>Controls work from the device</li><li>Playback returns to the device when casting stops</li></ol>
+    <p class="muted">manual: Needs a physical Chromecast on the network</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">JEP-005</td>
+  <td><div class="title">Joint Event page - Live results</div><div class="muted">Joint Event Page · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Open the Joint Event page results during a live heat</li><li>Watch through a wave score and a heat result</li><li>Hide scores, then show scores</li></ol>
+    <p class="muted">Expected:</p><ol><li>Live heat shows the correct live status, including overlapping heats</li><li>Scores and results update without a refresh</li><li>Heat draw updates as heats complete</li><li>Scores hide when toggled off and return when toggled on</li></ol>
+    <p class="muted">manual: Live heats updating in real time; needs a live event</p></details></td>
+  <td>Critical</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-not-run">
+  <td class="id">SCH-002</td>
+  <td><div class="title">Schedule - Live status</div><div class="muted">Schedule · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Open the Schedule page</li><li>Find the live event</li></ol>
+    <p class="muted">Expected:</p><ol><li>Live event shows the Live status</li></ol>
+    <p class="muted">automatable: Only runs with the live tag while a live event is on</p></details></td>
+  <td>High</td>
+  <td><span class="pill not-run">Not run</span></td>
+  <td class="num"></td>
+</tr><tr class="row-manual">
+  <td class="id">NOT-002</td>
+  <td><div class="title">Braze Live Event alerts</div><div class="muted">Notifications · Smoke</div>
+    
+    
+    
+    <details><summary>Steps &amp; expected</summary><ol><li>Trigger or wait for a Live Event alert</li><li>Select the notification</li></ol>
+    <p class="muted">Expected:</p><ol><li>Alert is received with the correct content</li><li>Opens the correct page</li></ol>
+    <p class="muted">manual: Needs a Braze Live Event alert</p></details></td>
+  <td>High</td>
+  <td><span class="pill manual">Manual</span></td>
+  <td class="num"></td>
+</tr><tr class="row-pass">
+  <td class="id">INS-001</td>
+  <td><div class="title">Fresh install and new user sign up</div><div class="muted">New User Download · Smoke</div>
+    
+    
+    <details class="rec"><summary>Screen recording · <a href="recordings/INS-001.mp4" target="_blank">INS-001.mp4</a></summary><video src="recordings/INS-001.mp4" controls preload="none" playsinline></video></details>
+    <details><summary>Steps &amp; expected</summary><ol><li>Uninstall the WSL app from the device</li><li>Install the build under test and open it</li><li>Go through the first launch screens and any permission prompts (notifications)</li><li>Browse the homepage while logged out</li><li>Sign up with the new email address</li><li>Close the app fully, then reopen</li></ol>
+    <p class="muted">Expected:</p><ol><li>App installs and opens without crashing</li><li>First launch screens and permission prompts display once, in the right order</li><li>Homepage loads with content while logged out</li><li>Sign up creates the account, logs the user in and lands on the right page</li><li>New user's default settings (notifications, follows) display correctly</li><li>User is still logged in after reopening</li></ol>
+    <p class="muted">automatable: Clean install, OneTrust + Regwall, notification prompt (API 33+), sign-up with a generated email, relaunch still logged in</p></details></td>
+  <td>Critical</td>
+  <td><span class="pill pass">Pass</span></td>
+  <td class="num">765.9s</td>
+</tr></tbody></table></div>
+<p class="muted">Generated from catalog/test-cases.json + Maestro JUnit. Manual cases are tracked in the R/S Test Library and are not run by automation.</p>
+</main><script>
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+const f=b.dataset.f;document.querySelectorAll('tbody tr').forEach(r=>r.hidden=f!=='all'&&!r.classList.contains('row-'+f))})
+</script></body></html>

@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WSL Android Failures</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#17202a;--muted:#5d6b78;--line:#dfe4ea;--accent:#0b6e8a;--ok:#1a7f37;--bad:#c62828;--bad-bg:#fdecea;--warn:#8a5a00;--warn-bg:#fff3d6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1418;--card:#171e24;--fg:#e6edf2;--muted:#9aa8b4;--line:#28323b;--accent:#5bc0dc;--ok:#6fd49a;--bad:#ff8a80;--bad-bg:#3a1d1b;--warn:#f0c35a;--warn-bg:#33290f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1418;--card:#171e24;--fg:#e6edf2;--muted:#9aa8b4;--line:#28323b;--accent:#5bc0dc;--ok:#6fd49a;--bad:#ff8a80;--bad-bg:#3a1d1b;--warn:#f0c35a;--warn-bg:#33290f;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+main{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}h1{font-size:1.6rem;margin:0}h2{font-size:1.2rem;margin:0}h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 6px}
+.muted{color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.9rem}
+.toc{display:flex;flex-wrap:wrap;gap:8px}.toc a{color:var(--accent);text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:2px 10px;font:600 .82rem ui-monospace,Consolas,monospace}
+.case{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}.id{font:700 .95rem ui-monospace,Consolas,monospace}
+.pill{border-radius:999px;padding:1px 10px;font-size:.8rem;font-weight:600;background:var(--warn-bg);color:var(--warn)}.pill.app{background:var(--bad-bg);color:var(--bad)}
+.err{background:var(--bad-bg);color:var(--bad);border-radius:8px;padding:10px 12px;font:.85rem/1.45 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}@media (max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}}
+ol{margin:0;padding-left:20px}ol li{margin:2px 0}
+.steps{list-style:none;padding:0;margin:0;font-size:.9rem;max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:8px}
+.steps li{display:flex;gap:8px;padding:4px 10px;border-top:1px solid var(--line)}.steps li:first-child{border-top:0}.steps li.failed{background:var(--bad-bg)}
+.ok{color:var(--ok)}.bad{color:var(--bad);font-weight:700}.skip{color:var(--muted)}.steps .e{display:block;color:var(--bad);font-size:.82rem}
+.media{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;align-items:start}
+.media img,.media video{width:100%;max-width:300px;border:1px solid var(--line);border-radius:8px;background:#000;display:block}
+a{color:var(--accent)}
+</style></head><body><main>
+<header><h1>WSL Android: failed test cases</h1>
+<div class="meta muted"><span>Build 9.1.197-5188 (282)</span><span>sdk_gphone64_x86_64 · Android API 34</span><span>Run 2026-11-01 07:56 UTC</span><span>1 failed</span></div></header>
+<nav class="toc" aria-label="Failed cases"><a href="#VOD-006">VOD-006</a></nav>
+<section class="case" id="VOD-006">
+<div class="head"><span class="id">VOD-006</span><h2>YouTube embed in article</h2><span class="muted">Medium · Smoke · 3.7 min</span>
+<span class="pill ">Test data missing</span></div>
+<div class="err">No visible element found: &quot;(?i).*(youtube|play video).*&quot;</div>
+<p style="margin:0">DATA_ARTICLE_WITH_YOUTUBE_URL still points at a placeholder. Needs a real article with a YouTube embed in the APK's environment.</p>
+<div class="grid">
+<div><h3>Test case steps</h3><ol><li>Open the article</li><li>Play the embedded YouTube video</li></ol>
+<h3 style="margin-top:14px">Expected behaviour</h3><ol><li>YouTube embed loads in the article</li><li>Video plays correctly</li></ol>
+<h3 style="margin-top:14px">Preconditions</h3><p style="margin:0">Article with an embedded YouTube video</p></div>
+<div><h3>What the test did</h3><p class="muted">No step log for this case.</p></div>
+</div>
+<div class="media"><div><h3>Recording</h3><video src="recordings/VOD-006.mp4" controls preload="none" playsinline></video><a href="recordings/VOD-006.mp4" target="_blank">VOD-006.mp4</a></div>
+</div>
+</section>
+</main></body></html>
