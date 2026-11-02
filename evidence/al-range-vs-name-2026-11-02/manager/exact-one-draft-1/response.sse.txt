@@ -1,0 +1,240 @@
+data: {"type":"RUN_STARTED","threadId":"4689c8ba-aeae-481f-a296-5b5622272b9c","runId":"504487e2-2d7b-4d68-bf86-27465f0eb18f"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_STARTED","stepName":"model"}
+
+data: {"type":"TOOL_CALL_START","toolCallId":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","toolCallName":"list_seasons","parentMessageId":"lc_run--01a19ca7-9028-7351-b64c-7a17233bfb1f"}
+
+data: {"type":"TOOL_CALL_END","toolCallId":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As"}
+
+data: {"type":"STEP_FINISHED","stepName":"model"}
+
+data: {"type":"STEP_STARTED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"Find the event named exactly \"Atlantic Park Surf Classic 183325 3\" in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. Give its start date and status, and state how many distinct exact-name matches you found.","additional_kwargs":{},"response_metadata":{},"type":"human","name":null,"id":"e6bd9e9e-535b-4725-a09e-0f4f6d707760"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"Find the event named exactly \"Atlantic Park Surf Classic 183325 3\" in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. Give its start date and status, and state how many distinct exact-name matches you found.","additional_kwargs":{},"response_metadata":{},"type":"human","name":null,"id":"e6bd9e9e-535b-4725-a09e-0f4f6d707760"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"tools"}
+
+data: {"type":"TOOL_CALL_RESULT","messageId":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","toolCallId":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","role":"tool"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"370943d7-3bf1-4dfe-81f9-74e36b057286","tool_call_id":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"tools"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_STARTED","stepName":"model"}
+
+data: {"type":"TOOL_CALL_START","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","toolCallName":"search_events","parentMessageId":"lc_run--01a19ca7-96ae-71b3-990c-8d8b806645eb"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"{\"season"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"_id"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"\": \"01a1"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"6500"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"-d18a-7089"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"-9f93-871"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"36"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"db1daf5\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":", \"q"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"uery\": \"At"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"lantic"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":" P"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"ark S"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"urf Cla"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"ssic 183325"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":" 3\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":", \"stat"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"uses\":"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":" [\"draft"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"\",\"tentative"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"\","}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"\"confirme"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"d\",\"o"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"pen_for_ent"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"ries\",\"c"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"losed_for"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"_entrie"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"s\",\"stand"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"by\","}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"\"live\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":",\"completed\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","delta":"]}"}
+
+data: {"type":"TOOL_CALL_END","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX"}
+
+data: {"type":"STEP_FINISHED","stepName":"model"}
+
+data: {"type":"STEP_STARTED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"370943d7-3bf1-4dfe-81f9-74e36b057286","tool_call_id":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"370943d7-3bf1-4dfe-81f9-74e36b057286","tool_call_id":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"tools"}
+
+data: {"type":"TOOL_CALL_RESULT","messageId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]}],\"total\":1,\"next_offset\":null}","role":"tool"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]}],\"total\":1,\"next_offset\":null}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"search_events","id":"45153ce1-abf5-4284-8520-14bcd0ead7b0","tool_call_id":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"tools"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_STARTED","stepName":"model"}
+
+data: {"type":"REASONING_START","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd"}
+
+data: {"type":"REASONING_MESSAGE_START","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd","role":"reasoning"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd","delta":"Only one result"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd","delta":" came back"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd","delta":", which"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd","delta":" se"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd","delta":"ems right"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd","delta":" given the spec"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd","delta":"ific query ter"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd","delta":"ms.\n\n"}
+
+data: {"type":"REASONING_MESSAGE_END","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd"}
+
+data: {"type":"REASONING_END","messageId":"561d3140-a80a-46fe-bdde-3a633a4963fd"}
+
+data: {"type":"TEXT_MESSAGE_START","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","role":"assistant"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"I"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" found exactly one event"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" named \"Atlantic"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" Park Surf Classic "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"183325 3\" in the "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"2026-27 season. It"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"'s a **"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"draft** and its start date is"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" **29"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" October 2026** (ven"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"ue time). That one"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"-"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"day men"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"'s International Qualifying"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" Series event is at 56th"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" Street, Newport Beach"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":", California.\n\nI searched every"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" status except cancelled and arch"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":"ived, and didn't filter"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" by dates. Nothing"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" else came"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" close"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","delta":" to that name."}
+
+data: {"type":"TEXT_MESSAGE_END","messageId":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083"}
+
+data: {"type":"STEP_FINISHED","stepName":"model"}
+
+data: {"type":"STEP_STARTED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]}],\"total\":1,\"next_offset\":null}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"search_events","id":"45153ce1-abf5-4284-8520-14bcd0ead7b0","tool_call_id":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"Find the event named exactly \"Atlantic Park Surf Classic 183325 3\" in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. Give its start date and status, and state how many distinct exact-name matches you found.","additional_kwargs":{},"response_metadata":{},"type":"human","name":null,"id":"e6bd9e9e-535b-4725-a09e-0f4f6d707760"},{"content":[{"id":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","input":{},"name":"list_seasons","type":"tool_use","toolset_name":null,"index":0,"partial_json":""}],"additional_kwargs":{},"response_metadata":{"model_name":"claude-opus-5-5","model_provider":"anthropic","stop_reason":"tool_use","stop_sequence":null},"type":"ai","name":null,"id":"lc_run--01a19ca7-9028-7351-b64c-7a17233bfb1f","tool_calls":[{"name":"list_seasons","args":{},"id":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","type":"tool_call"}],"invalid_tool_calls":[],"usage_metadata":{"input_tokens":12221,"output_tokens":28,"total_tokens":12249,"input_token_details":{"cache_creation":207,"cache_read":12010},"output_token_details":{"reasoning":0}}},{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"370943d7-3bf1-4dfe-81f9-74e36b057286","tool_call_id":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","artifact":null,"status":"success"},{"content":[{"id":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","input":{},"name":"search_events","type":"tool_use","toolset_name":null,"index":0,"partial_json":"{\"season_id\": \"01a16500-d18a-7089-9f93-87136db1daf5\", \"query\": \"Atlantic Park Surf Classic 183325 3\", \"statuses\": [\"draft\",\"tentative\",\"confirmed\",\"open_for_entries\",\"closed_for_entries\",\"standby\",\"live\",\"completed\"]}"}],"additional_kwargs":{},"response_metadata":{"model_name":"claude-opus-5-5","model_provider":"anthropic","stop_reason":"tool_use","stop_sequence":null},"type":"ai","name":null,"id":"lc_run--01a19ca7-96ae-71b3-990c-8d8b806645eb","tool_calls":[{"name":"search_events","args":{"season_id":"01a16500-d18a-7089-9f93-87136db1daf5","query":"Atlantic Park Surf Classic 183325 3","statuses":["draft","tentative","confirmed","open_for_entries","closed_for_entries","standby","live","completed"]},"id":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","type":"tool_call"}],"invalid_tool_calls":[],"usage_metadata":{"input_tokens":12863,"output_tokens":168,"total_tokens":13031,"input_token_details":{"cache_creation":644,"cache_read":12217},"output_token_details":{"reasoning":0}}},{"content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]}],\"total\":1,\"next_offset\":null}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"search_events","id":"45153ce1-abf5-4284-8520-14bcd0ead7b0","tool_call_id":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","artifact":null,"status":"success"},{"content":[{"thinking":"Only one result came back, which seems right given the specific query terms.\n\n","type":"thinking","index":0,"signature":"CAQSygQKEggTEAEYAjgBQgh0aGlua2luZxIMSGx4ejGjFBamAe+qGgwekMMYxO501ZIuItsiMBnXIoi+gAwOhx0WpxEG3pMlDnReypH6qSJ1PDliG+O5HEkbRr8/7aXA7uF/ngFVlyrlA1kiyr8OCe4u1J9CDy2nMEsvg5I5R9hPg3JfdniBqeRe25e1RPQQLVMbup7wAmRH7W+hPussBM5HpIEpI/uNE4gxco6luFYR8nX9tTWnTk703tmamEjP1mTTdnsqe82NVRVPIg9U89L0r8ochDEJd7K4y0FKcUlrEzOfxZ+KlES985tiO5m0EMZxHFUz1opDZnBRy9xTO/emwg4wXlQDqduF0lA1SfmE+uVlx1W9KxL2z0MD5mUu9WDulWdBHgGZyrjITFU8el36oahHca36tCUebJZQ4yZALYa+oUVZYt2WIiFPesTaMJUHJhpBFK0SCXro5J9jOyTDCXbTqLJT9g6n0yTOPn5AIeACnN5ZiXt97MNmzaWKSksMd8B7Vd62aLA2ED0xGZUyBrC+2CzYlKSnqhmWahKvnmEeBajIpMExWNMTCQ94QaIgii5H1wDkiTZ6XcK+sLUwRT/XVQTTLIJZKqpXE2TM8WToIr5wsfX+6rokuarumEhMo0gOdxECme3jno1nGXmP/c3HDev3FW4UkCeutd3UhKxwhxaKLcnd3sugab3AinEYp8gMG1Uc5r9bkRaK8NYaxrxtzXnDe2iGAhs9DnHXVQLlW2/ltmfDrnerSkd0qydteMxl1Ml6BWauluqvGAE="},{"text":"I found exactly one event named \"Atlantic Park Surf Classic 183325 3\" in the 2026-27 season. It's a **draft** and its start date is **29 October 2026** (venue time). That one-day men's International Qualifying Series event is at 56th Street, Newport Beach, California.\n\nI searched every status except cancelled and archived, and didn't filter by dates. Nothing else came close to that name.","type":"text","index":1}],"additional_kwargs":{},"response_metadata":{"model_name":"claude-opus-5-5","model_provider":"anthropic","stop_reason":"end_turn","stop_sequence":null},"type":"ai","name":null,"id":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","tool_calls":[],"invalid_tool_calls":[],"usage_metadata":{"input_tokens":13293,"output_tokens":178,"total_tokens":13471,"input_token_details":{"cache_creation":430,"cache_read":12861},"output_token_details":{"reasoning":45}}}]}}
+
+data: {"type":"MESSAGES_SNAPSHOT","messages":[{"id":"e6bd9e9e-535b-4725-a09e-0f4f6d707760","role":"user","content":"Find the event named exactly \"Atlantic Park Surf Classic 183325 3\" in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. Give its start date and status, and state how many distinct exact-name matches you found."},{"id":"lc_run--01a19ca7-9028-7351-b64c-7a17233bfb1f","role":"assistant","content":"","toolCalls":[{"id":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As","type":"function","function":{"name":"list_seasons","arguments":"{}"}}]},{"id":"370943d7-3bf1-4dfe-81f9-74e36b057286","role":"tool","content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","toolCallId":"toolu_bdrk_01XJqonfcNPXpfZgUSRjk4As"},{"id":"lc_run--01a19ca7-96ae-71b3-990c-8d8b806645eb","role":"assistant","content":"","toolCalls":[{"id":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX","type":"function","function":{"name":"search_events","arguments":"{\"season_id\": \"01a16500-d18a-7089-9f93-87136db1daf5\", \"query\": \"Atlantic Park Surf Classic 183325 3\", \"statuses\": [\"draft\", \"tentative\", \"confirmed\", \"open_for_entries\", \"closed_for_entries\", \"standby\", \"live\", \"completed\"]}"}}]},{"id":"45153ce1-abf5-4284-8520-14bcd0ead7b0","role":"tool","content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]}],\"total\":1,\"next_offset\":null}","toolCallId":"toolu_bdrk_01UbFakQyacTbhaDUSVcNrQX"},{"id":"lc_run--01a19ca7-a175-78a1-9cac-89d81175a083","role":"assistant","content":"I found exactly one event named \"Atlantic Park Surf Classic 183325 3\" in the 2026-27 season. It's a **draft** and its start date is **29 October 2026** (venue time). That one-day men's International Qualifying Series event is at 56th Street, Newport Beach, California.\n\nI searched every status except cancelled and archived, and didn't filter by dates. Nothing else came close to that name."}]}
+
+data: {"type":"RUN_FINISHED","threadId":"4689c8ba-aeae-481f-a296-5b5622272b9c","runId":"504487e2-2d7b-4d68-bf86-27465f0eb18f","usage":[{"provider":"anthropic","model":"us.anthropic.claude-opus-5-5","inputTokens":38377,"outputTokens":374,"totalTokens":38751,"reasoningTokens":45,"cachedInputTokens":37088}]}
+

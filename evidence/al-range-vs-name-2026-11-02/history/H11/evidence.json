@@ -1,0 +1,106 @@
+{
+  "batch": "Repeated stricter question · run 2",
+  "at": "2026-11-02T13:51:41.771Z",
+  "prompt": "For season 2026–27, list every event whose START date is from 29 October through 4 November 2026 inclusive. Include drafts. Exclude cancelled and archived events. Do not include events that merely overlap the range. Show event name, start date, and season. If you cannot retrieve all matches, say the list is incomplete.",
+  "review": "FAILED SEARCH / VISIBLE ERROR",
+  "finding": "No answer was produced, but the frontend displayed retry guidance. This is not the earlier silent-failure symptom.",
+  "answer": "",
+  "visible": "AL\n\nWSL AI assistant\n\nNew Conversation\nConversations\n\nFor season 2026–27, list every event whose START date is from 29 October through 4 November 2026 inclusive. Include drafts. Exclude cancelled and archived events. Do not include events that merely overlap the range. Show event name, start date, and season. If you cannot retrieve all matches, say the list is incomplete.\n\n!\n\nSomething went wrong. Try again.",
+  "http": 200,
+  "toolEvidence": {
+    "calendarSeasonIds": [
+      "01a16500-d18a-7089-9f93-87136db1daf5"
+    ],
+    "retrievedMatchingDrafts": [
+      {
+        "id": "01a17ea6-5850-71c8-bd6a-a8c03311a140",
+        "name": "Atlantic Park Surf Classic 183325 3",
+        "start": "2026-10-29"
+      },
+      {
+        "id": "01a17ea3-3cfc-740d-90bc-bed48519790a",
+        "name": "Arecibo Classic 183257 1",
+        "start": "2026-11-01"
+      },
+      {
+        "id": "01a17ea3-4256-76c4-92d1-75603d0e2c07",
+        "name": "Arecibo Classic 183257 1",
+        "start": "2026-11-01"
+      },
+      {
+        "id": "01a19780-2319-71ba-b81d-96aa4480514f",
+        "name": "Arecibo Classic 142443 1",
+        "start": "2026-11-01"
+      },
+      {
+        "id": "01a17ea3-4087-73e6-9a5d-ba927c6d1004",
+        "name": "Arecibo Classic 183257 1",
+        "start": "2026-11-01"
+      }
+    ],
+    "searches": [
+      {
+        "parameters": {
+          "season_id": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "statuses": [
+            "draft",
+            "tentative",
+            "confirmed",
+            "open_for_entries",
+            "closed_for_entries",
+            "standby",
+            "live"
+          ]
+        },
+        "total": 269,
+        "nextOffset": 20,
+        "returnedRows": 20
+      },
+      {
+        "parameters": {
+          "season_id": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "statuses": [
+            "completed"
+          ]
+        },
+        "total": 92,
+        "nextOffset": 20,
+        "returnedRows": 20
+      },
+      {
+        "parameters": {
+          "season_id": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "statuses": [
+            "draft",
+            "tentative",
+            "confirmed",
+            "open_for_entries",
+            "closed_for_entries",
+            "standby",
+            "live"
+          ],
+          "offset": 20
+        },
+        "total": 269,
+        "nextOffset": 40,
+        "returnedRows": 20
+      },
+      {
+        "parameters": {
+          "season_id": "01a16500-d18a-7089-9f93-87136db1daf5",
+          "statuses": [
+            "completed"
+          ],
+          "offset": 80
+        },
+        "total": 92,
+        "nextOffset": null,
+        "returnedRows": 12
+      }
+    ]
+  },
+  "id": "H11",
+  "screenshot": "history/H11/result.png",
+  "stream": "history/H11/response.sse.txt",
+  "evidence": "history/H11/evidence.json"
+}

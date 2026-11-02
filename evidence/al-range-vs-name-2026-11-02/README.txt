@@ -1,0 +1,1 @@
+AL date-range comparison and earlier failed-run evidence. Dev, 2 November 2026. Includes screenshots, prompts, answers, response streams and dated API references. Only this report folder was published. Credentials are redacted; local source code, configuration, email scripts and unrelated artifacts are excluded.

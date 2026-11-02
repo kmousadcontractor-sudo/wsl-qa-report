@@ -1,0 +1,14 @@
+{
+  "batch": "Original reported failure",
+  "at": "2026-11-01T13:26:39.530Z",
+  "prompt": "Which events in the current season start between 2026-10-29 and 2026-11-04? List only those.",
+  "review": "SILENT FAILURE",
+  "finding": "After 51.56 seconds, the browser showed no answer or error. The stream contained a model-call-limit message in its final snapshot. This is separate from later accuracy errors.",
+  "answer": "Model call limits exceeded: run limit (6/6)",
+  "answerNote": "This text was in the response snapshot, not visible as a reply in the browser.",
+  "http": 200,
+  "id": "H01",
+  "screenshot": "history/H01/result.png",
+  "stream": "history/H01/response.sse.txt",
+  "evidence": "history/H01/evidence.json"
+}

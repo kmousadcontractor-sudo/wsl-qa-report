@@ -1,0 +1,700 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AL: event searches with and without dates</title><style>*{box-sizing:border-box}body{margin:0;background:#eff4f7;color:#17384b;font:17px/1.65 system-ui}main{max-width:1000px;margin:auto;padding:25px 18px}header,section,.case{background:white;padding:24px;border:1px solid #d3dfe7;border-radius:12px;margin:18px 0}header{background:#07364f;color:white}h1{font-size:29px;line-height:1.3}h2{font-size:23px;margin-top:0}table{border-collapse:collapse;width:100%;font-size:15px}td,th{text-align:left;vertical-align:top;border-bottom:1px solid #d1dfe7;padding:12px 8px}summary{cursor:pointer;font-weight:650}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f9;padding:16px;font:15px/1.6 system-ui}a{color:#075d98}.small{font-size:14px;color:#567080}header .small{color:#d2e4ee}img{max-width:100%;height:auto}.notice{border-left:5px solid #c26728}li{margin:8px 0}</style><main><header><p class="small">DEV · 2 NOVEMBER 2026 · 12 FRESH LIVE UI CHECKS</p><h1>Does AL have the same problem without a date range?</h1><p><b>The missing-event/count issue did not appear in the nine no-date controls.</b> Date-range answers improved in this sample, but one still miscounted drafts and one request failed.</p></header><section><h2>What we compared</h2><table><tr><th>Question type</th><th>Repeats</th><th>Result</th></tr><tr><td>Events starting 29 October–4 November</td><td>3</td><td>Two answers listed all 15 correct matches. One of those said six drafts instead of five. One request showed a retry error.</td></tr><tr><td>Find all events with the exact Arecibo name, without dates</td><td>3</td><td>Correct and consistent: five distinct records.</td></tr><tr><td>Find the exact Atlantic Park event, without dates</td><td>3</td><td>Correct and consistent: one draft, starting 29 October.</td></tr><tr><td>First page of the season, without dates</td><td>3</td><td>Correct records and counts: 20 listed of 367, with more pages. One reply added an inaccurate explanation of sorting.</td></tr></table></section><section class="notice"><h2>Did the returned events fall inside the requested dates?</h2><p><b>Yes, in both answered fresh date-range runs.</b> Each listed the 15 non-archived events whose <b>start date</b> is from 29 October through 4 November inclusive.</p><p>Run 1’s remaining mistake was a summary: <b>“Six are drafts”</b>. The list itself contains <b>five drafts</b>. Run 3’s list and count were correct.</p><p>In the earlier investigation, AL sometimes included Us open (starts 28 October) and Sunset Pro Men/Women (start 26 October). They overlap the window, but do not <b>start</b> inside it. This comparison uses start dates, as requested in the prompts.</p><details><summary>The 15 verified matching events</summary><div style="overflow:auto"><table><tr><th>Event</th><th>Tour / division</th><th>Starts</th><th>Status</th></tr><tr><td>Atlantic Park Surf Classic 183325 3</td><td>International Qualifying Series (QS) · Men</td><td>2026-10-29</td><td>Draft</td></tr><tr><td>TEST</td><td>Qualifying Series (QS) · Men</td><td>2026-10-30</td><td>In progress</td></tr><tr><td>Atlantic City Classic 134750 2</td><td>International Qualifying Series (QS) · Men</td><td>2026-10-31</td><td>In progress</td></tr><tr><td>Philippines Pro</td><td>Championship Tour (CT) · Men</td><td>2026-10-31</td><td>In progress</td></tr><tr><td>Philippines Pro</td><td>Championship Tour (CT) · Women</td><td>2026-10-31</td><td>In progress</td></tr><tr><td>Arecibo Classic 183257 1</td><td>International Qualifying Series (QS) · Men</td><td>2026-11-01</td><td>Draft</td></tr><tr><td>Arecibo Classic 183257 1</td><td>International Qualifying Series (QS) · Men</td><td>2026-11-01</td><td>Draft</td></tr><tr><td>Arecibo Classic 142443 1</td><td>Challenger Series (CS) · Men</td><td>2026-11-01</td><td>Draft</td></tr><tr><td>Arecibo Classic 183257 1</td><td>International Qualifying Series (QS) · Men</td><td>2026-11-01</td><td>Draft</td></tr><tr><td>Atlantic City Classic 231925 2</td><td>International Qualifying Series (QS) · Men</td><td>2026-11-02</td><td>In progress</td></tr><tr><td>Atlantic City Classic 234804 2</td><td>International Qualifying Series (QS) · Men</td><td>2026-11-03</td><td>Closed for entries</td></tr><tr><td>Encuentro Beach Classic 205046 16</td><td>Challenger Series (CS) · Men</td><td>2026-11-03</td><td>Closed for entries</td></tr><tr><td>Atlantic City Classic 000438 2</td><td>International Qualifying Series (QS) · Men</td><td>2026-11-04</td><td>Closed for entries</td></tr><tr><td>Ala Moana Bowls Sprint Women&#39;s Pro g1i</td><td>Qualifying Series (QS) · Women</td><td>2026-11-04</td><td>Confirmed</td></tr><tr><td>Encuentro Beach Classic 205756 16</td><td>Challenger Series (CS) · Men</td><td>2026-11-04</td><td>Closed for entries</td></tr></table></div></details></section><section><h2>Why five by name, but only three within the dates?</h2><p>Five separate records share the name <b>Arecibo Classic 183257 1</b>. Removing the date restriction should return all five.</p><table><tr><th>Records</th><th>Start date</th><th>Belongs in 29 Oct–4 Nov?</th></tr><tr><td>Three records</td><td>1 November</td><td>Yes</td></tr><tr><td>One record</td><td>7 November</td><td>No</td></tr><tr><td>One record</td><td>Not set</td><td>No — an end date of 1 November is not a start date</td></tr></table><p>This difference is expected. It is not evidence that AL changed the event data.</p></section><section><h2>What this tells us</h2><p>AL can retrieve these events correctly by name and repeat the same results. The broader date-range question asks it to choose searches, filter dates, include the right statuses and count the matches. Mistakes have appeared in those extra steps.</p><p>The inspected search tool has no start-date range filter, which supports this explanation. The exact deployed source revision has not been verified, and these checks do not prove that errors can never occur without dates.</p><p><b>Suggested correction:</b> return the exact start-date matches and their counts from the search service, including a verified draft subtotal, rather than having AL calculate them in its answer.</p></section><section id="history"><h2>Earlier date-range runs — failures and consistency</h2><p>These are <b>12 earlier executions</b>, including the original silent failure and the previously discussed five-run and repeated-prompt samples. The latest three date-range runs are in the fresh-check section below. A visible answer was not automatically counted as accurate.</p><div style="overflow:auto"><table><tr><th>Run</th><th>Result</th><th>What happened</th><th>Evidence</th></tr><tr><td><a href="#H01">H01</a> · Original reported failure</td><td>SILENT FAILURE</td><td>After 51.56 seconds, the browser showed no answer or error. The stream contained a model-call-limit message in its final snapshot. This is separate from later accuracy errors.</td><td><a href="history/H01/result.png">Screenshot</a> · <a href="history/H01/response.sse.txt">Response</a></td></tr><tr><td><a href="#H02">H02</a> · Earlier five-run sample · run 1</td><td>PASS</td><td>Correctly lists 15 non-archived matches; archived exclusion is explicit. Included as the comparison control.</td><td><a href="history/H02/result.png">Screenshot</a> · <a href="history/H02/response.sse.txt">Response</a></td></tr><tr><td><a href="#H03">H03</a> · Earlier five-run sample · run 2</td><td>OUT-OF-RANGE / WRONG COUNT</td><td>Claims 18 matches, adding Us open (28 October) and Sunset Pro Men/Women (26 October). The prompt requires starts on/after 29 October.</td><td><a href="history/H03/result.png">Screenshot</a> · <a href="history/H03/response.sse.txt">Response</a></td></tr><tr><td><a href="#H04">H04</a> · Earlier five-run sample · run 3</td><td>MISSING MATCHES</td><td>Lists 10 active events plus archived results, but omits five matching drafts. The original question did not request an active-only view.</td><td><a href="history/H04/result.png">Screenshot</a> · <a href="history/H04/response.sse.txt">Response</a></td></tr><tr><td><a href="#H05">H05</a> · Earlier five-run sample · run 4</td><td>VISIBLE ERROR</td><td>No answer; the UI displays “Something went wrong. Try again.” Stream contains RUN_ERROR / failed. This is appropriate failure feedback, not a silent answer.</td><td><a href="history/H05/result.png">Screenshot</a> · <a href="history/H05/response.sse.txt">Response</a></td></tr><tr><td><a href="#H06">H06</a> · Earlier five-run sample · run 5</td><td>MISSING MATCHES</td><td>Claims ten matching events; misses five drafts inside the requested range.</td><td><a href="history/H06/result.png">Screenshot</a> · <a href="history/H06/response.sse.txt">Response</a></td></tr><tr><td><a href="#H07">H07</a> · Repeated natural question · run 1</td><td>FAIL</td><td>Claims ten matching events but omits five matching drafts. “Upcoming” is not equivalent to the requested start-date window.</td><td><a href="history/H07/result.png">Screenshot</a> · <a href="history/H07/response.sse.txt">Response</a></td></tr><tr><td><a href="#H08">H08</a> · Repeated natural question · run 2</td><td>FAIL</td><td>Claims ten matching events but omits five matching drafts. “Upcoming” is not equivalent to the requested start-date window.</td><td><a href="history/H08/result.png">Screenshot</a> · <a href="history/H08/response.sse.txt">Response</a></td></tr><tr><td><a href="#H09">H09</a> · Repeated natural question · run 3</td><td>FAIL</td><td>Claims 40 (10 active + 30 archived), omits five matching drafts, and the archived count should be 31. Reference across all statuses is 46.</td><td><a href="history/H09/result.png">Screenshot</a> · <a href="history/H09/response.sse.txt">Response</a></td></tr><tr><td><a href="#H10">H10</a> · Repeated stricter question · run 1</td><td>FAIL</td><td>Claims 16 matching events but displays 15 rows. The reference and distinct rows contain 15 non-archived matches. Strict wording did not prevent the counting error.</td><td><a href="history/H10/result.png">Screenshot</a> · <a href="history/H10/response.sse.txt">Response</a></td></tr><tr><td><a href="#H11">H11</a> · Repeated stricter question · run 2</td><td>FAILED SEARCH / VISIBLE ERROR</td><td>No answer was produced, but the frontend displayed retry guidance. This is not the earlier silent-failure symptom.</td><td><a href="history/H11/result.png">Screenshot</a> · <a href="history/H11/response.sse.txt">Response</a></td></tr><tr><td><a href="#H12">H12</a> · Repeated stricter question · run 3</td><td>FAIL</td><td>Claims 16 matching events but displays 15 rows. The reference and distinct rows contain 15 non-archived matches. Strict wording did not prevent the counting error.</td><td><a href="history/H12/result.png">Screenshot</a> · <a href="history/H12/response.sse.txt">Response</a></td></tr></table></div><h3>How the repeated answers differed</h3><ul><li><b>Earlier five-run sample:</b> one correct list of 15; one claimed 18 with three out-of-range starts; two omitted five drafts; one displayed a retry error.</li><li><b>Three natural repeats:</b> claimed 10, 10 and 40 with changing scope, missing drafts and inconsistent totals.</li><li><b>Three stricter repeats:</b> two displayed 15 rows but claimed 16; one displayed a retry error.</li><li><b>Latest three runs:</b> two listed the correct 15 matches; one of those miscounted the draft subtotal as six instead of five. One request displayed a retry error.</li></ul><p><a href="history.json">All historical result records</a>. Screenshots and raw response streams are retained for every row.</p><details id="H01" class="history-case"><summary>H01 · Original reported failure — SILENT FAILURE</summary><p><b>Question:</b> Which events in the current season start between 2026-10-29 and 2026-11-04? List only those.</p><p><b>Finding:</b> After 51.56 seconds, the browser showed no answer or error. The stream contained a model-call-limit message in its final snapshot. This is separate from later accuracy errors.</p><p class="small">2026-11-01T13:26:39.530Z · HTTP 200</p><p>This text was in the response snapshot, not visible as a reply in the browser.</p><pre>Model call limits exceeded: run limit (6/6)</pre><p><a href="history/H01/result.png">Open screenshot</a> · <a href="history/H01/response.sse.txt">Raw response</a> · <a href="history/H01/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H01/result.png" alt="Actual AL result for H01"></details></details><details id="H02" class="history-case"><summary>H02 · Earlier five-run sample · run 1 — PASS</summary><p><b>Question:</b> Which events in the current season start between 2026-10-29 and 2026-11-04? List only those.</p><p><b>Finding:</b> Correctly lists 15 non-archived matches; archived exclusion is explicit. Included as the comparison control.</p><p class="small">2026-11-02T11:18:17.529Z · HTTP 200</p><pre>I found 15 events in the 2026–27 season (excluding archived ones) that start between 29 October and 4 November 2026. Dates are local to each venue.
+
+**Live now**
+- TEST: men&#39;s Qualifying Series at Amami Island, Japan. Starts 30 October.
+- Atlantic City Classic 134750 2: men&#39;s International Qualifying Series at Anglet, France. Starts 31 October.
+- Philippines Pro: Championship Tour at Cloud 9, Siargao, with a men&#39;s and a women&#39;s event. Starts 31 October.
+- Atlantic City Classic 231925 2: men&#39;s International Qualifying Series at Atlantic City, New Jersey. Starts 2 November.
+
+**Closed for entries**
+- Atlantic City Classic 234804 2: men&#39;s International Qualifying Series at Atlantic City. Starts 3 November.
+- Encuentro Beach Classic 205046 16: men&#39;s Challenger Series at Anglet. Starts 3 November.
+- Atlantic City Classic 000438 2: men&#39;s International Qualifying Series at Atlantic City. Starts 4 November.
+- Encuentro Beach Classic 205756 16: men&#39;s Challenger Series at Anglet. Starts 4 November.
+
+**Confirmed**
+- Ala Moana Bowls Sprint Women&#39;s Pro g1i: women&#39;s Qualifying Series at Ala Moana Bowls, Honolulu. Starts 4 November.
+
+**Still in draft, even though the start date has passed**
+- Atlantic Park Surf Classic 183325 3: men&#39;s International Qualifying Series at 56th Street, Newport Beach. Dated 29 October.
+- Arecibo Classic 183257 1: three men&#39;s International Qualifying Series drafts, all dated 1 November. One has no venue and one has no end date.
+- Arecibo Classic 142443 1: men&#39;s Challenger Series draft at Arecibo, dated 1 November. It has no region set.
+
+None of the season&#39;s completed events start in this window. There are also many archived events with these start dates, mostly test copies. I haven&#39;t listed them, but I can if you want.</pre><p><a href="history/H02/result.png">Open screenshot</a> · <a href="history/H02/response.sse.txt">Raw response</a> · <a href="history/H02/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H02/result.png" alt="Actual AL result for H02"></details></details><details id="H03" class="history-case"><summary>H03 · Earlier five-run sample · run 2 — OUT-OF-RANGE / WRONG COUNT</summary><p><b>Question:</b> Which events in the current season start between 2026-10-29 and 2026-11-04? List only those.</p><p><b>Finding:</b> Claims 18 matches, adding Us open (28 October) and Sunset Pro Men/Women (26 October). The prompt requires starts on/after 29 October.</p><p class="small">2026-11-02T11:19:11.486Z · HTTP 200</p><pre>There are 18 events in the 2026–27 season starting between 29 October and 4 November 2026. I counted every status except cancelled and archived, and none of the completed events start in that window.
+
+1. Atlantic Park Surf Classic 183325 3: men&#39;s International Qualifying Series (QS), 56th Street, Newport Beach. Starts 29 October, still a draft.
+2. TEST: men&#39;s Qualifying Series, Amami Island, Japan. 30 October to 1 November, live.
+3. Atlantic City Classic 134750 2: men&#39;s International QS, Anglet, France. 31 October, live.
+4. Philippines Pro, men&#39;s: Championship Tour, Cloud 9, Siargao. 31 October to 10 November, live.
+5. Philippines Pro, women&#39;s: same venue and dates, live.
+6. Arecibo Classic 183257 1: men&#39;s International QS, no venue set yet. 1 November, draft.
+7. Arecibo Classic 183257 1: another men&#39;s International QS event with the same name, at Arecibo, Puerto Rico. 1 November, draft.
+8. Arecibo Classic 142443 1: men&#39;s Challenger Series, Arecibo. 1 November, draft.
+9. Arecibo Classic 183257 1: a third event with this name, at Arecibo. Starts 1 November, has no end date, draft.
+10. Atlantic City Classic 231925 2: men&#39;s International QS, Atlantic City. 2 November, live.
+11. Atlantic City Classic 234804 2: men&#39;s International QS, Atlantic City. 3 November, closed for entries.
+12. Encuentro Beach Classic 205046 16: men&#39;s Challenger Series, Anglet. 3 November, closed for entries.
+13. Atlantic City Classic 000438 2: men&#39;s International QS, Atlantic City. 4 November, closed for entries.
+14. Ala Moana Bowls Sprint Women&#39;s Pro g1i: women&#39;s Qualifying Series, Ala Moana Bowls, Honolulu. 4 November, confirmed.
+15. Encuentro Beach Classic 205756 16: men&#39;s Challenger Series, Anglet. 4 November, closed for entries.
+16. Us open: men&#39;s Championship Tour, Ain Diab, Casablanca. 28 to 30 October, draft.
+17. Sunset Pro, men&#39;s: Qualifying Series, Sunset Beach, Oahu. 26 October to 2 November, live.
+18. Sunset Pro, women&#39;s: same venue and dates, live.
+
+Items 16 to 18 are only there for context: they start before 29 October, so they fall outside your window. Dates are local to each venue.</pre><p><a href="history/H03/result.png">Open screenshot</a> · <a href="history/H03/response.sse.txt">Raw response</a> · <a href="history/H03/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H03/result.png" alt="Actual AL result for H03"></details></details><details id="H04" class="history-case"><summary>H04 · Earlier five-run sample · run 3 — MISSING MATCHES</summary><p><b>Question:</b> Which events in the current season start between 2026-10-29 and 2026-11-04? List only those.</p><p><b>Finding:</b> Lists 10 active events plus archived results, but omits five matching drafts. The original question did not request an active-only view.</p><p class="small">2026-11-02T11:19:57.036Z · HTTP 200</p><pre>In the 2026–27 season, 10 active events start between October 29 and November 4, 2026. Another 31 in that window are archived. Dates are local to each venue.
+
+**Live now**
+- TEST (QS 4,000, men&#39;s), Amami Island, Japan: Oct 30 – Nov 1
+- Atlantic City Classic 134750 2 (International QS, men&#39;s), Anglet, France: Oct 31
+- Philippines Pro, men&#39;s and women&#39;s (Championship Tour), Cloud 9, Siargao: Oct 31 – Nov 10
+- Atlantic City Classic 231925 2 (International QS, men&#39;s), Atlantic City, New Jersey: Nov 2
+
+**Coming up**
+- Atlantic City Classic 234804 2 (International QS, men&#39;s), Atlantic City: Nov 3, closed for entries
+- Encuentro Beach Classic 205046 16 (Challenger Series, men&#39;s), Anglet: Nov 3, closed for entries
+- Atlantic City Classic 000438 2 (International QS, men&#39;s), Atlantic City: Nov 4, closed for entries
+- Ala Moana Bowls Sprint Women&#39;s Pro g1i (QS 2,000, women&#39;s), Ala Moana Bowls, Honolulu: Nov 4, confirmed
+- Encuentro Beach Classic 205756 16 (Challenger Series, men&#39;s), Anglet: Nov 4, closed for entries
+
+**Archived**
+- Oct 30: Barra de la Cruz Classic 134750 4
+- Oct 31: QA membership-window preflight 1793281453647
+- Nov 1: Barra de la Cruz Classic 224542 76 and 231925 76; Lemoore Classic 234804 26 and 001706 26; Rincon Classic 001706 51; Lower Trestles Classic 001706 101; Arecibo Classic 121826 1
+- Nov 2: Long Beach Classic 224542 27; Atlantic Hauʻula Pro – Ñandú ☀ 5882; Seaside Heights Classic 181010 56
+- Nov 3: Atlantic Park Surf Classic 224542 3 and 231825 3; Long Beach Classic 231925 27; Rincon Classic 231925 52; Bathsheba Classic 231925 78; Manhattan Beach Classic 231925 102; San Diego Classic 181010 53 and its &quot;new&quot; copy; Seaside Heights Classic 181010 128; Encuentro Beach Classic 204256 16
+- Nov 4: Rincon Classic 224542 52; Barra de la Cruz Classic 231925 4; Lower Trestles Classic 231925 29 and 181010 29; San Onofre Classic 231925 54 and 181010 54; Mazatlan Classic 231925 104; Atlantic Park Surf Classic 234804 3; Los Cerritos Beach Classic 234804 28
+
+No completed event starts in that window.</pre><p><a href="history/H04/result.png">Open screenshot</a> · <a href="history/H04/response.sse.txt">Raw response</a> · <a href="history/H04/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H04/result.png" alt="Actual AL result for H04"></details></details><details id="H05" class="history-case"><summary>H05 · Earlier five-run sample · run 4 — VISIBLE ERROR</summary><p><b>Question:</b> Which events in the current season start between 2026-10-29 and 2026-11-04? List only those.</p><p><b>Finding:</b> No answer; the UI displays “Something went wrong. Try again.” Stream contains RUN_ERROR / failed. This is appropriate failure feedback, not a silent answer.</p><p class="small">2026-11-02T11:20:41.389Z · HTTP 200</p><pre>AL
+
+WSL AI assistant
+
+New Conversation
+Conversations
+
+Which events in the current season start between 2026-10-29 and 2026-11-04? List only those.
+
+!
+
+Something went wrong. Try again.</pre><p><a href="history/H05/result.png">Open screenshot</a> · <a href="history/H05/response.sse.txt">Raw response</a> · <a href="history/H05/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H05/result.png" alt="Actual AL result for H05"></details></details><details id="H06" class="history-case"><summary>H06 · Earlier five-run sample · run 5 — MISSING MATCHES</summary><p><b>Question:</b> Which events in the current season start between 2026-10-29 and 2026-11-04? List only those.</p><p><b>Finding:</b> Claims ten matching events; misses five drafts inside the requested range.</p><p class="small">2026-11-02T11:21:09.545Z · HTTP 200</p><pre>In the 2026–27 season, 10 events start between October 29 and November 4, 2026:
+
+- **TEST** (Qualifying Series, men&#39;s), Amami Island, Japan: starts October 30, live
+- **Atlantic City Classic 134750 2** (International Qualifying Series, men&#39;s), Anglet, France: starts October 31, live
+- **Philippines Pro, men&#39;s** (Championship Tour), Cloud 9, Siargao: starts October 31, live
+- **Philippines Pro, women&#39;s** (Championship Tour), Cloud 9, Siargao: starts October 31, live
+- **Atlantic City Classic 231925 2** (International Qualifying Series, men&#39;s), Atlantic City: starts November 2, live
+- **Atlantic City Classic 234804 2** (International Qualifying Series, men&#39;s), Atlantic City: starts November 3, closed for entries
+- **Encuentro Beach Classic 205046 16** (Challenger Series, men&#39;s), Anglet: starts November 3, closed for entries
+- **Atlantic City Classic 000438 2** (International Qualifying Series, men&#39;s), Atlantic City: starts November 4, closed for entries
+- **Ala Moana Bowls Sprint Women&#39;s Pro g1i** (Qualifying Series, women&#39;s), Honolulu: starts November 4, confirmed
+- **Encuentro Beach Classic 205756 16** (Challenger Series, men&#39;s), Anglet: starts November 4, closed for entries
+
+Dates are local to each venue. None of the completed events start in this window. I didn&#39;t check cancelled or archived events.</pre><p><a href="history/H06/result.png">Open screenshot</a> · <a href="history/H06/response.sse.txt">Raw response</a> · <a href="history/H06/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H06/result.png" alt="Actual AL result for H06"></details></details><details id="H07" class="history-case"><summary>H07 · Repeated natural question · run 1 — FAIL</summary><p><b>Question:</b> Which events in season 2026-2027 start between 2026-10-29 and 2026-11-04? List only those.</p><p><b>Finding:</b> Claims ten matching events but omits five matching drafts. “Upcoming” is not equivalent to the requested start-date window.</p><p class="small">2026-11-02T13:49:29.404Z · HTTP 200</p><pre>Ten events in the 2026–27 season start between October 29 and November 4, 2026. Dates are local to each venue.
+
+**Already running (live):**
+- TEST (men&#39;s Qualifying Series, Amami Island, Japan): starts October 30
+- Atlantic City Classic 134750 2 (men&#39;s International Qualifying Series, Anglet, France): starts October 31
+- Philippines Pro, men&#39;s (Championship Tour, Cloud 9, Siargao): starts October 31
+- Philippines Pro, women&#39;s (Championship Tour, Cloud 9, Siargao): starts October 31
+- Atlantic City Classic 231925 2 (men&#39;s International Qualifying Series, Atlantic City): starts November 2
+
+**Still to start:**
+- Atlantic City Classic 234804 2 (men&#39;s International Qualifying Series, Atlantic City): starts November 3, closed for entries
+- Encuentro Beach Classic 205046 16 (men&#39;s Challenger Series, Anglet): starts November 3, closed for entries
+- Atlantic City Classic 000438 2 (men&#39;s International Qualifying Series, Atlantic City): starts November 4, closed for entries
+- Ala Moana Bowls Sprint Women&#39;s Pro g1i (women&#39;s Qualifying Series, Honolulu): starts November 4, confirmed
+- Encuentro Beach Classic 205756 16 (men&#39;s Challenger Series, Anglet): starts November 4, closed for entries
+
+This doesn&#39;t include cancelled or archived events, because I didn&#39;t check those.</pre><p><a href="history/H07/result.png">Open screenshot</a> · <a href="history/H07/response.sse.txt">Raw response</a> · <a href="history/H07/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H07/result.png" alt="Actual AL result for H07"></details></details><details id="H08" class="history-case"><summary>H08 · Repeated natural question · run 2 — FAIL</summary><p><b>Question:</b> Which events in season 2026-2027 start between 2026-10-29 and 2026-11-04? List only those.</p><p><b>Finding:</b> Claims ten matching events but omits five matching drafts. “Upcoming” is not equivalent to the requested start-date window.</p><p class="small">2026-11-02T13:50:00.539Z · HTTP 200</p><pre>Ten events in the 2026–27 season start between October 29 and November 4, 2026. Dates are local to each venue:
+
+- **October 30:** TEST, a men&#39;s Qualifying Series event at Amami Island, Japan. It&#39;s live.
+- **October 31:** Atlantic City Classic 134750 2, a men&#39;s International Qualifying Series event at Anglet, France. It&#39;s live.
+- **October 31:** Philippines Pro (men&#39;s), Championship Tour, at Cloud 9, Siargao Island. It&#39;s live.
+- **October 31:** Philippines Pro (women&#39;s), Championship Tour, at Cloud 9, Siargao Island. It&#39;s live.
+- **November 2:** Atlantic City Classic 231925 2, a men&#39;s International Qualifying Series event at Atlantic City, New Jersey. It&#39;s live.
+- **November 3:** Atlantic City Classic 234804 2, a men&#39;s International Qualifying Series event at Atlantic City. It&#39;s closed for entries.
+- **November 3:** Encuentro Beach Classic 205046 16, a men&#39;s Challenger Series event at Anglet. It&#39;s closed for entries.
+- **November 4:** Atlantic City Classic 000438 2, a men&#39;s International Qualifying Series event at Atlantic City. It&#39;s closed for entries.
+- **November 4:** Ala Moana Bowls Sprint Women&#39;s Pro g1i, a women&#39;s Qualifying Series event at Ala Moana Bowls, Honolulu. It&#39;s confirmed.
+- **November 4:** Encuentro Beach Classic 205756 16, a men&#39;s Challenger Series event at Anglet. It&#39;s closed for entries.
+
+No completed or cancelled event starts in that window, but I didn&#39;t check archived events.</pre><p><a href="history/H08/result.png">Open screenshot</a> · <a href="history/H08/response.sse.txt">Raw response</a> · <a href="history/H08/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H08/result.png" alt="Actual AL result for H08"></details></details><details id="H09" class="history-case"><summary>H09 · Repeated natural question · run 3 — FAIL</summary><p><b>Question:</b> Which events in season 2026-2027 start between 2026-10-29 and 2026-11-04? List only those.</p><p><b>Finding:</b> Claims 40 (10 active + 30 archived), omits five matching drafts, and the archived count should be 31. Reference across all statuses is 46.</p><p class="small">2026-11-02T13:50:31.853Z · HTTP 200</p><pre>I found 40 events in the 2026–27 season that start between 29 October and 4 November 2026. Ten are active and 30 are archived, and none of them have completed. Dates are local to each venue.
+
+**Active**
+- 30 Oct: TEST, men&#39;s Qualifying Series, Amami Island (live)
+- 31 Oct: Atlantic City Classic 134750 2, men&#39;s International Qualifying Series, Anglet (live)
+- 31 Oct: Philippines Pro, men&#39;s and women&#39;s Championship Tour, Cloud 9, Siargao (both live)
+- 2 Nov: Atlantic City Classic 231925 2, men&#39;s International Qualifying Series (live)
+- 3 Nov: Atlantic City Classic 234804 2, men&#39;s International Qualifying Series (closed for entries)
+- 3 Nov: Encuentro Beach Classic 205046 16, men&#39;s Challenger Series, Anglet (closed for entries)
+- 4 Nov: Atlantic City Classic 000438 2, men&#39;s International Qualifying Series (closed for entries)
+- 4 Nov: Ala Moana Bowls Sprint Women&#39;s Pro g1i, women&#39;s Qualifying Series (confirmed)
+- 4 Nov: Encuentro Beach Classic 205756 16, men&#39;s Challenger Series, Anglet (closed for entries)
+
+**Archived**
+- 30 Oct: Barra de la Cruz Classic 134750 4
+- 31 Oct: QA membership-window preflight 1793281453647
+- 1 Nov: Barra de la Cruz Classic 224542 76, Barra de la Cruz Classic 231925 76, Lemoore Classic 234804 26, Lemoore Classic 001706 26, Rincon Classic 001706 51, Lower Trestles Classic 001706 101, Arecibo Classic 121826 1
+- 2 Nov: Long Beach Classic 224542 27, Atlantic Hauʻula Pro – Ñandú ☀ 5882, Seaside Heights Classic 181010 56
+- 3 Nov: Atlantic Park Surf Classic 224542 3, Atlantic Park Surf Classic 231825 3, Long Beach Classic 231925 27, Rincon Classic 231925 52, Bathsheba Classic 231925 78, Manhattan Beach Classic 231925 102, San Diego Classic 181010 53, San Diego Classic 181010 53 new, Seaside Heights Classic 181010 128, Encuentro Beach Classic 204256 16
+- 4 Nov: Rincon Classic 224542 52, Barra de la Cruz Classic 231925 4, Lower Trestles Classic 231925 29, San Onofre Classic 231925 54, Mazatlan Classic 231925 104, Atlantic Park Surf Classic 234804 3, Los Cerritos Beach Classic 234804 28, Lower Trestles Classic 181010 29, San Onofre Classic 181010 54</pre><p><a href="history/H09/result.png">Open screenshot</a> · <a href="history/H09/response.sse.txt">Raw response</a> · <a href="history/H09/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H09/result.png" alt="Actual AL result for H09"></details></details><details id="H10" class="history-case"><summary>H10 · Repeated stricter question · run 1 — FAIL</summary><p><b>Question:</b> For season 2026–27, list every event whose START date is from 29 October through 4 November 2026 inclusive. Include drafts. Exclude cancelled and archived events. Do not include events that merely overlap the range. Show event name, start date, and season. If you cannot retrieve all matches, say the list is incomplete.</p><p><b>Finding:</b> Claims 16 matching events but displays 15 rows. The reference and distinct rows contain 15 non-archived matches. Strict wording did not prevent the counting error.</p><p class="small">2026-11-02T13:51:07.515Z · HTTP 200</p><pre>I found 16 events in the 2026–27 season that start between 29 October and 4 November 2026. I checked every status except cancelled and archived, so the list should be complete. None of the finished events start in this range.
+
+| Event | Start date | Season |
+|---|---|---|
+| Atlantic Park Surf Classic 183325 3 (draft) | 29 October 2026 | 2026–27 |
+| TEST (QS men, Amami Island) | 30 October 2026 | 2026–27 |
+| Atlantic City Classic 134750 2 | 31 October 2026 | 2026–27 |
+| Philippines Pro (men) | 31 October 2026 | 2026–27 |
+| Philippines Pro (women) | 31 October 2026 | 2026–27 |
+| Arecibo Classic 183257 1 (draft, no venue set) | 1 November 2026 | 2026–27 |
+| Arecibo Classic 183257 1 (draft) | 1 November 2026 | 2026–27 |
+| Arecibo Classic 183257 1 (draft, no end date) | 1 November 2026 | 2026–27 |
+| Arecibo Classic 142443 1 (draft, Challenger Series) | 1 November 2026 | 2026–27 |
+| Atlantic City Classic 231925 2 | 2 November 2026 | 2026–27 |
+| Atlantic City Classic 234804 2 | 3 November 2026 | 2026–27 |
+| Encuentro Beach Classic 205046 16 | 3 November 2026 | 2026–27 |
+| Atlantic City Classic 000438 2 | 4 November 2026 | 2026–27 |
+| Ala Moana Bowls Sprint Women&#39;s Pro g1i | 4 November 2026 | 2026–27 |
+| Encuentro Beach Classic 205756 16 | 4 November 2026 | 2026–27 |
+
+Start dates are local to each venue. I left out events that only overlap the range, like the Sunset Pro (starts 26 October) and the &quot;Us open&quot; draft (starts 28 October).
+
+The table shows 15 rows for 16 events: I missed Atlantic City Classic 231925 2, starting 2 November 2026, season 2026–27. It belongs in the table.</pre><p><a href="history/H10/result.png">Open screenshot</a> · <a href="history/H10/response.sse.txt">Raw response</a> · <a href="history/H10/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H10/result.png" alt="Actual AL result for H10"></details></details><details id="H11" class="history-case"><summary>H11 · Repeated stricter question · run 2 — FAILED SEARCH / VISIBLE ERROR</summary><p><b>Question:</b> For season 2026–27, list every event whose START date is from 29 October through 4 November 2026 inclusive. Include drafts. Exclude cancelled and archived events. Do not include events that merely overlap the range. Show event name, start date, and season. If you cannot retrieve all matches, say the list is incomplete.</p><p><b>Finding:</b> No answer was produced, but the frontend displayed retry guidance. This is not the earlier silent-failure symptom.</p><p class="small">2026-11-02T13:51:41.771Z · HTTP 200</p><pre>AL
+
+WSL AI assistant
+
+New Conversation
+Conversations
+
+For season 2026–27, list every event whose START date is from 29 October through 4 November 2026 inclusive. Include drafts. Exclude cancelled and archived events. Do not include events that merely overlap the range. Show event name, start date, and season. If you cannot retrieve all matches, say the list is incomplete.
+
+!
+
+Something went wrong. Try again.</pre><p><a href="history/H11/result.png">Open screenshot</a> · <a href="history/H11/response.sse.txt">Raw response</a> · <a href="history/H11/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H11/result.png" alt="Actual AL result for H11"></details></details><details id="H12" class="history-case"><summary>H12 · Repeated stricter question · run 3 — FAIL</summary><p><b>Question:</b> For season 2026–27, list every event whose START date is from 29 October through 4 November 2026 inclusive. Include drafts. Exclude cancelled and archived events. Do not include events that merely overlap the range. Show event name, start date, and season. If you cannot retrieve all matches, say the list is incomplete.</p><p><b>Finding:</b> Claims 16 matching events but displays 15 rows. The reference and distinct rows contain 15 non-archived matches. Strict wording did not prevent the counting error.</p><p class="small">2026-11-02T13:52:02.572Z · HTTP 200</p><pre>I found 16 events in the 2026–27 season that start between 29 October and 4 November 2026. I checked every event that isn&#39;t cancelled or archived, including drafts and completed events, so the list is complete. None of the completed events start in this range.
+
+| Event | Start date | Season |
+|---|---|---|
+| Atlantic Park Surf Classic 183325 3 (draft) | 29 October 2026 | 2026–27 |
+| TEST | 30 October 2026 | 2026–27 |
+| Atlantic City Classic 134750 2 | 31 October 2026 | 2026–27 |
+| Philippines Pro (men&#39;s) | 31 October 2026 | 2026–27 |
+| Philippines Pro (women&#39;s) | 31 October 2026 | 2026–27 |
+| Arecibo Classic 183257 1 (draft, no venue set) | 1 November 2026 | 2026–27 |
+| Arecibo Classic 183257 1 (draft, ends 1 November) | 1 November 2026 | 2026–27 |
+| Arecibo Classic 183257 1 (draft, no end date) | 1 November 2026 | 2026–27 |
+| Arecibo Classic 142443 1 (draft) | 1 November 2026 | 2026–27 |
+| Atlantic City Classic 231925 2 | 2 November 2026 | 2026–27 |
+| Atlantic City Classic 234804 2 | 3 November 2026 | 2026–27 |
+| Encuentro Beach Classic 205046 16 | 3 November 2026 | 2026–27 |
+| Atlantic City Classic 000438 2 | 4 November 2026 | 2026–27 |
+| Ala Moana Bowls Sprint Women&#39;s Pro g1i | 4 November 2026 | 2026–27 |
+| Encuentro Beach Classic 205756 16 | 4 November 2026 | 2026–27 |
+
+As you asked, I left out events that started before 29 October and are still running, like the Sunset Pro and &quot;Us open&quot;. The three &quot;Arecibo Classic 183257 1&quot; entries are separate events that share the same name.</pre><p><a href="history/H12/result.png">Open screenshot</a> · <a href="history/H12/response.sse.txt">Raw response</a> · <a href="history/H12/evidence.json">Recorded result</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="history/H12/result.png" alt="Actual AL result for H12"></details></details></section><section><h2>Fresh questions, answers and screenshots</h2><p>Each question was sent in a fresh AL conversation. Open a run to see its exact answer and evidence.</p></section><details class="case"><summary>date-range · try 1 — <b>PARTIAL</b></summary><p><b>Question:</b> For season 2026-2027, list every event whose START date is between 2026-10-29 and 2026-11-04 inclusive. Include drafts. Exclude cancelled and archived events. List only those matches, show each start date, and state the number of distinct events.</p><p><b>Expected:</b> 15 distinct non-archived events starting in the inclusive range; five drafts. An overlapping event whose start is earlier is not a match.</p><p><b>What happened:</b> All 15 listed events and start dates match the reference and lie inside the requested range. The total of 15 is correct, but “Six are drafts” is wrong: five are drafts.</p><p class="small">2026-11-02T14:24:09.974Z · 27.0 seconds · HTTP 200</p><pre>I found **15 distinct events** in the 2026-27 season that start between 29 October and 4 November 2026. Six are drafts, and none of the season&#39;s completed events start in that window. Cancelled and archived events are left out.
+
+| Start date | Event | Tour / division | Status |
+|---|---|---|---|
+| 29 Oct | Atlantic Park Surf Classic 183325 3 | International QS, men&#39;s | Draft |
+| 30 Oct | TEST | Qualifying Series, men&#39;s | Live |
+| 31 Oct | Atlantic City Classic 134750 2 | International QS, men&#39;s | Live |
+| 31 Oct | Philippines Pro | Championship Tour, men&#39;s | Live |
+| 31 Oct | Philippines Pro | Championship Tour, women&#39;s | Live |
+| 1 Nov | Arecibo Classic 183257 1 (no venue set) | International QS, men&#39;s | Draft |
+| 1 Nov | Arecibo Classic 183257 1 (Arecibo, ends 1 Nov) | International QS, men&#39;s | Draft |
+| 1 Nov | Arecibo Classic 183257 1 (Arecibo, no end date) | International QS, men&#39;s | Draft |
+| 1 Nov | Arecibo Classic 142443 1 | Challenger Series, men&#39;s | Draft |
+| 2 Nov | Atlantic City Classic 231925 2 | International QS, men&#39;s | Live |
+| 3 Nov | Atlantic City Classic 234804 2 | International QS, men&#39;s | Closed for entries |
+| 3 Nov | Encuentro Beach Classic 205046 16 | Challenger Series, men&#39;s | Closed for entries |
+| 4 Nov | Atlantic City Classic 000438 2 | International QS, men&#39;s | Closed for entries |
+| 4 Nov | Ala Moana Bowls Sprint Women&#39;s Pro g1i | Qualifying Series, women&#39;s | Confirmed |
+| 4 Nov | Encuentro Beach Classic 205756 16 | Challenger Series, men&#39;s | Closed for entries |
+
+The men&#39;s and women&#39;s Philippines Pro are counted as two separate events. The three &quot;Arecibo Classic 183257 1&quot; drafts have the same name but are separate records. Start dates are local to each venue.</pre><p><a href="manager/date-range-1/result.png">Open screenshot</a> · <a href="manager/date-range-1/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/date-range-1/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;
+        ]
+      },
+      &quot;total&quot;: 275,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 20
+    },
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;
+        ],
+        &quot;offset&quot;: 20
+      },
+      &quot;total&quot;: 275,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 40
+    },
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 92,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 20
+    },
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;completed&quot;
+        ],
+        &quot;offset&quot;: 80
+      },
+      &quot;total&quot;: 92,
+      &quot;returnedRows&quot;: 12,
+      &quot;nextOffset&quot;: null
+    }
+  ]
+}</pre></details></details><details class="case"><summary>date-range · try 2 — <b>FAILED REQUEST</b></summary><p><b>Question:</b> For season 2026-2027, list every event whose START date is between 2026-10-29 and 2026-11-04 inclusive. Include drafts. Exclude cancelled and archived events. List only those matches, show each start date, and state the number of distinct events.</p><p><b>Expected:</b> 15 distinct non-archived events starting in the inclusive range; five drafts. An overlapping event whose start is earlier is not a match.</p><p><b>What happened:</b> No answer. The real response contains an error and the UI shows a retry message. No event-date accuracy can be assessed for this run.</p><p class="small">2026-11-02T14:24:47.314Z · 9.2 seconds · HTTP 200</p><pre>AL
+
+WSL AI assistant
+
+New Conversation
+Conversations
+
+For season 2026-2027, list every event whose START date is between 2026-10-29 and 2026-11-04 inclusive. Include drafts. Exclude cancelled and archived events. List only those matches, show each start date, and state the number of distinct events.
+
+!
+
+Something went wrong. Try again.</pre><p><a href="manager/date-range-2/result.png">Open screenshot</a> · <a href="manager/date-range-2/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/date-range-2/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;
+        ]
+      },
+      &quot;total&quot;: 275,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 20
+    },
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 92,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 20
+    }
+  ]
+}</pre></details></details><details class="case"><summary>date-range · try 3 — <b>PASS</b></summary><p><b>Question:</b> For season 2026-2027, list every event whose START date is between 2026-10-29 and 2026-11-04 inclusive. Include drafts. Exclude cancelled and archived events. List only those matches, show each start date, and state the number of distinct events.</p><p><b>Expected:</b> 15 distinct non-archived events starting in the inclusive range; five drafts. An overlapping event whose start is earlier is not a match.</p><p><b>What happened:</b> All 15 non-archived matches listed once; start dates fall inside 29 October–4 November inclusive. The three same-name Arecibo records are correctly treated as separate events.</p><p class="small">2026-11-02T14:25:04.055Z · 22.8 seconds · HTTP 200</p><pre>I found **15 distinct events** in the 2026–27 season that start between 29 October and 4 November 2026, leaving out cancelled and archived ones. No completed event starts in that window.
+
+1. Atlantic Park Surf Classic 183325 3 (International QS, men&#39;s, draft): starts 29 October
+2. TEST (QS, men&#39;s, live): starts 30 October
+3. Atlantic City Classic 134750 2 (International QS, men&#39;s, live): starts 31 October
+4. Philippines Pro, men&#39;s (Championship Tour, live): starts 31 October
+5. Philippines Pro, women&#39;s (Championship Tour, live): starts 31 October
+6. Arecibo Classic 183257 1 (International QS, men&#39;s, draft, no venue set): starts 1 November
+7. Arecibo Classic 183257 1 (International QS, men&#39;s, draft, at Arecibo): starts 1 November
+8. Arecibo Classic 183257 1 (International QS, men&#39;s, draft, at Arecibo, no end date): starts 1 November
+9. Arecibo Classic 142443 1 (Challenger Series, men&#39;s, draft): starts 1 November
+10. Atlantic City Classic 231925 2 (International QS, men&#39;s, live): starts 2 November
+11. Atlantic City Classic 234804 2 (International QS, men&#39;s, closed for entries): starts 3 November
+12. Encuentro Beach Classic 205046 16 (Challenger Series, men&#39;s, closed for entries): starts 3 November
+13. Atlantic City Classic 000438 2 (International QS, men&#39;s, closed for entries): starts 4 November
+14. Ala Moana Bowls Sprint Women&#39;s Pro g1i (QS, women&#39;s, confirmed): starts 4 November
+15. Encuentro Beach Classic 205756 16 (Challenger Series, men&#39;s, closed for entries): starts 4 November
+
+Three of the drafts have the same name, &quot;Arecibo Classic 183257 1,&quot; but they are separate events, so each is counted once.</pre><p><a href="manager/date-range-3/result.png">Open screenshot</a> · <a href="manager/date-range-3/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/date-range-3/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;
+        ]
+      },
+      &quot;total&quot;: 275,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 20
+    },
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;
+        ],
+        &quot;offset&quot;: 20
+      },
+      &quot;total&quot;: 275,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 40
+    },
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 92,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 20
+    },
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;completed&quot;
+        ],
+        &quot;offset&quot;: 80
+      },
+      &quot;total&quot;: 92,
+      &quot;returnedRows&quot;: 12,
+      &quot;nextOffset&quot;: null
+    }
+  ]
+}</pre></details></details><details class="case"><summary>exact-three-drafts · try 1 — <b>PASS</b></summary><p><b>Question:</b> Find every distinct event named exactly &quot;Arecibo Classic 183257 1&quot; in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. List each separate event with its start date and status, and state how many distinct events you found.</p><p><b>Expected:</b> All five exact-name records, without a date restriction: three start 1 November, one starts 7 November, one has no start date.</p><p><b>What happened:</b> All three repetitions returned the same five distinct records, correct dates/null date and Draft status. The two additional records are expected because this prompt has no date filter.</p><p class="small">2026-11-02T14:25:34.396Z · 7.5 seconds · HTTP 200</p><pre>I found **5 separate events** named exactly &quot;Arecibo Classic 183257 1&quot; in the 2026-27 season. All five are drafts on the men&#39;s International Qualifying Series:
+
+1. Starts 1 November 2026, draft. No venue set.
+2. Starts 1 November 2026, draft. Venue: Arecibo, Puerto Rico.
+3. Starts 1 November 2026, draft. Venue: Arecibo, Puerto Rico. No end date set.
+4. Starts 7 November 2026, draft. Venue: Arecibo, Puerto Rico.
+5. No start date set (ends 1 November 2026), draft. Venue: Arecibo, Puerto Rico.
+
+None of them is cancelled or archived.</pre><p><a href="manager/exact-three-drafts-1/result.png">Open screenshot</a> · <a href="manager/exact-three-drafts-1/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/exact-three-drafts-1/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;query&quot;: &quot;Arecibo Classic 183257 1&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;,
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 5,
+      &quot;returnedRows&quot;: 5,
+      &quot;nextOffset&quot;: null
+    }
+  ]
+}</pre></details></details><details class="case"><summary>exact-three-drafts · try 2 — <b>PASS</b></summary><p><b>Question:</b> Find every distinct event named exactly &quot;Arecibo Classic 183257 1&quot; in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. List each separate event with its start date and status, and state how many distinct events you found.</p><p><b>Expected:</b> All five exact-name records, without a date restriction: three start 1 November, one starts 7 November, one has no start date.</p><p><b>What happened:</b> All three repetitions returned the same five distinct records, correct dates/null date and Draft status. The two additional records are expected because this prompt has no date filter.</p><p class="small">2026-11-02T14:25:48.333Z · 8.7 seconds · HTTP 200</p><pre>I found **5 separate events** named exactly &quot;Arecibo Classic 183257 1&quot; in the 2026-27 season. All five are drafts on the men&#39;s International Qualifying Series:
+
+1. Starts 1 November 2026, ends the same day; no venue set yet.
+2. Starts 1 November 2026, ends the same day, at Arecibo, Puerto Rico.
+3. Starts 1 November 2026 with no end date set, at Arecibo.
+4. Starts 7 November 2026, ends the same day, at Arecibo.
+5. No start date set (end date 1 November 2026), at Arecibo.
+
+None of the events with this name are cancelled or archived. The first three share the same start date, but each is its own event record.</pre><p><a href="manager/exact-three-drafts-2/result.png">Open screenshot</a> · <a href="manager/exact-three-drafts-2/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/exact-three-drafts-2/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;query&quot;: &quot;Arecibo Classic 183257 1&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;,
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 5,
+      &quot;returnedRows&quot;: 5,
+      &quot;nextOffset&quot;: null
+    }
+  ]
+}</pre></details></details><details class="case"><summary>exact-three-drafts · try 3 — <b>PASS</b></summary><p><b>Question:</b> Find every distinct event named exactly &quot;Arecibo Classic 183257 1&quot; in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. List each separate event with its start date and status, and state how many distinct events you found.</p><p><b>Expected:</b> All five exact-name records, without a date restriction: three start 1 November, one starts 7 November, one has no start date.</p><p><b>What happened:</b> All three repetitions returned the same five distinct records, correct dates/null date and Draft status. The two additional records are expected because this prompt has no date filter.</p><p class="small">2026-11-02T14:26:04.832Z · 8.3 seconds · HTTP 200</p><pre>I found **5 separate events** named exactly &quot;Arecibo Classic 183257 1&quot; in the 2026-27 season. All five are drafts on the men&#39;s International Qualifying Series:
+
+1. Starts 1 November 2026 (draft, no venue set yet)
+2. Starts 1 November 2026 (draft, at Arecibo, Puerto Rico)
+3. Starts 1 November 2026 (draft, at Arecibo, no end date set)
+4. Starts 7 November 2026 (draft, at Arecibo)
+5. No start date set (draft, at Arecibo, ends 1 November 2026)
+
+None of them were cancelled or archived. Events 1 to 3 look the same at first glance, but they are separate records with different details.</pre><p><a href="manager/exact-three-drafts-3/result.png">Open screenshot</a> · <a href="manager/exact-three-drafts-3/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/exact-three-drafts-3/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;query&quot;: &quot;Arecibo Classic 183257 1&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;,
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 5,
+      &quot;returnedRows&quot;: 5,
+      &quot;nextOffset&quot;: null
+    }
+  ]
+}</pre></details></details><details class="case"><summary>exact-one-draft · try 1 — <b>PASS</b></summary><p><b>Question:</b> Find the event named exactly &quot;Atlantic Park Surf Classic 183325 3&quot; in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. Give its start date and status, and state how many distinct exact-name matches you found.</p><p><b>Expected:</b> One exact-name draft, starting 29 October 2026.</p><p><b>What happened:</b> Correct single event, start date and Draft status in all three repetitions.</p><p class="small">2026-11-02T14:26:19.055Z · 8.0 seconds · HTTP 200</p><pre>I found exactly one event named &quot;Atlantic Park Surf Classic 183325 3&quot; in the 2026-27 season. It&#39;s a **draft** and its start date is **29 October 2026** (venue time). That one-day men&#39;s International Qualifying Series event is at 56th Street, Newport Beach, California.
+
+I searched every status except cancelled and archived, and didn&#39;t filter by dates. Nothing else came close to that name.</pre><p><a href="manager/exact-one-draft-1/result.png">Open screenshot</a> · <a href="manager/exact-one-draft-1/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/exact-one-draft-1/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;query&quot;: &quot;Atlantic Park Surf Classic 183325 3&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;,
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 1,
+      &quot;returnedRows&quot;: 1,
+      &quot;nextOffset&quot;: null
+    }
+  ]
+}</pre></details></details><details class="case"><summary>exact-one-draft · try 2 — <b>PASS</b></summary><p><b>Question:</b> Find the event named exactly &quot;Atlantic Park Surf Classic 183325 3&quot; in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. Give its start date and status, and state how many distinct exact-name matches you found.</p><p><b>Expected:</b> One exact-name draft, starting 29 October 2026.</p><p><b>What happened:</b> Correct single event, start date and Draft status in all three repetitions.</p><p class="small">2026-11-02T14:26:35.494Z · 8.8 seconds · HTTP 200</p><pre>I found exactly one event with that exact name in the 2026-27 season: Atlantic Park Surf Classic 183325 3. It starts on 29 October 2026, a one-day event at 56th Street in Newport Beach, California, and its status is draft.
+
+I searched every status except cancelled and archived, and didn&#39;t filter by date.</pre><p><a href="manager/exact-one-draft-2/result.png">Open screenshot</a> · <a href="manager/exact-one-draft-2/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/exact-one-draft-2/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;query&quot;: &quot;Atlantic Park Surf Classic 183325 3&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;,
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 1,
+      &quot;returnedRows&quot;: 1,
+      &quot;nextOffset&quot;: null
+    }
+  ]
+}</pre></details></details><details class="case"><summary>exact-one-draft · try 3 — <b>PASS</b></summary><p><b>Question:</b> Find the event named exactly &quot;Atlantic Park Surf Classic 183325 3&quot; in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. Give its start date and status, and state how many distinct exact-name matches you found.</p><p><b>Expected:</b> One exact-name draft, starting 29 October 2026.</p><p><b>What happened:</b> Correct single event, start date and Draft status in all three repetitions.</p><p class="small">2026-11-02T14:26:51.228Z · 8.7 seconds · HTTP 200</p><pre>I found exactly one event with the exact name &quot;Atlantic Park Surf Classic 183325 3&quot; in the 2026-27 season. It starts on Thursday, October 29, 2026 (local time at the venue) and its status is draft.
+
+It&#39;s a men&#39;s International Qualifying Series event at 56th Street, Newport Beach, California. My search covered every status except cancelled and archived, with no date filter.</pre><p><a href="manager/exact-one-draft-3/result.png">Open screenshot</a> · <a href="manager/exact-one-draft-3/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/exact-one-draft-3/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;query&quot;: &quot;Atlantic Park Surf Classic 183325 3&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;,
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 1,
+      &quot;returnedRows&quot;: 1,
+      &quot;nextOffset&quot;: null
+    }
+  ]
+}</pre></details></details><details class="case"><summary>first-page · try 1 — <b>PASS</b></summary><p><b>Question:</b> For season 2026-2027, show the first page of all events, including drafts but excluding cancelled and archived events. Do not filter by dates. State the number of events listed on this page, the total number available, and whether more pages remain. Do not claim this page is the complete season.</p><p><b>Expected:</b> 20 listed records, source total and more-pages flag; no date filtering.</p><p><b>What happened:</b> Lists the same 20 source records; states the captured tool total of 367 and that more pages remain.</p><p class="small">2026-11-02T14:27:05.982Z · 13.1 seconds · HTTP 200</p><pre>This page lists **20 events** from the 2026–27 season. **367 events** match in total, so there are more pages, starting at event 21. This is only the first page, not the whole season. The hub puts upcoming, live and standby events first, then completed ones.
+
+1. MEO Rip Curl Pro Portugal (men&#39;s CT): live, 16–25 October, Supertubos, Peniche
+2. MEO Rip Curl Pro Portugal (women&#39;s CT): live, 16–25 October, Supertubos, Peniche
+3. Siargao International Surfing Cup (men&#39;s International QS 6,000): live, 16–25 October, Cloud 9, Siargao
+4. QA WSL-9695 future-same-day 1793028622661 (men&#39;s QS): draft, 21–22 October, 56th Street, Newport Beach
+5. QA WSL-9695 today-tomorrow 1793028623464 (men&#39;s QS): draft, 26–27 October, 56th Street, Newport Beach
+6. Sunset Pro (men&#39;s QS 2,000): live, 26 October–2 November, Sunset Beach, Oahu
+7. Sunset Pro (women&#39;s QS 2,000): live, 26 October–2 November, Sunset Beach, Oahu
+8. Us open (men&#39;s CT): draft, 28–30 October, Ain Diab, Casablanca
+9. Atlantic Park Surf Classic 183325 3 (men&#39;s International QS): draft, 29 October, 56th Street, Newport Beach
+10. TEST (men&#39;s QS 4,000): live, 30 October–1 November, Amami Island, Japan
+11. Atlantic City Classic 134750 2 (men&#39;s International QS 6,000): live, 31 October, Anglet, France
+12. Philippines Pro (men&#39;s CT): live, 31 October–10 November, Cloud 9, Siargao
+13. Philippines Pro (women&#39;s CT): live, 31 October–10 November, Cloud 9, Siargao
+14. Arecibo Classic 183257 1 (men&#39;s International QS): draft, 1 November, no venue set
+15. Arecibo Classic 183257 1 (men&#39;s International QS): draft, 1 November, Arecibo, Puerto Rico
+16. Arecibo Classic 142443 1 (men&#39;s Challenger Series): draft, 1 November, Arecibo, Puerto Rico
+17. Arecibo Classic 183257 1 (men&#39;s International QS): draft, starts 1 November with no end date, Arecibo, Puerto Rico
+18. Atlantic City Classic 231925 2 (men&#39;s International QS 6,000): live, 2 November, Atlantic City, New Jersey
+19. Atlantic City Classic 234804 2 (men&#39;s International QS 6,000): closed for entries, 3 November, Atlantic City, New Jersey
+20. Encuentro Beach Classic 205046 16 (men&#39;s Challenger Series): closed for entries, 3 November, Anglet, France
+
+Dates are local to each venue.</pre><p><a href="manager/first-page-1/result.png">Open screenshot</a> · <a href="manager/first-page-1/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/first-page-1/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;,
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 367,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 20
+    }
+  ]
+}</pre></details></details><details class="case"><summary>first-page · try 2 — <b>PASS FOR RECORDS/COUNTS</b></summary><p><b>Question:</b> For season 2026-2027, show the first page of all events, including drafts but excluding cancelled and archived events. Do not filter by dates. State the number of events listed on this page, the total number available, and whether more pages remain. Do not claim this page is the complete season.</p><p><b>Expected:</b> 20 listed records, source total and more-pages flag; no date filtering.</p><p><b>What happened:</b> Lists the same 20 source records; states the captured tool total of 367 and that more pages remain. Separate wording issue: says drafts come after upcoming/live events, although the returned page interleaves drafts. The retrieval/count checks pass, not every extra explanatory statement.</p><p class="small">2026-11-02T14:27:25.036Z · 14.7 seconds · HTTP 200</p><pre>Statuses filter excluding cancelled/archived.This page lists 20 of the 367 events in the 2026–27 season that match (cancelled and archived left out), and more pages remain. The hub lists upcoming and live events first, then drafts and completed ones, so this isn&#39;t the whole season. Dates are local to each venue.
+
+1. MEO Rip Curl Pro Portugal (men&#39;s), Championship Tour, Supertubos, Peniche: live, 16–25 October
+2. MEO Rip Curl Pro Portugal (women&#39;s), Championship Tour, Supertubos, Peniche: live, 16–25 October
+3. Siargao International Surfing Cup (men&#39;s), International Qualifying Series 6,000, Cloud 9, Siargao: live, 16–25 October
+4. QA WSL-9695 future-same-day 1793028622661 (men&#39;s), Qualifying Series, 56th Street, Newport Beach: draft, 21–22 October
+5. QA WSL-9695 today-tomorrow 1793028623464 (men&#39;s), Qualifying Series, 56th Street, Newport Beach: draft, 26–27 October
+6. Sunset Pro (men&#39;s), Qualifying Series 2,000, Sunset Beach, Oahu: live, 26 October – 2 November
+7. Sunset Pro (women&#39;s), Qualifying Series 2,000, Sunset Beach, Oahu: live, 26 October – 2 November
+8. Us open (men&#39;s), Championship Tour, Ain Diab, Casablanca: draft, 28–30 October
+9. Atlantic Park Surf Classic 183325 3 (men&#39;s), International Qualifying Series, 56th Street, Newport Beach: draft, 29 October
+10. TEST (men&#39;s), Qualifying Series 4,000, Amami Island, Japan: live, 30 October – 1 November
+11. Atlantic City Classic 134750 2 (men&#39;s), International Qualifying Series 6,000, Anglet, France: live, 31 October
+12. Philippines Pro (men&#39;s), Championship Tour, Cloud 9, Siargao: live, 31 October – 10 November
+13. Philippines Pro (women&#39;s), Championship Tour, Cloud 9, Siargao: live, 31 October – 10 November
+14. Arecibo Classic 183257 1 (men&#39;s), International Qualifying Series, no venue set: draft, 1 November
+15. Arecibo Classic 183257 1 (men&#39;s), International Qualifying Series, Arecibo, Puerto Rico: draft, 1 November
+16. Arecibo Classic 142443 1 (men&#39;s), Challenger Series, Arecibo, Puerto Rico: draft, 1 November
+17. Arecibo Classic 183257 1 (men&#39;s), International Qualifying Series, Arecibo, Puerto Rico: draft, starts 1 November, no end date
+18. Atlantic City Classic 231925 2 (men&#39;s), International Qualifying Series 6,000, Atlantic City, New Jersey: live, 2 November
+19. Atlantic City Classic 234804 2 (men&#39;s), International Qualifying Series 6,000, Atlantic City, New Jersey: closed for entries, 3 November
+20. Encuentro Beach Classic 205046 16 (men&#39;s), Challenger Series, Anglet, France: closed for entries, 3 November
+
+Want me to load the next page?</pre><p><a href="manager/first-page-2/result.png">Open screenshot</a> · <a href="manager/first-page-2/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/first-page-2/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;,
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 367,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 20
+    }
+  ]
+}</pre></details></details><details class="case"><summary>first-page · try 3 — <b>PASS</b></summary><p><b>Question:</b> For season 2026-2027, show the first page of all events, including drafts but excluding cancelled and archived events. Do not filter by dates. State the number of events listed on this page, the total number available, and whether more pages remain. Do not claim this page is the complete season.</p><p><b>Expected:</b> 20 listed records, source total and more-pages flag; no date filtering.</p><p><b>What happened:</b> Lists the same 20 source records; states the captured tool total of 367 and that more pages remain.</p><p class="small">2026-11-02T14:27:48.135Z · 14.9 seconds · HTTP 200</p><pre>This first page of the 2026-27 season lists 20 of 367 events, and more pages remain. It includes drafts and leaves out cancelled and archived events. It&#39;s not the complete season. Upcoming and running events come first, sorted by start date.
+
+1. MEO Rip Curl Pro Portugal (Championship Tour, men&#39;s): Supertubos, Peniche, Portugal, 16–25 October, live
+2. MEO Rip Curl Pro Portugal (Championship Tour, women&#39;s): Supertubos, Peniche, Portugal, 16–25 October, live
+3. Siargao International Surfing Cup (International Qualifying Series, men&#39;s, INTL QS 6,000): Cloud 9, Siargao Island, Philippines, 16–25 October, live
+4. QA WSL-9695 future-same-day 1793028622661 (Qualifying Series, men&#39;s): 56th Street, Newport Beach, California, 21–22 October, draft
+5. QA WSL-9695 today-tomorrow 1793028623464 (Qualifying Series, men&#39;s): 56th Street, Newport Beach, California, 26–27 October, draft
+6. Sunset Pro (Qualifying Series, men&#39;s, QS 2,000): Sunset Beach, Haleiwa, Oahu, 26 October to 2 November, live
+7. Sunset Pro (Qualifying Series, women&#39;s, QS 2,000): Sunset Beach, Haleiwa, Oahu, 26 October to 2 November, live
+8. Us open (Championship Tour, men&#39;s): Ain Diab, Casablanca, Morocco, 28–30 October, draft
+9. Atlantic Park Surf Classic 183325 3 (International Qualifying Series, men&#39;s): 56th Street, Newport Beach, California, 29 October, draft
+10. TEST (Qualifying Series, men&#39;s, QS 4,000): Amami Island, Japan, 30 October to 1 November, live
+11. Atlantic City Classic 134750 2 (International Qualifying Series, men&#39;s, INTL QS 6,000): Anglet, France, 31 October, live
+12. Philippines Pro (Championship Tour, men&#39;s): Cloud 9, Siargao Island, Philippines, 31 October to 10 November, live
+13. Philippines Pro (Championship Tour, women&#39;s): Cloud 9, Siargao Island, Philippines, 31 October to 10 November, live
+14. Arecibo Classic 183257 1 (International Qualifying Series, men&#39;s): no venue set, 1 November, draft
+15. Arecibo Classic 183257 1 (International Qualifying Series, men&#39;s): Arecibo, Puerto Rico, 1 November, draft
+16. Arecibo Classic 142443 1 (Challenger Series, men&#39;s): Arecibo, Puerto Rico, 1 November, draft, no region set
+17. Arecibo Classic 183257 1 (International Qualifying Series, men&#39;s): Arecibo, Puerto Rico, starts 1 November, no end date, draft
+18. Atlantic City Classic 231925 2 (International Qualifying Series, men&#39;s, INTL QS 6,000): Atlantic City, New Jersey, 2 November, live
+19. Atlantic City Classic 234804 2 (International Qualifying Series, men&#39;s, INTL QS 6,000): Atlantic City, New Jersey, 3 November, closed for entries
+20. Encuentro Beach Classic 205046 16 (Challenger Series, men&#39;s): Anglet, France, 3 November, closed for entries
+
+Dates are local to each venue. Several events on this page are still marked live even though their end dates have passed, such as both Portugal events, Siargao, TEST and Atlantic City Classic 134750 2. Want me to load the next page?</pre><p><a href="manager/first-page-3/result.png">Open screenshot</a> · <a href="manager/first-page-3/response.sse.txt">Response stream</a></p><details><summary>Show screenshot</summary><img loading="lazy" src="manager/first-page-3/result.png" alt="AL actual product answer"></details><details><summary>Technical request evidence</summary><pre>{
+  &quot;selectedSeasonId&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+  &quot;searches&quot;: [
+    {
+      &quot;parameters&quot;: {
+        &quot;season_id&quot;: &quot;01a16500-d18a-7089-9f93-87136db1daf5&quot;,
+        &quot;statuses&quot;: [
+          &quot;draft&quot;,
+          &quot;tentative&quot;,
+          &quot;confirmed&quot;,
+          &quot;open_for_entries&quot;,
+          &quot;closed_for_entries&quot;,
+          &quot;standby&quot;,
+          &quot;live&quot;,
+          &quot;completed&quot;
+        ]
+      },
+      &quot;total&quot;: 367,
+      &quot;returnedRows&quot;: 20,
+      &quot;nextOffset&quot;: 20
+    }
+  ]
+}</pre></details></details><section><h2>Evidence and limits</h2><p><a href="accuracy-verification.json">Fresh API reference, all 78 pages</a> · <a href="reviewed-results.json">Reviewed execution</a> · <a href="test-cases.csv">Test cases</a> · <a href="#history">Earlier consistency investigation</a></p><p class="small">Reference captured 2026-11-02T14:24:56.894Z. Name/date/status comparisons were reviewed against the captured API records. Pagination totals were checked against each run’s tool response. Only the retrieval/count assertions passed for the nine no-date controls; one sorting explanation was inaccurate. Small sequential read-only sample, not statistical reliability or full product sign-off. No real payment, event edit or Jira change was performed.</p></section></main></html>

@@ -1,0 +1,530 @@
+data: {"type":"RUN_STARTED","threadId":"3724c44d-2df2-467a-b3d7-73952025f417","runId":"ac84d96f-8921-48da-b3e1-08133b4a22b3"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_STARTED","stepName":"model"}
+
+data: {"type":"TOOL_CALL_START","toolCallId":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","toolCallName":"list_seasons","parentMessageId":"lc_run--01a19ca8-eb3b-7531-802c-b605f4a0ffe5"}
+
+data: {"type":"TOOL_CALL_END","toolCallId":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me"}
+
+data: {"type":"STEP_FINISHED","stepName":"model"}
+
+data: {"type":"STEP_STARTED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"For season 2026-2027, show the first page of all events, including drafts but excluding cancelled and archived events. Do not filter by dates. State the number of events listed on this page, the total number available, and whether more pages remain. Do not claim this page is the complete season.","additional_kwargs":{},"response_metadata":{},"type":"human","name":null,"id":"dfb56c21-667a-41f3-9c09-4044530b0e5f"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"For season 2026-2027, show the first page of all events, including drafts but excluding cancelled and archived events. Do not filter by dates. State the number of events listed on this page, the total number available, and whether more pages remain. Do not claim this page is the complete season.","additional_kwargs":{},"response_metadata":{},"type":"human","name":null,"id":"dfb56c21-667a-41f3-9c09-4044530b0e5f"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"tools"}
+
+data: {"type":"TOOL_CALL_RESULT","messageId":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","toolCallId":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","role":"tool"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"91ac9619-a842-47b7-aec6-0949d38f60d5","tool_call_id":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"tools"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_STARTED","stepName":"model"}
+
+data: {"type":"TOOL_CALL_START","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","toolCallName":"search_events","parentMessageId":"lc_run--01a19ca8-f197-7f22-8f71-ad9b7df2d484"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"{\"s"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"eas"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"on_id\": \""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"01a16500-d1"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"8a"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"-7"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"089-9f9"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"3-871"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"36db1d"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"af5"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":", \"st"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"atuses"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"\": [\"d"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"raft\",\"tenta"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"tiv"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"e\",\"conf"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"irmed"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"\",\"ope"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"n_for_entr"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"ies\",\"cl"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"osed_fo"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"r_entrie"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"s\",\"stan"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"dby\",\"live"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"\",\"complet"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","delta":"ed\"]}"}
+
+data: {"type":"TOOL_CALL_END","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P"}
+
+data: {"type":"STEP_FINISHED","stepName":"model"}
+
+data: {"type":"STEP_STARTED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"91ac9619-a842-47b7-aec6-0949d38f60d5","tool_call_id":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"91ac9619-a842-47b7-aec6-0949d38f60d5","tool_call_id":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"tools"}
+
+data: {"type":"TOOL_CALL_RESULT","messageId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a16500-dbff-76cd-b372-cdfc917ba590\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc28-712d-a612-302976433aba\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-e126-7434-adf0-fe31c87d7e3c\",\"name\":\"Siargao International Surfing Cup\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a178d5-8f66-771c-a6f1-c93e045fb327\",\"name\":\"QA WSL-9695 future-same-day 1793028622661\",\"status\":\"draft\",\"start_date\":\"2026-10-21\",\"end_date\":\"2026-10-22\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a178d5-9268-7684-a141-e333b0edb102\",\"name\":\"QA WSL-9695 today-tomorrow 1793028623464\",\"status\":\"draft\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-10-27\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a16500-ed8c-74bf-b6f4-1a3082f05b40\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a16500-edd5-7239-851b-be14afe80bba\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"womens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a17d18-4562-70a0-a464-2fed81b4e231\",\"name\":\"Us open\",\"status\":\"draft\",\"start_date\":\"2026-10-28\",\"end_date\":\"2026-10-30\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccabe801f06c\",\"spot\":\"Ain Diab\",\"town\":null,\"city\":\"Casablanca\",\"state\":null,\"country_code\":\"MA\",\"region_code\":\"africa\",\"timezone\":\"Africa/Casablanca\"},\"region_codes\":[\"asia\",\"africa\",\"aus_oce\"]},{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17db9-a7a4-7647-ade3-b7530c17b556\",\"name\":\"TEST\",\"status\":\"live\",\"start_date\":\"2026-10-30\",\"end_date\":\"2026-11-01\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 4,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e79162cc5421\",\"spot\":\"Amami Island\",\"town\":\"Amami\",\"city\":\"Amami\",\"state\":\"Kagoshima Prefecture\",\"country_code\":\"JP\",\"region_code\":\"asia\",\"timezone\":\"Asia/Tokyo\"},\"region_codes\":[\"asia\",\"aus_oce\"]},{\"event_id\":\"01a187eb-7cbe-7430-b31d-a3c8aeae3d33\",\"name\":\"Atlantic City Classic 134750 2\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-10-31\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc4b-7451-9d16-0018919edbcf\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a16500-dc78-7290-8543-a9d44a6e8e60\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a19780-2319-71ba-b81d-96aa4480514f\",\"name\":\"Arecibo Classic 142443 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a1755d-8836-739d-8455-c1628a4e7435\",\"name\":\"Atlantic City Classic 231925 2\",\"status\":\"live\",\"start_date\":\"2026-11-02\",\"end_date\":\"2026-11-02\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17578-7dfa-73f5-9f9d-9b54ffb60619\",\"name\":\"Atlantic City Classic 234804 2\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a198e6-e0ce-711b-bfaf-729705fcf48f\",\"name\":\"Encuentro Beach Classic 205046 16\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]}],\"total\":367,\"next_offset\":20}","role":"tool"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a16500-dbff-76cd-b372-cdfc917ba590\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc28-712d-a612-302976433aba\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-e126-7434-adf0-fe31c87d7e3c\",\"name\":\"Siargao International Surfing Cup\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a178d5-8f66-771c-a6f1-c93e045fb327\",\"name\":\"QA WSL-9695 future-same-day 1793028622661\",\"status\":\"draft\",\"start_date\":\"2026-10-21\",\"end_date\":\"2026-10-22\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a178d5-9268-7684-a141-e333b0edb102\",\"name\":\"QA WSL-9695 today-tomorrow 1793028623464\",\"status\":\"draft\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-10-27\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a16500-ed8c-74bf-b6f4-1a3082f05b40\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a16500-edd5-7239-851b-be14afe80bba\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"womens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a17d18-4562-70a0-a464-2fed81b4e231\",\"name\":\"Us open\",\"status\":\"draft\",\"start_date\":\"2026-10-28\",\"end_date\":\"2026-10-30\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccabe801f06c\",\"spot\":\"Ain Diab\",\"town\":null,\"city\":\"Casablanca\",\"state\":null,\"country_code\":\"MA\",\"region_code\":\"africa\",\"timezone\":\"Africa/Casablanca\"},\"region_codes\":[\"asia\",\"africa\",\"aus_oce\"]},{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17db9-a7a4-7647-ade3-b7530c17b556\",\"name\":\"TEST\",\"status\":\"live\",\"start_date\":\"2026-10-30\",\"end_date\":\"2026-11-01\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 4,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e79162cc5421\",\"spot\":\"Amami Island\",\"town\":\"Amami\",\"city\":\"Amami\",\"state\":\"Kagoshima Prefecture\",\"country_code\":\"JP\",\"region_code\":\"asia\",\"timezone\":\"Asia/Tokyo\"},\"region_codes\":[\"asia\",\"aus_oce\"]},{\"event_id\":\"01a187eb-7cbe-7430-b31d-a3c8aeae3d33\",\"name\":\"Atlantic City Classic 134750 2\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-10-31\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc4b-7451-9d16-0018919edbcf\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a16500-dc78-7290-8543-a9d44a6e8e60\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a19780-2319-71ba-b81d-96aa4480514f\",\"name\":\"Arecibo Classic 142443 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a1755d-8836-739d-8455-c1628a4e7435\",\"name\":\"Atlantic City Classic 231925 2\",\"status\":\"live\",\"start_date\":\"2026-11-02\",\"end_date\":\"2026-11-02\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17578-7dfa-73f5-9f9d-9b54ffb60619\",\"name\":\"Atlantic City Classic 234804 2\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a198e6-e0ce-711b-bfaf-729705fcf48f\",\"name\":\"Encuentro Beach Classic 205046 16\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]}],\"total\":367,\"next_offset\":20}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"search_events","id":"3c226353-88ca-4fb9-b553-2394d85a8056","tool_call_id":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"tools"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_STARTED","stepName":"model"}
+
+data: {"type":"REASONING_START","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79"}
+
+data: {"type":"REASONING_MESSAGE_START","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","role":"reasoning"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","delta":"I"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","delta":"'ve"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","delta":" got "}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","delta":"20 events"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","delta":" out"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","delta":" of 367"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","delta":" total, so there are"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","delta":" still more pages to ret"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79","delta":"rieve.\n\n"}
+
+data: {"type":"REASONING_MESSAGE_END","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79"}
+
+data: {"type":"REASONING_END","messageId":"65ffd387-3a85-4a36-ac71-04d016c2ed79"}
+
+data: {"type":"TEXT_MESSAGE_START","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","role":"assistant"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"This"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" first"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" page of the 2026-"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"27 season l"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ists 20 of"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"367 events,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" and more pages remain. It"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" includes drafts and"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" leaves out cancelled"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" and archived events. It's not"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" the complete season. Up"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"coming and"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" running events come first, s"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"orted by start"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" date.\n\n1. MEO"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Rip Curl P"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ro Portugal ("}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"Championship Tour, men's"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"):"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Supertubos, Pe"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"niche,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Portugal, 16–25"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" October, live\n2. M"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"EO Rip Curl"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Pro Portugal ("}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"Championship Tour, women"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"'s): Supertubos,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Peniche, Portug"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"al, 16–25 October"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", live\n3. Siarg"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ao International Surfing C"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"up (International Qualifying"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Series, men's, INT"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"L QS 6,000):"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Cloud 9,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Siargao Island, Phil"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ippines, 16–25 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"October, live\n4. QA"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" WSL-9695 future"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"-same-day 1793028"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"622661 (Qualif"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ying Series, men's): "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"56th Street, Newport"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Beach, California, 21"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"–22 October, draft"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"\n5. QA WSL-"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"9695 today-tomor"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"row 1793028623464"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" (Qualifying"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Series, men's): 56th"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Street, Newport Be"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ach, California, 26–27"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" October, draft\n6."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Sunset Pro ("}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"Qualifying Series,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" men's, QS 2,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"000): Sunset Be"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ach, Haleiwa"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", O"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ahu, 26 October to"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" 2 November, live\n7"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":". Sunset Pro"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" (Qualifying Series"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", women's, QS 2"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":",000): Sunset"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Beach, Haleiw"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"a, Oahu, "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"26 October to 2 November"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", live\n8. Us open"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" (Championship Tour,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" men's): Ain Di"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ab, Casablanca,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Morocco, 28–"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"30 October, draft\n9"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":". Atlantic Park"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Surf Classic 183"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"325 3 (International Q"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ualifying Series, men's"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"): 56th Street,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Newport Beach, California,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" 29 October, draft"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"\n10. TEST (Q"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ualifying Series, men's"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", QS 4,000):"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Amami Island, Jap"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"an, 30 October to"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" 1 November, live\n11"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":". Atlantic City"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Classic 134750 2 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"(International Qualifying"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Series, men's, INTL"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" QS 6,000):"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Anglet, France, 31"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" October, live\n12."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Philippines Pro ("}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"Championship Tour, men's"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"): Cloud 9,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Siargao Island,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Philippines, 31 October"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" to 10 November, live"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"\n13. Philippines P"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ro (Championship Tour"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", women's): Cloud"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" 9, Siargao"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Island, Philippines, "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"31 October to 10 November"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", live\n14. Arec"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ibo Classic 183257"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" 1 (International Qual"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ifying Series, men's):"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" no venue set, 1 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"November, draft\n15."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Arecibo Classic "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"183257 1 (International"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Qualifying Series, men"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"'s): Arecibo,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Puerto Rico,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" 1 November, draft"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"\n16. Arecibo"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Classic 142443 1 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"(Challenger Series,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" men's): Arecibo"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", Puerto Rico"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", 1 November, dra"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ft, no region set\n17."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Arecibo Classic"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" 183257 1 (International"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Qualifying Series,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" men's): Arecibo"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", Puerto Rico"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", star"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ts 1 November, no end"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" date,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" draft\n18. Atl"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"antic City Classic 231"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"925 2 (International Q"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ualifying Series, men's"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", INTL QS 6"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":",000): Atlantic"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" City, New Jersey,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" 2 November, live\n19"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":". Atlantic City"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Classic 234804 2 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"(International Qualifying"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Series, men's, INTL"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" QS 6,000):"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Atlantic City, New"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Jersey, 3 November"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", closed for entries\n20"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":". Encuentro Be"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"ach Classic 205046 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"16 (Challenger"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Series, men's): Angl"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"et, France, 3 November"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":", closed for entries"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"\n\nDates are local"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" to each"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" venue. Several events"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" on this page are still marked live"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" even though their"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" end dates have passed, such"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" as both"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Portugal events,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Siargao, T"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"EST and Atlantic"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" City Classic 134"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":"750 2."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" Want"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" me"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" to load"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","delta":" the next page?"}
+
+data: {"type":"TEXT_MESSAGE_END","messageId":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc"}
+
+data: {"type":"STEP_FINISHED","stepName":"model"}
+
+data: {"type":"STEP_STARTED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a16500-dbff-76cd-b372-cdfc917ba590\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc28-712d-a612-302976433aba\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-e126-7434-adf0-fe31c87d7e3c\",\"name\":\"Siargao International Surfing Cup\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a178d5-8f66-771c-a6f1-c93e045fb327\",\"name\":\"QA WSL-9695 future-same-day 1793028622661\",\"status\":\"draft\",\"start_date\":\"2026-10-21\",\"end_date\":\"2026-10-22\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a178d5-9268-7684-a141-e333b0edb102\",\"name\":\"QA WSL-9695 today-tomorrow 1793028623464\",\"status\":\"draft\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-10-27\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a16500-ed8c-74bf-b6f4-1a3082f05b40\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a16500-edd5-7239-851b-be14afe80bba\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"womens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a17d18-4562-70a0-a464-2fed81b4e231\",\"name\":\"Us open\",\"status\":\"draft\",\"start_date\":\"2026-10-28\",\"end_date\":\"2026-10-30\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccabe801f06c\",\"spot\":\"Ain Diab\",\"town\":null,\"city\":\"Casablanca\",\"state\":null,\"country_code\":\"MA\",\"region_code\":\"africa\",\"timezone\":\"Africa/Casablanca\"},\"region_codes\":[\"asia\",\"africa\",\"aus_oce\"]},{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17db9-a7a4-7647-ade3-b7530c17b556\",\"name\":\"TEST\",\"status\":\"live\",\"start_date\":\"2026-10-30\",\"end_date\":\"2026-11-01\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 4,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e79162cc5421\",\"spot\":\"Amami Island\",\"town\":\"Amami\",\"city\":\"Amami\",\"state\":\"Kagoshima Prefecture\",\"country_code\":\"JP\",\"region_code\":\"asia\",\"timezone\":\"Asia/Tokyo\"},\"region_codes\":[\"asia\",\"aus_oce\"]},{\"event_id\":\"01a187eb-7cbe-7430-b31d-a3c8aeae3d33\",\"name\":\"Atlantic City Classic 134750 2\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-10-31\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc4b-7451-9d16-0018919edbcf\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a16500-dc78-7290-8543-a9d44a6e8e60\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a19780-2319-71ba-b81d-96aa4480514f\",\"name\":\"Arecibo Classic 142443 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a1755d-8836-739d-8455-c1628a4e7435\",\"name\":\"Atlantic City Classic 231925 2\",\"status\":\"live\",\"start_date\":\"2026-11-02\",\"end_date\":\"2026-11-02\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17578-7dfa-73f5-9f9d-9b54ffb60619\",\"name\":\"Atlantic City Classic 234804 2\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a198e6-e0ce-711b-bfaf-729705fcf48f\",\"name\":\"Encuentro Beach Classic 205046 16\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]}],\"total\":367,\"next_offset\":20}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"search_events","id":"3c226353-88ca-4fb9-b553-2394d85a8056","tool_call_id":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"For season 2026-2027, show the first page of all events, including drafts but excluding cancelled and archived events. Do not filter by dates. State the number of events listed on this page, the total number available, and whether more pages remain. Do not claim this page is the complete season.","additional_kwargs":{},"response_metadata":{},"type":"human","name":null,"id":"dfb56c21-667a-41f3-9c09-4044530b0e5f"},{"content":[{"id":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","input":{},"name":"list_seasons","type":"tool_use","toolset_name":null,"index":0,"partial_json":""}],"additional_kwargs":{},"response_metadata":{"model_name":"claude-opus-5-5","model_provider":"anthropic","stop_reason":"tool_use","stop_sequence":null},"type":"ai","name":null,"id":"lc_run--01a19ca8-eb3b-7531-802c-b605f4a0ffe5","tool_calls":[{"name":"list_seasons","args":{},"id":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","type":"tool_call"}],"invalid_tool_calls":[],"usage_metadata":{"input_tokens":12215,"output_tokens":28,"total_tokens":12243,"input_token_details":{"cache_creation":0,"cache_read":12211},"output_token_details":{"reasoning":0}}},{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"91ac9619-a842-47b7-aec6-0949d38f60d5","tool_call_id":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","artifact":null,"status":"success"},{"content":[{"id":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","input":{},"name":"search_events","type":"tool_use","toolset_name":null,"index":0,"partial_json":"{\"season_id\": \"01a16500-d18a-7089-9f93-87136db1daf5\", \"statuses\": [\"draft\",\"tentative\",\"confirmed\",\"open_for_entries\",\"closed_for_entries\",\"standby\",\"live\",\"completed\"]}"}],"additional_kwargs":{},"response_metadata":{"model_name":"claude-opus-5-5","model_provider":"anthropic","stop_reason":"tool_use","stop_sequence":null},"type":"ai","name":null,"id":"lc_run--01a19ca8-f197-7f22-8f71-ad9b7df2d484","tool_calls":[{"name":"search_events","args":{"season_id":"01a16500-d18a-7089-9f93-87136db1daf5","statuses":["draft","tentative","confirmed","open_for_entries","closed_for_entries","standby","live","completed"]},"id":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","type":"tool_call"}],"invalid_tool_calls":[],"usage_metadata":{"input_tokens":12857,"output_tokens":130,"total_tokens":12987,"input_token_details":{"cache_creation":845,"cache_read":12010},"output_token_details":{"reasoning":0}}},{"content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a16500-dbff-76cd-b372-cdfc917ba590\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc28-712d-a612-302976433aba\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-e126-7434-adf0-fe31c87d7e3c\",\"name\":\"Siargao International Surfing Cup\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a178d5-8f66-771c-a6f1-c93e045fb327\",\"name\":\"QA WSL-9695 future-same-day 1793028622661\",\"status\":\"draft\",\"start_date\":\"2026-10-21\",\"end_date\":\"2026-10-22\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a178d5-9268-7684-a141-e333b0edb102\",\"name\":\"QA WSL-9695 today-tomorrow 1793028623464\",\"status\":\"draft\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-10-27\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a16500-ed8c-74bf-b6f4-1a3082f05b40\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a16500-edd5-7239-851b-be14afe80bba\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"womens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a17d18-4562-70a0-a464-2fed81b4e231\",\"name\":\"Us open\",\"status\":\"draft\",\"start_date\":\"2026-10-28\",\"end_date\":\"2026-10-30\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccabe801f06c\",\"spot\":\"Ain Diab\",\"town\":null,\"city\":\"Casablanca\",\"state\":null,\"country_code\":\"MA\",\"region_code\":\"africa\",\"timezone\":\"Africa/Casablanca\"},\"region_codes\":[\"asia\",\"africa\",\"aus_oce\"]},{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17db9-a7a4-7647-ade3-b7530c17b556\",\"name\":\"TEST\",\"status\":\"live\",\"start_date\":\"2026-10-30\",\"end_date\":\"2026-11-01\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 4,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e79162cc5421\",\"spot\":\"Amami Island\",\"town\":\"Amami\",\"city\":\"Amami\",\"state\":\"Kagoshima Prefecture\",\"country_code\":\"JP\",\"region_code\":\"asia\",\"timezone\":\"Asia/Tokyo\"},\"region_codes\":[\"asia\",\"aus_oce\"]},{\"event_id\":\"01a187eb-7cbe-7430-b31d-a3c8aeae3d33\",\"name\":\"Atlantic City Classic 134750 2\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-10-31\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc4b-7451-9d16-0018919edbcf\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a16500-dc78-7290-8543-a9d44a6e8e60\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a19780-2319-71ba-b81d-96aa4480514f\",\"name\":\"Arecibo Classic 142443 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a1755d-8836-739d-8455-c1628a4e7435\",\"name\":\"Atlantic City Classic 231925 2\",\"status\":\"live\",\"start_date\":\"2026-11-02\",\"end_date\":\"2026-11-02\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17578-7dfa-73f5-9f9d-9b54ffb60619\",\"name\":\"Atlantic City Classic 234804 2\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a198e6-e0ce-711b-bfaf-729705fcf48f\",\"name\":\"Encuentro Beach Classic 205046 16\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]}],\"total\":367,\"next_offset\":20}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"search_events","id":"3c226353-88ca-4fb9-b553-2394d85a8056","tool_call_id":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","artifact":null,"status":"success"},{"content":[{"thinking":"I've got 20 events out of 367 total, so there are still more pages to retrieve.\n\n","type":"thinking","index":0,"signature":"CAQSmQQKEggTEAEYAjgBQgh0aGlua2luZxIM0yNby/96qvH37nfIGgz6+VTB5AuZZsw3cQciMNBzaEYW0fCEvm8PXK1G3au5/uenqmF5fNhyUVQNSnhc/tbexUNlbLAXVMovWnq31Cq0A7EgHqVxAQLrVwcqEJK6haWRDSXo5dCJjl+sxBbU2+JRAwDous+TajYogHQXIChymTe9PA0lMq7OGk3BFqQAk8VNoKU79AULOMSzE8WD91GN2/+YCmEST88ypOmEtaf8DGjgSEBjwDr1w9ZqvINz55mdcYSdHzXH7So0ewwuM/lHAqw4+SOZmFJ6GdZumJxVZj+3jDm2l1ui0ghakghCZS4m6ttYp4mzy6rmp4dpfc8LixK4hi3CgXig3WdtSSuBtwgTXBZtw1VFcDsDZjODetYESOHhNVGvEJBntQ/2TMujTHlHAq7qHlZTIbZY5sMdVXCusrlsHOP38Y5L+DGXl0wKBhgHkEqUej7+tc63hPW7NnI5xDszvdFKCg/h94bF7UCuzlsoa1D5alYmz7imKBoJ4M/+33yLyEhqosuI76SLIVMQvYpCNqU0Z8kwZB/3INXzYtPTBcD3XpU8hVEh6id7JgxJjNC+UpH+WwHMIoOQTNWXVE3hwjjYOrryUS7MhaiLATIVVLcyKa4bon/Wk1f7hLl9Plr4gI15crCriqbTcgOqxbeX1zDq5k6vyjG+wJrUUEYYAQ=="},{"text":"This first page of the 2026-27 season lists 20 of 367 events, and more pages remain. It includes drafts and leaves out cancelled and archived events. It's not the complete season. Upcoming and running events come first, sorted by start date.\n\n1. MEO Rip Curl Pro Portugal (Championship Tour, men's): Supertubos, Peniche, Portugal, 16–25 October, live\n2. MEO Rip Curl Pro Portugal (Championship Tour, women's): Supertubos, Peniche, Portugal, 16–25 October, live\n3. Siargao International Surfing Cup (International Qualifying Series, men's, INTL QS 6,000): Cloud 9, Siargao Island, Philippines, 16–25 October, live\n4. QA WSL-9695 future-same-day 1793028622661 (Qualifying Series, men's): 56th Street, Newport Beach, California, 21–22 October, draft\n5. QA WSL-9695 today-tomorrow 1793028623464 (Qualifying Series, men's): 56th Street, Newport Beach, California, 26–27 October, draft\n6. Sunset Pro (Qualifying Series, men's, QS 2,000): Sunset Beach, Haleiwa, Oahu, 26 October to 2 November, live\n7. Sunset Pro (Qualifying Series, women's, QS 2,000): Sunset Beach, Haleiwa, Oahu, 26 October to 2 November, live\n8. Us open (Championship Tour, men's): Ain Diab, Casablanca, Morocco, 28–30 October, draft\n9. Atlantic Park Surf Classic 183325 3 (International Qualifying Series, men's): 56th Street, Newport Beach, California, 29 October, draft\n10. TEST (Qualifying Series, men's, QS 4,000): Amami Island, Japan, 30 October to 1 November, live\n11. Atlantic City Classic 134750 2 (International Qualifying Series, men's, INTL QS 6,000): Anglet, France, 31 October, live\n12. Philippines Pro (Championship Tour, men's): Cloud 9, Siargao Island, Philippines, 31 October to 10 November, live\n13. Philippines Pro (Championship Tour, women's): Cloud 9, Siargao Island, Philippines, 31 October to 10 November, live\n14. Arecibo Classic 183257 1 (International Qualifying Series, men's): no venue set, 1 November, draft\n15. Arecibo Classic 183257 1 (International Qualifying Series, men's): Arecibo, Puerto Rico, 1 November, draft\n16. Arecibo Classic 142443 1 (Challenger Series, men's): Arecibo, Puerto Rico, 1 November, draft, no region set\n17. Arecibo Classic 183257 1 (International Qualifying Series, men's): Arecibo, Puerto Rico, starts 1 November, no end date, draft\n18. Atlantic City Classic 231925 2 (International Qualifying Series, men's, INTL QS 6,000): Atlantic City, New Jersey, 2 November, live\n19. Atlantic City Classic 234804 2 (International Qualifying Series, men's, INTL QS 6,000): Atlantic City, New Jersey, 3 November, closed for entries\n20. Encuentro Beach Classic 205046 16 (Challenger Series, men's): Anglet, France, 3 November, closed for entries\n\nDates are local to each venue. Several events on this page are still marked live even though their end dates have passed, such as both Portugal events, Siargao, TEST and Atlantic City Classic 134750 2. Want me to load the next page?","type":"text","index":1}],"additional_kwargs":{},"response_metadata":{"model_name":"claude-opus-5-5","model_provider":"anthropic","stop_reason":"end_turn","stop_sequence":null},"type":"ai","name":null,"id":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","tool_calls":[],"invalid_tool_calls":[],"usage_metadata":{"input_tokens":17368,"output_tokens":1269,"total_tokens":18637,"input_token_details":{"cache_creation":4511,"cache_read":12855},"output_token_details":{"reasoning":24}}}]}}
+
+data: {"type":"MESSAGES_SNAPSHOT","messages":[{"id":"dfb56c21-667a-41f3-9c09-4044530b0e5f","role":"user","content":"For season 2026-2027, show the first page of all events, including drafts but excluding cancelled and archived events. Do not filter by dates. State the number of events listed on this page, the total number available, and whether more pages remain. Do not claim this page is the complete season."},{"id":"lc_run--01a19ca8-eb3b-7531-802c-b605f4a0ffe5","role":"assistant","content":"","toolCalls":[{"id":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me","type":"function","function":{"name":"list_seasons","arguments":"{}"}}]},{"id":"91ac9619-a842-47b7-aec6-0949d38f60d5","role":"tool","content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","toolCallId":"toolu_bdrk_01Tc9m4zoh6kAhQq2uQCZ6Me"},{"id":"lc_run--01a19ca8-f197-7f22-8f71-ad9b7df2d484","role":"assistant","content":"","toolCalls":[{"id":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P","type":"function","function":{"name":"search_events","arguments":"{\"season_id\": \"01a16500-d18a-7089-9f93-87136db1daf5\", \"statuses\": [\"draft\", \"tentative\", \"confirmed\", \"open_for_entries\", \"closed_for_entries\", \"standby\", \"live\", \"completed\"]}"}}]},{"id":"3c226353-88ca-4fb9-b553-2394d85a8056","role":"tool","content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a16500-dbff-76cd-b372-cdfc917ba590\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc28-712d-a612-302976433aba\",\"name\":\"MEO Rip Curl Pro Portugal\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e76aeb29afe0\",\"spot\":\"Supertubos\",\"town\":\"Peniche\",\"city\":\"Peniche\",\"state\":\"Peniche\",\"country_code\":\"PT\",\"region_code\":\"europe\",\"timezone\":\"Europe/Lisbon\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-e126-7434-adf0-fe31c87d7e3c\",\"name\":\"Siargao International Surfing Cup\",\"status\":\"live\",\"start_date\":\"2026-10-16\",\"end_date\":\"2026-10-25\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a178d5-8f66-771c-a6f1-c93e045fb327\",\"name\":\"QA WSL-9695 future-same-day 1793028622661\",\"status\":\"draft\",\"start_date\":\"2026-10-21\",\"end_date\":\"2026-10-22\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a178d5-9268-7684-a141-e333b0edb102\",\"name\":\"QA WSL-9695 today-tomorrow 1793028623464\",\"status\":\"draft\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-10-27\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a16500-ed8c-74bf-b6f4-1a3082f05b40\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a16500-edd5-7239-851b-be14afe80bba\",\"name\":\"Sunset Pro\",\"status\":\"live\",\"start_date\":\"2026-10-26\",\"end_date\":\"2026-11-02\",\"tour\":\"Qualifying Series\",\"division\":\"womens\",\"rating\":\"QS 2,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e75c36608f14\",\"spot\":\"Sunset Beach\",\"town\":\"Haleiwa\",\"city\":\"Oahu\",\"state\":null,\"country_code\":\"US-HI\",\"region_code\":\"hawaii_tahiti\",\"timezone\":\"Pacific/Honolulu\"},\"region_codes\":[\"hawaii_tahiti\"]},{\"event_id\":\"01a17d18-4562-70a0-a464-2fed81b4e231\",\"name\":\"Us open\",\"status\":\"draft\",\"start_date\":\"2026-10-28\",\"end_date\":\"2026-10-30\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccabe801f06c\",\"spot\":\"Ain Diab\",\"town\":null,\"city\":\"Casablanca\",\"state\":null,\"country_code\":\"MA\",\"region_code\":\"africa\",\"timezone\":\"Africa/Casablanca\"},\"region_codes\":[\"asia\",\"africa\",\"aus_oce\"]},{\"event_id\":\"01a17ea6-5850-71c8-bd6a-a8c03311a140\",\"name\":\"Atlantic Park Surf Classic 183325 3\",\"status\":\"draft\",\"start_date\":\"2026-10-29\",\"end_date\":\"2026-10-29\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e74c30a4a864\",\"spot\":\"56th Street\",\"town\":\"Newport Beach\",\"city\":\"Newport Beach\",\"state\":\"California\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/Los_Angeles\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17db9-a7a4-7647-ade3-b7530c17b556\",\"name\":\"TEST\",\"status\":\"live\",\"start_date\":\"2026-10-30\",\"end_date\":\"2026-11-01\",\"tour\":\"Qualifying Series\",\"division\":\"mens\",\"rating\":\"QS 4,000\",\"location\":{\"location_id\":\"01a16500-a867-74e9-8dbf-e79162cc5421\",\"spot\":\"Amami Island\",\"town\":\"Amami\",\"city\":\"Amami\",\"state\":\"Kagoshima Prefecture\",\"country_code\":\"JP\",\"region_code\":\"asia\",\"timezone\":\"Asia/Tokyo\"},\"region_codes\":[\"asia\",\"aus_oce\"]},{\"event_id\":\"01a187eb-7cbe-7430-b31d-a3c8aeae3d33\",\"name\":\"Atlantic City Classic 134750 2\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-10-31\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]},{\"event_id\":\"01a16500-dc4b-7451-9d16-0018919edbcf\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a16500-dc78-7290-8543-a9d44a6e8e60\",\"name\":\"Philippines Pro\",\"status\":\"live\",\"start_date\":\"2026-10-31\",\"end_date\":\"2026-11-10\",\"tour\":\"Championship Tour\",\"division\":\"womens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cc6dcc1911af\",\"spot\":\"Cloud 9\",\"town\":\"Siargao Island\",\"city\":\"Siargao Island\",\"state\":\"Surigao del Norte\",\"country_code\":\"PH\",\"region_code\":\"asia\",\"timezone\":\"Asia/Manila\"},\"region_codes\":[\"asia\"]},{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a19780-2319-71ba-b81d-96aa4480514f\",\"name\":\"Arecibo Classic 142443 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a1755d-8836-739d-8455-c1628a4e7435\",\"name\":\"Atlantic City Classic 231925 2\",\"status\":\"live\",\"start_date\":\"2026-11-02\",\"end_date\":\"2026-11-02\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17578-7dfa-73f5-9f9d-9b54ffb60619\",\"name\":\"Atlantic City Classic 234804 2\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":\"INTL QS 6,000\",\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-ccd2bf7d974c\",\"spot\":\"Atlantic City\",\"town\":\"Atlantic City\",\"city\":\"New Jersey\",\"state\":\"New Jersey\",\"country_code\":\"US\",\"region_code\":\"north_america\",\"timezone\":\"America/New_York\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a198e6-e0ce-711b-bfaf-729705fcf48f\",\"name\":\"Encuentro Beach Classic 205046 16\",\"status\":\"closed_for_entries\",\"start_date\":\"2026-11-03\",\"end_date\":\"2026-11-03\",\"tour\":\"Challenger Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cce09879122f\",\"spot\":\"Anglet\",\"town\":\"Anglet\",\"city\":\"Pyrenees\",\"state\":\"Pyrenees\",\"country_code\":\"FR\",\"region_code\":\"europe\",\"timezone\":\"Europe/Paris\"},\"region_codes\":[\"europe\"]}],\"total\":367,\"next_offset\":20}","toolCallId":"toolu_bdrk_01UWd7NDaJufLrJwUXCKmC3P"},{"id":"lc_run--01a19ca8-fb23-7d03-807c-97771825c5bc","role":"assistant","content":"This first page of the 2026-27 season lists 20 of 367 events, and more pages remain. It includes drafts and leaves out cancelled and archived events. It's not the complete season. Upcoming and running events come first, sorted by start date.\n\n1. MEO Rip Curl Pro Portugal (Championship Tour, men's): Supertubos, Peniche, Portugal, 16–25 October, live\n2. MEO Rip Curl Pro Portugal (Championship Tour, women's): Supertubos, Peniche, Portugal, 16–25 October, live\n3. Siargao International Surfing Cup (International Qualifying Series, men's, INTL QS 6,000): Cloud 9, Siargao Island, Philippines, 16–25 October, live\n4. QA WSL-9695 future-same-day 1793028622661 (Qualifying Series, men's): 56th Street, Newport Beach, California, 21–22 October, draft\n5. QA WSL-9695 today-tomorrow 1793028623464 (Qualifying Series, men's): 56th Street, Newport Beach, California, 26–27 October, draft\n6. Sunset Pro (Qualifying Series, men's, QS 2,000): Sunset Beach, Haleiwa, Oahu, 26 October to 2 November, live\n7. Sunset Pro (Qualifying Series, women's, QS 2,000): Sunset Beach, Haleiwa, Oahu, 26 October to 2 November, live\n8. Us open (Championship Tour, men's): Ain Diab, Casablanca, Morocco, 28–30 October, draft\n9. Atlantic Park Surf Classic 183325 3 (International Qualifying Series, men's): 56th Street, Newport Beach, California, 29 October, draft\n10. TEST (Qualifying Series, men's, QS 4,000): Amami Island, Japan, 30 October to 1 November, live\n11. Atlantic City Classic 134750 2 (International Qualifying Series, men's, INTL QS 6,000): Anglet, France, 31 October, live\n12. Philippines Pro (Championship Tour, men's): Cloud 9, Siargao Island, Philippines, 31 October to 10 November, live\n13. Philippines Pro (Championship Tour, women's): Cloud 9, Siargao Island, Philippines, 31 October to 10 November, live\n14. Arecibo Classic 183257 1 (International Qualifying Series, men's): no venue set, 1 November, draft\n15. Arecibo Classic 183257 1 (International Qualifying Series, men's): Arecibo, Puerto Rico, 1 November, draft\n16. Arecibo Classic 142443 1 (Challenger Series, men's): Arecibo, Puerto Rico, 1 November, draft, no region set\n17. Arecibo Classic 183257 1 (International Qualifying Series, men's): Arecibo, Puerto Rico, starts 1 November, no end date, draft\n18. Atlantic City Classic 231925 2 (International Qualifying Series, men's, INTL QS 6,000): Atlantic City, New Jersey, 2 November, live\n19. Atlantic City Classic 234804 2 (International Qualifying Series, men's, INTL QS 6,000): Atlantic City, New Jersey, 3 November, closed for entries\n20. Encuentro Beach Classic 205046 16 (Challenger Series, men's): Anglet, France, 3 November, closed for entries\n\nDates are local to each venue. Several events on this page are still marked live even though their end dates have passed, such as both Portugal events, Siargao, TEST and Atlantic City Classic 134750 2. Want me to load the next page?"}]}
+
+data: {"type":"RUN_FINISHED","threadId":"3724c44d-2df2-467a-b3d7-73952025f417","runId":"ac84d96f-8921-48da-b3e1-08133b4a22b3","usage":[{"provider":"anthropic","model":"us.anthropic.claude-opus-5-5","inputTokens":42440,"outputTokens":1427,"totalTokens":43867,"reasoningTokens":24,"cachedInputTokens":37076}]}
+

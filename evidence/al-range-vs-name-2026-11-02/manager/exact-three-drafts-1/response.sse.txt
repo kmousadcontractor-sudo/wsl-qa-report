@@ -1,0 +1,268 @@
+data: {"type":"RUN_STARTED","threadId":"ac4ddd4a-a648-4954-8ab4-0fb3b97b9a4c","runId":"ab47277d-8bd9-47c2-a786-ad2fc246e375"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_STARTED","stepName":"model"}
+
+data: {"type":"TOOL_CALL_START","toolCallId":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","toolCallName":"list_seasons","parentMessageId":"lc_run--01a19ca6-d8f2-78e2-8381-6b425d9ada9f"}
+
+data: {"type":"TOOL_CALL_END","toolCallId":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW"}
+
+data: {"type":"STEP_FINISHED","stepName":"model"}
+
+data: {"type":"STEP_STARTED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"Find every distinct event named exactly \"Arecibo Classic 183257 1\" in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. List each separate event with its start date and status, and state how many distinct events you found.","additional_kwargs":{},"response_metadata":{},"type":"human","name":null,"id":"fc1851b9-ce49-4f27-b8d6-b06a78f09c9a"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"Find every distinct event named exactly \"Arecibo Classic 183257 1\" in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. List each separate event with its start date and status, and state how many distinct events you found.","additional_kwargs":{},"response_metadata":{},"type":"human","name":null,"id":"fc1851b9-ce49-4f27-b8d6-b06a78f09c9a"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"tools"}
+
+data: {"type":"TOOL_CALL_RESULT","messageId":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","toolCallId":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","role":"tool"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"f89845f0-bd80-47be-b1c1-ea2c65de572d","tool_call_id":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"tools"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_STARTED","stepName":"model"}
+
+data: {"type":"TOOL_CALL_START","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","toolCallName":"search_events","parentMessageId":"lc_run--01a19ca6-de13-7760-b5e5-3a75263c7ff0"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"{\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"season_id\":"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":" \"01a16500-d"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"18a-7089-9f9"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"3-8"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"7136db"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"1daf5\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":", "}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"\"quer"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"y\": \"Are"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"cibo"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":" Clas"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"sic 1832"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"57"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":" 1\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":", \"statuses"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"\": [\"draft\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":",\"tent"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"ative\",\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"confirmed\","}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"\"open"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"_fo"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"r_entri"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"es\","}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"\"close"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"d_for_"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"entries\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":",\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"standby\",\"l"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"ive\""}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":",\"co"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"mp"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","delta":"leted\"]}"}
+
+data: {"type":"TOOL_CALL_END","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw"}
+
+data: {"type":"STEP_FINISHED","stepName":"model"}
+
+data: {"type":"STEP_STARTED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"f89845f0-bd80-47be-b1c1-ea2c65de572d","tool_call_id":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"f89845f0-bd80-47be-b1c1-ea2c65de572d","tool_call_id":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"tools"}
+
+data: {"type":"TOOL_CALL_RESULT","messageId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-519f-7556-8ad1-7cb15bc0d15e\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-07\",\"end_date\":\"2026-11-07\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-3ee2-7124-83cf-2ad9d3e1ff38\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":null,\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]}],\"total\":5,\"next_offset\":null}","role":"tool"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-519f-7556-8ad1-7cb15bc0d15e\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-07\",\"end_date\":\"2026-11-07\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-3ee2-7124-83cf-2ad9d3e1ff38\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":null,\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]}],\"total\":5,\"next_offset\":null}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"search_events","id":"088e28f6-c2eb-4735-b22a-217ea3238bce","tool_call_id":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"tools"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.before_model"}
+
+data: {"type":"STEP_STARTED","stepName":"model"}
+
+data: {"type":"REASONING_START","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591"}
+
+data: {"type":"REASONING_MESSAGE_START","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591","role":"reasoning"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591","delta":"All"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591","delta":" five are"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591","delta":" named"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591","delta":" ex"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591","delta":"actly,"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591","delta":" with distinct "}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591","delta":"ids, so ever"}
+
+data: {"type":"REASONING_MESSAGE_CONTENT","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591","delta":"ything checks out.\n\n"}
+
+data: {"type":"REASONING_MESSAGE_END","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591"}
+
+data: {"type":"REASONING_END","messageId":"c315d2a8-0e3a-488c-9d57-2945d4a77591"}
+
+data: {"type":"TEXT_MESSAGE_START","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","role":"assistant"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"I found"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" **"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"5 separ"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"ate events** named"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" exactly \"Arecib"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"o Classic 183257 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"1\" in the 2026-"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"27 season. All five are dr"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"afts on the men"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"'s International Qualifying"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" Series:\n\n1. Star"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"ts "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"1 November 2026, dra"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"ft. No venue set."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"\n2. Starts 1 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"November 2026, draft."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" Venue: Arecib"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"o,"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" Puerto Rico."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"\n3. Starts 1 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"November 2026, draft."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" Venue: Arecib"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"o, Puerto R"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"ico. No end date set."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"\n4. Starts 7 "}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"November 2026, draft."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" Venue: Arecib"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"o, Puerto R"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"ico.\n5. No start date"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" set (ends 1 November"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" 2026), draft."}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" Venue: Arecibo"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":", Puerto Rico"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":".\n\nNone of them"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":" is cancelled or archived"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","delta":"."}
+
+data: {"type":"TEXT_MESSAGE_END","messageId":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40"}
+
+data: {"type":"STEP_FINISHED","stepName":"model"}
+
+data: {"type":"STEP_STARTED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"_UsageMetrics.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_FINISHED","stepName":"ToolCallLimitMiddleware.after_model"}
+
+data: {"type":"STEP_STARTED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-519f-7556-8ad1-7cb15bc0d15e\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-07\",\"end_date\":\"2026-11-07\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-3ee2-7124-83cf-2ad9d3e1ff38\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":null,\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]}],\"total\":5,\"next_offset\":null}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"search_events","id":"088e28f6-c2eb-4735-b22a-217ea3238bce","tool_call_id":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","artifact":null,"status":"success"}],"tools":[],"copilotkit":{"actions":[],"context":[]}}}
+
+data: {"type":"STEP_FINISHED","stepName":"ModelCallLimitMiddleware.after_model"}
+
+data: {"type":"STATE_SNAPSHOT","snapshot":{"messages":[{"content":"Find every distinct event named exactly \"Arecibo Classic 183257 1\" in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. List each separate event with its start date and status, and state how many distinct events you found.","additional_kwargs":{},"response_metadata":{},"type":"human","name":null,"id":"fc1851b9-ce49-4f27-b8d6-b06a78f09c9a"},{"content":[{"id":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","input":{},"name":"list_seasons","type":"tool_use","toolset_name":null,"index":0,"partial_json":""}],"additional_kwargs":{},"response_metadata":{"model_name":"claude-opus-5-5","model_provider":"anthropic","stop_reason":"tool_use","stop_sequence":null},"type":"ai","name":null,"id":"lc_run--01a19ca6-d8f2-78e2-8381-6b425d9ada9f","tool_calls":[{"name":"list_seasons","args":{},"id":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","type":"tool_call"}],"invalid_tool_calls":[],"usage_metadata":{"input_tokens":12218,"output_tokens":28,"total_tokens":12246,"input_token_details":{"cache_creation":204,"cache_read":12010},"output_token_details":{"reasoning":0}}},{"content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"list_seasons","id":"f89845f0-bd80-47be-b1c1-ea2c65de572d","tool_call_id":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","artifact":null,"status":"success"},{"content":[{"id":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","input":{},"name":"search_events","type":"tool_use","toolset_name":null,"index":0,"partial_json":"{\"season_id\": \"01a16500-d18a-7089-9f93-87136db1daf5\", \"query\": \"Arecibo Classic 183257 1\", \"statuses\": [\"draft\",\"tentative\",\"confirmed\",\"open_for_entries\",\"closed_for_entries\",\"standby\",\"live\",\"completed\"]}"}],"additional_kwargs":{},"response_metadata":{"model_name":"claude-opus-5-5","model_provider":"anthropic","stop_reason":"tool_use","stop_sequence":null},"type":"ai","name":null,"id":"lc_run--01a19ca6-de13-7760-b5e5-3a75263c7ff0","tool_calls":[{"name":"search_events","args":{"season_id":"01a16500-d18a-7089-9f93-87136db1daf5","query":"Arecibo Classic 183257 1","statuses":["draft","tentative","confirmed","open_for_entries","closed_for_entries","standby","live","completed"]},"id":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","type":"tool_call"}],"invalid_tool_calls":[],"usage_metadata":{"input_tokens":12860,"output_tokens":163,"total_tokens":13023,"input_token_details":{"cache_creation":644,"cache_read":12214},"output_token_details":{"reasoning":0}}},{"content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-519f-7556-8ad1-7cb15bc0d15e\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-07\",\"end_date\":\"2026-11-07\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-3ee2-7124-83cf-2ad9d3e1ff38\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":null,\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]}],\"total\":5,\"next_offset\":null}","additional_kwargs":{},"response_metadata":{},"type":"tool","name":"search_events","id":"088e28f6-c2eb-4735-b22a-217ea3238bce","tool_call_id":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","artifact":null,"status":"success"},{"content":[{"thinking":"All five are named exactly, with distinct ids, so everything checks out.\n\n","type":"thinking","index":0,"signature":"CAQShwQKEggTEAEYAjgBQgh0aGlua2luZxIMxAfht2Zl7r4B91D0Ggx1DRGMaOef5wFyBgoiMFaKRFzCmmFCXOKQsRZlfmCEDx4gd72QK3wBs8DbM31Fte17gHP5KDtm43h5UAZOgiqiA++Oo3JqJffpP6rZ/8AWYPSlq+4/lV/zb7kMKV57iyaL5W3JcGDkn1YUm44lXZDu6lFlYHez5rBjgv3HFyQZrIZp3YvBgEE+3ANu15tjgpT80HTk87nJ+rZTCr00RZIwpVZXIp+YSygZw1Cd01RulxH/3/Nj9U03MdRDKxm/hIPgFfPO/Kbay7rFz1pCg+J9e0gZmmD2aaHvXu6CcW4SnJsfOd6AOjNSkot5SyFoyQO+wPdK3dLfT0iY/yNBhI/DHEA59bId+oW1aULeBssDz1qPP0M8CyUPsBppo8bnqxIqr+1Yx7WXYZErYEZWxln7M3a6Hfey/y/sQzgtyThHFRCLYLtjB10+B0sN9RM5C0kclys+YE8+kGrXXAqoq8qllu1GJcz6zBFbhPVurUcR5kYX+hO8CaLhT/MgF63nPmXFaG6ZKv2XvVYPsjP1s5XVhDos18Q5u8/iX7uso4dW2vauseauTWbC5n0L6N/ORoUVMlqSZi0KyQ07f2pWOkuDEJ4akPsxIDYucSqReAW9alr8WKeGVRNBCmTx5kcuh2AcvvAYAQ=="},{"text":"I found **5 separate events** named exactly \"Arecibo Classic 183257 1\" in the 2026-27 season. All five are drafts on the men's International Qualifying Series:\n\n1. Starts 1 November 2026, draft. No venue set.\n2. Starts 1 November 2026, draft. Venue: Arecibo, Puerto Rico.\n3. Starts 1 November 2026, draft. Venue: Arecibo, Puerto Rico. No end date set.\n4. Starts 7 November 2026, draft. Venue: Arecibo, Puerto Rico.\n5. No start date set (ends 1 November 2026), draft. Venue: Arecibo, Puerto Rico.\n\nNone of them is cancelled or archived.","type":"text","index":1}],"additional_kwargs":{},"response_metadata":{"model_name":"claude-opus-5-5","model_provider":"anthropic","stop_reason":"end_turn","stop_sequence":null},"type":"ai","name":null,"id":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","tool_calls":[],"invalid_tool_calls":[],"usage_metadata":{"input_tokens":14059,"output_tokens":262,"total_tokens":14321,"input_token_details":{"cache_creation":1199,"cache_read":12858},"output_token_details":{"reasoning":19}}}]}}
+
+data: {"type":"MESSAGES_SNAPSHOT","messages":[{"id":"fc1851b9-ce49-4f27-b8d6-b06a78f09c9a","role":"user","content":"Find every distinct event named exactly \"Arecibo Classic 183257 1\" in season 2026-2027, including drafts and excluding cancelled or archived events. Do not filter by dates. List each separate event with its start date and status, and state how many distinct events you found."},{"id":"lc_run--01a19ca6-d8f2-78e2-8381-6b425d9ada9f","role":"assistant","content":"","toolCalls":[{"id":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW","type":"function","function":{"name":"list_seasons","arguments":"{}"}}]},{"id":"f89845f0-bd80-47be-b1c1-ea2c65de572d","role":"tool","content":"{\"status\":\"ok\",\"seasons\":[{\"season_id\":\"01a198d1-3325-71e8-becd-3e7fd11f2c55\",\"name\":\"2055\",\"start_date\":\"2031-04-01\",\"end_date\":\"2032-03-31\",\"status\":\"draft\",\"tour_count\":0,\"event_count\":0},{\"season_id\":\"01a1978d-950b-719c-90ca-ff35b5e76b16\",\"name\":\"2030-31\",\"start_date\":\"2030-04-01\",\"end_date\":\"2031-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733f-7a5e-72f8-873a-014a5ddd33df\",\"name\":\"2029-30\",\"start_date\":\"2029-04-01\",\"end_date\":\"2030-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a1733e-8662-74ec-adbd-c9f43a19a8e9\",\"name\":\"2028-29\",\"start_date\":\"2028-04-01\",\"end_date\":\"2029-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16545-06bc-718d-8d86-0bc7284e6434\",\"name\":\"2027-28\",\"start_date\":\"2027-04-01\",\"end_date\":\"2028-03-31\",\"status\":\"draft\",\"tour_count\":36,\"event_count\":133},{\"season_id\":\"01a16500-d18a-7089-9f93-87136db1daf5\",\"name\":\"2026-27\",\"start_date\":\"2026-04-01\",\"end_date\":\"2027-03-31\",\"status\":\"active\",\"tour_count\":40,\"event_count\":1088},{\"season_id\":\"01a16500-a8cf-7628-bffd-0d485905ddbd\",\"name\":\"2025-26\",\"start_date\":\"2025-01-01\",\"end_date\":\"2026-03-31\",\"status\":\"closed\",\"tour_count\":26,\"event_count\":130}]}","toolCallId":"toolu_bdrk_019Sc6rRGsoSzWn4RfcrSMgW"},{"id":"lc_run--01a19ca6-de13-7760-b5e5-3a75263c7ff0","role":"assistant","content":"","toolCalls":[{"id":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw","type":"function","function":{"name":"search_events","arguments":"{\"season_id\": \"01a16500-d18a-7089-9f93-87136db1daf5\", \"query\": \"Arecibo Classic 183257 1\", \"statuses\": [\"draft\", \"tentative\", \"confirmed\", \"open_for_entries\", \"closed_for_entries\", \"standby\", \"live\", \"completed\"]}"}}]},{"id":"088e28f6-c2eb-4735-b22a-217ea3238bce","role":"tool","content":"{\"status\":\"ok\",\"events\":[{\"event_id\":\"01a17ea3-3cfc-740d-90bc-bed48519790a\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":null,\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4256-76c4-92d1-75603d0e2c07\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-4087-73e6-9a5d-ba927c6d1004\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-01\",\"end_date\":null,\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-519f-7556-8ad1-7cb15bc0d15e\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":\"2026-11-07\",\"end_date\":\"2026-11-07\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]},{\"event_id\":\"01a17ea3-3ee2-7124-83cf-2ad9d3e1ff38\",\"name\":\"Arecibo Classic 183257 1\",\"status\":\"draft\",\"start_date\":null,\"end_date\":\"2026-11-01\",\"tour\":\"International Qualifying Series\",\"division\":\"mens\",\"rating\":null,\"location\":{\"location_id\":\"01a16500-a868-7092-8b9f-cd7c81e00187\",\"spot\":\"Arecibo\",\"town\":null,\"city\":\"La Marginal\",\"state\":\"Arecibo\",\"country_code\":\"PR\",\"region_code\":\"north_america\",\"timezone\":\"America/Puerto_Rico\"},\"region_codes\":[\"north_america\"]}],\"total\":5,\"next_offset\":null}","toolCallId":"toolu_bdrk_01UtNSTuKHo2M8XHsZJfmFAw"},{"id":"lc_run--01a19ca6-e7e8-7563-a113-64782f054a40","role":"assistant","content":"I found **5 separate events** named exactly \"Arecibo Classic 183257 1\" in the 2026-27 season. All five are drafts on the men's International Qualifying Series:\n\n1. Starts 1 November 2026, draft. No venue set.\n2. Starts 1 November 2026, draft. Venue: Arecibo, Puerto Rico.\n3. Starts 1 November 2026, draft. Venue: Arecibo, Puerto Rico. No end date set.\n4. Starts 7 November 2026, draft. Venue: Arecibo, Puerto Rico.\n5. No start date set (ends 1 November 2026), draft. Venue: Arecibo, Puerto Rico.\n\nNone of them is cancelled or archived."}]}
+
+data: {"type":"RUN_FINISHED","threadId":"ac4ddd4a-a648-4954-8ab4-0fb3b97b9a4c","runId":"ab47277d-8bd9-47c2-a786-ad2fc246e375","usage":[{"provider":"anthropic","model":"us.anthropic.claude-opus-5-5","inputTokens":39137,"outputTokens":453,"totalTokens":39590,"reasoningTokens":19,"cachedInputTokens":37082}]}
+
