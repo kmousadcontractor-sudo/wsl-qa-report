@@ -1,0 +1,221 @@
+{
+  "case": "P1-RM-007",
+  "environment": "https://app.dev.worldsurfleague.com",
+  "startedAt": "2026-11-02T15:20:32.979Z",
+  "status": "BLOCKED",
+  "steps": [
+    {
+      "at": "2026-11-02T15:20:36.081Z",
+      "text": "Prepare a fresh saved test card that passes setup and declines when charged."
+    }
+  ],
+  "requests": [
+    {
+      "at": "2026-11-02T15:20:35.822Z",
+      "path": "/session",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "locale": null,
+        "organisationLocale": null,
+        "user": {
+          "id": "01a19bd5-5b39-77bc-8608-4cb89690e740",
+          "name": "QA TodoRetest",
+          "firstName": "QA",
+          "lastName": "TodoRetest",
+          "email": "qa.payment.049@btj5keea.mailosaur.net",
+          "dateOfBirth": "2007-06-15"
+        },
+        "athletes": [
+          {
+            "id": "01a19bd5-5e62-7652-9457-9d6303e6017b",
+            "name": "QA TodoRetest",
+            "firstName": "QA",
+            "lastName": "TodoRetest",
+            "initials": "QT",
+            "status": "active",
+            "signedCodes": [
+              "age_and_authority_certification",
+              "membership_terms_and_conditions",
+              "waiver_release_indemnity",
+              "health_insurance_authorization"
+            ],
+            "registeredByRole": "self",
+            "headshot": null,
+            "membership": {
+              "id": "01a19bd6-5754-740e-b746-273c1071b440",
+              "productCode": "full_regional",
+              "status": {
+                "code": "active",
+                "label": "Membership active",
+                "tone": "success"
+              },
+              "validTo": "2026-12-31"
+            }
+          }
+        ],
+        "athletesUnavailable": false,
+        "activeAthleteId": "01a19bd5-5e62-7652-9457-9d6303e6017b",
+        "roles": [
+          "athlete"
+        ],
+        "passwordChangeRequired": false
+      }
+    },
+    {
+      "at": "2026-11-02T15:20:36.079Z",
+      "path": "/payments/methods",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "methods": [
+          {
+            "id": "01a19bd6-9dee-7362-ae26-cd2a2fb0ad24",
+            "status": "active",
+            "cardBrand": "visa",
+            "cardLast4": "4242",
+            "saved": true,
+            "forEntry": null,
+            "expMonth": 11,
+            "expYear": 2027,
+            "usedBy": [],
+            "selectable": true,
+            "badge": null,
+            "expires": "Expires 11/27",
+            "keptFor": null
+          },
+          {
+            "id": "01a19bd6-a51b-7743-a61f-4fc38b2ee1ee",
+            "status": "active",
+            "cardBrand": "visa",
+            "cardLast4": "0341",
+            "saved": true,
+            "forEntry": null,
+            "expMonth": 11,
+            "expYear": 2027,
+            "usedBy": [],
+            "selectable": true,
+            "badge": null,
+            "expires": "Expires 11/27",
+            "keptFor": null
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-11-02T15:20:36.380Z",
+      "path": "/payments/methods/setup",
+      "method": "POST",
+      "request": {},
+      "status": 202,
+      "body": {
+        "setupId": "01a19cd9-268d-7222-84e1-17e1ddfa8109",
+        "status": "requested",
+        "save": true
+      }
+    },
+    {
+      "at": "2026-11-02T15:20:36.625Z",
+      "path": "/payments/methods/setup/01a19cd9-268d-7222-84e1-17e1ddfa8109",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "setupId": "01a19cd9-268d-7222-84e1-17e1ddfa8109",
+        "status": "requested",
+        "savedPaymentMethodId": null,
+        "save": true,
+        "reason": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-11-02T15:20:38.382Z",
+      "path": "/payments/methods/setup/01a19cd9-268d-7222-84e1-17e1ddfa8109",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "setupId": "01a19cd9-268d-7222-84e1-17e1ddfa8109",
+        "status": "attempt_ready",
+        "savedPaymentMethodId": null,
+        "save": true,
+        "reason": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-11-02T15:20:46.829Z",
+      "path": "/payments/methods/setup/01a19cd9-268d-7222-84e1-17e1ddfa8109",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "setupId": "01a19cd9-268d-7222-84e1-17e1ddfa8109",
+        "status": "attempt_ready",
+        "savedPaymentMethodId": null,
+        "save": true,
+        "reason": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-11-02T15:20:48.625Z",
+      "path": "/payments/methods/setup/01a19cd9-268d-7222-84e1-17e1ddfa8109",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "setupId": "01a19cd9-268d-7222-84e1-17e1ddfa8109",
+        "status": "ready",
+        "savedPaymentMethodId": "01a19bd6-a51b-7743-a61f-4fc38b2ee1ee",
+        "save": true,
+        "reason": null,
+        "message": null
+      }
+    },
+    {
+      "at": "2026-11-02T15:20:53.088Z",
+      "path": "/entries",
+      "method": "POST",
+      "request": {
+        "eventId": "01a19cd9-5deb-734f-a765-0901ae2f33c3",
+        "athleteId": "01a19bd5-5e62-7652-9457-9d6303e6017b",
+        "insuranceCode": "own-policy",
+        "savedPaymentMethodId": "01a19bd6-a51b-7743-a61f-4fc38b2ee1ee",
+        "reminders": {
+          "phone": "+12025550121",
+          "phoneCountry": "US",
+          "optIn": false
+        }
+      },
+      "status": 409,
+      "body": {
+        "title": "That did not go through",
+        "message": "Entries for this event are not open.",
+        "reason": "competition.event_not_open",
+        "fields": {},
+        "retryable": false
+      }
+    }
+  ],
+  "polls": [],
+  "screenshots": [],
+  "limitations": [
+    "Fresh isolated QA event and existing reserved adult QA athlete.",
+    "Fixture setup, card setup, charging and card replacement use real APIs. Product UI recording shows the roster and both histories, not manual card-form entry.",
+    "Stripe test mode only; no mocked payment outcome or injected webhook."
+  ],
+  "cardSetup": {
+    "providerId": "seti_1UXN2JHma49jszOGHwP6voe6",
+    "status": "succeeded",
+    "livemode": false
+  },
+  "event": {
+    "id": "01a19cd9-5deb-734f-a765-0901ae2f33c3",
+    "name": "QA recovered history 1793632848627",
+    "start": "2026-12-11",
+    "region": "north_america",
+    "tour": "Qualifying Series (QS) · Men",
+    "location": "Pismo Beach Pier, Pismo Beach, California, United States · Los Angeles time"
+  },
+  "base": "/tour-manager/events/01a19cd9-5deb-734f-a765-0901ae2f33c3",
+  "error": "Entry HTTP 409",
+  "finishedAt": "2026-11-02T15:20:53.099Z"
+}

@@ -1,0 +1,158 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Recovered payment history — P1-RM-007</title><style>body{font:16px/1.6 system-ui;color:#14324a;background:#eef3f7;margin:0}main{max-width:1050px;margin:30px auto;background:white;padding:32px;border-radius:12px}h1{line-height:1.2}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:10px;border-bottom:1px solid #ddd}img,video{max-width:100%;border:1px solid #ddd}pre{white-space:pre-wrap;overflow-wrap:anywhere}details{margin:18px 0}a{color:#0064a2}.result{padding:16px;background:#eaf1f7;font-weight:bold}</style><main><h1>Recovered payment appears in history</h1><p>P1-RM-007 · Dev · 2026-11-02T15:27:49.281Z to 2026-11-02T15:30:44.301Z</p><p class="result">EVENT HISTORY MISSING SUCCESS</p><p>The replacement card recovered the payment. The checks below distinguish the payment outcome from the two history views.</p><h2>Checks</h2><table><tr><th>Expected result</th><th>Actual</th></tr><tr><td>Payment recovered to Collected</td><td>PASS</td></tr><tr><td>Entry Confirmed</td><td>PASS</td></tr><tr><td>Entry history records Card payment succeeded</td><td>PASS</td></tr><tr><td>Event History records payment success</td><td>FAIL</td></tr></table><h2>Simple reproduction steps</h2><ol><li>Register the adult QA athlete in an isolated paid event using a saved Stripe test card that declines when charged.</li><li>Close entries, seed the athlete and send Confirm &amp; charge.</li><li>Verify that the individual entry history records a genuine decline.</li><li>Replace that entry’s card with active test Visa ending 4242. Retry if the product offers it and recovery has not started.</li><li>Check the actual entry/payment status, then inspect the entry history and the separate Event History tab for a success record.</li></ol><h2>Test data</h2><p>Environment: https://app.dev.worldsurfleague.com<br>Event: QA recovered history 1793632848627<br>Event ID: 01a19cd9-5deb-734f-a765-0901ae2f33c3<br>Entry ID: 01a19ce0-00ff-7688-8cbd-e54bad31f8dd<br>Initial test card: charge-declining Stripe test card. Replacement: Visa 4242.<br>Final payment: Collected; entry: Confirmed</p><h2>Evidence</h2><details open><summary>01-declined-row-history.png</summary><a href="01-declined-row-history.png"><img src="01-declined-row-history.png"></a></details><details open><summary>02-recovered-row-history.png</summary><a href="02-recovered-row-history.png"><img src="02-recovered-row-history.png"></a></details><details open><summary>03-event-history.png</summary><a href="03-event-history.png"><img src="03-event-history.png"></a></details><h3>Recorded product UI</h3><video controls preload="metadata" src="video/page@1ac5ec0921964d5fcbc8742609fe69df.webm"></video><details><summary>Entry history — actual response</summary><pre>[
+  {
+    &quot;id&quot;: &quot;01a19ce1-55d3-72df-88dc-3cf7bb142e88&quot;,
+    &quot;when&quot;: &quot;02 Nov 07:29 PT&quot;,
+    &quot;what&quot;: &quot;Card payment succeeded&quot;,
+    &quot;channel&quot;: &quot;Stripe&quot;,
+    &quot;by&quot;: &quot;System&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19ce0-503b-7678-98ea-fe1d8ebbf3c6&quot;,
+    &quot;when&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;what&quot;: &quot;Card payment declined (generic_decline)&quot;,
+    &quot;channel&quot;: &quot;Stripe&quot;,
+    &quot;by&quot;: &quot;System&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19ce0-4854-7411-95e1-9ea05d969000&quot;,
+    &quot;when&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;what&quot;: &quot;Card payment charge started&quot;,
+    &quot;channel&quot;: &quot;Stripe&quot;,
+    &quot;by&quot;: &quot;T. Manager 101&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19ce0-089c-7061-80a0-21ec8e60ab8c&quot;,
+    &quot;when&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;what&quot;: &quot;Seed · to #1&quot;,
+    &quot;channel&quot;: &quot;Tour Manager&quot;,
+    &quot;by&quot;: &quot;T. Manager 101&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19ce0-010f-76a0-aa18-ae4a8a355790&quot;,
+    &quot;when&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;what&quot;: &quot;Entry registered&quot;,
+    &quot;channel&quot;: &quot;Athlete app&quot;,
+    &quot;by&quot;: &quot;QA TodoRetest&quot;
+  }
+]</pre></details><details><summary>Event History — actual response</summary><pre>[
+  {
+    &quot;id&quot;: &quot;01a19ce0-503b-7678-98ea-fe1d8ebbf3c6&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:28:28.679105+00:00&quot;,
+    &quot;actor&quot;: &quot;System · Scheduler&quot;,
+    &quot;actorId&quot;: null,
+    &quot;action&quot;: &quot;Card payment declined (generic_decline) · QA TodoRetest&quot;,
+    &quot;changeType&quot;: &quot;charge_attempt&quot;,
+    &quot;athlete&quot;: &quot;QA TodoRetest&quot;,
+    &quot;priorState&quot;: &quot;Charging&quot;,
+    &quot;newState&quot;: &quot;Pending Confirmation&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19ce0-485a-72fa-b971-adf2d3bcb1e0&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:28:26.601183+00:00&quot;,
+    &quot;actor&quot;: &quot;T. Manager 101&quot;,
+    &quot;actorId&quot;: &quot;01a13678-65bd-7793-aa12-f6448c46e1e2&quot;,
+    &quot;action&quot;: &quot;Field confirmed · 1 charge started · USD 157.50 requested&quot;,
+    &quot;changeType&quot;: &quot;field_confirmed&quot;,
+    &quot;athlete&quot;: null,
+    &quot;priorState&quot;: &quot;Entries confirmed&quot;,
+    &quot;newState&quot;: &quot;Field confirmed&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19ce0-089f-7726-83b2-537e4aedc951&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:28:10.256711+00:00&quot;,
+    &quot;actor&quot;: &quot;T. Manager 101&quot;,
+    &quot;actorId&quot;: &quot;01a13678-65bd-7793-aa12-f6448c46e1e2&quot;,
+    &quot;action&quot;: &quot;Seed order saved · 1 athlete moved&quot;,
+    &quot;changeType&quot;: &quot;seed_override&quot;,
+    &quot;athlete&quot;: null,
+    &quot;priorState&quot;: &quot;Seed order draft&quot;,
+    &quot;newState&quot;: &quot;Seed order saved&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19ce0-089c-7061-80a0-21ec8e60ab8c&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:28:10.256711+00:00&quot;,
+    &quot;actor&quot;: &quot;T. Manager 101&quot;,
+    &quot;actorId&quot;: &quot;01a13678-65bd-7793-aa12-f6448c46e1e2&quot;,
+    &quot;action&quot;: &quot;Seed · QA TodoRetest · to #1&quot;,
+    &quot;changeType&quot;: &quot;seed_override&quot;,
+    &quot;athlete&quot;: &quot;QA TodoRetest&quot;,
+    &quot;priorState&quot;: &quot;Seed order draft&quot;,
+    &quot;newState&quot;: &quot;Seed order saved&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19ce0-051e-75a5-a5e5-93a86fbb834b&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:28:09.441261+00:00&quot;,
+    &quot;actor&quot;: &quot;T. Manager 101&quot;,
+    &quot;actorId&quot;: &quot;01a13678-65bd-7793-aa12-f6448c46e1e2&quot;,
+    &quot;action&quot;: &quot;Status · Open for entries → Closed for entries · by hand, replacing the scheduled time&quot;,
+    &quot;changeType&quot;: &quot;status_change&quot;,
+    &quot;athlete&quot;: null,
+    &quot;priorState&quot;: &quot;Open for entries&quot;,
+    &quot;newState&quot;: &quot;Closed for entries&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19ce0-010f-76a0-aa18-ae4a8a355790&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:28:08.417079+00:00&quot;,
+    &quot;actor&quot;: &quot;QA TodoRetest&quot;,
+    &quot;actorId&quot;: &quot;01a19bd5-5b39-77bc-8608-4cb89690e740&quot;,
+    &quot;action&quot;: &quot;Entry registered · QA TodoRetest&quot;,
+    &quot;changeType&quot;: &quot;entry_registered&quot;,
+    &quot;athlete&quot;: &quot;QA TodoRetest&quot;,
+    &quot;priorState&quot;: null,
+    &quot;newState&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;01a19cdf-fe55-76dc-bfa7-bea155be8d68&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:28 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:28:07.722760+00:00&quot;,
+    &quot;actor&quot;: &quot;T. Manager 101&quot;,
+    &quot;actorId&quot;: &quot;01a13678-65bd-7793-aa12-f6448c46e1e2&quot;,
+    &quot;action&quot;: &quot;Status · Confirmed → Open for entries&quot;,
+    &quot;changeType&quot;: &quot;status_change&quot;,
+    &quot;athlete&quot;: null,
+    &quot;priorState&quot;: &quot;Confirmed&quot;,
+    &quot;newState&quot;: &quot;Open for entries&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19cd9-6428-7024-9ea1-3d3dde5f71fb&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:20 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:20:55.016109+00:00&quot;,
+    &quot;actor&quot;: &quot;T. Manager 101&quot;,
+    &quot;actorId&quot;: &quot;01a13678-65bd-7793-aa12-f6448c46e1e2&quot;,
+    &quot;action&quot;: &quot;Status · Tentative → Confirmed&quot;,
+    &quot;changeType&quot;: &quot;status_change&quot;,
+    &quot;athlete&quot;: null,
+    &quot;priorState&quot;: &quot;Tentative&quot;,
+    &quot;newState&quot;: &quot;Confirmed&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19cd9-60e2-74a9-96e3-819a8dd16930&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:20 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:20:54.185712+00:00&quot;,
+    &quot;actor&quot;: &quot;T. Manager 101&quot;,
+    &quot;actorId&quot;: &quot;01a13678-65bd-7793-aa12-f6448c46e1e2&quot;,
+    &quot;action&quot;: &quot;Status · Draft → Tentative&quot;,
+    &quot;changeType&quot;: &quot;status_change&quot;,
+    &quot;athlete&quot;: null,
+    &quot;priorState&quot;: &quot;Draft&quot;,
+    &quot;newState&quot;: &quot;Tentative&quot;
+  },
+  {
+    &quot;id&quot;: &quot;01a19cd9-5e0d-720f-82a0-003ce3ab310a&quot;,
+    &quot;at&quot;: &quot;02 Nov 07:20 PT&quot;,
+    &quot;occurredAt&quot;: &quot;2026-11-02T15:20:53.400818+00:00&quot;,
+    &quot;actor&quot;: &quot;T. Manager 101&quot;,
+    &quot;actorId&quot;: &quot;01a13678-65bd-7793-aa12-f6448c46e1e2&quot;,
+    &quot;action&quot;: &quot;Event created as Draft&quot;,
+    &quot;changeType&quot;: &quot;event_created&quot;,
+    &quot;athlete&quot;: null,
+    &quot;priorState&quot;: &quot;—&quot;,
+    &quot;newState&quot;: &quot;Draft&quot;
+  }
+]</pre></details><p><a href="execution.json">Full timestamped API evidence</a> · <a href="attempt-1-blocked.json">Preserved first setup attempt</a></p><h2>Scope and limitations</h2><ul><li>Fresh isolated QA event and existing reserved adult QA athlete.</li><li>Fixture setup, card setup, charging and card replacement use real APIs. Product UI recording shows the roster and both histories, not manual card-form entry.</li><li>Stripe test mode only; no mocked payment outcome or injected webhook.</li><li>The initial setup attempt returned “Entries for this event are not open.” The setup was corrected using the explicit Open for entries status before the payment run.</li><li>The recording uses API actions with explanatory QA captions and real product history screens. It is not a recording of manual card-form entry.</li></ul></main>
