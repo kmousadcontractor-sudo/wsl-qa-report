@@ -1,0 +1,165 @@
+{
+  "id": "E5",
+  "title": "Dates update while CMS stop number is preserved",
+  "startedAt": "2026-11-04T15:58:15.191Z",
+  "checks": [
+    {
+      "label": "CMS date updated",
+      "actual": "11/10/2027",
+      "expected": "11/10/2027",
+      "pass": true
+    },
+    {
+      "label": "CMS stop number preserved",
+      "actual": "6",
+      "expected": "6",
+      "pass": true
+    },
+    {
+      "label": "Website date updated",
+      "actual": "Nov 10",
+      "expected": "Nov 10",
+      "pass": true
+    }
+  ],
+  "actions": [
+    {
+      "date": "2027-11-10",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a733-99cd-77d4-aed8-c2d5d9396a75",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Sync Full Event 1793806503592 Renamed Final",
+            "tour": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "rating": "01a16500-a77e-714e-88f8-d535e8fec22c",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "startDate": "2027-11-10",
+            "endDate": "2027-11-10",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 45600,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 15
+        }
+      }
+    }
+  ],
+  "observations": [
+    {
+      "at": "2026-11-04T15:58:37.829Z",
+      "fields": {
+        "query": "",
+        "eventCode": "2027evt10001102",
+        "eventStatus": "upcoming",
+        "eventName": "QA Sync Full Event 1793806503592 Renamed Final",
+        "tourId": "3",
+        "regionId": "7",
+        "year": "2027",
+        "stopNumber": "6",
+        "eventCategory": "4000",
+        "startDate": "11/10/2027",
+        "endDate": "11/10/2027",
+        "prizeMoney": "456",
+        "cancelUrl": "/models/event/5585/overview"
+      },
+      "date": "Nov 10"
+    }
+  ],
+  "status": "PASS",
+  "cmsScreenshot": "E5-rerun-cms.png",
+  "websiteScreenshot": "E5-rerun-website.png",
+  "finishedAt": "2026-11-04T15:58:38.678Z"
+}

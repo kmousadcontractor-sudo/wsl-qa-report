@@ -1,0 +1,276 @@
+{
+  "startedAt": "2026-11-04T15:41:37.610Z",
+  "fixtureId": "01a1a733-8404-73a2-9f5d-4678ae80998a",
+  "betaId": "22352",
+  "sourceMethod": "Owned QA athlete public-profile API; platform_admin access verified separately",
+  "actions": [
+    {
+      "at": "2026-11-04T15:41:40.165Z",
+      "path": "/athletes/01a1a733-8404-73a2-9f5d-4678ae80998a/public-profile",
+      "method": "PUT",
+      "sent": {
+        "firstName": "QA Renamed",
+        "middleName": null,
+        "lastName": "Sync1793806503592",
+        "genderCode": "female",
+        "countryRepresenting": "US",
+        "countryOfResidence": "US",
+        "version": 1
+      },
+      "status": 200,
+      "body": {
+        "athlete": {
+          "id": "01a1a733-8404-73a2-9f5d-4678ae80998a",
+          "version": 2
+        },
+        "publicProfile": null
+      }
+    },
+    {
+      "at": "2026-11-04T15:41:55.291Z",
+      "path": "/athletes/01a1a733-8404-73a2-9f5d-4678ae80998a/public-profile",
+      "method": "PUT",
+      "sent": {
+        "firstName": "QA Rapid One",
+        "middleName": null,
+        "lastName": "Sync1793806503592",
+        "genderCode": "female",
+        "countryRepresenting": "US",
+        "countryOfResidence": "US",
+        "version": 2
+      },
+      "status": 200,
+      "body": {
+        "athlete": {
+          "id": "01a1a733-8404-73a2-9f5d-4678ae80998a",
+          "version": 3
+        },
+        "publicProfile": null
+      }
+    },
+    {
+      "at": "2026-11-04T15:41:56.352Z",
+      "path": "/athletes/01a1a733-8404-73a2-9f5d-4678ae80998a/public-profile",
+      "method": "PUT",
+      "sent": {
+        "firstName": "QA Rapid Two",
+        "middleName": null,
+        "lastName": "Sync1793806503592",
+        "genderCode": "male",
+        "countryRepresenting": "US",
+        "countryOfResidence": "US",
+        "version": 3
+      },
+      "status": 200,
+      "body": {
+        "athlete": {
+          "id": "01a1a733-8404-73a2-9f5d-4678ae80998a",
+          "version": 4
+        },
+        "publicProfile": null
+      }
+    },
+    {
+      "at": "2026-11-04T15:42:18.418Z",
+      "path": "/athletes/01a1a733-8404-73a2-9f5d-4678ae80998a/public-profile",
+      "method": "PUT",
+      "sent": {
+        "firstName": "QA",
+        "middleName": null,
+        "lastName": "Sync1793806503592",
+        "genderCode": "male",
+        "countryRepresenting": "BR",
+        "countryOfResidence": "US",
+        "version": 4
+      },
+      "status": 200,
+      "body": {
+        "athlete": {
+          "id": "01a1a733-8404-73a2-9f5d-4678ae80998a",
+          "version": 5
+        },
+        "publicProfile": null
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "A4",
+      "status": "PASS",
+      "coverage": "PARTIAL",
+      "scope": "Gender correction verified through the owned athlete public-profile route and beta CMS. DOB remains locked; admin-console identity editing and DOB correction are not verified.",
+      "checks": [
+        {
+          "label": "Corrected gender reaches beta",
+          "actual": "F",
+          "expected": "F",
+          "pass": true
+        },
+        {
+          "label": "DOB is explicitly locked",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        }
+      ],
+      "samples": [
+        {
+          "at": "2026-11-04T15:41:50.246Z",
+          "fields": {
+            "firstName": "QA",
+            "lastName": "Sync1793806503592",
+            "gender": "F",
+            "countryId": "31",
+            "birthdate": "1995-06-15",
+            "countryLabel": "Brazil"
+          }
+        }
+      ],
+      "cmsScreenshot": "gender-correction.png"
+    },
+    {
+      "id": "A5",
+      "status": "PASS",
+      "coverage": "PARTIAL",
+      "scope": "Documented known gap: existing beta name/nationality stay unchanged. The gender update is a positive control showing the changed record was applied. Owner-profile edit, not admin-console UI.",
+      "checks": [
+        {
+          "label": "CMS retains original first name",
+          "actual": "QA",
+          "expected": "QA",
+          "pass": true
+        },
+        {
+          "label": "CMS retains original representing nationality",
+          "actual": "Brazil",
+          "expected": "Brazil",
+          "pass": true
+        },
+        {
+          "label": "Website retains original name",
+          "actual": "QA Sync1793806503592",
+          "expected": "QA Sync1793806503592",
+          "pass": true
+        },
+        {
+          "label": "Website retains Brazil",
+          "actual": true,
+          "expected": true,
+          "pass": true
+        }
+      ],
+      "websiteScreenshot": "known-gap-name-country.png"
+    },
+    {
+      "id": "A8",
+      "status": "PASS",
+      "coverage": "PARTIAL",
+      "scope": "Two real rapid edits and final convergence verified. Intermediate FIFO order requires worker/queue evidence and remains unverified.",
+      "checks": [
+        {
+          "label": "Source retains last edit",
+          "actual": "QA Rapid Two",
+          "expected": "QA Rapid Two",
+          "pass": true
+        },
+        {
+          "label": "Last gender correction reaches beta",
+          "actual": "M",
+          "expected": "M",
+          "pass": true
+        }
+      ],
+      "samples": [
+        {
+          "at": "2026-11-04T15:42:00.443Z",
+          "fields": {
+            "firstName": "QA",
+            "lastName": "Sync1793806503592",
+            "gender": "F",
+            "countryId": "31",
+            "birthdate": "1995-06-15",
+            "countryLabel": "Brazil"
+          }
+        },
+        {
+          "at": "2026-11-04T15:42:13.751Z",
+          "fields": {
+            "firstName": "QA",
+            "lastName": "Sync1793806503592",
+            "gender": "M",
+            "countryId": "31",
+            "birthdate": "1995-06-15",
+            "countryLabel": "Brazil"
+          }
+        }
+      ],
+      "cmsScreenshot": "rapid-final-state.png"
+    }
+  ],
+  "adminReadback": {
+    "session": {
+      "status": 200,
+      "body": {
+        "environment": "dev",
+        "canWipe": true,
+        "user": {
+          "id": "01a1a37f-2150-7161-81c6-e022525aa985",
+          "displayName": "QA Sync Admin"
+        }
+      }
+    },
+    "recordStatus": 200
+  },
+  "original": {
+    "athlete": {
+      "id": "01a1a733-8404-73a2-9f5d-4678ae80998a",
+      "version": 1
+    },
+    "identity": {
+      "firstName": "QA",
+      "middleName": null,
+      "lastName": "Sync1793806503592",
+      "dateOfBirth": "1995-06-15",
+      "genderCode": "male",
+      "countryRepresenting": "BR",
+      "countryOfResidence": "US"
+    },
+    "lockedFields": [
+      "dateOfBirth"
+    ],
+    "publicProfile": {
+      "profileId": "01a1a733-834f-7172-adda-47eaf293349d",
+      "version": 2,
+      "instagramHandle": null,
+      "stance": null,
+      "headshot": null,
+      "latestUpload": null,
+      "fields": {
+        "instagramHandle": {
+          "editable": true,
+          "reason": null,
+          "requiresApproval": null
+        },
+        "headshot": {
+          "editable": true,
+          "reason": null,
+          "requiresApproval": null
+        }
+      }
+    }
+  },
+  "restore": {
+    "at": "2026-11-04T15:42:18.769Z",
+    "pass": true,
+    "identity": {
+      "firstName": "QA",
+      "middleName": null,
+      "lastName": "Sync1793806503592",
+      "dateOfBirth": "1995-06-15",
+      "genderCode": "male",
+      "countryRepresenting": "BR",
+      "countryOfResidence": "US"
+    }
+  },
+  "finishedAt": "2026-11-04T15:42:18.769Z"
+}

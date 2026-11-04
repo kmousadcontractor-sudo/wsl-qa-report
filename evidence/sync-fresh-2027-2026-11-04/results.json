@@ -1,0 +1,4870 @@
+{
+  "startedAt": "2026-11-04T15:25:08.218Z",
+  "scope": "Fresh 2027 records only; no year/clock configuration changes",
+  "checks": [
+    {
+      "id": "A2027-0",
+      "name": "Create paid 2027 member and verify create/update sync",
+      "status": "BLOCKED",
+      "actual": {
+        "athleteId": "01a1a72a-2efc-757b-a1ac-ae9b669df23a",
+        "reason": "Current membership offer does not expose an eligible 2027 Single Event product. No 2026 membership was purchased as a substitute.",
+        "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+        "products": [
+          {
+            "id": "01a18a8f-5776-70ee-b7ed-9d0e8b78fb8c",
+            "code": "single_event",
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31",
+            "eligible": true
+          },
+          {
+            "id": "01a19b75-3fbb-7558-9ce1-c05acb254f18",
+            "code": "full_regional",
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31",
+            "eligible": true
+          },
+          {
+            "id": "01a18a8f-571a-70e1-b399-7f9d019937c7",
+            "code": "longboard",
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31",
+            "eligible": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "A2027-1",
+      "name": "Create paid 2027 member and verify create/update sync",
+      "status": "BLOCKED",
+      "actual": {
+        "athleteId": "01a1a72a-4219-7442-8245-68a4028c414d",
+        "reason": "Current membership offer does not expose an eligible 2027 Single Event product. No 2026 membership was purchased as a substitute.",
+        "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+        "products": [
+          {
+            "id": "01a18a8f-5776-70ee-b7ed-9d0e8b78fb8c",
+            "code": "single_event",
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31",
+            "eligible": true
+          },
+          {
+            "id": "01a19b75-3fbb-7558-9ce1-c05acb254f18",
+            "code": "full_regional",
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31",
+            "eligible": true
+          },
+          {
+            "id": "01a18a8f-571a-70e1-b399-7f9d019937c7",
+            "code": "longboard",
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31",
+            "eligible": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "E2027-0-create",
+      "name": "2027 event sync E2027-0-create",
+      "status": "PASS",
+      "actual": {
+        "at": "2026-11-04T15:27:12.685Z",
+        "cmsId": "5583",
+        "code": "2027evt10001099",
+        "fields": {
+          "query": "",
+          "eventCode": "2027evt10001099",
+          "eventStatus": "tentative",
+          "eventName": "QA Fresh Sync2027 1793805908218 Men",
+          "tourId": "3",
+          "regionId": "1",
+          "year": "2027",
+          "stopNumber": "7",
+          "eventCategory": "6000",
+          "startDate": "09/10/2027",
+          "endDate": "09/10/2027",
+          "prizeMoney": "123",
+          "cancelUrl": "/models/event/5583/overview"
+        },
+        "website": {
+          "url": "https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men",
+          "http": 200,
+          "headings": [
+            "QA Fresh Sync2027 1793805908218 Men"
+          ]
+        },
+        "expected": {
+          "name": "QA Fresh Sync2027 1793805908218 Men",
+          "status": "tentative",
+          "date": "2027-09-10"
+        }
+      }
+    },
+    {
+      "id": "E2027-0-update",
+      "name": "2027 event sync E2027-0-update",
+      "status": "PASS",
+      "actual": {
+        "at": "2026-11-04T15:27:20.304Z",
+        "cmsId": "5583",
+        "code": "2027evt10001099",
+        "fields": {
+          "query": "",
+          "eventCode": "2027evt10001099",
+          "eventStatus": "upcoming",
+          "eventName": "QA Fresh Sync2027 1793805908218 Men Updated",
+          "tourId": "3",
+          "regionId": "1",
+          "year": "2027",
+          "stopNumber": "7",
+          "eventCategory": "6000",
+          "startDate": "09/10/2027",
+          "endDate": "09/10/2027",
+          "prizeMoney": "123",
+          "cancelUrl": "/models/event/5583/overview"
+        },
+        "website": {
+          "url": "https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men-updated",
+          "http": 200,
+          "headings": [
+            "QA Fresh Sync2027 1793805908218 Men Updated"
+          ]
+        },
+        "expected": {
+          "name": "QA Fresh Sync2027 1793805908218 Men Updated",
+          "status": "upcoming",
+          "date": "2027-09-10"
+        }
+      }
+    },
+    {
+      "id": "E2027-1-create",
+      "name": "2027 event sync E2027-1-create",
+      "status": "PASS",
+      "actual": {
+        "at": "2026-11-04T15:27:28.607Z",
+        "cmsId": "5584",
+        "code": "2027evt10001100",
+        "fields": {
+          "query": "",
+          "eventCode": "2027evt10001100",
+          "eventStatus": "tentative",
+          "eventName": "QA Fresh Sync2027 1793806018380 Women",
+          "tourId": "4",
+          "regionId": "1",
+          "year": "2027",
+          "stopNumber": "4",
+          "eventCategory": "6000",
+          "startDate": "09/18/2027",
+          "endDate": "09/18/2027",
+          "prizeMoney": "123",
+          "cancelUrl": "/models/event/5584/overview"
+        },
+        "website": {
+          "url": "https://www.beta.worldsurfleague.com/events/2027/wqs/5584/qa-fresh-sync2027-1793806018380-women",
+          "http": 200,
+          "headings": [
+            "QA Fresh Sync2027 1793806018380 Women"
+          ]
+        },
+        "expected": {
+          "name": "QA Fresh Sync2027 1793806018380 Women",
+          "status": "tentative",
+          "date": "2027-09-18"
+        }
+      }
+    },
+    {
+      "id": "E2027-1-update",
+      "name": "2027 event sync E2027-1-update",
+      "status": "PASS",
+      "actual": {
+        "at": "2026-11-04T15:27:39.672Z",
+        "cmsId": "5584",
+        "code": "2027evt10001100",
+        "fields": {
+          "query": "",
+          "eventCode": "2027evt10001100",
+          "eventStatus": "upcoming",
+          "eventName": "QA Fresh Sync2027 1793806018380 Women Updated",
+          "tourId": "4",
+          "regionId": "1",
+          "year": "2027",
+          "stopNumber": "4",
+          "eventCategory": "6000",
+          "startDate": "09/18/2027",
+          "endDate": "09/18/2027",
+          "prizeMoney": "123",
+          "cancelUrl": "/models/event/5584/overview"
+        },
+        "website": {
+          "url": "https://www.beta.worldsurfleague.com/events/2027/wqs/5584/qa-fresh-sync2027-1793806018380-women-updated",
+          "http": 200,
+          "headings": [
+            "QA Fresh Sync2027 1793806018380 Women Updated"
+          ]
+        },
+        "expected": {
+          "name": "QA Fresh Sync2027 1793806018380 Women Updated",
+          "status": "upcoming",
+          "date": "2027-09-18"
+        }
+      }
+    }
+  ],
+  "actions": [
+    {
+      "path": "/tour-manager/seasons",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "seasons": [
+          {
+            "id": "01a1a2d8-b2b3-7383-a029-181d8000fd15",
+            "dates": "1 Jan – 31 Dec 2042",
+            "tours": 1,
+            "events": 1,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a2d8-b2b3-7383-a029-181d8000fd15",
+            "name": "2042",
+            "startDate": "2042-01-01",
+            "endDate": "2042-12-31",
+            "status": "draft",
+            "tourCount": 1,
+            "eventCount": 1,
+            "version": 1
+          },
+          {
+            "id": "01a1a2d6-477b-70b1-b8ea-3ff1b990e63b",
+            "dates": "1 Jan – 31 Dec 2041",
+            "tours": 1,
+            "events": 1,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a2d6-477b-70b1-b8ea-3ff1b990e63b",
+            "name": "2041",
+            "startDate": "2041-01-01",
+            "endDate": "2041-12-31",
+            "status": "draft",
+            "tourCount": 1,
+            "eventCount": 1,
+            "version": 1
+          },
+          {
+            "id": "01a1a2d6-4601-70cd-b3d7-15e420861387",
+            "dates": "1 Jan – 31 Dec 2040",
+            "tours": 1,
+            "events": 1,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a2d6-4601-70cd-b3d7-15e420861387",
+            "name": "2040",
+            "startDate": "2040-01-01",
+            "endDate": "2040-12-31",
+            "status": "draft",
+            "tourCount": 1,
+            "eventCount": 1,
+            "version": 1
+          },
+          {
+            "id": "01a1a2a1-ddd1-74b2-9d76-29effca628c6",
+            "dates": "1 Apr 2033 – 31 Mar 2034",
+            "tours": 0,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a2a1-ddd1-74b2-9d76-29effca628c6",
+            "name": "2033-34",
+            "startDate": "2033-04-01",
+            "endDate": "2034-03-31",
+            "status": "draft",
+            "tourCount": 0,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a1a29d-57c3-7736-9d81-19bb8728bd9e",
+            "dates": "1 Apr 2032 – 31 Mar 2033",
+            "tours": 0,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a29d-57c3-7736-9d81-19bb8728bd9e",
+            "name": "2032-33",
+            "startDate": "2032-04-01",
+            "endDate": "2033-03-31",
+            "status": "draft",
+            "tourCount": 0,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a198d1-3325-71e8-becd-3e7fd11f2c55",
+            "dates": "1 Apr 2031 – 31 Mar 2032",
+            "tours": 0,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a198d1-3325-71e8-becd-3e7fd11f2c55",
+            "name": "2055",
+            "startDate": "2031-04-01",
+            "endDate": "2032-03-31",
+            "status": "draft",
+            "tourCount": 0,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a1978d-950b-719c-90ca-ff35b5e76b16",
+            "dates": "1 Apr 2030 – 31 Mar 2031",
+            "tours": 36,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1978d-950b-719c-90ca-ff35b5e76b16",
+            "name": "2030-31",
+            "startDate": "2030-04-01",
+            "endDate": "2031-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a1733f-7a5e-72f8-873a-014a5ddd33df",
+            "dates": "1 Apr 2029 – 31 Mar 2030",
+            "tours": 36,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1733f-7a5e-72f8-873a-014a5ddd33df",
+            "name": "2029-30",
+            "startDate": "2029-04-01",
+            "endDate": "2030-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a1733e-8662-74ec-adbd-c9f43a19a8e9",
+            "dates": "1 Apr 2028 – 31 Mar 2029",
+            "tours": 36,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1733e-8662-74ec-adbd-c9f43a19a8e9",
+            "name": "2028-29",
+            "startDate": "2028-04-01",
+            "endDate": "2029-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a16545-06bc-718d-8d86-0bc7284e6434",
+            "dates": "1 Apr 2027 – 31 Mar 2028",
+            "tours": 36,
+            "events": 3,
+            "current": false,
+            "open": true,
+            "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+            "name": "2027-28",
+            "startDate": "2027-04-01",
+            "endDate": "2028-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 3,
+            "version": 1
+          },
+          {
+            "id": "01a16500-d18a-7089-9f93-87136db1daf5",
+            "dates": "1 Apr 2026 – 31 Mar 2027",
+            "tours": 40,
+            "events": 231,
+            "current": true,
+            "open": true,
+            "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+            "name": "2026-27",
+            "startDate": "2026-04-01",
+            "endDate": "2027-03-31",
+            "status": "active",
+            "tourCount": 40,
+            "eventCount": 231,
+            "version": 1
+          },
+          {
+            "id": "01a16500-a8cf-7628-bffd-0d485905ddbd",
+            "dates": "1 Jan 2025 – 31 Mar 2026",
+            "tours": 26,
+            "events": 130,
+            "current": false,
+            "open": false,
+            "seasonId": "01a16500-a8cf-7628-bffd-0d485905ddbd",
+            "name": "2025-26",
+            "startDate": "2025-01-01",
+            "endDate": "2026-03-31",
+            "status": "closed",
+            "tourCount": 26,
+            "eventCount": 130,
+            "version": 1
+          }
+        ],
+        "next": {
+          "name": "2043",
+          "startDate": "2043-01-01",
+          "endDate": "2043-12-31"
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/reference/tours",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a689-76d6-bacf-97db2d06d288",
+            "label": "Challenger Series (CS) · Men"
+          },
+          {
+            "value": "01a16500-a68e-7211-b990-8b674dcc4b4e",
+            "label": "Challenger Series (CS) · Women"
+          },
+          {
+            "value": "01a16500-a67e-76ce-bbb9-29f148f96885",
+            "label": "Championship Tour (CT) · Men"
+          },
+          {
+            "value": "01a16500-a685-7257-8b94-62e498f3f829",
+            "label": "Championship Tour (CT) · Women"
+          },
+          {
+            "value": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "label": "International Qualifying Series (QS) · Men"
+          },
+          {
+            "value": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "label": "International Qualifying Series (QS) · Women"
+          },
+          {
+            "value": "01a16500-a6ba-722e-a688-0c770cac410d",
+            "label": "Longboard Qualifying Series (LQS) · Men"
+          },
+          {
+            "value": "01a16500-a6be-7785-8f8e-a0bcebff613e",
+            "label": "Longboard Qualifying Series (LQS) · Women"
+          },
+          {
+            "value": "01a16500-a6b0-741b-87d7-2349d131a6c7",
+            "label": "Pro Junior Series (PJ) · Men"
+          },
+          {
+            "value": "01a16500-a6b5-74ca-8822-61940bc8c64a",
+            "label": "Pro Junior Series (PJ) · Women"
+          },
+          {
+            "value": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "label": "Qualifying Series (QS) · Men"
+          },
+          {
+            "value": "01a16500-a6ac-73e7-bd07-b5636015959e",
+            "label": "Qualifying Series (QS) · Women"
+          },
+          {
+            "value": "01a16500-a69b-74a1-9b2b-c02b0bcd0c85",
+            "label": "World Longboard Tour (LT) · Men"
+          },
+          {
+            "value": "01a16500-a6a0-740e-9040-800ba320cb75",
+            "label": "World Longboard Tour (LT) · Women"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/tour-manager/reference/tours/01a16500-a692-75a2-9b3a-0228fb8afcd5/ratings",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "label": "6,000"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/age-gate",
+      "method": "POST",
+      "sent": {
+        "dateOfBirth": "1995-06-15"
+      },
+      "status": 200,
+      "body": {
+        "eligible": true
+      }
+    },
+    {
+      "path": "/tour-manager/reference/locations?region=north_america",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "label": "Arecibo, La Marginal, Arecibo, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "label": "Atlantic City, New Jersey, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd8c31d4834a",
+            "label": "Atlantic Park Surf, Virginia Beach, VA · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cceee2805fb9",
+            "label": "Barra de la Cruz, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9a30ae9fd9",
+            "label": "Basse Pointe, Martinique, French West Indies · Martinique time",
+            "timeZone": "America/Martinique"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd239cc0fbc2",
+            "label": "Bathsheba, St. Josephs, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc6ceab1b630",
+            "label": "Belmar, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd0ba5cd1084",
+            "label": "Brandens, Hastings, Christ Church, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd287157175a",
+            "label": "Cortes Bank, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd7d9947715",
+            "label": "Deerfield Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd2239d805d3",
+            "label": "Domes Beach, Rincon, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccdd051fc834",
+            "label": "Dorney Park Wave Pool, Pennsylvania, Pennsylvania, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccc77e0b7943",
+            "label": "Drill Hall Beach, St. Michael, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7fac184d23",
+            "label": "El Rastrial · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd6d7485f77e",
+            "label": "El Sunzal, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5d3aa77374",
+            "label": "Encuentro Beach, Puerto Plata, DO · Santo Domingo time",
+            "timeZone": "America/Santo_Domingo"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccbc8ec0a562",
+            "label": "Esterillos Este, Parrita, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e72e9de987ca",
+            "label": "Huntington Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd161ab5106b",
+            "label": "Jaco Beach, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5ceecb2278",
+            "label": "Jax Beach Pier, Jacksonville, Florida · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9ba700d41a",
+            "label": "Jennette's Pier, Nags Head, North Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd60ad3b6d9",
+            "label": "Jensen Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc84af3ebdf9",
+            "label": "Jobo's Beach, Puerto Rico, Isabela, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd8b8e620c76",
+            "label": "La Bocana, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5f3da529c5",
+            "label": "La Izquierda, Cabarete, Sosúa, DO · Santo Domingo time",
+            "timeZone": "America/Santo_Domingo"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd025c63242f",
+            "label": "Lemoore, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78c4cf20fa0",
+            "label": "Long Beach, Nassau County, New York, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7ecf3f71b9",
+            "label": "Los Cerritos Beach, Cerritos, Baja California Sur, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e7310e0e815a",
+            "label": "Lower Trestles, San Clemente, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd301fa10cf",
+            "label": "Manhattan Beach, California, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccfb2022c719",
+            "label": "Mavericks, Half Moon Bay, California · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e794ad6b9849",
+            "label": "Mazatlan, Sinaloa, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e77e0761ecc2",
+            "label": "Middles Beach, Isabela, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd40aacad41a",
+            "label": "Morro Bay, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd9e6bab6a7",
+            "label": "Myrtle Beach, South Carolina, South Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cca5609c5e99",
+            "label": "Nelscott Reef, Lincoln City, Oregon, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd8a0369c43",
+            "label": "Neptune Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78790e45790",
+            "label": "New Smyrna Beach, Volusia County, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc714cfc74bc",
+            "label": "Ocean Beach, San Francisco, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccda883cd430",
+            "label": "Ocean City, Maryland, Maryland, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e79a10b74487",
+            "label": "Oceanside, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e73410b5e9a1",
+            "label": "Oceanside Harbor, Oceanside, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc808bb864c3",
+            "label": "Oceanside Pier, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccf43c28c485",
+            "label": "Pismo Beach Pier, Pismo Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccc5a3bdde6f",
+            "label": "Playa Hermosa, Garabito, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc7c64e0a9da",
+            "label": "Playa Revolcadero, Acapulco, Guerrero, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd3e6ca98718",
+            "label": "Playa Zicatela, Puerto Escondido, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e748bdf7c6fd",
+            "label": "Ponto, Carlsbad, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e75a24bdaa15",
+            "label": "Puerto Escondido, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e795c7644a10",
+            "label": "Punta Roca, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd24b3d68fe5",
+            "label": "Rincon, Rincon Stella, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd21037dc4ea",
+            "label": "Rincon, Puerto · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd4a431cca9",
+            "label": "San Diego, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e75819e585df",
+            "label": "San Onofre, San Clemente, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e7554d6dd0b7",
+            "label": "Santa Cruz, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cccb3f9f98df",
+            "label": "Seaside Heights, New Jersey, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78a40b83ced",
+            "label": "Seaside Reef, Solana Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e727a4a226ff",
+            "label": "Sebastian Inlet, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc859089d150",
+            "label": "Shepard Beach Park, Cocoa Beach, Florida · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc933e349b1e",
+            "label": "Soup Bowl, Bathsheba, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccf34e7bab74",
+            "label": "Southampton, New York, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cce16af62612",
+            "label": "Steamer Lane, Santa Cruz, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd1c6131e336",
+            "label": "Surf Ranch, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd050e53bde",
+            "label": "Surfrider Beach, Malibu, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd170fdb5a57",
+            "label": "TBA · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd3a95159fbd",
+            "label": "The Cape, Monuments Beach, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cca706274c32",
+            "label": "Todos Santos, Baja California, Mexico · Tijuana time",
+            "timeZone": "America/Tijuana"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e76d0db2e221",
+            "label": "Tofino, Vancouver Island, British Columbia, Canada · Vancouver time",
+            "timeZone": "America/Vancouver"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc6990899ea9",
+            "label": "Virginia Beach, Virginia, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccdbf3190934",
+            "label": "Wrightsville Beach, North Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9844502fbd",
+            "label": "Zippers, San Jose del Cabo, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/auth/register",
+      "method": "POST",
+      "sent": "[credentials omitted]",
+      "status": 201,
+      "body": {
+        "ok": true
+      }
+    },
+    {
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "sent": {
+        "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+        "name": "QA Fresh Sync2027 1793805908218 Men",
+        "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+        "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+        "startDate": "2027-09-10",
+        "endDate": "2027-09-10",
+        "fieldSize": 48,
+        "prizeMoney": {
+          "amount": 12300,
+          "currency": "USD"
+        },
+        "currency": "USD",
+        "entryFee": {
+          "amount": 15000,
+          "currency": "USD"
+        },
+        "acknowledgedConflicts": []
+      },
+      "status": 201,
+      "body": {
+        "event": {
+          "id": "01a1a72a-2e18-7030-a075-3b9692844419",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "startDate": "2027-09-10",
+            "endDate": "2027-09-10",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      }
+    },
+    {
+      "path": "/athletes",
+      "method": "POST",
+      "sent": {
+        "registeredByRole": "self",
+        "firstName": "QA",
+        "lastName": "Sync202717938059082180",
+        "email": "qa.sync2027.1793805908218.0@btj5keea.mailosaur.net",
+        "genderCode": "male",
+        "countryRepresenting": "BR",
+        "countryOfResidence": "US",
+        "addressLine1": "100 QA Sync Street",
+        "city": "San Diego",
+        "region": "CA",
+        "postalCode": "92101",
+        "phoneNumber": "+12025550121",
+        "language": "en",
+        "emergencyContactName": "QA Emergency",
+        "emergencyContactRelationship": "Parent",
+        "emergencyContactPhone": "+12025550122",
+        "emergencyContactEmail": "qa.sync.emergency@btj5keea.mailosaur.net"
+      },
+      "status": 201,
+      "body": {
+        "athlete": {
+          "id": "01a1a72a-2efc-757b-a1ac-ae9b669df23a",
+          "status": "pending_documents",
+          "homeRegion": "north_america"
+        },
+        "next": {
+          "title": "Details saved",
+          "body": "Next, the membership terms, the waiver, the insurance authorisation and the age certification all need signing before this athlete can compete."
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72a-2e18-7030-a075-3b9692844419",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72a-2e18-7030-a075-3b9692844419",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "startDate": "2027-09-10",
+            "endDate": "2027-09-10",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      }
+    },
+    {
+      "path": "/membership/documents?athlete=01a1a72a-2efc-757b-a1ac-ae9b669df23a&year=2027",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "documents": [
+          {
+            "id": "age_and_authority_certification",
+            "title": "Age and authority certification",
+            "body": "Certifies the age given, and who is registering on this athlete's behalf.",
+            "signed": false
+          },
+          {
+            "id": "membership_terms_and_conditions",
+            "title": "Membership terms and conditions",
+            "body": "The rules of holding a WSL membership.",
+            "signed": false
+          },
+          {
+            "id": "waiver_release_indemnity",
+            "title": "Waiver, release and indemnity",
+            "body": "Acknowledges the risks of competitive surfing.",
+            "signed": false
+          },
+          {
+            "id": "health_insurance_authorization",
+            "title": "Health and insurance authorisation",
+            "body": "Authorises emergency medical care and insurance handling if needed.",
+            "signed": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72a-2e18-7030-a075-3b9692844419/status",
+      "method": "PUT",
+      "sent": {
+        "code": "tentative",
+        "version": 1
+      },
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72a-2e18-7030-a075-3b9692844419",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "startDate": "2027-09-10",
+            "endDate": "2027-09-10",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 2
+        }
+      }
+    },
+    {
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "sent": {
+        "athleteId": "01a1a72a-2efc-757b-a1ac-ae9b669df23a",
+        "documentCode": "age_and_authority_certification",
+        "location": "QA dev 2027 sync test"
+      },
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "sent": {
+        "athleteId": "01a1a72a-2efc-757b-a1ac-ae9b669df23a",
+        "documentCode": "membership_terms_and_conditions",
+        "location": "QA dev 2027 sync test"
+      },
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "sent": {
+        "athleteId": "01a1a72a-2efc-757b-a1ac-ae9b669df23a",
+        "documentCode": "waiver_release_indemnity",
+        "location": "QA dev 2027 sync test"
+      },
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "waiver_release_indemnity",
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "sent": {
+        "athleteId": "01a1a72a-2efc-757b-a1ac-ae9b669df23a",
+        "documentCode": "health_insurance_authorization",
+        "location": "QA dev 2027 sync test"
+      },
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "waiver_release_indemnity",
+          "health_insurance_authorization",
+          "age_and_authority_certification"
+        ],
+        "status": "active"
+      }
+    },
+    {
+      "path": "/membership/offer?athlete=01a1a72a-2efc-757b-a1ac-ae9b669df23a&year=2027",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+        "homeRegion": {
+          "code": "north_america",
+          "label": "North America"
+        },
+        "products": [
+          {
+            "id": "01a18a8f-5776-70ee-b7ed-9d0e8b78fb8c",
+            "code": "single_event",
+            "name": "Single Event",
+            "description": "Enter one event in any region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "One event only. Junior events need age eligibility. Insurance is required when competing outside the country of residence. Ranking points are only earned in events sanctioned by your home region & QS 6000 events",
+            "note": "You can upgrade later by paying the price difference.",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 78.75,
+            "amountMinor": 7875,
+            "currency": "USD",
+            "priceMinor": 7875,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a19b75-3fbb-7558-9ce1-c05acb254f18",
+            "code": "full_regional",
+            "name": "Regional Membership",
+            "description": "Enter events across all seven regions, not just the home region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 262.5,
+            "amountMinor": 26250,
+            "currency": "USD",
+            "priceMinor": 26250,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a18a8f-571a-70e1-b399-7f9d019937c7",
+            "code": "longboard",
+            "name": "Longboard Membership",
+            "description": "Enter Longboard and Longboard Qualifying Series events in any region. International tour events are by invitation.",
+            "compete": "All 7 regions, Longboard tours",
+            "includes": "Longboard Qualifying Series",
+            "details": "Longboard Qualifying Series events. Insurance is required when competing outside the country of residence. Regional ranking points only.",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 157.5,
+            "amountMinor": 15750,
+            "currency": "USD",
+            "priceMinor": 15750,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          }
+        ],
+        "openCheckout": null
+      }
+    },
+    {
+      "path": "/age-gate",
+      "method": "POST",
+      "sent": {
+        "dateOfBirth": "1995-06-15"
+      },
+      "status": 200,
+      "body": {
+        "eligible": true
+      }
+    },
+    {
+      "path": "/auth/register",
+      "method": "POST",
+      "sent": "[credentials omitted]",
+      "status": 201,
+      "body": {
+        "ok": true
+      }
+    },
+    {
+      "path": "/athletes",
+      "method": "POST",
+      "sent": {
+        "registeredByRole": "self",
+        "firstName": "QA",
+        "lastName": "Sync202717938059082181",
+        "email": "qa.sync2027.1793805908218.1@btj5keea.mailosaur.net",
+        "genderCode": "female",
+        "countryRepresenting": "BR",
+        "countryOfResidence": "US",
+        "addressLine1": "100 QA Sync Street",
+        "city": "San Diego",
+        "region": "CA",
+        "postalCode": "92101",
+        "phoneNumber": "+12025550121",
+        "language": "en",
+        "emergencyContactName": "QA Emergency",
+        "emergencyContactRelationship": "Parent",
+        "emergencyContactPhone": "+12025550122",
+        "emergencyContactEmail": "qa.sync.emergency@btj5keea.mailosaur.net"
+      },
+      "status": 201,
+      "body": {
+        "athlete": {
+          "id": "01a1a72a-4219-7442-8245-68a4028c414d",
+          "status": "pending_documents",
+          "homeRegion": "north_america"
+        },
+        "next": {
+          "title": "Details saved",
+          "body": "Next, the membership terms, the waiver, the insurance authorisation and the age certification all need signing before this athlete can compete."
+        }
+      }
+    },
+    {
+      "path": "/membership/documents?athlete=01a1a72a-4219-7442-8245-68a4028c414d&year=2027",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "documents": [
+          {
+            "id": "age_and_authority_certification",
+            "title": "Age and authority certification",
+            "body": "Certifies the age given, and who is registering on this athlete's behalf.",
+            "signed": false
+          },
+          {
+            "id": "membership_terms_and_conditions",
+            "title": "Membership terms and conditions",
+            "body": "The rules of holding a WSL membership.",
+            "signed": false
+          },
+          {
+            "id": "waiver_release_indemnity",
+            "title": "Waiver, release and indemnity",
+            "body": "Acknowledges the risks of competitive surfing.",
+            "signed": false
+          },
+          {
+            "id": "health_insurance_authorization",
+            "title": "Health and insurance authorisation",
+            "body": "Authorises emergency medical care and insurance handling if needed.",
+            "signed": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "sent": {
+        "athleteId": "01a1a72a-4219-7442-8245-68a4028c414d",
+        "documentCode": "age_and_authority_certification",
+        "location": "QA dev 2027 sync test"
+      },
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "sent": {
+        "athleteId": "01a1a72a-4219-7442-8245-68a4028c414d",
+        "documentCode": "membership_terms_and_conditions",
+        "location": "QA dev 2027 sync test"
+      },
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "sent": {
+        "athleteId": "01a1a72a-4219-7442-8245-68a4028c414d",
+        "documentCode": "waiver_release_indemnity",
+        "location": "QA dev 2027 sync test"
+      },
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "waiver_release_indemnity",
+          "age_and_authority_certification"
+        ],
+        "status": "pending_documents"
+      }
+    },
+    {
+      "path": "/membership/documents/sign",
+      "method": "POST",
+      "sent": {
+        "athleteId": "01a1a72a-4219-7442-8245-68a4028c414d",
+        "documentCode": "health_insurance_authorization",
+        "location": "QA dev 2027 sync test"
+      },
+      "status": 200,
+      "body": {
+        "signedCodes": [
+          "membership_terms_and_conditions",
+          "waiver_release_indemnity",
+          "health_insurance_authorization",
+          "age_and_authority_certification"
+        ],
+        "status": "active"
+      }
+    },
+    {
+      "path": "/membership/offer?athlete=01a1a72a-4219-7442-8245-68a4028c414d&year=2027",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+        "homeRegion": {
+          "code": "north_america",
+          "label": "North America"
+        },
+        "products": [
+          {
+            "id": "01a18a8f-5776-70ee-b7ed-9d0e8b78fb8c",
+            "code": "single_event",
+            "name": "Single Event",
+            "description": "Enter one event in any region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "One event only. Junior events need age eligibility. Insurance is required when competing outside the country of residence. Ranking points are only earned in events sanctioned by your home region & QS 6000 events",
+            "note": "You can upgrade later by paying the price difference.",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 78.75,
+            "amountMinor": 7875,
+            "currency": "USD",
+            "priceMinor": 7875,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a19b75-3fbb-7558-9ce1-c05acb254f18",
+            "code": "full_regional",
+            "name": "Regional Membership",
+            "description": "Enter events across all seven regions, not just the home region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 262.5,
+            "amountMinor": 26250,
+            "currency": "USD",
+            "priceMinor": 26250,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a18a8f-571a-70e1-b399-7f9d019937c7",
+            "code": "longboard",
+            "name": "Longboard Membership",
+            "description": "Enter Longboard and Longboard Qualifying Series events in any region. International tour events are by invitation.",
+            "compete": "All 7 regions, Longboard tours",
+            "includes": "Longboard Qualifying Series",
+            "details": "Longboard Qualifying Series events. Insurance is required when competing outside the country of residence. Regional ranking points only.",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 157.5,
+            "amountMinor": 15750,
+            "currency": "USD",
+            "priceMinor": 15750,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          }
+        ],
+        "openCheckout": null
+      }
+    },
+    {
+      "path": "/tour-manager/seasons",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "seasons": [
+          {
+            "id": "01a1a2d8-b2b3-7383-a029-181d8000fd15",
+            "dates": "1 Jan – 31 Dec 2042",
+            "tours": 1,
+            "events": 1,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a2d8-b2b3-7383-a029-181d8000fd15",
+            "name": "2042",
+            "startDate": "2042-01-01",
+            "endDate": "2042-12-31",
+            "status": "draft",
+            "tourCount": 1,
+            "eventCount": 1,
+            "version": 1
+          },
+          {
+            "id": "01a1a2d6-477b-70b1-b8ea-3ff1b990e63b",
+            "dates": "1 Jan – 31 Dec 2041",
+            "tours": 1,
+            "events": 1,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a2d6-477b-70b1-b8ea-3ff1b990e63b",
+            "name": "2041",
+            "startDate": "2041-01-01",
+            "endDate": "2041-12-31",
+            "status": "draft",
+            "tourCount": 1,
+            "eventCount": 1,
+            "version": 1
+          },
+          {
+            "id": "01a1a2d6-4601-70cd-b3d7-15e420861387",
+            "dates": "1 Jan – 31 Dec 2040",
+            "tours": 1,
+            "events": 1,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a2d6-4601-70cd-b3d7-15e420861387",
+            "name": "2040",
+            "startDate": "2040-01-01",
+            "endDate": "2040-12-31",
+            "status": "draft",
+            "tourCount": 1,
+            "eventCount": 1,
+            "version": 1
+          },
+          {
+            "id": "01a1a2a1-ddd1-74b2-9d76-29effca628c6",
+            "dates": "1 Apr 2033 – 31 Mar 2034",
+            "tours": 0,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a2a1-ddd1-74b2-9d76-29effca628c6",
+            "name": "2033-34",
+            "startDate": "2033-04-01",
+            "endDate": "2034-03-31",
+            "status": "draft",
+            "tourCount": 0,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a1a29d-57c3-7736-9d81-19bb8728bd9e",
+            "dates": "1 Apr 2032 – 31 Mar 2033",
+            "tours": 0,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1a29d-57c3-7736-9d81-19bb8728bd9e",
+            "name": "2032-33",
+            "startDate": "2032-04-01",
+            "endDate": "2033-03-31",
+            "status": "draft",
+            "tourCount": 0,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a198d1-3325-71e8-becd-3e7fd11f2c55",
+            "dates": "1 Apr 2031 – 31 Mar 2032",
+            "tours": 0,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a198d1-3325-71e8-becd-3e7fd11f2c55",
+            "name": "2055",
+            "startDate": "2031-04-01",
+            "endDate": "2032-03-31",
+            "status": "draft",
+            "tourCount": 0,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a1978d-950b-719c-90ca-ff35b5e76b16",
+            "dates": "1 Apr 2030 – 31 Mar 2031",
+            "tours": 36,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1978d-950b-719c-90ca-ff35b5e76b16",
+            "name": "2030-31",
+            "startDate": "2030-04-01",
+            "endDate": "2031-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a1733f-7a5e-72f8-873a-014a5ddd33df",
+            "dates": "1 Apr 2029 – 31 Mar 2030",
+            "tours": 36,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1733f-7a5e-72f8-873a-014a5ddd33df",
+            "name": "2029-30",
+            "startDate": "2029-04-01",
+            "endDate": "2030-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a1733e-8662-74ec-adbd-c9f43a19a8e9",
+            "dates": "1 Apr 2028 – 31 Mar 2029",
+            "tours": 36,
+            "events": 0,
+            "current": false,
+            "open": true,
+            "seasonId": "01a1733e-8662-74ec-adbd-c9f43a19a8e9",
+            "name": "2028-29",
+            "startDate": "2028-04-01",
+            "endDate": "2029-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 0,
+            "version": 1
+          },
+          {
+            "id": "01a16545-06bc-718d-8d86-0bc7284e6434",
+            "dates": "1 Apr 2027 – 31 Mar 2028",
+            "tours": 36,
+            "events": 4,
+            "current": false,
+            "open": true,
+            "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+            "name": "2027-28",
+            "startDate": "2027-04-01",
+            "endDate": "2028-03-31",
+            "status": "draft",
+            "tourCount": 36,
+            "eventCount": 4,
+            "version": 1
+          },
+          {
+            "id": "01a16500-d18a-7089-9f93-87136db1daf5",
+            "dates": "1 Apr 2026 – 31 Mar 2027",
+            "tours": 40,
+            "events": 231,
+            "current": true,
+            "open": true,
+            "seasonId": "01a16500-d18a-7089-9f93-87136db1daf5",
+            "name": "2026-27",
+            "startDate": "2026-04-01",
+            "endDate": "2027-03-31",
+            "status": "active",
+            "tourCount": 40,
+            "eventCount": 231,
+            "version": 1
+          },
+          {
+            "id": "01a16500-a8cf-7628-bffd-0d485905ddbd",
+            "dates": "1 Jan 2025 – 31 Mar 2026",
+            "tours": 26,
+            "events": 130,
+            "current": false,
+            "open": false,
+            "seasonId": "01a16500-a8cf-7628-bffd-0d485905ddbd",
+            "name": "2025-26",
+            "startDate": "2025-01-01",
+            "endDate": "2026-03-31",
+            "status": "closed",
+            "tourCount": 26,
+            "eventCount": 130,
+            "version": 1
+          }
+        ],
+        "next": {
+          "name": "2043",
+          "startDate": "2043-01-01",
+          "endDate": "2043-12-31"
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/reference/tours",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a689-76d6-bacf-97db2d06d288",
+            "label": "Challenger Series (CS) · Men"
+          },
+          {
+            "value": "01a16500-a68e-7211-b990-8b674dcc4b4e",
+            "label": "Challenger Series (CS) · Women"
+          },
+          {
+            "value": "01a16500-a67e-76ce-bbb9-29f148f96885",
+            "label": "Championship Tour (CT) · Men"
+          },
+          {
+            "value": "01a16500-a685-7257-8b94-62e498f3f829",
+            "label": "Championship Tour (CT) · Women"
+          },
+          {
+            "value": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "label": "International Qualifying Series (QS) · Men"
+          },
+          {
+            "value": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "label": "International Qualifying Series (QS) · Women"
+          },
+          {
+            "value": "01a16500-a6ba-722e-a688-0c770cac410d",
+            "label": "Longboard Qualifying Series (LQS) · Men"
+          },
+          {
+            "value": "01a16500-a6be-7785-8f8e-a0bcebff613e",
+            "label": "Longboard Qualifying Series (LQS) · Women"
+          },
+          {
+            "value": "01a16500-a6b0-741b-87d7-2349d131a6c7",
+            "label": "Pro Junior Series (PJ) · Men"
+          },
+          {
+            "value": "01a16500-a6b5-74ca-8822-61940bc8c64a",
+            "label": "Pro Junior Series (PJ) · Women"
+          },
+          {
+            "value": "01a16500-a6a7-712e-bca9-241fb0f9c005",
+            "label": "Qualifying Series (QS) · Men"
+          },
+          {
+            "value": "01a16500-a6ac-73e7-bd07-b5636015959e",
+            "label": "Qualifying Series (QS) · Women"
+          },
+          {
+            "value": "01a16500-a69b-74a1-9b2b-c02b0bcd0c85",
+            "label": "World Longboard Tour (LT) · Men"
+          },
+          {
+            "value": "01a16500-a6a0-740e-9040-800ba320cb75",
+            "label": "World Longboard Tour (LT) · Women"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/tour-manager/reference/tours/01a16500-a692-75a2-9b3a-0228fb8afcd5/ratings",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "label": "6,000"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/tour-manager/reference/locations?region=north_america",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "label": "Arecibo, La Marginal, Arecibo, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "label": "Atlantic City, New Jersey, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd8c31d4834a",
+            "label": "Atlantic Park Surf, Virginia Beach, VA · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cceee2805fb9",
+            "label": "Barra de la Cruz, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9a30ae9fd9",
+            "label": "Basse Pointe, Martinique, French West Indies · Martinique time",
+            "timeZone": "America/Martinique"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd239cc0fbc2",
+            "label": "Bathsheba, St. Josephs, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc6ceab1b630",
+            "label": "Belmar, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd0ba5cd1084",
+            "label": "Brandens, Hastings, Christ Church, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd287157175a",
+            "label": "Cortes Bank, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd7d9947715",
+            "label": "Deerfield Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd2239d805d3",
+            "label": "Domes Beach, Rincon, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccdd051fc834",
+            "label": "Dorney Park Wave Pool, Pennsylvania, Pennsylvania, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccc77e0b7943",
+            "label": "Drill Hall Beach, St. Michael, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7fac184d23",
+            "label": "El Rastrial · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd6d7485f77e",
+            "label": "El Sunzal, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5d3aa77374",
+            "label": "Encuentro Beach, Puerto Plata, DO · Santo Domingo time",
+            "timeZone": "America/Santo_Domingo"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccbc8ec0a562",
+            "label": "Esterillos Este, Parrita, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e72e9de987ca",
+            "label": "Huntington Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd161ab5106b",
+            "label": "Jaco Beach, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5ceecb2278",
+            "label": "Jax Beach Pier, Jacksonville, Florida · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9ba700d41a",
+            "label": "Jennette's Pier, Nags Head, North Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd60ad3b6d9",
+            "label": "Jensen Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc84af3ebdf9",
+            "label": "Jobo's Beach, Puerto Rico, Isabela, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd8b8e620c76",
+            "label": "La Bocana, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5f3da529c5",
+            "label": "La Izquierda, Cabarete, Sosúa, DO · Santo Domingo time",
+            "timeZone": "America/Santo_Domingo"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd025c63242f",
+            "label": "Lemoore, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78c4cf20fa0",
+            "label": "Long Beach, Nassau County, New York, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7ecf3f71b9",
+            "label": "Los Cerritos Beach, Cerritos, Baja California Sur, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e7310e0e815a",
+            "label": "Lower Trestles, San Clemente, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd301fa10cf",
+            "label": "Manhattan Beach, California, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccfb2022c719",
+            "label": "Mavericks, Half Moon Bay, California · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e794ad6b9849",
+            "label": "Mazatlan, Sinaloa, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e77e0761ecc2",
+            "label": "Middles Beach, Isabela, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd40aacad41a",
+            "label": "Morro Bay, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd9e6bab6a7",
+            "label": "Myrtle Beach, South Carolina, South Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cca5609c5e99",
+            "label": "Nelscott Reef, Lincoln City, Oregon, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd8a0369c43",
+            "label": "Neptune Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78790e45790",
+            "label": "New Smyrna Beach, Volusia County, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc714cfc74bc",
+            "label": "Ocean Beach, San Francisco, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccda883cd430",
+            "label": "Ocean City, Maryland, Maryland, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e79a10b74487",
+            "label": "Oceanside, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e73410b5e9a1",
+            "label": "Oceanside Harbor, Oceanside, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc808bb864c3",
+            "label": "Oceanside Pier, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccf43c28c485",
+            "label": "Pismo Beach Pier, Pismo Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccc5a3bdde6f",
+            "label": "Playa Hermosa, Garabito, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc7c64e0a9da",
+            "label": "Playa Revolcadero, Acapulco, Guerrero, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd3e6ca98718",
+            "label": "Playa Zicatela, Puerto Escondido, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e748bdf7c6fd",
+            "label": "Ponto, Carlsbad, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e75a24bdaa15",
+            "label": "Puerto Escondido, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e795c7644a10",
+            "label": "Punta Roca, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd24b3d68fe5",
+            "label": "Rincon, Rincon Stella, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd21037dc4ea",
+            "label": "Rincon, Puerto · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd4a431cca9",
+            "label": "San Diego, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e75819e585df",
+            "label": "San Onofre, San Clemente, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e7554d6dd0b7",
+            "label": "Santa Cruz, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cccb3f9f98df",
+            "label": "Seaside Heights, New Jersey, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78a40b83ced",
+            "label": "Seaside Reef, Solana Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e727a4a226ff",
+            "label": "Sebastian Inlet, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc859089d150",
+            "label": "Shepard Beach Park, Cocoa Beach, Florida · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc933e349b1e",
+            "label": "Soup Bowl, Bathsheba, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccf34e7bab74",
+            "label": "Southampton, New York, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cce16af62612",
+            "label": "Steamer Lane, Santa Cruz, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd1c6131e336",
+            "label": "Surf Ranch, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd050e53bde",
+            "label": "Surfrider Beach, Malibu, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd170fdb5a57",
+            "label": "TBA · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd3a95159fbd",
+            "label": "The Cape, Monuments Beach, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cca706274c32",
+            "label": "Todos Santos, Baja California, Mexico · Tijuana time",
+            "timeZone": "America/Tijuana"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e76d0db2e221",
+            "label": "Tofino, Vancouver Island, British Columbia, Canada · Vancouver time",
+            "timeZone": "America/Vancouver"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc6990899ea9",
+            "label": "Virginia Beach, Virginia, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccdbf3190934",
+            "label": "Wrightsville Beach, North Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9844502fbd",
+            "label": "Zippers, San Jose del Cabo, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72a-2e18-7030-a075-3b9692844419",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72a-2e18-7030-a075-3b9692844419",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "startDate": "2027-09-10",
+            "endDate": "2027-09-10",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 2
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72a-2e18-7030-a075-3b9692844419/status",
+      "method": "PUT",
+      "sent": {
+        "code": "tentative",
+        "version": 2
+      },
+      "status": 409,
+      "body": {
+        "title": "That did not go through",
+        "message": "This event cannot move to that status now.",
+        "reason": "competition.status_not_allowed",
+        "fields": {},
+        "retryable": false
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72a-2e18-7030-a075-3b9692844419",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72a-2e18-7030-a075-3b9692844419",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "startDate": "2027-09-10",
+            "endDate": "2027-09-10",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 2
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72a-2e18-7030-a075-3b9692844419",
+      "method": "PUT",
+      "sent": {
+        "name": "QA Fresh Sync2027 1793805908218 Men Updated",
+        "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+        "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+        "startDate": "2027-09-10",
+        "endDate": "2027-09-10",
+        "fieldSize": 48,
+        "prizeMoney": {
+          "amount": 12300,
+          "currency": "USD"
+        },
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "currency": "USD",
+        "entryFee": {
+          "amount": 15000,
+          "currency": "USD"
+        },
+        "version": 2,
+        "acknowledgedConflicts": []
+      },
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72a-2e18-7030-a075-3b9692844419",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793805908218 Men Updated",
+            "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "startDate": "2027-09-10",
+            "endDate": "2027-09-10",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 3
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72a-2e18-7030-a075-3b9692844419",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72a-2e18-7030-a075-3b9692844419",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793805908218 Men Updated",
+            "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "startDate": "2027-09-10",
+            "endDate": "2027-09-10",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 3
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72a-2e18-7030-a075-3b9692844419/status",
+      "method": "PUT",
+      "sent": {
+        "code": "confirmed",
+        "version": 3
+      },
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72a-2e18-7030-a075-3b9692844419",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793805908218 Men Updated",
+            "tour": "01a16500-a692-75a2-9b3a-0228fb8afcd5",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "startDate": "2027-09-10",
+            "endDate": "2027-09-10",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 4
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/reference/tours/01a16500-a696-749b-b8b6-9c3ff7fedc57/ratings",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "label": "6,000"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/tour-manager/reference/locations?region=north_america",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "options": [
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7c81e00187",
+            "label": "Arecibo, La Marginal, Arecibo, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "label": "Atlantic City, New Jersey, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd8c31d4834a",
+            "label": "Atlantic Park Surf, Virginia Beach, VA · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cceee2805fb9",
+            "label": "Barra de la Cruz, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9a30ae9fd9",
+            "label": "Basse Pointe, Martinique, French West Indies · Martinique time",
+            "timeZone": "America/Martinique"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd239cc0fbc2",
+            "label": "Bathsheba, St. Josephs, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc6ceab1b630",
+            "label": "Belmar, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd0ba5cd1084",
+            "label": "Brandens, Hastings, Christ Church, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd287157175a",
+            "label": "Cortes Bank, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd7d9947715",
+            "label": "Deerfield Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd2239d805d3",
+            "label": "Domes Beach, Rincon, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccdd051fc834",
+            "label": "Dorney Park Wave Pool, Pennsylvania, Pennsylvania, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccc77e0b7943",
+            "label": "Drill Hall Beach, St. Michael, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7fac184d23",
+            "label": "El Rastrial · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd6d7485f77e",
+            "label": "El Sunzal, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5d3aa77374",
+            "label": "Encuentro Beach, Puerto Plata, DO · Santo Domingo time",
+            "timeZone": "America/Santo_Domingo"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccbc8ec0a562",
+            "label": "Esterillos Este, Parrita, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e72e9de987ca",
+            "label": "Huntington Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd161ab5106b",
+            "label": "Jaco Beach, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5ceecb2278",
+            "label": "Jax Beach Pier, Jacksonville, Florida · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9ba700d41a",
+            "label": "Jennette's Pier, Nags Head, North Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd60ad3b6d9",
+            "label": "Jensen Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc84af3ebdf9",
+            "label": "Jobo's Beach, Puerto Rico, Isabela, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd8b8e620c76",
+            "label": "La Bocana, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd5f3da529c5",
+            "label": "La Izquierda, Cabarete, Sosúa, DO · Santo Domingo time",
+            "timeZone": "America/Santo_Domingo"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd025c63242f",
+            "label": "Lemoore, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78c4cf20fa0",
+            "label": "Long Beach, Nassau County, New York, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd7ecf3f71b9",
+            "label": "Los Cerritos Beach, Cerritos, Baja California Sur, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e7310e0e815a",
+            "label": "Lower Trestles, San Clemente, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd301fa10cf",
+            "label": "Manhattan Beach, California, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccfb2022c719",
+            "label": "Mavericks, Half Moon Bay, California · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e794ad6b9849",
+            "label": "Mazatlan, Sinaloa, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e77e0761ecc2",
+            "label": "Middles Beach, Isabela, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd40aacad41a",
+            "label": "Morro Bay, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd9e6bab6a7",
+            "label": "Myrtle Beach, South Carolina, South Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cca5609c5e99",
+            "label": "Nelscott Reef, Lincoln City, Oregon, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd8a0369c43",
+            "label": "Neptune Beach, Florida, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78790e45790",
+            "label": "New Smyrna Beach, Volusia County, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc714cfc74bc",
+            "label": "Ocean Beach, San Francisco, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccda883cd430",
+            "label": "Ocean City, Maryland, Maryland, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e79a10b74487",
+            "label": "Oceanside, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e73410b5e9a1",
+            "label": "Oceanside Harbor, Oceanside, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc808bb864c3",
+            "label": "Oceanside Pier, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccf43c28c485",
+            "label": "Pismo Beach Pier, Pismo Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccc5a3bdde6f",
+            "label": "Playa Hermosa, Garabito, Costa Rica · Costa Rica time",
+            "timeZone": "America/Costa_Rica"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc7c64e0a9da",
+            "label": "Playa Revolcadero, Acapulco, Guerrero, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd3e6ca98718",
+            "label": "Playa Zicatela, Puerto Escondido, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e748bdf7c6fd",
+            "label": "Ponto, Carlsbad, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e75a24bdaa15",
+            "label": "Puerto Escondido, Oaxaca, Mexico · Mexico City time",
+            "timeZone": "America/Mexico_City"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e795c7644a10",
+            "label": "Punta Roca, La Libertad, El Salvador · El Salvador time",
+            "timeZone": "America/El_Salvador"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd24b3d68fe5",
+            "label": "Rincon, Rincon Stella, Puerto Rico · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd21037dc4ea",
+            "label": "Rincon, Puerto · Puerto Rico time",
+            "timeZone": "America/Puerto_Rico"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd4a431cca9",
+            "label": "San Diego, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e75819e585df",
+            "label": "San Onofre, San Clemente, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e7554d6dd0b7",
+            "label": "Santa Cruz, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cccb3f9f98df",
+            "label": "Seaside Heights, New Jersey, New Jersey, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e78a40b83ced",
+            "label": "Seaside Reef, Solana Beach, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e727a4a226ff",
+            "label": "Sebastian Inlet, Florida, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc859089d150",
+            "label": "Shepard Beach Park, Cocoa Beach, Florida · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc933e349b1e",
+            "label": "Soup Bowl, Bathsheba, Barbados · Barbados time",
+            "timeZone": "America/Barbados"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccf34e7bab74",
+            "label": "Southampton, New York, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cce16af62612",
+            "label": "Steamer Lane, Santa Cruz, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd1c6131e336",
+            "label": "Surf Ranch, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccd050e53bde",
+            "label": "Surfrider Beach, Malibu, California, United States · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd170fdb5a57",
+            "label": "TBA · Los Angeles time",
+            "timeZone": "America/Los_Angeles"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cd3a95159fbd",
+            "label": "The Cape, Monuments Beach, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cca706274c32",
+            "label": "Todos Santos, Baja California, Mexico · Tijuana time",
+            "timeZone": "America/Tijuana"
+          },
+          {
+            "value": "01a16500-a867-74e9-8dbf-e76d0db2e221",
+            "label": "Tofino, Vancouver Island, British Columbia, Canada · Vancouver time",
+            "timeZone": "America/Vancouver"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc6990899ea9",
+            "label": "Virginia Beach, Virginia, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-ccdbf3190934",
+            "label": "Wrightsville Beach, North Carolina, United States · New York time",
+            "timeZone": "America/New_York"
+          },
+          {
+            "value": "01a16500-a868-7092-8b9f-cc9844502fbd",
+            "label": "Zippers, San Jose del Cabo, Mexico · Mazatlan time",
+            "timeZone": "America/Mazatlan"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/tour-manager/events",
+      "method": "POST",
+      "sent": {
+        "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+        "name": "QA Fresh Sync2027 1793806018380 Women",
+        "tour": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+        "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+        "startDate": "2027-09-18",
+        "endDate": "2027-09-18",
+        "fieldSize": 48,
+        "prizeMoney": {
+          "amount": 12300,
+          "currency": "USD"
+        },
+        "currency": "USD",
+        "entryFee": {
+          "amount": 15000,
+          "currency": "USD"
+        },
+        "acknowledgedConflicts": []
+      },
+      "status": 201,
+      "body": {
+        "event": {
+          "id": "01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793806018380 Women",
+            "tour": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "startDate": "2027-09-18",
+            "endDate": "2027-09-18",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "draft",
+            "label": "Draft",
+            "tone": "muted"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793806018380 Women",
+            "tour": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "startDate": "2027-09-18",
+            "endDate": "2027-09-18",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 1
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72c-0c4b-7412-8c5c-65e19c184faf/status",
+      "method": "PUT",
+      "sent": {
+        "code": "tentative",
+        "version": 1
+      },
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793806018380 Women",
+            "tour": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "startDate": "2027-09-18",
+            "endDate": "2027-09-18",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 2
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793806018380 Women",
+            "tour": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "startDate": "2027-09-18",
+            "endDate": "2027-09-18",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 2
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+      "method": "PUT",
+      "sent": {
+        "name": "QA Fresh Sync2027 1793806018380 Women Updated",
+        "tour": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+        "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+        "regions": [
+          "north_america"
+        ],
+        "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+        "startDate": "2027-09-18",
+        "endDate": "2027-09-18",
+        "fieldSize": 48,
+        "prizeMoney": {
+          "amount": 12300,
+          "currency": "USD"
+        },
+        "registrationOpensDate": "",
+        "registrationOpensTime": "",
+        "registrationClosesDate": "",
+        "registrationClosesTime": "",
+        "currency": "USD",
+        "entryFee": {
+          "amount": 15000,
+          "currency": "USD"
+        },
+        "version": 2,
+        "acknowledgedConflicts": []
+      },
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793806018380 Women Updated",
+            "tour": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "startDate": "2027-09-18",
+            "endDate": "2027-09-18",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 3
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "tentative",
+            "label": "Tentative",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793806018380 Women Updated",
+            "tour": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "startDate": "2027-09-18",
+            "endDate": "2027-09-18",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 3
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/events/01a1a72c-0c4b-7412-8c5c-65e19c184faf/status",
+      "method": "PUT",
+      "sent": {
+        "code": "confirmed",
+        "version": 3
+      },
+      "status": 200,
+      "body": {
+        "event": {
+          "id": "01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+          "seasonId": "01a16545-06bc-718d-8d86-0bc7284e6434",
+          "status": {
+            "code": "confirmed",
+            "label": "Confirmed",
+            "tone": "info"
+          },
+          "statusOptions": [
+            {
+              "code": "draft",
+              "label": "Draft",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "tentative",
+              "label": "Tentative",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "confirmed",
+              "label": "Confirmed",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "current",
+                "label": "This is the event's status now"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "open-for-entries",
+              "label": "Open for entries",
+              "destructive": false,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "closed-for-entries",
+              "label": "Closed for entries",
+              "destructive": false,
+              "available": false,
+              "reason": {
+                "code": "not_from_here",
+                "label": "Not available from this status"
+              },
+              "missingFields": []
+            },
+            {
+              "code": "cancelled",
+              "label": "Cancel event",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            },
+            {
+              "code": "archived",
+              "label": "Archive",
+              "destructive": true,
+              "available": true,
+              "reason": null,
+              "missingFields": []
+            }
+          ],
+          "fields": {
+            "name": "QA Fresh Sync2027 1793806018380 Women Updated",
+            "tour": "01a16500-a696-749b-b8b6-9c3ff7fedc57",
+            "rating": "01a16500-a78c-7497-9160-3718cab07a0e",
+            "regions": [
+              "north_america"
+            ],
+            "location": "01a16500-a868-7092-8b9f-ccd2bf7d974c",
+            "startDate": "2027-09-18",
+            "endDate": "2027-09-18",
+            "fieldSize": 48,
+            "prizeMoney": {
+              "amount": 12300,
+              "currency": "USD"
+            },
+            "registrationOpensDate": "",
+            "registrationOpensTime": "",
+            "registrationClosesDate": "",
+            "registrationClosesTime": "",
+            "currency": "USD",
+            "entryFee": {
+              "amount": 15000,
+              "currency": "USD"
+            }
+          },
+          "readOnly": false,
+          "feeFromGrid": true,
+          "version": 4
+        }
+      }
+    }
+  ],
+  "athletes": [
+    {
+      "id": "01a1a72a-2efc-757b-a1ac-ae9b669df23a",
+      "email": "qa.sync2027.1793805908218.0@btj5keea.mailosaur.net",
+      "name": "QA Sync202717938059082180",
+      "offer": {
+        "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+        "homeRegion": {
+          "code": "north_america",
+          "label": "North America"
+        },
+        "products": [
+          {
+            "id": "01a18a8f-5776-70ee-b7ed-9d0e8b78fb8c",
+            "code": "single_event",
+            "name": "Single Event",
+            "description": "Enter one event in any region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "One event only. Junior events need age eligibility. Insurance is required when competing outside the country of residence. Ranking points are only earned in events sanctioned by your home region & QS 6000 events",
+            "note": "You can upgrade later by paying the price difference.",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 78.75,
+            "amountMinor": 7875,
+            "currency": "USD",
+            "priceMinor": 7875,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a19b75-3fbb-7558-9ce1-c05acb254f18",
+            "code": "full_regional",
+            "name": "Regional Membership",
+            "description": "Enter events across all seven regions, not just the home region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 262.5,
+            "amountMinor": 26250,
+            "currency": "USD",
+            "priceMinor": 26250,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a18a8f-571a-70e1-b399-7f9d019937c7",
+            "code": "longboard",
+            "name": "Longboard Membership",
+            "description": "Enter Longboard and Longboard Qualifying Series events in any region. International tour events are by invitation.",
+            "compete": "All 7 regions, Longboard tours",
+            "includes": "Longboard Qualifying Series",
+            "details": "Longboard Qualifying Series events. Insurance is required when competing outside the country of residence. Regional ranking points only.",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 157.5,
+            "amountMinor": 15750,
+            "currency": "USD",
+            "priceMinor": 15750,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          }
+        ],
+        "openCheckout": null
+      }
+    },
+    {
+      "id": "01a1a72a-4219-7442-8245-68a4028c414d",
+      "email": "qa.sync2027.1793805908218.1@btj5keea.mailosaur.net",
+      "name": "QA Sync202717938059082181",
+      "offer": {
+        "seasonId": "2ac225ca-986b-5c3d-b624-4fdcbed34b42",
+        "homeRegion": {
+          "code": "north_america",
+          "label": "North America"
+        },
+        "products": [
+          {
+            "id": "01a18a8f-5776-70ee-b7ed-9d0e8b78fb8c",
+            "code": "single_event",
+            "name": "Single Event",
+            "description": "Enter one event in any region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "One event only. Junior events need age eligibility. Insurance is required when competing outside the country of residence. Ranking points are only earned in events sanctioned by your home region & QS 6000 events",
+            "note": "You can upgrade later by paying the price difference.",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 78.75,
+            "amountMinor": 7875,
+            "currency": "USD",
+            "priceMinor": 7875,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a19b75-3fbb-7558-9ce1-c05acb254f18",
+            "code": "full_regional",
+            "name": "Regional Membership",
+            "description": "Enter events across all seven regions, not just the home region.",
+            "compete": "All 7 regions",
+            "includes": "Qualifying Series · Junior Tour · Longboard Qualifying Series · Challenger Series Wildcard",
+            "details": "",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 262.5,
+            "amountMinor": 26250,
+            "currency": "USD",
+            "priceMinor": 26250,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          },
+          {
+            "id": "01a18a8f-571a-70e1-b399-7f9d019937c7",
+            "code": "longboard",
+            "name": "Longboard Membership",
+            "description": "Enter Longboard and Longboard Qualifying Series events in any region. International tour events are by invitation.",
+            "compete": "All 7 regions, Longboard tours",
+            "includes": "Longboard Qualifying Series",
+            "details": "Longboard Qualifying Series events. Insurance is required when competing outside the country of residence. Regional ranking points only.",
+            "note": "",
+            "eligible": true,
+            "ineligibleReason": null,
+            "amount": 157.5,
+            "amountMinor": 15750,
+            "currency": "USD",
+            "priceMinor": 15750,
+            "taxMinor": 0,
+            "validFrom": "2026-01-01",
+            "validTo": "2026-12-31"
+          }
+        ],
+        "openCheckout": null
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "01a1a72a-2e18-7030-a075-3b9692844419",
+      "name": "QA Fresh Sync2027 1793805908218 Men Updated",
+      "date": "2027-09-10",
+      "women": false,
+      "status": "upcoming",
+      "cmsId": "5583",
+      "code": "2027evt10001099",
+      "observations": [
+        {
+          "at": "2026-11-04T15:25:44.438Z",
+          "cmsId": "5583",
+          "code": "2027evt10001099",
+          "fields": {
+            "query": "",
+            "cancelUrl": "/models/event/5583/overview",
+            "statusMessagePrebuilt": "",
+            "statusMessage": "",
+            "nextStatusDate": "",
+            "nextStatusTime": "",
+            "resetLastUpdatedStatusTimestamp": "1",
+            "minisiteUrl": "",
+            "minisiteUrlOpenExternal": "1",
+            "minisiteLiveUrl": "",
+            "minisiteLiveUrlOpenExternal": "1",
+            "heatAnalyzerUrl": "",
+            "weatherForecastUrl": "",
+            "surflineForecastId": "",
+            "navLinkTitles[]": "",
+            "navLinkUrls[]": "",
+            "bgColor": "",
+            "bannerBgColor": "",
+            "navColor": "",
+            "keyArtPrimaryTextColor": "",
+            "keyArtSecondaryTextColor": "",
+            "eventDisplayName": "",
+            "eventType": "traditional",
+            "": "America/New_York",
+            "locationId_ac": "",
+            "locationId": "445",
+            "hashtag": "",
+            "eventGroupId": "",
+            "previousEventId": "",
+            "usePreviousEventContent": "0",
+            "linkable": "0",
+            "ctaText": "",
+            "h1Title": "",
+            "banner": "",
+            "mobileBanner": "",
+            "fantasyBanner": "",
+            "share": "",
+            "pdf": "",
+            "bracket": "",
+            "mobileBracket": "",
+            "keyArtImageId": "",
+            "keyArt-7-mediaImageId": "",
+            "image": "",
+            "keyArt-1-mediaImageId": "",
+            "keyArt-3-mediaImageId": "",
+            "keyArt-2-mediaImageId": "",
+            "connectedDeviceKeyart": "",
+            "connectedDeviceKeyartAssetId": "",
+            "connectedDevicePoster": "",
+            "connectedDevicePosterAssetId": "",
+            "keyArt-8-file": "",
+            "keyArt-8-logo-file": "",
+            "clipboard_data": "",
+            "shortCodeType_athlete_ac": "",
+            "shortCodeType_event_ac": "",
+            "shortCodeType_post_ac": ""
+          },
+          "website": {
+            "url": "https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men",
+            "http": 200,
+            "headings": [
+              "QA Fresh Sync2027 1793805908218 Men"
+            ]
+          },
+          "expected": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "status": "tentative",
+            "date": "2027-09-10"
+          }
+        },
+        {
+          "at": "2026-11-04T15:25:57.480Z",
+          "cmsId": "5583",
+          "code": "2027evt10001099",
+          "fields": {
+            "query": "",
+            "cancelUrl": "/models/event/5583/overview",
+            "statusMessagePrebuilt": "",
+            "statusMessage": "",
+            "nextStatusDate": "",
+            "nextStatusTime": "",
+            "resetLastUpdatedStatusTimestamp": "1",
+            "minisiteUrl": "",
+            "minisiteUrlOpenExternal": "1",
+            "minisiteLiveUrl": "",
+            "minisiteLiveUrlOpenExternal": "1",
+            "heatAnalyzerUrl": "",
+            "weatherForecastUrl": "",
+            "surflineForecastId": "",
+            "navLinkTitles[]": "",
+            "navLinkUrls[]": "",
+            "bgColor": "",
+            "bannerBgColor": "",
+            "navColor": "",
+            "keyArtPrimaryTextColor": "",
+            "keyArtSecondaryTextColor": "",
+            "eventDisplayName": "",
+            "eventType": "traditional",
+            "": "America/New_York",
+            "locationId_ac": "",
+            "locationId": "445",
+            "hashtag": "",
+            "eventGroupId": "",
+            "previousEventId": "",
+            "usePreviousEventContent": "0",
+            "linkable": "0",
+            "ctaText": "",
+            "h1Title": "",
+            "banner": "",
+            "mobileBanner": "",
+            "fantasyBanner": "",
+            "share": "",
+            "pdf": "",
+            "bracket": "",
+            "mobileBracket": "",
+            "keyArtImageId": "",
+            "keyArt-7-mediaImageId": "",
+            "image": "",
+            "keyArt-1-mediaImageId": "",
+            "keyArt-3-mediaImageId": "",
+            "keyArt-2-mediaImageId": "",
+            "connectedDeviceKeyart": "",
+            "connectedDeviceKeyartAssetId": "",
+            "connectedDevicePoster": "",
+            "connectedDevicePosterAssetId": "",
+            "keyArt-8-file": "",
+            "keyArt-8-logo-file": "",
+            "clipboard_data": "",
+            "shortCodeType_athlete_ac": "",
+            "shortCodeType_event_ac": "",
+            "shortCodeType_post_ac": ""
+          },
+          "website": {
+            "url": "https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men",
+            "http": 200,
+            "headings": [
+              "QA Fresh Sync2027 1793805908218 Men"
+            ]
+          },
+          "expected": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "status": "tentative",
+            "date": "2027-09-10"
+          }
+        },
+        {
+          "at": "2026-11-04T15:26:23.497Z",
+          "cmsId": "5583",
+          "code": "2027evt10001099",
+          "fields": {
+            "query": "",
+            "cancelUrl": "/models/event/5583/overview",
+            "statusMessagePrebuilt": "",
+            "statusMessage": "",
+            "nextStatusDate": "",
+            "nextStatusTime": "",
+            "resetLastUpdatedStatusTimestamp": "1",
+            "minisiteUrl": "",
+            "minisiteUrlOpenExternal": "1",
+            "minisiteLiveUrl": "",
+            "minisiteLiveUrlOpenExternal": "1",
+            "heatAnalyzerUrl": "",
+            "weatherForecastUrl": "",
+            "surflineForecastId": "",
+            "navLinkTitles[]": "",
+            "navLinkUrls[]": "",
+            "bgColor": "",
+            "bannerBgColor": "",
+            "navColor": "",
+            "keyArtPrimaryTextColor": "",
+            "keyArtSecondaryTextColor": "",
+            "eventDisplayName": "",
+            "eventType": "traditional",
+            "": "America/New_York",
+            "locationId_ac": "",
+            "locationId": "445",
+            "hashtag": "",
+            "eventGroupId": "",
+            "previousEventId": "",
+            "usePreviousEventContent": "0",
+            "linkable": "0",
+            "ctaText": "",
+            "h1Title": "",
+            "banner": "",
+            "mobileBanner": "",
+            "fantasyBanner": "",
+            "share": "",
+            "pdf": "",
+            "bracket": "",
+            "mobileBracket": "",
+            "keyArtImageId": "",
+            "keyArt-7-mediaImageId": "",
+            "image": "",
+            "keyArt-1-mediaImageId": "",
+            "keyArt-3-mediaImageId": "",
+            "keyArt-2-mediaImageId": "",
+            "connectedDeviceKeyart": "",
+            "connectedDeviceKeyartAssetId": "",
+            "connectedDevicePoster": "",
+            "connectedDevicePosterAssetId": "",
+            "keyArt-8-file": "",
+            "keyArt-8-logo-file": "",
+            "clipboard_data": "",
+            "shortCodeType_athlete_ac": "",
+            "shortCodeType_event_ac": "",
+            "shortCodeType_post_ac": ""
+          },
+          "website": {
+            "url": "https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men",
+            "http": 200,
+            "headings": [
+              "QA Fresh Sync2027 1793805908218 Men"
+            ]
+          },
+          "expected": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "status": "tentative",
+            "date": "2027-09-10"
+          }
+        },
+        {
+          "at": "2026-11-04T15:26:36.153Z",
+          "cmsId": "5583",
+          "code": "2027evt10001099",
+          "fields": {
+            "query": "",
+            "cancelUrl": "/models/event/5583/overview",
+            "statusMessagePrebuilt": "",
+            "statusMessage": "",
+            "nextStatusDate": "",
+            "nextStatusTime": "",
+            "resetLastUpdatedStatusTimestamp": "1",
+            "minisiteUrl": "",
+            "minisiteUrlOpenExternal": "1",
+            "minisiteLiveUrl": "",
+            "minisiteLiveUrlOpenExternal": "1",
+            "heatAnalyzerUrl": "",
+            "weatherForecastUrl": "",
+            "surflineForecastId": "",
+            "navLinkTitles[]": "",
+            "navLinkUrls[]": "",
+            "bgColor": "",
+            "bannerBgColor": "",
+            "navColor": "",
+            "keyArtPrimaryTextColor": "",
+            "keyArtSecondaryTextColor": "",
+            "eventDisplayName": "",
+            "eventType": "traditional",
+            "": "America/New_York",
+            "locationId_ac": "",
+            "locationId": "445",
+            "hashtag": "",
+            "eventGroupId": "",
+            "previousEventId": "",
+            "usePreviousEventContent": "0",
+            "linkable": "0",
+            "ctaText": "",
+            "h1Title": "",
+            "banner": "",
+            "mobileBanner": "",
+            "fantasyBanner": "",
+            "share": "",
+            "pdf": "",
+            "bracket": "",
+            "mobileBracket": "",
+            "keyArtImageId": "",
+            "keyArt-7-mediaImageId": "",
+            "image": "",
+            "keyArt-1-mediaImageId": "",
+            "keyArt-3-mediaImageId": "",
+            "keyArt-2-mediaImageId": "",
+            "connectedDeviceKeyart": "",
+            "connectedDeviceKeyartAssetId": "",
+            "connectedDevicePoster": "",
+            "connectedDevicePosterAssetId": "",
+            "keyArt-8-file": "",
+            "keyArt-8-logo-file": "",
+            "clipboard_data": "",
+            "shortCodeType_athlete_ac": "",
+            "shortCodeType_event_ac": "",
+            "shortCodeType_post_ac": ""
+          },
+          "website": {
+            "url": "https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men",
+            "http": 200,
+            "headings": [
+              "QA Fresh Sync2027 1793805908218 Men"
+            ]
+          },
+          "expected": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "status": "tentative",
+            "date": "2027-09-10"
+          }
+        },
+        {
+          "at": "2026-11-04T15:26:52.177Z",
+          "cmsId": "5583",
+          "code": "2027evt10001099",
+          "fields": {
+            "query": "",
+            "cancelUrl": "/models/event/5583/overview",
+            "statusMessagePrebuilt": "",
+            "statusMessage": "",
+            "nextStatusDate": "",
+            "nextStatusTime": "",
+            "resetLastUpdatedStatusTimestamp": "1",
+            "minisiteUrl": "",
+            "minisiteUrlOpenExternal": "1",
+            "minisiteLiveUrl": "",
+            "minisiteLiveUrlOpenExternal": "1",
+            "heatAnalyzerUrl": "",
+            "weatherForecastUrl": "",
+            "surflineForecastId": "",
+            "navLinkTitles[]": "",
+            "navLinkUrls[]": "",
+            "bgColor": "",
+            "bannerBgColor": "",
+            "navColor": "",
+            "keyArtPrimaryTextColor": "",
+            "keyArtSecondaryTextColor": "",
+            "eventDisplayName": "",
+            "eventType": "traditional",
+            "": "America/New_York",
+            "locationId_ac": "",
+            "locationId": "445",
+            "hashtag": "",
+            "eventGroupId": "",
+            "previousEventId": "",
+            "usePreviousEventContent": "0",
+            "linkable": "0",
+            "ctaText": "",
+            "h1Title": "",
+            "banner": "",
+            "mobileBanner": "",
+            "fantasyBanner": "",
+            "share": "",
+            "pdf": "",
+            "bracket": "",
+            "mobileBracket": "",
+            "keyArtImageId": "",
+            "keyArt-7-mediaImageId": "",
+            "image": "",
+            "keyArt-1-mediaImageId": "",
+            "keyArt-3-mediaImageId": "",
+            "keyArt-2-mediaImageId": "",
+            "connectedDeviceKeyart": "",
+            "connectedDeviceKeyartAssetId": "",
+            "connectedDevicePoster": "",
+            "connectedDevicePosterAssetId": "",
+            "keyArt-8-file": "",
+            "keyArt-8-logo-file": "",
+            "clipboard_data": "",
+            "shortCodeType_athlete_ac": "",
+            "shortCodeType_event_ac": "",
+            "shortCodeType_post_ac": ""
+          },
+          "website": {
+            "url": "https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men",
+            "http": 200,
+            "headings": [
+              "QA Fresh Sync2027 1793805908218 Men"
+            ]
+          },
+          "expected": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "status": "tentative",
+            "date": "2027-09-10"
+          }
+        },
+        {
+          "at": "2026-11-04T15:27:12.685Z",
+          "cmsId": "5583",
+          "code": "2027evt10001099",
+          "fields": {
+            "query": "",
+            "eventCode": "2027evt10001099",
+            "eventStatus": "tentative",
+            "eventName": "QA Fresh Sync2027 1793805908218 Men",
+            "tourId": "3",
+            "regionId": "1",
+            "year": "2027",
+            "stopNumber": "7",
+            "eventCategory": "6000",
+            "startDate": "09/10/2027",
+            "endDate": "09/10/2027",
+            "prizeMoney": "123",
+            "cancelUrl": "/models/event/5583/overview"
+          },
+          "website": {
+            "url": "https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men",
+            "http": 200,
+            "headings": [
+              "QA Fresh Sync2027 1793805908218 Men"
+            ]
+          },
+          "expected": {
+            "name": "QA Fresh Sync2027 1793805908218 Men",
+            "status": "tentative",
+            "date": "2027-09-10"
+          }
+        },
+        {
+          "at": "2026-11-04T15:27:20.304Z",
+          "cmsId": "5583",
+          "code": "2027evt10001099",
+          "fields": {
+            "query": "",
+            "eventCode": "2027evt10001099",
+            "eventStatus": "upcoming",
+            "eventName": "QA Fresh Sync2027 1793805908218 Men Updated",
+            "tourId": "3",
+            "regionId": "1",
+            "year": "2027",
+            "stopNumber": "7",
+            "eventCategory": "6000",
+            "startDate": "09/10/2027",
+            "endDate": "09/10/2027",
+            "prizeMoney": "123",
+            "cancelUrl": "/models/event/5583/overview"
+          },
+          "website": {
+            "url": "https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men-updated",
+            "http": 200,
+            "headings": [
+              "QA Fresh Sync2027 1793805908218 Men Updated"
+            ]
+          },
+          "expected": {
+            "name": "QA Fresh Sync2027 1793805908218 Men Updated",
+            "status": "upcoming",
+            "date": "2027-09-10"
+          }
+        }
+      ],
+      "identityStable": true,
+      "verified": {
+        "create": true,
+        "update": true,
+        "identityStable": true
+      }
+    },
+    {
+      "id": "01a1a72c-0c4b-7412-8c5c-65e19c184faf",
+      "name": "QA Fresh Sync2027 1793806018380 Women Updated",
+      "date": "2027-09-18",
+      "women": true,
+      "status": "upcoming",
+      "cmsId": "5584",
+      "code": "2027evt10001100",
+      "observations": [
+        {
+          "at": "2026-11-04T15:27:28.607Z",
+          "cmsId": "5584",
+          "code": "2027evt10001100",
+          "fields": {
+            "query": "",
+            "eventCode": "2027evt10001100",
+            "eventStatus": "tentative",
+            "eventName": "QA Fresh Sync2027 1793806018380 Women",
+            "tourId": "4",
+            "regionId": "1",
+            "year": "2027",
+            "stopNumber": "4",
+            "eventCategory": "6000",
+            "startDate": "09/18/2027",
+            "endDate": "09/18/2027",
+            "prizeMoney": "123",
+            "cancelUrl": "/models/event/5584/overview"
+          },
+          "website": {
+            "url": "https://www.beta.worldsurfleague.com/events/2027/wqs/5584/qa-fresh-sync2027-1793806018380-women",
+            "http": 200,
+            "headings": [
+              "QA Fresh Sync2027 1793806018380 Women"
+            ]
+          },
+          "expected": {
+            "name": "QA Fresh Sync2027 1793806018380 Women",
+            "status": "tentative",
+            "date": "2027-09-18"
+          }
+        },
+        {
+          "at": "2026-11-04T15:27:39.672Z",
+          "cmsId": "5584",
+          "code": "2027evt10001100",
+          "fields": {
+            "query": "",
+            "eventCode": "2027evt10001100",
+            "eventStatus": "upcoming",
+            "eventName": "QA Fresh Sync2027 1793806018380 Women Updated",
+            "tourId": "4",
+            "regionId": "1",
+            "year": "2027",
+            "stopNumber": "4",
+            "eventCategory": "6000",
+            "startDate": "09/18/2027",
+            "endDate": "09/18/2027",
+            "prizeMoney": "123",
+            "cancelUrl": "/models/event/5584/overview"
+          },
+          "website": {
+            "url": "https://www.beta.worldsurfleague.com/events/2027/wqs/5584/qa-fresh-sync2027-1793806018380-women-updated",
+            "http": 200,
+            "headings": [
+              "QA Fresh Sync2027 1793806018380 Women Updated"
+            ]
+          },
+          "expected": {
+            "name": "QA Fresh Sync2027 1793806018380 Women Updated",
+            "status": "upcoming",
+            "date": "2027-09-18"
+          }
+        }
+      ],
+      "identityStable": true,
+      "verified": {
+        "create": true,
+        "update": true,
+        "identityStable": true
+      }
+    }
+  ],
+  "finishedAt": "2026-11-04T15:27:40.539Z",
+  "membershipBlocker": {
+    "observed": "Live membership offers return 2026 validity for both new athletes, including when year=2027 is supplied.",
+    "codeEvidence": [
+      {
+        "path": "wsl-local/wsl-athlete-service/src/athlete/config.py",
+        "detail": "Default next_year_on_sale_from = 11-15; local default, not independently read from deployed environment."
+      },
+      {
+        "path": "wsl-local/wsl-django-bff/interfaces/http/api/catalogue.py",
+        "detail": "membership_offer reads athlete only and does not forward a year override."
+      }
+    ],
+    "limit": "No shared clock/sales configuration changed. No membership payment made. Fresh athletes are unpaid, not eligible 2027 sync fixtures."
+  }
+}

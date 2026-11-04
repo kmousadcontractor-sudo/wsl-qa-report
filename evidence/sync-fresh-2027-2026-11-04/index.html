@@ -1,0 +1,179 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fresh 2027 sync tests</title><style>body{font:16px/1.6 system-ui;max-width:1120px;margin:30px auto;padding:20px;color:#17364b;background:#f5f7fa}section,details{background:white;border:1px solid #d5dfe7;border-radius:8px;padding:18px;margin:16px 0}summary{cursor:pointer;font-weight:650}img{max-width:100%}pre{white-space:pre-wrap;overflow-wrap:anywhere}td,th{padding:10px;text-align:left;border-bottom:1px solid #ddd}.scroll{overflow:auto}</style><h1>Fresh 2027 records: dev → CMS beta → website beta</h1><p>4 November 2026 · Two new QA events and two new QA athletes</p><section><h2>Result</h2><p><b>4 passed · 0 failed · 2 blocked</b>.</p><p>Both 2027 events were created on dev, published as Tentative, and found in CMS beta and on the website. Both were renamed and changed to Confirmed. CMS retained the same ID/code and showed Upcoming; website headings changed to the new names. Event dates were compared in the CMS. Website status/date values were not separately asserted in this continuation.</p><p>This proves fresh event creation/update sync works for these two records. It does not resolve the ten older unmatched event codes.</p></section><section><h2>Events and live pages</h2><div class="scroll"><table><tr><th>Source QA event</th><th>CMS / code</th><th>Verified</th><th>Website</th></tr><tr><td>QA Fresh Sync2027 1793805908218 Men Updated<br>01a1a72a-2e18-7030-a075-3b9692844419<br>2027-09-10</td><td>5583<br>2027evt10001099</td><td>Create: true<br>Update: true<br>Same identity: true</td><td><a href="https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men-updated">Open beta event</a></td></tr><tr><td>QA Fresh Sync2027 1793806018380 Women Updated<br>01a1a72c-0c4b-7412-8c5c-65e19c184faf<br>2027-09-18</td><td>5584<br>2027evt10001100</td><td>Create: true<br>Update: true<br>Same identity: true</td><td><a href="https://www.beta.worldsurfleague.com/events/2027/wqs/5584/qa-fresh-sync2027-1793806018380-women-updated">Open beta event</a></td></tr></table></div></section><section><h2>Why athlete membership sync remains blocked</h2><p>The two new adult athlete accounts are created, but the live membership offer returns eligible products valid only through <b>31 December 2026</b>. Supplying year=2027 does not change this.</p><p>The local service configuration defaults to next-year sales starting <b>15 November</b>; today is 4 November. The BFF offer implementation accepts the athlete ID without forwarding a year override. This explains the observed offer; the actual deployed cutover setting was not independently inspected.</p><p>No 2026 membership was bought as a substitute, no artificial paid status was inserted, and no shared sales configuration or clock was changed. To verify active paid 2027 athlete sync, use a supported isolated future-sale fixture or enable the normal 2027 sale window through the owning team.</p><ul><li>QA Sync202717938059082180 · 01a1a72a-2efc-757b-a1ac-ae9b669df23a · created, unpaid; no 2027 membership</li><li>QA Sync202717938059082181 · 01a1a72a-4219-7442-8245-68a4028c414d · created, unpaid; no 2027 membership</li></ul></section><section><h2>All results and evidence</h2><details><summary>BLOCKED · A2027-0 · Create paid 2027 member and verify create/update sync</summary><pre>{
+  &quot;athleteId&quot;: &quot;01a1a72a-2efc-757b-a1ac-ae9b669df23a&quot;,
+  &quot;reason&quot;: &quot;Current membership offer does not expose an eligible 2027 Single Event product. No 2026 membership was purchased as a substitute.&quot;,
+  &quot;seasonId&quot;: &quot;2ac225ca-986b-5c3d-b624-4fdcbed34b42&quot;,
+  &quot;products&quot;: [
+    {
+      &quot;id&quot;: &quot;01a18a8f-5776-70ee-b7ed-9d0e8b78fb8c&quot;,
+      &quot;code&quot;: &quot;single_event&quot;,
+      &quot;validFrom&quot;: &quot;2026-01-01&quot;,
+      &quot;validTo&quot;: &quot;2026-12-31&quot;,
+      &quot;eligible&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;01a19b75-3fbb-7558-9ce1-c05acb254f18&quot;,
+      &quot;code&quot;: &quot;full_regional&quot;,
+      &quot;validFrom&quot;: &quot;2026-01-01&quot;,
+      &quot;validTo&quot;: &quot;2026-12-31&quot;,
+      &quot;eligible&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;01a18a8f-571a-70e1-b399-7f9d019937c7&quot;,
+      &quot;code&quot;: &quot;longboard&quot;,
+      &quot;validFrom&quot;: &quot;2026-01-01&quot;,
+      &quot;validTo&quot;: &quot;2026-12-31&quot;,
+      &quot;eligible&quot;: true
+    }
+  ]
+}</pre></details><details><summary>BLOCKED · A2027-1 · Create paid 2027 member and verify create/update sync</summary><pre>{
+  &quot;athleteId&quot;: &quot;01a1a72a-4219-7442-8245-68a4028c414d&quot;,
+  &quot;reason&quot;: &quot;Current membership offer does not expose an eligible 2027 Single Event product. No 2026 membership was purchased as a substitute.&quot;,
+  &quot;seasonId&quot;: &quot;2ac225ca-986b-5c3d-b624-4fdcbed34b42&quot;,
+  &quot;products&quot;: [
+    {
+      &quot;id&quot;: &quot;01a18a8f-5776-70ee-b7ed-9d0e8b78fb8c&quot;,
+      &quot;code&quot;: &quot;single_event&quot;,
+      &quot;validFrom&quot;: &quot;2026-01-01&quot;,
+      &quot;validTo&quot;: &quot;2026-12-31&quot;,
+      &quot;eligible&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;01a19b75-3fbb-7558-9ce1-c05acb254f18&quot;,
+      &quot;code&quot;: &quot;full_regional&quot;,
+      &quot;validFrom&quot;: &quot;2026-01-01&quot;,
+      &quot;validTo&quot;: &quot;2026-12-31&quot;,
+      &quot;eligible&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;01a18a8f-571a-70e1-b399-7f9d019937c7&quot;,
+      &quot;code&quot;: &quot;longboard&quot;,
+      &quot;validFrom&quot;: &quot;2026-01-01&quot;,
+      &quot;validTo&quot;: &quot;2026-12-31&quot;,
+      &quot;eligible&quot;: true
+    }
+  ]
+}</pre></details><details><summary>PASS · E2027-0-create · 2027 event sync E2027-0-create</summary><pre>{
+  &quot;at&quot;: &quot;2026-11-04T15:27:12.685Z&quot;,
+  &quot;cmsId&quot;: &quot;5583&quot;,
+  &quot;code&quot;: &quot;2027evt10001099&quot;,
+  &quot;fields&quot;: {
+    &quot;query&quot;: &quot;&quot;,
+    &quot;eventCode&quot;: &quot;2027evt10001099&quot;,
+    &quot;eventStatus&quot;: &quot;tentative&quot;,
+    &quot;eventName&quot;: &quot;QA Fresh Sync2027 1793805908218 Men&quot;,
+    &quot;tourId&quot;: &quot;3&quot;,
+    &quot;regionId&quot;: &quot;1&quot;,
+    &quot;year&quot;: &quot;2027&quot;,
+    &quot;stopNumber&quot;: &quot;7&quot;,
+    &quot;eventCategory&quot;: &quot;6000&quot;,
+    &quot;startDate&quot;: &quot;09/10/2027&quot;,
+    &quot;endDate&quot;: &quot;09/10/2027&quot;,
+    &quot;prizeMoney&quot;: &quot;123&quot;,
+    &quot;cancelUrl&quot;: &quot;/models/event/5583/overview&quot;
+  },
+  &quot;website&quot;: {
+    &quot;url&quot;: &quot;https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men&quot;,
+    &quot;http&quot;: 200,
+    &quot;headings&quot;: [
+      &quot;QA Fresh Sync2027 1793805908218 Men&quot;
+    ]
+  },
+  &quot;expected&quot;: {
+    &quot;name&quot;: &quot;QA Fresh Sync2027 1793805908218 Men&quot;,
+    &quot;status&quot;: &quot;tentative&quot;,
+    &quot;date&quot;: &quot;2027-09-10&quot;
+  }
+}</pre><img loading="lazy" src="E2027-0-create-cms.png" alt="E2027-0-create cms"><img loading="lazy" src="E2027-0-create-website.png" alt="E2027-0-create website"></details><details><summary>PASS · E2027-0-update · 2027 event sync E2027-0-update</summary><pre>{
+  &quot;at&quot;: &quot;2026-11-04T15:27:20.304Z&quot;,
+  &quot;cmsId&quot;: &quot;5583&quot;,
+  &quot;code&quot;: &quot;2027evt10001099&quot;,
+  &quot;fields&quot;: {
+    &quot;query&quot;: &quot;&quot;,
+    &quot;eventCode&quot;: &quot;2027evt10001099&quot;,
+    &quot;eventStatus&quot;: &quot;upcoming&quot;,
+    &quot;eventName&quot;: &quot;QA Fresh Sync2027 1793805908218 Men Updated&quot;,
+    &quot;tourId&quot;: &quot;3&quot;,
+    &quot;regionId&quot;: &quot;1&quot;,
+    &quot;year&quot;: &quot;2027&quot;,
+    &quot;stopNumber&quot;: &quot;7&quot;,
+    &quot;eventCategory&quot;: &quot;6000&quot;,
+    &quot;startDate&quot;: &quot;09/10/2027&quot;,
+    &quot;endDate&quot;: &quot;09/10/2027&quot;,
+    &quot;prizeMoney&quot;: &quot;123&quot;,
+    &quot;cancelUrl&quot;: &quot;/models/event/5583/overview&quot;
+  },
+  &quot;website&quot;: {
+    &quot;url&quot;: &quot;https://www.beta.worldsurfleague.com/events/2027/mqs/5583/qa-fresh-sync2027-1793805908218-men-updated&quot;,
+    &quot;http&quot;: 200,
+    &quot;headings&quot;: [
+      &quot;QA Fresh Sync2027 1793805908218 Men Updated&quot;
+    ]
+  },
+  &quot;expected&quot;: {
+    &quot;name&quot;: &quot;QA Fresh Sync2027 1793805908218 Men Updated&quot;,
+    &quot;status&quot;: &quot;upcoming&quot;,
+    &quot;date&quot;: &quot;2027-09-10&quot;
+  }
+}</pre><img loading="lazy" src="E2027-0-update-cms.png" alt="E2027-0-update cms"><img loading="lazy" src="E2027-0-update-website.png" alt="E2027-0-update website"></details><details><summary>PASS · E2027-1-create · 2027 event sync E2027-1-create</summary><pre>{
+  &quot;at&quot;: &quot;2026-11-04T15:27:28.607Z&quot;,
+  &quot;cmsId&quot;: &quot;5584&quot;,
+  &quot;code&quot;: &quot;2027evt10001100&quot;,
+  &quot;fields&quot;: {
+    &quot;query&quot;: &quot;&quot;,
+    &quot;eventCode&quot;: &quot;2027evt10001100&quot;,
+    &quot;eventStatus&quot;: &quot;tentative&quot;,
+    &quot;eventName&quot;: &quot;QA Fresh Sync2027 1793806018380 Women&quot;,
+    &quot;tourId&quot;: &quot;4&quot;,
+    &quot;regionId&quot;: &quot;1&quot;,
+    &quot;year&quot;: &quot;2027&quot;,
+    &quot;stopNumber&quot;: &quot;4&quot;,
+    &quot;eventCategory&quot;: &quot;6000&quot;,
+    &quot;startDate&quot;: &quot;09/18/2027&quot;,
+    &quot;endDate&quot;: &quot;09/18/2027&quot;,
+    &quot;prizeMoney&quot;: &quot;123&quot;,
+    &quot;cancelUrl&quot;: &quot;/models/event/5584/overview&quot;
+  },
+  &quot;website&quot;: {
+    &quot;url&quot;: &quot;https://www.beta.worldsurfleague.com/events/2027/wqs/5584/qa-fresh-sync2027-1793806018380-women&quot;,
+    &quot;http&quot;: 200,
+    &quot;headings&quot;: [
+      &quot;QA Fresh Sync2027 1793806018380 Women&quot;
+    ]
+  },
+  &quot;expected&quot;: {
+    &quot;name&quot;: &quot;QA Fresh Sync2027 1793806018380 Women&quot;,
+    &quot;status&quot;: &quot;tentative&quot;,
+    &quot;date&quot;: &quot;2027-09-18&quot;
+  }
+}</pre><img loading="lazy" src="E2027-1-create-cms.png" alt="E2027-1-create cms"><img loading="lazy" src="E2027-1-create-website.png" alt="E2027-1-create website"></details><details><summary>PASS · E2027-1-update · 2027 event sync E2027-1-update</summary><pre>{
+  &quot;at&quot;: &quot;2026-11-04T15:27:39.672Z&quot;,
+  &quot;cmsId&quot;: &quot;5584&quot;,
+  &quot;code&quot;: &quot;2027evt10001100&quot;,
+  &quot;fields&quot;: {
+    &quot;query&quot;: &quot;&quot;,
+    &quot;eventCode&quot;: &quot;2027evt10001100&quot;,
+    &quot;eventStatus&quot;: &quot;upcoming&quot;,
+    &quot;eventName&quot;: &quot;QA Fresh Sync2027 1793806018380 Women Updated&quot;,
+    &quot;tourId&quot;: &quot;4&quot;,
+    &quot;regionId&quot;: &quot;1&quot;,
+    &quot;year&quot;: &quot;2027&quot;,
+    &quot;stopNumber&quot;: &quot;4&quot;,
+    &quot;eventCategory&quot;: &quot;6000&quot;,
+    &quot;startDate&quot;: &quot;09/18/2027&quot;,
+    &quot;endDate&quot;: &quot;09/18/2027&quot;,
+    &quot;prizeMoney&quot;: &quot;123&quot;,
+    &quot;cancelUrl&quot;: &quot;/models/event/5584/overview&quot;
+  },
+  &quot;website&quot;: {
+    &quot;url&quot;: &quot;https://www.beta.worldsurfleague.com/events/2027/wqs/5584/qa-fresh-sync2027-1793806018380-women-updated&quot;,
+    &quot;http&quot;: 200,
+    &quot;headings&quot;: [
+      &quot;QA Fresh Sync2027 1793806018380 Women Updated&quot;
+    ]
+  },
+  &quot;expected&quot;: {
+    &quot;name&quot;: &quot;QA Fresh Sync2027 1793806018380 Women Updated&quot;,
+    &quot;status&quot;: &quot;upcoming&quot;,
+    &quot;date&quot;: &quot;2027-09-18&quot;
+  }
+}</pre><img loading="lazy" src="E2027-1-update-cms.png" alt="E2027-1-update cms"><img loading="lazy" src="E2027-1-update-website.png" alt="E2027-1-update website"></details><p><a href="results.json">Exact source actions, offers and observations</a> · Historical mapping investigation is outside this fresh-run package.</p><p>Only isolated QA source records were changed. No CMS writes, bulk resync or production tests. QA events are left Confirmed for inspection.</p></section></html>
