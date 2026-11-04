@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-04T21:43:31.071Z",
+  "environment": "https://app.staging01.worldsurfleague.com",
+  "event": {
+    "id": "01a164d0-3044-77e6-ac97-451a9a7819cd",
+    "name": "La Marginal Classic 181144 1"
+  },
+  "editScreen": {
+    "entryFeeField": {
+      "readOnly": true,
+      "disabled": false,
+      "helper": "No fee set. Ask Finance to set it before opening entries."
+    }
+  },
+  "request": {
+    "method": "PUT",
+    "url": "https://api.staging01.worldsurfleague.com/api/tour-manager/events/01a164d0-3044-77e6-ac97-451a9a7819cd",
+    "entryFee": {
+      "amount": 15000,
+      "currency": "USD"
+    }
+  },
+  "response": {
+    "status": 403,
+    "body": {
+      "title": "You do not have access",
+      "message": "You need Finance access to change that.",
+      "reason": "competition.not_finance",
+      "fields": {},
+      "retryable": false
+    }
+  },
+  "entryFeeBefore": null,
+  "entryFeeAfter": null
+}
