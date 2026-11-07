@@ -1,0 +1,2237 @@
+{
+  "environment": "https://app.dev.worldsurfleague.com",
+  "api": "https://api.dev.worldsurfleague.com/api",
+  "loginStatus": 200,
+  "accountRole": "Finance · All regions",
+  "checks": [
+    {
+      "path": "/tour-manager/session",
+      "status": 200,
+      "body": {
+        "workspace": {
+          "name": "World Surf League",
+          "product": "Tour Manager"
+        },
+        "user": {
+          "initials": "TM",
+          "name": "Tour Manager 101",
+          "meta": "Finance · All regions"
+        }
+      }
+    },
+    {
+      "path": "/tour-manager/athletes",
+      "status": 200,
+      "body": {
+        "athletes": [
+          {
+            "id": "01a1a797-0cc9-736c-bf4c-6b07b37b68fe",
+            "displayName": "Saifeldeen Adel",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "EG",
+            "country": "Egypt",
+            "homeRegion": {
+              "code": "africa",
+              "label": "Africa"
+            },
+            "athleteNumber": "WSL-SA-00002",
+            "membership": {
+              "code": "single_event",
+              "label": "Single event"
+            },
+            "membershipUsed": true,
+            "membershipSingleEventStatus": {
+              "code": "used",
+              "label": "Used",
+              "tone": "muted"
+            },
+            "membershipSingleEventOutcome": {
+              "code": "confirmed",
+              "label": "Confirmed"
+            },
+            "membershipCancelledAt": null,
+            "membershipEvent": {
+              "eventName": "North Shore Open",
+              "startDate": "2026-12-19",
+              "endDate": "2026-12-24"
+            },
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "wsl",
+              "label": "WSL insurance",
+              "tone": "success"
+            },
+            "insurancePolicies": [
+              {
+                "kind": {
+                  "code": "purchased",
+                  "label": "WSL"
+                },
+                "coverType": {
+                  "code": "domestic_medical",
+                  "label": "Domestic medical"
+                },
+                "eventCredits": 1,
+                "creditsUsed": 0,
+                "validTo": "2026-12-31"
+              }
+            ],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b62e-d814-77b4-9983-a7afe9780296",
+            "displayName": "Noelani Akana",
+            "gender": {
+              "code": "female",
+              "label": "Women"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "hawaii_tahiti",
+              "label": "Hawaii / Tahiti Nui"
+            },
+            "athleteNumber": "WSL-NA-00028",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1a813-df67-7503-9817-9424ed3f7b2b",
+            "displayName": "Checklist Athlete",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CA-00004",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1ac97-518d-72af-8051-cbfa386bf780",
+            "displayName": "Checklist Athlete",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CA-00013",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b629-fafb-7596-b9cc-6279705646ae",
+            "displayName": "Junior Consent",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-JC-00027",
+            "membership": {
+              "code": "junior",
+              "label": "Junior"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1a796-1478-75db-9b4a-540f448631bd",
+            "displayName": "Yago Dora",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-YD-00001",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "wsl",
+              "label": "WSL insurance",
+              "tone": "success"
+            },
+            "insurancePolicies": [
+              {
+                "kind": {
+                  "code": "purchased",
+                  "label": "WSL"
+                },
+                "coverType": {
+                  "code": "domestic_medical",
+                  "label": "Domestic medical"
+                },
+                "eventCredits": 1,
+                "creditsUsed": 0,
+                "validTo": "2026-12-31"
+              }
+            ],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b616-d745-750f-9822-1a8897114e1b",
+            "displayName": "Checklist ExtA3a02",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CE-00014",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b617-44b5-72c1-96e3-a44df038601d",
+            "displayName": "Checklist ExtB3a02",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CE-00015",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b618-db62-7772-929e-7d802c124c53",
+            "displayName": "Checklist ExtC3a02",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CE-00019",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b617-a414-7409-86d5-97cbd9452d88",
+            "displayName": "Checklist ExtD3a02",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CE-00016",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b618-0552-7179-b61e-0e74bef0de44",
+            "displayName": "Checklist ExtE3a02",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CE-00017",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b618-78db-7445-921f-50765839b5ec",
+            "displayName": "Checklist ExtG3a02",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CE-00018",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1ab76-6238-701f-a687-2bc613932aa2",
+            "displayName": "Robin oli hood",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-RH-00007",
+            "membership": {
+              "code": "single_event",
+              "label": "Single event"
+            },
+            "membershipUsed": false,
+            "membershipSingleEventStatus": {
+              "code": "in_use",
+              "label": "In use",
+              "tone": "info"
+            },
+            "membershipSingleEventOutcome": {
+              "code": "waitlisted",
+              "label": "Waitlisted"
+            },
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "wsl",
+              "label": "WSL insurance",
+              "tone": "success"
+            },
+            "insurancePolicies": [
+              {
+                "kind": {
+                  "code": "purchased",
+                  "label": "WSL"
+                },
+                "coverType": {
+                  "code": "domestic_medical",
+                  "label": "Domestic medical"
+                },
+                "eventCredits": 1,
+                "creditsUsed": 0,
+                "validTo": "2026-12-31"
+              },
+              {
+                "kind": {
+                  "code": "purchased",
+                  "label": "WSL"
+                },
+                "coverType": {
+                  "code": "domestic_medical",
+                  "label": "Domestic medical"
+                },
+                "eventCredits": 1,
+                "creditsUsed": 0,
+                "validTo": "2026-12-31"
+              }
+            ],
+            "attention": [
+              {
+                "kind": "headshot_pending",
+                "label": "Headshot pending review",
+                "detail": null
+              }
+            ],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b632-1876-715b-a692-5a957c47c5dd",
+            "displayName": "Alana Kahale",
+            "gender": {
+              "code": "female",
+              "label": "Women"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "hawaii_tahiti",
+              "label": "Hawaii / Tahiti Nui"
+            },
+            "athleteNumber": "WSL-AK-00031",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b62f-eeab-707e-ab11-c1d72f99675a",
+            "displayName": "Mahina Kealamakia",
+            "gender": {
+              "code": "female",
+              "label": "Women"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "hawaii_tahiti",
+              "label": "Hawaii / Tahiti Nui"
+            },
+            "athleteNumber": "WSL-MK-00029",
+            "membership": {
+              "code": "junior",
+              "label": "Junior"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b633-d884-705c-891b-ba68dc2370ed",
+            "displayName": "Hokulani Keawe",
+            "gender": {
+              "code": "female",
+              "label": "Women"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "hawaii_tahiti",
+              "label": "Hawaii / Tahiti Nui"
+            },
+            "athleteNumber": "WSL-HK-00033",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b632-fcd1-70a6-bce4-0a74d9ee34fd",
+            "displayName": "Kiana Makaiau",
+            "gender": {
+              "code": "female",
+              "label": "Women"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "hawaii_tahiti",
+              "label": "Hawaii / Tahiti Nui"
+            },
+            "athleteNumber": "WSL-KM-00032",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b630-ff29-7375-8de6-e163c80b976b",
+            "displayName": "Kaiulani Palakiko",
+            "gender": {
+              "code": "female",
+              "label": "Women"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "hawaii_tahiti",
+              "label": "Hawaii / Tahiti Nui"
+            },
+            "athleteNumber": "WSL-KP-00030",
+            "membership": {
+              "code": "junior",
+              "label": "Junior"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b61b-6fa5-719d-9757-8ebb35a15cd8",
+            "displayName": "Checklist PoneA8e3b",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CP-00020",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b61c-3be8-76a3-ba61-eda282ed56a7",
+            "displayName": "Checklist PoneB8e3b",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CP-00021",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b61c-9d73-73ba-99c6-bc857239e3a8",
+            "displayName": "Checklist PoneC8e3b",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CP-00022",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [
+              {
+                "kind": "pending_confirmation_payment",
+                "label": "Payment pending",
+                "detail": null
+              }
+            ],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1b61c-fe35-752d-9acc-59529160470d",
+            "displayName": "Checklist PoneD8e3b",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CP-00023",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1ab8c-afc4-71f3-bbc4-0e912d2d633d",
+            "displayName": "Checklist PonePriceA0c4c",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CP-00010",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          },
+          {
+            "id": "01a1ab8d-8e15-7446-8f2c-ede5d8fea497",
+            "displayName": "Checklist PonePriceB0c4c",
+            "gender": {
+              "code": "male",
+              "label": "Men"
+            },
+            "countryCode": "US",
+            "country": "United States",
+            "homeRegion": {
+              "code": "north_america",
+              "label": "North America"
+            },
+            "athleteNumber": "WSL-CP-00012",
+            "membership": {
+              "code": "full_regional",
+              "label": "Regional"
+            },
+            "membershipUsed": null,
+            "membershipSingleEventStatus": null,
+            "membershipSingleEventOutcome": null,
+            "membershipCancelledAt": null,
+            "membershipEvent": null,
+            "status": {
+              "code": "active",
+              "label": "Active",
+              "tone": "success"
+            },
+            "insurance": {
+              "code": "no_coverage",
+              "label": "No coverage",
+              "tone": "warning"
+            },
+            "insurancePolicies": [],
+            "attention": [],
+            "photoUrl": null,
+            "photoExpiresAt": null
+          }
+        ],
+        "total": 31,
+        "nextCursor": 24,
+        "filters": [
+          {
+            "code": "gender",
+            "label": "Gender",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "female",
+                "label": "Women"
+              },
+              {
+                "value": "male",
+                "label": "Men"
+              }
+            ]
+          },
+          {
+            "code": "country",
+            "label": "Country",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "AD",
+                "label": "Andorra"
+              },
+              {
+                "value": "AE",
+                "label": "United Arab Emirates"
+              },
+              {
+                "value": "AF",
+                "label": "Afghanistan"
+              },
+              {
+                "value": "AG",
+                "label": "Antigua and Barbuda"
+              },
+              {
+                "value": "AI",
+                "label": "Anguilla"
+              },
+              {
+                "value": "AL",
+                "label": "Albania"
+              },
+              {
+                "value": "AM",
+                "label": "Armenia"
+              },
+              {
+                "value": "AO",
+                "label": "Angola"
+              },
+              {
+                "value": "AR",
+                "label": "Argentina"
+              },
+              {
+                "value": "AS",
+                "label": "American Samoa"
+              },
+              {
+                "value": "AT",
+                "label": "Austria"
+              },
+              {
+                "value": "AU",
+                "label": "Australia"
+              },
+              {
+                "value": "AW",
+                "label": "Aruba"
+              },
+              {
+                "value": "AX",
+                "label": "Åland Islands"
+              },
+              {
+                "value": "AZ",
+                "label": "Azerbaijan"
+              },
+              {
+                "value": "BA",
+                "label": "Bosnia and Herzegovina"
+              },
+              {
+                "value": "BB",
+                "label": "Barbados"
+              },
+              {
+                "value": "BD",
+                "label": "Bangladesh"
+              },
+              {
+                "value": "BE",
+                "label": "Belgium"
+              },
+              {
+                "value": "BF",
+                "label": "Burkina Faso"
+              },
+              {
+                "value": "BG",
+                "label": "Bulgaria"
+              },
+              {
+                "value": "BH",
+                "label": "Bahrain"
+              },
+              {
+                "value": "BI",
+                "label": "Burundi"
+              },
+              {
+                "value": "BJ",
+                "label": "Benin"
+              },
+              {
+                "value": "BL",
+                "label": "Saint Barthélemy"
+              },
+              {
+                "value": "BM",
+                "label": "Bermuda"
+              },
+              {
+                "value": "BN",
+                "label": "Brunei Darussalam"
+              },
+              {
+                "value": "BO",
+                "label": "Bolivia"
+              },
+              {
+                "value": "BQ",
+                "label": "Bonaire, Sint Eustatius and Saba"
+              },
+              {
+                "value": "BR",
+                "label": "Brazil"
+              },
+              {
+                "value": "BS",
+                "label": "Bahamas"
+              },
+              {
+                "value": "BT",
+                "label": "Bhutan"
+              },
+              {
+                "value": "BW",
+                "label": "Botswana"
+              },
+              {
+                "value": "BY",
+                "label": "Belarus"
+              },
+              {
+                "value": "BZ",
+                "label": "Belize"
+              },
+              {
+                "value": "CA",
+                "label": "Canada"
+              },
+              {
+                "value": "CC",
+                "label": "Cocos (Keeling) Islands"
+              },
+              {
+                "value": "CD",
+                "label": "Congo, The Democratic Republic of the"
+              },
+              {
+                "value": "CF",
+                "label": "Central African Republic"
+              },
+              {
+                "value": "CG",
+                "label": "Congo"
+              },
+              {
+                "value": "CH",
+                "label": "Switzerland"
+              },
+              {
+                "value": "CI",
+                "label": "Côte d'Ivoire"
+              },
+              {
+                "value": "CK",
+                "label": "Cook Islands"
+              },
+              {
+                "value": "CL",
+                "label": "Chile"
+              },
+              {
+                "value": "CM",
+                "label": "Cameroon"
+              },
+              {
+                "value": "CN",
+                "label": "China"
+              },
+              {
+                "value": "CO",
+                "label": "Colombia"
+              },
+              {
+                "value": "CR",
+                "label": "Costa Rica"
+              },
+              {
+                "value": "CU",
+                "label": "Cuba"
+              },
+              {
+                "value": "CV",
+                "label": "Cabo Verde"
+              },
+              {
+                "value": "CW",
+                "label": "Curaçao"
+              },
+              {
+                "value": "CX",
+                "label": "Christmas Island"
+              },
+              {
+                "value": "CY",
+                "label": "Cyprus"
+              },
+              {
+                "value": "CZ",
+                "label": "Czechia"
+              },
+              {
+                "value": "DE",
+                "label": "Germany"
+              },
+              {
+                "value": "DJ",
+                "label": "Djibouti"
+              },
+              {
+                "value": "DK",
+                "label": "Denmark"
+              },
+              {
+                "value": "DM",
+                "label": "Dominica"
+              },
+              {
+                "value": "DO",
+                "label": "Dominican Republic"
+              },
+              {
+                "value": "DZ",
+                "label": "Algeria"
+              },
+              {
+                "value": "EC",
+                "label": "Ecuador"
+              },
+              {
+                "value": "EE",
+                "label": "Estonia"
+              },
+              {
+                "value": "EG",
+                "label": "Egypt"
+              },
+              {
+                "value": "EH",
+                "label": "Western Sahara"
+              },
+              {
+                "value": "ER",
+                "label": "Eritrea"
+              },
+              {
+                "value": "ES",
+                "label": "Spain"
+              },
+              {
+                "value": "ET",
+                "label": "Ethiopia"
+              },
+              {
+                "value": "FI",
+                "label": "Finland"
+              },
+              {
+                "value": "FJ",
+                "label": "Fiji"
+              },
+              {
+                "value": "FK",
+                "label": "Falkland Islands (Malvinas)"
+              },
+              {
+                "value": "FM",
+                "label": "Micronesia, Federated States of"
+              },
+              {
+                "value": "FO",
+                "label": "Faroe Islands"
+              },
+              {
+                "value": "FR",
+                "label": "France"
+              },
+              {
+                "value": "GA",
+                "label": "Gabon"
+              },
+              {
+                "value": "GB",
+                "label": "United Kingdom"
+              },
+              {
+                "value": "GD",
+                "label": "Grenada"
+              },
+              {
+                "value": "GE",
+                "label": "Georgia"
+              },
+              {
+                "value": "GF",
+                "label": "French Guiana"
+              },
+              {
+                "value": "GG",
+                "label": "Guernsey"
+              },
+              {
+                "value": "GH",
+                "label": "Ghana"
+              },
+              {
+                "value": "GI",
+                "label": "Gibraltar"
+              },
+              {
+                "value": "GL",
+                "label": "Greenland"
+              },
+              {
+                "value": "GM",
+                "label": "Gambia"
+              },
+              {
+                "value": "GN",
+                "label": "Guinea"
+              },
+              {
+                "value": "GP",
+                "label": "Guadeloupe"
+              },
+              {
+                "value": "GQ",
+                "label": "Equatorial Guinea"
+              },
+              {
+                "value": "GR",
+                "label": "Greece"
+              },
+              {
+                "value": "GT",
+                "label": "Guatemala"
+              },
+              {
+                "value": "GU",
+                "label": "Guam"
+              },
+              {
+                "value": "GW",
+                "label": "Guinea-Bissau"
+              },
+              {
+                "value": "GY",
+                "label": "Guyana"
+              },
+              {
+                "value": "HK",
+                "label": "Hong Kong"
+              },
+              {
+                "value": "HN",
+                "label": "Honduras"
+              },
+              {
+                "value": "HR",
+                "label": "Croatia"
+              },
+              {
+                "value": "HT",
+                "label": "Haiti"
+              },
+              {
+                "value": "HU",
+                "label": "Hungary"
+              },
+              {
+                "value": "ID",
+                "label": "Indonesia"
+              },
+              {
+                "value": "IE",
+                "label": "Ireland"
+              },
+              {
+                "value": "IL",
+                "label": "Israel"
+              },
+              {
+                "value": "IM",
+                "label": "Isle of Man"
+              },
+              {
+                "value": "IN",
+                "label": "India"
+              },
+              {
+                "value": "IQ",
+                "label": "Iraq"
+              },
+              {
+                "value": "IR",
+                "label": "Iran"
+              },
+              {
+                "value": "IS",
+                "label": "Iceland"
+              },
+              {
+                "value": "IT",
+                "label": "Italy"
+              },
+              {
+                "value": "JE",
+                "label": "Jersey"
+              },
+              {
+                "value": "JM",
+                "label": "Jamaica"
+              },
+              {
+                "value": "JO",
+                "label": "Jordan"
+              },
+              {
+                "value": "JP",
+                "label": "Japan"
+              },
+              {
+                "value": "KE",
+                "label": "Kenya"
+              },
+              {
+                "value": "KG",
+                "label": "Kyrgyzstan"
+              },
+              {
+                "value": "KH",
+                "label": "Cambodia"
+              },
+              {
+                "value": "KI",
+                "label": "Kiribati"
+              },
+              {
+                "value": "KM",
+                "label": "Comoros"
+              },
+              {
+                "value": "KN",
+                "label": "Saint Kitts and Nevis"
+              },
+              {
+                "value": "KP",
+                "label": "North Korea"
+              },
+              {
+                "value": "KR",
+                "label": "South Korea"
+              },
+              {
+                "value": "KW",
+                "label": "Kuwait"
+              },
+              {
+                "value": "KY",
+                "label": "Cayman Islands"
+              },
+              {
+                "value": "KZ",
+                "label": "Kazakhstan"
+              },
+              {
+                "value": "LA",
+                "label": "Laos"
+              },
+              {
+                "value": "LB",
+                "label": "Lebanon"
+              },
+              {
+                "value": "LC",
+                "label": "Saint Lucia"
+              },
+              {
+                "value": "LI",
+                "label": "Liechtenstein"
+              },
+              {
+                "value": "LK",
+                "label": "Sri Lanka"
+              },
+              {
+                "value": "LR",
+                "label": "Liberia"
+              },
+              {
+                "value": "LS",
+                "label": "Lesotho"
+              },
+              {
+                "value": "LT",
+                "label": "Lithuania"
+              },
+              {
+                "value": "LU",
+                "label": "Luxembourg"
+              },
+              {
+                "value": "LV",
+                "label": "Latvia"
+              },
+              {
+                "value": "LY",
+                "label": "Libya"
+              },
+              {
+                "value": "MA",
+                "label": "Morocco"
+              },
+              {
+                "value": "MC",
+                "label": "Monaco"
+              },
+              {
+                "value": "MD",
+                "label": "Moldova"
+              },
+              {
+                "value": "ME",
+                "label": "Montenegro"
+              },
+              {
+                "value": "MF",
+                "label": "Saint Martin (French part)"
+              },
+              {
+                "value": "MG",
+                "label": "Madagascar"
+              },
+              {
+                "value": "MH",
+                "label": "Marshall Islands"
+              },
+              {
+                "value": "MK",
+                "label": "North Macedonia"
+              },
+              {
+                "value": "ML",
+                "label": "Mali"
+              },
+              {
+                "value": "MM",
+                "label": "Myanmar"
+              },
+              {
+                "value": "MN",
+                "label": "Mongolia"
+              },
+              {
+                "value": "MO",
+                "label": "Macao"
+              },
+              {
+                "value": "MP",
+                "label": "Northern Mariana Islands"
+              },
+              {
+                "value": "MQ",
+                "label": "Martinique"
+              },
+              {
+                "value": "MR",
+                "label": "Mauritania"
+              },
+              {
+                "value": "MS",
+                "label": "Montserrat"
+              },
+              {
+                "value": "MT",
+                "label": "Malta"
+              },
+              {
+                "value": "MU",
+                "label": "Mauritius"
+              },
+              {
+                "value": "MV",
+                "label": "Maldives"
+              },
+              {
+                "value": "MW",
+                "label": "Malawi"
+              },
+              {
+                "value": "MX",
+                "label": "Mexico"
+              },
+              {
+                "value": "MY",
+                "label": "Malaysia"
+              },
+              {
+                "value": "MZ",
+                "label": "Mozambique"
+              },
+              {
+                "value": "NA",
+                "label": "Namibia"
+              },
+              {
+                "value": "NC",
+                "label": "New Caledonia"
+              },
+              {
+                "value": "NE",
+                "label": "Niger"
+              },
+              {
+                "value": "NF",
+                "label": "Norfolk Island"
+              },
+              {
+                "value": "NG",
+                "label": "Nigeria"
+              },
+              {
+                "value": "NI",
+                "label": "Nicaragua"
+              },
+              {
+                "value": "NL",
+                "label": "Netherlands"
+              },
+              {
+                "value": "NO",
+                "label": "Norway"
+              },
+              {
+                "value": "NP",
+                "label": "Nepal"
+              },
+              {
+                "value": "NR",
+                "label": "Nauru"
+              },
+              {
+                "value": "NU",
+                "label": "Niue"
+              },
+              {
+                "value": "NZ",
+                "label": "New Zealand"
+              },
+              {
+                "value": "OM",
+                "label": "Oman"
+              },
+              {
+                "value": "PA",
+                "label": "Panama"
+              },
+              {
+                "value": "PE",
+                "label": "Peru"
+              },
+              {
+                "value": "PF",
+                "label": "French Polynesia"
+              },
+              {
+                "value": "PG",
+                "label": "Papua New Guinea"
+              },
+              {
+                "value": "PH",
+                "label": "Philippines"
+              },
+              {
+                "value": "PK",
+                "label": "Pakistan"
+              },
+              {
+                "value": "PL",
+                "label": "Poland"
+              },
+              {
+                "value": "PM",
+                "label": "Saint Pierre and Miquelon"
+              },
+              {
+                "value": "PN",
+                "label": "Pitcairn"
+              },
+              {
+                "value": "PR",
+                "label": "Puerto Rico"
+              },
+              {
+                "value": "PS",
+                "label": "Palestine, State of"
+              },
+              {
+                "value": "PT",
+                "label": "Portugal"
+              },
+              {
+                "value": "PW",
+                "label": "Palau"
+              },
+              {
+                "value": "PY",
+                "label": "Paraguay"
+              },
+              {
+                "value": "QA",
+                "label": "Qatar"
+              },
+              {
+                "value": "RE",
+                "label": "Réunion"
+              },
+              {
+                "value": "RO",
+                "label": "Romania"
+              },
+              {
+                "value": "RS",
+                "label": "Serbia"
+              },
+              {
+                "value": "RU",
+                "label": "Russian Federation"
+              },
+              {
+                "value": "RW",
+                "label": "Rwanda"
+              },
+              {
+                "value": "SA",
+                "label": "Saudi Arabia"
+              },
+              {
+                "value": "SB",
+                "label": "Solomon Islands"
+              },
+              {
+                "value": "SC",
+                "label": "Seychelles"
+              },
+              {
+                "value": "SD",
+                "label": "Sudan"
+              },
+              {
+                "value": "SE",
+                "label": "Sweden"
+              },
+              {
+                "value": "SG",
+                "label": "Singapore"
+              },
+              {
+                "value": "SH",
+                "label": "Saint Helena, Ascension and Tristan da Cunha"
+              },
+              {
+                "value": "SI",
+                "label": "Slovenia"
+              },
+              {
+                "value": "SJ",
+                "label": "Svalbard and Jan Mayen"
+              },
+              {
+                "value": "SK",
+                "label": "Slovakia"
+              },
+              {
+                "value": "SL",
+                "label": "Sierra Leone"
+              },
+              {
+                "value": "SM",
+                "label": "San Marino"
+              },
+              {
+                "value": "SN",
+                "label": "Senegal"
+              },
+              {
+                "value": "SO",
+                "label": "Somalia"
+              },
+              {
+                "value": "SR",
+                "label": "Suriname"
+              },
+              {
+                "value": "SS",
+                "label": "South Sudan"
+              },
+              {
+                "value": "ST",
+                "label": "Sao Tome and Principe"
+              },
+              {
+                "value": "SV",
+                "label": "El Salvador"
+              },
+              {
+                "value": "SX",
+                "label": "Sint Maarten (Dutch part)"
+              },
+              {
+                "value": "SY",
+                "label": "Syria"
+              },
+              {
+                "value": "SZ",
+                "label": "Eswatini"
+              },
+              {
+                "value": "TC",
+                "label": "Turks and Caicos Islands"
+              },
+              {
+                "value": "TD",
+                "label": "Chad"
+              },
+              {
+                "value": "TG",
+                "label": "Togo"
+              },
+              {
+                "value": "TH",
+                "label": "Thailand"
+              },
+              {
+                "value": "TJ",
+                "label": "Tajikistan"
+              },
+              {
+                "value": "TK",
+                "label": "Tokelau"
+              },
+              {
+                "value": "TL",
+                "label": "Timor-Leste"
+              },
+              {
+                "value": "TM",
+                "label": "Turkmenistan"
+              },
+              {
+                "value": "TN",
+                "label": "Tunisia"
+              },
+              {
+                "value": "TO",
+                "label": "Tonga"
+              },
+              {
+                "value": "TR",
+                "label": "Türkiye"
+              },
+              {
+                "value": "TT",
+                "label": "Trinidad and Tobago"
+              },
+              {
+                "value": "TV",
+                "label": "Tuvalu"
+              },
+              {
+                "value": "TW",
+                "label": "Taiwan"
+              },
+              {
+                "value": "TZ",
+                "label": "Tanzania"
+              },
+              {
+                "value": "UA",
+                "label": "Ukraine"
+              },
+              {
+                "value": "UG",
+                "label": "Uganda"
+              },
+              {
+                "value": "US",
+                "label": "United States"
+              },
+              {
+                "value": "UY",
+                "label": "Uruguay"
+              },
+              {
+                "value": "UZ",
+                "label": "Uzbekistan"
+              },
+              {
+                "value": "VA",
+                "label": "Holy See (Vatican City State)"
+              },
+              {
+                "value": "VC",
+                "label": "Saint Vincent and the Grenadines"
+              },
+              {
+                "value": "VE",
+                "label": "Venezuela"
+              },
+              {
+                "value": "VG",
+                "label": "Virgin Islands, British"
+              },
+              {
+                "value": "VI",
+                "label": "Virgin Islands, U.S."
+              },
+              {
+                "value": "VN",
+                "label": "Vietnam"
+              },
+              {
+                "value": "VU",
+                "label": "Vanuatu"
+              },
+              {
+                "value": "WF",
+                "label": "Wallis and Futuna"
+              },
+              {
+                "value": "WS",
+                "label": "Samoa"
+              },
+              {
+                "value": "YE",
+                "label": "Yemen"
+              },
+              {
+                "value": "YT",
+                "label": "Mayotte"
+              },
+              {
+                "value": "ZA",
+                "label": "South Africa"
+              },
+              {
+                "value": "ZM",
+                "label": "Zambia"
+              },
+              {
+                "value": "ZW",
+                "label": "Zimbabwe"
+              }
+            ]
+          },
+          {
+            "code": "homeRegion",
+            "label": "Home region",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "north_america",
+                "label": "North America"
+              },
+              {
+                "value": "south_america",
+                "label": "South America"
+              },
+              {
+                "value": "europe",
+                "label": "Europe"
+              },
+              {
+                "value": "africa",
+                "label": "Africa"
+              },
+              {
+                "value": "asia",
+                "label": "Asia"
+              },
+              {
+                "value": "aus_oce",
+                "label": "Australia / Oceania"
+              },
+              {
+                "value": "hawaii_tahiti",
+                "label": "Hawaii / Tahiti Nui"
+              },
+              {
+                "value": "unassigned",
+                "label": "No home region"
+              }
+            ]
+          },
+          {
+            "code": "membership",
+            "label": "Membership",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "full_regional",
+                "label": "Regional"
+              },
+              {
+                "value": "single_event",
+                "label": "Single event"
+              },
+              {
+                "value": "junior",
+                "label": "Junior"
+              },
+              {
+                "value": "longboard",
+                "label": "Longboard"
+              },
+              {
+                "value": "international_ct",
+                "label": "International (CT)"
+              }
+            ]
+          },
+          {
+            "code": "membershipStatus",
+            "label": "Membership status",
+            "kind": "multi",
+            "options": [
+              {
+                "value": "active",
+                "label": "Active"
+              },
+              {
+                "value": "pending",
+                "label": "Pending confirmation"
+              },
+              {
+                "value": "expired",
+                "label": "Expired"
+              },
+              {
+                "value": "cancelled",
+                "label": "Cancelled"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "/tour-manager/payments",
+      "status": 404,
+      "body": "\n<!doctype html>\n<html lang=\"en\">\n<head>\n  <title>Not Found</title>\n</head>\n<body>\n  <h1>Not Found</h1><p>The requested resource was not found on this server.</p>\n</body>\n</html>\n"
+    },
+    {
+      "path": "/tour-manager/finance",
+      "status": 404,
+      "body": "\n<!doctype html>\n<html lang=\"en\">\n<head>\n  <title>Not Found</title>\n</head>\n<body>\n  <h1>Not Found</h1><p>The requested resource was not found on this server.</p>\n</body>\n</html>\n"
+    },
+    {
+      "path": "/tour-manager/finance/payments",
+      "status": 404,
+      "body": "\n<!doctype html>\n<html lang=\"en\">\n<head>\n  <title>Not Found</title>\n</head>\n<body>\n  <h1>Not Found</h1><p>The requested resource was not found on this server.</p>\n</body>\n</html>\n"
+    },
+    {
+      "path": "/tour-manager/reports/finance",
+      "status": 404,
+      "body": {
+        "title": "Something went wrong",
+        "message": "That report does not exist.",
+        "reason": null,
+        "fields": {},
+        "retryable": false
+      }
+    },
+    {
+      "path": "/tour-manager/refund-reviews",
+      "status": 200,
+      "body": {
+        "items": [],
+        "empty": "No refunds are waiting for a decision."
+      }
+    },
+    {
+      "path": "/tour-manager/roles",
+      "status": 404,
+      "body": "\n<!doctype html>\n<html lang=\"en\">\n<head>\n  <title>Not Found</title>\n</head>\n<body>\n  <h1>Not Found</h1><p>The requested resource was not found on this server.</p>\n</body>\n</html>\n"
+    },
+    {
+      "path": "/tour-manager/settings/access",
+      "status": 404,
+      "body": "\n<!doctype html>\n<html lang=\"en\">\n<head>\n  <title>Not Found</title>\n</head>\n<body>\n  <h1>Not Found</h1><p>The requested resource was not found on this server.</p>\n</body>\n</html>\n"
+    },
+    {
+      "path": "/tour-manager/settings/payment-rules",
+      "status": 200,
+      "body": {
+        "name": "Card payment failed",
+        "scope": "GLOBAL · ALL REGIONS",
+        "version": 0,
+        "rules": [
+          {
+            "id": "grace",
+            "name": "Grace period",
+            "description": "The whole window from the first failure to the point where the entry is flagged to a Tour Manager.",
+            "setting": "7 days"
+          },
+          {
+            "id": "notices",
+            "name": "Notification schedule",
+            "description": "Notices go out at 24 hours, 3 days, 5 days and 7 days after the failure, asking the athlete to update their card. The same schedule drives insurance follow-up and recurring membership payments.",
+            "setting": "24 hours · 3 days · 5 days · 7 days"
+          },
+          {
+            "id": "attempts",
+            "name": "Retry attempts",
+            "description": "How many automatic attempts are made after the first failure. Zero means no automatic retry.",
+            "setting": "3 attempts"
+          },
+          {
+            "id": "retry-1",
+            "name": "1st retry",
+            "description": "When the first automatic attempt runs after the failure.",
+            "setting": "24 hours after the failure"
+          },
+          {
+            "id": "retry-2",
+            "name": "2nd retry",
+            "description": "When the second attempt runs if the first one fails.",
+            "setting": "3 days after the failure"
+          },
+          {
+            "id": "retry-3",
+            "name": "3rd retry",
+            "description": "The last automatic attempt. After this the entry needs a decision.",
+            "setting": "7 days after the failure"
+          },
+          {
+            "id": "stop",
+            "name": "Stop condition",
+            "description": "Retries stop the moment the position is no longer available. Nothing is chased inside 9 days of the event: an entry still unpaid by then is flagged to a Tour Manager so an alternate has time to travel.",
+            "setting": "Retries stop when the place is gone"
+          },
+          {
+            "id": "proceed",
+            "name": "Proceed without payment",
+            "description": "Proceed without payment. A Tour Manager can clear an athlete to compete without paying, for a stated reason. Once set, the athlete is marked as a manual override and is never charged again for this event.",
+            "setting": "Proceed without payment · Admin or Tour Manager · reason required · 2 in use this season"
+          }
+        ],
+        "values": {
+          "gracePeriodHours": 168,
+          "notificationOffsetsHours": [
+            24,
+            72,
+            120,
+            168
+          ],
+          "retryOffsetsHours": [
+            24,
+            72,
+            168
+          ],
+          "shortNoticeDays": 9
+        },
+        "seasonId": "01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4",
+        "edited": null,
+        "canEdit": true
+      }
+    }
+  ],
+  "sourceFindings": [
+    "The dev frontend has Tour Manager Events and Settings routes, but no Finance/Payments page route in the checked source tree.",
+    "The checked Tour Manager side navigation exposes Events and Settings only."
+  ],
+  "conclusion": "Finance identity is present in the authenticated session, but no deployed Finance page or payments endpoint was found at the tested contracts. Refund reviews and payment-rules are available. This is a deployment/API contract gap or permission/routing issue, not yet a confirmed functional Finance bug."
+}
