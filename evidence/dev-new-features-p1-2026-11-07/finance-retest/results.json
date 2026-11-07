@@ -1,0 +1,581 @@
+{
+  "startedAt": "2026-11-07T15:14:27.462Z",
+  "checks": [
+    {
+      "id": "FIN-01",
+      "name": "Finance manager login",
+      "status": "PASS",
+      "expected": "HTTP 200",
+      "actual": 200
+    },
+    {
+      "id": "FIN-02",
+      "name": "Finance page loads",
+      "status": "PASS",
+      "expected": "HTTP 200 and Finance heading",
+      "actual": {
+        "http": 200,
+        "heading": false,
+        "text": "REPORT\n\nRevenue\nInsurance\nDownload CSV\n\nEverything collected and refunded · for NetSuite and Stripe\n\nOctober 2026\nTour\nAll tours\nRegions\nAll regions\nEvent\nAll events\nProducts\nAll products\n\nMonths run midnight to midnight in Pacific Time (America/Los_Angeles), wherever you download from.\n\nNo transactions in October 2026.\n\nSales and refunds as of Nov 7, 2026, 7:13:35 AM PST.\n\nDownload as of the same time\nDownload payout tie-out\n\nOne row per Stripe payout: its lines, gross, Stripe's fees and the payout to expect, to match Stripe's payout report."
+      }
+    },
+    {
+      "id": "FIN-03",
+      "name": "Finance controls present",
+      "status": "PASS",
+      "expected": "Revenue/Insurance filters and downloads",
+      "actual": [
+        {
+          "tag": "BUTTON",
+          "text": "Search",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "A",
+          "text": "Events",
+          "href": "/tour-manager/events"
+        },
+        {
+          "tag": "A",
+          "text": "Athletes",
+          "href": "/tour-manager/athletes"
+        },
+        {
+          "tag": "A",
+          "text": "Tickets (1)",
+          "href": "/tour-manager/tickets"
+        },
+        {
+          "tag": "A",
+          "text": "Settings",
+          "href": "/tour-manager/settings"
+        },
+        {
+          "tag": "A",
+          "text": "Finance",
+          "href": "/tour-manager/finance"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "TM",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Log Out",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Search\n⌘K",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Collapse menu",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "A",
+          "text": "Events",
+          "href": "/tour-manager/events"
+        },
+        {
+          "tag": "A",
+          "text": "Athletes",
+          "href": "/tour-manager/athletes"
+        },
+        {
+          "tag": "A",
+          "text": "Tickets\n1",
+          "href": "/tour-manager/tickets"
+        },
+        {
+          "tag": "A",
+          "text": "Settings",
+          "href": "/tour-manager/settings"
+        },
+        {
+          "tag": "A",
+          "text": "Finance",
+          "href": "/tour-manager/finance"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Account menu",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Log Out",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Revenue",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Insurance",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Download CSV",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "October 2026",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "All tours",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Regions\nAll regions",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "All events",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Products\nAll products",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Download as of the same time",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Download payout tie-out",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Ask AL",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Close AL",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "New Conversation",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Conversations",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "What's left before I can confirm the field for an event?",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Who is on the waitlist for an event?",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Withdraw an athlete from an event",
+          "href": null,
+          "disabled": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Send",
+          "href": null,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": "FIN-04-revenue",
+      "name": "Revenue report section visible",
+      "status": "PASS",
+      "expected": "Visible section",
+      "actual": 1
+    },
+    {
+      "id": "FIN-04-insurance",
+      "name": "Insurance report section visible",
+      "status": "PASS",
+      "expected": "Visible section",
+      "actual": 1
+    },
+    {
+      "id": "FIN-05",
+      "name": "Download CSV control available",
+      "status": "PASS",
+      "expected": "Download CSV",
+      "actual": 1
+    },
+    {
+      "id": "FIN-06",
+      "name": "Payout tie-out control available",
+      "status": "PASS",
+      "expected": "Download payout tie-out",
+      "actual": 1
+    },
+    {
+      "id": "FIN-07",
+      "name": "Current report has transaction rows",
+      "status": "BLOCKED",
+      "expected": "At least one transaction row",
+      "actual": "No transactions for selected October 2026 filters"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/locales",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/session",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/session",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/seasons",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/manifest/en",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/manifest/en",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/tickets?holder=anyone&limit=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/reference/regions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/reference/tours",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/reports/revenue/summary?period=2026-10&tz=America%2FLos_Angeles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/validation?v=7901131c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/validation?v=7901131c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/validation?v=7901131c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/validation?v=7901131c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/common?v=918dcafe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/common?v=918dcafe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/common?v=918dcafe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/common?v=918dcafe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/tour-manager?v=86140e34",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/tour-manager?v=86140e34",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/tour-manager?v=86140e34",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/tour-manager?v=86140e34",
+      "status": 200
+    }
+  ],
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "text": "Search",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "A",
+      "text": "Events",
+      "href": "/tour-manager/events"
+    },
+    {
+      "tag": "A",
+      "text": "Athletes",
+      "href": "/tour-manager/athletes"
+    },
+    {
+      "tag": "A",
+      "text": "Tickets (1)",
+      "href": "/tour-manager/tickets"
+    },
+    {
+      "tag": "A",
+      "text": "Settings",
+      "href": "/tour-manager/settings"
+    },
+    {
+      "tag": "A",
+      "text": "Finance",
+      "href": "/tour-manager/finance"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "TM",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Log Out",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Search\n⌘K",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Collapse menu",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "A",
+      "text": "Events",
+      "href": "/tour-manager/events"
+    },
+    {
+      "tag": "A",
+      "text": "Athletes",
+      "href": "/tour-manager/athletes"
+    },
+    {
+      "tag": "A",
+      "text": "Tickets\n1",
+      "href": "/tour-manager/tickets"
+    },
+    {
+      "tag": "A",
+      "text": "Settings",
+      "href": "/tour-manager/settings"
+    },
+    {
+      "tag": "A",
+      "text": "Finance",
+      "href": "/tour-manager/finance"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Account menu",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Log Out",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Revenue",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Insurance",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Download CSV",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "October 2026",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "All tours",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Regions\nAll regions",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "All events",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Products\nAll products",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Download as of the same time",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Download payout tie-out",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Ask AL",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Close AL",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "New Conversation",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Conversations",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "What's left before I can confirm the field for an event?",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Who is on the waitlist for an event?",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Withdraw an athlete from an event",
+      "href": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Send",
+      "href": null,
+      "disabled": true
+    }
+  ],
+  "finishedAt": "2026-11-07T15:14:37.280Z"
+}
