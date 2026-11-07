@@ -1,0 +1,177 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Finance comprehensive test report</title><style>body{font:15px system-ui,Segoe UI,sans-serif;background:#f5f7fa;color:#172033;margin:0}main{max-width:1100px;margin:30px auto;padding:0 22px}h1{margin-bottom:4px}h2{margin-top:30px}.muted{color:#68758a}.cards{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}.card{background:white;border:1px solid #dbe2ea;border-radius:12px;padding:14px 22px}.num{font-size:28px;font-weight:700}.PASS{color:#087443}.BLOCKED{color:#946200}table{width:100%;border-collapse:collapse;background:white;border:1px solid #dbe2ea}th,td{padding:10px;border-bottom:1px solid #e6ebf0;text-align:left;vertical-align:top}th{background:#eef2f6}code,pre{white-space:pre-wrap;word-break:break-word}.shot{max-width:700px;border:1px solid #ccd5df;border-radius:8px}nav{margin:18px auto;max-width:1100px;padding:0 22px}nav a{margin-right:18px}</style></head><body><nav><a href="finance-test-report.html">Test report</a><a href="finance-guide.html">Finance guide</a><a href="results.json">Raw results</a></nav><main><h1>Finance comprehensive test report</h1><p class="muted">Dev · /tour-manager/finance · authenticated as Finance · All regions</p><p>Read-only functional and integration coverage of the Finance report page. No payments, refunds or settings were changed.</p><div class="cards"><div class="card PASS">Passed<div class="num">14</div></div><div class="card BLOCKED">Blocked<div class="num">1</div></div></div><h2>Checks</h2><table><tr><th>Check</th><th>Status</th><th>Expected</th><th>Actual</th></tr><tr><td><b>FIN-C-001</b><br>Finance role login</td><td class="PASS"><b>PASS</b></td><td>HTTP 200</td><td><code>200</code></td></tr><tr><td><b>FIN-C-002</b><br>Finance page loads</td><td class="PASS"><b>PASS</b></td><td>HTTP 200 and Finance content</td><td><code>Visible in captured Finance UI</code></td></tr><tr><td><b>FIN-C-003</b><br>Revenue tab is available</td><td class="PASS"><b>PASS</b></td><td>Visible tab</td><td><code>Visible in captured Finance UI</code></td></tr><tr><td><b>FIN-C-004</b><br>Insurance tab is available</td><td class="PASS"><b>PASS</b></td><td>Visible tab</td><td><code>Visible in captured Finance UI</code></td></tr><tr><td><b>FIN-C-F1</b><br>Filter October 2026 is available</td><td class="PASS"><b>PASS</b></td><td>Visible filter</td><td><code>Visible in captured Finance UI</code></td></tr><tr><td><b>FIN-C-F2</b><br>Filter All tours is available</td><td class="PASS"><b>PASS</b></td><td>Visible filter</td><td><code>Visible in captured Finance UI</code></td></tr><tr><td><b>FIN-C-F3</b><br>Filter All regions is available</td><td class="PASS"><b>PASS</b></td><td>Visible filter</td><td><code>Visible in captured Finance UI</code></td></tr><tr><td><b>FIN-C-F4</b><br>Filter All events is available</td><td class="PASS"><b>PASS</b></td><td>Visible filter</td><td><code>Visible in captured Finance UI</code></td></tr><tr><td><b>FIN-C-F5</b><br>Filter All products is available</td><td class="PASS"><b>PASS</b></td><td>Visible filter</td><td><code>Visible in captured Finance UI</code></td></tr><tr><td><b>FIN-C-010</b><br>CSV download control exists</td><td class="PASS"><b>PASS</b></td><td>Visible download control</td><td><code>1</code></td></tr><tr><td><b>FIN-C-011</b><br>CSV download starts</td><td class="PASS"><b>PASS</b></td><td>Download event</td><td><code>download received</code></td></tr><tr><td><b>FIN-C-012</b><br>Payout tie-out control exists</td><td class="PASS"><b>PASS</b></td><td>Visible control</td><td><code>1</code></td></tr><tr><td><b>FIN-C-013</b><br>Revenue summary API responds</td><td class="PASS"><b>PASS</b></td><td>HTTP 200</td><td><code>200</code></td></tr><tr><td><b>FIN-C-014</b><br>Empty transaction state is clear</td><td class="BLOCKED"><b>BLOCKED</b></td><td>Clear empty state</td><td><code>No populated transaction fixture confirmed</code></td></tr><tr><td><b>FIN-C-015</b><br>Finance mobile layout loads</td><td class="PASS"><b>PASS</b></td><td>Finance content at 390px</td><td><code>Visible in captured Finance UI</code></td></tr></table><h2>API activity</h2><pre>[
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/locales&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/session&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/session&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/seasons&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/manifest/en&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/manifest/en&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/tickets?holder=anyone&amp;limit=1&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/reference/regions&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/reference/tours&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/validation?v=7901131c&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/validation?v=7901131c&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/validation?v=7901131c&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/validation?v=7901131c&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/common?v=918dcafe&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/tour-manager?v=86140e34&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/common?v=918dcafe&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/tour-manager?v=86140e34&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/common?v=918dcafe&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/tour-manager?v=86140e34&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/common?v=918dcafe&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/i18n/bundles/en/tour-manager?v=86140e34&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/reports/revenue/summary?period=2026-10&amp;tz=America%2FLos_Angeles&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=0&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/reports/revenue?period=2026-10&amp;tz=America%2FLos_Angeles&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=14&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/tour-manager/reports/revenue/summary?period=2026-10&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=28&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=42&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=56&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=70&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=84&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=98&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=112&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=126&quot;,
+    &quot;status&quot;: 200
+  },
+  {
+    &quot;method&quot;: &quot;GET&quot;,
+    &quot;path&quot;: &quot;/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&amp;view=all&amp;sort=&amp;cursor=140&quot;,
+    &quot;status&quot;: 200
+  }
+]</pre><h2>Screenshots</h2><p><img class="shot" src="screenshots/01-finance-desktop.png" alt="Finance desktop"></p><p><img class="shot" src="screenshots/02-finance-mobile.png" alt="Finance mobile"></p><h2>Remaining blocker</h2><p>The selected period has no populated transaction fixture, so payment/refund/payout row reconciliation remains blocked.</p></main></body></html>
