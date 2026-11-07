@@ -1,0 +1,293 @@
+{
+  "startedAt": "2026-11-07T15:24:33.655Z",
+  "environment": "https://app.dev.worldsurfleague.com",
+  "checks": [
+    {
+      "id": "FIN-C-001",
+      "name": "Finance role login",
+      "status": "PASS",
+      "expected": "HTTP 200",
+      "actual": 200
+    },
+    {
+      "id": "FIN-C-002",
+      "name": "Finance page loads",
+      "status": "PASS",
+      "expected": "HTTP 200 and Finance content",
+      "actual": "Visible in captured Finance UI"
+    },
+    {
+      "id": "FIN-C-003",
+      "name": "Revenue tab is available",
+      "status": "PASS",
+      "expected": "Visible tab",
+      "actual": "Visible in captured Finance UI"
+    },
+    {
+      "id": "FIN-C-004",
+      "name": "Insurance tab is available",
+      "status": "PASS",
+      "expected": "Visible tab",
+      "actual": "Visible in captured Finance UI"
+    },
+    {
+      "id": "FIN-C-F1",
+      "name": "Filter October 2026 is available",
+      "status": "PASS",
+      "expected": "Visible filter",
+      "actual": "Visible in captured Finance UI"
+    },
+    {
+      "id": "FIN-C-F2",
+      "name": "Filter All tours is available",
+      "status": "PASS",
+      "expected": "Visible filter",
+      "actual": "Visible in captured Finance UI"
+    },
+    {
+      "id": "FIN-C-F3",
+      "name": "Filter All regions is available",
+      "status": "PASS",
+      "expected": "Visible filter",
+      "actual": "Visible in captured Finance UI"
+    },
+    {
+      "id": "FIN-C-F4",
+      "name": "Filter All events is available",
+      "status": "PASS",
+      "expected": "Visible filter",
+      "actual": "Visible in captured Finance UI"
+    },
+    {
+      "id": "FIN-C-F5",
+      "name": "Filter All products is available",
+      "status": "PASS",
+      "expected": "Visible filter",
+      "actual": "Visible in captured Finance UI"
+    },
+    {
+      "id": "FIN-C-010",
+      "name": "CSV download control exists",
+      "status": "PASS",
+      "expected": "Visible download control",
+      "actual": 1
+    },
+    {
+      "id": "FIN-C-011",
+      "name": "CSV download starts",
+      "status": "PASS",
+      "expected": "Download event",
+      "actual": "download received"
+    },
+    {
+      "id": "FIN-C-012",
+      "name": "Payout tie-out control exists",
+      "status": "PASS",
+      "expected": "Visible control",
+      "actual": 1
+    },
+    {
+      "id": "FIN-C-013",
+      "name": "Revenue summary API responds",
+      "status": "PASS",
+      "expected": "HTTP 200",
+      "actual": 200
+    },
+    {
+      "id": "FIN-C-014",
+      "name": "Empty transaction state is clear",
+      "status": "BLOCKED",
+      "expected": "Clear empty state",
+      "actual": "No populated transaction fixture confirmed"
+    },
+    {
+      "id": "FIN-C-015",
+      "name": "Finance mobile layout loads",
+      "status": "PASS",
+      "expected": "Finance content at 390px",
+      "actual": "Visible in captured Finance UI"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/locales",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/session",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/session",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/seasons",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/manifest/en",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/manifest/en",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/tickets?holder=anyone&limit=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/reference/regions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/reference/tours",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/validation?v=7901131c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/validation?v=7901131c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/validation?v=7901131c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/validation?v=7901131c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/common?v=918dcafe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/tour-manager?v=86140e34",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/common?v=918dcafe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/tour-manager?v=86140e34",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/common?v=918dcafe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/tour-manager?v=86140e34",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/common?v=918dcafe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/i18n/bundles/en/tour-manager?v=86140e34",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/reports/revenue/summary?period=2026-10&tz=America%2FLos_Angeles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=0",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/reports/revenue?period=2026-10&tz=America%2FLos_Angeles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=14",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/tour-manager/reports/revenue/summary?period=2026-10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=28",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=42",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=56",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=70",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=84",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=98",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=112",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=126",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tour-manager/events?season=01a1a78a-f93e-76ef-9271-8e0b4eb0c9a4&view=all&sort=&cursor=140",
+      "status": 200
+    }
+  ],
+  "screenshots": [
+    "screenshots/01-finance-desktop.png",
+    "screenshots/02-finance-mobile.png"
+  ],
+  "finishedAt": "2026-11-07T15:24:56.808Z"
+}
