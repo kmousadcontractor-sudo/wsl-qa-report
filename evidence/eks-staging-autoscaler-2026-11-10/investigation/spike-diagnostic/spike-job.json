@@ -1,0 +1,100 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "qa-wsl-web-20261110-spike",
+    "namespace": "ca-test",
+    "labels": {
+      "qa.wsl/owner": "qa-wsl-web-20261110"
+    }
+  },
+  "spec": {
+    "backoffLimit": 0,
+    "activeDeadlineSeconds": 360,
+    "template": {
+      "metadata": {
+        "labels": {
+          "qa.wsl/owner": "qa-wsl-web-20261110"
+        }
+      },
+      "spec": {
+        "automountServiceAccountToken": false,
+        "restartPolicy": "Never",
+        "containers": [
+          {
+            "name": "k6",
+            "image": "grafana/k6:0.54.0",
+            "args": [
+              "(while true; do echo CPU_SAMPLE $(date +%s); cat /sys/fs/cgroup/cpu.stat 2>/dev/null; cat /sys/fs/cgroup/memory.current 2>/dev/null; sleep 2; done) & monitor=$!; k6 run --no-color --quiet /test/load.js; result=$?; kill $monitor; wait $monitor 2>/dev/null; exit $result"
+            ],
+            "env": [
+              {
+                "name": "PROFILE",
+                "value": "spike"
+              },
+              {
+                "name": "SUMMARY_STDOUT",
+                "value": "true"
+              },
+              {
+                "name": "LEGACY_BASIC_USER",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "qa-wsl-web-20261110",
+                    "key": "username"
+                  }
+                }
+              },
+              {
+                "name": "LEGACY_BASIC_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "qa-wsl-web-20261110",
+                    "key": "password"
+                  }
+                }
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              },
+              "limits": {
+                "cpu": "1000m",
+                "memory": "512Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "test",
+                "mountPath": "/test",
+                "readOnly": true
+              }
+            ],
+            "securityContext": {
+              "allowPrivilegeEscalation": false,
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              }
+            },
+            "command": [
+              "/bin/sh",
+              "-c"
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "name": "test",
+            "configMap": {
+              "name": "qa-wsl-web-20261110"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

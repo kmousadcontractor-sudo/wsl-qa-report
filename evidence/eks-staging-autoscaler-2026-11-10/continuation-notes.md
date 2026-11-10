@@ -74,3 +74,7 @@ The resumed spike used 100 preallocated VUs and stopped at 47 dropped iterations
 ## Corrected-flow rerun completed
 
 22:29-22:32 Cairo: smoke PASS (112 requests, zero errors/drops); corrected-flow spike FAIL (562 completed requests, zero HTTP errors, p95 3103.53ms, 34 dropped iterations). Same 100-VU limit and arrival/abort settings; full peak/recovery aborted. No rollout observed. Cleanup verified two Ready nodes and zero owned resources. Previous endurance preserved in website-inregion/attempt-endurance-retest/.
+
+## Root-cause follow-up
+
+See investigation/root-causes.json and findings.md. Diagnostic spike 588 requests, 39 drops, zero HTTP errors; generator CPU below 0.1 sampled cores, canonical response waits occupy 100 VUs. Live Varnish idle close 5.003s vs ALB120s confirmed; probable 502 connection-reuse cause, not historically request-proven. Next.js routes lack backend; no deletion record in 30-day audit. Temporary diagnostic resources removed; two Ready nodes remain.

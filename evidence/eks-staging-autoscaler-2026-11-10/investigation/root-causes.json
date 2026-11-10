@@ -1,0 +1,69 @@
+{
+  "at": "2026-11-10T20:53:41.770Z",
+  "scope": "Root-cause investigation; infrastructure kept read-only, temporary diagnostic resources in ca-test removed.",
+  "issues": [
+    {
+      "issue": "Next.js route connection failures",
+      "status": "CONFIRMED_ROUTING_CAUSE",
+      "cause": "Active ingress routes forward to wsl-web-next Service with no deployment, pods or endpoints. ALB node target connections therefore cannot reach a listening backend.",
+      "evidence": [
+        "topology.json",
+        "next-route.json",
+        "target-group-metrics.json",
+        "audit-next-deployment.json"
+      ],
+      "limits": "No mutation record found in the queried 30-day audit history; deletion/deployment-history cause is not established. Source chart still defines one staging replica; current Next.js repository CI references a separate GKE deployment, but that does not prove who removed the EKS deployment."
+    },
+    {
+      "issue": "Journey mix skew",
+      "status": "CONFIRMED_FIXED_TEST_CODE",
+      "cause": "__ITER counts per VU. Every newly activated VU started at zero and selected returning-visitor flow. Replaced with scenario-wide iteration ID.",
+      "limits": "Corrected-flow and instrumented reruns still drop iterations: this bug was not the sole spike failure cause."
+    },
+    {
+      "issue": "Spike dropped iterations",
+      "status": "CONFIRMED_IMMEDIATE_CAUSE_DEEPER_LATENCY_UNRESOLVED",
+      "cause": "All 100 VUs were occupied by outstanding requests when new iterations were scheduled. Diagnostic run found 99 requests unfinished at abort: 64 canonical homepage, 34 canonical results, one initial results redirect. Completed canonical homepage p95 wall time 5304ms, waiting p95 4898.87ms. 39 iterations dropped.",
+      "generator": {
+        "maxSampledCores": 0.093447,
+        "maxSampledMemoryBytes": 56496128,
+        "spikePhaseThrottlingObserved": false,
+        "totalStartupThrottledUsec": 151344
+      },
+      "contributor": "Repeated baseline requests return X-Cache MISS, Age 0, and Set-Cookie. Varnish 6.5 built-in backend response rules mark Set-Cookie responses uncacheable, unless overridden. Deployed custom source does not override that rule. The fresh-session workload therefore reaches dynamic application processing; it does not establish warm-cache production capacity.",
+      "limits": "Request instrumentation adds overhead. Canonical response waits are localized to server path, not uniquely to Apache/PHP/database or Varnish queueing. No app trace or server throttling series identifies that deeper component. No claim that increasing VUs fixes application performance.",
+      "evidence": [
+        "spike-diagnostic/results.json",
+        "spike-diagnostic/analysis.json",
+        "cache-probe.json"
+      ]
+    },
+    {
+      "issue": "Two intermittent page-level 502s",
+      "status": "CONFIRMED_TIMEOUT_MISMATCH_PROBABLE_502_CAUSE_NOT_REQUEST_PROVEN",
+      "cause": "Live direct Varnish connection closed 5003ms after last response bytes; ALB backend/client idle timeout is 120 seconds. Target closes idle connections before ALB, a documented connection-reuse/reset risk for 502s.",
+      "limits": "Probe used a single internal HTTP request with Basic auth, yielding 301 before server close; this measures timeout, not an observed reset race. No packet capture or ALB access log proves that this mismatch caused the two historical requests. ALB access logging is disabled and Varnish stdout lacks request logs.",
+      "evidence": [
+        "connection-probe.log",
+        "load-balancer-metrics.json",
+        "application-log-analysis.json"
+      ],
+      "reference": "https://repost.aws/knowledge-center/elb-alb-troubleshoot-502-errors"
+    }
+  ],
+  "nextActions": [
+    {
+      "owner": "Infrastructure/application owner",
+      "action": "Restore intended Next.js deployment or remove obsolete ingress/service routes, after confirming intended architecture."
+    },
+    {
+      "owner": "Infrastructure owner",
+      "action": "Align Varnish client keep-alive above ALB idle timeout, after inspecting effective settings; capture ALB access logs and connection reset evidence, then validate 502 recovery."
+    },
+    {
+      "owner": "Application/performance owner",
+      "action": "Trace slow canonical homepage/results processing and evaluate session/cache behavior safely. Do not cache personalized Set-Cookie responses indiscriminately."
+    }
+  ],
+  "allRootCausesFullyProven": false
+}

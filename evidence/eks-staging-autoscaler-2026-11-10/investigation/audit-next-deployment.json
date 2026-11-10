@@ -1,0 +1,152 @@
+{
+  "at": "2026-11-10T20:48:50.298Z",
+  "queryId": "b2b68461-6db3-465f-b4fb-aa7bbc3fd319",
+  "status": "Complete",
+  "results": [
+    [
+      {
+        "field": "@timestamp",
+        "value": "2026-11-10 20:24:27.741"
+      },
+      {
+        "field": "verb",
+        "value": "get"
+      },
+      {
+        "field": "user.username",
+        "value": "kmousad_contractor@worldsurfleague.com"
+      },
+      {
+        "field": "objectRef.resource",
+        "value": "deployments"
+      },
+      {
+        "field": "objectRef.name",
+        "value": "wsl-web-next"
+      },
+      {
+        "field": "objectRef.namespace",
+        "value": "default"
+      },
+      {
+        "field": "responseStatus.code",
+        "value": "404"
+      },
+      {
+        "field": "requestURI",
+        "value": "/apis/apps/v1/namespaces/default/deployments/wsl-web-next?timeout=15s"
+      }
+    ],
+    [
+      {
+        "field": "@timestamp",
+        "value": "2026-11-10 20:24:23.228"
+      },
+      {
+        "field": "verb",
+        "value": "get"
+      },
+      {
+        "field": "user.username",
+        "value": "kmousad_contractor@worldsurfleague.com"
+      },
+      {
+        "field": "objectRef.resource",
+        "value": "services"
+      },
+      {
+        "field": "objectRef.name",
+        "value": "wsl-web-next"
+      },
+      {
+        "field": "objectRef.namespace",
+        "value": "default"
+      },
+      {
+        "field": "responseStatus.code",
+        "value": "200"
+      },
+      {
+        "field": "requestURI",
+        "value": "/api/v1/namespaces/default/services/wsl-web-next?timeout=15s"
+      }
+    ],
+    [
+      {
+        "field": "@timestamp",
+        "value": "2026-11-10 13:22:47.804"
+      },
+      {
+        "field": "verb",
+        "value": "get"
+      },
+      {
+        "field": "user.username",
+        "value": "system:serviceaccount:kube-system:generic-garbage-collector"
+      },
+      {
+        "field": "objectRef.resource",
+        "value": "services"
+      },
+      {
+        "field": "objectRef.name",
+        "value": "wsl-web-next"
+      },
+      {
+        "field": "objectRef.namespace",
+        "value": "default"
+      },
+      {
+        "field": "responseStatus.code",
+        "value": "200"
+      },
+      {
+        "field": "requestURI",
+        "value": "/api/v1/namespaces/default/services/wsl-web-next"
+      }
+    ],
+    [
+      {
+        "field": "@timestamp",
+        "value": "2026-11-04 04:48:42.992"
+      },
+      {
+        "field": "verb",
+        "value": "get"
+      },
+      {
+        "field": "user.username",
+        "value": "system:serviceaccount:kube-system:generic-garbage-collector"
+      },
+      {
+        "field": "objectRef.resource",
+        "value": "services"
+      },
+      {
+        "field": "objectRef.name",
+        "value": "wsl-web-next"
+      },
+      {
+        "field": "objectRef.namespace",
+        "value": "default"
+      },
+      {
+        "field": "responseStatus.code",
+        "value": "200"
+      },
+      {
+        "field": "requestURI",
+        "value": "/api/v1/namespaces/default/services/wsl-web-next"
+      }
+    ]
+  ],
+  "statistics": {
+    "recordsMatched": 4,
+    "recordsScanned": 9293220,
+    "estimatedRecordsSkipped": 24499894,
+    "bytesScanned": 1736015940,
+    "estimatedBytesSkipped": 33670321580,
+    "logGroupsScanned": 1,
+    "resultCount": 4
+  }
+}
