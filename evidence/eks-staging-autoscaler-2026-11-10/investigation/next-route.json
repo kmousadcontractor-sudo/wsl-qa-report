@@ -1,0 +1,38 @@
+{
+  "at": "2026-11-10T20:24:21.485Z",
+  "service": {
+    "spec": {
+      "clusterIP": "REDACTED_IP_4",
+      "clusterIPs": [
+        "REDACTED_IP_4"
+      ],
+      "externalTrafficPolicy": "Cluster",
+      "internalTrafficPolicy": "Cluster",
+      "ipFamilies": [
+        "IPv4"
+      ],
+      "ipFamilyPolicy": "SingleStack",
+      "ports": [
+        {
+          "name": "http",
+          "nodePort": 32241,
+          "port": 80,
+          "protocol": "TCP",
+          "targetPort": 3000
+        }
+      ],
+      "selector": {
+        "app": "wsl-web-next",
+        "release": "wsl-web-next"
+      },
+      "sessionAffinity": "None",
+      "type": "NodePort"
+    }
+  },
+  "endpoints": {},
+  "pods": [],
+  "deployment": {
+    "exit": 1,
+    "error": "Error from server (NotFound): deployments.apps \"wsl-web-next\" not found\n"
+  }
+}

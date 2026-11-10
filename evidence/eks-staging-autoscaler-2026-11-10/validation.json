@@ -1,0 +1,32 @@
+{
+  "at": "2026-11-10T20:32:52.621Z",
+  "nodeCycle": "2 -> 3 -> 2 verified",
+  "currentReadyNodes": 2,
+  "awsDesired": 2,
+  "ownedResourcesRemaining": 0,
+  "ownedSecretDeletionConfirmed": true,
+  "checkedLocalLinks": 31,
+  "scannedArtifactFiles": 162,
+  "credentialValuesFound": false,
+  "websiteProfiles": [
+    {
+      "profile": "smoke",
+      "status": "PASS"
+    },
+    {
+      "profile": "flows",
+      "status": "PASS"
+    },
+    {
+      "profile": "spike",
+      "status": "FAIL"
+    },
+    {
+      "profile": "endurance",
+      "status": "PASS"
+    }
+  ],
+  "allWebsiteProfilesExecuted": true,
+  "allWebsiteProfilesPassed": false,
+  "enduranceFullDurationVerified": true
+}

@@ -1,0 +1,134 @@
+{
+  "startedAt": "2026-11-10T18:31:59.069Z",
+  "target": "https://www.staging.worldsurfleague.com",
+  "scope": "Public homepage → event results and return visits; read-only HTTP; no Kubernetes mutations",
+  "profiles": [
+    {
+      "profile": "smoke",
+      "startedAt": "2026-11-10T18:31:59.072Z",
+      "observations": [
+        {
+          "at": "2026-11-10T18:32:06.251Z",
+          "nodes": [
+            {
+              "name": "ip-10-20-12-153.us-west-2.compute.internal",
+              "ready": "True"
+            },
+            {
+              "name": "ip-10-20-14-173.us-west-2.compute.internal",
+              "ready": "True"
+            },
+            {
+              "name": "ip-10-20-16-46.us-west-2.compute.internal",
+              "ready": "True"
+            }
+          ],
+          "hpas": [
+            {
+              "namespace": "default",
+              "name": "wsl-varnish",
+              "current": 1,
+              "desired": 1
+            },
+            {
+              "namespace": "default",
+              "name": "wsl-web",
+              "current": 2,
+              "desired": 2
+            },
+            {
+              "namespace": "kube-system",
+              "name": "coredns",
+              "current": 4,
+              "desired": 4
+            }
+          ],
+          "podUsage": "NAME                                                             CPU(cores)   MEMORY(bytes)   \ncms-7749875bf-mxrts                                              1m           17Mi            \ncms-7749875bf-z5qg9                                              1m           17Mi            \ndatadog-agent-g4phs                                              9m           148Mi           \ndatadog-agent-kube-state-metrics-577fcf6778-h7497                3m           13Mi            \ndatadog-agent-qwt7t                                              29m          155Mi           \ndatadog-agent-z6prr                                              16m          77Mi            \ngearman-server-66f4c8994b-n46hr                                  1m           9Mi             \ngearman-server-66f4c8994b-p4qv4                                  1m           2Mi             \ngearman-workers-6f7974c668-9vtf2                                 0m           56Mi            \npubsub-daemons-heat-pickem-86d66fc864-5b9wm                      1m           42Mi            \npubsub-daemons-push-notifications-6bd756494b-msn4r               1m           45Mi            \npubsub-daemons-update-heat-pickem-event-stats-5d5c8d59d8-qxn6h   0m           4Mi             \nwsl-hbl-7c49d85478-92wnp                                         4m           95Mi            \nwsl-heat-analyzer-cd6bc879b-ksdrg                                1m           160Mi           \nwsl-varnish-78d6bb97db-j7hmb                                     1m           97Mi            \nwsl-web-6ff89997f9-gl688                                         1m           69Mi            \nwsl-web-6ff89997f9-z8kpw                                         1m           95Mi            \n",
+          "applicationPods": [
+            {
+              "name": "wsl-varnish-78d6bb97db-j7hmb",
+              "phase": "Running",
+              "node": "ip-10-20-16-46.us-west-2.compute.internal",
+              "restarts": 0
+            },
+            {
+              "name": "wsl-web-6ff89997f9-gl688",
+              "phase": "Running",
+              "node": "ip-10-20-16-46.us-west-2.compute.internal",
+              "restarts": 0
+            },
+            {
+              "name": "wsl-web-6ff89997f9-z8kpw",
+              "phase": "Running",
+              "node": "ip-10-20-12-153.us-west-2.compute.internal",
+              "restarts": 0
+            },
+            {
+              "name": "wsl-web-migrate-c7x2d",
+              "phase": "Succeeded",
+              "node": "ip-10-20-16-46.us-west-2.compute.internal",
+              "restarts": 0
+            }
+          ]
+        },
+        {
+          "at": "2026-11-10T18:32:36.075Z",
+          "nodes": [
+            {
+              "name": "ip-10-20-12-153.us-west-2.compute.internal",
+              "ready": "True"
+            },
+            {
+              "name": "ip-10-20-14-173.us-west-2.compute.internal",
+              "ready": "True"
+            },
+            {
+              "name": "ip-10-20-16-46.us-west-2.compute.internal",
+              "ready": "True"
+            }
+          ],
+          "hpas": [
+            {
+              "namespace": "default",
+              "name": "wsl-varnish",
+              "current": 1,
+              "desired": 1
+            },
+            {
+              "namespace": "default",
+              "name": "wsl-web",
+              "current": 2,
+              "desired": 2
+            },
+            {
+              "namespace": "kube-system",
+              "name": "coredns",
+              "current": 4,
+              "desired": 4
+            }
+          ]
+        }
+      ],
+      "exit": {
+        "code": 99,
+        "signal": null
+      },
+      "finishedAt": "2026-11-10T18:32:51.090Z",
+      "status": "FAIL",
+      "failedThresholds": [
+        {
+          "metric": "checks",
+          "threshold": "rate>0.98"
+        }
+      ],
+      "latencyTargetOnly": false,
+      "metrics": {
+        "requests": 62,
+        "p95Ms": 4956.96856,
+        "httpErrorRate": 0.016129032258064516,
+        "dropped": 2
+      }
+    }
+  ],
+  "finishedAt": "2026-11-10T18:32:51.119Z"
+}

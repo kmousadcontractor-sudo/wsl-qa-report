@@ -1,0 +1,238 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Staging cluster autoscaler test</title><style>body{font:16px/1.5 system-ui;margin:32px auto;padding:0 20px;max-width:1100px;color:#162235;background:#f6f8fb}table{border-collapse:collapse;width:100%;background:white}td,th{padding:10px;border:1px solid #d6dce6;text-align:left}pre{background:white;padding:20px;overflow:auto;white-space:pre-wrap}a{color:#075985}</style><p><a href="investigation/findings.md">Full investigation</a> | <a href="publication-manifest.json">Published evidence manifest</a></p><h1>Sandbox: PASS — 2 → 3 → 2</h1><p><b>Website tests: Profiles executed; failures and interrupted phases are recorded.</b> The user authorized continuing with deployment overlap recorded. See the latest per-profile status below. <a href="continuation-notes.md">Current status and next steps</a>.</p><p><b>eks-staging · us-west-2 · account 107275182030</b><br>All test writes scoped to <code>ca-test</code>. Started 2026-11-10T18:14:29.359Z; finished 2026-11-10T18:34:25.069Z.</p><p>k6 ramps from 2 to 20 requests/sec against a temporary in-cluster HTTP service for six minutes. Its HPA allows 1–3 replicas. Required pod anti-affinity places one app replica on each node, so the third replica triggers node provisioning. CPU per app replica is limited to 500m. This verifies sandbox autoscaler behavior; it does not measure WSL Pro application capacity or load the linked public staging page.</p><table><tr><th>Check</th><th>Evidence</th></tr><tr><td>Scale-up to three Ready nodes</td><td>2026-11-10T18:17:39.381Z</td></tr><tr><td>Three Ready app replicas</td><td>Verified</td></tr><tr><td>k6 completed</td><td>Yes</td></tr><tr><td>Owned test resources deleted</td><td>2026-11-10T18:21:42.237Z</td></tr><tr><td>Return to two Ready nodes</td><td>2026-11-10T18:34:16.316Z</td></tr></table><h2>Legacy staging website tests</h2><p>Target: https://www.staging.worldsurfleague.com, redirecting to staging.worldsurfleague.com. Public homepage-to-event-results and return-visitor flows only. The initial saved Basic login was rejected; replacement access was provided by the user. Initial script setup error is retained separately.</p><table><tr><th>Profile</th><th>Status</th><th>Started / finished (UTC)</th></tr><tr><td>smoke</td><td>FAIL</td><td>2026-11-10T18:31:59.072Z / 2026-11-10T18:32:51.090Z</td></tr></table><p><a href="website/results.json">Website execution and cluster observations</a></p><p>Profiles: smoke; four-minute browsing load; brief spike; endurance with 15 minutes of steady load. A successful sandbox test does not establish website capacity. The endurance profile is a bounded initial check, not an hours-long soak.</p><h2>Website profiles from inside us-west-2</h2><p>Real staging website, k6 jobs in ca-test. Same public read-only journeys and limits. These results are separate from the external-client smoke attempts. The table selects the latest result per profile across separate attempts/builds; it is not one isolated suite run.</p><table><tr><th>Profile</th><th>Status</th><th>Requests</th><th>p95 ms</th><th>HTTP error rate</th><th>Checks passing</th><th>Dropped iterations</th></tr><tr><td><a href="website-inregion/results.json">smoke</a></td><td>PASS</td><td>112</td><td>2250.27</td><td>0.000%</td><td>100.00%</td><td>0</td></tr><tr><td><a href="website-inregion/attempt-generator-allocation/results.json">flows</a></td><td>PASS</td><td>1504</td><td>2274.81</td><td>0.000%</td><td>100.00%</td><td>2</td></tr><tr><td><a href="website-inregion/results.json">spike</a></td><td>FAIL</td><td>562</td><td>3103.53</td><td>0.000%</td><td>100.00%</td><td>34</td></tr><tr><td><a href="website-inregion/attempt-endurance-retest/results.json">endurance</a></td><td>PASS</td><td>7017</td><td>2280.56</td><td>0.029%</td><td>99.94%</td><td>0</td></tr></table><p><a href="website-inregion/combined-results.json">Latest per-profile executions and node/HPA observations</a> | <a href="website-inregion/all-resource-samples.json">CPU and memory samples</a></p><h2>Observed website scaling</h2><table><tr><th>Resource</th><th>First</th><th>Maximum</th><th>Last</th></tr><tr><td>wsl-web replicas</td><td>2</td><td>3</td><td>2</td></tr><tr><td>Website-test node count</td><td>2</td><td>2</td><td>2</td></tr></table><p>Read-only observations across the saved website runs. The separate namespace sandbox established the node autoscaler 2 to 3 to 2 cycle.</p><h2>Observed app memory (MiB)</h2><table><tr><th>Pod</th><th>First</th><th>Last</th><th>Min / max</th><th>Samples</th></tr><tr><td>wsl-varnish-78d6bb97db-j7hmb</td><td>98</td><td>106</td><td>98 / 107</td><td>7</td></tr><tr><td>wsl-web-6ff89997f9-gl688</td><td>133</td><td>225</td><td>133 / 265</td><td>9</td></tr><tr><td>wsl-web-6ff89997f9-z8kpw</td><td>129</td><td>176</td><td>129 / 202</td><td>9</td></tr><tr><td>wsl-varnish-86446db78-98pd4</td><td>93</td><td>115</td><td>93 / 115</td><td>12</td></tr><tr><td>wsl-web-547f884f95-6lqcc</td><td>56</td><td>247</td><td>56 / 292</td><td>10</td></tr><tr><td>wsl-web-547f884f95-v552t</td><td>42</td><td>251</td><td>42 / 251</td><td>10</td></tr><tr><td>wsl-varnish-746dc88b76-fjnlf</td><td>94</td><td>190</td><td>94 / 190</td><td>52</td></tr><tr><td>wsl-web-88488ff5c-74bkn</td><td>70</td><td>790</td><td>70 / 790</td><td>52</td></tr><tr><td>wsl-web-88488ff5c-zkkmh</td><td>60</td><td>205</td><td>60 / 672</td><td>7</td></tr><tr><td>wsl-web-88488ff5c-fgwjt</td><td>106</td><td>820</td><td>106 / 820</td><td>49</td></tr></table><p>Sampled values describe this bounded run; they do not prove absence of long-term memory leaks.</p><h2>Investigation findings</h2><p><a href="investigation/findings.md">Read the investigation</a>: Next.js routes point to a backend with no endpoints; their target group has continuous connection failures. This is separate from the tested-page errors. The k6 per-VU journey counter biased the spike mix and was corrected and rerun: smoke passed; spike still failed with 34 dropped iterations and 562 completed requests, zero HTTP errors. Exact causes of the two tested-page 502s and VU saturation remain unconfirmed; ALB access logs are disabled. No infrastructure changes were made.</p><h2>Endurance interpretation</h2><p>The retest completed 7,017 HTTP requests with two 502s (0.0285%), p95 2280.56ms and zero dropped iterations. Errors occurred on homepage at 20:02:45 UTC and event-results at 20:05:04 UTC. No deployment-template change was recorded; cause remains unconfirmed. <a href="retest/status.json">Retest evidence</a> and <a href="retest/502-diagnostics.json">limited error diagnostics</a>. A PASS means configured thresholds passed, not zero errors or hours-long reliability. Check the linked raw result for duration, errors, and deployment overlap. The previous completed endurance had one unexplained homepage 502 among 7,016 requests, with no observed template change.</p><h2>Spike interpretation</h2><p>The corrected-flow bounded 100-VU spike failed again: 562 completed HTTP requests, zero HTTP errors, p95 3103.53ms and 34 dropped iterations. Peak/recovery did not complete. No template rollout was observed. <a href="website-inregion/attempt-retest-spike/assessment.json">Retest assessment</a>. A failed or aborted run does not establish successful peak/recovery capacity. Completed-request latency excludes interrupted in-flight work. Earlier failed attempts remain preserved; retests retain the same arrival rate and abort thresholds.</p><h2>Preserved attempts</h2><p><a href="website-inregion/attempt-generator-allocation/assessment.json">Spike generator-allocation assessment</a></p><p><a href="website/attempt-initial-latency-budget/results.json">External-client latency-budget attempt</a> · <a href="website-inregion/attempt-rollout-12343/assessment.json">Initial spike stopped during Varnish rollout</a> · <a href="website-inregion/attempt-rollout-12343/results.json">Initial in-region raw results</a></p><h2>Scaling timeline (UTC)</h2><table><tr><th>Time</th><th>Nodes / Ready</th><th>Ready test replicas</th><th>HPA desired</th></tr><tr><td>2026-11-10T18:14:37.402Z</td><td>2 / 2</td><td>0</td><td>—</td></tr><tr><td>2026-11-10T18:14:58.544Z</td><td>2 / 2</td><td>1</td><td>0</td></tr><tr><td>2026-11-10T18:15:21.321Z</td><td>2 / 2</td><td>1</td><td>1</td></tr><tr><td>2026-11-10T18:15:43.846Z</td><td>2 / 2</td><td>2</td><td>2</td></tr><tr><td>2026-11-10T18:16:27.958Z</td><td>2 / 2</td><td>2</td><td>3</td></tr><tr><td>2026-11-10T18:17:37.928Z</td><td>3 / 3</td><td>3</td><td>3</td></tr><tr><td>2026-11-10T18:21:48.180Z</td><td>3 / 3</td><td>3</td><td>—</td></tr><tr><td>2026-11-10T18:22:23.813Z</td><td>3 / 3</td><td>0</td><td>—</td></tr><tr><td>2026-11-10T18:34:16.314Z</td><td>2 / 2</td><td>0</td><td>—</td></tr></table><h2>k6 output</h2><pre>nd 0 interrupted iterations
+sandbox   [  81% ] 01/05 VUs  4m50.0s/6m0s  17.08 iters/s
+
+running (4m51.0s), 01/05 VUs, 2918 complete and 0 interrupted iterations
+sandbox   [  81% ] 01/05 VUs  4m51.0s/6m0s  17.13 iters/s
+
+running (4m52.0s), 01/05 VUs, 2935 complete and 0 interrupted iterations
+sandbox   [  81% ] 01/05 VUs  4m52.0s/6m0s  17.17 iters/s
+
+running (4m53.0s), 01/05 VUs, 2952 complete and 0 interrupted iterations
+sandbox   [  81% ] 01/05 VUs  4m53.0s/6m0s  17.21 iters/s
+
+running (4m54.0s), 00/05 VUs, 2970 complete and 0 interrupted iterations
+sandbox   [  82% ] 00/05 VUs  4m54.0s/6m0s  17.25 iters/s
+
+running (4m55.0s), 00/05 VUs, 2987 complete and 0 interrupted iterations
+sandbox   [  82% ] 00/05 VUs  4m55.0s/6m0s  17.29 iters/s
+
+running (4m56.0s), 01/05 VUs, 3004 complete and 0 interrupted iterations
+sandbox   [  82% ] 01/05 VUs  4m56.0s/6m0s  17.33 iters/s
+
+running (4m57.0s), 01/05 VUs, 3021 complete and 0 interrupted iterations
+sandbox   [  82% ] 01/05 VUs  4m57.0s/6m0s  17.37 iters/s
+
+running (4m58.0s), 01/05 VUs, 3039 complete and 0 interrupted iterations
+sandbox   [  83% ] 01/05 VUs  4m58.0s/6m0s  17.42 iters/s
+
+running (4m59.0s), 01/05 VUs, 3056 complete and 0 interrupted iterations
+sandbox   [  83% ] 01/05 VUs  4m59.0s/6m0s  17.46 iters/s
+
+running (5m00.0s), 00/05 VUs, 3074 complete and 0 interrupted iterations
+sandbox   [  83% ] 00/05 VUs  5m00.0s/6m0s  17.50 iters/s
+
+running (5m01.0s), 01/05 VUs, 3091 complete and 0 interrupted iterations
+sandbox   [  84% ] 01/05 VUs  5m01.0s/6m0s  17.54 iters/s
+
+running (5m02.0s), 01/05 VUs, 3109 complete and 0 interrupted iterations
+sandbox   [  84% ] 01/05 VUs  5m02.0s/6m0s  17.58 iters/s
+
+running (5m03.0s), 01/05 VUs, 3126 complete and 0 interrupted iterations
+sandbox   [  84% ] 01/05 VUs  5m03.0s/6m0s  17.62 iters/s
+
+running (5m04.0s), 01/05 VUs, 3144 complete and 0 interrupted iterations
+sandbox   [  84% ] 01/05 VUs  5m04.0s/6m0s  17.67 iters/s
+
+running (5m05.0s), 00/05 VUs, 3162 complete and 0 interrupted iterations
+sandbox   [  85% ] 00/05 VUs  5m05.0s/6m0s  17.71 iters/s
+
+running (5m06.0s), 00/05 VUs, 3180 complete and 0 interrupted iterations
+sandbox   [  85% ] 00/05 VUs  5m06.0s/6m0s  17.75 iters/s
+
+running (5m07.0s), 01/05 VUs, 3197 complete and 0 interrupted iterations
+sandbox   [  85% ] 01/05 VUs  5m07.0s/6m0s  17.79 iters/s
+
+running (5m08.0s), 01/05 VUs, 3215 complete and 0 interrupted iterations
+sandbox   [  86% ] 01/05 VUs  5m08.0s/6m0s  17.83 iters/s
+
+running (5m09.0s), 01/05 VUs, 3233 complete and 0 interrupted iterations
+sandbox   [  86% ] 01/05 VUs  5m09.0s/6m0s  17.88 iters/s
+
+running (5m10.0s), 01/05 VUs, 3251 complete and 0 interrupted iterations
+sandbox   [  86% ] 01/05 VUs  5m10.0s/6m0s  17.92 iters/s
+
+running (5m11.0s), 00/05 VUs, 3269 complete and 0 interrupted iterations
+sandbox   [  86% ] 01/05 VUs  5m11.0s/6m0s  17.96 iters/s
+
+running (5m12.0s), 00/05 VUs, 3287 complete and 0 interrupted iterations
+sandbox   [  87% ] 00/05 VUs  5m12.0s/6m0s  18.00 iters/s
+
+running (5m13.0s), 01/05 VUs, 3305 complete and 0 interrupted iterations
+sandbox   [  87% ] 01/05 VUs  5m13.0s/6m0s  18.04 iters/s
+
+running (5m14.0s), 01/05 VUs, 3323 complete and 0 interrupted iterations
+sandbox   [  87% ] 01/05 VUs  5m14.0s/6m0s  18.08 iters/s
+
+running (5m15.0s), 01/05 VUs, 3341 complete and 0 interrupted iterations
+sandbox   [  87% ] 01/05 VUs  5m15.0s/6m0s  18.13 iters/s
+
+running (5m16.0s), 01/05 VUs, 3359 complete and 0 interrupted iterations
+sandbox   [  88% ] 01/05 VUs  5m16.0s/6m0s  18.17 iters/s
+
+running (5m17.0s), 01/05 VUs, 3377 complete and 0 interrupted iterations
+sandbox   [  88% ] 01/05 VUs  5m17.0s/6m0s  18.21 iters/s
+
+running (5m18.0s), 01/05 VUs, 3395 complete and 0 interrupted iterations
+sandbox   [  88% ] 01/05 VUs  5m18.0s/6m0s  18.25 iters/s
+
+running (5m19.0s), 00/05 VUs, 3414 complete and 0 interrupted iterations
+sandbox   [  89% ] 01/05 VUs  5m19.0s/6m0s  18.29 iters/s
+
+running (5m20.0s), 01/05 VUs, 3432 complete and 0 interrupted iterations
+sandbox   [  89% ] 01/05 VUs  5m20.0s/6m0s  18.33 iters/s
+
+running (5m21.0s), 01/05 VUs, 3450 complete and 0 interrupted iterations
+sandbox   [  89% ] 01/05 VUs  5m21.0s/6m0s  18.37 iters/s
+
+running (5m22.0s), 01/05 VUs, 3469 complete and 0 interrupted iterations
+sandbox   [  89% ] 01/05 VUs  5m22.0s/6m0s  18.42 iters/s
+
+running (5m23.0s), 01/05 VUs, 3487 complete and 0 interrupted iterations
+sandbox   [  90% ] 01/05 VUs  5m23.0s/6m0s  18.46 iters/s
+
+running (5m24.0s), 00/05 VUs, 3506 complete and 0 interrupted iterations
+sandbox   [  90% ] 00/05 VUs  5m24.0s/6m0s  18.50 iters/s
+
+running (5m25.0s), 01/05 VUs, 3524 complete and 0 interrupted iterations
+sandbox   [  90% ] 01/05 VUs  5m25.0s/6m0s  18.54 iters/s
+
+running (5m26.0s), 01/05 VUs, 3543 complete and 0 interrupted iterations
+sandbox   [  91% ] 01/05 VUs  5m26.0s/6m0s  18.58 iters/s
+
+running (5m27.0s), 01/05 VUs, 3561 complete and 0 interrupted iterations
+sandbox   [  91% ] 01/05 VUs  5m27.0s/6m0s  18.62 iters/s
+
+running (5m28.0s), 01/05 VUs, 3580 complete and 0 interrupted iterations
+sandbox   [  91% ] 01/05 VUs  5m28.0s/6m0s  18.67 iters/s
+
+running (5m29.0s), 00/05 VUs, 3599 complete and 0 interrupted iterations
+sandbox   [  91% ] 00/05 VUs  5m29.0s/6m0s  18.71 iters/s
+
+running (5m30.0s), 01/05 VUs, 3617 complete and 0 interrupted iterations
+sandbox   [  92% ] 01/05 VUs  5m30.0s/6m0s  18.75 iters/s
+
+running (5m31.0s), 01/05 VUs, 3636 complete and 0 interrupted iterations
+sandbox   [  92% ] 01/05 VUs  5m31.0s/6m0s  18.79 iters/s
+
+running (5m32.0s), 01/05 VUs, 3655 complete and 0 interrupted iterations
+sandbox   [  92% ] 01/05 VUs  5m32.0s/6m0s  18.83 iters/s
+
+running (5m33.0s), 01/05 VUs, 3674 complete and 0 interrupted iterations
+sandbox   [  92% ] 01/05 VUs  5m33.0s/6m0s  18.88 iters/s
+
+running (5m34.0s), 01/05 VUs, 3693 complete and 0 interrupted iterations
+sandbox   [  93% ] 01/05 VUs  5m34.0s/6m0s  18.92 iters/s
+
+running (5m35.0s), 01/05 VUs, 3712 complete and 0 interrupted iterations
+sandbox   [  93% ] 01/05 VUs  5m35.0s/6m0s  18.96 iters/s
+
+running (5m36.0s), 00/05 VUs, 3731 complete and 0 interrupted iterations
+sandbox   [  93% ] 00/05 VUs  5m36.0s/6m0s  19.00 iters/s
+
+running (5m37.0s), 00/05 VUs, 3750 complete and 0 interrupted iterations
+sandbox   [  94% ] 00/05 VUs  5m37.0s/6m0s  19.04 iters/s
+
+running (5m38.0s), 01/05 VUs, 3769 complete and 0 interrupted iterations
+sandbox   [  94% ] 01/05 VUs  5m38.0s/6m0s  19.08 iters/s
+
+running (5m39.0s), 01/05 VUs, 3788 complete and 0 interrupted iterations
+sandbox   [  94% ] 01/05 VUs  5m39.0s/6m0s  19.13 iters/s
+
+running (5m40.0s), 01/05 VUs, 3807 complete and 0 interrupted iterations
+sandbox   [  94% ] 01/05 VUs  5m40.0s/6m0s  19.17 iters/s
+
+running (5m41.0s), 01/05 VUs, 3826 complete and 0 interrupted iterations
+sandbox   [  95% ] 01/05 VUs  5m41.0s/6m0s  19.21 iters/s
+
+running (5m42.0s), 01/05 VUs, 3845 complete and 0 interrupted iterations
+sandbox   [  95% ] 01/05 VUs  5m42.0s/6m0s  19.25 iters/s
+
+running (5m43.0s), 00/05 VUs, 3865 complete and 0 interrupted iterations
+sandbox   [  95% ] 00/05 VUs  5m43.0s/6m0s  19.29 iters/s
+
+running (5m44.0s), 01/05 VUs, 3884 complete and 0 interrupted iterations
+sandbox   [  96% ] 01/05 VUs  5m44.0s/6m0s  19.33 iters/s
+
+running (5m45.0s), 01/05 VUs, 3903 complete and 0 interrupted iterations
+sandbox   [  96% ] 01/05 VUs  5m45.0s/6m0s  19.37 iters/s
+
+running (5m46.0s), 01/05 VUs, 3923 complete and 0 interrupted iterations
+sandbox   [  96% ] 01/05 VUs  5m46.0s/6m0s  19.42 iters/s
+
+running (5m47.0s), 01/05 VUs, 3942 complete and 0 interrupted iterations
+sandbox   [  96% ] 01/05 VUs  5m47.0s/6m0s  19.46 iters/s
+
+running (5m48.0s), 00/05 VUs, 3962 complete and 0 interrupted iterations
+sandbox   [  97% ] 00/05 VUs  5m48.0s/6m0s  19.50 iters/s
+
+running (5m49.0s), 01/05 VUs, 3981 complete and 0 interrupted iterations
+sandbox   [  97% ] 01/05 VUs  5m49.0s/6m0s  19.54 iters/s
+
+running (5m50.0s), 01/05 VUs, 4001 complete and 0 interrupted iterations
+sandbox   [  97% ] 01/05 VUs  5m50.0s/6m0s  19.58 iters/s
+
+running (5m51.0s), 01/05 VUs, 4020 complete and 0 interrupted iterations
+sandbox   [  97% ] 01/05 VUs  5m51.0s/6m0s  19.62 iters/s
+
+running (5m52.0s), 01/05 VUs, 4040 complete and 0 interrupted iterations
+sandbox   [  98% ] 01/05 VUs  5m52.0s/6m0s  19.67 iters/s
+
+running (5m53.0s), 00/05 VUs, 4060 complete and 0 interrupted iterations
+sandbox   [  98% ] 00/05 VUs  5m53.0s/6m0s  19.71 iters/s
+
+running (5m54.0s), 01/05 VUs, 4079 complete and 0 interrupted iterations
+sandbox   [  98% ] 01/05 VUs  5m54.0s/6m0s  19.75 iters/s
+
+running (5m55.0s), 01/05 VUs, 4099 complete and 0 interrupted iterations
+sandbox   [  99% ] 01/05 VUs  5m55.0s/6m0s  19.79 iters/s
+
+running (5m56.0s), 01/05 VUs, 4119 complete and 0 interrupted iterations
+sandbox   [  99% ] 01/05 VUs  5m56.0s/6m0s  19.83 iters/s
+
+running (5m57.0s), 01/05 VUs, 4139 complete and 0 interrupted iterations
+sandbox   [  99% ] 01/05 VUs  5m57.0s/6m0s  19.88 iters/s
+
+running (5m58.0s), 01/05 VUs, 4159 complete and 0 interrupted iterations
+sandbox   [  99% ] 01/05 VUs  5m58.0s/6m0s  19.92 iters/s
+
+running (5m59.0s), 00/05 VUs, 4179 complete and 0 interrupted iterations
+sandbox   [ 100% ] 00/05 VUs  5m59.0s/6m0s  19.96 iters/s
+
+running (6m00.0s), 00/05 VUs, 4199 complete and 0 interrupted iterations
+sandbox   [ 100% ] 00/05 VUs  6m00.0s/6m0s  20.00 iters/s
+
+     ✓ sandbox HTTP 200
+
+     checks.........................: 100.00% 4199 out of 4199
+     data_received..................: 785 kB  2.2 kB/s
+     data_sent......................: 386 kB  1.1 kB/s
+     http_req_blocked...............: avg=5.5µs   min=2.67µs  med=4.87µs  max=1.04ms   p(90)=6.09µs  p(95)=6.65µs 
+     http_req_connecting............: avg=177ns   min=0s      med=0s      max=170.41µs p(90)=0s      p(95)=0s     
+   ✓ http_req_duration..............: avg=44.75ms min=40.15ms med=40.37ms max=90.83ms  p(90)=57.56ms p(95)=62.77ms
+       { expected_response:true }...: avg=44.75ms min=40.15ms med=40.37ms max=90.83ms  p(90)=57.56ms p(95)=62.77ms
+   ✓ http_req_failed................: 0.00%   0 out of 4199
+     http_req_receiving.............: avg=46.87µs min=25.24µs med=46µs    max=123.11µs p(90)=58.77µs p(95)=62.98µs
+     http_req_sending...............: avg=17.54µs min=8.2µs   med=17.14µs max=125.74µs p(90)=20.8µs  p(95)=22.3µs 
+     http_req_tls_handshaking.......: avg=0s      min=0s      med=0s      max=0s       p(90)=0s      p(95)=0s     
+     http_req_waiting...............: avg=44.68ms min=40.11ms med=40.3ms  max=90.77ms  p(90)=57.5ms  p(95)=62.71ms
+     http_reqs......................: 4199    11.663857/s
+     iteration_duration.............: avg=44.88ms min=40.23ms med=40.52ms max=90.95ms  p(90)=57.67ms p(95)=62.86ms
+     iterations.....................: 4199    11.663857/s
+     vus............................: 0       min=0            max=1
+     vus_max........................: 5       min=5            max=5
+
+
+running (6m00.0s), 00/05 VUs, 4199 complete and 0 interrupted iterations
+sandbox ✓ [ 100% ] 00/05 VUs  6m0s  20.00 iters/s
+
+</pre><h2>Evidence</h2><ul><li><a href="live-test-result.json">live-test-result.json</a></li><li><a href="test-scope.md">test-scope.md</a></li><li><a href="sandbox.json">sandbox.json</a></li><li><a href="k6-job.json">k6-job.json</a></li><li><a href="sandbox-load.js">sandbox-load.js</a></li><li><a href="load-events.txt">load-events.txt</a></li><li><a href="load-autoscaler.txt">load-autoscaler.txt</a></li><li><a href="load-k6.txt">load-k6.txt</a></li><li><a href="final-autoscaler.txt">final-autoscaler.txt</a></li><li><a href="final-metrics.txt">final-metrics.txt</a></li><li><a href="website-load-plan.json">website-load-plan.json</a></li><li><a href="website-access-check.json">website-access-check.json</a></li><li><a href="postflight.json">postflight.json</a></li><li><a href="continuation-notes.md">continuation-notes.md</a></li><li><a href="pending-test-window.json">pending-test-window.json</a></li></ul></html>

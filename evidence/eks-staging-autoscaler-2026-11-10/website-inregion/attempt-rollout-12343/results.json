@@ -1,0 +1,1154 @@
+{
+  "startedAt": "2026-11-10T18:36:00.643Z",
+  "target": "https://www.staging.worldsurfleague.com",
+  "location": "k6 inside ca-test / us-west-2",
+  "profiles": [
+    {
+      "profile": "smoke",
+      "startedAt": "2026-11-10T18:36:18.605Z",
+      "jobSucceeded": true,
+      "metrics": {
+        "requests": 100,
+        "p95Ms": 2239.0873536,
+        "errorRate": 0,
+        "checks": 1,
+        "dropped": 0
+      },
+      "failedThresholds": [],
+      "status": "PASS",
+      "finishedAt": "2026-11-10T18:37:20.550Z"
+    },
+    {
+      "profile": "flows",
+      "startedAt": "2026-11-10T18:37:22.210Z",
+      "jobSucceeded": true,
+      "metrics": {
+        "requests": 1496,
+        "p95Ms": 2316.473714,
+        "errorRate": 0,
+        "checks": 1,
+        "dropped": 2
+      },
+      "failedThresholds": [],
+      "status": "PASS",
+      "finishedAt": "2026-11-10T18:41:50.532Z"
+    },
+    {
+      "profile": "spike",
+      "startedAt": "2026-11-10T18:41:52.078Z",
+      "jobSucceeded": false,
+      "metrics": {
+        "requests": 90,
+        "p95Ms": 2284.04951635,
+        "errorRate": 0.022222222222222223,
+        "checks": 0.9523809523809523,
+        "dropped": 0
+      },
+      "failedThresholds": [
+        {
+          "metric": "checks",
+          "threshold": "rate>0.98"
+        },
+        {
+          "metric": "http_req_failed",
+          "threshold": "rate<0.02"
+        }
+      ],
+      "status": "FAIL",
+      "finishedAt": "2026-11-10T18:42:51.162Z"
+    }
+  ],
+  "observations": [
+    {
+      "at": "2026-11-10T18:36:07.341Z",
+      "profile": "baseline",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:36:29.748Z",
+      "profile": "smoke",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:36:52.467Z",
+      "profile": "smoke",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:37:16.864Z",
+      "profile": "smoke",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:37:33.129Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:37:57.354Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:38:20.435Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:38:43.185Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:39:06.447Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:39:30.062Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:39:52.877Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:40:16.050Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:40:38.904Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:41:01.422Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:41:23.581Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:41:46.774Z",
+      "profile": "flows",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-bcq9t",
+          "phase": "Pending",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-varnish-86446db78-98pd4",
+          "phase": "Pending",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:42:02.678Z",
+      "profile": "spike",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 2,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-bcq9t",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-varnish-78d6bb97db-j7hmb",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-varnish-86446db78-98pd4",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:42:24.749Z",
+      "profile": "spike",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-78d6bb97db-bcq9t",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-varnish-86446db78-98pd4",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:42:47.345Z",
+      "profile": "spike",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-86446db78-98pd4",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-gl688",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-6ff89997f9-z8kpw",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-c7x2d",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    }
+  ],
+  "cleanedAt": "2026-11-10T18:43:00.131Z",
+  "finishedAt": "2026-11-10T18:43:00.131Z"
+}

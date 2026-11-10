@@ -1,0 +1,821 @@
+{
+  "at": "2026-11-10T20:22:23.267Z",
+  "ingresses": [
+    {
+      "name": "ingress-ga",
+      "annotations": {
+        "alb.ingress.kubernetes.io/actions.ssl-redirect": "{\"Type\": \"redirect\", \"RedirectConfig\": { \"Protocol\": \"HTTPS\", \"Port\": \"443\", \"StatusCode\": \"HTTP_301\"}}",
+        "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:us-west-2:AWS_ACCOUNT_REDACTED:certificate/14d50ee5-5de5-4bfd-ac3c-20e717404df0",
+        "alb.ingress.kubernetes.io/listen-ports": "[{\"HTTP\":80}, {\"HTTPS\":443}]",
+        "alb.ingress.kubernetes.io/load-balancer-attributes": "routing.http2.enabled=false,idle_timeout.timeout_seconds=120",
+        "alb.ingress.kubernetes.io/scheme": "internet-facing",
+        "alb.ingress.kubernetes.io/success-codes": "200,301",
+        "creationTimestamp": "2021-11-01T21:40:31Z",
+        "kubernetes.io/ingress.class": "alb"
+      },
+      "spec": {
+        "rules": [
+          {
+            "host": "staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-web-next",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/next/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-web-next",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/api/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-web-next",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/_next/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-web-next",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/static/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "www.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "origin-api.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-web",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "origin.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-web",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "api.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "api.perfectchallenge.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "api.samsungtv.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "fantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "mctfantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "api.mct.fantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "apimctfantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "wctfantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "api.wct.fantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "apiwctfantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "ctfantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "api.ct.fantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "apiheatpickemfantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "apictfantasy.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "samsungtv.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "perfectchallenge.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "tickets.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-varnish",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "heatanalyzer.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-heat-analyzer",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "cms.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "cms",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "api.cms.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "cms",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          },
+          {
+            "host": "hbl.staging.worldsurfleague.com",
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "wsl-hbl",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          }
+        ],
+        "tls": [
+          {
+            "hosts": [
+              "staging.worldsurfleague.com",
+              "www.staging.worldsurfleague.com",
+              "origin-api.staging.worldsurfleague.com",
+              "origin.staging.worldsurfleague.com",
+              "api.staging.worldsurfleague.com",
+              "api.perfectchallenge.staging.worldsurfleague.com",
+              "api.samsungtv.staging.worldsurfleague.com",
+              "fantasy.staging.worldsurfleague.com",
+              "mctfantasy.staging.worldsurfleague.com",
+              "api.mct.fantasy.staging.worldsurfleague.com",
+              "apimctfantasy.staging.worldsurfleague.com",
+              "wctfantasy.staging.worldsurfleague.com",
+              "api.wct.fantasy.staging.worldsurfleague.com",
+              "apiwctfantasy.staging.worldsurfleague.com",
+              "ctfantasy.staging.worldsurfleague.com",
+              "api.ct.fantasy.staging.worldsurfleague.com",
+              "apictfantasy.staging.worldsurfleague.com",
+              "samsungtv.staging.worldsurfleague.com",
+              "perfectchallenge.staging.worldsurfleague.com",
+              "cms.staging.worldsurfleague.com",
+              "api.cms.staging.worldsurfleague.com",
+              "apiheatpickemfantasy.staging.worldsurfleague.com",
+              "tickets.staging.worldsurfleague.com",
+              "heatanalyzer.staging.worldsurfleague.com",
+              "hbl.staging.worldsurfleague.com"
+            ],
+            "secretName": "letsencrypt-staging"
+          }
+        ]
+      },
+      "status": {
+        "loadBalancer": {
+          "ingress": [
+            {
+              "hostname": "k8s-default-ingressg-5ad6d7c89a-1152802165.us-west-2.elb.amazonaws.com"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "deployments": [
+    {
+      "name": "wsl-web",
+      "replicas": 2,
+      "containers": [
+        {
+          "name": "wsl-web",
+          "image": "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348",
+          "resources": {
+            "limits": {
+              "cpu": "1800m",
+              "memory": "3Gi"
+            },
+            "requests": {
+              "cpu": "1500m",
+              "memory": "2Gi"
+            }
+          },
+          "ports": [
+            {
+              "containerPort": 80,
+              "protocol": "TCP"
+            }
+          ],
+          "livenessProbe": {
+            "failureThreshold": 3,
+            "httpGet": {
+              "path": "/healthcheck.html",
+              "port": 80,
+              "scheme": "HTTP"
+            },
+            "initialDelaySeconds": 15,
+            "periodSeconds": 30,
+            "successThreshold": 1,
+            "timeoutSeconds": 1
+          }
+        }
+      ],
+      "status": {
+        "availableReplicas": 2,
+        "conditions": [
+          {
+            "lastTransitionTime": "2020-06-03T19:02:38Z",
+            "lastUpdateTime": "2026-11-10T19:07:02Z",
+            "message": "ReplicaSet \"wsl-web-88488ff5c\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          },
+          {
+            "lastTransitionTime": "2026-11-10T19:11:05Z",
+            "lastUpdateTime": "2026-11-10T19:11:05Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          }
+        ],
+        "observedGeneration": 7087,
+        "readyReplicas": 2,
+        "replicas": 2,
+        "updatedReplicas": 2
+      }
+    },
+    {
+      "name": "wsl-varnish",
+      "replicas": 1,
+      "containers": [
+        {
+          "name": "wsl-varnish",
+          "image": "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348",
+          "resources": {
+            "limits": {
+              "cpu": "125m",
+              "memory": "250Mi"
+            },
+            "requests": {
+              "cpu": "125m",
+              "memory": "250Mi"
+            }
+          },
+          "ports": [
+            {
+              "containerPort": 80,
+              "protocol": "TCP"
+            }
+          ],
+          "readinessProbe": {
+            "failureThreshold": 3,
+            "httpGet": {
+              "path": "/healthcheck.html",
+              "port": 80,
+              "scheme": "HTTP"
+            },
+            "initialDelaySeconds": 10,
+            "periodSeconds": 10,
+            "successThreshold": 1,
+            "timeoutSeconds": 1
+          },
+          "livenessProbe": {
+            "failureThreshold": 3,
+            "httpGet": {
+              "path": "/healthcheck.html",
+              "port": 80,
+              "scheme": "HTTP"
+            },
+            "initialDelaySeconds": 15,
+            "periodSeconds": 20,
+            "successThreshold": 1,
+            "timeoutSeconds": 1
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "name": "shared-lib"
+        }
+      ],
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-10T19:05:03Z",
+            "lastUpdateTime": "2026-11-10T19:05:03Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2020-07-15T13:51:16Z",
+            "lastUpdateTime": "2026-11-10T19:05:22Z",
+            "message": "ReplicaSet \"wsl-varnish-746dc88b76\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 6452,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "updatedReplicas": 1
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "wsl-web",
+      "spec": {
+        "clusterIP": "REDACTED_IP_5",
+        "clusterIPs": [
+          "REDACTED_IP_5"
+        ],
+        "externalTrafficPolicy": "Cluster",
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "nodePort": 30280,
+            "port": 80,
+            "protocol": "TCP",
+            "targetPort": 80
+          }
+        ],
+        "selector": {
+          "app": "wsl-web",
+          "release": "wsl-web"
+        },
+        "sessionAffinity": "None",
+        "type": "NodePort"
+      }
+    },
+    {
+      "name": "wsl-varnish",
+      "spec": {
+        "clusterIP": "REDACTED_IP_6",
+        "clusterIPs": [
+          "REDACTED_IP_6"
+        ],
+        "externalTrafficPolicy": "Cluster",
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "nodePort": 32293,
+            "port": 80,
+            "protocol": "TCP",
+            "targetPort": 80
+          }
+        ],
+        "selector": {
+          "app": "wsl-varnish",
+          "release": "wsl-varnish"
+        },
+        "sessionAffinity": "None",
+        "type": "NodePort"
+      }
+    }
+  ]
+}

@@ -1,0 +1,501 @@
+I1110 18:30:01.720575       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 7m32.164838299s
+I1110 18:30:01.720597       1 planner.go:311] 1 nodes found to be unremovable in simulation, will re-check them at 2026-11-10 18:35:01.71835735 +0000 UTC m=+12693.704030996
+I1110 18:30:01.720635       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:30:01.720667       1 static_autoscaler.go:634] Starting scale down
+I1110 18:30:01.720691       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 7m32.164838299s
+I1110 18:30:03.017724       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.Pod" totalItems=118
+I1110 18:30:11.732583       1 static_autoscaler.go:275] Starting main loop
+I1110 18:30:11.733395       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:11.733603       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:11.733690       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:11.733816       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:30:11.733826       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:30:11.733833       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:30:11.733838       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:30:11.733858       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:30:11.733878       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:30:11.734008       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:30:11.734024       1 eligibility.go:104] Scale-down calculation: ignoring 2 nodes unremovable in the last 5m0s
+I1110 18:30:11.734035       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:30:11.734055       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:30:11.734069       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 7m42.179044368s
+I1110 18:30:11.734101       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:30:11.734131       1 static_autoscaler.go:634] Starting scale down
+I1110 18:30:11.734155       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 7m42.179044368s
+I1110 18:30:21.745932       1 static_autoscaler.go:275] Starting main loop
+I1110 18:30:21.746285       1 taints.go:439] Removing autoscaler soft taint when creating template from node
+I1110 18:30:21.746536       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:21.746753       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:21.746832       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:21.746955       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:30:21.746965       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:30:21.746974       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:30:21.746981       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:30:21.746998       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:30:21.747015       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:30:21.747138       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:30:21.747152       1 eligibility.go:104] Scale-down calculation: ignoring 2 nodes unremovable in the last 5m0s
+I1110 18:30:21.747163       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:30:21.747183       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:30:21.747193       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 7m52.192390343s
+I1110 18:30:21.747224       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:30:21.747252       1 static_autoscaler.go:634] Starting scale down
+I1110 18:30:21.747270       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 7m52.192390343s
+I1110 18:30:26.639156       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.StorageClass" totalItems=11
+I1110 18:30:31.762171       1 static_autoscaler.go:275] Starting main loop
+I1110 18:30:31.762947       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:31.763170       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:31.763264       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:31.763388       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:30:31.763398       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:30:31.763405       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:30:31.763409       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:30:31.763426       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:30:31.763443       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:30:31.763562       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:30:31.763579       1 eligibility.go:104] Scale-down calculation: ignoring 2 nodes unremovable in the last 5m0s
+I1110 18:30:31.763590       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:30:31.763608       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:30:31.763620       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 8m2.208633888s
+I1110 18:30:31.763650       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:30:31.763673       1 static_autoscaler.go:634] Starting scale down
+I1110 18:30:31.763690       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 8m2.208633888s
+I1110 18:30:41.775922       1 static_autoscaler.go:275] Starting main loop
+I1110 18:30:41.776682       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:41.776920       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:41.777041       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:41.777179       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:30:41.777192       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:30:41.777203       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:30:41.777210       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:30:41.777230       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:30:41.777255       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:30:41.777384       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:30:41.777406       1 eligibility.go:104] Scale-down calculation: ignoring 2 nodes unremovable in the last 5m0s
+I1110 18:30:41.777421       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:30:41.777447       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:30:41.777463       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 8m12.222381585s
+I1110 18:30:41.777502       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:30:41.777534       1 static_autoscaler.go:634] Starting scale down
+I1110 18:30:41.777557       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 8m12.222381585s
+I1110 18:30:45.654586       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.ReplicaSet" totalItems=80
+I1110 18:30:51.789443       1 static_autoscaler.go:275] Starting main loop
+I1110 18:30:51.789523       1 auto_scaling_groups.go:428] Regenerating instance to ASG map for ASG names: []
+I1110 18:30:51.789538       1 auto_scaling_groups.go:435] Regenerating instance to ASG map for ASG tags: map[k8s.io/cluster-autoscaler/eks-staging: k8s.io/cluster-autoscaler/enabled:]
+I1110 18:30:51.863528       1 auto_scaling_groups.go:161] Updated ASG cache for eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe. min/max/current is 2/10/3
+I1110 18:30:51.863581       1 aws_wrapper.go:710] 0 launch configurations to query
+I1110 18:30:51.863588       1 aws_wrapper.go:711] 0 launch templates to query
+I1110 18:30:51.863597       1 aws_wrapper.go:731] Successfully queried 0 launch configurations
+I1110 18:30:51.863608       1 aws_wrapper.go:742] Successfully queried 0 launch templates
+I1110 18:30:51.863620       1 aws_wrapper.go:753] Successfully queried instance requirements for 0 ASGs
+I1110 18:30:51.863633       1 aws_manager.go:132] Refreshed ASG list, next refresh after 2026-11-10 18:31:51.863628292 +0000 UTC m=+12503.849301932
+I1110 18:30:51.864417       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:51.864657       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:51.864734       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:30:51.864902       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:30:51.864913       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:30:51.864921       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:30:51.864925       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:30:51.864945       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:30:51.864969       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:30:51.865093       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:30:51.865109       1 eligibility.go:104] Scale-down calculation: ignoring 2 nodes unremovable in the last 5m0s
+I1110 18:30:51.865122       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:30:51.865148       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:30:51.865165       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 8m22.235905849s
+I1110 18:30:51.865208       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:30:51.865240       1 static_autoscaler.go:634] Starting scale down
+I1110 18:30:51.865263       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 8m22.235905849s
+I1110 18:30:57.651727       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.PersistentVolume" totalItems=6
+I1110 18:31:01.877161       1 static_autoscaler.go:275] Starting main loop
+I1110 18:31:01.877965       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:01.878190       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:01.878277       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:01.878403       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:31:01.878413       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:31:01.878421       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:31:01.878426       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:31:01.878442       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:31:01.878461       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:31:01.878593       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:31:01.878610       1 eligibility.go:104] Scale-down calculation: ignoring 2 nodes unremovable in the last 5m0s
+I1110 18:31:01.878621       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:31:01.878643       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:31:01.878656       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 8m32.323617909s
+I1110 18:31:01.878689       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:31:01.878720       1 static_autoscaler.go:634] Starting scale down
+I1110 18:31:01.878744       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 8m32.323617909s
+I1110 18:31:09.209384       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.Service" totalItems=8
+I1110 18:31:11.892386       1 static_autoscaler.go:275] Starting main loop
+I1110 18:31:11.893138       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:11.893380       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:11.893493       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:11.893643       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:31:11.893655       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:31:11.893664       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:31:11.893671       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:31:11.893698       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:31:11.893724       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:31:11.893853       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:31:11.893870       1 eligibility.go:104] Scale-down calculation: ignoring 2 nodes unremovable in the last 5m0s
+I1110 18:31:11.893881       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:31:11.893900       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:31:11.893915       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 8m42.338831146s
+I1110 18:31:11.893945       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:31:11.893976       1 static_autoscaler.go:634] Starting scale down
+I1110 18:31:11.894000       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 8m42.338831146s
+I1110 18:31:21.905268       1 static_autoscaler.go:275] Starting main loop
+I1110 18:31:21.906039       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:21.906289       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:21.906377       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:21.906518       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:31:21.906530       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:31:21.906537       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:31:21.906542       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:31:21.906562       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:31:21.906579       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:31:21.906715       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:31:21.906811       1 eligibility.go:163] Node ip-10-20-16-46.us-west-2.compute.internal unremovable: cpu requested (76.8015% of allocatable) is above the scale-down utilization threshold
+I1110 18:31:21.906823       1 eligibility.go:104] Scale-down calculation: ignoring 1 nodes unremovable in the last 5m0s
+I1110 18:31:21.906840       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:31:21.906862       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:31:21.906874       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 8m52.351729248s
+I1110 18:31:21.906905       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:31:21.906933       1 static_autoscaler.go:634] Starting scale down
+I1110 18:31:21.906951       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 8m52.351729248s
+I1110 18:31:25.992124       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.CSIDriver" totalItems=6
+I1110 18:31:31.920345       1 static_autoscaler.go:275] Starting main loop
+I1110 18:31:31.921141       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:31.921378       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:31.921466       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:31.921642       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:31:31.921653       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:31:31.921662       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:31:31.921668       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:31:31.921688       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:31:31.921706       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:31:31.921841       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:31:31.921952       1 eligibility.go:163] Node ip-10-20-16-46.us-west-2.compute.internal unremovable: cpu requested (76.8015% of allocatable) is above the scale-down utilization threshold
+I1110 18:31:31.921965       1 eligibility.go:104] Scale-down calculation: ignoring 1 nodes unremovable in the last 5m0s
+I1110 18:31:31.921977       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:31:31.921998       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:31:31.922010       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 9m2.366799128s
+I1110 18:31:31.922041       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:31:31.922070       1 static_autoscaler.go:634] Starting scale down
+I1110 18:31:31.922091       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 9m2.366799128s
+I1110 18:31:36.629952       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.PodDisruptionBudget" totalItems=10
+I1110 18:31:41.934974       1 static_autoscaler.go:275] Starting main loop
+I1110 18:31:41.935855       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:41.938628       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:41.938837       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:41.939049       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:31:41.939060       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:31:41.939068       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:31:41.939077       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:31:41.939108       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:31:41.939136       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:31:41.939338       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:31:41.939486       1 eligibility.go:163] Node ip-10-20-16-46.us-west-2.compute.internal unremovable: cpu requested (76.8015% of allocatable) is above the scale-down utilization threshold
+I1110 18:31:41.939496       1 eligibility.go:104] Scale-down calculation: ignoring 1 nodes unremovable in the last 5m0s
+I1110 18:31:41.939507       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:31:41.939533       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:31:41.939544       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 9m12.381429451s
+I1110 18:31:41.939579       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:31:41.939604       1 static_autoscaler.go:634] Starting scale down
+I1110 18:31:41.939623       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 9m12.381429451s
+I1110 18:31:52.012930       1 static_autoscaler.go:275] Starting main loop
+I1110 18:31:52.013006       1 auto_scaling_groups.go:428] Regenerating instance to ASG map for ASG names: []
+I1110 18:31:52.013023       1 auto_scaling_groups.go:435] Regenerating instance to ASG map for ASG tags: map[k8s.io/cluster-autoscaler/eks-staging: k8s.io/cluster-autoscaler/enabled:]
+I1110 18:31:52.145193       1 auto_scaling_groups.go:161] Updated ASG cache for eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe. min/max/current is 2/10/3
+I1110 18:31:52.145240       1 aws_wrapper.go:710] 0 launch configurations to query
+I1110 18:31:52.145247       1 aws_wrapper.go:711] 0 launch templates to query
+I1110 18:31:52.145255       1 aws_wrapper.go:731] Successfully queried 0 launch configurations
+I1110 18:31:52.145265       1 aws_wrapper.go:742] Successfully queried 0 launch templates
+I1110 18:31:52.145273       1 aws_wrapper.go:753] Successfully queried instance requirements for 0 ASGs
+I1110 18:31:52.145287       1 aws_manager.go:132] Refreshed ASG list, next refresh after 2026-11-10 18:32:52.145282235 +0000 UTC m=+12564.130955878
+I1110 18:31:52.146031       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:52.146312       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:52.146417       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:31:52.146562       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:31:52.146576       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:31:52.146586       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:31:52.146599       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:31:52.146619       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:31:52.146643       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:31:52.146772       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:31:52.146871       1 eligibility.go:163] Node ip-10-20-16-46.us-west-2.compute.internal unremovable: cpu requested (76.8015% of allocatable) is above the scale-down utilization threshold
+I1110 18:31:52.146884       1 eligibility.go:104] Scale-down calculation: ignoring 1 nodes unremovable in the last 5m0s
+I1110 18:31:52.146898       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:31:52.146927       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:31:52.146943       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 9m22.459383893s
+I1110 18:31:52.146981       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:31:52.147009       1 static_autoscaler.go:634] Starting scale down
+I1110 18:31:52.147028       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 9m22.459383893s
+I1110 18:31:56.066431       1 node_instances_cache.go:156] Start refreshing cloud provider node instances cache
+I1110 18:31:56.066457       1 node_instances_cache.go:168] Refresh cloud provider node instances cache finished, refresh took 7.776µs
+I1110 18:32:02.160084       1 static_autoscaler.go:275] Starting main loop
+I1110 18:32:02.160911       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:02.161176       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:02.161273       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:02.161411       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:32:02.161422       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:32:02.161431       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:32:02.161438       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:32:02.161461       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:32:02.161480       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:32:02.161600       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:32:02.161695       1 eligibility.go:163] Node ip-10-20-16-46.us-west-2.compute.internal unremovable: cpu requested (76.8015% of allocatable) is above the scale-down utilization threshold
+I1110 18:32:02.161706       1 eligibility.go:104] Scale-down calculation: ignoring 1 nodes unremovable in the last 5m0s
+I1110 18:32:02.161720       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:32:02.161743       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:32:02.161755       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 9m32.606539373s
+I1110 18:32:02.161786       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:32:02.161816       1 static_autoscaler.go:634] Starting scale down
+I1110 18:32:02.161834       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 9m32.606539373s
+I1110 18:32:07.800622       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.CSIStorageCapacity" totalItems=7
+I1110 18:32:12.172787       1 static_autoscaler.go:275] Starting main loop
+I1110 18:32:12.173772       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:12.174063       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:12.174195       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:12.174342       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:32:12.174355       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:32:12.174368       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:32:12.174375       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:32:12.174396       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:32:12.174421       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:32:12.174555       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:32:12.174665       1 eligibility.go:163] Node ip-10-20-16-46.us-west-2.compute.internal unremovable: cpu requested (76.8015% of allocatable) is above the scale-down utilization threshold
+I1110 18:32:12.174678       1 eligibility.go:104] Scale-down calculation: ignoring 1 nodes unremovable in the last 5m0s
+I1110 18:32:12.174693       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:32:12.174720       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:32:12.174736       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 9m42.619242582s
+I1110 18:32:12.174776       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:32:12.174808       1 static_autoscaler.go:634] Starting scale down
+I1110 18:32:12.174832       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 9m42.619242582s
+I1110 18:32:20.707344       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.Job" totalItems=23
+I1110 18:32:22.186431       1 static_autoscaler.go:275] Starting main loop
+I1110 18:32:22.187287       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:22.187555       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:22.187655       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:22.187795       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:32:22.187805       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:32:22.187813       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:32:22.187817       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:32:22.187833       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:32:22.187850       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:32:22.187979       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:32:22.188081       1 eligibility.go:163] Node ip-10-20-16-46.us-west-2.compute.internal unremovable: cpu requested (76.8015% of allocatable) is above the scale-down utilization threshold
+I1110 18:32:22.188091       1 eligibility.go:104] Scale-down calculation: ignoring 1 nodes unremovable in the last 5m0s
+I1110 18:32:22.188103       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:32:22.188128       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:32:22.188145       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 9m52.63288622s
+I1110 18:32:22.188189       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:32:22.188222       1 static_autoscaler.go:634] Starting scale down
+I1110 18:32:22.188245       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 9m52.63288622s
+I1110 18:32:32.199635       1 static_autoscaler.go:275] Starting main loop
+I1110 18:32:32.200496       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:32.200732       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:32.200826       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:32.200956       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:32:32.200967       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:32:32.200975       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:32:32.200979       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:32:32.200996       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:32:32.201013       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:32:32.201137       1 klogx.go:87] Node ip-10-20-14-173.us-west-2.compute.internal - cpu requested is 1.89633% of allocatable
+I1110 18:32:32.201226       1 eligibility.go:163] Node ip-10-20-16-46.us-west-2.compute.internal unremovable: cpu requested (76.8015% of allocatable) is above the scale-down utilization threshold
+I1110 18:32:32.201237       1 eligibility.go:104] Scale-down calculation: ignoring 1 nodes unremovable in the last 5m0s
+I1110 18:32:32.201249       1 cluster.go:155] Simulating node ip-10-20-14-173.us-west-2.compute.internal removal
+I1110 18:32:32.201272       1 cluster.go:173] Node ip-10-20-14-173.us-west-2.compute.internal may be removed
+I1110 18:32:32.201285       1 nodes.go:153] ip-10-20-14-173.us-west-2.compute.internal is unneeded since 2026-11-10 18:22:29.553519066 +0000 UTC m=+11941.539192697 duration 10m2.646088958s
+I1110 18:32:32.201314       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:32:32.201344       1 static_autoscaler.go:634] Starting scale down
+I1110 18:32:32.201363       1 nodes.go:194] ip-10-20-14-173.us-west-2.compute.internal was unneeded for 10m2.646088958s
+I1110 18:32:32.201374       1 klogx.go:87] Considering node ip-10-20-14-173.us-west-2.compute.internal for standard scale down
+I1110 18:32:32.201419       1 taints.go:242] Marking node ip-10-20-14-173.us-west-2.compute.internal to be cordoned by Cluster Autoscaler
+I1110 18:32:32.218451       1 taints.go:223] Successfully added ToBeDeletedByClusterAutoscaler on node ip-10-20-14-173.us-west-2.compute.internal
+I1110 18:32:32.218494       1 actuator.go:175] Scale-down: removing empty node "ip-10-20-14-173.us-west-2.compute.internal"
+I1110 18:32:32.218530       1 event_sink_logging_wrapper.go:48] Event(v1.ObjectReference{Kind:"Node", Namespace:"", Name:"ip-10-20-14-173.us-west-2.compute.internal", UID:"234af813-c8eb-49df-8a73-bdc224a35749", APIVersion:"v1", ResourceVersion:"820278714", FieldPath:""}): type: 'Normal' reason: 'ScaleDown' marked the node as toBeDeleted/unschedulable
+I1110 18:32:32.218636       1 actuator.go:295] Scale-down: waiting 5s before trying to delete nodes
+I1110 18:32:32.227583       1 event_sink_logging_wrapper.go:48] Event(v1.ObjectReference{Kind:"ConfigMap", Namespace:"kube-system", Name:"cluster-autoscaler-status", UID:"052f45b8-b02e-4796-87e6-c8ffad912b67", APIVersion:"v1", ResourceVersion:"820278718", FieldPath:""}): type: 'Normal' reason: 'ScaleDownEmpty' Scale-down: removing empty node "ip-10-20-14-173.us-west-2.compute.internal"
+I1110 18:32:37.218917       1 drain.go:140] All pods removed from ip-10-20-14-173.us-west-2.compute.internal
+I1110 18:32:37.399018       1 auto_scaling_groups.go:378] Terminating EC2 instance: i-0c0947f9f921f078f
+I1110 18:32:37.399035       1 aws_manager.go:164] DeleteInstances was called: scheduling an ASG list refresh for next main loop evaluation
+I1110 18:32:37.399123       1 event_sink_logging_wrapper.go:48] Event(v1.ObjectReference{Kind:"ConfigMap", Namespace:"kube-system", Name:"cluster-autoscaler-status", UID:"052f45b8-b02e-4796-87e6-c8ffad912b67", APIVersion:"v1", ResourceVersion:"820278762", FieldPath:""}): type: 'Normal' reason: 'ScaleDownEmpty' Scale-down: empty node ip-10-20-14-173.us-west-2.compute.internal removed
+I1110 18:32:42.230812       1 static_autoscaler.go:275] Starting main loop
+I1110 18:32:42.230903       1 auto_scaling_groups.go:428] Regenerating instance to ASG map for ASG names: []
+I1110 18:32:42.230921       1 auto_scaling_groups.go:435] Regenerating instance to ASG map for ASG tags: map[k8s.io/cluster-autoscaler/eks-staging: k8s.io/cluster-autoscaler/enabled:]
+I1110 18:32:42.277271       1 auto_scaling_groups.go:161] Updated ASG cache for eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe. min/max/current is 2/10/2
+I1110 18:32:42.277311       1 aws_wrapper.go:710] 0 launch configurations to query
+I1110 18:32:42.277318       1 aws_wrapper.go:711] 0 launch templates to query
+I1110 18:32:42.277323       1 aws_wrapper.go:731] Successfully queried 0 launch configurations
+I1110 18:32:42.277329       1 aws_wrapper.go:742] Successfully queried 0 launch templates
+I1110 18:32:42.277335       1 aws_wrapper.go:753] Successfully queried instance requirements for 0 ASGs
+I1110 18:32:42.277343       1 aws_manager.go:132] Refreshed ASG list, next refresh after 2026-11-10 18:33:42.277340255 +0000 UTC m=+12614.263013896
+I1110 18:32:42.278024       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:42.278251       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:42.278338       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:42.278473       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:32:42.278484       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:32:42.278494       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:32:42.278502       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:32:42.278523       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:32:42.278540       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:32:42.278552       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:32:42.278557       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:32:42.278567       1 pre_filtering_processor.go:67] Skipping ip-10-20-14-173.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:32:42.278602       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:32:42.278630       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:32:52.290492       1 static_autoscaler.go:275] Starting main loop
+I1110 18:32:52.291326       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:52.291572       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:52.291655       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:32:52.291816       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:32:52.291828       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:32:52.291838       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:32:52.291846       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:32:52.291862       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:32:52.291879       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:32:52.291889       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:32:52.291896       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:32:52.291901       1 pre_filtering_processor.go:67] Skipping ip-10-20-14-173.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:32:52.291936       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:32:52.291970       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:33:02.303718       1 static_autoscaler.go:275] Starting main loop
+I1110 18:33:02.304553       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:02.304775       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:02.304858       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:02.305014       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:33:02.305024       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:33:02.305032       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:33:02.305037       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:33:02.305052       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:33:02.305069       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:33:02.305082       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:02.305087       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:02.305092       1 pre_filtering_processor.go:67] Skipping ip-10-20-14-173.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:02.305124       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:33:02.305154       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:33:12.317197       1 static_autoscaler.go:275] Starting main loop
+I1110 18:33:12.318047       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:12.318344       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:12.318456       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:12.318617       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:33:12.318629       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:33:12.318637       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:33:12.318643       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:33:12.318668       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:33:12.318694       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:33:12.318708       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:12.318722       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:12.318728       1 pre_filtering_processor.go:67] Skipping ip-10-20-14-173.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:12.318769       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:33:12.318799       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:33:22.333974       1 static_autoscaler.go:275] Starting main loop
+I1110 18:33:22.334785       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:22.412601       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:22.412739       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:22.412881       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:33:22.412893       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:33:22.412900       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:33:22.412905       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:33:22.412921       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:33:22.412938       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:33:22.412950       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:22.412955       1 pre_filtering_processor.go:67] Skipping ip-10-20-14-173.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:22.412960       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:22.412991       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:33:22.413020       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:33:23.627417       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.StatefulSet" totalItems=9
+I1110 18:33:30.804097       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.PersistentVolumeClaim" totalItems=9
+I1110 18:33:32.519221       1 static_autoscaler.go:275] Starting main loop
+I1110 18:33:32.520015       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:32.520284       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:32.520373       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:32.520531       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:33:32.520543       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:33:32.520550       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:33:32.520556       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:33:32.520584       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:33:32.520605       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:33:32.520616       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:32.520623       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:32.520628       1 pre_filtering_processor.go:67] Skipping ip-10-20-14-173.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:32.520666       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:33:32.520697       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:33:42.532812       1 static_autoscaler.go:275] Starting main loop
+I1110 18:33:42.532885       1 auto_scaling_groups.go:428] Regenerating instance to ASG map for ASG names: []
+I1110 18:33:42.532901       1 auto_scaling_groups.go:435] Regenerating instance to ASG map for ASG tags: map[k8s.io/cluster-autoscaler/eks-staging: k8s.io/cluster-autoscaler/enabled:]
+I1110 18:33:42.610680       1 auto_scaling_groups.go:161] Updated ASG cache for eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe. min/max/current is 2/10/2
+I1110 18:33:42.610722       1 aws_wrapper.go:710] 0 launch configurations to query
+I1110 18:33:42.610728       1 aws_wrapper.go:711] 0 launch templates to query
+I1110 18:33:42.610733       1 aws_wrapper.go:731] Successfully queried 0 launch configurations
+I1110 18:33:42.610739       1 aws_wrapper.go:742] Successfully queried 0 launch templates
+I1110 18:33:42.610745       1 aws_wrapper.go:753] Successfully queried instance requirements for 0 ASGs
+I1110 18:33:42.610753       1 aws_manager.go:132] Refreshed ASG list, next refresh after 2026-11-10 18:34:42.610750326 +0000 UTC m=+12674.596423968
+I1110 18:33:42.611468       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:42.611682       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:42.611767       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:42.611916       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:33:42.611929       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:33:42.611937       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:33:42.611947       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:33:42.611968       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:33:42.611986       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:33:42.611998       1 pre_filtering_processor.go:67] Skipping ip-10-20-14-173.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:42.612004       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:42.612008       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:42.612046       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:33:42.612075       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:33:51.640686       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.ReplicationController" totalItems=9
+I1110 18:33:52.623997       1 static_autoscaler.go:275] Starting main loop
+I1110 18:33:52.624739       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:52.624993       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:52.625072       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:33:52.625233       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:33:52.625244       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:33:52.625251       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:33:52.625256       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:33:52.625278       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:33:52.625296       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:33:52.625308       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:52.625316       1 pre_filtering_processor.go:67] Skipping ip-10-20-14-173.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:52.625322       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:33:52.625361       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:33:52.625395       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:33:56.066675       1 node_instances_cache.go:156] Start refreshing cloud provider node instances cache
+I1110 18:33:56.066708       1 node_instances_cache.go:168] Refresh cloud provider node instances cache finished, refresh took 9.963µs
+I1110 18:33:56.099076       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.Pod" totalItems=39
+I1110 18:34:02.648897       1 static_autoscaler.go:275] Starting main loop
+I1110 18:34:02.649674       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:34:02.649905       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:34:02.650002       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:34:02.650139       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:34:02.650152       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:34:02.650164       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:34:02.650174       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:34:02.650194       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:34:02.650219       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:34:02.650236       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:34:02.650246       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:34:02.650255       1 pre_filtering_processor.go:67] Skipping ip-10-20-14-173.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:34:02.650294       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:34:02.650330       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:34:07.637492       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.VolumeAttachment" totalItems=7
+I1110 18:34:12.661461       1 static_autoscaler.go:275] Starting main loop
+I1110 18:34:12.662236       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:34:12.662465       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-staging-worker-group-120201006135321195800000001"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:34:12.662544       1 aws_manager.go:188] Found multiple availability zones for ASG "eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe"; using us-west-2a for failure-domain.beta.kubernetes.io/zone label
+I1110 18:34:12.662707       1 static_autoscaler.go:410] 1 unregistered nodes present
+I1110 18:34:12.662739       1 filter_out_schedulable.go:65] Filtering out schedulables
+I1110 18:34:12.662749       1 filter_out_schedulable.go:122] 0 pods marked as unschedulable can be scheduled.
+I1110 18:34:12.662756       1 filter_out_schedulable.go:85] No schedulable pods
+I1110 18:34:12.662760       1 filter_out_daemon_sets.go:47] Filtered out 0 daemon set pods, 0 unschedulable pods left
+I1110 18:34:12.662777       1 static_autoscaler.go:525] No unschedulable pods
+I1110 18:34:12.662793       1 static_autoscaler.go:564] Calculating unneeded nodes
+I1110 18:34:12.662807       1 pre_filtering_processor.go:67] Skipping ip-10-20-16-46.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:34:12.662817       1 pre_filtering_processor.go:67] Skipping ip-10-20-12-153.us-west-2.compute.internal - node group min size reached (current: 2, min: 2)
+I1110 18:34:12.662853       1 static_autoscaler.go:607] Scale down status: lastScaleUpTime=2026-11-10 18:16:17.600006309 +0000 UTC m=+11569.585679949 lastScaleDownDeleteTime=2026-11-10 18:32:32.199608023 +0000 UTC m=+12544.185281655 lastScaleDownFailTime=2026-11-10 14:03:54.503456321 +0000 UTC m=-3573.510870029 scaleDownForbidden=false scaleDownInCooldown=false
+I1110 18:34:12.662884       1 static_autoscaler.go:629] Starting scale down: no scale down candidates. skipping...
+I1110 18:34:17.647775       1 reflector.go:979] "Watch close" reflector="pkg/mod/k8s.io/client-go@v0.34.1/tools/cache/reflector.go:290" type="*v1.CSINode" totalItems=9
+

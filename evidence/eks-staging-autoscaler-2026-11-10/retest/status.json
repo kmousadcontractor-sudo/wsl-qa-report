@@ -1,0 +1,78 @@
+{
+  "at": "2026-11-10T20:11:38.923Z",
+  "status": "COMPLETE_WITH_REPRODUCED_FAILURES",
+  "target": "https://www.staging.worldsurfleague.com",
+  "spike": {
+    "profile": "spike",
+    "startedAt": "2026-11-10T19:49:50.116Z",
+    "jobSucceeded": false,
+    "metrics": {
+      "requests": 397,
+      "p95Ms": 3034.8276984,
+      "errorRate": 0,
+      "checks": 1,
+      "dropped": 44
+    },
+    "failedThresholds": [
+      {
+        "metric": "dropped_iterations",
+        "threshold": "count<20"
+      }
+    ],
+    "status": "FAIL",
+    "finishedAt": "2026-11-10T19:51:27.931Z"
+  },
+  "endurance": {
+    "profile": "endurance",
+    "startedAt": "2026-11-10T19:53:22.162Z",
+    "jobSucceeded": true,
+    "metrics": {
+      "requests": 7017,
+      "p95Ms": 2280.5637728,
+      "errorRate": 0.0002850220892119139,
+      "checks": 0.9994297120045623,
+      "dropped": 0
+    },
+    "failedThresholds": [],
+    "status": "PASS",
+    "finishedAt": "2026-11-10T20:10:50.475Z"
+  },
+  "deploymentTemplateChanges": [],
+  "cleanup": {
+    "at": "2026-11-10T20:11:05.854Z",
+    "writesScope": "ca-test only",
+    "secretValuesRead": false,
+    "nodes": [
+      {
+        "name": "ip-10-20-12-153.us-west-2.compute.internal",
+        "ready": "True"
+      },
+      {
+        "name": "ip-10-20-16-46.us-west-2.compute.internal",
+        "ready": "True"
+      }
+    ],
+    "ownedResourcesRemaining": [],
+    "metrics": {
+      "exit": 0,
+      "text": "NAME                                         CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   \nip-10-20-12-153.us-west-2.compute.internal   46m          0%       8238Mi          26%         \nip-10-20-16-46.us-west-2.compute.internal    482m         6%       7956Mi          25%         \n",
+      "error": ""
+    },
+    "ownSecretCleanup": {
+      "exit": 0,
+      "text": "",
+      "error": ""
+    },
+    "awsScaling": {
+      "minSize": 2,
+      "maxSize": 10,
+      "desiredSize": 2
+    }
+  },
+  "limitations": [
+    "Spike full peak/recovery aborted at dropped-iteration limit; maximum server capacity not established",
+    "Endurance PASS means configured limits passed; two HTTP 502s reproduced",
+    "No rollout or pod restart observed around errors; root cause unconfirmed",
+    "Resource sampling during endurance begins several minutes into the run; deployment/node observations cover entire run"
+  ]
+}

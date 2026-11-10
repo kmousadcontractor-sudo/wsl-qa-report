@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-10T20:32:23.455Z",
+  "writesScope": "ca-test only",
+  "secretValuesRead": false,
+  "nodes": [
+    {
+      "name": "ip-10-20-12-153.us-west-2.compute.internal",
+      "ready": "True"
+    },
+    {
+      "name": "ip-10-20-16-46.us-west-2.compute.internal",
+      "ready": "True"
+    }
+  ],
+  "ownedResourcesRemaining": [],
+  "metrics": {
+    "exit": 0,
+    "text": "NAME                                         CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   \nip-10-20-12-153.us-west-2.compute.internal   67m          0%       8770Mi          28%         \nip-10-20-16-46.us-west-2.compute.internal    329m         4%       8211Mi          26%         \n",
+    "error": ""
+  },
+  "ownSecretCleanup": {
+    "exit": 0,
+    "text": "",
+    "error": ""
+  },
+  "awsScaling": {
+    "minSize": 2,
+    "maxSize": 10,
+    "desiredSize": 2
+  }
+}

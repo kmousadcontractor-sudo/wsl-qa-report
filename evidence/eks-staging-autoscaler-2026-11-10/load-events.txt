@@ -1,0 +1,38 @@
+LAST SEEN   TYPE      REASON                         OBJECT                                      MESSAGE
+6m32s       Normal    SuccessfulCreate               replicaset/qa-ca-k6-20261110-569b8f8998     Created pod: qa-ca-k6-20261110-569b8f8998-7mkzl
+6m32s       Normal    Scheduled                      pod/qa-ca-k6-20261110-569b8f8998-7mkzl      Successfully assigned ca-test/qa-ca-k6-20261110-569b8f8998-7mkzl to ip-10-20-16-46.us-west-2.compute.internal
+6m32s       Normal    ScalingReplicaSet              deployment/qa-ca-k6-20261110                Scaled up replica set qa-ca-k6-20261110-569b8f8998 from 0 to 1
+6m31s       Normal    Pulling                        pod/qa-ca-k6-20261110-569b8f8998-7mkzl      Pulling image "node:22-alpine"
+6m28s       Normal    Created                        pod/qa-ca-k6-20261110-569b8f8998-7mkzl      Created container: sandbox
+6m28s       Normal    Started                        pod/qa-ca-k6-20261110-569b8f8998-7mkzl      Started container sandbox
+6m28s       Normal    Pulled                         pod/qa-ca-k6-20261110-569b8f8998-7mkzl      Successfully pulled image "node:22-alpine" in 3.154s (3.154s including waiting). Image size: 61353713 bytes.
+6m23s       Normal    Scheduled                      pod/qa-ca-k6-20261110-b4jv9                 Successfully assigned ca-test/qa-ca-k6-20261110-b4jv9 to ip-10-20-16-46.us-west-2.compute.internal
+6m23s       Normal    SuccessfulCreate               job/qa-ca-k6-20261110                       Created pod: qa-ca-k6-20261110-b4jv9
+6m22s       Normal    Pulling                        pod/qa-ca-k6-20261110-b4jv9                 Pulling image "grafana/k6:0.54.0"
+6m20s       Normal    Pulled                         pod/qa-ca-k6-20261110-b4jv9                 Successfully pulled image "grafana/k6:0.54.0" in 2.001s (2.001s including waiting). Image size: 33850759 bytes.
+6m20s       Normal    Created                        pod/qa-ca-k6-20261110-b4jv9                 Created container: k6
+6m20s       Normal    Started                        pod/qa-ca-k6-20261110-b4jv9                 Started container k6
+6m16s       Warning   FailedComputeMetricsReplicas   horizontalpodautoscaler/qa-ca-k6-20261110   invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+6m16s       Warning   FailedGetResourceMetric        horizontalpodautoscaler/qa-ca-k6-20261110   failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+5m46s       Normal    SuccessfulCreate               replicaset/qa-ca-k6-20261110-569b8f8998     Created pod: qa-ca-k6-20261110-569b8f8998-v7xjm
+5m46s       Normal    SuccessfulRescale              horizontalpodautoscaler/qa-ca-k6-20261110   New size: 2; reason: cpu resource utilization (percentage of request) above target
+5m46s       Normal    ScalingReplicaSet              deployment/qa-ca-k6-20261110                Scaled up replica set qa-ca-k6-20261110-569b8f8998 from 1 to 2
+5m46s       Normal    Scheduled                      pod/qa-ca-k6-20261110-569b8f8998-v7xjm      Successfully assigned ca-test/qa-ca-k6-20261110-569b8f8998-v7xjm to ip-10-20-12-153.us-west-2.compute.internal
+5m45s       Normal    Pulling                        pod/qa-ca-k6-20261110-569b8f8998-v7xjm      Pulling image "node:22-alpine"
+5m42s       Normal    Started                        pod/qa-ca-k6-20261110-569b8f8998-v7xjm      Started container sandbox
+5m42s       Normal    Pulled                         pod/qa-ca-k6-20261110-569b8f8998-v7xjm      Successfully pulled image "node:22-alpine" in 3.069s (3.069s including waiting). Image size: 61353713 bytes.
+5m42s       Normal    Created                        pod/qa-ca-k6-20261110-569b8f8998-v7xjm      Created container: sandbox
+5m1s        Normal    ScalingReplicaSet              deployment/qa-ca-k6-20261110                Scaled up replica set qa-ca-k6-20261110-569b8f8998 from 2 to 3
+5m1s        Normal    SuccessfulRescale              horizontalpodautoscaler/qa-ca-k6-20261110   New size: 3; reason: cpu resource utilization (percentage of request) above target
+5m1s        Warning   FailedScheduling               pod/qa-ca-k6-20261110-569b8f8998-wxnkx      0/2 nodes are available: 2 node(s) didn't match pod anti-affinity rules. no new claims to deallocate, preemption: 0/2 nodes are available: 2 No preemption victims found for incoming pod.
+5m1s        Normal    SuccessfulCreate               replicaset/qa-ca-k6-20261110-569b8f8998     Created pod: qa-ca-k6-20261110-569b8f8998-wxnkx
+4m58s       Normal    TriggeredScaleUp               pod/qa-ca-k6-20261110-569b8f8998-wxnkx      pod triggered scale-up: [{eks-nodegroup-m5-2xlarge-staging-al2023-b6cd0397-8983-975e-88ec-140d1373debe 2->3 (max: 10)}]
+3m59s       Warning   FailedScheduling               pod/qa-ca-k6-20261110-569b8f8998-wxnkx      0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod anti-affinity rules. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+3m50s       Normal    Scheduled                      pod/qa-ca-k6-20261110-569b8f8998-wxnkx      Successfully assigned ca-test/qa-ca-k6-20261110-569b8f8998-wxnkx to ip-10-20-14-173.us-west-2.compute.internal
+3m50s       Normal    Pulling                        pod/qa-ca-k6-20261110-569b8f8998-wxnkx      Pulling image "node:22-alpine"
+3m49s       Normal    TaintManagerEviction           pod/qa-ca-k6-20261110-569b8f8998-wxnkx      Cancelling deletion of Pod ca-test/qa-ca-k6-20261110-569b8f8998-wxnkx
+3m46s       Normal    Pulled                         pod/qa-ca-k6-20261110-569b8f8998-wxnkx      Successfully pulled image "node:22-alpine" in 3.504s (3.504s including waiting). Image size: 61353713 bytes.
+3m46s       Normal    Created                        pod/qa-ca-k6-20261110-569b8f8998-wxnkx      Created container: sandbox
+3m46s       Normal    Started                        pod/qa-ca-k6-20261110-569b8f8998-wxnkx      Started container sandbox
+17s         Normal    Completed                      job/qa-ca-k6-20261110                       Job completed
+

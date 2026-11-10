@@ -1,0 +1,56 @@
+{
+  "at": "2026-11-10T20:03:27.371Z",
+  "errorAt": "2026-11-10T20:02:45Z",
+  "rollouts": [],
+  "pods": [
+    {
+      "name": "wsl-varnish-746dc88b76-fjnlf",
+      "phase": "Running",
+      "restarts": 0
+    },
+    {
+      "name": "wsl-web-88488ff5c-74bkn",
+      "phase": "Running",
+      "restarts": 0
+    },
+    {
+      "name": "wsl-web-88488ff5c-fgwjt",
+      "phase": "Running",
+      "restarts": 0
+    },
+    {
+      "name": "wsl-web-migrate-sgxsl",
+      "phase": "Succeeded",
+      "restarts": 0
+    }
+  ],
+  "logEvidence": [
+    {
+      "pod": "wsl-varnish-746dc88b76-fjnlf",
+      "exit": 0,
+      "linesRead": 0,
+      "diagnosticMatches": []
+    },
+    {
+      "pod": "wsl-web-88488ff5c-74bkn",
+      "exit": 0,
+      "linesRead": 500,
+      "diagnosticMatches": []
+    },
+    {
+      "pod": "wsl-web-88488ff5c-fgwjt",
+      "exit": 0,
+      "linesRead": 500,
+      "diagnosticMatches": []
+    }
+  ],
+  "additionalErrors": [
+    {
+      "at": "2026-11-10T20:05:04Z",
+      "step": "event-results",
+      "status": 502,
+      "url": "https://www.staging.worldsurfleague.com/events/2026/ct/445/meo-rip-curl-pro-portugal/results"
+    }
+  ],
+  "limitations": "Bounded recent application logs only; no matching upstream diagnostics found. No load-balancer access logs or full distributed trace examined; cause remains unconfirmed."
+}

@@ -1,0 +1,19 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: tests/performance/eks-autoscaler/legacy-website.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 30 max VUs, 40s max duration (incl. graceful stop):
+              * public_browse: Up to 1.00 iterations/s for 30s over 1 stages (maxVUs: 10-30, gracefulStop: 10s)
+
+
+Run             [ 100% ] setup()
+public_browse   [   0% ]
+time="2026-11-10T20:29:22+02:00" level=error msg="ReferenceError: __ITER is not defined\n\tat read (file:///C:/Users/hp/Desktop/wsl-qa-automation/tests/performance/eks-autoscaler/legacy-website.js:22:258(89))\n\tat setup (file:///C:/Users/hp/Desktop/wsl-qa-automation/tests/performance/eks-autoscaler/legacy-website.js:29:107(34))\n" hint="script exception" source=stacktrace

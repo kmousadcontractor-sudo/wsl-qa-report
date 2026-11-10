@@ -1,0 +1,5 @@
+{
+  "at": "2026-11-10T18:45:28.945Z",
+  "assessment": "Spike stopped during baseline after two 502s; peak was never reached. Varnish image rollout from build 12342 to 12343 overlapped the failures. Preserve raw FAIL; do not claim spike-induced capacity failure. Read-only rollout diagnostics and raw request logs retained.",
+  "next": "Repeat profiles after rollout settles; monitor build changes."
+}

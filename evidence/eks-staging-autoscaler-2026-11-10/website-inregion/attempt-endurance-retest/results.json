@@ -1,0 +1,4282 @@
+{
+  "startedAt": "2026-11-10T19:52:14.312Z",
+  "target": "https://www.staging.worldsurfleague.com",
+  "location": "k6 inside ca-test / us-west-2",
+  "deploymentOverlapAccepted": true,
+  "profiles": [
+    {
+      "profile": "smoke",
+      "startedAt": "2026-11-10T19:52:28.102Z",
+      "jobSucceeded": true,
+      "metrics": {
+        "requests": 94,
+        "p95Ms": 2335.91376205,
+        "errorRate": 0,
+        "checks": 1,
+        "dropped": 0
+      },
+      "failedThresholds": [],
+      "status": "PASS",
+      "finishedAt": "2026-11-10T19:53:21.105Z"
+    },
+    {
+      "profile": "endurance",
+      "startedAt": "2026-11-10T19:53:22.162Z",
+      "jobSucceeded": true,
+      "metrics": {
+        "requests": 7017,
+        "p95Ms": 2280.5637728,
+        "errorRate": 0.0002850220892119139,
+        "checks": 0.9994297120045623,
+        "dropped": 0
+      },
+      "failedThresholds": [],
+      "status": "PASS",
+      "finishedAt": "2026-11-10T20:10:50.475Z"
+    }
+  ],
+  "observations": [
+    {
+      "at": "2026-11-10T19:52:22.415Z",
+      "profile": "baseline",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:52:35.575Z",
+      "profile": "smoke",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:52:56.982Z",
+      "profile": "smoke",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:53:18.410Z",
+      "profile": "smoke",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:53:29.699Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:53:51.142Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:54:16.971Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:54:39.095Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:55:00.663Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:55:22.253Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:55:43.735Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:56:05.142Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:56:26.496Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:56:47.857Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:57:10.215Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:57:31.554Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:57:52.905Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:58:14.291Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:58:35.791Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:58:57.199Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:59:18.683Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T19:59:40.031Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:00:01.452Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:00:22.837Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:00:44.254Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:01:05.687Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:01:27.240Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:01:48.534Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:02:10.056Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:02:31.512Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:02:52.870Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:03:14.276Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:03:35.657Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:03:57.243Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:04:18.792Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:04:40.352Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:05:01.826Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:05:23.306Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:05:44.760Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:06:06.269Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:06:28.181Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:06:49.693Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:07:11.062Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:07:32.487Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:07:53.775Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:08:15.201Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:08:36.621Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:08:58.033Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:09:19.392Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:09:40.792Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:10:04.175Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:10:26.337Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T20:10:47.802Z",
+      "profile": "endurance",
+      "deployments": [
+        {
+          "name": "wsl-web",
+          "templateHash": "75993e0a9a7926f88372cc741e4ce97007ac248f6b2965a23230e9272eb64c0f",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-web:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3672",
+          "ready": 2,
+          "updated": 2,
+          "replicas": 2
+        },
+        {
+          "name": "wsl-varnish",
+          "templateHash": "0d71cc4f309158b4ac5a2f736a2a6938e29e0aa5fb77417c249a858784b0342b",
+          "images": [
+            "107275182030.dkr.ecr.us-west-2.amazonaws.com/wsl-varnish:d349266065a85f946b45256b9b59bb27fdcb61b5-12348"
+          ],
+          "revision": "3514",
+          "ready": 1,
+          "updated": 1,
+          "replicas": 1
+        }
+      ],
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "ready": "True"
+        }
+      ],
+      "hpas": [
+        {
+          "name": "wsl-varnish",
+          "namespace": "default",
+          "current": 1,
+          "desired": 1
+        },
+        {
+          "name": "wsl-web",
+          "namespace": "default",
+          "current": 2,
+          "desired": 2
+        },
+        {
+          "name": "coredns",
+          "namespace": "kube-system",
+          "current": 4,
+          "desired": 4
+        }
+      ],
+      "appPods": [
+        {
+          "name": "wsl-varnish-746dc88b76-fjnlf",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-74bkn",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-88488ff5c-fgwjt",
+          "phase": "Running",
+          "restarts": 0
+        },
+        {
+          "name": "wsl-web-migrate-sgxsl",
+          "phase": "Succeeded",
+          "restarts": 0
+        }
+      ]
+    }
+  ],
+  "cleanedAt": "2026-11-10T20:10:56.048Z",
+  "finishedAt": "2026-11-10T20:10:56.048Z"
+}

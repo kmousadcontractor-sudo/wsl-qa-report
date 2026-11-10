@@ -1,0 +1,1966 @@
+{
+  "startedAt": "2026-11-10T18:14:29.359Z",
+  "cluster": "eks-staging",
+  "namespace": "ca-test",
+  "name": "qa-ca-k6-20261110",
+  "observations": [
+    {
+      "at": "2026-11-10T18:14:37.402Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:14:58.544Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "desired": 0,
+          "metrics": null
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:15:21.321Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 1,
+          "desired": 1,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 49,
+                  "averageValue": "49m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the desired count is within the acceptable range",
+              "reason": "DesiredWithinRange",
+              "status": "False",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:15:43.846Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 1,
+          "desired": 2,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 84,
+                  "averageValue": "84m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "the HPA controller was able to update the target scale to 2",
+              "reason": "SucceededRescale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the desired count is within the acceptable range",
+              "reason": "DesiredWithinRange",
+              "status": "False",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:16:06.053Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 2,
+          "desired": 2,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 116,
+                  "averageValue": "116m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the desired count is within the acceptable range",
+              "reason": "DesiredWithinRange",
+              "status": "False",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:16:27.958Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "phase": "Pending",
+          "app": true,
+          "reason": "0/2 nodes are available: 2 node(s) didn't match pod anti-affinity rules. no new claims to deallocate, preemption: 0/2 nodes are available: 2 No preemption victims found for incoming pod."
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 2,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 84,
+                  "averageValue": "84m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "the HPA controller was able to update the target scale to 3",
+              "reason": "SucceededRescale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the desired count is within the acceptable range",
+              "reason": "DesiredWithinRange",
+              "status": "False",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:16:51.037Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "phase": "Pending",
+          "app": true,
+          "reason": "0/2 nodes are available: 2 node(s) didn't match pod anti-affinity rules. no new claims to deallocate, preemption: 0/2 nodes are available: 2 No preemption victims found for incoming pod."
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 147,
+                  "averageValue": "147m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:17:14.456Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "phase": "Pending",
+          "app": true,
+          "reason": "0/2 nodes are available: 2 node(s) didn't match pod anti-affinity rules. no new claims to deallocate, preemption: 0/2 nodes are available: 2 No preemption victims found for incoming pod."
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 178,
+                  "averageValue": "178m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:17:37.928Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 203,
+                  "averageValue": "203m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:17:59.690Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 151,
+                  "averageValue": "151m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:18:23.957Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 154,
+                  "averageValue": "154m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:18:47.677Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 159,
+                  "averageValue": "159m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:19:16.158Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 166,
+                  "averageValue": "166m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:19:40.289Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 167,
+                  "averageValue": "167m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:20:03.877Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 167,
+                  "averageValue": "167m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:20:27.017Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 167,
+                  "averageValue": "167m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:20:50.253Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": false,
+          "ready": true
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 167,
+                  "averageValue": "167m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:21:12.496Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-b4jv9",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Succeeded",
+          "app": false,
+          "ready": false
+        }
+      ],
+      "hpa": [
+        {
+          "current": 3,
+          "desired": 3,
+          "metrics": [
+            {
+              "resource": {
+                "current": {
+                  "averageUtilization": 167,
+                  "averageValue": "167m"
+                },
+                "name": "cpu"
+              },
+              "type": "Resource"
+            }
+          ],
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-11-10T18:14:59Z",
+              "message": "recommended size matches current size",
+              "reason": "ReadyForNewScale",
+              "status": "True",
+              "type": "AbleToScale"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:15:14Z",
+              "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+              "reason": "ValidMetricFound",
+              "status": "True",
+              "type": "ScalingActive"
+            },
+            {
+              "lastTransitionTime": "2026-11-10T18:16:29Z",
+              "message": "the desired replica count is more than the maximum replica count",
+              "reason": "TooManyReplicas",
+              "status": "True",
+              "type": "ScalingLimited"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-11-10T18:21:48.180Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-7mkzl",
+          "node": "ip-10-20-16-46.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-v7xjm",
+          "node": "ip-10-20-12-153.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        },
+        {
+          "name": "qa-ca-k6-20261110-569b8f8998-wxnkx",
+          "node": "ip-10-20-14-173.us-west-2.compute.internal",
+          "phase": "Running",
+          "app": true,
+          "ready": true
+        }
+      ],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:22:23.813Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:22:59.405Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:23:36.906Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:24:12.251Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:24:47.795Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:25:23.396Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:25:59.274Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:26:35.085Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:27:11.336Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:27:47.182Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:28:22.099Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:28:57.789Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:29:33.646Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:30:08.656Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:30:44.136Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:31:19.646Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:31:55.050Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:32:31.542Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:33:06.865Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:33:41.577Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-14-173.us-west-2.compute.internal",
+          "created": "2026-11-10T18:17:14Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    },
+    {
+      "at": "2026-11-10T18:34:16.314Z",
+      "nodes": [
+        {
+          "name": "ip-10-20-12-153.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:42Z",
+          "ready": "True"
+        },
+        {
+          "name": "ip-10-20-16-46.us-west-2.compute.internal",
+          "created": "2026-07-08T19:19:41Z",
+          "ready": "True"
+        }
+      ],
+      "pods": [],
+      "hpa": []
+    }
+  ],
+  "scaleUpVerifiedAt": "2026-11-10T18:17:39.381Z",
+  "threeAppReplicasVerified": true,
+  "k6Completed": true,
+  "scaleUpPassed": true,
+  "cleanedAt": "2026-11-10T18:21:42.237Z",
+  "scaleDownVerifiedAt": "2026-11-10T18:34:16.316Z",
+  "scaleDownPassed": true,
+  "finishedAt": "2026-11-10T18:34:25.069Z"
+}

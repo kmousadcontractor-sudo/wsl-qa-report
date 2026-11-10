@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-10T19:31:59.275Z",
+  "status": "Requested profiles executed; spike failed, endurance passed configured thresholds",
+  "deploymentOverlapAccepted": true,
+  "enduranceRolloutsObserved": 0,
+  "profiles": [
+    {
+      "profile": "smoke",
+      "status": "PASS"
+    },
+    {
+      "profile": "flows",
+      "status": "PASS"
+    },
+    {
+      "profile": "spike",
+      "status": "FAIL"
+    },
+    {
+      "profile": "endurance",
+      "status": "PASS"
+    }
+  ],
+  "cleanupConfirmed": true
+}

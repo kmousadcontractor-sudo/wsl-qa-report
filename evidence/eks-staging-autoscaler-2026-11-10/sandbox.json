@@ -1,0 +1,206 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "ConfigMap",
+      "metadata": {
+        "name": "qa-ca-k6-20261110",
+        "namespace": "ca-test",
+        "labels": {
+          "app.kubernetes.io/name": "qa-ca-k6-20261110",
+          "qa.wsl/owner": "codex-autoscaler-20261110"
+        }
+      },
+      "data": {
+        "server.cjs": "const http=require('http');http.createServer((req,res)=>{if(req.url==='/work'){const end=performance.now()+40;let n=0;while(performance.now()<end)n+=Math.sqrt(Math.random());}res.writeHead(200,{'Content-Type':'text/plain'});res.end('ca-test sandbox ok\\n');}).listen(8080,'REDACTED_IP_1');",
+        "load.js": "import http from 'k6/http';import {check} from 'k6';export const options={scenarios:{sandbox:{executor:'ramping-arrival-rate',startRate:2,timeUnit:'1s',preAllocatedVUs:5,maxVUs:20,stages:[{target:2,duration:'30s'},{target:10,duration:'90s'},{target:20,duration:'4m'}],gracefulStop:'5s'}},thresholds:{http_req_failed:[{threshold:'rate<0.05',abortOnFail:true,delayAbortEval:'30s'}],http_req_duration:[{threshold:'p(95)<5000',abortOnFail:true,delayAbortEval:'30s'}]},discardResponseBodies:true};export default function(){const r=http.get('http://qa-ca-k6-20261110:8080/work',{timeout:'5s'});check(r,{'sandbox HTTP 200':r=>r.status===200});}"
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "qa-ca-k6-20261110",
+        "namespace": "ca-test",
+        "labels": {
+          "app.kubernetes.io/name": "qa-ca-k6-20261110",
+          "qa.wsl/owner": "codex-autoscaler-20261110"
+        }
+      },
+      "spec": {
+        "replicas": 1,
+        "strategy": {
+          "type": "Recreate"
+        },
+        "selector": {
+          "matchLabels": {
+            "app.kubernetes.io/name": "qa-ca-k6-20261110",
+            "qa.wsl/owner": "codex-autoscaler-20261110"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app.kubernetes.io/name": "qa-ca-k6-20261110",
+              "qa.wsl/owner": "codex-autoscaler-20261110"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "nodeSelector": {
+              "eks.amazonaws.com/nodegroup": "nodegroup-m5-2xlarge-staging-al2023"
+            },
+            "affinity": {
+              "podAntiAffinity": {
+                "requiredDuringSchedulingIgnoredDuringExecution": [
+                  {
+                    "labelSelector": {
+                      "matchLabels": {
+                        "app.kubernetes.io/name": "qa-ca-k6-20261110",
+                        "qa.wsl/owner": "codex-autoscaler-20261110"
+                      }
+                    },
+                    "topologyKey": "kubernetes.io/hostname"
+                  }
+                ]
+              }
+            },
+            "containers": [
+              {
+                "name": "sandbox",
+                "image": "node:22-alpine",
+                "command": [
+                  "node",
+                  "/test/server.cjs"
+                ],
+                "ports": [
+                  {
+                    "containerPort": 8080
+                  }
+                ],
+                "resources": {
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "64Mi"
+                  },
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "128Mi"
+                  }
+                },
+                "readinessProbe": {
+                  "httpGet": {
+                    "path": "/health",
+                    "port": 8080
+                  },
+                  "initialDelaySeconds": 2,
+                  "periodSeconds": 3
+                },
+                "volumeMounts": [
+                  {
+                    "name": "scripts",
+                    "mountPath": "/test",
+                    "readOnly": true
+                  }
+                ],
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "runAsNonRoot": true,
+                  "runAsUser": 1000
+                }
+              }
+            ],
+            "volumes": [
+              {
+                "name": "scripts",
+                "configMap": {
+                  "name": "qa-ca-k6-20261110"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "name": "qa-ca-k6-20261110",
+        "namespace": "ca-test",
+        "labels": {
+          "app.kubernetes.io/name": "qa-ca-k6-20261110",
+          "qa.wsl/owner": "codex-autoscaler-20261110"
+        }
+      },
+      "spec": {
+        "selector": {
+          "app.kubernetes.io/name": "qa-ca-k6-20261110",
+          "qa.wsl/owner": "codex-autoscaler-20261110"
+        },
+        "ports": [
+          {
+            "port": 8080,
+            "targetPort": 8080
+          }
+        ],
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "apiVersion": "autoscaling/v2",
+      "kind": "HorizontalPodAutoscaler",
+      "metadata": {
+        "name": "qa-ca-k6-20261110",
+        "namespace": "ca-test",
+        "labels": {
+          "app.kubernetes.io/name": "qa-ca-k6-20261110",
+          "qa.wsl/owner": "codex-autoscaler-20261110"
+        }
+      },
+      "spec": {
+        "scaleTargetRef": {
+          "apiVersion": "apps/v1",
+          "kind": "Deployment",
+          "name": "qa-ca-k6-20261110"
+        },
+        "minReplicas": 1,
+        "maxReplicas": 3,
+        "metrics": [
+          {
+            "type": "Resource",
+            "resource": {
+              "name": "cpu",
+              "target": {
+                "type": "Utilization",
+                "averageUtilization": 60
+              }
+            }
+          }
+        ],
+        "behavior": {
+          "scaleUp": {
+            "stabilizationWindowSeconds": 0,
+            "policies": [
+              {
+                "type": "Pods",
+                "value": 2,
+                "periodSeconds": 15
+              }
+            ]
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 30
+          }
+        }
+      }
+    }
+  ]
+}
