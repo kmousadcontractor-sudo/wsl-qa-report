@@ -86,10 +86,12 @@ footer { color:var(--muted); font-size:13px; text-align:center; padding:20px 16p
   <span class="row">Row 51</span>
   <h2>"Status says In progress for all events"</h2>
   <ul>
-    <li>Events that are <b>running now</b> correctly show "In progress".</li>
-    <li>Some events that <b>already ended</b> (for example MEO Rip Curl Pro Portugal, 16–25 Oct) still show "In progress" instead of "Completed". We are looking into it.</li>
+    <li>It is <b>not caused by the test data</b>. Events created in the app show the same thing.</li>
+    <li>An event moves to "In progress" on its start date. <b>"Completed" is set by the live-scoring system (BDL/CMS) after the final heat</b>, and that connection isn't in place yet. So events that already ended stay "In progress".</li>
+    <li>The recording shows a real event created in the app (La Marginal Classic, 24 Oct): its history shows it went Live on 24 Oct, and nothing moved it to Completed afterwards.</li>
   </ul>
-  <img src="row51-ended-event-in-progress.png" alt="An event that ended in October still shows In progress">
+  <video controls preload="metadata" src="row51-ended-event-never-completed.mp4"></video>
+  <img src="row51-history-no-completed.png" alt="Event history: went Live on its start date, never moved to Completed">
 </section>
 
 <section id="row-53">
@@ -124,6 +126,18 @@ footer { color:var(--muted); font-size:13px; text-align:center; padding:20px 16p
   </ul>
   <video controls preload="metadata" src="row56-move-wild-card-spot.mp4"></video>
   <img src="row56-after-reload.png" alt="Wild card spot moved to seat 3 and kept after reload">
+</section>
+
+<section id="row-59">
+  <span class="row">Row 59</span>
+  <h2>The seed list after reopening for late entries</h2>
+  <p class="q">"When you close an event and seed it, then reopen for late entries – how does that seedlist look different?"</p>
+  <ul>
+    <li>The seeds and alternates you already set <b>stay as they were</b>.</li>
+    <li>Each late entry is added <b>behind every alternate</b> ("Seated behind every alternate"), with a <b>"Late entry"</b> tag that stays even after confirmation. You can drag it up if needed.</li>
+    <li>Cancelled athletes stay at the very bottom.</li>
+  </ul>
+  <img src="row59-late-entry-after-seeded.png" alt="Late entry placed behind the alternates with a Late entry tag">
 </section>
 
 </main>
