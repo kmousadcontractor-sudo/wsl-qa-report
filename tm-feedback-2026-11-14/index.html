@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WSL Pro – Tour Manager feedback answers</title>
+<style>
+:root { --ink:#0b2433; --muted:#4a6170; --line:#d8e3ea; --bg:#f4f7f9; --card:#fff; --accent:#0f766e; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ink:#e6eef3; --muted:#9fb3c0; --line:#2a3b47; --bg:#0d1820; --card:#14232d; --accent:#4fd1c5; } }
+:root[data-theme="dark"] { --ink:#e6eef3; --muted:#9fb3c0; --line:#2a3b47; --bg:#0d1820; --card:#14232d; --accent:#4fd1c5; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 "Segoe UI", system-ui, sans-serif; }
+header { background:#0b2433; color:#fff; padding:22px 16px; }
+header h1 { margin:0 auto; max-width:960px; font-size:24px; }
+header p { margin:6px auto 0; max-width:960px; color:#c9dbe5; font-size:14px; }
+main { max-width:960px; margin:0 auto; padding:16px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; margin:16px 0; }
+.row { display:inline-block; background:var(--accent); color:#fff; font-size:12px; font-weight:700; border-radius:999px; padding:2px 10px; margin-bottom:6px; }
+h2 { font-size:18px; margin:4px 0 10px; }
+.q { color:var(--muted); font-style:italic; margin:0 0 10px; }
+img, video { width:100%; border:1px solid var(--line); border-radius:8px; margin-top:10px; background:#000; }
+img { background:transparent; }
+ul { margin:6px 0; padding-left:20px; }
+footer { color:var(--muted); font-size:13px; text-align:center; padding:20px 16px 40px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>WSL Pro · Answers to Tour Manager feedback</h1>
+  <p>Bonnie Macleod's questions from the feedback tracker (13 Nov 2026). Checked on staging and Dev, 14 Nov 2026.</p>
+</header>
+<main>
+
+<section id="row-44">
+  <span class="row">Row 44</span>
+  <h2>Do Athlete Care messages have to be assigned? Does our name show?</h2>
+  <p class="q">"Do messages have to be 'assigned'? Does our name show on the responses?"</p>
+  <ul>
+    <li><b>Yes.</b> Click <b>Assign to me</b> before you can reply. If another Tour Manager has it, use <b>Take over</b>.</li>
+    <li>Inquiries you start yourself (New inquiry) are assigned to you automatically.</li>
+    <li>Athletes see every reply as <b>"WSL Support"</b>, never your name.</li>
+  </ul>
+  <img src="row44-assign-to-me.png" alt="Athlete Care inquiry showing the assignee">
+</section>
+
+<section id="row-45">
+  <span class="row">Row 45</span>
+  <h2>Will "Pending confirmation" because of insurance still happen?</h2>
+  <p class="q">"When insurance is just buy policy or waiver, this pending confirmation because of insurance won't really exist, or only for wildcard?"</p>
+  <ul>
+    <li><b>Correct.</b> Athletes choose cover when they enter (WSL insurance, their own policy, or the waiver), so a normal entry never waits on insurance.</li>
+    <li>"Pending confirmation" is only for <b>wild cards</b> (they still add their own insurance and card) and for <b>declined cards</b>.</li>
+    <li>Rows like the one below, with "No coverage", are older test entries made before this rule.</li>
+  </ul>
+  <img src="row45-pending-confirmation.png" alt="An older test entry with No coverage showing Pending confirmation">
+</section>
+
+<section id="row-48">
+  <span class="row">Row 48</span>
+  <h2>"Unable to send message"</h2>
+  <p class="q">"TM events / athlete – Unable to send message"</p>
+  <ul>
+    <li>The athletes in these test events are <b>mock (seeded) athletes</b>, with no real account or email, so there is nobody to send to and the message shows <b>"Not found"</b>.</li>
+    <li>With a <b>real athlete</b> who registered with an email, Send message works and the athlete receives the email. The entry history records "Message sent · Email".</li>
+  </ul>
+  <video controls preload="metadata" src="row48-send-message-real-vs-mock.mp4"></video>
+  <img src="row48-mock-athlete-not-found.png" alt="Send message to a mock athlete shows Not found">
+</section>
+
+<section id="row-50">
+  <span class="row">Row 50</span>
+  <h2>Headshots: does WSL Pro remove the background?</h2>
+  <p class="q">"Will WSL Pro automatically make a PNG with no background, or does the surfer need to edit it first?"</p>
+  <ul>
+    <li><b>No automatic background removal</b>, and no special editing is needed.</li>
+    <li>The athlete uploads a normal recent, front-facing portrait: JPG, PNG or HEIC, at least 600 × 600 px, up to 10 MB, no hats, sponsor logos or text.</li>
+    <li>They crop it in the app, and a Tour Manager reviews it before it shows.</li>
+  </ul>
+  <img src="row50-headshot-rules.png" alt="Headshot rules shown to the athlete">
+</section>
+
+<section id="row-51">
+  <span class="row">Row 51</span>
+  <h2>"Status says In progress for all events"</h2>
+  <ul>
+    <li>Events that are <b>running now</b> correctly show "In progress".</li>
+    <li>Some events that <b>already ended</b> (for example MEO Rip Curl Pro Portugal, 16–25 Oct) still show "In progress" instead of "Completed". We are looking into it.</li>
+  </ul>
+  <img src="row51-ended-event-in-progress.png" alt="An event that ended in October still shows In progress">
+</section>
+
+<section id="row-53">
+  <span class="row">Row 53</span>
+  <h2>Reopening Taiwan Open for late entries</h2>
+  <p class="q">"When trying to reopen Taiwan Open for late entries it does not let me select a new closing date."</p>
+  <ul>
+    <li>Late entries can only be reopened <b>before the event starts</b>, and the new closing date must be before the start date.</li>
+    <li>Taiwan Open starts on <b>14 Nov</b>, so no closing date was left to choose. It is now "In progress", and "Open for entries" is no longer available.</li>
+  </ul>
+  <img src="row53-taiwan-open-disabled.png" alt="Open for entries not available once the event has started">
+</section>
+
+<section id="row-55">
+  <span class="row">Row 55</span>
+  <h2>Why is only one person "ready to confirm" at Central Coast?</h2>
+  <ul>
+    <li>An athlete is <b>Ready to confirm</b> only when they have a card on hold, insurance, <b>and</b> a membership that covers this event.</li>
+    <li>In the Central Coast test data, most athletes' memberships don't cover the event and a few have no insurance, so they show under "Needs attention" instead.</li>
+  </ul>
+  <img src="row55-central-coast-info-bar.png" alt="Central Coast info bar with Ready to confirm and Needs attention">
+</section>
+
+<section id="row-56">
+  <span class="row">Row 56</span>
+  <h2>Moving a wild card spot (drag and drop)</h2>
+  <p class="q">"I could not drag and drop the wild card spot."</p>
+  <ul>
+    <li>1. Click <b>Change seed order</b> above the list. Rows can't be dragged until you do.</li>
+    <li>2. Drag the row by its <b>handle on the left</b>, or click the seat number and type a new one.</li>
+    <li>3. Click <b>Done</b>. The new order is kept.</li>
+  </ul>
+  <video controls preload="metadata" src="row56-move-wild-card-spot.mp4"></video>
+  <img src="row56-after-reload.png" alt="Wild card spot moved to seat 3 and kept after reload">
+</section>
+
+</main>
+<footer>Prepared by Kholoud Mousad (QA), 14 Nov 2026.</footer>
+</body>
+</html>
