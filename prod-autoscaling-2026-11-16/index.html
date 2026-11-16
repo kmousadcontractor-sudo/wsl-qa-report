@@ -141,14 +141,14 @@ ul, ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; g
     <div class="table-wrap"><table>
       <thead><tr><th>Step</th><th>What happened</th><th>Outcome</th></tr></thead>
       <tbody>
-        <tr><td>Cluster access, first attempt (15 Nov)</td><td>The first QA key had no EKS access entry. The Kubernetes API returned 401 Unauthorized.</td><td><span class="pill bad">Blocked</span></td></tr>
-        <tr><td>Console view of pods and nodes</td><td>"Unauthorized: your IAM principal needs Kubernetes permissions on this cluster"</td><td><span class="pill bad">Blocked</span></td></tr>
-        <tr><td>AWS CloudShell</td><td>"Unable to create the environment" (insufficient permissions)</td><td><span class="pill bad">Blocked</span></td></tr>
-        <tr><td>Switch role to the cluster-admin role in the console</td><td>"Invalid information in one or more fields": the user may not assume the role</td><td><span class="pill bad">Blocked</span></td></tr>
-        <tr><td>Add an MFA device</td><td>Not authorized for <code>iam:CreateVirtualMFADevice</code></td><td><span class="pill bad">Blocked</span></td></tr>
-        <tr><td>Create an access key</td><td>Not authorized for <code>iam:CreateAccessKey</code></td><td><span class="pill bad">Blocked</span></td></tr>
-        <tr><td>New access key from the platform team (16 Nov)</td><td>The Kubernetes API answered 200, read-only checks ran</td><td><span class="pill ok">Resolved</span></td></tr>
-        <tr><td>Load test traffic</td><td>The AWS WAF rate-based rule blocked the single test IP (HTTP 403) after about 3 minutes</td><td><span class="pill bad">Blocking</span></td></tr>
+        <tr><td>Cluster access, first attempt (15 Nov)</td><td>The first QA key had no EKS access entry. The Kubernetes API returned 401 Unauthorized.</td><td><span class="pill ok">Resolved</span> by the new access key (16 Nov)</td></tr>
+        <tr><td>Console view of pods and nodes</td><td>"Unauthorized: your IAM principal needs Kubernetes permissions on this cluster"</td><td><span class="pill ok">Resolved</span> by the new access key (16 Nov)</td></tr>
+        <tr><td>AWS CloudShell</td><td>"Unable to create the environment" (insufficient permissions)</td><td><span class="pill ok">Resolved</span> by the new access key (16 Nov)</td></tr>
+        <tr><td>Switch role to the cluster-admin role in the console</td><td>"Invalid information in one or more fields": the user may not assume the role</td><td><span class="pill ok">Resolved</span> by the new access key (16 Nov)</td></tr>
+        <tr><td>Add an MFA device</td><td>Not authorized for <code>iam:CreateVirtualMFADevice</code></td><td><span class="pill ok">Resolved</span> by the new access key (16 Nov)</td></tr>
+        <tr><td>Create an access key</td><td>Not authorized for <code>iam:CreateAccessKey</code></td><td><span class="pill ok">Resolved</span> by the new access key (16 Nov)</td></tr>
+        <tr><td>New access key from the platform team (16 Nov)</td><td>The Kubernetes API answered 200 and the read-only checks ran. This cleared all the access blockers above.</td><td><span class="pill ok">Resolved</span></td></tr>
+        <tr><td>Load test traffic</td><td>The AWS WAF rate-based rule blocked the single test IP (HTTP 403) after about 3 minutes</td><td><span class="pill bad">Still blocking</span> needs a temporary WAF allow rule (section 6)</td></tr>
       </tbody>
     </table></div>
   </section>
