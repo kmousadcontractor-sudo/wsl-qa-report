@@ -1,0 +1,323 @@
+{
+ "startedAt": "2026-11-18T15:09:39.882Z",
+ "steps": [
+  {
+   "id": "D2-shift",
+   "caption": "Copy 2 setup: existing season 2031, range 16-26 Apr 2026, events start on 1 Feb 2031",
+   "at": "2026-11-18T15:09:53.112Z",
+   "seasonOptions": [
+    "2031 · 1 Jan – 31 Dec 2031",
+    "2029 · 1 Jan – 31 Dec 2029",
+    "2027-28 · 1 Apr 2027 – 31 Mar 2028",
+    "2026-27 · 1 Apr 2026 – 31 Mar 2027"
+   ],
+   "copyButton": "Copy 6 events",
+   "copyDisabled": false,
+   "ok": true,
+   "text": "Copy season Copies events from 2026-27 into a season that already exists. Every event as a Draft. COPY FROM Source season 2026-27 Whole season Events between dates From To Only events that start and end inside these dates are copied. COPY INTO A new season An existing season Season 2031 · 1 Jan – 31 Dec 2031 Copied events start on Every event moves 1,752 days later. WHAT WILL BE CREATED 3 tours with their settings 6 events as Draft and hidden, dates moved into the season 0 events skipped would fall outside the season, or clash with an event already there — registrations, seed lists or results never copied EVENTS TO COPY · 6 OF 6 Clear Championship Tour · Men (1 of 1) Western Australia Margaret River Pro · Margaret River Thu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031 Championship Tour · Women (1 of 1) Western Australia Margaret River Pro · Margaret River Thu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031 Pro Junior Series · Men (1 of 1) Surfboard Empire North Narrabeen Pro Junior · North Narrabeen Wed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031 Pro Junior Series · Women (1 of 1) Surfboard Empire North Narrabeen Pro Junior · North Narrabeen Wed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031 Qualifying Series · Men (1 of 1) Vans Jack's Surfboards Pro · Huntington Beach Wed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031 Qualifying Series · Women (1 of 1) Vans Jack's Surfboards Pro · Huntington Beach Wed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031 ! Everything copies as a draft Edit or remove anything before publishing. Events already in 2031 are skipped. Cancel Copy 6 events",
+   "preview": {
+    "status": 200,
+    "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/events/copy?rangeStartDate=2026-04-16&rangeEndDate=2026-04-26&targetSeasonId=01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b&targetStartDate=2031-02-01",
+    "body": "{\"items\":[{\"count\":3,\"label\":\"tours\",\"detail\":\"with their settings\",\"excluded\":false},{\"count\":6,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into the season\",\"excluded\":false},{\"count\":0,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}],\"tours\":[{\"tourId\":\"01a1ceb6-06e1-7445-9519-634b3b282007\",\"name\":\"Championship Tour\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-3832-706d-a076-b31931f1800e\",\"eventCode\":\"CT-2026-M-002\",\"name\":\"Western Australia Margaret River Pro\",\"location\":\"Margaret River\",\"from\":\"Thu 16 – Sun 26 Apr 2026\",\"to\":\"Sat 1 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-16\",\"toStartDate\":\"2031-02-01\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-06e6-7355-9acb-e17c11b69d20\",\"name\":\"Championship Tour\",\"division\":\"Women\",\"events\":[{\"eventId\":\"01a1ceb6-385f-700f-a708-8adc270f3ea6\",\"eventCode\":\"CT-2026-W-002\",\"name\":\"Western Australia Margaret River Pro\",\"location\":\"Margaret River\",\"from\":\"Thu 16 – Sun 26 Apr 2026\",\"to\":\"Sat 1 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-16\",\"toStartDate\":\"2031-02-01\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-073c-77c4-b125-b5d1bd04b234\",\"name\":\"Pro Junior Series\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-4334-750e-b2d7-d132f33f66c3\",\"eventCode\":\"JUNIOR-2026-M-003\",\"name\":\"Surfboard Empire North Narrabeen Pro Junior\",\"location\":\"North Narrabeen\",\"from\":\"Wed 22 – Sun 26 Apr 2026\",\"to\":\"Fri 7 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-22\",\"toStartDate\":\"2031-02-07\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-0740-7367-9d3e-af2e1df293c9\",\"name\":\"Pro Junior Series\",\"division\":\"Women\",\"events\":[{\"eventId\":\"01a1ceb6-436a-75cd-afeb-da3e2bbc32f6\",\"eventCode\":\"JUNIOR-2026-W-003\",\"name\":\"Surfboard Empire North Narrabeen Pro Junior\",\"location\":\"North Narrabeen\",\"from\":\"Wed 22 – Sun 26 Apr 2026\",\"to\":\"Fri 7 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-22\",\"toStartDate\":\"2031-02-07\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-079f-7685-bcd6-153a82a86e3a\",\"name\":\"Qualifying Series\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-"
+   },
+   "shot": "D2-shift.png"
+  },
+  {
+   "id": "E5-untick",
+   "caption": "Untick North Narrabeen Pro Junior (Women): counts should drop to 5",
+   "at": "2026-11-18T15:10:08.658Z",
+   "copyButton": "Copy 5 events",
+   "copyDisabled": false,
+   "textBefore": "Copy season Copies events from 2026-27 into a season that already exists. Every event as a Draft. COPY FROM Source season 2026-27 Whole season Events between dates From To Only events that start and end inside these dates are copied. COPY INTO A new season An existing season Season 2031 · 1 Jan – 31 Dec 2031 Copied events start on Every event moves 1,752 days later. WHAT WILL BE CREATED 3 tours with their settings 6 events as Draft and hidden, dates moved into the season 0 events skipped would fall outside the season, or clash with an event already there — registrations, seed lists or results never copied EVENTS TO COPY · 6 OF 6 Clear Championship Tour · Men (1 of 1) Western Australia Margaret River Pro · Margaret River Thu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031 Championship Tour · Women (1 of 1) Western Australia Margaret River Pro · Margaret River Thu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031 Pro Junior Series · Men (1 of 1) Surfboard Empire North Narrabeen Pro Junior · North Narrabeen Wed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031 Pro Junior Series · Women (1 of 1) Surfboard Empire North Narrabeen Pro Junior · North Narrabeen Wed 22 – Sun 26 Apr 2026 → Fri 7 – T",
+   "checkboxesAfter": [
+    {
+     "id": "_r_a3_",
+     "checked": true,
+     "label": "Championship Tour · Men (1 of 1)"
+    },
+    {
+     "id": "_r_a5_",
+     "checked": true,
+     "label": "Western Australia Margaret River Pro · Margaret RiverThu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031"
+    },
+    {
+     "id": "_r_aj_",
+     "checked": true,
+     "label": "Championship Tour · Women (1 of 1)"
+    },
+    {
+     "id": "_r_al_",
+     "checked": true,
+     "label": "Western Australia Margaret River Pro · Margaret RiverThu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031"
+    },
+    {
+     "id": "_r_b8_",
+     "checked": true,
+     "label": "Pro Junior Series · Men (1 of 1)"
+    },
+    {
+     "id": "_r_b9_",
+     "checked": true,
+     "label": "Surfboard Empire North Narrabeen Pro Junior · North NarrabeenWed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031"
+    },
+    {
+     "id": "_r_bc_",
+     "checked": false,
+     "label": "Pro Junior Series · Women (0 of 1)"
+    },
+    {
+     "id": "_r_bd_",
+     "checked": false,
+     "label": "Surfboard Empire North Narrabeen Pro Junior · North NarrabeenWed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031"
+    },
+    {
+     "id": "_r_bg_",
+     "checked": true,
+     "label": "Qualifying Series · Men (1 of 1)"
+    },
+    {
+     "id": "_r_bh_",
+     "checked": true,
+     "label": "Vans Jack's Surfboards Pro · Huntington BeachWed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031"
+    },
+    {
+     "id": "_r_cj_",
+     "checked": true,
+     "label": "Qualifying Series · Women (1 of 1)"
+    },
+    {
+     "id": "_r_ck_",
+     "checked": true,
+     "label": "Vans Jack's Surfboards Pro · Huntington BeachWed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031"
+    }
+   ],
+   "ok": true,
+   "text": "Copy season Copies events from 2026-27 into a season that already exists. Every event as a Draft. COPY FROM Source season 2026-27 Whole season Events between dates From To Only events that start and end inside these dates are copied. COPY INTO A new season An existing season Season 2031 · 1 Jan – 31 Dec 2031 Copied events start on Every event moves 1,752 days later. WHAT WILL BE CREATED 3 tours with their settings 6 events as Draft and hidden, dates moved into the season 0 events skipped would fall outside the season, or clash with an event already there — registrations, seed lists or results never copied EVENTS TO COPY · 5 OF 6 Select all Championship Tour · Men (1 of 1) Western Australia Margaret River Pro · Margaret River Thu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031 Championship Tour · Women (1 of 1) Western Australia Margaret River Pro · Margaret River Thu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031 Pro Junior Series · Men (1 of 1) Surfboard Empire North Narrabeen Pro Junior · North Narrabeen Wed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031 Pro Junior Series · Women (0 of 1) Surfboard Empire North Narrabeen Pro Junior · North Narrabeen Wed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031 Qualifying Series · Men (1 of 1) Vans Jack's Surfboards Pro · Huntington Beach Wed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031 Qualifying Series · Women (1 of 1) Vans Jack's Surfboards Pro · Huntington Beach Wed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031 ! Everything copies as a draft Edit or remove anything before publishing. Events already in 2031 are skipped. Cancel Copy 5 events",
+   "preview": {
+    "status": 200,
+    "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/events/copy?rangeStartDate=2026-04-16&rangeEndDate=2026-04-26&targetSeasonId=01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b&targetStartDate=2031-02-01",
+    "body": "{\"items\":[{\"count\":3,\"label\":\"tours\",\"detail\":\"with their settings\",\"excluded\":false},{\"count\":6,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into the season\",\"excluded\":false},{\"count\":0,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}],\"tours\":[{\"tourId\":\"01a1ceb6-06e1-7445-9519-634b3b282007\",\"name\":\"Championship Tour\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-3832-706d-a076-b31931f1800e\",\"eventCode\":\"CT-2026-M-002\",\"name\":\"Western Australia Margaret River Pro\",\"location\":\"Margaret River\",\"from\":\"Thu 16 – Sun 26 Apr 2026\",\"to\":\"Sat 1 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-16\",\"toStartDate\":\"2031-02-01\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-06e6-7355-9acb-e17c11b69d20\",\"name\":\"Championship Tour\",\"division\":\"Women\",\"events\":[{\"eventId\":\"01a1ceb6-385f-700f-a708-8adc270f3ea6\",\"eventCode\":\"CT-2026-W-002\",\"name\":\"Western Australia Margaret River Pro\",\"location\":\"Margaret River\",\"from\":\"Thu 16 – Sun 26 Apr 2026\",\"to\":\"Sat 1 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-16\",\"toStartDate\":\"2031-02-01\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-073c-77c4-b125-b5d1bd04b234\",\"name\":\"Pro Junior Series\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-4334-750e-b2d7-d132f33f66c3\",\"eventCode\":\"JUNIOR-2026-M-003\",\"name\":\"Surfboard Empire North Narrabeen Pro Junior\",\"location\":\"North Narrabeen\",\"from\":\"Wed 22 – Sun 26 Apr 2026\",\"to\":\"Fri 7 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-22\",\"toStartDate\":\"2031-02-07\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-0740-7367-9d3e-af2e1df293c9\",\"name\":\"Pro Junior Series\",\"division\":\"Women\",\"events\":[{\"eventId\":\"01a1ceb6-436a-75cd-afeb-da3e2bbc32f6\",\"eventCode\":\"JUNIOR-2026-W-003\",\"name\":\"Surfboard Empire North Narrabeen Pro Junior\",\"location\":\"North Narrabeen\",\"from\":\"Wed 22 – Sun 26 Apr 2026\",\"to\":\"Fri 7 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-22\",\"toStartDate\":\"2031-02-07\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-079f-7685-bcd6-153a82a86e3a\",\"name\":\"Qualifying Series\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-"
+   },
+   "shot": "E5-untick.png"
+  },
+  {
+   "id": "B4-copy2-done",
+   "caption": "Copy 2: Copy events into 2031 (CT tour already there: no duplicate tour expected)",
+   "at": "2026-11-18T15:10:12.194Z",
+   "noRetry": true,
+   "writes": [
+    {
+     "method": "POST",
+     "status": 201,
+     "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/events/copy",
+     "request": "{\"rangeStartDate\":\"2026-04-16\",\"rangeEndDate\":\"2026-04-26\",\"targetSeasonId\":\"01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b\",\"targetStartDate\":\"2031-02-01\",\"excludedEventIds\":[\"01a1ceb6-436a-75cd-afeb-da3e2bbc32f6\"]}",
+     "response": "{\"season\":{\"id\":\"01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b\",\"dates\":\"1 Jan – 31 Dec 2031\",\"tours\":3,\"events\":9,\"current\":false,\"open\":true,\"seasonId\":\"01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b\",\"name\":\"2031\",\"startDate\":\"2031-01-01\",\"endDate\":\"2031-12-31\",\"status\":\"draft\",\"tourCount\":3,\"eventCount\":9,\"version\":1},\"eventsCopied\":5,\"items\":[{\"count\":5,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into 2031\",\"excluded\":false},{\"count\":0,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":1,\"label\":\"event left out\",\"detail\":\"unticked before copying\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}]}"
+    }
+   ],
+   "pageText": "World Surf League Tour Manager Search ⌘K MANAGE Events Athletes Athlete Care 28 CONFIGURE Settings Finance TM Tour Manager 101 Finance · All regions Events Season 2031 Copy season + New event 5 events copied into 2031 as Drafts. Open for entries 0 Closed · to confirm 0 Next event — Needs attention 0 Region Country Tour Status Men / Women Rating Clear filters Starred 0 All 9 Upcoming 9 Open 0 Completed 0 Archived 0 9 events STARRED EVENT TOUR DATES ↑ ENTRIES RATING STATUS ACTION Rip Curl Pro Bells Beach Bells Beach, Victoria, Australia Championship Tour (CT) · Men 1–11 Jan in 49 months 0 / 36 not open — Draft Rip Curl Pro Bells Beach Bells Beach, Victoria, Australia Championship Tour (CT) · Women 1–11 Jan in 49 months 0 / 24 not open — Draft Royal St Andrews Hotel Rip Curl Cup East Beach, E",
+   "ok": true,
+   "text": "",
+   "preview": {
+    "status": 200,
+    "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/events/copy?rangeStartDate=2026-04-16&rangeEndDate=2026-04-26&targetSeasonId=01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b&targetStartDate=2031-02-01",
+    "body": "{\"items\":[{\"count\":3,\"label\":\"tours\",\"detail\":\"with their settings\",\"excluded\":false},{\"count\":6,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into the season\",\"excluded\":false},{\"count\":0,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}],\"tours\":[{\"tourId\":\"01a1ceb6-06e1-7445-9519-634b3b282007\",\"name\":\"Championship Tour\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-3832-706d-a076-b31931f1800e\",\"eventCode\":\"CT-2026-M-002\",\"name\":\"Western Australia Margaret River Pro\",\"location\":\"Margaret River\",\"from\":\"Thu 16 – Sun 26 Apr 2026\",\"to\":\"Sat 1 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-16\",\"toStartDate\":\"2031-02-01\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-06e6-7355-9acb-e17c11b69d20\",\"name\":\"Championship Tour\",\"division\":\"Women\",\"events\":[{\"eventId\":\"01a1ceb6-385f-700f-a708-8adc270f3ea6\",\"eventCode\":\"CT-2026-W-002\",\"name\":\"Western Australia Margaret River Pro\",\"location\":\"Margaret River\",\"from\":\"Thu 16 – Sun 26 Apr 2026\",\"to\":\"Sat 1 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-16\",\"toStartDate\":\"2031-02-01\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-073c-77c4-b125-b5d1bd04b234\",\"name\":\"Pro Junior Series\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-4334-750e-b2d7-d132f33f66c3\",\"eventCode\":\"JUNIOR-2026-M-003\",\"name\":\"Surfboard Empire North Narrabeen Pro Junior\",\"location\":\"North Narrabeen\",\"from\":\"Wed 22 – Sun 26 Apr 2026\",\"to\":\"Fri 7 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-22\",\"toStartDate\":\"2031-02-07\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-0740-7367-9d3e-af2e1df293c9\",\"name\":\"Pro Junior Series\",\"division\":\"Women\",\"events\":[{\"eventId\":\"01a1ceb6-436a-75cd-afeb-da3e2bbc32f6\",\"eventCode\":\"JUNIOR-2026-W-003\",\"name\":\"Surfboard Empire North Narrabeen Pro Junior\",\"location\":\"North Narrabeen\",\"from\":\"Wed 22 – Sun 26 Apr 2026\",\"to\":\"Fri 7 – Tue 11 Feb 2031\",\"fromStartDate\":\"2026-04-22\",\"toStartDate\":\"2031-02-07\",\"outcome\":\"copy\",\"copyable\":true,\"clashesWithEventCode\":null,\"detail\":\"Will be copied as a Draft.\"}]},{\"tourId\":\"01a1ceb6-079f-7685-bcd6-153a82a86e3a\",\"name\":\"Qualifying Series\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-"
+   },
+   "shot": "B4-copy2-done.png"
+  }
+ ],
+ "writes": [
+  {
+   "method": "POST",
+   "status": 201,
+   "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/events/copy",
+   "request": "{\"rangeStartDate\":\"2026-04-16\",\"rangeEndDate\":\"2026-04-26\",\"targetSeasonId\":\"01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b\",\"targetStartDate\":\"2031-02-01\",\"excludedEventIds\":[\"01a1ceb6-436a-75cd-afeb-da3e2bbc32f6\"]}",
+   "response": "{\"season\":{\"id\":\"01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b\",\"dates\":\"1 Jan – 31 Dec 2031\",\"tours\":3,\"events\":9,\"current\":false,\"open\":true,\"seasonId\":\"01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b\",\"name\":\"2031\",\"startDate\":\"2031-01-01\",\"endDate\":\"2031-12-31\",\"status\":\"draft\",\"tourCount\":3,\"eventCount\":9,\"version\":1},\"eventsCopied\":5,\"items\":[{\"count\":5,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into 2031\",\"excluded\":false},{\"count\":0,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":1,\"label\":\"event left out\",\"detail\":\"unticked before copying\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}]}"
+  }
+ ],
+ "previews": [
+  {
+   "at": 1795014592129,
+   "status": 200,
+   "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/copy?name=2032&startDate=2032-01-01&endDate=2032-12-31",
+   "body": "{\"items\":[{\"count\":5,\"label\":\"tours\",\"detail\":\"with their settings\",\"excluded\":false},{\"count\":210,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into the new season\",\"excluded\":false},{\"count\":0,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}],\"tours\":[{\"tourId\":\"01a1ceb6-06e1-7445-9519-634b3b282007\",\"name\":\"Championship Tour\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-37c5-71f4-b489-87aa5969e4d3\",\"even"
+  },
+  {
+   "at": 1795014593921,
+   "status": 200,
+   "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/copy?name=2032&startDate=2032-01-01&endDate=2032-12-31&rangeStartDate=2026-04-01&rangeEndDate=2027-03-31",
+   "body": "{\"items\":[{\"count\":5,\"label\":\"tours\",\"detail\":\"with their settings\",\"excluded\":false},{\"count\":210,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into the new season\",\"excluded\":false},{\"count\":0,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}],\"tours\":[{\"tourId\":\"01a1ceb6-06e1-7445-9519-634b3b282007\",\"name\":\"Championship Tour\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-37c5-71f4-b489-87aa5969e4d3\",\"even"
+  },
+  {
+   "at": 1795014596082,
+   "status": 200,
+   "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/events/copy?rangeStartDate=2026-04-01&rangeEndDate=2027-03-31&targetSeasonId=01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b&targetStartDate=2027-04-01",
+   "body": "{\"items\":[{\"count\":0,\"label\":\"tours\",\"detail\":\"with their settings\",\"excluded\":false},{\"count\":0,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into the season\",\"excluded\":false},{\"count\":210,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}],\"tours\":[{\"tourId\":\"01a1ceb6-06e1-7445-9519-634b3b282007\",\"name\":\"Championship Tour\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-37c5-71f4-b489-87aa5969e4d3\",\"eventCod"
+  },
+  {
+   "at": 1795014602357,
+   "status": 200,
+   "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/events/copy?rangeStartDate=2026-04-16&rangeEndDate=2027-03-31&targetSeasonId=01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b&targetStartDate=2027-04-16",
+   "body": "{\"items\":[{\"count\":0,\"label\":\"tours\",\"detail\":\"with their settings\",\"excluded\":false},{\"count\":0,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into the season\",\"excluded\":false},{\"count\":206,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}],\"tours\":[{\"tourId\":\"01a1ceb6-06e1-7445-9519-634b3b282007\",\"name\":\"Championship Tour\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-3832-706d-a076-b31931f1800e\",\"eventCod"
+  },
+  {
+   "at": 1795014602835,
+   "status": 200,
+   "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/events/copy?rangeStartDate=2026-04-16&rangeEndDate=2026-04-26&targetSeasonId=01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b&targetStartDate=2027-04-16",
+   "body": "{\"items\":[{\"count\":0,\"label\":\"tours\",\"detail\":\"with their settings\",\"excluded\":false},{\"count\":0,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into the season\",\"excluded\":false},{\"count\":6,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}],\"tours\":[{\"tourId\":\"01a1ceb6-06e1-7445-9519-634b3b282007\",\"name\":\"Championship Tour\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-3832-706d-a076-b31931f1800e\",\"eventCode\""
+  },
+  {
+   "at": 1795014605453,
+   "status": 200,
+   "url": "/tour-manager/seasons/01a1ceb6-31de-732f-9a17-7f4dd24b1ebd/events/copy?rangeStartDate=2026-04-16&rangeEndDate=2026-04-26&targetSeasonId=01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b&targetStartDate=2031-02-01",
+   "body": "{\"items\":[{\"count\":3,\"label\":\"tours\",\"detail\":\"with their settings\",\"excluded\":false},{\"count\":6,\"label\":\"events\",\"detail\":\"as Draft and hidden, dates moved into the season\",\"excluded\":false},{\"count\":0,\"label\":\"events skipped\",\"detail\":\"would fall outside the season, or clash with an event already there\",\"excluded\":true},{\"count\":null,\"label\":\"registrations, seed lists or results\",\"detail\":\"never copied\",\"excluded\":true}],\"tours\":[{\"tourId\":\"01a1ceb6-06e1-7445-9519-634b3b282007\",\"name\":\"Championship Tour\",\"division\":\"Men\",\"events\":[{\"eventId\":\"01a1ceb6-3832-706d-a076-b31931f1800e\",\"eventCode\""
+  }
+ ],
+ "seasonsBefore": [
+  {
+   "id": "01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b",
+   "name": "2031",
+   "startDate": "2031-01-01",
+   "endDate": "2031-12-31",
+   "tours": 2,
+   "events": 4
+  },
+  {
+   "id": "01a1ecfd-9b45-7183-9e34-32816f9a84ae",
+   "name": "2029",
+   "startDate": "2029-01-01",
+   "endDate": "2029-12-31",
+   "tours": 3,
+   "events": 14
+  },
+  {
+   "id": "01a1ced9-9ae3-7672-97d3-1f8c7d9f4f09",
+   "name": "2027-28",
+   "startDate": "2027-04-01",
+   "endDate": "2028-03-31",
+   "tours": 5,
+   "events": 132
+  },
+  {
+   "id": "01a1ceb6-31de-732f-9a17-7f4dd24b1ebd",
+   "name": "2026-27",
+   "startDate": "2026-04-01",
+   "endDate": "2027-03-31",
+   "tours": 5,
+   "events": 280
+  },
+  {
+   "id": "01a1ceb6-08bf-77c3-b49d-e8d3fd694bd5",
+   "name": "2025-26",
+   "startDate": "2025-01-01",
+   "endDate": "2026-03-31",
+   "tours": 5,
+   "events": 130
+  }
+ ],
+ "copy2Checkboxes": [
+  {
+   "id": "_r_a3_",
+   "checked": true,
+   "label": "Championship Tour · Men (1 of 1)"
+  },
+  {
+   "id": "_r_a5_",
+   "checked": true,
+   "label": "Western Australia Margaret River Pro · Margaret RiverThu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031"
+  },
+  {
+   "id": "_r_aj_",
+   "checked": true,
+   "label": "Championship Tour · Women (1 of 1)"
+  },
+  {
+   "id": "_r_al_",
+   "checked": true,
+   "label": "Western Australia Margaret River Pro · Margaret RiverThu 16 – Sun 26 Apr 2026 → Sat 1 – Tue 11 Feb 2031"
+  },
+  {
+   "id": "_r_b8_",
+   "checked": true,
+   "label": "Pro Junior Series · Men (1 of 1)"
+  },
+  {
+   "id": "_r_b9_",
+   "checked": true,
+   "label": "Surfboard Empire North Narrabeen Pro Junior · North NarrabeenWed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031"
+  },
+  {
+   "id": "_r_bc_",
+   "checked": true,
+   "label": "Pro Junior Series · Women (1 of 1)"
+  },
+  {
+   "id": "_r_bd_",
+   "checked": true,
+   "label": "Surfboard Empire North Narrabeen Pro Junior · North NarrabeenWed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031"
+  },
+  {
+   "id": "_r_bg_",
+   "checked": true,
+   "label": "Qualifying Series · Men (1 of 1)"
+  },
+  {
+   "id": "_r_bh_",
+   "checked": true,
+   "label": "Vans Jack's Surfboards Pro · Huntington BeachWed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031"
+  },
+  {
+   "id": "_r_cj_",
+   "checked": true,
+   "label": "Qualifying Series · Women (1 of 1)"
+  },
+  {
+   "id": "_r_ck_",
+   "checked": true,
+   "label": "Vans Jack's Surfboards Pro · Huntington BeachWed 22 – Sun 26 Apr 2026 → Fri 7 – Tue 11 Feb 2031"
+  }
+ ],
+ "seasonsAfter": [
+  {
+   "id": "01a1ef34-755a-73c6-bcb7-cdcbfb4b4f1b",
+   "name": "2031",
+   "startDate": "2031-01-01",
+   "endDate": "2031-12-31",
+   "tours": 3,
+   "events": 9
+  },
+  {
+   "id": "01a1ecfd-9b45-7183-9e34-32816f9a84ae",
+   "name": "2029",
+   "startDate": "2029-01-01",
+   "endDate": "2029-12-31",
+   "tours": 3,
+   "events": 14
+  },
+  {
+   "id": "01a1ced9-9ae3-7672-97d3-1f8c7d9f4f09",
+   "name": "2027-28",
+   "startDate": "2027-04-01",
+   "endDate": "2028-03-31",
+   "tours": 5,
+   "events": 132
+  },
+  {
+   "id": "01a1ceb6-31de-732f-9a17-7f4dd24b1ebd",
+   "name": "2026-27",
+   "startDate": "2026-04-01",
+   "endDate": "2027-03-31",
+   "tours": 5,
+   "events": 280
+  },
+  {
+   "id": "01a1ceb6-08bf-77c3-b49d-e8d3fd694bd5",
+   "name": "2025-26",
+   "startDate": "2025-01-01",
+   "endDate": "2026-03-31",
+   "tours": 5,
+   "events": 130
+  }
+ ],
+ "finishedAt": "2026-11-18T15:10:46.384Z",
+ "video": "c:\\Users\\hp\\Desktop\\wsl-qa-automation\\artifacts\\copy-range-2026-11-18\\run\\video\\page@659977f1972829cd516e03b1b7bfa08f.webm"
+}
