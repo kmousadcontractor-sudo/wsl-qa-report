@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dev smoke 2026-11-23</title>
 <style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>Dev smoke report · 2026-11-23</h1>
-<p><strong>Result: 13 passed, 0 failed</strong> · App: <a href="https://app.dev.worldsurfleague.com" rel="nofollow">https://app.dev.worldsurfleague.com</a> · Run started 2026-11-23T16:28:00.720Z</p>
-<p>Each view signs in, opens every menu page and one event page, records API 4xx/5xx answers and on-page errors with a screenshot, and asks the assistant one question.</p>
+<p><strong>Quick check: 13 passed, 0 failed · Smoke suite (remaining): 3 passed, 3 failed, 2 blocked</strong> · App: <a href="https://app.dev.worldsurfleague.com" rel="nofollow">https://app.dev.worldsurfleague.com</a> · Run started 2026-11-23T16:28:00.720Z</p>
+<p>The quick check signs each view in, opens every menu page and one event page, records API 4xx/5xx answers and on-page errors with a screenshot, and asks the assistant one question.</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
@@ -24,7 +24,62 @@
 </tbody>
 </table></markdown-accessiblity-table>
 <p>Test athlete: new adult account created by API (age gate 200, register 201).</p>
-<h2>Tour Manager</h2>
+<h2>Smoke suite: remaining tests</h2>
+<p><strong>3 passed, 3 failed, 2 blocked.</strong> Tour Manager access, ADD-17 and the adult event-entry journey are not repeated here: they passed earlier today.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Test</th>
+<th>Result</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>declinedCard</td>
+<td>❌ Fail</td>
+<td>A page step timed out after 30 s (Playwright TimeoutError)</td>
+</tr>
+<tr>
+<td>registerAsThirteenToSeventeenAndCompleteGuardianFlow</td>
+<td>✅ Pass</td>
+<td>—</td>
+</tr>
+<tr>
+<td>registerUnderThirteenAndDocumentConsentEmailGap</td>
+<td>❌ Fail</td>
+<td>Environment: backend Age gate POST /age-gate did not answer within 15s; page says: ! Unexpected network error</td>
+</tr>
+<tr>
+<td>singleEventMembership_ageGateThroughPayment</td>
+<td>❌ Fail</td>
+<td>Age gate did not render within 45s after navigation.</td>
+</tr>
+<tr>
+<td>anonymousCannotAccessWorkspace</td>
+<td>✅ Pass</td>
+<td>—</td>
+</tr>
+<tr>
+<td>AUTO-PAY-001<br><sub>Confirm &amp; charge succeeds (with EVT-004 history)</sub></td>
+<td>⛔ Blocked</td>
+<td>Setup did not complete, so no payment checks ran</td>
+</tr>
+<tr>
+<td>AUTO-PAY-002<br><sub>Declined payment (with PAY-008)</sub></td>
+<td>⛔ Blocked</td>
+<td>Setup did not complete, so no payment checks ran</td>
+</tr>
+<tr>
+<td>JUNIOR-SCOPE-MEMBERSHIP-EVENTS</td>
+<td>✅ Pass</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>ADD-20 and EVENT-STATUS-001 are not run on Dev: the runner replaces them there with the P1 catalogue, and the P1 suite was not part of this run.</p>
+<p>The age-gate and timeout failures came at the same time as network errors on this machine (a DNS lookup for app.dev failed during the same window), so they may be connection problems rather than app bugs.</p>
+<h2>Quick check: Tour Manager</h2>
 <p>Sign-in: HTTP 200</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
@@ -44,7 +99,7 @@
 <td>Events</td>
 <td>✅ Pass</td>
 <td>—</td>
-<td>4.9 s</td>
+<td>5.1 s</td>
 </tr>
 <tr>
 <td>2</td>
@@ -52,7 +107,7 @@
 <td>Athletes</td>
 <td>✅ Pass</td>
 <td>—</td>
-<td>4.4 s</td>
+<td>4.6 s</td>
 </tr>
 <tr>
 <td>3</td>
@@ -60,7 +115,7 @@
 <td>Reports</td>
 <td>✅ Pass</td>
 <td>—</td>
-<td>4.3 s</td>
+<td>4.5 s</td>
 </tr>
 <tr>
 <td>4</td>
@@ -68,7 +123,7 @@
 <td>Athlete Care</td>
 <td>✅ Pass</td>
 <td>—</td>
-<td>4.3 s</td>
+<td>4.5 s</td>
 </tr>
 <tr>
 <td>5</td>
@@ -76,7 +131,7 @@
 <td>Entry fees</td>
 <td>✅ Pass</td>
 <td>—</td>
-<td>4.2 s</td>
+<td>4.5 s</td>
 </tr>
 <tr>
 <td>6</td>
@@ -84,18 +139,18 @@
 <td>Pismo Beach Open</td>
 <td>✅ Pass</td>
 <td>—</td>
-<td>4.3 s</td>
+<td>4.4 s</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p><strong>Assistant (assistant)</strong> · ✅ Pass · answered in 14 s</p>
+<p><strong>Assistant (assistant)</strong> · ✅ Pass · answered in 51 s</p>
 <blockquote>
 <p><strong>Q:</strong> How many events are open for entries right now?</p>
-<p><strong>A:</strong> I should also check whether 2027 has open events, since other seasons might too.</p>
+<p><strong>A:</strong> Right now 67 events are open for entries. 2026 season: 13. These run from 7 December to 31 December. Most are International Qualifying Series events in North America. The list also includes the Santa Cruz Pro and the men's and women's Central Coast Pro Junior. 2027 season: 54. The first ones start in early January, for example the men's and women's Tahara Pacific Open on 3 January. No later season has any events open for entries yet. Refer to: WSL events data Right now <strong>67 events</strong> are open for</p>
 </blockquote>
 <p><a target="_blank" rel="noopener noreferrer" href="shots/tour-manager-assistant.png"><img src="shots/tour-manager-assistant.png" alt="Tour Manager assistant" style="max-width: 100%;"></a></p>
 <p>Recording: <video controls="" width="720" src="tour-manager.webm"></video></p>
-<h2>Athlete</h2>
+<h2>Quick check: Athlete</h2>
 <p>Sign-in: HTTP 200</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
