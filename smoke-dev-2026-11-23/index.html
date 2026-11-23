@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dev smoke 2026-11-23</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>Dev smoke report · 2026-11-23</h1>
+<p><strong>Result: 13 passed, 0 failed</strong> · App: <a href="https://app.dev.worldsurfleague.com" rel="nofollow">https://app.dev.worldsurfleague.com</a> · Run started 2026-11-23T16:28:00.720Z</p>
+<p>Each view signs in, opens every menu page and one event page, records API 4xx/5xx answers and on-page errors with a screenshot, and asks the assistant one question.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>View</th>
+<th>Pages passed</th>
+<th>Assistant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tour Manager</td>
+<td>6/6</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Athlete</td>
+<td>5/5</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>Test athlete: new adult account created by API (age gate 200, register 201).</p>
+<h2>Tour Manager</h2>
+<p>Sign-in: HTTP 200</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>#</th>
+<th>Page</th>
+<th>Heading</th>
+<th>Result</th>
+<th>API errors / page error</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="shots/tour-manager-01--tour-manager-events.png"><code class="notranslate">/tour-manager/events</code></a></td>
+<td>Events</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.9 s</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="shots/tour-manager-02--tour-manager-athletes.png"><code class="notranslate">/tour-manager/athletes</code></a></td>
+<td>Athletes</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.4 s</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="shots/tour-manager-03--tour-manager-finance.png"><code class="notranslate">/tour-manager/finance</code></a></td>
+<td>Reports</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.3 s</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="shots/tour-manager-04--tour-manager-tickets.png"><code class="notranslate">/tour-manager/tickets</code></a></td>
+<td>Athlete Care</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.3 s</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="shots/tour-manager-05--tour-manager-settings.png"><code class="notranslate">/tour-manager/settings</code></a></td>
+<td>Entry fees</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.2 s</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="shots/tour-manager-06-event-detail.png"><code class="notranslate">/tour-manager/events/01a1ea3f-df3b-73ce-8034-a1e1e4405389</code></a></td>
+<td>Pismo Beach Open</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.3 s</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>Assistant (assistant)</strong> · ✅ Pass · answered in 14 s</p>
+<blockquote>
+<p><strong>Q:</strong> How many events are open for entries right now?</p>
+<p><strong>A:</strong> I should also check whether 2027 has open events, since other seasons might too.</p>
+</blockquote>
+<p><a target="_blank" rel="noopener noreferrer" href="shots/tour-manager-assistant.png"><img src="shots/tour-manager-assistant.png" alt="Tour Manager assistant" style="max-width: 100%;"></a></p>
+<p>Recording: <video controls="" width="720" src="tour-manager.webm"></video></p>
+<h2>Athlete</h2>
+<p>Sign-in: HTTP 200</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>#</th>
+<th>Page</th>
+<th>Heading</th>
+<th>Result</th>
+<th>API errors / page error</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="shots/athlete-01--athlete-registration-athletes.png"><code class="notranslate">/athlete-registration/athletes</code></a></td>
+<td>Set Up Your First Athlete</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.8 s</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="shots/athlete-02--events.png"><code class="notranslate">/events</code></a></td>
+<td>Set Up Your First Athlete</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>5.2 s</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="shots/athlete-03--support-tickets.png"><code class="notranslate">/support/tickets</code></a></td>
+<td>Athlete Care</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.2 s</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="shots/athlete-04--support.png"><code class="notranslate">/support</code></a></td>
+<td>—</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.2 s</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="shots/athlete-05--athlete-registration-register.png"><code class="notranslate">/athlete-registration/register</code></a></td>
+<td>Athlete Details</td>
+<td>✅ Pass</td>
+<td>—</td>
+<td>4.8 s</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>Assistant (assistant)</strong> · ✅ Pass · answered in 8 s</p>
+<blockquote>
+<p><strong>Q:</strong> How do I enter an event?</p>
+<p><strong>A:</strong> You enter events from the Events page: choose the athlete, pick an event that's open for entries, and finish registering there. You'll also choose insurance if the event needs it, and pay the entry fee. The athlete can only see and enter events once their profile and this year's membership are both active. Some events are locked if their membership doesn't cover them. If you tell me which athlete and which event, I can check whether entries are open and fill in the registration page for you. You</p>
+</blockquote>
+<p><a target="_blank" rel="noopener noreferrer" href="shots/athlete-assistant.png"><img src="shots/athlete-assistant.png" alt="Athlete assistant" style="max-width: 100%;"></a></p>
+<p>Recording: <video controls="" width="720" src="athlete.webm"></video></p></body></html>
