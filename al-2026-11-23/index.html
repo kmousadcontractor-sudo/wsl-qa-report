@@ -1,59 +1,58 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AL assistant test report · 2026-11-23</title>
-<style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>AL assistant test report · 2026-11-23</h1>
-<p><strong>62 of 72 checks pass</strong> · 8 fail · 2 blocked · Environment: Dev (app.dev.worldsurfleague.com) · Code read: wsl-ai-service ef16831, wsl-django-bff 190feed (branch dev)</p>
-<p>Plus the project's existing AL tests: <strong>AUTO-AST-006 to 011 all pass (25/25 checks)</strong>, and the cancellation suite's AL refund assessment (<strong>28 checks pass</strong> on Dev today).</p>
-<h2>Issues found</h2>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AL assistant test report</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>AL assistant test report</h1>
+<p>Dev · 23–24 Nov 2026 · AL is the Tour Manager's AI assistant.</p>
+<h2>Summary</h2>
+<p><strong>62 of 72 checks pass.</strong> AL reads data correctly, follows its safety rules, and its API and security checks all pass. The problems are in how it decides whether a request is something it can help with.</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
-<th>#</th>
-<th>Issue</th>
-<th>Evidence</th>
-<th>Severity</th>
+<th>Area</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td><strong>AL refuses every handling-rate change.</strong> "Set the handling rate to 5%…" in 4 wordings across 3 runs got "That's outside what I can help with" before AL used any tool. The code offers <code class="notranslate">handling_rate.set</code> to AL (finance role required), so the scope filter is blocking a supported action.</td>
-<td>W11 (runs 1 and 2), P05, P06</td>
-<td>High</td>
+<td>Reading data (events, entries, rules, settings)</td>
+<td>✅ 16/16</td>
 </tr>
 <tr>
-<td>2</td>
-<td><strong>The scope filter rejects valid Tour Manager requests inconsistently.</strong> “Create a new season called 2033…” is refused every time (3/3); the other wording works. Copy an event, star several events, create a season and message an account holder were each declined in both full runs with one wording (W06, W07, W12, W13) and handled with another (P01–P04, P07–P10).</td>
-<td>W06/W07/W12/W13 vs P01–P10</td>
-<td>High</td>
+<td>Safety rules (injection, medical, crisis, privacy, languages)</td>
+<td>✅ 12/12</td>
 </tr>
 <tr>
-<td>3</td>
-<td><strong>AL sometimes can't find an existing event by its exact name.</strong> The same event is found in one request and “not found” in the next (seen twice in the reproduction; first seen as W03 after a rename).</td>
-<td>W03 run 2; repro 2b, 2h</td>
-<td>Medium</td>
+<td>API and security (limits, tampered or replayed actions, other users)</td>
+<td>✅ 17/17</td>
 </tr>
 <tr>
-<td>4</td>
-<td>From code, not reproduced: the "busy" message and the wild-card refusal say <strong>"Beach Marshal"</strong> to AL users.</td>
-<td>policy.toml:371-374; BFF _tour_manager_actions</td>
-<td>Low</td>
+<td>Making changes (create, rename, status, charge, withdraw…)</td>
+<td><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 10/17</td>
 </tr>
 <tr>
-<td>5</td>
-<td>From code: AL's instructions tell it to find withdrawals in the refund review list, which is hidden from AL. Tested: AL does not leak reasons (R16 passes), but it cannot do what its prompt describes.</td>
-<td>prompts.py:452-456; R16</td>
-<td>Low</td>
+<td>Same request in different words</td>
+<td><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 8/10</td>
 </tr>
 <tr>
-<td>6</td>
-<td>From code: two reads offered to AL always refuse (<code class="notranslate">entry.attention.batch_get</code>, <code class="notranslate">entry.event_summary.batch_get</code> are service-only).</td>
-<td>competition entry_routes.py:412-463</td>
-<td>Low</td>
+<td>Existing AL tests in the project (AST-006 to 011)</td>
+<td>✅ 6/6</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p>Not flagged to the team.</p>
-<h2>Reproduction in the Tour Manager app (24 Nov 2026, 00:10 Cairo)</h2>
-<p>Recording: <a href="repro/recording.mp4">repro/recording.mp4</a> · Records: <a href="repro/records.json">repro/records.json</a>. Each request was typed into AL in a new conversation on Dev; nothing was confirmed in the app.</p>
+<h2>Issues</h2>
+<ol>
+<li><strong>AL refuses every handling-rate change.</strong> It answers "That's outside what I can help with" and does nothing, every time (6 of 6). The code says AL should be able to propose this.</li>
+<li><strong>AL refuses some normal requests at random.</strong> "Create a new season called 2033…" is refused every time; other wordings work. Copying an event, starring several events and messaging an account holder were refused in some runs and worked in others.</li>
+<li><strong>AL sometimes can't find an event that exists.</strong> The same event name is found in one request and "not found" in the next.</li>
+</ol>
+<p>Smaller things seen in the code (not tested live): AL users sometimes see Beach Marshal's name in messages; AL's instructions mention a refund list it can't see; two settings reads offered to AL always fail.</p>
+<p>Nothing has been flagged to the team.</p>
+<h2>Evidence</h2>
+<ul>
+<li>Recording of the reproduction: <a href="repro/recording.mp4">repro/recording.mp4</a></li>
+<li>Raw records: <a href="repro/records.json">repro/records.json</a></li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer" href="repro/shots/1a-handling-rate.png"><img src="repro/shots/1a-handling-rate.png" alt="Handling rate refused" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="repro/shots/2b-copy-working-wording.png"><img src="repro/shots/2b-copy-working-wording.png" alt="Existing event not found" style="max-width: 100%;"></a></p>
+<details><summary><strong>Reproduction, request by request</strong></summary>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
@@ -164,25 +163,8 @@
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p><strong>What the reproduction shows</strong></p>
-<ul>
-<li><strong>Issue 1 reproduced:</strong> every handling-rate request is refused with “That's outside what I can help with” and AL uses no tools (now 6 of 6 attempts across 4 runs).</li>
-<li><strong>Issue 2, narrowed:</strong> “Create a new season called 2033 running 1 January to 31 December 2033” was refused again (3 of 3 runs), while “Set up the 2033 season…” works. Copy, bulk star and message-the-account-holder wordings that were refused twice before were handled this time, so for those the scope filter is <strong>inconsistent</strong>, not tied to the wording.</li>
-<li><strong>Issue 3, replaced:</strong> the renamed event was found straight away this time (rename at 22:15:26 UTC, found immediately and after one minute). The real problem is wider: <strong>AL sometimes cannot find an existing event by its exact name.</strong> “AL Suite Open T5OK3” was found in case 2a and not found one request later in 2b; the same happened to the field event in 2g → 2h. That explains the earlier W03 failure.</li>
-</ul>
-<p><a target="_blank" rel="noopener noreferrer" href="repro/shots/1a-handling-rate.png"><img src="repro/shots/1a-handling-rate.png" alt="Handling rate refused" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="repro/shots/2b-copy-working-wording.png"><img src="repro/shots/2b-copy-working-wording.png" alt="Existing event not found" style="max-width: 100%;"></a></p>
-<h2>What AL is and what it can do (from the code)</h2>
-<ul>
-<li><strong>Who gets AL:</strong> a token with role <code class="notranslate">admin</code> or <code class="notranslate">tour_manager</code>. Everyone else gets Beach Marshal. A finance-only account does not get AL.</li>
-<li><strong>AL never changes data itself.</strong> It proposes a plan of signed steps (HMAC bound to the user, valid 1 hour). The manager confirms each step and the BFF runs it as that manager through <code class="notranslate">/api/assistant/actions</code> (Idempotency-Key required; a step runs once).</li>
-<li><strong>Read tools (pilot policy):</strong> seasons, event search and lookup by name, event detail/overview, entries (withdrawal reasons and contact details removed), entry and event history, tours, regions, locations, rule book search and rule by number, refund assessments, settings reads (fee grid, handling rate, payment rules, memberships, insurance, GL mapping, settlement accounts), field charge preview, refund and wild-card quotes, navigation to Tour Manager pages. No web search or places under pilot.</li>
-<li><strong>Write actions AL can propose (all need confirmation):</strong> create, copy, update, star, archive events; change event status (rules enforced by the service; standby, live and completed are system-only); cancel a scheduled opening; seed order; move alternates up and undo; withdraw (reason required), promote, waive a fee (reason or label required), retry a card payment, message an account holder (sends a real email); confirm and charge the field (charges cards); wild-card slots and assignments; seasons and season copies; tours; locations; <strong>money settings</strong> (fee grid, memberships, insurance, payment rules, handling rate, GL mapping, settlement accounts), which also need the finance role.</li>
-<li><strong>Hidden from AL:</strong> refund decisions and the refund queue, entry create/update, insurance documents, staff and admin actions. AL never decides refunds.</li>
-<li><strong>Limits:</strong> 2,000 characters per message, 30 messages per conversation, 10 runs a minute, 200 a day, one answer at a time per conversation, 45-second run deadline, 20 model calls and 30 tool calls per run, bulk plans up to 50 steps, sequences up to 10.</li>
-<li><strong>Guardrails:</strong> fixed refusals for crisis, wellbeing, medical, substances, coaching, travel logistics, other people's private lives and "ignore your instructions"; answers in the person's language; says it is an AI; tool output is treated as untrusted; client-sent system messages are dropped.</li>
-</ul>
-<h2>Results</h2>
+</details>
+<details><summary><strong>All 72 checks</strong></summary>
 <h3>Read actions (answers checked against Dev data) · 16/16 pass</h3>
 <markdown-accessiblity-table><table role="table">
 <thead>
@@ -757,7 +739,8 @@
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h2>Existing AL tests in this project (run 23 Nov 2026 on Dev)</h2>
+</details>
+<details><summary><strong>Existing AL tests</strong></summary>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
@@ -812,10 +795,22 @@
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h2>How this was tested</h2>
+</details>
+<details><summary><strong>What AL can do (from the code)</strong></summary>
 <ul>
-<li>Dev only, Tour Manager account with tour_manager and finance roles. Each check sends a real AL conversation through <code class="notranslate">/api/assistant/run</code> and reads the streamed tools, proposal and answer.</li>
-<li>Writes were confirmed only on records the suite created (events named "AL Suite … ", one QA entry; the field charge used a Stripe test card). <strong>Money settings and new seasons were proposed only, never confirmed.</strong></li>
-<li>Three runs: run 1 (all sections), run 2 (after fixing the suite's event setup and adding a rating), run 3 (scope-filter probes with a fresh sign-in). The result shown is the latest run; earlier results are listed in brackets.</li>
-<li>Suite: <code class="notranslate">scripts/bugs/al-comprehensive-20261123.mjs</code>. Raw records: <code class="notranslate">artifacts/al-comprehensive-2026-11-23/</code>.</li>
-</ul></body></html>
+<li><strong>Who gets AL:</strong> a token with role <code class="notranslate">admin</code> or <code class="notranslate">tour_manager</code>. Everyone else gets Beach Marshal. A finance-only account does not get AL.</li>
+<li><strong>AL never changes data itself.</strong> It proposes a plan of signed steps (HMAC bound to the user, valid 1 hour). The manager confirms each step and the BFF runs it as that manager through <code class="notranslate">/api/assistant/actions</code> (Idempotency-Key required; a step runs once).</li>
+<li><strong>Read tools (pilot policy):</strong> seasons, event search and lookup by name, event detail/overview, entries (withdrawal reasons and contact details removed), entry and event history, tours, regions, locations, rule book search and rule by number, refund assessments, settings reads (fee grid, handling rate, payment rules, memberships, insurance, GL mapping, settlement accounts), field charge preview, refund and wild-card quotes, navigation to Tour Manager pages. No web search or places under pilot.</li>
+<li><strong>Write actions AL can propose (all need confirmation):</strong> create, copy, update, star, archive events; change event status (rules enforced by the service; standby, live and completed are system-only); cancel a scheduled opening; seed order; move alternates up and undo; withdraw (reason required), promote, waive a fee (reason or label required), retry a card payment, message an account holder (sends a real email); confirm and charge the field (charges cards); wild-card slots and assignments; seasons and season copies; tours; locations; <strong>money settings</strong> (fee grid, memberships, insurance, payment rules, handling rate, GL mapping, settlement accounts), which also need the finance role.</li>
+<li><strong>Hidden from AL:</strong> refund decisions and the refund queue, entry create/update, insurance documents, staff and admin actions. AL never decides refunds.</li>
+<li><strong>Limits:</strong> 2,000 characters per message, 30 messages per conversation, 10 runs a minute, 200 a day, one answer at a time per conversation, 45-second run deadline, 20 model calls and 30 tool calls per run, bulk plans up to 50 steps, sequences up to 10.</li>
+<li><strong>Guardrails:</strong> fixed refusals for crisis, wellbeing, medical, substances, coaching, travel logistics, other people's private lives and "ignore your instructions"; answers in the person's language; says it is an AI; tool output is treated as untrusted; client-sent system messages are dropped.</li>
+</ul>
+</details>
+<details><summary><strong>How it was tested</strong></summary>
+<ul>
+<li>Dev only. Changes were confirmed only on events and one entry the test created; the card charge used a Stripe test card.</li>
+<li>The handling-rate change and the new season were proposed only, never confirmed.</li>
+<li>Suite: <code class="notranslate">scripts/bugs/al-comprehensive-20261123.mjs</code> · reproduction: <code class="notranslate">scripts/bugs/repro-al-failures-20261124.mjs</code>.</li>
+</ul>
+</details></body></html>
