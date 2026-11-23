@@ -1,0 +1,29 @@
+{
+  "header": {
+    "code": "to-confirm",
+    "label": "Closed · to confirm",
+    "value": "9",
+    "detail": "Orange County Classic and 8 more",
+    "tone": "default"
+  },
+  "runs": [
+    {
+      "q": "How many events are closed and waiting for me to confirm the field?",
+      "tools": [
+        "list_seasons",
+        "search_events"
+      ],
+      "ans": "In the 2026 season, 15 events are closed for entries, as of just now. This list only shows each event's status, so I can't tell which ones already have their field confirmed: - event (men's International Qualifying Series, Rangiroa): 27 Nov - Orange County Classic, men's and women's: 2 Dec - Costa da Caparica Pro, men's and women's: 7 Dec - Lexus Pipe Masters, men's and women's: 8 Dec - Atlantic City Classic 171905 2 (men's International Qualifying Series, Morro Bay): 17 Dec - Arecibo Classic 183936 1 (men's International Qualifying Series, El Salvador): 17 Dec - Oceanside Women's Pro: 19 Dec - Central Coast Open, men's and women's: 22 Dec - US CT (men's Championship Tour, Manhattan Beach): 24 Dec - North Shore Open, men's and women's: 27 Dec The first one starts this Friday, so it's the most urgent. I can check its field, or any other one's, before you confirm and charge it."
+    },
+    {
+      "q": "How many fields are ready to confirm and charge right now?",
+      "tools": [
+        "list_actions",
+        "describe_action",
+        "list_seasons",
+        "call_read"
+      ],
+      "ans": "Right now 9 events in the 2026 season are closed for entries with fields still waiting to be confirmed and charged. The soonest are the two Orange County Classic events, which are separate events and both start on 2 December, and the Costa da Caparica Pro on 7 December. Across the hub, 451 seats need attention. Most are open seats (312), followed by entries still missing insurance (119) and declined cards (17). Confirming a field won't charge entries that are still waiting on insurance."
+    }
+  ]
+}
