@@ -1,0 +1,215 @@
+{
+  "at": "2026-11-23T22:11:17.478Z",
+  "env": "dev",
+  "cases": [
+    {
+      "id": "1a-handling-rate",
+      "prompt": "Set the handling rate to 5% starting 1 January 2027.",
+      "answer": "That's outside what I can help with. I can help with WSL rules, events, entries and your account. That's outside what I can help with. I can help with WSL rules, events, entries and your account.",
+      "declined": true,
+      "stream": {
+        "http": 200,
+        "tools": []
+      },
+      "shot": "shots/1a-handling-rate.png",
+      "videoAt": "11 s"
+    },
+    {
+      "id": "1b-handling-rate",
+      "prompt": "Update the handling fee rate in settings to 5%.",
+      "answer": "That's outside what I can help with. I can help with WSL rules, events, entries and your account. That's outside what I can help with. I can help with WSL rules, events, entries and your account.",
+      "declined": true,
+      "stream": {
+        "http": 200,
+        "tools": []
+      },
+      "shot": "shots/1b-handling-rate.png",
+      "videoAt": "20 s"
+    },
+    {
+      "id": "2a-copy-declined-wording",
+      "prompt": "Make a copy of \"AL Suite Open T5OK3\".",
+      "answer": "I've set up a copy of AL Suite Open T5OK3, and a confirmation card is waiting for you. Nothing is created until you confirm it. The copy will be a draft in the 2027 season. It keeps the original's details: Tour: Pro Junior Series, men's, rated JR 1,000 Venue: El Sunzal, El Salvador (North America region) Date: 11 February 2027 Field size: 48 Prize money: $123.45 USD Entry fee: $150.00 USD The copy doesn't carry over the registration window, which is only set when you change the event's status. Because the copy has the same tour and dates as the original, the hub may refuse to save it, since two events on the same tour can't overlap. If that happens, tell me new dates or a different tour and I'll set up the copy again. AL Suite Open T5OK3 Copy event Awaiting confirmation Source event AL Suite Open T5OK3 Copy event Cancel Refer to: WSL events data I've set up a copy of AL Suite Open T5OK3,",
+      "declined": false,
+      "stream": {
+        "http": 200,
+        "tools": [
+          "find_events",
+          "list_actions",
+          "list_seasons",
+          "search_events",
+          "search_events",
+          "describe_action",
+          "call_read",
+          "propose_action"
+        ]
+      },
+      "shot": "shots/2a-copy-declined-wording.png",
+      "videoAt": "57 s"
+    },
+    {
+      "id": "2b-copy-working-wording",
+      "prompt": "Please copy AL Suite Open T5OK3 so I can reuse its settings.",
+      "answer": "I couldn't find an event called \"AL Suite Open T5OK3\". These were the closest matches: AL Test Juniper Marlin IYKG: 17 December 2026, Ponto, Carlsbad AL Test Basalt Quokka ZJIK: 12 December 2026, Atlantic City AL Test Basalt Kestrel A5O2: 19 December 2026, Los Cerritos Beach, Mexico AL Test Quokka Saffron S52Y: 23 December 2026, Cabarete, Dominican Republic AL Test Saffron Quokka 7YQX: 22 March 2027, Oceanside Harbor Is it one of these? If not, which season is it in? Once I know the event, I'll set up the copy for you to confirm. The copy starts as a draft in the same season as the original. Refer to: WSL events data I couldn't find an event called \"AL Suite Open T5OK3\". These were the closest matches: - AL Test Juniper Marlin IYKG: 17 December 2026, Ponto, Carlsbad - AL Test Basalt Quokka ZJIK: 12 December 2026, Atlantic City - AL Test Basalt Kestrel A5O2: 19 December 2026, Los Cerritos",
+      "declined": false,
+      "stream": {
+        "http": 200,
+        "tools": [
+          "find_events",
+          "list_actions"
+        ]
+      },
+      "shot": "shots/2b-copy-working-wording.png",
+      "videoAt": "72 s"
+    },
+    {
+      "id": "2c-season-declined-wording",
+      "prompt": "Create a new season called 2033 running 1 January to 31 December 2033.",
+      "answer": "That's outside what I can help with. I can help with WSL rules, events, entries and your account. That's outside what I can help with. I can help with WSL rules, events, entries and your account.",
+      "declined": true,
+      "stream": {
+        "http": 200,
+        "tools": []
+      },
+      "shot": "shots/2c-season-declined-wording.png",
+      "videoAt": "80 s"
+    },
+    {
+      "id": "2d-season-working-wording",
+      "prompt": "Set up the 2033 season for me, 1 January to 31 December 2033.",
+      "answer": "I've put a confirmation card on screen to create the 2033 season, running from 1 January to 31 December 2033. Nothing is created until you confirm it. The new season won't have an entry-fee grid yet, so let me know if you'd like to copy one over from an existing season. Create season Awaiting confirmation Name 2033 Start date 2033-01-01 End date 2033-12-31 Create season Cancel I've put a confirmation card on screen to create the 2033 season, running from 1 January to 31 December 2033. Nothing is created until you confirm it. The new season won't have an entry-fee grid yet, so let me know if you'd like to copy one over from an existing season.",
+      "declined": false,
+      "stream": {
+        "http": 200,
+        "tools": [
+          "list_actions",
+          "describe_action",
+          "propose_action"
+        ]
+      },
+      "shot": "shots/2d-season-working-wording.png",
+      "videoAt": "99 s"
+    },
+    {
+      "id": "2e-bulk-star-declined-wording",
+      "prompt": "Star these events: \"AL Suite Open T5OK3\" and \"AL Suite Field T5OK3\".",
+      "answer": "I've put a confirmation card on screen to star both events. Nothing is starred until you confirm it. AL Suite Open T5OK3: at El Sunzal, El Salvador, on 11 February 2027. AL Suite Field T5OK3: at Rincon, Puerto Rico, on 24 February 2027. Both are 2027 Pro Junior Series events and are open for entries. AL Suite Open T5OK3 AL Suite Field T5OK3 Set event star (2 items) Awaiting confirmation Set event star Event AL Suite Open T5OK3 Starred Yes Set event star Event AL Suite Field T5OK3 Starred Yes Confirm Cancel Refer to: WSL events data I've put a confirmation card on screen to star both events. Nothing is starred until you confirm it. - **AL Suite Open T5OK3:** at El Sunzal, El Salvador, on 11 February 2027. - **AL Suite Field T5OK3:** at Rincon, Puerto Rico, on 24 February 2027. Both are 2027 Pro Junior Series events and are open for entries.",
+      "declined": false,
+      "stream": {
+        "http": 200,
+        "tools": [
+          "find_events",
+          "find_events",
+          "list_actions",
+          "list_seasons",
+          "describe_action",
+          "search_events",
+          "search_events",
+          "propose_action"
+        ]
+      },
+      "shot": "shots/2e-bulk-star-declined-wording.png",
+      "videoAt": "124 s"
+    },
+    {
+      "id": "2f-bulk-star-working-wording",
+      "prompt": "Can you star AL Suite Open T5OK3 and AL Suite Field T5OK3?",
+      "answer": "I've set up a confirmation card to star both events. Nothing is starred until you confirm it. Both are Pro Junior Series events in the 2027 season, and both are open for entries: AL Suite Open T5OK3: 11 February 2027 at El Sunzal, El Salvador AL Suite Field T5OK3: 24 February 2027 at Rincon, Puerto Rico AL Suite Open T5OK3 AL Suite Field T5OK3 Set event star (2 items) Awaiting confirmation Set event star Event AL Suite Open T5OK3 Starred Yes Set event star Event AL Suite Field T5OK3 Starred Yes Confirm Cancel Refer to: WSL events data I've set up a confirmation card to star both events. Nothing is starred until you confirm it. Both are Pro Junior Series events in the 2027 season, and both are open for entries: - **AL Suite Open T5OK3:** 11 February 2027 at El Sunzal, El Salvador - **AL Suite Field T5OK3:** 24 February 2027 at Rincon, Puerto Rico",
+      "declined": false,
+      "stream": {
+        "http": 200,
+        "tools": [
+          "find_events",
+          "find_events",
+          "list_actions",
+          "list_seasons",
+          "describe_action",
+          "search_events",
+          "search_events",
+          "propose_action"
+        ]
+      },
+      "shot": "shots/2f-bulk-star-working-wording.png",
+      "videoAt": "151 s"
+    },
+    {
+      "id": "2g-message-declined-wording",
+      "prompt": "Message the account holder of QA TodoRetest's entry in AL Suite Field T5OK3. Subject: \"Schedule\". Body: \"Heats start at 8am.\"",
+      "answer": "I've set up the email to the account holder of QA TodoRetest's entry in AL Suite Field T5OK3. The subject is \"Schedule\" and the message is \"Heats start at 8am.\" It goes out only when you confirm the card on your screen, and then it's saved on the entry's history. QA TodoRetest's entry is still waitlisted, so they don't have a place in the field yet. AL Suite Field T5OK3 Message the account holder Awaiting confirmation Entry QA TodoRetest Event AL Suite Field T5OK3 Message subject Schedule Message body Heats start at 8am. Channel email Message the account holder Cancel Refer to: WSL events data I've set up the email to the account holder of QA TodoRetest's entry in AL Suite Field T5OK3. The subject is \"Schedule\" and the message is \"Heats start at 8am.\" It goes out only when you confirm the card on your screen, and then it's saved on the entry's history. QA TodoRetest's entry is still wait",
+      "declined": false,
+      "stream": {
+        "http": 200,
+        "tools": [
+          "find_events",
+          "list_actions",
+          "list_seasons",
+          "describe_action",
+          "search_events",
+          "list_event_entries",
+          "propose_action"
+        ]
+      },
+      "shot": "shots/2g-message-declined-wording.png",
+      "videoAt": "178 s"
+    },
+    {
+      "id": "2h-message-working-wording",
+      "prompt": "Send a short note to the account holder of QA TodoRetest's entry in AL Suite Field T5OK3: subject 'Schedule update', body 'Heats start at 8am.'",
+      "answer": "I couldn't find an event called AL Suite Field T5OK3. The closest names were AL Suite Field S4WSO (7 February 2027, Rincon, Puerto Rico) and AL Suite Field SM9QO (19 February 2027, Basse Pointe, Martinique). Which one did you mean? There's also a catch with the message itself. The hub can't send a note to an account holder. The message action only records a message that has already gone out, like an email you sent or a call you had. If you send \"Schedule update – Heats start at 8am.\" yourself, I can propose recording it on QA TodoRetest's entry once you tell me which event it is. Refer to: WSL events data I couldn't find an event called AL Suite Field T5OK3. The closest names were AL Suite Field S4WSO (7 February 2027, Rincon, Puerto Rico) and AL Suite Field SM9QO (19 February 2027, Basse Pointe, Martinique). Which one did you mean? There's also a catch with the message itself. The hub c",
+      "declined": false,
+      "stream": {
+        "http": 200,
+        "tools": [
+          "find_events",
+          "list_actions"
+        ]
+      },
+      "shot": "shots/2h-message-working-wording.png",
+      "videoAt": "195 s"
+    },
+    {
+      "id": "3a-find-renamed-event",
+      "prompt": "Star \"AL Suite Open T5OK3 RQ3G7\" for me.",
+      "answer": "I've set up a confirmation card to star AL Suite Open T5OK3 RQ3G7. That's the Pro Junior Series men's event at El Sunzal, La Libertad, on 11 February 2027. It won't be starred until you confirm the card. Set event star Awaiting confirmation Event AL Suite Open T5OK3 RQ3G7 Starred Yes Set event star Cancel Refer to: WSL events data I've set up a confirmation card to star AL Suite Open T5OK3 RQ3G7. That's the Pro Junior Series men's event at El Sunzal, La Libertad, on 11 February 2027. It won't be starred until you confirm the card.",
+      "declined": false,
+      "stream": {
+        "http": 200,
+        "tools": [
+          "find_events",
+          "list_actions",
+          "describe_action",
+          "propose_action"
+        ]
+      },
+      "shot": "shots/3a-find-renamed-event.png",
+      "videoAt": "261 s"
+    },
+    {
+      "id": "3b-find-renamed-event-1-min-later",
+      "prompt": "Star \"AL Suite Open T5OK3 RQ3G7\" for me.",
+      "answer": "I've set up a confirmation card to star AL Suite Open T5OK3 RQ3G7. It's the Pro Junior Series men's event at El Sunzal, La Libertad, El Salvador, on 11 February 2027. It will be starred once you confirm the card. Set event star Awaiting confirmation Event AL Suite Open T5OK3 RQ3G7 Starred Yes Set event star Cancel Refer to: WSL events data I've set up a confirmation card to star AL Suite Open T5OK3 RQ3G7. It's the Pro Junior Series men's event at El Sunzal, La Libertad, El Salvador, on 11 February 2027. It will be starred once you confirm the card.",
+      "declined": false,
+      "stream": {
+        "http": 200,
+        "tools": [
+          "find_events",
+          "list_actions",
+          "describe_action",
+          "propose_action"
+        ]
+      },
+      "shot": "shots/3b-find-renamed-event-1-min-later.png",
+      "videoAt": "340 s"
+    }
+  ],
+  "rename": {
+    "from": "AL Suite Open T5OK3",
+    "to": "AL Suite Open T5OK3 RQ3G7",
+    "proposed": true,
+    "confirmHttp": 200,
+    "renamedAt": "2026-11-23T22:15:26.977Z",
+    "foundRightAway": true,
+    "foundAfterOneMinute": true
+  },
+  "video": "recording.mp4"
+}
