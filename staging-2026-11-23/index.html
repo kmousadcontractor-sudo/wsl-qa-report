@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Staging test report · 2026-11-23</title>
 <style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>Staging test report · 2026-11-23</h1>
-<p><strong>37 of 43 passed</strong> · 3 failed · 1 blocked · 1 not finished · App: <a href="https://app.staging01.worldsurfleague.com" rel="nofollow">https://app.staging01.worldsurfleague.com</a> · Started 21:49:03 (Cairo time), 20-minute run</p>
+<p><strong>40 of 43 passed</strong> · 3 failed · App: <a href="https://app.staging01.worldsurfleague.com" rel="nofollow">https://app.staging01.worldsurfleague.com</a> · Started 21:49:03 (Cairo time), 20-minute run</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
@@ -15,7 +15,7 @@
 </tr>
 <tr>
 <td>Smoke</td>
-<td>8/13</td>
+<td>11/13</td>
 </tr>
 <tr>
 <td>Beach Marshal AST</td>
@@ -54,6 +54,12 @@
 <li>
 <p><strong>Email tests rerun (22:42, inboxes .02 guardian / .03 parent):</strong> neither reached the email step. 13–17: the age gate did not answer within 15 s; under-13: account creation did not appear within 15 s. The .02 inbox does receive staging mail (two guardian emails at 21:51); .03 has received nothing yet.</p>
 </li>
+<li>
+<p><strong>Final rerun (22:48):</strong> Tour Manager sign-in, EVENT-STATUS-001 (7/7) and JUNIOR-SCOPE passed.</p>
+</li>
+<li>
+<p><strong>Still failing (3):</strong> 13–17 and under-13 sign-ups (staging age gate / account step timed out before the email step), and the AL open-events count (AL matches staging's list of open events; the Events page header count is lower).</p>
+</li>
 </ul>
 <h2>Suite results</h2>
 <markdown-accessiblity-table><table role="table">
@@ -87,8 +93,8 @@
 <tr>
 <td>Smoke</td>
 <td>tourManagerReachesWorkspace</td>
-<td>❌ Fail</td>
-<td>Failed checks: Login / Tour Manager login returns HTTP 200: expected 200, actual 0</td>
+<td>✅ Pass</td>
+<td>Passed on the 22:48 rerun</td>
 </tr>
 <tr>
 <td>Smoke</td>
@@ -135,14 +141,14 @@
 <tr>
 <td>Smoke</td>
 <td>AUTO-STATUS-001<br><sub>Scheduled registration opening and closing lifecycle</sub></td>
-<td>⛔ Blocked</td>
-<td>Remaining grouped scenario checks: GET /tour-manager/events/01a209fd-2380-7272-acbb-2322a5d30efb returned HTTP 401 (no reason).</td>
+<td>✅ Pass</td>
+<td>Passed on the 22:48 rerun (7/7 checks)</td>
 </tr>
 <tr>
 <td>Smoke</td>
 <td>JUNIOR-SCOPE-MEMBERSHIP-EVENTS</td>
-<td>⏱️ Not finished</td>
-<td>Not started before the 14-minute cap</td>
+<td>✅ Pass</td>
+<td>Passed on the 22:48 rerun</td>
 </tr>
 <tr>
 <td>Beach Marshal AST</td>
