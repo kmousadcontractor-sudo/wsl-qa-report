@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Staging test report · 2026-11-23</title>
 <style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>Staging test report · 2026-11-23</h1>
-<p><strong>33 of 43 passed</strong> · 4 failed · 1 blocked · 4 not finished · App: <a href="https://app.staging01.worldsurfleague.com" rel="nofollow">https://app.staging01.worldsurfleague.com</a> · Started 21:49:03 (Cairo time), 20-minute run</p>
+<p><strong>36 of 43 passed</strong> · 3 failed · 1 blocked · 2 not finished · App: <a href="https://app.staging01.worldsurfleague.com" rel="nofollow">https://app.staging01.worldsurfleague.com</a> · Started 21:49:03 (Cairo time), 20-minute run</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
@@ -15,11 +15,11 @@
 </tr>
 <tr>
 <td>Smoke</td>
-<td>7/13</td>
+<td>8/13</td>
 </tr>
 <tr>
 <td>Beach Marshal AST</td>
-<td>8/11</td>
+<td>10/11</td>
 </tr>
 <tr>
 <td>Cancellation agent</td>
@@ -45,6 +45,9 @@
 <li>
 <p><strong>5-minute rerun (22:06):</strong> AST-007 and AST-008 passed and are updated above. The other reruns did not give a result: six parallel streams overloaded the test machine and the browser pages crashed ("Page crashed"), so those rows keep their first-run result.</p>
 </li>
+<li>
+<p><strong>Second 5-minute rerun (22:20, AL not rerun):</strong> declined card, AST-009 and AST-010 passed and are updated above. Still not passing: Tour Manager sign-in (request never connected), under-13 (the parent step on the age gate did not appear within 20 s), EVENT-STATUS-001 (connection timed out). 13–17, AST-011 and JUNIOR-SCOPE gave no result before the cap.</p>
+</li>
 </ul>
 <h2>Suite results</h2>
 <markdown-accessiblity-table><table role="table">
@@ -66,8 +69,8 @@
 <tr>
 <td>Smoke</td>
 <td>declinedCard</td>
-<td>❌ Fail</td>
-<td>net::ERR_NETWORK_CHANGED at <a href="https://app.staging01.worldsurfleague.com/athlete-registration/register" rel="nofollow">https://app.staging01.worldsurfleague.com/athlete-registration/register</a></td>
+<td>✅ Pass</td>
+<td>Passed on the 22:20 rerun</td>
 </tr>
 <tr>
 <td>Smoke</td>
@@ -186,14 +189,14 @@
 <tr>
 <td>Beach Marshal AST</td>
 <td>AUTO-AST-009</td>
-<td>⏱️ Not finished</td>
-<td>No result before the time limit</td>
+<td>✅ Pass</td>
+<td>Passed on the 22:20 rerun (6/6 checks)</td>
 </tr>
 <tr>
 <td>Beach Marshal AST</td>
 <td>AUTO-AST-010</td>
-<td>⏱️ Not finished</td>
-<td>No result before the time limit</td>
+<td>✅ Pass</td>
+<td>Passed on the 22:20 rerun (3/3 checks)</td>
 </tr>
 <tr>
 <td>Beach Marshal AST</td>
