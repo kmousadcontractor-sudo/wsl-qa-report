@@ -1,0 +1,161 @@
+{
+  "at": "2026-11-23T22:42:01.190Z",
+  "env": "dev",
+  "checks": [
+    {
+      "id": "BM-1",
+      "name": "Wild-card refusal wording",
+      "expected": "409 refusal that names AL, not Beach Marshal",
+      "actual": "HTTP 409: {\"title\":\"Something went wrong\",\"message\":\"Beach Marshal can't confirm a wild card — do this from the Athletes tab instead.\",\"reason\":null,\"fields\":{},\"retryable\":false}",
+      "status": "FAIL",
+      "evidence": {
+        "ask": {
+          "http": 200,
+          "tools": [
+            "find_events {\"text\": \"Huntington Winter Classic\"}",
+            "list_actions {\"query\": \"confirm and charge entry\"}",
+            "list_event_entries {\"event_id\": \"01a1e926-1adf-77dc-9021-f87d5caddc0e\", \"athlete\": \"Kai Mendes\"}",
+            "describe_action {\"name\": \"svc.competition.field.confirm\"}",
+            "call_read {\"name\": \"svc.competition.field.confirm.preview\", \"arguments\": {\"event_id\":\"01a1e926-1adf-77dc-9021-f87d5caddc0e\",\"entry_ids\":[\"01a1e92b-9a29-70ff-a77",
+            "describe_action {\"name\": \"svc.competition.field.confirm.preview\"}",
+            "call_read {\"name\": \"svc.competition.field.confirm.preview\", \"arguments\": {\"event_id\":\"01a1e926-1adf-77dc-9021-f87d5caddc0e\"}}",
+            "propose_action {\"mode\":\"single\",\"steps\":[{\"action\":\"svc.competition.field.confirm\",\"args\":{\"event_id\":\"01a1e926-1adf-77dc-9021-f87d5caddc0e\",\"entry_ids\":[\"01a1e92b-9"
+          ],
+          "toolResults": [
+            "list_actions → {\"status\":\"ok\",\"actions\":[{\"name\":\"svc.competition.field.confirm\",\"label\":\"Confirm and charge the field\",\"kind\":\"write\",\"about\":\"svc.competition.field.confirm: the tour manager starts the entry-fee charges for these entries of one event.\"},{\"name\":\"svc.competition.entry.confirm\",\"label\":\"Waive an entry's fee\",\"kind\":\"write\",\"about\":\"svc.competition.entry.confirm's request: waive an entry's fee, from the Athletes tab's row menu. A manager can no longer waive the insurance requirement \\u2014 that "
+          ],
+          "proposal": [
+            "svc.competition.field.confirm {\"event_id\":\"01a1e926-1adf-77dc-9021-f87d5caddc0e\",\"entry_ids\":[\"01a1e92b-9a29-70ff-a77c-caf572c2e9d3\"],\"scope\":\"row\"}"
+          ],
+          "answer": "I've set up a confirmation card that confirms and charges only Kai Mendes's entry in the Huntington Winter Classic. Nothing has happened yet; it only runs when you click confirm.\n\n- **Only Kai is affected:** the card is titled \"Confirm and charge the field,\" but it runs as a single-row confirm for his entry. It won't touch the three alternates and won't mark the field as confirmed.\n- **Why a single row:** Kai holds a wild card, and wild cards can only be confirmed one at a time from their own row. Charging the whole field skips them.\n- **His insurance isn't sorted yet:** his entry shows he still needs cover, and that requirement can't be waived. The hub may hold his charge until he has insurance.\n- **The amount wasn't given:** the field preview prices his wild card at $0 and estimates nothing to charge for the field, so I can't say how much his card will be charged."
+        },
+        "confirm": {
+          "http": 409,
+          "body": {
+            "title": "Something went wrong",
+            "message": "Beach Marshal can't confirm a wild card — do this from the Athletes tab instead.",
+            "reason": null,
+            "fields": {},
+            "retryable": false
+          }
+        }
+      }
+    },
+    {
+      "id": "RL-1",
+      "name": "Which withdrawals are waiting for my refund decision?",
+      "expected": "AL can list or find withdrawals waiting for a decision (its instructions say so)",
+      "actual": "searched list_actions; refund list not offered; assessment tool not used · “I can't look up the refund review list right now, so I can't tell you which withdrawals are waiting on your decision. You can see them in the refund review in the hub. On”",
+      "status": "FAIL",
+      "evidence": {
+        "http": 200,
+        "tools": [
+          "list_actions {\"query\": \"refund review list\"}",
+          "list_actions {\"query\": \"withdrawals awaiting refund decision\"}"
+        ],
+        "toolResults": [
+          "list_actions → {\"status\":\"ok\",\"actions\":[{\"name\":\"svc.competition.entry.refund.quote\",\"label\":\"Entry refund quote\",\"kind\":\"read\",\"about\":\"svc.competition.entry.refund.quote: what withdrawing one entry can refund, for the Tour Manager's Cancel entry dialog (TM-P1 section 08), asked before the withdrawal. Hub roles only. An entry of anoth\"},{\"name\":\"svc.competition.event.entries.order.set\",\"label\":\"Save the seed list order\",\"kind\":\"write\",\"about\":\"Save a dragged seed order. order is every entry that is not withd",
+          "list_actions → {\"status\":\"ok\",\"actions\":[{\"name\":\"svc.competition.entry.refund.quote\",\"label\":\"Entry refund quote\",\"kind\":\"read\",\"about\":\"svc.competition.entry.refund.quote: what withdrawing one entry can refund, for the Tour Manager's Cancel entry dialog (TM-P1 section 08), asked before the withdrawal. Hub roles only. An entry of anoth\"},{\"name\":\"svc.competition.entry.message.log\",\"label\":\"Message the account holder\",\"kind\":\"write\",\"about\":\"svc.competition.entry.message.log's request: a fact the caller alread"
+        ],
+        "answer": "I can't look up the refund review list right now, so I can't tell you which withdrawals are waiting on your decision. You can see them in the refund review in the hub. Once you know which withdrawal you want to look at, I can explain its refund assessment."
+      }
+    },
+    {
+      "id": "RL-2",
+      "name": "Show me the refund review list.",
+      "expected": "AL can list or find withdrawals waiting for a decision (its instructions say so)",
+      "actual": "searched list_actions; refund list not offered; assessment tool not used · “I couldn't find the refund review list among what I can look up for you right now, so I can't show it here. I also can't open it as a page, because the hub pages I can op”",
+      "status": "FAIL",
+      "evidence": {
+        "http": 200,
+        "tools": [
+          "list_actions {\"query\": \"refund review list\"}",
+          "list_actions {\"query\": \"withdrawals awaiting refund decision\"}"
+        ],
+        "toolResults": [
+          "list_actions → {\"status\":\"ok\",\"actions\":[{\"name\":\"svc.competition.entry.refund.quote\",\"label\":\"Entry refund quote\",\"kind\":\"read\",\"about\":\"svc.competition.entry.refund.quote: what withdrawing one entry can refund, for the Tour Manager's Cancel entry dialog (TM-P1 section 08), asked before the withdrawal. Hub roles only. An entry of anoth\"},{\"name\":\"svc.competition.event.entries.order.set\",\"label\":\"Save the seed list order\",\"kind\":\"write\",\"about\":\"Save a dragged seed order. order is every entry that is not withd",
+          "list_actions → {\"status\":\"ok\",\"actions\":[{\"name\":\"svc.competition.entry.refund.quote\",\"label\":\"Entry refund quote\",\"kind\":\"read\",\"about\":\"svc.competition.entry.refund.quote: what withdrawing one entry can refund, for the Tour Manager's Cancel entry dialog (TM-P1 section 08), asked before the withdrawal. Hub roles only. An entry of anoth\"},{\"name\":\"svc.competition.entry.message.log\",\"label\":\"Message the account holder\",\"kind\":\"write\",\"about\":\"svc.competition.entry.message.log's request: a fact the caller alread"
+        ],
+        "answer": "I couldn't find the refund review list among what I can look up for you right now, so I can't show it here. I also can't open it as a page, because the hub pages I can open are the events hub, event pages and settings. You'll find it in the hub under refund review.\n\nIf you give me a withdrawal you're asking about, I can explain its refund assessment once I can find it."
+      }
+    },
+    {
+      "id": "RL-3",
+      "name": "What is your refund assessment for QA TodoRetest's cancellation?",
+      "expected": "AL can list or find withdrawals waiting for a decision (its instructions say so)",
+      "actual": "searched list_actions; refund list not offered; assessment tool not used · “I can't look up that refund assessment right now. The refund review list I'd need to find QA TodoRetest's withdrawal isn't available to me at the moment, so I can't get t”",
+      "status": "FAIL",
+      "evidence": {
+        "http": 200,
+        "tools": [
+          "list_actions {\"query\": \"refund review\"}",
+          "list_actions {\"query\": \"withdrawals awaiting refund decision\"}",
+          "list_actions {\"query\": \"refund\"}"
+        ],
+        "toolResults": [
+          "list_actions → {\"status\":\"ok\",\"actions\":[{\"name\":\"svc.competition.entry.refund.quote\",\"label\":\"Entry refund quote\",\"kind\":\"read\",\"about\":\"svc.competition.entry.refund.quote: what withdrawing one entry can refund, for the Tour Manager's Cancel entry dialog (TM-P1 section 08), asked before the withdrawal. Hub roles only. An entry of anoth\"}]}",
+          "list_actions → {\"status\":\"ok\",\"actions\":[{\"name\":\"svc.competition.entry.refund.quote\",\"label\":\"Entry refund quote\",\"kind\":\"read\",\"about\":\"svc.competition.entry.refund.quote: what withdrawing one entry can refund, for the Tour Manager's Cancel entry dialog (TM-P1 section 08), asked before the withdrawal. Hub roles only. An entry of anoth\"},{\"name\":\"svc.competition.entry.message.log\",\"label\":\"Message the account holder\",\"kind\":\"write\",\"about\":\"svc.competition.entry.message.log's request: a fact the caller alread",
+          "list_actions → {\"status\":\"ok\",\"actions\":[{\"name\":\"svc.competition.entry.refund.quote\",\"label\":\"Entry refund quote\",\"kind\":\"read\",\"about\":\"svc.competition.entry.refund.quote: what withdrawing one entry can refund, for the Tour Manager's Cancel entry dialog (TM-P1 section 08), asked before the withdrawal. Hub roles only. An entry of anoth\"}]}"
+        ],
+        "answer": "I can't look up that refund assessment right now. The refund review list I'd need to find QA TodoRetest's withdrawal isn't available to me at the moment, so I can't get the assessment's suggested amount or reasoning. You can still see the withdrawal and make the decision in the refund review in the hub, and the decision is yours."
+      }
+    },
+    {
+      "id": "RL-4",
+      "name": "Assessment with a withdrawal id given",
+      "expected": "Reads the assessment with get_refund_assessment",
+      "actual": "used get_refund_assessment",
+      "status": "PASS",
+      "evidence": {
+        "http": 200,
+        "tools": [
+          "get_refund_assessment {\"withdrawal_id\": \"01a1eb77-2da8-73c9-a736-0ca1ec5b1637\"}"
+        ],
+        "toolResults": [
+          "get_refund_assessment → {\"status\":\"ready\",\"case\":\"forfeit\",\"decision\":\"none\",\"amount_minor\":0,\"currency\":\"USD\",\"system_suggested_minor\":10000,\"differs_from_system\":true,\"confidence\":\"high\",\"citations\":[\"2.18(a)\",\"2.17(b)\",\"2.18(b)\"],\"reasoning\":[\"Entries for this event closed on 17 November 2026, and the surfer was withdrawn seconds after that, once the entry had been confirmed into the field.\",\"A cancellation after the closing date forfeits the entry fee under 2.18(a), unless the medical exception in 2.18(b) applies.\""
+        ],
+        "answer": "My assessment suggests no refund for this withdrawal. The system suggested refunding US$100.00, but I don't think the rules support that.\n\n- **Timing:** Entries closed on 17 November 2026. The surfer was withdrawn seconds later, after the entry had been confirmed into the field.\n- **Rule 2.18(a):** Cancelling after the closing date means the entry fee is forfeit, unless the medical exception applies.\n- **Rule 2.18(b), the medical exception:** It doesn't apply here. The reason given was personal, with no injury or illness claimed, no medical refund requested and no certificate uploaded.\n- **Rule 2.17(b):** Once a surfer is entered and charged, this rule allows no refund.\n- **No late charge:** The card wasn't charged after the cancellation, so there's nothing extra to return.\n\nI'm confident in this, and nothing in it was flagged as needing your judgement. The decision is still yours to make in the refund review, and you haven't made it yet."
+      }
+    }
+  ],
+  "wildcard": {
+    "eventId": "01a1e926-1adf-77dc-9021-f87d5caddc0e",
+    "event": "Huntington Winter Classic",
+    "entryId": "01a1e92b-9a29-70ff-a77c-caf572c2e9d3",
+    "athlete": "Kai Mendes",
+    "payment": "missing",
+    "entry": "pending"
+  },
+  "wildcardRun": {
+    "ask": {
+      "http": 200,
+      "tools": [
+        "find_events {\"text\": \"Huntington Winter Classic\"}",
+        "list_actions {\"query\": \"confirm and charge entry\"}",
+        "list_event_entries {\"event_id\": \"01a1e926-1adf-77dc-9021-f87d5caddc0e\", \"athlete\": \"Kai Mendes\"}",
+        "describe_action {\"name\": \"svc.competition.field.confirm\"}",
+        "call_read {\"name\": \"svc.competition.field.confirm.preview\", \"arguments\": {\"event_id\":\"01a1e926-1adf-77dc-9021-f87d5caddc0e\",\"entry_ids\":[\"01a1e92b-9a29-70ff-a77",
+        "describe_action {\"name\": \"svc.competition.field.confirm.preview\"}",
+        "call_read {\"name\": \"svc.competition.field.confirm.preview\", \"arguments\": {\"event_id\":\"01a1e926-1adf-77dc-9021-f87d5caddc0e\"}}",
+        "propose_action {\"mode\":\"single\",\"steps\":[{\"action\":\"svc.competition.field.confirm\",\"args\":{\"event_id\":\"01a1e926-1adf-77dc-9021-f87d5caddc0e\",\"entry_ids\":[\"01a1e92b-9"
+      ],
+      "toolResults": [
+        "list_actions → {\"status\":\"ok\",\"actions\":[{\"name\":\"svc.competition.field.confirm\",\"label\":\"Confirm and charge the field\",\"kind\":\"write\",\"about\":\"svc.competition.field.confirm: the tour manager starts the entry-fee charges for these entries of one event.\"},{\"name\":\"svc.competition.entry.confirm\",\"label\":\"Waive an entry's fee\",\"kind\":\"write\",\"about\":\"svc.competition.entry.confirm's request: waive an entry's fee, from the Athletes tab's row menu. A manager can no longer waive the insurance requirement \\u2014 that "
+      ],
+      "proposal": [
+        "svc.competition.field.confirm {\"event_id\":\"01a1e926-1adf-77dc-9021-f87d5caddc0e\",\"entry_ids\":[\"01a1e92b-9a29-70ff-a77c-caf572c2e9d3\"],\"scope\":\"row\"}"
+      ],
+      "answer": "I've set up a confirmation card that confirms and charges only Kai Mendes's entry in the Huntington Winter Classic. Nothing has happened yet; it only runs when you click confirm.\n\n- **Only Kai is affected:** the card is titled \"Confirm and charge the field,\" but it runs as a single-row confirm for his entry. It won't touch the three alternates and won't mark the field as confirmed.\n- **Why a single row:** Kai holds a wild card, and wild cards can only be confirmed one at a time from their own row. Charging the whole field skips them.\n- **His insurance isn't sorted yet:** his entry shows he still needs cover, and that requirement can't be waived. The hub may hold his charge until he has insurance.\n- **The amount wasn't given:** the field preview prices his wild card at $0 and estimates nothing to charge for the field, so I can't say how much his card will be charged."
+    },
+    "confirm": {
+      "http": 409,
+      "body": {
+        "title": "Something went wrong",
+        "message": "Beach Marshal can't confirm a wild card — do this from the Athletes tab instead.",
+        "reason": null,
+        "fields": {},
+        "retryable": false
+      }
+    }
+  }
+}
