@@ -2,7 +2,7 @@
 <style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>AL assistant test report</h1>
 <p>Dev · 23–24 Nov 2026 · AL is the Tour Manager's AI assistant.</p>
 <h2>Summary</h2>
-<p><strong>62 of 72 checks pass.</strong> AL reads data correctly, follows its safety rules, and its API and security checks all pass. The problems are in how it decides whether a request is something it can help with.</p>
+<p><strong>62 of 72 checks pass</strong> in the full suite, and <strong>48 of 50</strong> in the count and rule-book suite. AL reads data correctly, follows its safety rules, and its API and security checks all pass. The problems are in how it decides whether a request is something it can help with.</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
@@ -32,19 +32,497 @@
 <td><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 8/10</td>
 </tr>
 <tr>
+<td>Counts, retrieval and rule book (Dev + staging)</td>
+<td><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 48/50</td>
+</tr>
+<tr>
 <td>Existing AL tests in the project (AST-006 to 011)</td>
 <td>✅ 6/6</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h2>Issues</h2>
+<h2>Issues (reproduced and investigated)</h2>
+<p>Details, screenshots and recordings: <strong><a href="../al-issues-2026-11-24/">confirmed issues report</a></strong> · Every question asked: <strong><a href="../al-questions-2026-11-24/">AL questions</a></strong> (<a href="../al-questions-2026-11-24/al-questions.csv">CSV</a>)</p>
 <ol>
-<li><strong>AL refuses every handling-rate change.</strong> It answers "That's outside what I can help with" and does nothing, every time (6 of 6). The code says AL should be able to propose this.</li>
-<li><strong>AL refuses some normal requests at random.</strong> "Create a new season called 2033…" is refused every time; other wordings work. Copying an event, starring several events and messaging an account holder were refused in some runs and worked in others.</li>
-<li><strong>AL sometimes can't find an event that exists.</strong> The same event name is found in one request and "not found" in the next.</li>
+<li><strong>AL refuses every handling-rate change</strong> (6/6): "That's outside what I can help with". <em>Dev</em></li>
+<li><strong>AL refuses some valid requests as out of scope</strong>: "Create a new season called 2033…" every time; copy, bulk star and message-account-holder in 2 of 3 runs. <em>Dev</em></li>
+<li><strong>Staging events stay "Open for entries" after registration closes</strong>: 5 events; the page shows 16 open, AL says 21. <em>Staging</em></li>
+<li><strong>AL sometimes can't find an event that exists</strong> by its exact name (3 times). <em>Dev</em></li>
+<li><strong>AL's "waiting to confirm" count is wrong</strong> (15 instead of 9) unless asked about fields "ready to confirm and charge". <em>Dev</em></li>
+<li><strong>AL can't see the refunds waiting for a decision</strong>, though its instructions say it can. <em>Dev</em></li>
+<li><strong>AL users see "Beach Marshal can't confirm a wild card"</strong>. <em>Dev</em></li>
+<li><strong>"Next event 25 Nov · in 2 days" when 25 Nov is tomorrow</strong> (UTC date, just after midnight). <em>Staging</em></li>
 </ol>
-<p>Smaller things seen in the code (not tested live): AL users sometimes see Beach Marshal's name in messages; AL's instructions mention a refund list it can't see; two settings reads offered to AL always fail.</p>
 <p>Nothing has been flagged to the team.</p>
+<h2>Counts, retrieval and rule book (Dev and staging, 24 Nov)</h2>
+<p><strong>48 of 50 pass.</strong> Every count was checked against the Tour Manager data, every rule citation against the rule-book tool results. AL answers counts by tab (all, upcoming, completed, archived, starred), month, tour, status and next event correctly, and cites real rules (2.13 insurance, 2.18 withdrawal and refunds, 2.30 age, 1.12 wild cards, 7.05 priority, 11.17 interference). It said Rule 99.99 does not exist instead of inventing it, and answered in Spanish.</p>
+<details><summary><strong>All 50 count and rule-book checks</strong></summary>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Env</th>
+<th>ID</th>
+<th>Area</th>
+<th>Question</th>
+<th>Expected</th>
+<th>Result</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dev</td>
+<td>C01</td>
+<td>Counts</td>
+<td>Open for entries in 2026</td>
+<td>Status count 20; page header shows 20</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C02</td>
+<td>Counts</td>
+<td>All events in 2026</td>
+<td>254 (All tab)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C03</td>
+<td>Counts</td>
+<td>Upcoming events</td>
+<td>48 (Upcoming tab)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C04</td>
+<td>Counts</td>
+<td>Completed events</td>
+<td>128 (Completed tab)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C05</td>
+<td>Counts</td>
+<td>Archived events</td>
+<td>66 (Archived tab)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C06</td>
+<td>Counts</td>
+<td>Starred events</td>
+<td>14 (Starred tab)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C07</td>
+<td>Counts</td>
+<td>Events starting in December 2026</td>
+<td>95</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C08</td>
+<td>Counts</td>
+<td>Men's QS events</td>
+<td>42</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C09</td>
+<td>Counts</td>
+<td>Cancelled and draft events</td>
+<td>cancelled 0, draft 13</td>
+<td>✅ Pass</td>
+<td>Test-side failure corrected: AL said "none are cancelled, 13 drafts" (correct); the check looked for the digit 0</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C10</td>
+<td>Counts</td>
+<td>Closed · to confirm</td>
+<td>9 (page header)</td>
+<td>❌ Fail</td>
+<td>Issue 5: AL counts all closed events (15) instead of the ready-to-confirm figure (9)</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>C11</td>
+<td>Retrieval</td>
+<td>Next event</td>
+<td>event (page header)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>T01</td>
+<td>Retrieval</td>
+<td>Date and place of event</td>
+<td>2026-11-27, Avatoru, Rangiroa, Tahiti, French Polynesia</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>T02</td>
+<td>Retrieval</td>
+<td>Fee and field size of event</td>
+<td>fee 0 (minor units), field 122</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>dev</td>
+<td>T04</td>
+<td>Retrieval</td>
+<td>Names open events</td>
+<td>At least 3 names that really are open</td>
+<td>✅ Pass</td>
+<td>3 correct names</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B01</td>
+<td>Rule book</td>
+<td>What does Rule 2.13 say?</td>
+<td>Cites Rule 2.13 and explains it</td>
+<td>✅ Pass</td>
+<td>cited: 2.13</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B02</td>
+<td>Rule book</td>
+<td>What does Rule 99.99 say?</td>
+<td>Says the rule does not exist; cites nothing invented</td>
+<td>✅ Pass</td>
+<td>Test-side failure corrected: AL said it could not find Rule 99.99 (correct); the check saw the number in that sentence</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B03</td>
+<td>Rule book</td>
+<td>What is the minimum age to compete in a Qualifying Series event? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 2.30, 2.30, 2.30, 2.30, 2.30</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B04</td>
+<td>Rule book</td>
+<td>What is the penalty for interference in a heat? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 11.17, 11.20, 7.15</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B05</td>
+<td>Rule book</td>
+<td>What is a wild card under the WSL rules? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 1.12</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B06</td>
+<td>Rule book</td>
+<td>If a surfer withdraws after entries close, do they get a refund? Cite the rule.</td>
+<td>Cites the withdrawal rule (2.18) from the tools; does not promise a re</td>
+<td>✅ Pass</td>
+<td>cited: 2.18, 2.18, 2.18, 2.18</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B07</td>
+<td>Rule book</td>
+<td>Do surfers need insurance to compete outside their country of residence? Cite the rule.</td>
+<td>Cites the insurance rule from the tools</td>
+<td>✅ Pass</td>
+<td>cited: 2.13, 2.13, 2.13</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B08</td>
+<td>Rule book</td>
+<td>How are ties in the rankings broken? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 1.05, 1.05, 2.10, 2.21, 2.10, 4.04</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B09</td>
+<td>Rule book</td>
+<td>¿Qué dice la regla 2.13 del reglamento de la WSL?</td>
+<td>Answers in Spanish and cites Rule 2.13</td>
+<td>✅ Pass</td>
+<td>cited: none</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B10</td>
+<td>Rule book</td>
+<td>What does the rule book say about the priority buoy? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 7.05</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>B11</td>
+<td>Rule book</td>
+<td>Same question twice: Which rule covers late withdrawal from an event? Cite it.</td>
+<td>Same rule numbers both times</td>
+<td>✅ Pass</td>
+<td>Test-side failure corrected: both answers cite Rule 2.18; only extra related rules differ</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C01</td>
+<td>Counts</td>
+<td>Open for entries in 2026</td>
+<td>Status count 21; page header shows 16</td>
+<td>❌ Fail</td>
+<td>Issue 3: AL says 21, the page says 16 (5 events still "open" after closing)</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C02</td>
+<td>Counts</td>
+<td>All events in 2026</td>
+<td>363 (All tab)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C03</td>
+<td>Counts</td>
+<td>Upcoming events</td>
+<td>154 (Upcoming tab)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C04</td>
+<td>Counts</td>
+<td>Completed events</td>
+<td>118 (Completed tab)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C05</td>
+<td>Counts</td>
+<td>Archived events</td>
+<td>37 (Archived tab)</td>
+<td>✅ Pass</td>
+<td>Test-side failure corrected: Archived tab includes 2 cancelled events (35 + 2 = 37); AL said it excluded cancelled</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C06</td>
+<td>Counts</td>
+<td>Starred events</td>
+<td>10 (Starred tab)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C07</td>
+<td>Counts</td>
+<td>Events starting in December 2026</td>
+<td>151</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C08</td>
+<td>Counts</td>
+<td>Men's QS events</td>
+<td>45</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C09</td>
+<td>Counts</td>
+<td>Cancelled and draft events</td>
+<td>cancelled 2, draft 91</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C10</td>
+<td>Counts</td>
+<td>Closed · to confirm</td>
+<td>16 (page header)</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>C11</td>
+<td>Retrieval</td>
+<td>Next event</td>
+<td>Arecibo Classic 183814 1 (page header)</td>
+<td>✅ Pass</td>
+<td>Test-side failure corrected: AL named the 25 Nov events correctly</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>T01</td>
+<td>Retrieval</td>
+<td>Date and place of Central Coast Open</td>
+<td>2026-11-29, Pismo Beach Pier, Pismo Beach, California, United States</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>T02</td>
+<td>Retrieval</td>
+<td>Fee and field size of Central Coast Open</td>
+<td>fee 15000 (minor units), field 40</td>
+<td>✅ Pass</td>
+<td></td>
+</tr>
+<tr>
+<td>staging</td>
+<td>T04</td>
+<td>Retrieval</td>
+<td>Names open events</td>
+<td>At least 3 names that really are open</td>
+<td>✅ Pass</td>
+<td>5 correct names</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B01</td>
+<td>Rule book</td>
+<td>What does Rule 2.13 say?</td>
+<td>Cites Rule 2.13 and explains it</td>
+<td>✅ Pass</td>
+<td>cited: 2.13</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B02</td>
+<td>Rule book</td>
+<td>What does Rule 99.99 say?</td>
+<td>Says the rule does not exist; cites nothing invented</td>
+<td>✅ Pass</td>
+<td>Test-side failure corrected: AL said it could not find Rule 99.99 (correct)</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B03</td>
+<td>Rule book</td>
+<td>What is the minimum age to compete in a Qualifying Series event? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 2.30, 2.30, 2.30, 2.30, 2.30</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B04</td>
+<td>Rule book</td>
+<td>What is the penalty for interference in a heat? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 11.17, 11.01, 7.15</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B05</td>
+<td>Rule book</td>
+<td>What is a wild card under the WSL rules? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 1.12</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B06</td>
+<td>Rule book</td>
+<td>If a surfer withdraws after entries close, do they get a refund? Cite the rule.</td>
+<td>Cites the withdrawal rule (2.18) from the tools; does not promise a re</td>
+<td>✅ Pass</td>
+<td>cited: 2.18, 2.18, 2.18, 2.18, 2.17</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B07</td>
+<td>Rule book</td>
+<td>Do surfers need insurance to compete outside their country of residence? Cite the rule.</td>
+<td>Cites the insurance rule from the tools</td>
+<td>✅ Pass</td>
+<td>cited: 2.13, 2.13, 2.13</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B08</td>
+<td>Rule book</td>
+<td>How are ties in the rankings broken? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 1.05, 1.05, 2.10, 2.21, 2.10, 4.04</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B09</td>
+<td>Rule book</td>
+<td>¿Qué dice la regla 2.13 del reglamento de la WSL?</td>
+<td>Answers in Spanish and cites Rule 2.13</td>
+<td>✅ Pass</td>
+<td>cited: none</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B10</td>
+<td>Rule book</td>
+<td>What does the rule book say about the priority buoy? Cite the rule.</td>
+<td>Cites a rule returned by the rule-book tools</td>
+<td>✅ Pass</td>
+<td>cited: 7.05</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>B11</td>
+<td>Rule book</td>
+<td>Same question twice: Which rule covers late withdrawal from an event? Cite it.</td>
+<td>Same rule numbers both times</td>
+<td>✅ Pass</td>
+<td>Test-side failure corrected: both answers cite Rule 2.18; only extra related rules differ</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+</details>
 <h2>Evidence</h2>
 <ul>
 <li>Recording of the reproduction: <a href="repro/recording.mp4">repro/recording.mp4</a></li>
