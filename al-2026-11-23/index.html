@@ -21,14 +21,14 @@
 </tr>
 <tr>
 <td>2</td>
-<td><strong>The scope filter rejects valid Tour Manager requests depending on wording.</strong> Copy an event, star several events, create a season and message an account holder were each declined in both full runs with one wording (W06, W07, W12, W13) and handled with another (P01–P04, P07–P10).</td>
+<td><strong>The scope filter rejects valid Tour Manager requests inconsistently.</strong> “Create a new season called 2033…” is refused every time (3/3); the other wording works. Copy an event, star several events, create a season and message an account holder were each declined in both full runs with one wording (W06, W07, W12, W13) and handled with another (P01–P04, P07–P10).</td>
 <td>W06/W07/W12/W13 vs P01–P10</td>
 <td>High</td>
 </tr>
 <tr>
 <td>3</td>
-<td><strong>A renamed event can't be found by its new name straight away.</strong> Minutes after AL renamed an event, "Star " found nothing and AL offered an older event instead. AL's event search (in-process index) does not pick up renames immediately.</td>
-<td>W03 run 2 (passed in run 1)</td>
+<td><strong>AL sometimes can't find an existing event by its exact name.</strong> The same event is found in one request and “not found” in the next (seen twice in the reproduction; first seen as W03 after a rename).</td>
+<td>W03 run 2; repro 2b, 2h</td>
 <td>Medium</td>
 </tr>
 <tr>
@@ -52,6 +52,126 @@
 </tbody>
 </table></markdown-accessiblity-table>
 <p>Not flagged to the team.</p>
+<h2>Reproduction in the Tour Manager app (24 Nov 2026, 00:10 Cairo)</h2>
+<p>Recording: <a href="repro/recording.mp4">repro/recording.mp4</a> · Records: <a href="repro/records.json">repro/records.json</a>. Each request was typed into AL in a new conversation on Dev; nothing was confirmed in the app.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Case</th>
+<th>Request</th>
+<th>Result</th>
+<th>AL tools used</th>
+<th>Video at</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1a-handling-rate</td>
+<td>Set the handling rate to 5% starting 1 January 2027.</td>
+<td>❌ “Outside what I can help with”</td>
+<td>no tools</td>
+<td>11 s</td>
+<td><a href="repro/shots/1a-handling-rate.png">screenshot</a></td>
+</tr>
+<tr>
+<td>1b-handling-rate</td>
+<td>Update the handling fee rate in settings to 5%.</td>
+<td>❌ “Outside what I can help with”</td>
+<td>no tools</td>
+<td>20 s</td>
+<td><a href="repro/shots/1b-handling-rate.png">screenshot</a></td>
+</tr>
+<tr>
+<td>2a-copy-declined-wording</td>
+<td>Make a copy of "AL Suite Open T5OK3".</td>
+<td>✅ Handled</td>
+<td>8 tools</td>
+<td>57 s</td>
+<td><a href="repro/shots/2a-copy-declined-wording.png">screenshot</a></td>
+</tr>
+<tr>
+<td>2b-copy-working-wording</td>
+<td>Please copy AL Suite Open T5OK3 so I can reuse its settings.</td>
+<td><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> Could not find the event</td>
+<td>2 tools</td>
+<td>72 s</td>
+<td><a href="repro/shots/2b-copy-working-wording.png">screenshot</a></td>
+</tr>
+<tr>
+<td>2c-season-declined-wording</td>
+<td>Create a new season called 2033 running 1 January to 31 December 2033.</td>
+<td>❌ “Outside what I can help with”</td>
+<td>no tools</td>
+<td>80 s</td>
+<td><a href="repro/shots/2c-season-declined-wording.png">screenshot</a></td>
+</tr>
+<tr>
+<td>2d-season-working-wording</td>
+<td>Set up the 2033 season for me, 1 January to 31 December 2033.</td>
+<td>✅ Handled</td>
+<td>3 tools</td>
+<td>99 s</td>
+<td><a href="repro/shots/2d-season-working-wording.png">screenshot</a></td>
+</tr>
+<tr>
+<td>2e-bulk-star-declined-wording</td>
+<td>Star these events: "AL Suite Open T5OK3" and "AL Suite Field T5OK3".</td>
+<td>✅ Handled</td>
+<td>8 tools</td>
+<td>124 s</td>
+<td><a href="repro/shots/2e-bulk-star-declined-wording.png">screenshot</a></td>
+</tr>
+<tr>
+<td>2f-bulk-star-working-wording</td>
+<td>Can you star AL Suite Open T5OK3 and AL Suite Field T5OK3?</td>
+<td>✅ Handled</td>
+<td>8 tools</td>
+<td>151 s</td>
+<td><a href="repro/shots/2f-bulk-star-working-wording.png">screenshot</a></td>
+</tr>
+<tr>
+<td>2g-message-declined-wording</td>
+<td>Message the account holder of QA TodoRetest's entry in AL Suite Field T5OK3. Subject: "Schedule". Body: "Heats start at 8am."</td>
+<td>✅ Handled</td>
+<td>7 tools</td>
+<td>178 s</td>
+<td><a href="repro/shots/2g-message-declined-wording.png">screenshot</a></td>
+</tr>
+<tr>
+<td>2h-message-working-wording</td>
+<td>Send a short note to the account holder of QA TodoRetest's entry in AL Suite Field T5OK3: subject 'Schedule update', body 'Heats start at 8am.'</td>
+<td><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> Could not find the event</td>
+<td>2 tools</td>
+<td>195 s</td>
+<td><a href="repro/shots/2h-message-working-wording.png">screenshot</a></td>
+</tr>
+<tr>
+<td>3a-find-renamed-event</td>
+<td>Star "AL Suite Open T5OK3 RQ3G7" for me.</td>
+<td>✅ Handled</td>
+<td>4 tools</td>
+<td>261 s</td>
+<td><a href="repro/shots/3a-find-renamed-event.png">screenshot</a></td>
+</tr>
+<tr>
+<td>3b-find-renamed-event-1-min-later</td>
+<td>Star "AL Suite Open T5OK3 RQ3G7" for me.</td>
+<td>✅ Handled</td>
+<td>4 tools</td>
+<td>340 s</td>
+<td><a href="repro/shots/3b-find-renamed-event-1-min-later.png">screenshot</a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>What the reproduction shows</strong></p>
+<ul>
+<li><strong>Issue 1 reproduced:</strong> every handling-rate request is refused with “That's outside what I can help with” and AL uses no tools (now 6 of 6 attempts across 4 runs).</li>
+<li><strong>Issue 2, narrowed:</strong> “Create a new season called 2033 running 1 January to 31 December 2033” was refused again (3 of 3 runs), while “Set up the 2033 season…” works. Copy, bulk star and message-the-account-holder wordings that were refused twice before were handled this time, so for those the scope filter is <strong>inconsistent</strong>, not tied to the wording.</li>
+<li><strong>Issue 3, replaced:</strong> the renamed event was found straight away this time (rename at 22:15:26 UTC, found immediately and after one minute). The real problem is wider: <strong>AL sometimes cannot find an existing event by its exact name.</strong> “AL Suite Open T5OK3” was found in case 2a and not found one request later in 2b; the same happened to the field event in 2g → 2h. That explains the earlier W03 failure.</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer" href="repro/shots/1a-handling-rate.png"><img src="repro/shots/1a-handling-rate.png" alt="Handling rate refused" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="repro/shots/2b-copy-working-wording.png"><img src="repro/shots/2b-copy-working-wording.png" alt="Existing event not found" style="max-width: 100%;"></a></p>
 <h2>What AL is and what it can do (from the code)</h2>
 <ul>
 <li><strong>Who gets AL:</strong> a token with role <code class="notranslate">admin</code> or <code class="notranslate">tour_manager</code>. Everyone else gets Beach Marshal. A finance-only account does not get AL.</li>
