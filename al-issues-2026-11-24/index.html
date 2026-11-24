@@ -227,7 +227,7 @@
 <hr>
 <p><strong>Not included:</strong></p>
 <ul>
-<li>Staging events that stay "Open for entries" after registration closes (the page shows 16, AL says 21). This is <strong>not an AL issue</strong>: AL reports the stored status correctly. The scheduler silently skips closing events that have no rating. Reported to the competition service as <a href="https://wslproduct.atlassian.net/browse/WSL-10952" rel="nofollow">WSL-10952</a>.</li>
+<li>Staging events that stay "Open for entries" after registration closes (the page shows 16, AL says 21). This is <strong>not an AL issue</strong>: AL reports the stored status correctly. These 5 old QA events have no rating, which their tour now requires, so the scheduler skips them as designed: a test-data issue, not a bug (closed as <a href="https://wslproduct.atlassian.net/browse/WSL-10952" rel="nofollow">WSL-10952</a>, archived).</li>
 <li>"Next event 25 Nov · in 2 days", seen just after midnight Cairo time, is correct. It was still 23 Nov at the venue (Arecibo, UTC−4) and in UTC.</li>
 <li>Staging consent emails not arriving: the cause isn't confirmed.</li>
 <li>6 count and rule-book checks that failed only because of how the test read the answer.</li>
