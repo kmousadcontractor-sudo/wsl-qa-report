@@ -52,7 +52,7 @@
 <li><strong>AL users see "Beach Marshal can't confirm a wild card"</strong>. <em>Dev</em></li>
 </ol>
 <p>"Next event 25 Nov · in 2 days" seen just after midnight Cairo time is correct: it was still 23 Nov at the venue (Arecibo, UTC−4) and in UTC, so it was removed as an issue.</p>
-<p>Staging events that stay "Open for entries" after registration closes (page 16, AL 21) are <strong>not an AL issue</strong>. AL matches the stored status; the competition-service scheduler skips closing events with no rating. Reported as <a href="https://wslproduct.atlassian.net/browse/WSL-10952" rel="nofollow">WSL-10952</a>.</p>
+<p>Staging events that stay "Open for entries" after registration closes (page 16, AL 21) are <strong>not an AL issue</strong>. AL matches the stored status; these are old QA events without the rating their tour now requires, so the scheduler skips them as designed: a test-data issue (closed as <a href="https://wslproduct.atlassian.net/browse/WSL-10952" rel="nofollow">WSL-10952</a>, archived).</p>
 <p>Nothing has been flagged to the team.</p>
 <h2>Counts, retrieval and rule book (Dev and staging, 24 Nov)</h2>
 <p><strong>49 of 50 pass.</strong> Every count was checked against the Tour Manager data, every rule citation against the rule-book tool results. AL answers counts by tab (all, upcoming, completed, archived, starred), month, tour, status and next event correctly, and cites real rules (2.13 insurance, 2.18 withdrawal and refunds, 2.30 age, 1.12 wild cards, 7.05 priority, 11.17 interference). It said Rule 99.99 does not exist instead of inventing it, and answered in Spanish.</p>
@@ -302,7 +302,7 @@
 <td>Open for entries in 2026</td>
 <td>Status count 21; page header shows 16</td>
 <td>✅ Pass</td>
-<td>AL matches the stored status (21). The page shows 16 because 5 events were never closed: competition-service bug <a href="https://wslproduct.atlassian.net/browse/WSL-10952" rel="nofollow">WSL-10952</a></td>
+<td>AL matches the stored status (21). The page shows 16 because 5 events were never closed: old QA test data, not a bug <a href="https://wslproduct.atlassian.net/browse/WSL-10952" rel="nofollow">WSL-10952</a></td>
 </tr>
 <tr>
 <td>staging</td>
