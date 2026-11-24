@@ -1,11 +1,13 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AL and Events page: confirmed issues</title>
 <style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>AL and Events page: confirmed issues</h1>
-<p>24 Nov 2026 · Dev and staging · Only issues that reproduced more than once and were investigated are listed. Full test report: <a href="../al-2026-11-23/">AL assistant test report</a> · All questions asked: <a href="../al-questions-2026-11-24/">AL questions</a></p>
+<p>24 Nov 2026 · Dev and staging · Signed in as a Tour Manager (finance role). Only issues that reproduced more than once and were investigated are listed. Each one shows <strong>what I did</strong>, <strong>the exact message I sent</strong>, <strong>the exact reply</strong>, and <strong>the likely root cause</strong> from the code (wsl-ai-service ef16831, wsl-django-bff 190feed, wsl-competition-service).</p>
+<p>Full test report: <a href="../al-2026-11-23/">AL assistant test report</a> · All questions asked: <a href="../al-questions-2026-11-24/">AL questions</a></p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>#</th>
 <th>Issue</th>
+<th>Where the fault is</th>
 <th>Env</th>
 <th>Severity</th>
 </tr>
@@ -14,42 +16,49 @@
 <tr>
 <td>1</td>
 <td>AL refuses every handling-rate change</td>
+<td>AL scope check</td>
 <td>Dev</td>
 <td>High</td>
 </tr>
 <tr>
 <td>2</td>
 <td>AL refuses some valid requests as "outside what I can help with"</td>
+<td>AL scope check</td>
 <td>Dev</td>
 <td>High</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Staging events stay "Open for entries" after registration closes, so AL and the page disagree (21 vs 16)</td>
+<td>Events stay "Open for entries" after registration closes (page 16, AL 21)</td>
+<td><strong>Not AL:</strong> event status in the competition service</td>
 <td>Staging</td>
 <td>High</td>
 </tr>
 <tr>
 <td>4</td>
 <td>AL sometimes can't find an event that exists</td>
+<td>AL event search cache</td>
 <td>Dev</td>
 <td>Medium</td>
 </tr>
 <tr>
 <td>5</td>
 <td>AL gives the wrong "waiting to confirm" count (15 instead of 9)</td>
+<td>AL tool choice</td>
 <td>Dev</td>
 <td>Medium</td>
 </tr>
 <tr>
 <td>6</td>
 <td>AL can't see the refunds waiting for a decision</td>
+<td>AL instructions vs. hidden route</td>
 <td>Dev</td>
 <td>Medium</td>
 </tr>
 <tr>
 <td>7</td>
 <td>AL users see "Beach Marshal can't confirm a wild card"</td>
+<td>BFF error text</td>
 <td>Dev</td>
 <td>Low</td>
 </tr>
@@ -58,27 +67,70 @@
 <p>Recordings: <a href="recording-dev.mp4">Dev</a> · <a href="recording-staging.mp4">Staging</a> · <a href="recording-repro-dev.mp4">Reproduction of 1, 2 and 4</a></p>
 <hr>
 <h2>1. AL refuses every handling-rate change</h2>
+<p><strong>What I did:</strong> Dev › Tour Manager › Events › opened AL › started a new conversation for each message › sent the message below › waited for the full answer.</p>
+<p><strong>Messages I sent</strong> (one per conversation):</p>
 <ul>
-<li><strong>Steps:</strong> Tour Manager › Events › open AL › type "Set the handling rate to 5% starting 1 January 2027." (also "Update the handling fee rate in settings to 5%.")</li>
-<li><strong>Expected:</strong> AL proposes the change for the manager to confirm. The code offers <code class="notranslate">handling_rate.set</code> to AL (finance role, which this account has).</li>
-<li><strong>Actual:</strong> "That's outside what I can help with. I can help with WSL rules, events, entries and your account." AL calls no tools.</li>
-<li><strong>Reproduced:</strong> 6 of 6 attempts, 4 wordings, 4 runs.</li>
-<li><strong>Investigation:</strong> the reply comes before any tool, so the request is stopped by the scope check (the "gate" classifier) in the AI service, not by permissions or the service.</li>
+<li>"Set the handling rate to 5% starting 1 January 2027." (suite W11 and the UI reproduction)</li>
+<li>"Update the handling fee rate in settings to 5%." (suite P06 and the UI reproduction)</li>
+<li>"I want to change our handling rate to 5 percent from January 2027. Can you set that up for me to confirm?" (suite P05)</li>
+</ul>
+<p><strong>AL replied, every time, in under a second, without using any tool:</strong></p>
+<blockquote>
+<p>That's outside what I can help with. I can help with WSL rules, events, entries and your account.</p>
+</blockquote>
+<p><strong>Expected:</strong> AL offers a confirmation card to change the handling rate. The account has the finance role, and AL <em>can read</em> the rate: "What is the current handling rate, and what are the payment rules?" → "The handling rate is 5%…" (R11, passed).</p>
+<p><strong>How often:</strong> 6 of 6 tries, 3 wordings, across the suite runs and the UI reproduction.</p>
+<p><strong>Likely root cause:</strong> AL's <strong>scope check</strong> (the "gate"), not permissions:</p>
+<ul>
+<li>Every message is first sorted by a classifier (<code class="notranslate">wsl-ai-service</code> <code class="notranslate">infrastructure/agent/triage.py</code>). Its instructions say the assistant is for "the WSL rule book, WSL events and how to enter them, the person's own athletes, memberships, entries, insurance and inquiries, what worldsurfleague.com says" (<code class="notranslate">policy.toml</code> <code class="notranslate">scope</code>). <strong>Running events as a Tour Manager (settings, fees, seasons) is not in that list.</strong></li>
+<li>The catch-all topic <code class="notranslate">other</code> declines "legal, tax or <strong>money</strong> advice…". A message about a fee rate looks like a money question, so it's declined with the fixed reply <code class="notranslate">decline.default</code>. The reply arriving in under a second with no tools shows the gate stopped it before AL's own tools ran.</li>
 </ul>
 <p><a target="_blank" rel="noopener noreferrer" href="shots/R-1a-handling-rate.png"><img src="shots/R-1a-handling-rate.png" alt="" style="max-width: 100%;"></a></p>
 <h2>2. AL refuses some valid requests as out of scope</h2>
-<ul>
-<li><strong>Steps:</strong> ask AL "Create a new season called 2033 running 1 January to 31 December 2033."</li>
-<li><strong>Expected:</strong> AL proposes <code class="notranslate">season.create</code>.</li>
-<li><strong>Actual:</strong> "That's outside what I can help with…", no tools. "Set up the 2033 season for me…" works.</li>
-<li><strong>Reproduced:</strong> season wording 3 of 3. Copy an event ("Make a copy of …"), star several events and message an account holder were refused in 2 of 3 runs and handled in the third.</li>
-<li><strong>Investigation:</strong> same scope check as issue 1; whether a normal hub request passes depends on wording and varies between runs.</li>
-</ul>
+<p><strong>What I did:</strong> same as issue 1 (Dev, AL panel, new conversation each time). I sent each request in two wordings to see whether only the wording mattered.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Message I sent</th>
+<th>AL's reply</th>
+<th>Runs refused</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Create a new season called 2033 running 1 January to 31 December 2033."</td>
+<td>"That's outside what I can help with. I can help with WSL rules, events, entries and your account."</td>
+<td>3 of 3</td>
+</tr>
+<tr>
+<td>"Set up the 2033 season for me, 1 January to 31 December 2033."</td>
+<td>"I've put a confirmation card on screen to create the 2033 season…"</td>
+<td>0 of 3</td>
+</tr>
+<tr>
+<td>"Make a copy of "AL Suite Open T5OK3"."</td>
+<td>refused in the suite (W06), worked in the reproduction</td>
+<td>2 of 3</td>
+</tr>
+<tr>
+<td>"Star these events: "AL Suite Open T5OK3" and "AL Suite Field T5OK3"."</td>
+<td>refused in the suite (W07), worked in the reproduction</td>
+<td>2 of 3</td>
+</tr>
+<tr>
+<td>"Message the account holder of QA TodoRetest's entry in AL Suite Field T5OK3. Subject: "Schedule". Body: "Heats start at 8am.""</td>
+<td>refused in the suite, worked in the reproduction</td>
+<td>2 of 3</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>Expected:</strong> AL handles all of them. They're normal Tour Manager actions, and AL can do each one when it isn't stopped.</p>
+<p><strong>Likely root cause:</strong> the same scope check as issue 1. The classifier is an AI model judging each message against a scope list written for members (rules, entries, own account), so <strong>Tour Manager admin requests sit on the borderline</strong>. The same message can be judged differently from one run to the next, and wording such as "Create a new season" is consistently read as outside the list. The policy has counter-examples only for member questions; it has none for Tour Manager actions like "create a season", "copy an event" or "message an account holder".</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>Refused</th>
-<th>Same request, other wording</th>
+<th>Same request, other wording, handled</th>
 </tr>
 </thead>
 <tbody>
@@ -88,23 +140,81 @@
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h2>3. Staging events stay "Open for entries" after registration closes</h2>
+<h2>3. Events stay "Open for entries" after registration closes (not an AL issue)</h2>
+<p><strong>What I did:</strong> staging › Tour Manager › Events › 2026. I read the header and the Open tab, then asked AL. I then compared every 2026 event's status and registration close time through the API. The same check on Dev found nothing.</p>
+<p><strong>Message I sent AL:</strong> "How many events are open for entries in the 2026 season right now?"</p>
+<p><strong>AL replied:</strong></p>
+<blockquote>
+<p>Right now 21 events in the 2026 season are open for entries. The first is AL Test Tundra Juniper 4V5P…</p>
+</blockquote>
+<p><strong>The page showed:</strong> "Open for entries <strong>16</strong> · AL Test Tundra Juniper 4V5P and 15 more", and the Open tab also showed 16.</p>
+<p><strong>What I found:</strong> 5 events have the status <strong>open-for-entries</strong>, but their registration closed 3–7 Nov:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Event</th>
+<th>Registration closed</th>
+<th>Starts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Drill Hall Beach Classic 122306 13</td>
+<td>7 Nov 17:00</td>
+<td>4 Dec</td>
+</tr>
+<tr>
+<td>Los Cerritos Classic 135843 8</td>
+<td>3 Nov 17:00</td>
+<td>8 Dec</td>
+</tr>
+<tr>
+<td>Barra de la Cruz Classic 151009 4</td>
+<td>3 Nov 17:00</td>
+<td>8 Dec</td>
+</tr>
+<tr>
+<td>AL Test Quokka Quokka CH68</td>
+<td>3 Nov 17:00</td>
+<td>14 Dec</td>
+</tr>
+<tr>
+<td>New Jersey Classic 122306 2</td>
+<td>3 Nov 17:00</td>
+<td>15 Dec</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>Expected:</strong> each event moves to Closed for entries when registration closes, so every count agrees.</p>
+<p><strong>Whose issue:</strong> this is <strong>not an AL issue</strong>. AL reports the stored status correctly. The status itself is wrong.</p>
 <ul>
-<li><strong>Where:</strong> staging, Tour Manager › Events, year 2026.</li>
-<li><strong>Expected:</strong> an event moves to Closed for entries when its registration close time passes, and every count agrees.</li>
-<li><strong>Actual:</strong> 5 events closed for entries on 3–7 Nov but still have the status "open-for-entries" (Drill Hall Beach Classic 122306 13, Los Cerritos Classic 135843 8, Barra de la Cruz Classic 151009 4, AL Test Quokka Quokka CH68, New Jersey Classic 122306 2). The page header and Open tab show <strong>16</strong>: they leave out events whose close time has passed. AL counts by status and says <strong>21</strong>. Dev has no such events (20 = 20).</li>
-<li><strong>Investigation:</strong> the page uses <code class="notranslate">entries_are_open(status, registration_closes_at, now)</code> (competition-service <code class="notranslate">application/hub.py</code>), so it hides these events; their status was never changed to Closed, so the automatic close at registration close is not running on staging.</li>
+<li>The page counts an event as open only if its status is Open <strong>and</strong> its close time hasn't passed (<code class="notranslate">entries_are_open</code> in competition-service <code class="notranslate">application/hub.py</code>). That's why the page hides these 5 and shows 16.</li>
+<li>AL reads the stored status, so it counts 21.</li>
 </ul>
+<p><strong>Likely root cause:</strong> the competition service's <strong>scheduler</strong> (<code class="notranslate">competition/scheduler.py</code>, <code class="notranslate">application/events/scheduler.py</code>) runs every 60 seconds and closes any Open event whose close time has passed. These 5 were never moved, either because:</p>
+<ul>
+<li><strong>the scheduler isn't running on staging</strong>, or</li>
+<li><strong>it skips these 5 events every tick.</strong> If moving an event fails with an invalid field, a stale version, a status not allowed or an unknown time zone, the scheduler just <code class="notranslate">continue</code>s. Nothing is logged and nothing is written to the event history.</li>
+</ul>
+<p>Other staging events did close (the "Closed · to confirm" figure is 16), so the second cause is more likely. The scheduler logs or these events' History tab will show which.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="shots/S1-staging-header-vs-tabs.png"><img src="shots/S1-staging-header-vs-tabs.png" alt="" style="max-width: 100%;"></a><br>
 <a target="_blank" rel="noopener noreferrer" href="shots/S2-staging-stale-open-event.png"><img src="shots/S2-staging-stale-open-event.png" alt="" style="max-width: 100%;"></a><br>
 <a target="_blank" rel="noopener noreferrer" href="shots/S3-staging-AL-open-count.png"><img src="shots/S3-staging-AL-open-count.png" alt="" style="max-width: 100%;"></a></p>
 <h2>4. AL sometimes can't find an event that exists</h2>
+<p><strong>What I did:</strong> Dev › AL. I created the test events at the start of the run (and renamed one), then asked AL about them by their exact names in new conversations.</p>
+<p><strong>Messages I sent and replies:</strong></p>
 <ul>
-<li><strong>Steps:</strong> ask "Make a copy of "AL Suite Open T5OK3"." then, in a new conversation, "Please copy AL Suite Open T5OK3 so I can reuse its settings."</li>
-<li><strong>Expected:</strong> AL finds the event both times.</li>
-<li><strong>Actual:</strong> found the first time; the second time "I couldn't find an event called AL Suite Open T5OK3" with a list of other events. Same with AL Suite Field T5OK3.</li>
-<li><strong>Reproduced:</strong> 3 times (W03 in run 2, cases 2b and 2h in the reproduction).</li>
-<li><strong>Investigation:</strong> AL looks events up with <code class="notranslate">find_events</code> (an in-process name index); the same exact name gives different results between requests.</li>
+<li>"Make a copy of "AL Suite Open T5OK3"." → found it: "I've set up a copy of AL Suite Open T5OK3, and a confirmation card is waiting for you…"</li>
+<li>A minute later, in a new conversation: "Please copy AL Suite Open T5OK3 so I can reuse its settings." → <strong>"I couldn't find an event called "AL Suite Open T5OK3". These were the closest matches: AL Test Juniper Marlin IYKG…"</strong></li>
+<li>"Send a short note to the account holder of QA TodoRetest's entry in AL Suite Field T5OK3…" → <strong>"I couldn't find an event called AL Suite Field T5OK3. The closest names were AL Suite Field S4WSO…"</strong></li>
+<li>Suite W03, star "AL Suite Draft SM9QO Renamed" (renamed during the run) → <strong>"I couldn't find an event called "AL Suite Draft SM9QO Renamed". The closest match is AL Suite Draft S4WSO Renamed…"</strong></li>
+</ul>
+<p><strong>Expected:</strong> AL finds an existing event by its exact name every time.</p>
+<p><strong>How often:</strong> 3 times across the suite and the reproduction.</p>
+<p><strong>Likely root cause:</strong> AL looks events up with <code class="notranslate">find_events</code>, which searches a <strong>cached copy of each season's event list</strong> (<code class="notranslate">wsl-ai-service</code> <code class="notranslate">infrastructure/search/event_index.py</code>, <code class="notranslate">TTL_SECONDS = 1800</code>). The copy is kept for <strong>30 minutes</strong> and lives in memory in each AI-service instance. So:</p>
+<ul>
+<li>an event <strong>created or renamed after the copy was taken</strong> isn't found for up to 30 minutes, and</li>
+<li>with several instances, one request can hit an instance whose copy is up to date while the next hits one whose copy is old. That's why it was found and then, a minute later, not found.</li>
 </ul>
 <markdown-accessiblity-table><table role="table">
 <thead>
@@ -121,31 +231,71 @@
 </tbody>
 </table></markdown-accessiblity-table>
 <h2>5. AL gives the wrong "waiting to confirm" count</h2>
-<ul>
-<li><strong>Steps:</strong> Dev › Events › AL › "How many events are closed and waiting for me to confirm the field?"</li>
-<li><strong>Expected:</strong> 9, as in the header "Closed · to confirm".</li>
-<li><strong>Actual:</strong> "15 events are closed for entries… this list can't tell me which already have their field confirmed." Asking "How many fields are ready to confirm and charge right now?" gives the right 9.</li>
-<li><strong>Reproduced:</strong> 3 of 3 with the first wording.</li>
-<li><strong>Investigation:</strong> with the first wording AL only filters events by status (<code class="notranslate">search_events</code>); with the second it reads the hub summary (<code class="notranslate">event.hub_summary</code>), which has the real figure.</li>
-</ul>
+<p><strong>What I did:</strong> Dev › Events. I read the header "Closed · to confirm <strong>9</strong>", then asked AL in two wordings (new conversation each).</p>
+<p><strong>Message 1:</strong> "How many events are closed and waiting for me to confirm the field?"</p>
+<blockquote>
+<p>In the 2026 season, <strong>15</strong> events are closed for entries right now. This list can't tell me which of them already have their field confirmed and charged…</p>
+</blockquote>
+<p><strong>Message 2:</strong> "How many fields are ready to confirm and charge right now?" → <strong>9</strong> (correct).</p>
+<p><strong>Expected:</strong> 9 for both. That's the header figure, which counts closed events whose field isn't confirmed yet.</p>
+<p><strong>How often:</strong> message 1 gave 15 in 3 of 3 tries.</p>
+<p><strong>Likely root cause:</strong> <strong>AL picks the wrong tool for the first wording.</strong> It used <code class="notranslate">search_events</code> with the status filter <em>closed-for-entries</em>, which counts every closed event, whether its field is confirmed or not. AL itself says the list "can't tell me which already have their field confirmed". The correct figure is in the hub summary (<code class="notranslate">event.hub_summary</code>), which AL only reads for the "ready to confirm and charge" wording. Nothing in AL's instructions tells it to use the hub summary for "waiting to confirm" questions.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="shots/D1-dev-AL-to-confirm-count.png"><img src="shots/D1-dev-AL-to-confirm-count.png" alt="" style="max-width: 100%;"></a></p>
 <h2>6. AL can't see the refunds waiting for a decision</h2>
+<p><strong>What I did:</strong> Dev › AL. One withdrawal was waiting for a refund decision (QA TodoRetest). I asked in 3 wordings, then gave AL the withdrawal id as a control.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Message I sent</th>
+<th>AL's reply</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Which withdrawals are waiting for my refund decision?"</td>
+<td>"I can't look up the refund review list right now, so I can't tell you which withdrawals are waiting on your decision…"</td>
+</tr>
+<tr>
+<td>"Show me the refund review list."</td>
+<td>"I couldn't find the refund review list among what I can look up for you right now…"</td>
+</tr>
+<tr>
+<td>"What is your refund assessment for QA TodoRetest's cancellation?"</td>
+<td>"I can't look up that refund assessment right now. The refund review list I'd need to find QA TodoRetest's withdrawal isn't available to me…"</td>
+</tr>
+<tr>
+<td>Control: "Show me your refund assessment for withdrawal 01a1eb77-…"</td>
+<td>Worked: read the assessment (forfeit, rules 2.18(a), 2.17(b), 2.18(b))</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>Expected:</strong> AL's own instructions say it can do this: "find the withdrawal in the refund review list (list_actions) and read get_refund_assessment".</p>
+<p><strong>How often:</strong> 4 of 4 (3 wordings plus the UI).</p>
+<p><strong>Likely root cause:</strong> <strong>AL's instructions and the competition service disagree.</strong></p>
 <ul>
-<li><strong>Steps:</strong> ask "Which withdrawals are waiting for my refund decision?", "Show me the refund review list." or "What is your refund assessment for QA TodoRetest's cancellation?"</li>
-<li><strong>Expected:</strong> AL's instructions say it finds withdrawals in the refund review list and reads its assessment.</li>
-<li><strong>Actual:</strong> "I can't look up the refund review list right now…". It only works when given the withdrawal id.</li>
-<li><strong>Reproduced:</strong> 4 of 4 (3 wordings, plus the UI).</li>
-<li><strong>Investigation:</strong> <code class="notranslate">withdrawal.refund.list</code> is hidden from AL in the competition service (to keep athletes' reasons out), but AL's prompt (<code class="notranslate">prompts.py</code> 452–456) still tells it to use that list. AL therefore can't do what its instructions describe.</li>
+<li>AL's instructions (<code class="notranslate">wsl-ai-service</code> <code class="notranslate">infrastructure/agent/tools.py</code> ~2093, prompt text) send it to the refund review list <code class="notranslate">withdrawal.refund.list</code>.</li>
+<li>That list is <strong>hidden from AL</strong> in the competition service (<code class="notranslate">refund_routes.py</code>: <code class="notranslate">@assistant(hidden=True)</code> on <code class="notranslate">withdrawal.refund.list</code>). It was hidden on purpose (WSL-10705) to keep athletes' withdrawal reasons away from the model.</li>
+<li>AL searched for it with <code class="notranslate">list_actions</code>, didn't find it, and gave up. It works only when it's given the withdrawal id directly.</li>
 </ul>
 <p><a target="_blank" rel="noopener noreferrer" href="shots/D2-dev-AL-refund-list.png"><img src="shots/D2-dev-AL-refund-list.png" alt="" style="max-width: 100%;"></a></p>
 <h2>7. AL users see "Beach Marshal can't confirm a wild card"</h2>
-<ul>
-<li><strong>Steps:</strong> ask AL "Confirm and charge only 's entry in , nobody else." and press Confirm on the card.</li>
-<li><strong>Expected:</strong> a refusal in AL's name (wild cards are confirmed from the Athletes tab).</li>
-<li><strong>Actual:</strong> "Something went wrong · Beach Marshal can't confirm a wild card — do this from the Athletes tab instead." Nothing was charged.</li>
-<li><strong>Reproduced:</strong> 2 of 2 (API and UI).</li>
-<li><strong>Investigation:</strong> the text is fixed in the BFF's <code class="notranslate">field.confirm</code> handler for assistant actions, which AL and Beach Marshal share.</li>
-</ul>
+<p><strong>What I did:</strong> Dev › AL. I found an unpaid wild-card entry (Kai Mendes, Huntington Winter Classic) and asked AL to confirm only that entry, then pressed <strong>Confirm</strong> on AL's card. Nothing was charged.</p>
+<p><strong>Message I sent:</strong> "Confirm and charge only Kai Mendes's entry in Huntington Winter Classic, nobody else."</p>
+<p><strong>AL replied:</strong> "I've set up a confirmation card that confirms and charges Kai Mendes's entry… Kai holds a wild card seat, and wild cards can only be confirmed and charged from their own row…"</p>
+<p><strong>After pressing Confirm, the card showed:</strong></p>
+<blockquote>
+<p>Something went wrong · <strong>Beach Marshal</strong> can't confirm a wild card — do this from the Athletes tab instead.</p>
+</blockquote>
+<p>(API: HTTP 409, same text.)</p>
+<p><strong>Expected:</strong> a refusal that names AL, or no assistant at all. Better still, AL shouldn't offer the card, since its own reply already says wild cards must be confirmed from the row.</p>
+<p><strong>How often:</strong> 2 of 2 (API and UI).</p>
+<p><strong>Likely root cause:</strong> the text is <strong>hard-coded in the BFF</strong> (<code class="notranslate">wsl-django-bff</code> <code class="notranslate">interfaces/http/api/assistant_actions.py</code> line 678). The handler is shared by Beach Marshal and AL, and the message was written when only Beach Marshal existed.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="shots/D4-dev-AL-wildcard-refusal.png"><img src="shots/D4-dev-AL-wildcard-refusal.png" alt="" style="max-width: 100%;"></a></p>
 <hr>
-<p><strong>Not included:</strong> "Next event 25 Nov · in 2 days" seen just after midnight Cairo time is correct: it was still 23 Nov at the venue (Arecibo, UTC−4) and in UTC, so it is not an issue. Also not included: staging consent emails not arriving (cause not confirmed), and 6 count and rule-book checks that failed only because of how the test read the answer. Raw records: <a href="records-evidence.json">evidence</a> · <a href="records-repro.json">reproduction</a> · <a href="records-wildcard-refundlist.json">wild card and refund list</a> · <a href="records-to-confirm.json">to-confirm count</a> · <a href="records-open-count-audit.json">open-count audit</a></p></body></html>
+<p><strong>Not included:</strong></p>
+<ul>
+<li>"Next event 25 Nov · in 2 days", seen just after midnight Cairo time, is correct. It was still 23 Nov at the venue (Arecibo, UTC−4) and in UTC.</li>
+<li>Staging consent emails not arriving: the cause isn't confirmed.</li>
+<li>6 count and rule-book checks that failed only because of how the test read the answer.</li>
+</ul>
+<p>Raw records: <a href="records-evidence.json">evidence</a> · <a href="records-repro.json">reproduction</a> · <a href="records-wildcard-refundlist.json">wild card and refund list</a> · <a href="records-to-confirm.json">to-confirm count</a> · <a href="records-open-count-audit.json">open-count audit</a></p></body></html>
