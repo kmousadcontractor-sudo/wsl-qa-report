@@ -29,34 +29,27 @@
 </tr>
 <tr>
 <td>3</td>
-<td>Events stay "Open for entries" after registration closes (page 16, AL 21)</td>
-<td><strong>Not AL:</strong> event status in the competition service</td>
-<td>Staging</td>
-<td>High</td>
-</tr>
-<tr>
-<td>4</td>
 <td>AL sometimes can't find an event that exists</td>
 <td>AL event search cache</td>
 <td>Dev</td>
 <td>Medium</td>
 </tr>
 <tr>
-<td>5</td>
+<td>4</td>
 <td>AL gives the wrong "waiting to confirm" count (15 instead of 9)</td>
 <td>AL tool choice</td>
 <td>Dev</td>
 <td>Medium</td>
 </tr>
 <tr>
-<td>6</td>
+<td>5</td>
 <td>AL can't see the refunds waiting for a decision</td>
 <td>AL instructions vs. hidden route</td>
 <td>Dev</td>
 <td>Medium</td>
 </tr>
 <tr>
-<td>7</td>
+<td>6</td>
 <td>AL users see "Beach Marshal can't confirm a wild card"</td>
 <td>BFF error text</td>
 <td>Dev</td>
@@ -64,7 +57,7 @@
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p>Recordings: <a href="recording-dev.mp4">Dev</a> · <a href="recording-staging.mp4">Staging</a> · <a href="recording-repro-dev.mp4">Reproduction of 1, 2 and 4</a></p>
+<p>Recordings: <a href="recording-dev.mp4">Dev</a> · <a href="recording-staging.mp4">Staging</a> · <a href="recording-repro-dev.mp4">Reproduction of 1, 2 and 3</a></p>
 <hr>
 <h2>1. AL refuses every handling-rate change</h2>
 <p><strong>What I did:</strong> Dev › Tour Manager › Events › opened AL › started a new conversation for each message › sent the message below › waited for the full answer.</p>
@@ -140,67 +133,7 @@
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h2>3. Events stay "Open for entries" after registration closes (not an AL issue)</h2>
-<p><strong>What I did:</strong> staging › Tour Manager › Events › 2026. I read the header and the Open tab, then asked AL. I then compared every 2026 event's status and registration close time through the API. The same check on Dev found nothing.</p>
-<p><strong>Message I sent AL:</strong> "How many events are open for entries in the 2026 season right now?"</p>
-<p><strong>AL replied:</strong></p>
-<blockquote>
-<p>Right now 21 events in the 2026 season are open for entries. The first is AL Test Tundra Juniper 4V5P…</p>
-</blockquote>
-<p><strong>The page showed:</strong> "Open for entries <strong>16</strong> · AL Test Tundra Juniper 4V5P and 15 more", and the Open tab also showed 16.</p>
-<p><strong>What I found:</strong> 5 events have the status <strong>open-for-entries</strong>, but their registration closed 3–7 Nov:</p>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th>Event</th>
-<th>Registration closed</th>
-<th>Starts</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Drill Hall Beach Classic 122306 13</td>
-<td>7 Nov 17:00</td>
-<td>4 Dec</td>
-</tr>
-<tr>
-<td>Los Cerritos Classic 135843 8</td>
-<td>3 Nov 17:00</td>
-<td>8 Dec</td>
-</tr>
-<tr>
-<td>Barra de la Cruz Classic 151009 4</td>
-<td>3 Nov 17:00</td>
-<td>8 Dec</td>
-</tr>
-<tr>
-<td>AL Test Quokka Quokka CH68</td>
-<td>3 Nov 17:00</td>
-<td>14 Dec</td>
-</tr>
-<tr>
-<td>New Jersey Classic 122306 2</td>
-<td>3 Nov 17:00</td>
-<td>15 Dec</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<p><strong>Expected:</strong> each event moves to Closed for entries when registration closes, so every count agrees.</p>
-<p><strong>Whose issue:</strong> this is <strong>not an AL issue</strong>. AL reports the stored status correctly. The status itself is wrong.</p>
-<ul>
-<li>The page counts an event as open only if its status is Open <strong>and</strong> its close time hasn't passed (<code class="notranslate">entries_are_open</code> in competition-service <code class="notranslate">application/hub.py</code>). That's why the page hides these 5 and shows 16.</li>
-<li>AL reads the stored status, so it counts 21.</li>
-</ul>
-<p><strong>Likely root cause:</strong> the competition service's <strong>scheduler</strong> (<code class="notranslate">competition/scheduler.py</code>, <code class="notranslate">application/events/scheduler.py</code>) runs every 60 seconds and closes any Open event whose close time has passed. These 5 were never moved, either because:</p>
-<ul>
-<li><strong>the scheduler isn't running on staging</strong>, or</li>
-<li><strong>it skips these 5 events every tick.</strong> If moving an event fails with an invalid field, a stale version, a status not allowed or an unknown time zone, the scheduler just <code class="notranslate">continue</code>s. Nothing is logged and nothing is written to the event history.</li>
-</ul>
-<p>Other staging events did close (the "Closed · to confirm" figure is 16), so the second cause is more likely. The scheduler logs or these events' History tab will show which.</p>
-<p><a target="_blank" rel="noopener noreferrer" href="shots/S1-staging-header-vs-tabs.png"><img src="shots/S1-staging-header-vs-tabs.png" alt="" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="shots/S2-staging-stale-open-event.png"><img src="shots/S2-staging-stale-open-event.png" alt="" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="shots/S3-staging-AL-open-count.png"><img src="shots/S3-staging-AL-open-count.png" alt="" style="max-width: 100%;"></a></p>
-<h2>4. AL sometimes can't find an event that exists</h2>
+<h2>3. AL sometimes can't find an event that exists</h2>
 <p><strong>What I did:</strong> Dev › AL. I created the test events at the start of the run (and renamed one), then asked AL about them by their exact names in new conversations.</p>
 <p><strong>Messages I sent and replies:</strong></p>
 <ul>
@@ -230,7 +163,7 @@
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h2>5. AL gives the wrong "waiting to confirm" count</h2>
+<h2>4. AL gives the wrong "waiting to confirm" count</h2>
 <p><strong>What I did:</strong> Dev › Events. I read the header "Closed · to confirm <strong>9</strong>", then asked AL in two wordings (new conversation each).</p>
 <p><strong>Message 1:</strong> "How many events are closed and waiting for me to confirm the field?"</p>
 <blockquote>
@@ -241,7 +174,7 @@
 <p><strong>How often:</strong> message 1 gave 15 in 3 of 3 tries.</p>
 <p><strong>Likely root cause:</strong> <strong>AL picks the wrong tool for the first wording.</strong> It used <code class="notranslate">search_events</code> with the status filter <em>closed-for-entries</em>, which counts every closed event, whether its field is confirmed or not. AL itself says the list "can't tell me which already have their field confirmed". The correct figure is in the hub summary (<code class="notranslate">event.hub_summary</code>), which AL only reads for the "ready to confirm and charge" wording. Nothing in AL's instructions tells it to use the hub summary for "waiting to confirm" questions.</p>
 <p><a target="_blank" rel="noopener noreferrer" href="shots/D1-dev-AL-to-confirm-count.png"><img src="shots/D1-dev-AL-to-confirm-count.png" alt="" style="max-width: 100%;"></a></p>
-<h2>6. AL can't see the refunds waiting for a decision</h2>
+<h2>5. AL can't see the refunds waiting for a decision</h2>
 <p><strong>What I did:</strong> Dev › AL. One withdrawal was waiting for a refund decision (QA TodoRetest). I asked in 3 wordings, then gave AL the withdrawal id as a control.</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
@@ -278,7 +211,7 @@
 <li>AL searched for it with <code class="notranslate">list_actions</code>, didn't find it, and gave up. It works only when it's given the withdrawal id directly.</li>
 </ul>
 <p><a target="_blank" rel="noopener noreferrer" href="shots/D2-dev-AL-refund-list.png"><img src="shots/D2-dev-AL-refund-list.png" alt="" style="max-width: 100%;"></a></p>
-<h2>7. AL users see "Beach Marshal can't confirm a wild card"</h2>
+<h2>6. AL users see "Beach Marshal can't confirm a wild card"</h2>
 <p><strong>What I did:</strong> Dev › AL. I found an unpaid wild-card entry (Kai Mendes, Huntington Winter Classic) and asked AL to confirm only that entry, then pressed <strong>Confirm</strong> on AL's card. Nothing was charged.</p>
 <p><strong>Message I sent:</strong> "Confirm and charge only Kai Mendes's entry in Huntington Winter Classic, nobody else."</p>
 <p><strong>AL replied:</strong> "I've set up a confirmation card that confirms and charges Kai Mendes's entry… Kai holds a wild card seat, and wild cards can only be confirmed and charged from their own row…"</p>
@@ -294,6 +227,7 @@
 <hr>
 <p><strong>Not included:</strong></p>
 <ul>
+<li>Staging events that stay "Open for entries" after registration closes (the page shows 16, AL says 21). This is <strong>not an AL issue</strong>: AL reports the stored status correctly. The scheduler silently skips closing events that have no rating. Reported to the competition service as <a href="https://wslproduct.atlassian.net/browse/WSL-10952" rel="nofollow">WSL-10952</a>.</li>
 <li>"Next event 25 Nov · in 2 days", seen just after midnight Cairo time, is correct. It was still 23 Nov at the venue (Arecibo, UTC−4) and in UTC.</li>
 <li>Staging consent emails not arriving: the cause isn't confirmed.</li>
 <li>6 count and rule-book checks that failed only because of how the test read the answer.</li>
