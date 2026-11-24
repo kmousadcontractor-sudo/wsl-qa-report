@@ -1,0 +1,149 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tour Manager Settings and email checklist</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>Tour Manager Settings and email checklist</h1>
+<p>24 Nov 2026 · Dev · Built from the code (wsl-frontend, wsl-messaging, athlete, competition, support and BFF services). Sign in as the Dev Tour Manager. For emails, use a <strong>fresh Mailosaur address on the <code class="notranslate">mailosaurServerId</code> server</strong>; Dev mail only arrives there.</p>
+<p>Settings URL: <code class="notranslate">https://app.dev.worldsurfleague.com/tour-manager/settings?section=&lt;tab&gt;</code></p>
+<hr>
+<h2>Part 1: Tour Manager Settings (6 tabs)</h2>
+<p><strong>On every tab</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> The tab opens from its link (<code class="notranslate">?section=…</code>) and stays selected after reload</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> The breadcrumb reads "Settings › " and the title and description match the tab</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Every save that asks for a <strong>Reason for this change</strong> blocks saving when it's empty ("Enter a reason for this change.")</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Every change appears in that card's <strong>History</strong> (timestamp, user, action, reason)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Cancel throws the edit away; nothing is saved</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A finance-only card is read-only for a Tour Manager without the finance role</li>
+</ul>
+<h3>1. Entry fees (<code class="notranslate">entry-fees</code>)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> The grid shows fees by <strong>rating × region</strong>, with currency and tax per region, for the chosen <strong>Year</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Edit, then Save: the new fee is shown, and a new event in that region/rating uses it</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> An amount that isn't a number is refused ("Some amounts could not be read")</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A tax change asks for a reason (tax-changed hint)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Copy year</strong>: copy 2026 → 2027 shows "Replace 2027's entry fees with 2026's?", and Replace fees copies every cell</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> History lists "Entry fees · " changes</li>
+</ul>
+<h3>2. Memberships (<code class="notranslate">memberships</code>)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Prices by region for the chosen <strong>Calendar year</strong>, with currency and tax</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Edit, then Save: the new price is shown on the membership purchase page and in the receipt email (see Part 2, rows 3–4)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Add </strong> from the previous year: "Add 2027 from 2026?"</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Copy to calendar year</strong>, then <strong>Replace prices</strong>, then <strong>Mark as reviewed</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> An unpriced product shows <strong>Add </strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> History "Membership prices · "</li>
+</ul>
+<h3>3. Insurance (<code class="notranslate">insurance</code>)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Products for the <strong>policy year</strong>: type, covers, events, price</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>+ Add product</strong>: price must be a whole or decimal amount; events 1–max, or blank for annual cover</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Edit, then Save, then Delete ("Delete ?")</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Copy to calendar year</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Documents</strong> drawer: Upload PDF, View PDF, Rename, Delete from library, add to plan, Move up/down, Remove from plan, Save</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> The visibility dropdown shows "During and after purchase" in full (WSL-10836)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> The plan's documents show to the member at purchase and after, as chosen</li>
+</ul>
+<h3>4. Locations (<code class="notranslate">locations</code>)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> The list shows the count ("LOCATIONS · N · NOT YEAR SPECIFIC")</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Add new location</strong>: Name*, Country*, Time zone* required; Find the location fills the address, latitude and longitude</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Format</strong> tokens (Name, Town, City, State, Country) change the <strong>Preview</strong>, and events show the location in that format</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Edit location</strong>, <strong>Archive</strong>, <strong>Unarchive</strong>; an archived location can't be picked for a new event</li>
+</ul>
+<h3>5. Payment rules &amp; engine (<code class="notranslate">payment-rules</code>)</h3>
+<p><strong>This is the only Settings tab that changes emails</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Payment rules</strong>: Edit <strong>Grace period</strong>, <strong>Notification schedule</strong> (Add/Remove steps, hours/days), <strong>Retries</strong> (Add/Remove), and <strong>Stop chasing before the event</strong> (days), then Save</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Defaults show: retries at 24h, 72h and 168h; reminders at 24h, 72h, 120h and 168h; grace 168h; stop 9 days before the event</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A new rule applies only to declines <strong>after</strong> the change; an entry keeps the rules in force at its first decline</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Handling fee</strong>: Rate (0–max, up to 2 decimals), Applies to (Entry fees / Memberships / Insurance), Save; "In force" date shows</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Apply to current prices</strong>: "Apply 5% to current prices?" with a Year, then Apply to ; prices update</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Cancellation fee</strong>: Membership and Insurance amounts save, and a membership/insurance cancellation uses them (email rows 8 and 20)</li>
+</ul>
+<h3>6. Accounts &amp; NetSuite (<code class="notranslate">accounts</code>)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Settlement accounts</strong>: each product has an account for "all other regions"; <strong>Add a region</strong> gives a region its own rule</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A gap shows "These sales cannot be priced yet" (or "The next version … would leave these sales unpriced")</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>NetSuite mapping</strong>: Add a row; a region row may set one code and inherit the other</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> History for both cards</li>
+</ul>
+<hr>
+<h2>Part 2: Every email (24 live)</h2>
+<p>For each one, check:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> it arrives</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> the subject and wording are right</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> names, event, amounts and dates are right</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> links open the right page and work once (expired links are refused)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> it's in the athlete's language (try one in fr / ja / pt-BR / es-419)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> it goes to the right person</li>
+</ul>
+<h3>Account and sign-in</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>1. Email verification</strong>: sign up (or Verify email › Resend). The account's own address gets a link. <em>Only on where verification is switched on (off in production).</em></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>2. Password reset</strong>: Forgot password. Link works once and expires.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Google/Apple sign-in sends <strong>no</strong> welcome email (expected)</li>
+</ul>
+<h3>Membership and payment</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>3. Membership receipt</strong>: pay for a membership. Amounts <strong>before tax, tax, total</strong> (WSL-10430).</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>4. Membership active</strong>: adult self-registered, or parent-registered 13–17. Also on upgrade.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>5. Guardian approved</strong>: 13–17 self-registered, after the guardian signs. Goes to the teen.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>6. Guardian membership active</strong>: under-13 paid after consent was already done. Goes to the parent.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>7. Guardian approval completed</strong>: under-13 consent and documents done after payment. Goes to the parent.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>8. Membership cancelled</strong>: member, admin or hub cancels. States the refund owed.</li>
+</ul>
+<h3>Junior / guardian consent</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>10. Under-13 consent requested</strong>: register an under-13. Guardian gets a consent link. Also check Resend.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>11. Under-13 pending consent</strong>: under-13 membership paid before consent. Guardian gets a link.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>12. 13–17 documents requested</strong>: teen registers and names a guardian. Guardian (no account) gets a link. Also check Resend.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>13. 13–17 pending documents</strong>: membership paid before the guardian signs.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>14. Guardian contact changed</strong>: staff change a guardian's email. The <strong>old</strong> address is told, with no link.</li>
+</ul>
+<h3>Documents and insurance</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>18. Documents signed</strong>: a self-registered adult signs their last document.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>19. Insurance confirmed</strong>: buy per-event cover. <em>Not sent for annual cover, or when the payer isn't the account holder.</em></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>20. Insurance cancelled</strong>: staff cancel a policy. States the refund.</li>
+</ul>
+<h3>Event entry</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>22. Entry received (waitlisted)</strong>: enter an event. Goes to the account holder (the athlete if self-registered).</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>23. Entry confirmed and charged</strong>: Tour Manager confirms the field and the charge succeeds. <em>No email for a waived fee or a promotion.</em></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>24. Payment action required</strong> (one email, 7 versions): use a declining Stripe test card, then check each:
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> declined, retry scheduled</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> retry declined</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> declined, no retry</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> last retry declined</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> grace period ended</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> authenticate (3-D Secure card)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> update card</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Timing follows <strong>Settings › Payment rules</strong>. Nothing is chased in the last N days before the event.</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>25. Entry cancelled</strong>: account holder clicks Cancel entry. A minor's guardian gets <strong>a separate copy</strong> when their address differs.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>26. Refund decided</strong>: Tour Manager decides the refund. <em>Skipped when "no refund" was already said at cancel.</em></li>
+</ul>
+<h3>Tour Manager messages</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>27. Message to account holder</strong>: Tour Manager › entry › Message, channel Email (and through AL "message the account holder"). The Tour Manager's subject and body appear in the fixed frame, with the Tour Manager's name. <em>In person sends nothing.</em></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>28. Invite (Grant membership)</strong>: Tour Manager's Grant membership. Link valid 14 days. Check Resend, and an existing account versus a new address.</li>
+</ul>
+<h3>Support</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>29. Support ticket replied</strong>: staff reply, or staff open a ticket for someone. No ticket content in the email.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>30. Athlete replied</strong>: the person replies on a ticket. The Tour Manager holding it is told. <em>Always in English.</em></li>
+</ul>
+<h3>Things that send no email (check nothing arrives)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Alternate moved up, a Tour Manager withdraws an entry, wild card</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Entries open, final week, event started or called off, schedule change</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Guardian consent and document <strong>reminders</strong> (defined but nothing sends them)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> No athlete is copied (cc) on any email today</li>
+</ul>
+<hr>
+<p><strong>Open in the browser:</strong> two Dev windows.</p>
+<ul>
+<li><strong>Tour Manager window (signed in):</strong> the 6 Settings tabs, plus Events, Athletes, Athlete Care and Finance.</li>
+<li><strong>Member window (signed out):</strong> Register, Login, Forgot password, Resend verification, Support and Legal.</li>
+</ul></body></html>
