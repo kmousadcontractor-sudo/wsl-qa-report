@@ -53,12 +53,6 @@
 <td>Dev</td>
 <td>Low</td>
 </tr>
-<tr>
-<td>8</td>
-<td>"Next event 25 Nov · in 2 days" when 25 Nov is tomorrow</td>
-<td>Staging</td>
-<td>Low</td>
-</tr>
 </tbody>
 </table></markdown-accessiblity-table>
 <p>Recordings: <a href="recording-dev.mp4">Dev</a> · <a href="recording-staging.mp4">Staging</a> · <a href="recording-repro-dev.mp4">Reproduction of 1, 2 and 4</a></p>
@@ -153,12 +147,5 @@
 <li><strong>Investigation:</strong> the text is fixed in the BFF's <code class="notranslate">field.confirm</code> handler for assistant actions, which AL and Beach Marshal share.</li>
 </ul>
 <p><a target="_blank" rel="noopener noreferrer" href="shots/D4-dev-AL-wildcard-refusal.png"><img src="shots/D4-dev-AL-wildcard-refusal.png" alt="" style="max-width: 100%;"></a></p>
-<h2>8. "Next event · in 2 days" when the event is tomorrow</h2>
-<ul>
-<li><strong>Where:</strong> staging, Events header, checked 24 Nov just after midnight Cairo time.</li>
-<li><strong>Actual:</strong> "Next event 25 Nov · Arecibo Classic 183814 1 · in 2 days".</li>
-<li><strong>Investigation:</strong> the BFF works out "in N days" from the server's UTC date (<code class="notranslate">hub_stats(summary, today)</code>), so for a few hours after midnight in time zones ahead of UTC the count is one day too many.</li>
-</ul>
-<p>(See the first screenshot under issue 3.)</p>
 <hr>
-<p><strong>Not included:</strong> staging consent emails not arriving (cause not confirmed), and 6 count and rule-book checks that failed only because of how the test read the answer. Raw records: <a href="records-evidence.json">evidence</a> · <a href="records-repro.json">reproduction</a> · <a href="records-wildcard-refundlist.json">wild card and refund list</a> · <a href="records-to-confirm.json">to-confirm count</a> · <a href="records-open-count-audit.json">open-count audit</a></p></body></html>
+<p><strong>Not included:</strong> "Next event 25 Nov · in 2 days" seen just after midnight Cairo time is correct: it was still 23 Nov at the venue (Arecibo, UTC−4) and in UTC, so it is not an issue. Also not included: staging consent emails not arriving (cause not confirmed), and 6 count and rule-book checks that failed only because of how the test read the answer. Raw records: <a href="records-evidence.json">evidence</a> · <a href="records-repro.json">reproduction</a> · <a href="records-wildcard-refundlist.json">wild card and refund list</a> · <a href="records-to-confirm.json">to-confirm count</a> · <a href="records-open-count-audit.json">open-count audit</a></p></body></html>
