@@ -1,0 +1,69 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finance tab checklist</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>Finance tab checklist</h1>
+<p>Dev, 25 Nov 2026. Tour Manager › <strong>Finance</strong>. Use <strong>November 2026</strong>: today's test purchases and refunds are there (October is empty).</p>
+<p><strong>What you'll find in November:</strong> about 30 real Stripe test purchases and refunds from today. They cover memberships in USD and AUD, insurance, entry fees, refunds after a cancellation fee, and partial refunds. In the athlete Payments tabs, open <strong>Jordan Hale…</strong>, <strong>QA Cancelfee…</strong> and <strong>Jordan Override…</strong>.</p>
+<p><strong>How to mark each row:</strong> ✅ pass · ❌ fail (add a screenshot) · ⏭ not run (say why)</p>
+<h2>1. Page and filters</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Revenue</strong> and <strong>Insurance</strong> tabs both open</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Month picker: October shows "No transactions"; <strong>November 2026</strong> lists today's sales and refunds</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> "Months run midnight to midnight in Pacific Time" is true: a sale made at 23:30 PT on the last day of a month falls in that month</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Filters <strong>Tour</strong>, <strong>Regions</strong>, <strong>Event</strong> and <strong>Products</strong> each narrow the list, and the totals change to match</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Combining filters (for example Memberships + AUS/OCE) shows only matching rows</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Clearing filters brings everything back</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> "Sales and refunds as of …" shows the current time and updates on reload</li>
+</ul>
+<h2>2. Amounts are right (compare with the athlete's Payments tab and the receipt email)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Membership, North America:</strong> gross 262.50 USD = 250 base + 12.50 handling (5%), tax 0</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Membership, Australia:</strong> in <strong>AUD</strong>, with GST split out (for example AUD 367.29 = 333.90 + GST 33.39)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Insurance:</strong> amount matches the plan price plus handling</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Entry fee:</strong> matches the entry fee plus handling</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Refund rows</strong> are negative and match the refund in the athlete's Payments tab (for example −212.50)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Cancellation fee kept:</strong> sale 262.50, refund −212.50, so the net kept is 50</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Handling kept on a refund</strong> shows as "Handling Retained" for memberships (for example 12.50). Note what insurance shows.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Partial refund: one sale row and one refund row, not two refunds</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Totals at the top equal the sum of the rows shown</li>
+</ul>
+<h2>3. Settlement account (which Stripe account the money went to)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> US membership → <strong>WSL North America</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Australian membership → <strong>WSL Australia AUD</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Insurance → <strong>WSL Insurance</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Europe and South America memberships → <strong>WSL Europe</strong> / <strong>WSL South America</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Note: on Dev, all USD regions share one Stripe test account; on production each has its own. Check the <em>name</em> is right, not the Stripe key.</li>
+</ul>
+<h2>4. Downloads</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Download CSV</strong>: opens in Excel; one row per sale or refund line; columns are clear (date, athlete, product, region, account, gross, tax, handling, net, Stripe ID)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Each CSV row has a Stripe ID (<code class="notranslate">pi_…</code> for payments, <code class="notranslate">re_…</code> for refunds)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> CSV totals = on-screen totals for the same month and filters</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Download as of the same time</strong> gives the same numbers as the screen at that moment</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Download payout tie-out</strong>: one row per Stripe payout, with gross, Stripe fees and expected payout</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> NetSuite columns say <strong>unmapped</strong> (no codes are set in Settings › Accounts &amp; NetSuite)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Names with accents (Tomás, Inês) look right in the CSV</li>
+</ul>
+<h2>5. Insurance tab</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Lists insurance policies sold in the month, with plan name, athlete and amount</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Cancelled or refunded policies show the refund and the broker fee kept (with an insurance cancellation fee set)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Note any extra USD 20 or USD 0 "purchase" rows after an insurance refund (seen in today's test)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Download works and matches the screen</li>
+</ul>
+<h2>6. Athlete Payments tab (opened for today's QA athletes)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Each payment shows date, product, amount, status (Paid / Partially refunded / Refunded) and the invoice</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> After a cancel with refund: status <strong>Partially refunded</strong> and the refunded amount (check it isn't listed twice)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A granted (free) membership shows USD 0.00 Paid, with no Cancel button (known: it can't be cancelled)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> The invoice downloads and its amounts match Finance</li>
+</ul>
+<h2>7. Access</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Tour Manager 101 (Finance role) sees Finance</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A Tour Manager without the Finance role can't see Finance, or sees it read-only (note which)</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>Write down any amount mismatch with the athlete name, product, the on-screen value and the CSV value.</li>
+<li>Don't change Settings while testing: the handling fee and cancellation fee are back to their normal values (5%; membership USD/AUD 50).</li>
+</ul></body></html>
