@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SSO (single sign-on) checklist</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:16px;background:#fff;color:#1f2328}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d0d7de;padding:6px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}img,video{max-width:100%;border:1px solid #d0d7de;border-radius:6px}blockquote{border-left:4px solid #d0d7de;margin:0;padding:0 12px;color:#59636e}code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body><h1>SSO (single sign-on) checklist</h1>
+<p>Dev, 25 Nov 2026. Epic <strong>WSL-9616</strong>. Merged into <code class="notranslate">dev</code> today: wsl-frontend #377, wsl-iam-service #104 / #102, wsl-django-bff #340, wsl-notification-service #66, wsl-profiling-service #36, wsl-messaging #212.</p>
+<blockquote>
+<p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> <strong>SSO is merged but not switched on in Dev yet.</strong> <code class="notranslate">GET /api/auth/oidc/start</code> answers 404. The PR says sign-in "stays off until wsl-platform-deploy's <code class="notranslate">feat/sso</code> turns it on" (<code class="notranslate">OIDC_ENABLED</code>, <code class="notranslate">NEXT_PUBLIC_OIDC_SIGN_IN</code>). Part 1 can be tested now. Parts 2–9 need the switch on: ask the developers when it's on and which address the sign-in host uses.</p>
+<p>Staging is now promoted from <code class="notranslate">dev2</code> (decided 25 Nov), so none of this reaches staging yet.</p>
+</blockquote>
+<p><strong>How to mark each row:</strong> ✅ pass · ❌ fail (add a screenshot) · ⏭ not run (say why)</p>
+<h2>Part 1: Regression now (SSO off): nothing that worked before is broken</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Existing athlete signs in with email + password at <a href="https://app.dev.worldsurfleague.com/login" rel="nofollow">https://app.dev.worldsurfleague.com/login</a></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Tour Manager signs in and lands in the Tour Manager app (Events)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Wrong password: a generic error that doesn't say whether the account exists</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Sign out, then the back button doesn't show signed-in pages</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Sign up a new account: Dev now asks you to verify your email first (202 "verification required"). The verification email arrives.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Verification link works once; a second click is refused; an older link is refused after <strong>Resend</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> You can't sign in before verifying; after verifying you can</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Forgot password: the email arrives, the link works once and expires, and the new password works</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Registration, membership purchase and event entry still work end to end for a new athlete</li>
+</ul>
+<h2>Part 2: Hosted sign-in pages (needs SSO on)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Log in</strong> in the app takes you to the hosted <strong>sign-in</strong> page on the sign-in host, then back to the page you started from</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Hosted <strong>sign-up</strong>, <strong>reset password</strong>, <strong>logout</strong> and <strong>error</strong> pages open and look right (WSL Pro branding, both languages you try)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> After sign-in you return to the right app (athlete → athlete app; Tour Manager → Tour Manager app)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Sign-out</strong> ends the session everywhere (app and hosted pages). Signing in again asks for credentials.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A changed or foreign return address is refused (no open redirect): try <code class="notranslate">?redirect=https://example.com</code></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Refreshing a page after the session token expires keeps you signed in (refresh works); after sign-out it doesn't</li>
+</ul>
+<h2>Part 3: 6-digit email code sign-in (needs SSO on)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Email me a code</strong>: a 6-digit code arrives from the new sign-in sender address</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> The right code signs you in; it <strong>works once</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A wrong code is refused; after several wrong codes the code <strong>locks</strong> (note how many)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> An expired code is refused (note how long it lasts)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <strong>Resend</strong>: the older code stops working</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A code for account A can't sign in account B</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Email matching ignores case and leading/trailing spaces</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> For an address with no account, the page doesn't say whether the account exists</li>
+</ul>
+<h2>Part 4: Accounts with no password, "Create your password" (needs SSO on)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> An imported old-site or Facebook-only account signs in with a code, then is asked to <strong>create a password</strong></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Password rules are shown and enforced (too short or too weak is refused)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> After creating it, password sign-in works</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A Dev athlete with no password (the WSL-10809 case) gets the same prompt in the app</li>
+</ul>
+<h2>Part 5: Hosted sign-up and email verification (needs SSO on)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Hosted <strong>sign-up</strong> creates the account. Per IAM #102, hosted sign-up <strong>sends no verification link</strong>: the first code sign-in verifies the address, and verification never blocks sign-in.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Optional <strong>terms step</strong>: shown when needed; you can't continue without accepting</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Marketing consent choice is saved (opted in vs not)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Signing up again with an existing email: you're told the account exists (or a code is sent), and no duplicate account is created</li>
+</ul>
+<h2>Part 6: Staff accounts (needs SSO on)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Tour Manager, admin and Finance accounts <strong>must use a password</strong>. A code sign-in doesn't give staff access (IAM: "staff roles need a password sign-in").</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A staff member signed in with a code doesn't gain Tour Manager or admin access after a token refresh</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Tour Manager 102 (no Finance role) still can't edit the Finance cards in Settings</li>
+</ul>
+<h2>Part 7: Emails (needs SSO on)</h2>
+<p>For each email: it arrives, the sender is the new sign-in identity, the subject and wording are right, it's in your language (try <strong>fr</strong> and <strong>ja</strong> in browser settings), and links work once.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Email code</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Reset password</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> "An account already exists" notice (sign-up with an existing email)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Verification (current app sign-up)</li>
+</ul>
+<h2>Part 8: TV sign-in (device flow) (needs SSO on, if a TV client is available)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> The TV shows a code; approving on a phone signs the TV in</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Approving on a phone with no session goes through the normal sign-in pages first</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A denied or expired TV code is refused</li>
+</ul>
+<h2>Part 9: Account page <code class="notranslate">/api/me</code> and the admin console (needs SSO on)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A fan account can see and edit its own details; changing email needs a code to the new address</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Password change from the account page works; the old password stops working</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Account erase request is accepted and recorded</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Admin console: search by old-site id (digits only, exact), and the account detail shows consents, live sign-ins and the last 50 sign-in audit rows</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>Use fresh <strong>Mailosaur</strong> addresses on the current Dev server for new accounts.</li>
+<li>Record the sign-in host URL, and any 4xx/5xx, with a screenshot.</li>
+<li>Prod is out of scope: SSO isn't there.</li>
+</ul></body></html>
